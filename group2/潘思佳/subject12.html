@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = prompt("请输入表达式");
+
+        var operator = whichOperator();
+        var num1 = Number(str.split(operator)[0]);
+        var num2 = Number(str.split(operator)[1]);
+        console.log(calculate(num1, num2));
+
+
+        function whichOperator() {
+            var i = 0;
+            while (!isNaN(str[i])) {
+                i++;
+            }
+            return str[i];
+        }
+
+        function calculate(a, b) {
+            if (operator === "+") return a + b;
+            else if (operator === "-") return a - b;
+            else if (operator === "*") return a * b;
+            else if (operator === "/") return a / b;
+        }
+    </script>
+</body>
+
+</html>
