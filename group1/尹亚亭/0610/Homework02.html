@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var x = 2;
+        switch(x){
+            case 1 : console.log(1);
+            case 2 : console.log(2);
+            default : break;
+            case 3 : console.log(3);
+       }
+      /*  这段小程序的输出结果是？    答案：2.    */
+
+    /*
+    根据一个数字日期，判断这个日期是这一年的第几天
+    例如： "20160211"，计算后结果为42
+    */
+    var dates=20160211;
+    var year=2016;
+    var month=02;
+    var date=11;
+    var days;
+    if(year%400===0 || year%4===0&&year%100!==0)
+    {
+        if(month===1)
+        {
+            days=date;
+        }
+        if(month===2)
+        {
+            days=31+date;
+        }
+        if(month===3)
+        {
+            days=60+date;
+        }
+        if(month===4)
+        {
+            days=91+date;
+        }
+        if(month===5)
+        {
+            days=121+date;
+        }
+        if(month===6)
+        {
+            days=152+date;
+        }
+        if(month===7)
+        {
+            days=182+date;
+        }
+        if(month===8)
+        {
+            days=213+date;
+        }
+        if(month===9)
+        {
+            days=244+date;
+        }
+        if(month===10)
+        {
+            days=274+date;
+        }
+        if(month===11)
+        {
+            days=305+date;
+        }
+        if(month===12)
+        {
+            days=335+date;
+        }
+    }else
+    {
+        if(month===1)
+        {
+            days=date;
+        }
+        if(month===2)
+        {
+            days=31+date;
+        }
+        if(month===3)
+        {
+            days=59+date;
+        }
+        if(month===4)
+        {
+            days=90+date;
+        }
+        if(month===5)
+        {
+            days=120+date;
+        }
+        if(month===6)
+        {
+            days=151+date;
+        }
+        if(month===7)
+        {
+            days=181+date;
+        }
+        if(month===8)
+        {
+            days=212+date;
+        }
+        if(month===9)
+        {
+            days=243+date;
+        }
+        if(month===10)
+        {
+            days=273+date;
+        }
+        if(month===11)
+        {
+            days=304+date;
+        }
+        if(month===12)
+        {
+            days=334+date;
+        }
+    }
+    console.log("假如输入的日期是："+dates+",那么这天就是这一年的第"+days+"天");
+
+
+    //计算器案例
+    var num1=25,num2=52,symb="*",resu;
+    if(symb==="+")
+    {
+        resu=num1+num2;
+    }
+    if(symb==="-")
+    {
+        resu=num1-num2;
+    }
+    if(symb==="*")
+    {
+        resu=num1*num2;
+    }
+    if(symb==="/")
+    {
+        resu=num1/num2;
+    }
+    if(symb==="%")
+    {
+        resu=num1%num2;
+    }
+    console.log("假如输入的是："+num1+symb+num2+",那么结果就是："+resu);
+
+
+    </script>
+</body>
+</html>
