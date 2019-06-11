@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0610作业</title>
+</head>
+
+<body>
+    <script>
+        // * 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+        // var totalHours = 89;
+        // var days = parseInt(totalHours / 24);
+        // var hours = totalHours % 24;
+        // alert("战士持续作战共" + days + "天零" + hours + "小时。"); // 战士持续作战共3天零17小时。
+
+        // * 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+        // 提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数。
+        // var fahrenheit = 80;
+        // var celsius = parseInt((5 / 9 * (fahrenheit - 32)) * 1000) / 1000;
+        // document.write("美国的华氏度为" + fahrenheit + "，摄氏度为" + celsius + "。"); // 美国的华氏度为80，摄氏度为26.666。
+
+        // * var k=-2; alert(++k + k++ + ++k + k);
+        //                          -2 + ++k + k    k = 0
+        //                                     0    k = 1
+
+        // * 入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+        // var wage = 10000;
+        // for(i = 0; i < 50; i++){
+        //     wage *= 1.05;
+        // }
+        // console.log("50年后工资为" + wage); // 50年后工资为114673.997857537
+
+        // * 根据输入的数字，判断是否为闰年
+        // var year = 9012;
+        // if(year % 400 === 0 || year % 4 === 0 && year % 100 !== 0){
+        //     console.log("这是一个闰年。");
+        // } else{
+        //     console.log("这不是一个闰年。");
+        // }
+
+        // * 根据输入的成绩，判定成绩的等级A\B\C\D
+        // 方法一：
+        // var grade = 89;
+        // switch (parseInt(grade / 10)) {
+        //     case 10:
+        //         alert("您成绩的等级为A。");
+        //         break;
+        //     case 9:
+        //     case 8:
+        //     case 7:
+        //         alert("您成绩的等级为B。");
+        //         break;
+        //     case 6:
+        //         alert("您成绩的等级为C。");
+        //         break;
+        //     case 5:
+        //     case 4:
+        //     case 3:
+        //     case 2:
+        //     case 1:
+        //     case 0:
+        //         alert("您成绩的等级为D。");
+        //         break;
+        //     default:
+        //         alert("这不是一个有效成绩。");
+        //         break;
+        // } // BUG：101~109也会判断为A。
+        // 方法二：
+        // var grade = 91;
+        // if(grade >= 90 && grade <= 100){
+        //     alert("您成绩的等级为A。");
+        // } else{
+        //     if(grade >= 70 && grade < 90){
+        //         alert("您成绩的等级为B。");
+        //     } else{
+        //         if(grade >= 60 && grade < 70){
+        //             alert("您成绩的等级为C。");
+        //         } else{
+        //             if(grade >= 0 && grade < 60){
+        //                 alert("您成绩的等级为D。");
+        //             } else{
+        //                 alert("这不是一个有效成绩。");
+        //             }
+        //         }
+        //     }
+        // }
+
+        // * 根据输入的数字，返回星期几
+        // var days = 24;
+        // var week = days % 7;
+        // console.log("星期" + week); // 星期3
+
+        // * 根据输入月份，输出每月天数
+        // var month = 5;
+        // switch(month){
+        //     case 1:
+        //     case 3:
+        //     case 5:
+        //     case 7:
+        //     case 8:
+        //     case 10:
+        //     case 12:
+        //     console.log(month + "月共有31天。");
+        //     break;
+        //     case 4:
+        //     case 6:
+        //     case 9:
+        //     case 11:
+        //     console.log(month + "月共有30天。");
+        //     break;
+        //     case 2:
+        //     console.log(month + "月共有28天。");
+        //     break;
+        //     default:
+        //     console.log("这不是一个有效月份。");
+        //     break;
+        // } // 5月共有31天。
+
+        // * 判断一个整数，属于哪个范围：大于0；小于0；等于0
+        // var integar = 5;
+        // if(integar > 0){
+        //     console.log("大于0");
+        // } else if(integar = 0){
+        //     console.log("等于0");
+        // } else if(integar < 0){
+        //     console.log("小于0");
+        // } // 大于0
+
+        // * 判断一个整数是偶数还是奇数，并输出判断结果
+        // var integar = 3;
+        // if(integar % 2 === 0){
+        //     console.log("这是一个偶数。");
+        // } else{
+        //     console.log("这是一个奇数。");
+        // } // 这是一个奇数。
+
+        // * 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+        // var height = 183;
+        // var weight = 60;
+        // if ((height - 108) * 2 - weight >= -10 && (height - 108) * 2 - weight <= 10){
+        //     console.log("体重合适。");
+        // } else{
+        //     console.log("体重不合适。");
+        // } // 体重不合适。
+
+        // var x = 2;
+        // switch (x) {
+        //     case 1:
+        //         console.log(1);
+        //     case 2:
+        //         console.log(2);
+        //     default:
+        //         break;
+        //     case 3:
+        //         console.log(3);
+        // }
+        // 这段小程序的输出结果是？
+        // 2,case 2符合条件，但没有跳出循环，接着往下执行，执行到default后break跳出循环。
+
+        // * 根据一个数字日期，判断这个日期是这一年的第几天 例如： "20160211"，计算后结果为42
+        // var date = 20160211;
+        // var years = parseInt(date / 10000);
+        // var month = parseInt(date / 100) % 100;
+        // var days = date % 100;
+        // if (years % 400 === 0 || years % 4 === 0 && years % 100 !== 0) {
+        //     switch (month) {
+        //         case 12:
+        //             days += 30;
+        //         case 11:
+        //             days += 31;
+        //         case 10:
+        //             days += 30;
+        //         case 9:
+        //             days += 31;
+        //         case 8:
+        //             days += 31;
+        //         case 7:
+        //             days += 30;
+        //         case 6:
+        //             days += 31;
+        //         case 5:
+        //             days += 30;
+        //         case 4:
+        //             days += 31;
+        //         case 3:
+        //             days += 29;
+        //         case 2:
+        //             days += 31;
+        //         case 1:
+        //             console.log("这个日期是这一年的第" + days + "天。");
+        //     }
+        // } else {
+        //     switch (month) {
+        //         case 12:
+        //             days += 30;
+        //         case 11:
+        //             days += 31;
+        //         case 10:
+        //             days += 30;
+        //         case 9:
+        //             days += 31;
+        //         case 8:
+        //             days += 31;
+        //         case 7:
+        //             days += 30;
+        //         case 6:
+        //             days += 31;
+        //         case 5:
+        //             days += 30;
+        //         case 4:
+        //             days += 31;
+        //         case 3:
+        //             days += 28;
+        //         case 2:
+        //             days += 31;
+        //         case 1:
+        //             console.log("这个日期是这一年的第" + days + "天。");
+        //     }
+        // }
+
+
+        //* 计算器案例
+
+        // * 编写一个页面表单，使用JS判断输入内容是否合法
+        //         <style type="text/css">
+        //      *{padding: 0; margin: 0;}
+        //      html,body{
+        //           width: 100%; height: 100%;
+        //           background: #9CBC2C;
+        //           font-family: "微软雅黑";
+        //      }
+        //      ul,ol,input { list-style: none; border: none;}
+        //      .main{ width:500px; margin: 50px auto; }
+        //      .main .step{
+        //           padding-left: 43px;
+        //           color: #384313; font-size: 16px; font-weight: bold;
+        //          text-shadow: 0 1px 1px #c0d576; line-height: 40px;
+        //      }
+        //      .main ul li {
+        //           width: 400px; height: 25px;
+        //           padding-left: 10px;padding-top: 5px; padding-bottom: 5px;
+        //           background: rgba(255, 255, 255, .3);
+        //           margin: auto; border: solid 2px #e3ebc3;
+        //           border-color: rgba(255, 255, 255, .6);
+        //           border-radius: 5px; margin-bottom: 4px;
+        //      }
+        //      .main ul li label{
+        //           font-size: 13px; width: 110px; color: #111111;
+        //           padding-left: 5px;
+        //      }
+        //      .main ul li input{
+        //           border-radius: 3px;
+        //           border: #FC3 solid 1px;
+        //           width: 250px; height: 25px; outline: none;
+        //           padding-left: 5px; margin-left: 35px;
+        //      }
+        //      .main .savebtn{
+        //           display: block; width: 140px; height: 40px; line-height: 40px;
+        //           text-align: center; color: #E3EBC3;
+        //           font-weight: bold; cursor: pointer;
+        //           border-radius: 5px; margin: 10px auto;
+        //           box-shadow: 1px 1px 1px 0px gray;
+        //           background: linear-gradient(#50B9FD,#1158A8);
+        //      }
+        // </style>
+        // <body>
+        //      <div class="main">
+        //           <span class="step">Step1:用户详细资料</span>
+        //           <ul>
+        //               <li>
+        //                    <label>用户名称:</label>
+        //                    <input type="text" placeholder="请输入用户名" />
+        //               </li>
+        //               <li>
+        //                    <label>邮件地址:</label>
+        //                    <input type="text" placeholder="example@qq.com" />
+        //               </li>
+        //               <li>
+        //                    <label>练习电话:</label>
+        //                    <input type="text" placeholder="13539008452" />
+        //               </li>
+        //           </ul>
+        //           <span class="step">Step2:家庭住址（收货地址）</span>
+        //           <ul>
+        //               <li>
+        //                    <label>详细地址:</label>
+        //                    <input type="text" placeholder="请输入用户名" />
+        //               </li>
+        //               <li>
+        //                    <label>邮政编码:</label>
+        //                    <input type="text" placeholder="example@qq.com" />
+        //               </li>
+        //               <li>
+        //                    <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+        //                    <input type="text" placeholder="13539008452" />
+        //               </li>
+        //           </ul>
+        //           <span class="savebtn">保存</span>
+        //      </div>
+
+        // </body>
+    </script>
+</body>
+
+</html>
