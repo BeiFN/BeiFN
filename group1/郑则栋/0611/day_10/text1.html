@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.抵抗洪水
+        var tHour = 89;
+        var Tday = parseInt(tHour / 24);
+        var TResHour = tHour % 24;
+        console.log('抗洪工作总共持续' + Tday + "天" + TResHour + '小时');
+        //2.华氏温度&摄氏温度
+        var hua = 80;
+        var she = 5 / 9 * (hua - 32);
+        she = parseInt(she * 1000)
+        she = she / 1000;
+        console.log('这里的华氏温度是' + hua + ',摄氏温度是' + she);
+        //3.薪水问题
+        var money = 10000;
+        for (var i = 0; i < 50; i++) {
+            money = money + money * 0.05;
+        }
+        console.log('$' + parseInt(money));
+        //闰年ornot
+        var rYear = 2100;
+        if (rYear % 400 === 0 || rYear % 4 === 0 && rYear % 100 !== 0) {
+            console.log('今年是闰年');
+        }
+        else {
+            console.log('今年不是闰年');
+        }
+        //grade:A、B、C、D
+        var grade = 90;
+        if (grade >= 90 && grade <= 100) {
+            console.log('Your grade is A');
+        }
+        else if (grade >= 80 && grade < 90) {
+            console.log('Your grade is B');
+        }
+        else if (grade >= 70 && grade < 80) {
+            console.log('Your grade is C');
+        }
+        else {
+            console.log('Your grade is D');
+        }
+        //judge week
+        var jWeek = 9;
+        switch (jWeek) {
+            case 0: console.log('Sunday'); break;
+            case 1: console.log('Monday'); break;
+            case 2: console.log('Tuesday'); break;
+            case 3: console.log('Wednesday'); break;
+            case 4: console.log('Thursday'); break;
+            case 5: console.log('Friday'); break;
+            case 6: console.log('Saturday'); break;
+            default:console.log('请输入正确的日期，傻逼'); break;
+        }
+        //judge month_day
+        var jMonth=12;
+        if(jMonth===1||jMonth===3||jMonth===5||jMonth===7||jMonth===8||jMonth===10||jWeek===12){
+            console.log('This day of month is 31');
+        }
+        else if (jMonth===2){
+            console.log('This day of month is 28');
+        }
+        else{
+            console.log('This day of month is 30');
+        }
+        //judge 0
+        var jNum='9';
+        if(jNum>0){
+            console.log('The number is greater than zero ');
+        }
+        else if(jNum<0){
+            console.log('The number is less than zero');
+        }
+        else{
+            console.log('The number is equal to zero');
+        }
+        //even or odd
+        var jEorO=99;
+        if(jEorO%2===0){
+            console.log('The number is an even');
+        }
+        else{
+            console.log('The number is an odd');
+        }
+        //height and weight
+        var pHeight=190;
+        var pWeight=16;
+        var standard=(pHeight-108)*2;
+        if(standard>pWeight-10&&standard<pWeight+10){
+            console.log('Your weight is qualified');
+        }
+        else{
+            console.log('Your weight is not qualified');
+        }
+
+        //text  输出2
+        //判断第几天
+        var tTime=19950909;
+        var tYear= parseInt(tTime/10000);
+        var tYear_temp=tYear*10000;
+        var tMonth_temp=(tTime-tYear_temp)/100;
+        var tMonth= parseInt(tMonth_temp) ;
+        var tDays= tTime%100 ;
+        if (tYear % 400 === 0 || tYear % 4 === 0 && tYear % 100 !== 0) {
+            var month_day_2=29;
+            if(tMonth===1){
+                console.log('天数是'+(tDays));
+            }
+            if(tMonth===2){
+                console.log('天数是'+(31+tDays));
+            }
+            if(tMonth===3){
+                console.log('天数是'+(60+tDays));
+            }
+            if(tMonth===4){
+                console.log('天数是'+(31+29+31+tDays));
+            }
+            if(tMonth===5){
+                console.log('天数是'+(31+29+31+30+tDays));
+            }
+            if(tMonth===6){
+                console.log('天数是'+(31+29+31+30+31+tDays));
+            }
+            if(tMonth===7){
+                console.log('天数是'+(31+29+31+30+31+30+tDays));
+            }
+            if(tMonth===8){
+                console.log('天数是'+(31+29+31+30+31+30+31+tDays));
+            }
+            if(tMonth===9){
+                console.log('天数是'+(31+29+31+30+31+30+31+31+tDays));
+            }
+            if(tMonth===10){
+                console.log('天数是'+(31+29+31+30+31+30+31+31+30+tDays));
+            }
+            if(tMonth===11){
+                console.log('天数是'+(31+29+31+30+31+30+31+31+30+31+tDays));
+            }
+            if(tMonth===12){
+                console.log('天数是'+(31+29+31+30+31+30+31+31+30+31+30+tDays));
+            }
+        
+
+        }
+        else {
+            if(tMonth===1){
+                console.log('天数是'+(tDays));
+            }
+            if(tMonth===2){
+                console.log('天数是'+(31+tDays));
+            }
+            if(tMonth===3){
+                console.log('天数是'+(59+tDays));
+            }
+            if(tMonth===4){
+                console.log('天数是'+(31+28+31+tDays));
+            }
+            if(tMonth===5){
+                console.log('天数是'+(31+28+31+30+tDays));
+            }
+            if(tMonth===6){
+                console.log('天数是'+(31+28+31+30+31+tDays));
+            }
+            if(tMonth===7){
+                console.log('天数是'+(31+28+31+30+31+30+tDays));
+            }
+            if(tMonth===8){
+                console.log('天数是'+(31+28+31+30+31+30+31+tDays));
+            }
+            if(tMonth===9){
+                console.log('天数是'+(31+28+31+30+31+30+31+31+tDays));
+            }
+            if(tMonth===10){
+                console.log('天数是'+(31+28+31+30+31+30+31+31+30+tDays));
+            }
+            if(tMonth===11){
+                console.log('天数是'+(31+28+31+30+31+30+31+31+30+31+tDays));
+            }
+            if(tMonth===12){
+                console.log('天数是'+(31+28+31+30+31+30+31+31+30+31+30+tDays));
+            }
+        }
+
+
+
+        // tDays.onclick=function(){
+
+        // }
+
+
+    </script>
+</boDy>
+
+</html>
