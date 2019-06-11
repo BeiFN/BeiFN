@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打印出1000-2000年中所有的闰年，并以每行四个数的形式输出</title>
+</head>
+<body>
+	<script>
+		function isRn(year) {
+			if(year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) return true;
+			else return false;
+		}
+		var count = 1;
+		for(var date = 1000; date <= 2000; date++){
+			if(isRn(date)){
+				document.write(date + "&nbsp;&nbsp;&nbsp;&nbsp;")
+				if(count % 4 === 0)
+					document.write("<br>");
+				count++;
+			}
+		}
+	</script>
+</body>
+</html>
