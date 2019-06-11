@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 根据一个数字日期，判断这个日期是这一年的第几天
+        var data=prompt("请输入年月日");
+        var year="";
+        var month="";
+        var day="";
+        var flag=0;
+        // 不是闰年
+        var month1=[31,28,31,30,31,30,31,31,30,31,30,31];
+        var month2=[31,29,31,30,31,30,31,31,30,31,30,31];
+        var sum=0;
+        var total=0;
+        for(var i=0;i<=3;i++){
+            year+=data[i];
+        }
+        for(var i=4;i<=5;i++){
+            month+=data[i];
+        }
+        for(var i=6;i<=7;i++){
+            day+=data[i];
+        }
+        year=Number(year);
+        month=Number(month);
+        day=Number(day);
+        if (year % 400 == 0) {
+                   flag=1;
+                } else if (year % 4 == 0 && year % 100 != 0) {
+                   flag=1;
+                } else {
+                    flar=0;
+                }
+        if(flag==1){
+            for(var i=0;i<(month-1);i++ ){
+                sum+=month2[i];
+            }
+        }else{
+            for(var i=0;i<(month-1);i++ ){
+                sum+=month2[i];
+            }
+        }
+        total=sum+day;
+        console.log("这是今年的第"+total+"天");
+    </script>
+</body>
+</html>
