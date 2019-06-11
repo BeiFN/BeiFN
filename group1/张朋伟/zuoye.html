@@ -75,7 +75,7 @@
         //     if(!(i%2)){
         //         s += i
         //     }
-           
+
         // } console.log(s);
         //     var s = 0;
         // for(var i = 0; ++i < 100;){
@@ -108,7 +108,7 @@
         // }
 
 
-        
+
         // for(var i = 100;i++ < 200;){
         //     if (i % 3 === 0 || i % 7 === 0){
         //         console.log(i)
@@ -135,11 +135,11 @@
         // }
         // console.log(s)
 
-    // var s = 1;
-    // for(var i =1;i++ < 100;){
-    //     s *= i;
-    // }
-    // console.log(s);
+        // var s = 1;
+        // for(var i =1;i++ < 100;){
+        //     s *= i;
+        // }
+        // console.log(s);
 
         // 计算1+3+5+...+99的和
         // var i = 1,s = 0;
@@ -193,14 +193,31 @@
         //  温馨提醒:双击图片可查看和编辑图片内容！
 
         // 输出100-200之间所有的素数  
-        var i = 99;
-        while(i++ < 200){
+        var i = 100;
+        //是素数
+        while (i++ < 200)           { 
+            var flag = true;
             var j = 1;
-            while(j++ < 200){
-                
+            while (j++ < i - 1) {
+                if (i % j === 0) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) {
+                console.log(i)
             }
         }
         // 求s=a+aa+aaa+aaaa+….+aa...a的值，其中a是一个数字。
+        var a =5;n=5//五位数
+        var i = 0;
+        while(i++ < n){
+            var s = 0;
+            while(n-- >1){
+                
+            }
+        }
         //例如2+22+222+2222var n = 5;var count = 10;var sum = 0;for(var i=0; i<count; i++){var num = 0;for(var j=0; j<i; j++){num += n*Math.pow(10,j);}console.log(num);sum += num;}
 
 
@@ -216,17 +233,17 @@
         //     sum+=s;
 
         // }console.log(sum)
-    //         console.time("a");
-    //    sum =0;
-    //     for( var i = 0 ;i++ < 10;){
-    //         var s = 1;
-    //         for( var j = 0;j ++ < i;){
-    //             s*=j;
-    //         }
-    //         sum+=s;
-    //     }
-    //     console.log(sum);
-    //     console.timeEnd("a")
+        //         console.time("a");
+        //    sum =0;
+        //     for( var i = 0 ;i++ < 10;){
+        //         var s = 1;
+        //         for( var j = 0;j ++ < i;){
+        //             s*=j;
+        //         }
+        //         sum+=s;
+        //     }
+        //     console.log(sum);
+        //     console.timeEnd("a")
         // 打印出1-100里所有的偶数
         // for(var i = 0;i ++ < 100;){
         //     if(!(i % 2)){
@@ -254,7 +271,7 @@
         //         console.log(i);
         //     }
         // }
-            
+
         // for(var i = 0;i++ < 100;){
         //     if(i % 2){
         //         console.log(i)
