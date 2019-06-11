@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+        var day = parseInt(89 / 24);
+        var hour = 89 % 24;
+        document.writeln("共有"+day+"天");
+        document.writeln("零"+hour+"小时");
+        document.write("<br><br>")
+
+        /*
+        小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，
+        并以华氏度和摄氏度为单位分别显示该温度。
+        提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数。
+        */
+       var fahrenheit = 80;
+       var centigrade = parseInt(5/9*(80-32)*1000)/1000;
+       document.writeln("该地区的温度为"+fahrenheit+"华氏度, "+centigrade+"摄氏度");
+       document.writeln("<br><br>");
+
+       /*
+       var k=-2;
+        alert(++k + k++ + ++k + k)
+       */
+
+        //入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+        var salary = 10;
+        for(var i = 2; i<=50; i++){
+            salary*=1.05;
+        }
+        document.write(salary);
+
+        //根据输入的数字，判断是否为闰年
+        var year = 2019;
+        if(year%400 === 0||(year%4 === 0 &&year % 100 !=0)){
+           alert(year+"年是闰年");
+        }else{
+           alert(year+"年不是闰年");
+        }
+
+        //根据输入的成绩，判定成绩的等级A\B\C\D
+        var score = 67;
+        if(score<=100&&score>=90)
+            console.log("该成绩等级为A");
+        else if(score<90&&score>=70)
+            console.log("该成绩等级为B");
+        else if(score>=60&&score<70)
+            console.log("该成绩等级为C");
+        else if(score>=0&&score<60)
+            console.log("该成绩等级为D"); 
+        else
+            console.log("成绩不合法");
+        
+
+        //根据输入的数字，返回星期几
+        var allDay1=2;
+        var february = 28;
+        var week = 0;
+        if(allDay1-31*6-february-30*4>0){   
+            week =parseInt((allDay1-31*6-february-30*4)%7);
+            console.log("12月星期 "+week);
+       }else if(allDay1-31*6-february-30*3>0){
+            week =parseInt((allDay1-31*6-february-30*3)%7) ;
+            console.log("11月星期 "+week);
+       }else if(allDay1-31*5-february-30*3>0){
+            week =parseInt((allDay1-31*5-february-30*3)%7) ;
+            console.log("10月星期 "+week);
+       }else if(allDay1-31*5-february-30*2>0){
+            week =parseInt((allDay1-31*5-february-30*2)%7) ;
+            console.log("9月星期 "+week);
+       }else if(allDay1-31*4-february-30*2>0){
+            week =parseInt((allDay1-31*4-february-30*2)%7) ;
+            console.log("8月星期 "+week);
+        }else if(allDay1-31*3-february-30*2>0){
+            week =parseInt((allDay1-31*3-february-30*2)%7) ;
+            console.log("7月星期 "+week);
+        }else if(allDay1-31*3-february-30*1>0){
+            week =parseInt((allDay1-31*3-february-30*1)%7) ;
+            console.log("6月星期 "+week);
+        }else if(allDay1-31*2-february-30>0){
+            week =parseInt((allDay1-31*2-february-30)%7) ;
+            console.log("5月星期 "+week);
+        }else if(allDay1-31*2-february>0){
+            week =parseInt((allDay1-31*2-february)%7) ;
+            console.log("4月星期 "+week);
+        }else if(allDay1-31-february>0){
+            week =parseInt((allDay1-31-february)%7) ;
+            console.log("3月星期 "+week);
+        }else if(allDay1-31>0){
+            week =parseInt((allDay1-31)%7);
+            console.log("2月星期 "+week);
+        }else{
+            week =parseInt((allDay1)%7);
+         console.log("1月星期 "+week);
+       }
+
+
+        //根据输入月份，输出每月天数
+        var month = 12;
+        if(month===1||month===3||month===5||month===7||month===8||month===10||month===12){
+            console.log("该月为31天");
+        }else if(month===4||month===6||month===9||month===11)
+        {
+            console.log("该月为30天");
+        }else if(month===2){
+            console.log("该月为28天");
+        }else{
+            console.log("输入有误，请重新输入");
+        }
+        
+
+        //判断一个整数，属于哪个范围：大于0；小于0；等于0
+        var count =-3;
+        if(count>0)
+            console.log("该整数大于0");
+        else if(count===0)
+            console.log("该整数等于0");
+        else
+            console.log("该整数小于0");
+
+        //判断一个整数是偶数还是奇数，并输出判断结果
+        var num = 4;
+        if(num%2 === 0)
+            console.log("该整数为偶数");
+        else
+            console.log("该整数为奇数");
+
+        
+        var x = 2;
+        switch(x){
+            case 1 : console.log(1);
+            case 2 : console.log(2);
+            default : break;
+            case 3 : console.log(3);
+        }
+
+        // 根据一个数字日期，判断这个日期是这一年的第几天例如： "20160211"，计算后结果为42
+        var allDay = 0;
+        var date = 20160211;
+        var feb = 0;
+        var year = parseInt(date/10000);
+        var month = parseInt( date%parseInt(date/10000)/100);
+        console.log(month);
+        if(year%400 === 0||(year%4 === 0 &&year % 100 !=0)){
+            feb = 29;
+        }else{
+            feb = 28;
+        }
+        var day = parseInt(date%parseInt(date/100));
+        var small = 30;
+        var big = 31;
+        if(month===1){
+            allDay = day;
+        }else if(month === 2){
+            allDay = big+day;
+        }else if(month === 3){
+            allDay = big+feb+day;
+        }else if(month===4){
+            allDay = big*2+feb+day;
+        }else if(month===5){
+            allDay = big*3+feb+small+day;
+        }else if(month===6){
+            allDay = big*3+feb+small+day;
+        }else if(month===7){
+            allDay = big*3+feb+small*2+day;
+        }else if(month===8){
+            allDay = big*4+feb+small*2+day;
+        }else if(month===9){
+            allDay = big*5+feb+small*2+day;
+        }else if(month===10){
+            allDay = big*5+feb+small*3+day;
+        }else if(month===11){
+            allDay = big*6+feb+small*3+day;
+        }else if(month===12){
+            allDay = big*6+feb+small*4+day;
+        }
+        console.log(allDay);
+        
+    
+    </script>
+</body>
+</html>
