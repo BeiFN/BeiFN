@@ -55,28 +55,29 @@
         if(!(i % 3)){
             document.write(i + "   ");
             count4 ++;
+             if(!(count4 % 5)){
+                document.write( "<br>");                 
+            }
         }
 
-        if(!(count4 % 5)){
-            document.write( "<br>");                 
-        }
+       
     }
 
 
-	// * 打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
-    //document.write("<h4>打印出1000-2000年中所有的闰年，并以每行四个数的形式输出 : </h4>");
+	//* 打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
+    document.write("<h4>打印出1000-2000年中所有的闰年，并以每行四个数的形式输出 : </h4>");
     
-    // var count5 = 0;
-    // for(var y = 1000; y<=2000 ; y++){
-    //     if(y % 400 === 0 || y % 4 === 0 && y % 100 != 0){
-    //         document.write(y + "   ");
-    //         count5 ++;
-    //     }
+    var count5 = 0;
+    for(var y = 1000; y<=2000 ; y++){
+        if(y % 400 === 0 || y % 4 === 0 && y % 100 != 0){
+            document.write(y + "   ");
+            count5 ++;
+            if(!(count5 % 4)){
+                document.write( "<br>");             
+            }
+        }
 
-    //     if(!(count5 % 4)){
-    //         document.write( "<br>");                 
-    //     }
-    // }
+    }
 
 	// * 操场上 100 多人排队 ,3 人一组多 1 人 ,4 人一组多 2 人 ,5 人一组多 3 人 , 共多少人
     document.write("<h4>操场上 100 多人排队 ,3 人一组多 1 人 ,4 人一组多 2 人 ,5 人一组多 3 人 , 共多少人 : </h4>");
