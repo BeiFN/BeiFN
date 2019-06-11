@@ -178,18 +178,9 @@
         }
 
         // * 根据输入的数字，返回星期几
-        var num = 7;
-        switch (num) {
-            case 1: num = "一"; break;
-            case 2: num = "二"; break;
-            case 3: num = "三"; break;
-            case 4: num = "四"; break;
-            case 5: num = "五"; break;
-            case 6: num = "六"; break;
-            case 7: num = "日"; break;
-
-        }
-        console.log("今天星期" + num);
+        var k=["日","一","二","三","四","五","六"];
+        var num = 12;
+        console.log("今天星期" + k[num%7]);
 
         // *  根据输入月份，输出每月天数
         var month = 6;
