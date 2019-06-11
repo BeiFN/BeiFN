@@ -1,0 +1,230 @@
+<!-- 编写一个页面表单，使用JS判断输入内容是否合法 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: #9CBC2C;
+            font-family: "微软雅黑";
+        }
+
+        ul,
+        ol,
+        input {
+            list-style: none;
+            border: none;
+        }
+
+        .main {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        .main .step {
+            padding-left: 43px;
+            color: #384313;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 1px 1px #c0d576;
+            line-height: 40px;
+        }
+
+        .main ul li {
+            width: 400px;
+            height: 25px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background: rgba(255, 255, 255, .3);
+            margin: auto;
+            border: solid 2px #e3ebc3;
+            border-color: rgba(255, 255, 255, .6);
+            border-radius: 5px;
+            margin-bottom: 4px;
+        }
+
+        .main ul li label {
+            font-size: 13px;
+            width: 110px;
+            color: #111111;
+            padding-left: 5px;
+        }
+
+        .main ul li input {
+            border-radius: 3px;
+            border: #FC3 solid 1px;
+            width: 250px;
+            height: 25px;
+            outline: none;
+            padding-left: 5px;
+            margin-left: 35px;
+        }
+
+        .main .savebtn {
+            display: block;
+            width: 140px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #E3EBC3;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px auto;
+            box-shadow: 1px 1px 1px 0px gray;
+            background: linear-gradient(#50B9FD, #1158A8);
+        }
+
+        .success {
+            background-color: greenyellow !important;
+        }
+
+        .error {
+            background-color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <span class="step">Step1:用户详细资料</span>
+        <ul>
+            <li>
+                <label>用户名称:</label>
+                <input id="usrname" type="text" placeholder="请输入用户名" />
+            </li>
+            <li>
+                <label>邮件地址:</label>
+                <input id="email" type="text" placeholder="example@qq.com" />
+            </li>
+            <li>
+                <label>练习电话:</label>
+                <input id="phone" type="text" placeholder="13539008452" />
+            </li>
+        </ul>
+        <span class="step">Step2:家庭住址（收货地址）</span>
+        <ul>
+            <li>
+                <label>详细地址:</label>
+                <input id="adress" type="text" placeholder="请输入用户名" />
+            </li>
+            <li>
+                <label>邮政编码:</label>
+                <input id="postal" type="text" placeholder="example@qq.com" />
+            </li>
+            <li>
+                <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+                <input id="nationality" type="text" placeholder="13539008452" />
+            </li>
+        </ul>
+        <span class="savebtn">保存</span>
+    </div>
+    <script>
+        var usr = document.getElementById("usrname"),
+            email = document.getElementById("email"),
+            phone = document.getElementById("phone"),
+            adress = document.getElementById("adress"),
+            postal = document.getElementById("postal"),
+            nationality = document.getElementById("nationality"),
+            regList = {
+                //用户名正则
+                "usrReg": /^[a-z\u2E80-\u9FFF\-_0-9]{4,20}$/i,
+                "pureNumber": /^\d+$/i,
+                "maxlength4": /^.{0,3}$/,
+                //邮箱正则
+                "mailbox": /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@[0-9a-z]{2,9}\.[a-z]{2,6}(\.[a-z]{2,3})?$/i,
+                //电话正则
+                "phoneReg": /^1[^210]\d{9}$/,
+                //家庭住址
+                "homeAddres": /^[\u4E00-\u9FFFa-zA-Z\d-]+$/,
+            }
+        function success(tipEle) {
+            tipEle.className = "success";
+        }
+
+        //失败
+        function error(tipEle) {
+            tipEle.className = "error";
+        }
+
+        //验证正则
+        function validate(str, reg) {
+            return reg.test(str);
+        }
+
+        //验证用户名
+        function validateUsr() {
+            var usrValue = usr.value;
+            if (validate(usrValue, regList.maxlength4)) {
+                return error(usr);
+
+            }
+            if (validate(usrValue, regList.pureNumber)) {
+                return error(usr);
+            }
+            if (validate(usrValue, regList.usrReg)) {
+                return success(usr);
+            }
+            return error(usr);
+        }
+
+        //验证邮箱
+        function validateemail() {
+            var emailValue = email.value;
+            if (validate(emailValue, regList.mailbox)) {
+                return success(email);
+            } else {
+                return error(email);
+            }
+        }
+
+        //验证电话
+        function validatephone() {
+            var phoneValue = phone.value;
+            if (validate(phoneValue, regList.phoneReg)) {
+                return success(phone);
+            } else {
+                return error(phone);
+            }
+        }
+
+        //验证家庭住址
+        function validateAdress() {
+            var adressValue = adress.value;
+            if (validate(adressValue, regList.homeAddres)) {
+                return success(adress);
+            } else {
+                return error(adress);
+            }
+        }
+
+
+        usr.addEventListener("blur", validateUsr);
+        email.addEventListener("blur", validateemail);
+        phone.addEventListener("blur", validatephone);
+        adress.addEventListener("blur", validateAdress);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
