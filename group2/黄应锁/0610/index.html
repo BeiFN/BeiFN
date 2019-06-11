@@ -96,7 +96,7 @@
                 console.log("本月有31天");break;
             case 2:
                 if(year%400 === 0||year%4 === 0 && year%100 !== 0){
-                     console.log("本月有28天");
+                     console.log("本月有29天");
                 }else{
                     console.log("本月有29天");
                }
@@ -118,7 +118,8 @@
             console.log(num+"是偶数");
         }else{
             console.log(num+"是奇数");
-        }*/
+        }
+        */
 
 
         //开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。
@@ -146,7 +147,7 @@
         var month = 12;
         var day = 31;
         var total = 0 ;
-        var arr = [31,29,31,30,31,30,31,31,30,31,30,31];
+        var arr = [31,28,31,30,31,30,31,31,30,31,30,31];
         if(month <= 2){
          for( var i = 0 ;i< month-1; i++){
             total += arr[i];
@@ -156,7 +157,7 @@
                 total += arr[i];
                 }
             if(year%400 === 0 || year%4 ===0 && year%100 !== 0){
-                 total--;
+                 total++;
             }
         }
         total += day;
