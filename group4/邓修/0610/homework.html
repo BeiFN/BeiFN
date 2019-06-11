@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style type="text/css">
+        *{padding: 0; margin: 0;}
+        html,body{
+             width: 100%; height: 100%;
+             background: #9CBC2C;
+             font-family: "微软雅黑";
+        }
+        ul,ol,input { list-style: none; border: none;}
+        .main{ width:500px; margin: 50px auto; }
+        .main .step{
+             padding-left: 43px;
+             color: #384313; font-size: 16px; font-weight: bold;
+            text-shadow: 0 1px 1px #c0d576; line-height: 40px;
+        }
+        .main ul li {
+             width: 400px; height: 25px;
+             padding-left: 10px;padding-top: 5px; padding-bottom: 5px;
+             background: rgba(255, 255, 255, .3);
+             margin: auto; border: solid 2px #e3ebc3;
+             border-color: rgba(255, 255, 255, .6);
+             border-radius: 5px; margin-bottom: 4px;
+        }
+        .main ul li label{
+             font-size: 13px; width: 110px; color: #111111;
+             padding-left: 5px;
+        }
+        .main ul li input{
+             border-radius: 3px;
+             border: #FC3 solid 1px;
+             width: 250px; height: 25px; outline: none;
+             padding-left: 5px; margin-left: 35px;
+        }
+        .main .savebtn{
+             display: block; width: 140px; height: 40px; line-height: 40px;
+             text-align: center; color: #E3EBC3;
+             font-weight: bold; cursor: pointer;
+             border-radius: 5px; margin: 10px auto;
+             box-shadow: 1px 1px 1px 0px gray;
+             background: linear-gradient(#50B9FD,#1158A8);
+        }
+   </style>
+
+</head>
+<body>
+
+        <div class="main">
+                <span class="step">Step1:用户详细资料</span>
+                <ul>
+                    <li>
+                         <label>用户名称:</label>
+                         <input id="userName" type="text" placeholder="请输入用户名" />
+                    </li>
+                    <li>
+                         <label>邮件地址:</label>
+                         <input id="email" type="text" placeholder="example@qq.com" />
+                    </li>
+                    <li>
+                         <label>联系电话:</label>
+                         <input id="phoneNum" type="text" placeholder="13539008452" />
+                    </li>
+                </ul>
+                <span class="step">Step2:家庭住址（收货地址）</span>
+                <ul>
+                    <li>
+                         <label>详细地址:</label>
+                         <input id="address" type="text" placeholder="请输入详细地址" />
+                    </li>
+                    <li>
+                         <label>邮政编码:</label>
+                         <input id="postalCode" type="text" placeholder="100000" />
+                    </li>
+                    <li>
+                         <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+                         <input id="country" type="text" placeholder="中国" />
+                    </li>
+                </ul>
+                <span class="savebtn">保存</span>
+        </div>
+
+    <script src="js/homework.js">
+    </script>
+    <script>
+        //第一题
+        // var payment=pay(10000,50);
+        // console.log("第50年的工资是" + payment);
+        //第二题
+        // leapYear(2000);
+        // leapYear(1900);
+        // leapYear(2012);
+        //第三题
+        // cGrade(96);
+        // cGrade(81);
+        // cGrade(65);
+        // cGrade(59);
+        // cGrade(-10);
+        // cGrade(200);
+        //第四题
+        // weekday(1);
+        //第五题
+        // monthDays(2005,2);
+        // monthDays(2004,2);
+        // monthDays(1998,7);
+        // monthDays(2019,6);
+        //第六题
+        // range(-1);
+        // range(0);
+        // range(1);
+        //第七题
+        // odd_or_even(55);
+        // odd_or_even(44);
+        // odd_or_even(0);
+        // odd_or_even(-5);
+        // odd_or_even(-10);
+        //第八题
+        // weight(175,110);
+        // weight(175,130);
+        //第九题
+        // console.log("输出结果是2");
+        //第十题
+        // whichDay(20160211);
+        // whichDay(19980703);
+        //第十一题
+
+        //第十二题
+    </script>
+</body>
+</html>
