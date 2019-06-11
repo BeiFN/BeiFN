@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //根据一个数字日期，判断这个日期是这一年的第几天    例如： "20160211"，计算后结果为42
+        var date = prompt("请输入一个日期");
+
+        var year = Number(date.slice(0, 4));
+        var month = Number(date.slice(4, 6));
+        var day = Number(date.slice(6));
+
+        var arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (isRight()) console.log(howManyDays());
+
+        function isRight() {
+            if (month > 12 || month < 0 || day < 0 || day > 31) {
+                console.error("error");
+                return false;
+            }
+            return true;
+        }
+
+        function howManyDays() {
+            var days = 0;
+
+            if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0))
+                arr[1] = 29;
+
+            for (var i = 0; i < month - 1; i++) {
+                days += arr[i];
+            }
+            days += day;
+            return days;
+        }
+    </script>
+</body>
+
+</html>
