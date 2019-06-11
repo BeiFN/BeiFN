@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-    <script>
-        //入职薪水10K，每年涨幅5%，50年后工资多少？
-        var salary = 10000;
-        for (var i = 0; i < 50; i++) {
-            salary *= 1.05;
-        }
-        console.log("工资：" + salary);
-    </script>
+        根据输入的数字，判断是否为闰年
+        <script>
+            var year = 2019;
+            if(year%4===0&&year%100!==0||year%400===0){console.log(year+"年是闰年")}else{console.log(year+"年不是闰年")}
+        </script>
 </body>
-
 </html>
