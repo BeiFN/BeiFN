@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断结构练习</title>
+</head>
+<body>
+
+    <script>
+        
+	// * var k=-2;
+    // alert(++k + k++ + ++k + k);
+
+    var k = -2;
+    // var num1 = ++k = -1; 此时k=-1
+    // var res = num1 + k++ + ++k + k;
+    // var num2 = num1 + k++ = -1 + -1; 此时k=0
+    // var num3 = num2 + ++k = -2 + 1= -1; 此时k=1
+    // var res = num3 + k = 0;
+    var res = ++k + k++ + ++k + k;
+    //结果为0 k=1
+
+
+
+	// * 入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+    var salary = 10000;
+    var rate = 0.05;
+    for(var i = 0 ; i<50; i++){
+        salary = salary*(1+rate);
+    }
+    console.log("五十年后的工资为："+salary);
+
+
+	// * 根据输入的数字，判断是否为闰年
+    var number1 = 2019;
+    if(number1 % 400 === 0 || number1 %4 ===0 && number1%100 !== 0){
+        console.log(number1+"年 是闰年");
+    }else{
+        console.log(number1+"年 不是闰年");
+    }
+
+
+	// * 根据输入的成绩，判定成绩的等级A\B\C\D
+    // A => 90 ~ 100
+    // B => 70 ~ 89
+    // C => 60 ~ 69
+    // D => < 60
+    var grade = 79;
+    if( grade <= 100 && grade >= 90){
+        console.log(grade+"分的等级是A");
+    }
+    if( grade <= 89 && grade >= 70){
+        console.log(grade+"分的等级是B");
+    }
+    if( grade <= 69 && grade >= 60){
+        console.log(grade+"分的等级是C");
+    }
+    if( grade <= 59 && grade >= 0){
+        console.log(grade+"分的等级是D");
+    }
+
+
+	// * 根据输入的数字，返回星期几
+
+    var week = 3;
+    if(week === 1){
+        console.log("今天是周一");
+    }
+    if(week === 2){
+        console.log("今天是周二");
+    }
+    if(week === 3){
+        console.log("今天是周三");
+    }
+    if(week === 4){
+        console.log("今天是周四");
+    }
+    if(week === 5){
+        console.log("今天是周五");
+    }
+    if(week === 6){
+        console.log("今天是周六");
+    }
+    if(week === 7){
+        console.log("今天是周日");
+    }
+
+
+	// * 根据输入月份，输出每月天数
+    var month = 12;
+    if(month ===1 ||month ===3 ||month ===5 ||month ===7 ||month ===8 ||month ===10 ||month ===12 ){
+        console.log(month+"月有31天");
+    }
+    if(month ===4 ||month ===6 ||month ===9 ||month ===11 ){
+        console.log(month+"月有30天");
+    }
+    if(month ===2 ){
+        console.log(month+"月有28天");
+    }
+
+
+	// * 判断一个整数，属于哪个范围：大于0；小于0；等于0
+
+
+
+	// * 判断一个整数是偶数还是奇数，并输出判断结果
+    var number2 = 3; 
+    number2 = parseInt(number2); 
+    //前提是number2必须是整数
+    if(number2 % 2 === 0){
+        console.log("这是一个偶数");
+    }else{
+        console.log("这是一个奇数");        
+    }
+
+
+	// * 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+    var height = 152;
+    var weight = 88;
+    var rWeight = (height - 108) * 2;
+    var lowWeight = rWeight -10;
+    var highWeight = rWeight + 10;
+    if(weight >= lowWeight && weight <= highWeight){
+        console.log("身高为："+height+"，体重为："+weight +"，合格");
+    }else{
+        console.log("身高为："+height+"，体重为："+weight +"，不合格");
+    }
+
+    // var x = 2;
+    // switch(x){
+    //     case 1 : console.log(1) ;
+    //     case 2 : console.log(2);
+    //     default : break;
+    //     case 3 : console.log(3);
+    // }
+    // 这段小程序的输出结果是？
+    // 输出结果是 2
+
+
+	// * 根据一个数字日期，判断这个日期是这一年的第几天
+    // 例如： "20160211"，计算后结果为42
+
+
+	// * 计算器案例
+
+
+	// * 编写一个页面表单，使用JS判断输入内容是否合法
+   
+    </script>
+</body>
+</html>
