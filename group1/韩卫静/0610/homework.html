@@ -63,8 +63,9 @@
 
 
 	// * 根据输入的数字，返回星期几
+    var day = 25;
 
-    var week = 3;
+    var week = day%7 ;
     if(week === 1){
         console.log("今天是周一");
     }
@@ -99,9 +100,6 @@
     if(month ===2 ){
         console.log(month+"月有28天");
     }
-
-
-	// * 判断一个整数，属于哪个范围：大于0；小于0；等于0
 
 
 
@@ -141,6 +139,55 @@
 
 	// * 根据一个数字日期，判断这个日期是这一年的第几天
     // 例如： "20160211"，计算后结果为42
+    var date = 20160211;
+    var day = date % 100;
+    var month1 = parseInt(date % 10000 /100);
+    var year1 = parseInt(date / 10000);
+
+    var feb = 28;
+    if(year1 % 400 ===0 || year1 % 4 === 0 && year1 % 100 != 0){
+        feb = 29;
+    }
+
+    switch(month1){
+        case 1:
+           console.log("一年中的第" + day +"天") ;
+           break;
+        case 2:
+            console.log("一年中的第" + (day + 31 )+ "天");
+            break;
+        case 3:
+            console.log("一年中的第" + (day + feb + 31 ) + "天");
+            break;
+        case 4:
+            console.log("一年中的第" + (day + feb + 62 ) + "天");
+            break;
+        case 5:
+            console.log("一年中的第" + (day + feb + 92 ) + "天");
+            break;
+        case 6:
+            console.log("一年中的第" + (day + feb + 123 ) + "天");
+            break;
+        case 7:
+            console.log("一年中的第" + (day + feb + 153 ) + "天");
+            break;
+        case 8:
+            console.log("一年中的第" + (day + feb + 184 ) + "天");
+            break;
+        case 9:
+            console.log("一年中的第" + (day + feb + 215 ) + "天");
+            break;
+        case 10:
+            console.log("一年中的第" + (day + feb + 245 ) + "天");
+            break;
+        case 11:
+            console.log("一年中的第" + (day + feb + 276 ) + "天");
+            break;
+        case 12:
+            console.log("一年中的第" + (day + feb + 306 ) + "天");
+            break;     
+    }
+
 
 
 	// * 计算器案例
