@@ -33,25 +33,25 @@ function cGrade(grade){
 }
 
 function weekday(day){
-    if(day===1){
+    if((day % 7)===1){
         console.log("这天是星期一");
     }
-    if(day===2){
+    if((day % 7)===2){
         console.log("这天是星期二");
     }
-    if(day===3){
+    if((day % 7)===3){
         console.log("这天是星期三");
     }
-    if(day===4){
+    if((day % 7)===4){
         console.log("这天是星期四");
     }
-    if(day===5){
+    if((day % 7)===5){
         console.log("这天是星期五");
     }
-    if(day===6){
+    if((day % 7)===6){
         console.log("这天是星期六");
     }
-    if(day===7){
+    if((day % 7)===0){
         console.log("这天是星期日");
     }
 }
@@ -105,7 +105,7 @@ function odd_or_even(int){
 function weight(height,weight){
     var _temp=0;
     _temp=(height-108)*2;
-    if(weight>=_temp-5 && weight <=_temp+5){
+    if(weight>=_temp-10 && weight <=_temp+10){
         console.log("体重是合适的");
     }
     else{
