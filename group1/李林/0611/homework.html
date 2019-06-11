@@ -104,9 +104,9 @@
     }
     //开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
     var height=170;
-    var weight=140;
+    var weight=100;
     var temp=(height-108)*2;
-    if(-10<=temp-weight||temp-weight<=10){
+    if(weight-temp>=10 ||temp-weight<=10){
         console.log("体重合适");
     }
     else{
