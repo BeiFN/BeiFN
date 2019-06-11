@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var count_row = 0;
+        while (count_row++ < 4){
+            var space = 0;
+            while(space++ < 5-count_row){
+                document.write("&nbsp;&nbsp;&nbsp;");
+            }
+            var count_col = 0;
+            while(  count_col++ < count_row * 2 - 1){
+                document.write("@"); 
+            }
+            document.write("<br>");
+        }
+
+    </script>
+</body>
+</html>

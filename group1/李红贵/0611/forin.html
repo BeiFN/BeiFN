@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环结构</title>
+</head>
+<body>
+    <script>
+        // 解决的问题：多次重复执行某段程序的时候，
+        //计算机帮忙执行多次执行代码
+        document.write("hello world<br/>");
+        var i = 0;
+        while(i<10){
+            //死循环，占满CPU
+            // 满足条件时执行
+            i++;
+            console.log("while"+i);
+            document.write("hello world<br/>");
+        }
+
+        i=0;
+        do{
+            console.log(i);
+            i++;
+        }while(i>=10){//条件满足，执行do里面代码，不满足时执行下面代码
+           
+           console.log(i); 
+           i++;
+        }
+
+        i = 0;
+        do{
+            console.log(i);
+        }while(i++ < 100){
+            alert("打印结束");
+        }
+
+        // for循环执行顺序，首次执行 1243 ，其余执行243  1赋值  2逻辑判断  3自增 4循环体
+
+        for(var i = 0 ; i < 10 ; i ++){
+            console.log(i);
+        }
+        // 简写
+        for(var i = 0 ; i++ < 10;){
+            
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+#logo_nav{
+    height: 56px;
+    background-color: #ffe300;
+}
+.logo_part{
+    width: 1180px;
+    margin: 0 auto;
+}
+.center_nav{
+    float: left;
+}
+.center_nav li {
+    float: left;
+    text-align: center;
+}
+.center_nav li a{
+    display: block;
+    font-size: 14px;
+    color: #282828;
+    line-height: 56px;
+    padding: 0 24px;
+}
