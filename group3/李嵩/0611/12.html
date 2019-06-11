@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>求100-999之间的水仙花数</title>
+</head>
+<body>
+    <script>
+        var count=99;
+        while(count++<999)
+        {
+            var ge = count % 10;
+            var shi = parseInt(count % 100 / 10);
+            var bai = parseInt(count / 100) ; 
+            if(ge * ge * ge + shi * shi * shi + bai * bai * bai === count)
+            {
+                    console.log(count);
+            }
+        }
+    </script>
+</body>
+</html>
