@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var num1 = 10;
+        // var num2 = 20;
+        // console.log(null == 0);
+        // console.log(undefined == 0);
+
+       /* var total = 89;
+        var days = parseInt(89/24);
+        var hours = total%24;
+        document.write("一共工作了"+days+"天"+hours+"小时"+"<br/>");
+       
+
+        var Temperature = 80;
+        document.write("华氏温度为："+Temperature+"<br/>");
+        
+        var Temperature2 = 5/9.0*(Temperature-32);
+        
+        document.write("摄氏温度为：" + Temperature2.toFixed(3));*/
+
+
+        //第三题
+        // var k = -2;
+        // alert(++k + k++ + ++k +k);
+        // -1 + -1 + 1 + 1 = 0
+
+
+        //第四题
+        /*var salary = 10000;
+        for(var i = 2; i<=50; i++ ){
+            salary = salary*(1 + 0.05);
+        }
+        console.log(salary);*/
+
+
+        //根据输入的数字，判断是否为闰年
+       /* var year=2019;
+        if(year%400 === 0||year%4 === 0 && year%100 !== 0){
+            console.log(year+"是闰年");
+        }else{
+            console.log(year+"不是闰年");
+        }*/
+
+
+        //根据输入的成绩，判定成绩的等级A\B\C\D
+        /*var score = 90;
+        if(score >= 90 && score < 100){
+            console.log("成绩为A");
+        }
+        if(score >= 80 && score < 90){
+            console.log("成绩为B");
+        }
+        if(score >= 60 && score < 80){
+            console.log("成绩为C");
+        }
+        if( score < 60){
+            console.log("成绩为D");
+        }*/
+
+
+        //根据输入的数字，返回星期几
+
+       /* var day = 4 ;
+        switch(day){
+            case 1: console.log("今天是星期一"); break;
+            case 2: console.log("今天是星期二");break;
+            case 3: console.log("今天是星期三");break;
+            case 4: console.log("今天是星期四");break;
+            case 5: console.log("今天是星期五");break;
+            case 6: console.log("今天是星期六");break;
+            case 7: console.log("今天是星期天");break;
+            default: console.log("你输入的数字错误了"); break;
+        }*/
+
+
+        //根据输入月份，输出每月天数
+
+        /*var year = 2019;
+        var month = 4;
+        switch(month){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                console.log("本月有31天");break;
+            case 2:
+                if(year%400 === 0||year%4 === 0 && year%100 !== 0){
+                     console.log("本月有29天");
+                }else{
+                    console.log("本月有28天");
+               }
+               break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+               console.log("本月有30天");
+               break;
+            default:
+               console.log("你输入的月份不对");
+        }*/
+
+
+        //判断一个整数是偶数还是奇数，并输出判断结果
+        /*var num = 1234;
+        if(num%2 == 0){
+            console.log(num+"是偶数");
+        }else{
+            console.log(num+"是奇数");
+        }
+        */
+
+
+        //开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。
+        //来观察测试者体重是否合适
+
+       /* var height = 178;
+        var weight = 110;
+        var weight2 = (height - 108)*2;
+        if(weight >= weight2 - 10 && weight <= weight2 + 10){
+            console.log("体重合适");
+        }else{
+            console.log("体重不合适");
+        }*/
+
+       /* var x = 2;
+        switch(x){
+            case 1 : console.log(1);
+            case 2 : console.log(2);
+            default : break;
+            case 3 : console.log(3);
+        }*/
+
+        //根据一个数字日期，判断这个日期是这一年的第几天
+       var year = 2016;
+        var month = 12;
+        var day = 31;
+        var total = 0 ;
+        var arr = [31,28,31,30,31,30,31,31,30,31,30,31];
+        if(month <= 2){
+         for( var i = 0 ;i< month-1; i++){
+            total += arr[i];
+            }
+        }else{
+            for( var i = 1;i < month; i++){
+                total += arr[i];
+                }
+            if(year%400 === 0 || year%4 ===0 && year%100 !== 0){
+                 total++;
+            }
+        }
+        total += day;
+        console.log(year+"年"+month+"月"+day+"日是本年的第"+total+"天");
+
+
+      /*  function count(){
+        var a = parseInt(document.getElementById('txt1').value);
+        var select = document.getElementById('select').value;
+        var b=parseInt(document.getElementById('txt2').value);
+        var res;
+        switch(select){
+            case '+': res=a+b; break;
+            case '-': res=a-b; break;
+            case '*': res=a*b; break;
+            case '/':
+                if(b !== 0){
+                    res=a/b; break; 
+                }else{
+                    console.error("分母不能为零");
+                }
+        }
+        document.getElementById('txt3').value = res;
+    }*/
+   
+    </script>
+    
+</body>
+</html>

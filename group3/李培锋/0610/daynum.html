@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        根据一个数字日期，判断这个日期是这一年的第几天
+        例如： "20160211"，计算后结果为42
+        <script>
+            var date=prompt("请输入日期")*1;
+            var year=parseInt(date/10000);
+            var month=parseInt(date%10000/100);
+            var day=date%100;
+            
+            if(year%400===0||year%4===0&&year%100!==0){
+                switch(month)
+                {
+                    case 1:alert(date+"是"+year+"年的第"+day+"天");break;
+                    case 2:alert(date+"是"+year+"年的第"+(day+31)+"天");break;
+                    case 3:alert(date+"是"+year+"年的第"+(day+29+31)+"天");break;
+                    case 4:alert(date+"是"+year+"年的第"+(day+31+29+31)+"天");break;
+                    case 5:alert(date+"是"+year+"年的第"+(day+31+29+31+30)+"天");break;
+                    case 6:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31)+"天");break;
+                    case 7:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30)+"天");break;
+                    case 8:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30+31)+"天");break;
+                    case 9:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30+31+31)+"天");break;
+                    case 10:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30+31+31+30)+"天");break;
+                    case 11:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30+31+31+30+31)+"天");break;
+                    case 12:alert(date+"是"+year+"年的第"+(day+31+29+31+30+31+30+31+31+30+31+30)+"天");break;
+
+                }
+            }
+            else{ switch(month)
+                    {
+                    case 1:alert(date+"是"+year+"年的第"+day+"天");break;
+                    case 2:alert(date+"是"+year+"年的第"+(day+31)+"天");break;
+                    case 3:alert(date+"是"+year+"年的第"+(day+28+31)+"天");break;
+                    case 4:alert(date+"是"+year+"年的第"+(day+31+28+31)+"天");break;
+                    case 5:alert(date+"是"+year+"年的第"+(day+31+28+31+30)+"天");break;
+                    case 6:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31)+"天");break;
+                    case 7:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30)+"天");break;
+                    case 8:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30+31)+"天");break;
+                    case 9:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30+31+31)+"天");break;
+                    case 10:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30+31+31+30)+"天");break;
+                    case 11:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30+31+31+30+31)+"天");break;
+                    case 12:alert(date+"是"+year+"年的第"+(day+31+28+31+30+31+30+31+31+30+31+30)+"天");break;
+                    }
+
+            }
+        </script>
+</body>
+</html>
