@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>晚上练习题</title>
+</head>
+
+        <style type="text/css">
+            *{padding: 0; margin: 0;}
+            html,body{
+                 width: 100%; height: 100%;
+                 background: #9CBC2C;
+                 font-family: "微软雅黑";
+            }
+            ul,ol,input { list-style: none; border: none;}
+            .main{ width:500px; margin: 50px auto; }
+            .main .step{
+                 padding-left: 43px;
+                 color: #384313; font-size: 16px; font-weight: bold;
+                text-shadow: 0 1px 1px #c0d576; line-height: 40px;
+            }
+            .main ul li {
+                 width: 400px; height: 25px;
+                 padding-left: 10px;padding-top: 5px; padding-bottom: 5px;
+                 background: rgba(255, 255, 255, .3);
+                 margin: auto; border: solid 2px #e3ebc3;
+                 border-color: rgba(255, 255, 255, .6);
+                 border-radius: 5px; margin-bottom: 4px;
+            }
+            .main ul li label{
+                 font-size: 13px; width: 110px; color: #111111;
+                 padding-left: 5px;
+            }
+            .main ul li input{
+                 border-radius: 3px;
+                 border: #FC3 solid 1px;
+                 width: 250px; height: 25px; outline: none;
+                 padding-left: 5px; margin-left: 35px;
+            }
+            .main .savebtn{
+                 display: block; width: 140px; height: 40px; line-height: 40px;
+                 text-align: center; color: #E3EBC3;
+                 font-weight: bold; cursor: pointer;
+                 border-radius: 5px; margin: 10px auto;
+                 box-shadow: 1px 1px 1px 0px gray;
+                 background: linear-gradient(#50B9FD,#1158A8);
+            }
+       </style>
+ <body>
+            <div class="main">
+                 <span class="step">Step1:用户详细资料</span>
+                 <ul>
+                     <li>
+                          <label>用户名称:</label>
+                          <input type="text" placeholder="请输入用户名" />
+                     </li>
+                     <li>
+                          <label>邮件地址:</label>
+                          <input type="text" placeholder="example@qq.com" />
+                     </li>
+                     <li>
+                          <label>练习电话:</label>
+                          <input type="text" placeholder="13539008452" />
+                     </li>
+                 </ul>
+                 <span class="step">Step2:家庭住址（收货地址）</span>
+                 <ul>
+                     <li>
+                          <label>详细地址:</label>
+                          <input type="text" placeholder="请输入用户名" />
+                     </li>
+                     <li>
+                          <label>邮政编码:</label>
+                          <input type="text" placeholder="example@qq.com" />
+                     </li>
+                     <li>
+                          <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+                          <input type="text" placeholder="13539008452" />
+                     </li>
+                 </ul>
+                 <span class="savebtn">保存</span>
+            </div>
+       
+       
+    <script>
+        // var k=-2;
+        // alert(++k + k++ + ++k + k);
+
+
+        // var salary = 10;
+        // for(var i = 1;i <= 50;i++)
+        // {
+        //     salary = salary*(1+0.05);
+        // }
+        // console.log(parseInt(salary));
+
+
+        // var year = prompt("请输入一个年份");
+        // console.log(year);
+        // if(year%400 === 0 || (year%4 === 0 && year%100 !=0))
+        // {
+        //     console.log(year+"是闰年");
+        // }
+        // else
+        // {
+        //     console.log(year+"不是闰年")
+        // }
+
+
+        // var point = prompt("请输入一个分数：");
+        // if(point >= 90 && point <= 100)
+        // {
+        //     console.log("你的分数是A");
+        // }
+        // else if(point >= 70 || point <=89)
+        // {
+        //     console.log("你的分数是B");
+        // }
+        // else if(point >= 60 || point <=69)
+        // {
+        //     console.log("你的分数是C");
+        // }
+        // else
+        // {
+        //     console.log("你的分数是D");
+        // }
+
+        // var num = prompt("请输入一个数字：");
+        // switch(num)
+        // {
+        //     case 1:console.log("今天是星期一");break;
+        //     case 2:console.log("今天是星期二");break;
+        //     case 3:console.log("今天是星期三");break;
+        //     case 4:console.log("今天是星期四");break;
+        //     case 5:console.log("今天是星期五");break;
+        //     case 6:console.log("今天是星期六");break;
+        //     case 7:console.log("今天是星期天");break;
+        //     default:console.log("请输入正确的星期号，谢谢合作！");
+        // }
+
+
+        // var month = prompt("请输入一个月份：");
+        // switch(month)
+        // {
+        //     case 1:console.log("这个月份是31天");
+        //     case 2:console.log("这个月份是28天");
+        //     case 3:console.log("这个月份是31天");
+        //     case 4:console.log("这个月份是30天");
+        //     case 5:console.log("这个月份是31天");
+        //     case 6:console.log("这个月份是30天");
+        //     case 7:console.log("这个月份是31天");
+        //     case 8:console.log("这个月份是31天");
+        //     case 9:console.log("这个月份是30天");
+        //     case 10:console.log("这个月份是31天");
+        //     case 11:console.log("这个月份是30天");
+        //     case 12:console.log("这个月份是31天");
+        //     default:console.log("请输入正确的月份");
+        // }
+
+
+        // var numInt = prompt("请输入一个整数：");
+        // if(numInt % 2 == 0)
+        //     {
+        //         alert("输入的是一个偶数")
+        //     }
+        // else
+        // {
+        //     alert("输入的数是奇数")
+        // }
+
+
+        // var height = prompt("请输入您的身高：");
+        // var weight = prompt("请输入您的体重：");
+        // var base = (height - 108)*2;
+        // if(base >= (weight-10)&&base <= (weight+10))
+        // {
+        //     console.log("您的体重符合标准")
+        // }
+        // else
+        // {
+        //     console.log("您的健康有待提高");
+        // }
+
+
+
+        // var data = prompt("请输入日期：");
+        // var year = parseInt(data/10000);
+        // var month = parseInt((data-(year*10000))/100);
+        // var day = parseInt(data%100);
+        // //console.log(year +"年" + month + "月" + day + "日");
+        // console.log(day);
+        // if(year%400 === 0 || (year%4 === 0 && year%100 !=0))
+        //     {
+        //         switch(month)
+        //         {
+        //             case 1:console.log("今年的第："+ day + "天");break;
+        //             case 2:console.log("今年的第：" + (31+day)+"天");break;
+        //             case 3:console.log("今年的第：" + (31+29+day)+"天");break;
+        //             case 4:console.log("今年的第：" + (31+29+31+day)+"天");break;
+        //             case 5:console.log("今年的第：" + (31+29+31+30+day)+"天");break;
+        //             case 6:console.log("今年的第：" + (31+29+31+30+31+day)+"天");break;
+        //             case 7:console.log("今年的第：" + (31+29+31+30+31+30+day)+"天");break;
+        //             case 8:console.log("今年的第：" + (31+29+31+30+31+30+31+day)+"天");break;
+        //             case 9:console.log("今年的第：" + (31+29+31+30+31+30+31+31+day)+"天");break;
+        //             case 10:console.log("今年的第：" + (31+29+31+30+31+30+31+31+30+day)+"天");break;
+        //             case 11:console.log("今年的第：" + (31+29+31+30+31+30+31+31+30+31+day)+"天");break;
+        //             case 12:console.log("今年的第：" + (31+29+31+30+31+30+31+31+30+31+30+day)+"天");break;
+        //             default:console.log("请输入正确的日期，谢谢合作！");
+        //         }
+        //     }
+        //     else
+        //     {
+        //         switch(month)
+        //         {
+        //             case 1:console.log("今年的第："+ day + "天");break;
+        //             case 2:console.log("今年的第：" + (31+day)+"天");break;
+        //             case 3:console.log("今年的第：" + (31+28+day)+"天");break;
+        //             case 4:console.log("今年的第：" + (31+28+31+day)+"天");break;
+        //             case 5:console.log("今年的第：" + (31+28+31+30+day)+"天");break;
+        //             case 6:console.log("今年的第：" + (31+28+31+30+31+day)+"天");break;
+        //             case 7:console.log("今年的第：" + (31+28+31+30+31+30+day)+"天");break;
+        //             case 8:console.log("今年的第：" + (31+28+31+30+31+30+31+day)+"天");break;
+        //             case 9:console.log("今年的第：" + (31+28+31+30+31+30+31+31+day)+"天");break;
+        //             case 10:console.log("今年的第：" + (31+28+31+30+31+30+31+31+30+day)+"天");break;
+        //             case 11:console.log("今年的第：" + (31+28+31+30+31+30+31+31+30+31+day)+"天");break;
+        //             case 12:console.log("今年的第：" + (31+28+31+30+31+30+31+31+30+31+30+day)+"天");break;
+        //             default:console.log("请输入正确的日期，谢谢合作！");
+        //         }
+        //     }
+
+
+     //    var num1 = prompt("请输入第一个数：");
+     //    var num2 = prompt("请输入第二个数：");
+     //    var opera = prompt("请输入运算符号：");
+     //    switch(opera)
+     //    {
+     //        case "+":console.log("两数相加等于："+(num1+num2));break;
+     //        case "-":console.log("两数相减等于："+(num1-num2));break;
+     //        case "*":console.log("两数相乘等于："+(num1*num2));break;
+     //        case "/":console.log("两数相除等于："+(num1/num2));break;
+     //        case "%":console.log("两数取模等于："+(num1%num2));break;
+     //        default:console.log("输入正确运算模式！！");
+     //    }
+
+    </script>
+</body>
+</html>
