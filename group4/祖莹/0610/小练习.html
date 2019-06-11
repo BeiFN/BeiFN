@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+//* 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+            var day=parseInt(89/24),
+                hours=(89%24);
+            console.log("战士共作战"+day+"天"+hours+"小时");
+
+
+// * 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+//       提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数。
+            var hua=80,
+                she=5/9*(hua-32);
+            she=(parseInt(she*1000))/1000;
+            console.log("华氏温度是"+hua+"度,摄氏温度是"+she+"度");
+
+// * 
+// var k=-2;
+//     alert(++k + k++ + ++k + k); 
+        0
+
+
+// * 
+// 入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+
+var salary=10;
+for(i=1;i<50;i++){
+      salary=salary+salary*0.05;
+}
+console.log(salary);
+
+
+// * 
+// 根据输入的数字，判断是否为闰年
+
+var year=2020;
+if(year%400===0 || year%4===0 && year%100!=0){
+      console.log(year+"年是闰年");
+}else{
+      console.log(year+"年不是闰年");
+}
+
+
+// * 
+// 根据输入的成绩，判定成绩的等级A\B\C\D
+
+var grade=85;
+      //  alert("我考了" + grade + "分");
+       if(grade>=0 && grade<=59){
+           console.log(成绩等级为D);
+        }else if(grade>=60 && grade<70){
+            console.log(成绩等级为C);
+        }else if(grade>=70 && grade<=90){
+            console.log(成绩等级为B);
+        }else {
+            console.log(成绩等级为A);
+        }
+
+
+// * 
+// 根据输入的数字，返回星期几
+
+
+
+
+// * 
+// 根据输入月份，输出每月天数
+
+
+
+// * 
+// 判断一个整数，属于哪个范围：大于0；小于0；等于0
+
+
+
+// * 
+// 判断一个整数是偶数还是奇数，并输出判断结果
+
+var randomNum=Math.random()*100;
+        randomNum=parseInt(randomNum);
+        if(randomNum%2===0){
+            document.write("数字" + randomNum + "是偶数");
+        }else{
+            document.write("数字" + randomNum + "是奇数");
+        }  
+
+
+// * 
+// 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+
+
+
+
+var x = 2;
+switch(x){
+case 1 : console.log(1);
+case 2 : console.log(2);
+default : break;
+case 3 : console.log(3);
+}
+// 这段小程序的输出结果是？
+
+
+
+// * 
+// 根据一个数字日期，判断这个日期是这一年的第几天
+
+
+//       例如： "20160211"，计算后结果为42
+
+
+// * 
+// 计算器案例
+
+
+
+
+// * 
+// 编写一个页面表单，使用JS判断输入内容是否合法
+      
+            
+      </script>
+</html>
