@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业五</title>
+</head>
+<body>
+        <!-- 根据输入的数字，判断是否为闰年 -->
+        <script>    
+            var year=2004;
+            if(year%400===0)
+            {
+                console.log(year+"年是世纪闰年");
+            }
+            else if(year%4===0&&year%100!==0){
+                alert(year+"年是普通闰年");
+            }
+            else{
+                console.log(year+"年不是闰年");
+            }
+        </script>
+</body>
+</html>

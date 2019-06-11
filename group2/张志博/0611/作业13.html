@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" id="shuru">
+
+        <button onclick="f()"></button>
+        <script>
+            function f(){
+            var num = parseInt(shuru.value);
+            var day,month,year,temp;
+            console.log(shuru.value);
+            day = num%100;
+            temp =parseInt(num/100) ;
+            month = temp%100;
+            year =parseInt(num/10000); 
+            if(month<2){
+                console.log("这是第"+year+"年的第"+day+"天");
+                }else if(num/400 === 0||num%4 === 0 && num%100 !== 0){
+                    
+                }
+            //     if(){
+                    
+            //     }
+            // 
+            // console.log(year,month,day);
+             }
+        </script>
+      
+</body>
+</html>
