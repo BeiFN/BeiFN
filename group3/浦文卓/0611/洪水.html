@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
     <script>
-        //根据输入的数字，判断是否为闰年
-        var year = prompt("请输入年份");
-        if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) console.log("是闰年");
-        else console.log("不是闰年");
+        // * 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+    var day = parseInt(89 / 24);
+    var hour = 89 % 24;
+    console.log("共"+ day +"天"+ hour + "小时");    
     </script>
 </body>
-
 </html>

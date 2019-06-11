@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var k = -99;
+        // var res = k-- * 2 + k++ - ++k + k * 3 % k--;
+        // res1  -99*2 + (-100) = -298
+        // k1=-99
+        // var res = res1 - ++k + k * 3 % k--;
+        // res2 -298 - (-98) = -200
+        // k2=-98
+        // var res = res2 + k * 3 % k--;
+        // res3 -200 + 0 = -200
+        // k3 = -99
+        // res = -200
+        // console.log(res);
+
+
+        // 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+        // var a = 89;
+        // var num1 = parseInt(a / 24);
+        // var num2 = a % 24;
+        // document.write("战士共抗洪" + num1 + "天" + num2 + "小时");
+
+
+
+
+        // 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+        // 提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数。
+        // var centigrade = parseInt((5 / 9.0 * (80 - 32)) * 1000) / 1000;
+        // document.write(centigrade);
+
+
+
+        // var k = -2;
+        // alert(++k + k++ + ++k + k);
+        // 0
+        // res1 = -1 + -1 = -2
+        // k = 0
+        // res2 = res1 + ++k = -2 + 1 = -1
+        //k=1
+        // res3 = res2 + k = -1 + 1 = 0
+
+
+        // 入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+        // var salary = 10;
+        // for(i=0;i<50;i++){
+        //     salary *=(1+0.05);
+        // }
+        // document.write("50年后的薪资为"+salary+"k")
+
+
+
+        // 根据输入的数字，判断是否为闰年
+        // var i = 2019;
+        // if (i % 4 == 0 && i % 400 !== 0 || i % 400 == 0) {
+        //     document.write("是闰年")
+        // } else {
+        //     document.write("是平年")
+        // }
+
+
+
+        // 根据输入的成绩，判定成绩的等级A\B\C\D
+        // var i = 80;
+        // switch(true){
+        //     case i >= 90 && i <= 100:
+        //     document.write("A");
+        //     break;
+        //     case i >= 75 && i <= 89:
+        //     document.write("B");
+        //     break;
+        //     case i >= 60 && i <= 74:
+        //     document.write("C");
+        //     break;
+        //     case i >= 0 && i <= 59:
+        //     document.write("D");
+        //     break;
+        //     default:
+        //      document.write("请输入正确值");
+
+        // }
+
+
+
+        // 根据输入的数字，返回星期几
+        // var num = 80;
+        // var day = num % 7;
+        // switch (day) {
+        //     case 1:
+        //         document.write("星期一");
+        //         break;
+        //     case 2:
+        //         document.write("星期二");
+        //         break;
+        //     case 3:
+        //         document.write("星期三");
+        //         break;
+        //     case 4:
+        //         document.write("星期四");
+        //         break;
+        //     case 5:
+        //         document.write("星期五");
+        //         break;
+        //     case 6:
+        //         document.write("星期六");
+        //         break;
+        //     case 0:
+        //         document.write("星期日");
+        //         break;
+        //     default:
+        //         document.write("请输入正确值");
+        // }
+
+
+        // 根据输入月份，输出每月天数
+        // var year = 2019,
+        //     month = 2;
+        // switch (month) {
+        //     case 1:
+        //     case 3:
+        //     case 5:
+        //     case 7:
+        //     case 8:
+        //     case 10:
+        //     case 12:
+        //         document.write("31天");
+        //         break;
+        //     case 4:
+        //     case 6:
+        //     case 9:
+        //     case 11:
+        //         document.write("30天");
+        //         break;
+        //     case 2:    
+        //         if (year % 4 == 0 && year % 400 !== 0 || year % 400 == 0) {
+        //             document.write("29天");
+        //         } else {
+        //             document.write("28天");
+        //         }
+        //         break;
+        //     default:
+        //         document.write("请输入正确值");
+        // }
+
+
+
+        // 判断一个整数，属于哪个范围：大于0；小于0；等于0
+        // var num = 2019;
+        // switch (true) {
+        //     case num > 0:
+        //         document.write(num + "是一个正数");
+        //         break;
+        //     case num < 0:
+        //         document.write(num + "是一个负数");
+        //         break;
+        //     case num === 0:
+        //         document.write(num + "为零");
+        //         break;
+        //     default:
+        //         document.write("请输入正确值");
+        // }
+
+
+        // 判断一个整数是偶数还是奇数，并输出判断结果
+        // var num = 2019;
+        // var i = num % 2;
+        // if (i = 0) {
+        //     document.write(num + "是一个偶数");
+        // } else {
+        //     document.write(num + "是一个奇数");
+        // }
+
+
+        // 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+        // var height = 170;
+        // var weight = 108;
+        // var _weight = (height-108)*2;
+        // if(weight <= _weight + 10 && weight>_weight - 10){
+        //     document.write("你的身材真棒");
+        // }if(weight< _weight - 10){
+        //     document.write("小伙子你身材好苗条啊");
+        // }else{
+        //     document.write("小伙子你该减肥了");   
+
+
+        // var x = 2;
+        // switch (x) {
+        //     case 1: console.log(1);
+        //     case 2: console.log(2);
+        //     default: break;
+        //     case 3: console.log(3);
+        // }
+        // 这段小程序的输出结果是？  2
+
+
+        // 根据一个数字日期，判断这个日期是这一年的第几天
+        // 例如： "20160211"，计算后结果为42 
+        // var date = 20190610;
+        // var year = parseInt(date / 10000);
+        // var month = parseInt((date % 1000) / 100);
+        // var day = date % 100;
+        // var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        // var dd = 0;
+        // if (year % 4 == 0 && year % 400 !== 0 || year % 400 == 0) {
+        //     days[1] = 29;
+        // }
+        // for (let i = 0; i < month - 1; i++) {
+        //     dd += days[i];
+        // }
+        // dd = dd + day;
+        // document.write(year + "年" + month + "月" + day + "日" + "是这一年的第" + dd + "天");
+
+
+
+
+        // 计算器案例
+        // var num1 = 10,
+        //     num2 = 5,
+        //     str = "/";
+        // switch (str) {
+        //     case "+":
+        //         document.write(num1 + num2);
+        //         break;
+        //     case "-":
+        //         document.write(num1 - num2);
+        //         break;
+        //     case "*":
+        //         document.write(num1 * num2);
+        //         break;
+        //     case "/":
+        //         if (num2 === 0) {
+        //             document.write("除数为零，不符合数学规定。");
+        //         } else {
+        //             document.write(num1 / num2);
+        //         }
+        //         break;
+        //     default:
+        //         document.write("输入的符号不符合。");
+        // }
+
+    </script>
+</body>
+
+</html>

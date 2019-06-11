@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
+    //* 入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
     <script>
-        //为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
-        var time = 89;
-        var day = parseInt(time / 24);
-        var hour = parseInt(time % 24);
-        console.log(day + "天" + hour + "小时");
+        var num =10;
+        for(var i=0;i<50;i++){
+            num+=num*0.05;
+            
+        }console.log(num);
     </script>
 </body>
-
 </html>
