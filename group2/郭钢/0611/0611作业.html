@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+
+</head>
+
+<body>
+
+
+	<!-- 5
+	请输入要查询的年份:
+	<input id="inputYear" type="text">
+	<button onclick="intLeap()">计算</button> -->
+
+
+	<!-- 6
+	请输入要查询等级的分数：
+	<input id="getGrade" type="text">
+	<button onclick="grade()">查询</button> -->
+
+
+	<!-- 7
+	请输入要查询的数字：
+	<input id="getWeek" type="text">
+	<button onclick="week()">查询</button> -->
+
+
+	<!-- 8
+	请输入要查询的年份：
+	<input id="getYear" type="text">
+	请输入要查询的月份：
+	<input id="getMonth" type="text">
+	<button onclick="day()">查询</button> -->
+
+	<!-- 9
+	请输入要查询的数字：
+	<input id="getNumber" type="text">
+	<button onclick="symbol()">查询</button> -->
+
+	<!-- 10
+	请输入要查询的数字：
+	<input id="getNumber" type="text">
+	<button onclick="symbol()">查询</button> -->
+
+	<!-- 11
+	请输入要查询的体重：
+	<input id="getWeight" type="text">
+	请输入要查询的身高：
+	<input id="getHeight" type="text">
+	<button onclick="standard()">查询</button> -->
+
+
+	<!-- 12
+	请输入要查询的日期：
+	<input id="getDate" type="text">
+	<button onclick="day()">查询</button> -->
+
+
+
+	<!-- 13 -->
+	请输入第一个数：
+	<input id="yi" type="text">
+	请输入第二个数：
+	<input id="er" type="text"><br>
+	请输入计算符号：
+	<input id="fuhao" type="text">
+	<button onclick="jisuan()">计算</button><br>
+	结果为：
+	<input id="result" type="text">
+</body>
+<script>
+
+	// 1
+	// 	var day = parseInt(89/24);
+	// 	var hour = parseInt(89&24);
+	// console.log("战士共要连续抗洪" + day + "天" + "零" + hour + "小时");
+
+
+	// 2
+	// var hs = 80;
+	// var ss = 5/9.0*(hs-32);
+	// console.log("该地的华氏温度为:" + hs + "度," + "摄氏温度为:" + ss.toFixed(3) + "℃");
+
+
+	// 3
+	// var k = -2;
+	// alert(++k + k++ + ++k + k );
+
+
+	// 4
+	// var salary = 10000;
+	// for(i=1;i<=50;i++){
+	// 	salary = salary + salary*0.05;
+	// }
+	// console.log("五十年后的工资为:" + salary + "元");
+
+
+	// 5
+	// function intLeap(){
+	// 	var year = parseInt(inputYear.value);
+	// 	console.log(typeof(year));
+	// 	if(year%400==0 || (year%4==0 && year%100!=0)){
+	// 		console.log("这一年是闰年");
+	// 	}
+	// 	else if(year%400!=0 && (year%4!=0 || year%100==0)){
+	// 		console.log("这一年不是闰年");
+	// 	} else{
+	// 		console.log("输入错误，请重新输入！");
+	// 	}
+	// }
+
+
+	// 6第一种写法：
+	// function grade() {
+	// 	var grade = getGrade.value;
+	// 	if (grade >= 90 && grade <= 100) {
+	// 		console.log("成绩为A")
+	// 	}
+	// 	else if (grade >= 80 && grade < 90) {
+	// 		console.log("成绩为B")
+	// 	}
+	// 	else if (grade >= 70 && grade < 80) {
+	// 		console.log("成绩为C")
+	// 	}
+	// 	else if(grade>=60 && grade<70){
+	// 		console.log("成绩为D")
+	// 	}else if(grade>=0 && grade<60){
+	// 		console.log("成绩不合格")
+	// 	}else{
+	// 		console.log("输入的成绩格式错误，请重新输入！")
+	// 	}
+	// }
+	// 6的第二种写法：
+	// function grade(){
+	// 	var grade = getGrade.value;
+	// 	var hundred =parseInt(grade/10);
+	// 	switch(hundred){
+	// 		case 10:
+	// 		case 9: console.log("该成绩为A"); break;
+	// 		case 8:console.log("该成绩为B"); break;
+	// 		case 7:console.log("该成绩为C"); break;
+	// 		case 6:console.log("该成绩为D"); break;
+	// 		case 5:
+	// 		case 4:
+	// 		case 3:
+	// 		case 2:
+	// 		case 1:
+	// 		case 0:console.log("该成绩为不合格"); break;
+	// 		default:console.log("成绩输入错误，请重新输入！"); break;
+	// 	}
+	// }
+
+
+
+	// 7
+	// function week(){
+	// 	var week = parseInt(getWeek.value);
+	// 	switch(week){
+	// 		case 7:console.log("星期日");break;
+	// 		case 6:console.log("星期六");break;
+	// 		case 5:console.log("星期五");break;
+	// 		case 4:console.log("星期四");break;
+	// 		case 3:console.log("星期三");break;
+	// 		case 2:console.log("星期二");break;
+	// 		case 1:console.log("星期一");break;
+	// 		default:console.log("输入错误，请重新输入");break;
+	// 	}
+	// }
+
+
+	// 8
+	// function day(){
+	// 	var year = parseInt(getYear.value);
+	// 	var month = parseInt(getMonth.value);
+	// 	switch(month){
+	// 		case 1:
+	// 		case 3:
+	// 		case 5:
+	// 		case 7:
+	// 		case 8:
+	// 		case 10:
+	// 		case 12:console.log("这一个月共有31天");break;
+	// 		case 4:
+	// 		case 6:
+	// 		case 9:
+	// 		case 11:console.log("这一个月共有30天");break;
+	// 		case 2:{
+	// 			if(year%400==0 ||(year%4==0 && year%100!=0)){
+	// 				console.log("这一个月有29天")
+	// 			}else{console.log("这一个月有28天");
+
+	// 			}
+	// 		} break;
+	// 		default:console.log("输入错误，请重新输入！！");
+
+	// 	}
+	// }
+
+	// 9
+	// function symbol(){
+	// 	var number = parseInt(getNumber.value);
+	// 	if(number>0){
+	// 		console.log("这是一个大于0的数");
+	// 	}else if(number ==0){
+	// 		console.log("这是一个等于0的数");
+	// 	}else if(number<0){
+	// 		console.log("这是一个小于0的数");
+	// 	}else{
+	// 		console.log("输入错误，请重新输入！");
+	// 	}
+	// }
+
+	// 10
+	// function symbol(){
+	// 	var number = parseInt(getNumber.value);
+	// 	if(number%2 ==0){
+	// 		console.log("这是一个偶数");
+	// 	}else{
+	// 		console.log("这是一个奇数");
+	// 	}
+	// }
+
+
+	// 11
+	// function standard() {
+	// 	var weight = parseInt(getWeight.value);
+	// 	var height = parseInt(getHeight.value);
+	// 	if (((height - 108) * 2 - 10) <= weight && ((height - 108) * 2 + 10) >= weight) {
+	// 		console.log("体重合适");
+	// 	} else {
+	// 		console.log("体重不合适");
+	// 	}
+	// }
+
+
+	// 12
+	// function day() {
+	// 	var date = parseInt(getDate.value);
+	// 	var day = parseInt(date % 100);
+	// 	var month = parseInt(date / 100) % 100;
+	// 	var year = parseInt(date / 10000);
+	// 	var totalDays = day;
+	// 	switch (month - 1) {
+	// 		case 11: totalDays += 30;
+	// 		case 10: totalDays += 31;
+	// 		case 9: totalDays += 30;
+	// 		case 8: totalDays += 31;
+	// 		case 7: totalDays += 31;
+	// 		case 6: totalDays += 30;
+	// 		case 5: totalDays += 31;
+	// 		case 4: totalDays += 30;
+	// 		case 3: totalDays += 31;
+	// 		case 2: {
+	// 			if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+	// 				totalDays += 29;
+	// 			} else {
+	// 				totalDays += 28;
+	// 			}
+	// 		}
+	// 		case 1: totalDays += 31;
+	// 		case 0: totalDays
+	// 			console.log("该日期为这一年的第" + totalDays + "天");
+	// 	}
+	// }
+
+
+	13
+	function jisuan(){
+		var a = parseInt(yi.value);
+		var b = parseInt(er.value);
+		var c = fuhao.value;
+		switch(c){
+			case "+":result.value = a + b;break;
+			case "-":result.value = a - b;break;
+			case "*":result.value = a * b;break;
+			case "/":result.value = a / b;break;
+			case "%":result.value = a % b;break;
+			default:console.log("输入错误！请重新输入");
+		}
+	}
+</script>
+
+</html>
