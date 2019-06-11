@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>月份</title>
+</head>
+<body>
+    <script>
+        var month = 12;
+        if(month/2 == 1){
+            alert(month+"月有28天")
+        }else if(month / 8 == 1){
+            alert(month+"月有31天")
+        }else if(month / 9 == 1 || month / 11 == 1){
+            alert(month+"月有30天")
+        }else if(month / 10 == 1 || month / 12 == 1){
+            alert(month+"月有31天")
+        }else if(month % 2 != 0){
+            alert(month+"月有31天")
+        }else{
+            alert(month+"月有30天")
+        }
+    </script>
+</body>
+</html>
