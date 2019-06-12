@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x,y,s,w, i=0;
+        for(x = 3;x < 150;x++){
+            for(y = 1;y < x/3;y++){
+                s= parseInt(x/y);
+                w= x%y
+                if(x+y+s+w===163&&parseInt(x/y)===3&&x%y===10){
+                    document.write(x+"&nbsp;"+y+"&nbsp;");
+                    i++;
+                }
+                if(i===2){
+                    document.write("<br />");
+                    i=0;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

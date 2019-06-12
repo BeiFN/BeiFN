@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+
+        // 作业一
+        //    var k = -99;    
+        //    var res = k-- * 2  + k ++ - ++ k + k * 3 % k --
+            // res1 = -99 * 2 + k ++ - ++ k + k * 3 % k --
+            // k1=-100
+            //res2=res1 + -100 -  ++ k + k * 3 % k --
+            //res2=-198 +-100 - ++ k + k * 3 % k --
+            //k2 = -99
+            //res3 = res2 - ++ k + k * 3 % k --
+            //res3 = -298 - -98 + k * 3 % k --
+            //k3 = -98
+            //res4 = res3 + k * 3 % k --
+            //res4 = -200 + -98 * 3 %  -98
+            //k4 = -99
+            // res = -200 
+
+        // 作业二
+        // 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+            // var day = parseInt(89/24);
+            // var hours = parseInt(89%24);
+            // console.log("一共是" + day + "天" + hours + "小时");
+
+        // 作业三
+            // 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+            //它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+            //提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数。
+            // var Fahrenheit = 80;
+            // var centigrade = parseInt( (5/9 * (Fahrenheit-32)) * 1000)/1000;
+            // console.log("当地温度是" + Fahrenheit + "华氏度，" + "约" + centigrade + "摄氏度");
+
+        // 作业四
+        // 根据输入的数字，判断是否为闰年
+            // var year = 4534;
+            // if (year%400 === 0 ||year%4 === 0 && year%100 !==0){
+            //     console.log(year + "该年份是闰年");
+            // } else {
+            //     console.log(year + "该年份是平年");
+            // }
+        
+        //作业五
+        //根据输入的成绩，判定成绩的等级A\B\C\D
+        //A:90~100 B:70~89 C:60~69 D:60以下
+        // var fraction = 55;
+        // if(fraction >= 90 && fraction <= 100){
+        //     console.log("该同学的成绩是A");
+        // } else {
+        //     if (fraction < 90 && fraction >= 70){
+        //         console.log("该同学的成绩是B");
+        //     } else {
+        //         if (fraction < 70 && fraction >=60){
+        //             console.log("该同学的成绩是C");
+        //         } else {
+        //             console.log("该同学的成绩是D");
+        //         }
+        //     }
+        // }
+
+        //作业六
+        //根据输入的数字，返回星期几
+        // 
+        //  var number1 = 55;
+        //   switch (number1%7) {
+        //     case 0: console.log("该日是星期天");
+        //         break;
+        //     case 1: console.log("该日是星期一");
+        //         break;
+        //     case 2: console.log("该日是星期二");
+        //         break;
+        //     case 3: console.log("该日是星期三");
+        //         break;
+        //     case 4: console.log("该日是星期四");
+        //         break;
+        //     case 5: console.log("该日是星期五");
+        //         break;
+        //     case 6: console.log("该日是星期六");
+        //         break;
+        //   }
+
+        //作业七
+        //  var k=-2;
+        //  alert(++k + k++ + ++k + k);
+        //      -1 + k++ + ++k + k;  k1=-1
+        //      -1 + -1 + ++k + k ;  k2=0
+        //           -2 + 1 +k    ;  k3 =1
+        //              -1 +1     ;  k4 =1
+        //                 0      ;
+
+        //作业八
+        //根据输入月份，输出每月天数
+        // var month = 2;
+        // if( month === 1 || month === 3 || month === 5 || month ===7 || month === 8 || month === 10 || month === 12){
+        //     console.log("该月份有31天");
+        // } else {
+        //     if (month === 2){
+        //         console.log("该月份有28天");
+        //     }else{
+        //         console.log("该月份有30天");
+        //     }
+        // }
+
+        //作业九
+        //判断一个整数，属于哪个范围：大于0；小于0；等于0
+        // var number2 = 0;
+        // if (number2 > 0){
+        //     console.log("该数字大于0");
+        // }else{
+        //     if (number2 === 0){
+        //         console.log("该数字等于0");
+        //     } else {
+        //         console.log("该数字小于0");
+        //     }
+        // }
+
+        //作业十
+        //判断一个整数是偶数还是奇数，并输出判断结果
+        // var number3 = 0;
+        // if (number3%2 === 0){
+        //     alert("该数字是偶数");
+        // } else {
+        //     alert("该数字是奇数");
+        // }
+
+        //作业十一
+        //开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+            // var height = 188;
+            // var weight = 134;
+            // if ((height-108)*2 <= (weight+10) && (height -108)*2 >= (weight-10) ){
+            //     console.log("您的体重合适");
+            // } else {
+            //     console.log("您的体重不合适");
+            // }
+        
+        //作业十二
+        //根据一个数字日期，判断这个日期是这一年的第几天          例如： "20160211"，计算后结果为42
+            // var date = 20170110;
+            // var year = parseInt(date/10000);
+            // var month =  parseInt((date % 10000)/100);
+            // var day = date % 100;
+            // var sum = 0;
+            // if (year%400 === 0 ||year%4 === 0 && year%100 !==0){
+            //         switch(month){
+            //             case 12 : sum += 30;
+            //             case 11 : sum += 31;
+            //             case 10 : sum += 30;
+            //             case 9  : sum += 31;
+            //             case 8  : sum += 31;
+            //             case 7  : sum += 30;
+            //             case 6  : sum += 31;
+            //             case 5  : sum += 30;
+            //             case 4  : sum += 31;
+            //             case 3  : sum += 29;
+            //             case 2  : sum += 31;
+            //             case 1  : sum += day;
+            //             case 0  : alert(date +"是"+ year + "年的第" + sum + "天");
+            //         }
+            //  } else {
+            //     switch(month){
+            //         case 12 : sum += 30;
+            //             case 11 : sum += 31;
+            //             case 10 : sum += 30;
+            //             case 9  : sum += 31;
+            //             case 8  : sum += 31;
+            //             case 7  : sum += 30;
+            //             case 6  : sum += 31;
+            //             case 5  : sum += 30;
+            //             case 4  : sum += 31;
+            //             case 3  : sum += 29;
+            //             case 2  : sum += 31;
+            //             case 1  : sum += day;
+            //             case 0  : alert(date +"是"+ year + "年的第" + sum + "天");
+            //         }
+            // }
+
+        //作业十三
+        //var x = 2;
+        // switch(x){
+        //      case 1 : console.log(1);
+        //      case 2 : console.log(2);
+        //      default : break;
+        //      case 3 : console.log(3);
+        // }
+        // 这段小程序的输出结果是？  是2；
+        
+        // 作业十四
+        //入职薪水10K，每年涨幅5%，50年后工资多少？(预习循环)
+            // var salary = 10000;
+            // for (var i = 1;i <= 50;i++){
+            //     salary *= 1.05;
+            // }
+            // alert(salary);
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

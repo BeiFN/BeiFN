@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="work.js"></script>
+</head>
+<body>
+    <script>
+        /*
+            语句
+            关键字+（）+（）
+            关键字：表面语句用途
+            （）条件：bool值 
+            {} 作用：写代码，一组代码放在大括号之中
+
+        */
+    //    非是即否，单分支结构
+        if(true){
+
+        }else{
+            console.log("否");
+        }
+        
+        // 多分支结构
+        var score = 80;
+        if(score>=90 && score<=100){
+            console.log("A");
+        }else if(score>=70){
+            console.log("B");
+        }else if(score>=60){
+            console.log("C");
+        }else{
+            console.log("D");
+        }
+
+        // 多路开关语句 switch
+        /*
+            如果switch条件满足了某个case，然后switch会依次向下执行所有代码直到遇到break跳出。
+            穿透特性，break阻止穿透
+        */ 
+        // 判定每月有多少天
+
+        var date = "20160211";
+        var year1 = date/10000;
+        var day1 = date%100;
+        var mouth1 = parseInt(date%10000 / 100);
+        console.log(year1,mouth1,day1);
+        if(year1%400===0 || year1%4===0&&year1%100!=0){
+        
+        }
+        
+        switch(outh1){
+            case 1: 
+            case 3: 
+            case 5: 
+            case 7: 
+            case 8: 
+            case 10: 
+            case 12: console.log(month +"有31天");break;
+            case 4: 
+            case 6: 
+            case 9: 
+            case 11: console.log(month +"有30天");break;
+            case 2:{
+                if(true){
+                    console.log("2月有29天");
+                }else{
+                    console.log("2月有28天");
+                }
+            }break;
+            default: break;
+        }
+
+    </script>
+    
+</body>
+</html>

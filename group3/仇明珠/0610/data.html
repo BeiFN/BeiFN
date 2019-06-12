@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     //根据输入的数字，返回星期几  
+     var data=prompt("请输入1-7之间的数字");
+     var str=null;
+     switch(data)
+     {  
+        case "1":
+           var str="一";
+           break;
+        case "2":
+        str="二";
+           break;
+        case "3":
+        str="三";
+           break;
+        case "4":
+        str="四";
+           break;
+        case "5":
+        str="五";
+           break;
+        case "6":
+        str="六";
+           break;
+      default:
+        str="七";
+        break;
+          
+
+     }
+     document.write("今天是周"+str);
+    </script>
+</body>
+</html>
