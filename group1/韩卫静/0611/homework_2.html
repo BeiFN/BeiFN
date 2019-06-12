@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环结构作业2</title>
+</head>
+<body>
+    <script>
+        
+	// * 打印100–200之间所有能被3或者7整除的数 
+    document.write("<h4>打印100–200之间所有能被3或者7整除的数 : </h4>");
+    var count1 = 99;
+    while(count1 ++ < 200){
+        if( count1 % 3 === 0 || count1 % 7 === 0){           
+            document.write(count1 + "  ");
+        }
+    }
+
+	// * 计算100的阶乘   100!
+    document.write("<h4>计算100的阶乘 : </h4>");    
+    var res = 1;
+    for(var i = 0; i++ < 100 ;){
+        res *= i;
+    }
+    document.write(res);
+
+	// * 计算1+3+5+...+99的和
+    document.write("<h4>计算1+3+5+...+99的和 : </h4>");
+    var count2 = -1;
+    var sum2 = 0;
+    while( (count2 += 2) < 100){
+        sum2 += count2;
+    }
+    document.write( sum2 );
+
+	// * 99乘法表
+    document.write("<h4>99乘法表 : </h4>");    
+    for(var i = 0; i++ <9; ){
+        for(var j = 0; j++ <i; ){
+            document.write(j + " x " + i + " = " + (i*j) + "&nbsp;&nbsp;&nbsp;&nbsp;");
+        }
+        document.write("<br>");
+    }
+
+	// * 求100-999之间的水仙花数。abc =++
+    document.write("<h4>求100-999之间的水仙花数 : </h4>");    
+    var count3 = 99;
+    while(count3++ < 999){
+        var a = count3 % 10;
+        var b = parseInt(count3 %100 /10);
+        var c = parseInt(count3 / 100);
+        if(count3 === Math.pow(a,3) + Math.pow(b,3) + Math.pow(c,3)){
+            document.write(count3 + "  ")
+        }
+    }
+
+	// * 输出100-200之间所有的素数 
+    document.write("<h4>输出100-200之间所有的素数  : </h4>");           
+    var count4 = 99;
+    while(count4++ < 200){
+        var flag = true; 
+        for(var j = 1; j++ < count4 - 1;){
+            if(count4 % j === 0){
+                flag = false;
+                break;
+            }           
+        } 
+        if(flag){
+            document.write(count4 + "  ");
+        }
+    }
+
+
+	// * 求s=a+aa+aaa+aaaa+….+aa...a的值 ，其中a是一个数字。例如2+22+222+2222 
+    // 五次为例 2 + 22 + 222 + 2222 + 22222
+    document.write("<h4>求s=a+aa+aaa+aaaa+….+aa...a的值 : </h4>");   
+    var a = 2;
+    var sum = 0;
+    for(var i = 0 ; i++ < 5;){
+        var temp = 0;
+        for(var j = 0 ; j < i; j++){
+           temp += a * Math.pow(10,j); 
+        }
+        document.write(temp+ "  ");
+        sum += temp;
+    }
+    document.write("之和为： "+sum);
+
+    </script>
+</body>
+</html>
