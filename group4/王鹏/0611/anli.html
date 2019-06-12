@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 根据一个数字日期，判断这个日期是这一年的第几天
+        // 例如： "20160211"，计算后结果为42
+        // 2月总天数为dayFeb
+        // var time = 20160321;
+        // var day = time % 100;
+        // var month = parseInt(time % 10000 / 100);
+        // var year = parseInt(time / 10000);
+        // var dayFeb = 28;
+        // if (year % 4 === 0 && year % 100 !== 0 || year % 400 ===0) {
+        //     dayFeb = 29;
+        // }
+        // switch (month) {
+        //     case 1: alert("这是" + year + "年的第" + day + "天"); break;
+        //     case 2: alert("这是" + year + "年的第" + (day + 31) + "天"); break;
+        //     case 3: alert("这是" + year + "年的第" + (day + dayFeb + 31) + "天"); break;
+        //     case 4: alert("这是" + year + "年的第" + (day + dayFeb + 62) + "天"); break;
+        //     case 5: alert("这是" + year + "年的第" + (day + dayFeb + 92) + "天"); break;
+        //     case 6: alert("这是" + year + "年的第" + (day + dayFeb + 123) + "天"); break;
+        //     case 7: alert("这是" + year + "年的第" + (day + dayFeb + 153) + "天"); break;
+        //     case 8: alert("这是" + year + "年的第" + (day + dayFeb + 184) + "天"); break;
+        //     case 9: alert("这是" + year + "年的第" + (day + dayFeb + 215) + "天"); break;
+        //     case 10: alert("这是" + year + "年的第" + (day + dayFeb + 245) + "天"); break;
+        //     case 11: alert("这是" + year + "年的第" + (day + dayFeb + 276) + "天"); break;
+        //     case 12: alert("这是" + year + "年的第" + (day + dayFeb + 306) + "天"); break;
+        // }
+
+
+
+        //案例 输出100个数字
+        // var cont = 0;
+        // while (cont < 100) {
+        //     cont++;
+        //     console.log(cont);
+        // }
+
+
+
+        // 打印1~100所有的偶数;
+        // 穷举法
+        // var num = 0;
+        // while (num++ < 100) {
+        //     // if (num % 2 == 0) {
+        //     //     console.log(num);
+        //     // }
+
+        //     // 优化
+        //     if (!(num % 2)) {
+        //         console.log(num);
+        //     }
+        // }
+
+        // 算法
+        // var num = 0;
+        // while ((num += 2) < 100) {
+        //     console.log(num);
+        // }
+
+        // 打印1~100所有的偶数;
+        // 穷举法
+        // var num = 0;
+        // while (num++ < 100) {
+        //     // if (num % 2 == 0) {
+        //     //     console.log(num);
+        //     // }
+        //     // 优化
+        //     if (!(num % 2)) {
+        //         console.log(num);
+        //     }
+        // }
+        // 算法
+        // var num = 0;
+        // while ((num +=2) <= 100) {
+        //     console.log(num);
+        // }
+
+        // var num = 0;
+        // while (num++ < 100) {
+        //     // if (num % 2 == 0) {
+        //     //     console.log(num);
+        //     // }
+        //     // 优化
+        //     if (!(num % 2)) {
+        //         console.log(num);
+        //     }
+        // }
+        //算法
+        // var num = 0;
+        // while ((num +=2) <= 100) {
+        //     console.log(num);
+        // }
+
+
+
+
+        // 测试程序的性能
+        // console.time("qiongju");
+        // var num = 0;
+        // while (num++ < 100) {
+        //     // if (num % 2 == 0) {
+        //     //     console.log(num);
+        //     // }
+        //     // 优化
+        //     if (!(num % 2)) {
+        //         console.log(num);
+        //     }
+        // }
+        // console.timeEnd("qiongju");
+
+        // console.time("suanfa");
+        // var num = 0;
+        // while ((num +=2) <= 100) {
+        //     console.log(num);
+        // }
+        // console.timeEnd("suanfa");
+
+
+
+
+        // 1 ~ 100 所有整数的和;
+        // var num = 0;
+        // var sum = 0;
+        // while (num++ < 100) {
+        //     sum += num;
+        // }
+        // console.log(sum);
+
+        // var num = 0;
+        // var sum = 0;
+        // while (num++ < 100) {
+        //     sum += num;
+        // }
+        // console.log(sum);
+
+        // var num = 0;
+        // var sum = 0;
+        // while (num++ < 100) {
+        //     sum += num;
+        // }
+        // console.log(sum);
+
+
+
+
+        // 计算 1~100 之间所有7 的倍数的和;
+        // var num = 0;
+        // var sum = 0;
+        // while (num++ < 100) {
+        //     if (!(num % 7)) {
+        //         sum += num;
+        //     }
+        // }
+        // console.log(sum);
+
+
+
+
+        // 水仙花数；自恋数； 
+        // 三位数;  123 => abc    a³ + b³ + c³ = abc  Math.pow(n,m); n的m次方
+        // var num = 100;
+        // while (num++ < 999) {
+        //     var ge = num % 10;
+        //     var shi = parseInt(num % 100 / 10);
+        //     var bai = parseInt(num / 100);
+        //     if (Math.pow(ge,3) + Math.pow(shi,3) + Math.pow(bai,3) === num) {
+        //         console.log(num);
+        //     }
+        // }
+        // 四位 四叶玫瑰数
+        // var num = 1000;
+        // while (num++ < 9999) {
+        //     var ge = num % 10;
+        //     var shi = parseInt(num % 100 / 10);
+        //     var bai = parseInt(num % 1000 / 100);
+        //     var qian = parseInt(num / 1000);
+        //     if (Math.pow(ge, 4) + Math.pow(shi, 4) + Math.pow(bai, 4) + Math.pow(qian, 4) === num) {
+        //         console.log(num);
+        //     }
+        // }
+
+
+
+
+        //输出10*10 长方形
+        // var cont_row = 0;
+        // while (cont_row++ < 10) {
+        //     var cont_col = 0;
+        //     while (cont_col++ < 10) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+
+
+        // 输出直角三角形
+        // var cont_row = 0;
+        // while (cont_row++ < 10) {
+        //     var cont_col = 0;
+        //     while (cont_col++ < cont_row) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+
+
+        // 打印等腰三角形
+        // 1   1
+        // 2   3
+        // 3   5
+        // 4   7
+        // 5   9
+        // 6   11   2*n-1
+        // var cont_row = 0;
+        // while (cont_row++ < 5) {
+        //     var cont_col = 0;
+        //     var cont_space = 0;
+        //     // 打印空格
+        //     while (cont_space++ < 5 - cont_row) {
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     // 打印星星
+        //     while (cont_col++ < cont_row * 2 - 1) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+
+
+        // 打印菱形
+        // 打印等腰三角形
+        // 1   1
+        // 2   3
+        // 3   5
+        // 4   7
+        // 5   9
+        // 6   11   2*n-1
+        // var cont_row = 0;
+        // while (cont_row++ < 5) {
+        //     var cont_col = 0;
+        //     var cont_space = 0;
+        //     // 打印空格
+        //     while (cont_space++ < 5 - cont_row) {
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     // 打印星星
+        //     while (cont_col++ < cont_row * 2 - 1) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+        // while (cont_row-- > 0) {
+        //     var cont_col = 0;
+        //     var cont_space = 0;
+        //     while (cont_space++ < 5 - cont_row) {
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     while (cont_col++ < cont_row * 2 - 1) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+
+        // var cont_row = 0;
+        // while (cont_row++ < 5) {
+        //     var cont_col = 0;
+        //     var cont_space = 0;
+        //     // 打印空格
+        //     while (cont_space++ < 5 - cont_row) {
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     // 打印星星
+        //     while (cont_col++ < cont_row * 2 - 1) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+        // while (cont_row-- > 0) {
+        //     var cont_col = 0;
+        //     var cont_space = 0;
+        //     while (cont_space++ < 5 - cont_row) {
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     while (cont_col++ < cont_row * 2 - 1) {
+        //         document.write("✦");
+        //     }
+        //     document.write("<br/>");
+        // }
+
+
+        // 打印1 ~ 100 之间的素数;
+        // var num = 1;
+        // while (num++ < 100) {
+        //     var divisor = 1;
+        //     var flag = true;
+        //     while (divisor++ < num - 1) {
+        //         if (num % divisor === 0) {
+        //             flag = false;
+        //             break;
+        //         }
+        //     }
+        //     if (flag) {
+        //         console.log(num);
+        //     }
+        // }
+
+        // var num = 1;
+        // while (num++ < 100) {
+        //     var divisor = 1;
+        //     var flag = true;
+        //     while (divisor++ < num - 1) {
+        //         if (num % divisor === 0 ) {
+        //             flag = false;
+        //             break;
+        //         }
+        //     }
+        //     if (flag) {
+        //         console.log(num);
+        //     }
+        // }
+
+        // var num = 1;
+        // while (num++ < 100) {
+        //     var divisor = 1;
+        //     var flag = true;
+        //     while (divisor++ < num - 1) {
+        //         if (num % divisor === 0 ) {
+        //             flag = false;
+        //             break;
+        //         }
+        //     }
+        //     if (flag) {
+        //         console.log(num);
+        //     }
+        // }
+
+
+        // 今有鸡翁一， 值钱五； 鸡母一， 值钱三； 鸡雏三， 值钱一； 百钱买鸡百只， 问鸡翁、 母、雏各几何？ cock  hen  chick
+        // var cock = 0;
+        // while (cock++ < 20) {
+        //     var hen = 0
+        //     while (hen++ < 33) {
+        //         var chick = 100 - cock - hen;
+        //         if (cock * 5 + hen * 3 + chick / 3 === 100) {
+        //             console.log(cock, hen, chick);
+        //         }
+        //     }
+        // }
+
+        // var cock = 0;
+        // while (cock++ < 20) {
+        //     var hen = 0
+        //     while (hen++ < 33) {
+        //         var chick = 100 - cock - hen;
+        //         if (cock * 5 + hen * 3 + chick / 3 === 100) {
+        //             console.log(cock, hen, chick);
+        //         }
+        //     }
+        // }
+
+        // var cock = 0;
+        // while (cock++ < 20) {
+        //     var hen = 0
+        //     while (hen++ < 33) {
+        //         var chick = 100 - cock - hen;
+        //         if (cock * 5 + hen * 3 + chick / 3 === 100) {
+        //             console.log(cock, hen, chick);
+        //         }
+        //     }
+        // }
+
+
+        
+        // 1~100  打印 1 ~ 100 之中所有的整数 , 打印结束之后弹出警告框结束了。
+        // var num = 0;
+        // do {
+        //     console.log(num);
+        // } while (num++ <100) {
+        //     alert("打印结束了");
+        // }
+
+        // var num = 0;
+        // do {
+        //     console.log(num);
+        // } while (num++ <100) {
+        //     alert("打印结束了");
+        // }
+
+        // var num = 0;
+        // do {
+        //     console.log(num);
+        // } while (num++ <100) {
+        //     alert("打印结束了");
+        // }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
