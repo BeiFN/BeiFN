@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="../../public/css/normal.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../public/js/normal.js"></script>
+    <title> EMB学习制作|吃火星的宝宝|朱盟 </title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Tip: 需要打印在页面上的作业在页面的Js上 ，否则在main.js 外部js !!!!
+        // 
+        // 行列打印
+        function square(r, c) {
+            if (arguments.length === 1) c = r;
+            var row = 0;
+            while (row++ < r) {
+                var colum = 0;
+                while (colum++ < c) {
+                    document.write("❉");
+                }
+                document.write("<br>");
+            }
+        }
+
+        // 三角 递减
+        function triagle(r) {
+            var row = 0;
+            while (row++ < r) {
+                var colum = 0;
+                while (colum++ < row) {
+                    document.write("❉");
+                }
+                document.write("<br>");
+            }
+        }
+
+        // 菱形
+        function lx(r) {
+
+
+            // 上部分
+            var row = 0;
+            while (row++ < r) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+                    document.write("&nbsp; &nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    document.write("✲");
+                }
+                document.write("<br>");
+            }
+            // console.log(row);
+            // 下部分
+            while (row-- > 1) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+                    document.write("&nbsp; &nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    document.write("✲");
+                }
+                document.write("<br>");
+            }
+
+
+        }
+
+
+        //空心菱形
+        function lxNa(r) {
+            // 上部分
+            var row = 0;
+            while (row++ < r) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+
+                    document.write("&nbsp; &nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    if (colum === 1 || colum === row * 2 - 1) {
+                        document.write("✲");
+                    } else {
+                        document.write("&nbsp; &nbsp;");
+                    }
+                }
+                document.write("<br>");
+            }
+            // console.log(row);
+            // 下部分
+            while (row-- > 1) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+                    document.write("&nbsp; &nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    if (colum === 1 || colum === row * 2 - 1) {
+                        document.write("✲");
+                    } else {
+                        document.write("&nbsp; &nbsp;");
+                    }
+                }
+                document.write("<br>");
+            }
+
+        }
+
+
+        // square(10);
+        // triagle(10);
+        // lx(6);
+        // lxNa(6);
+        // 乘法表
+        function multiplayTable() {
+            var row = 0;
+            while (row++ < 9) {
+                var col = 0
+                while (col++ < row) {
+                    document.write(col + "*" + row + "=" + row * col + "               |");
+                }
+                document.write("<br>");
+            }
+        }
+
+        //  multiplayTable();
+
+        // 输出20-80之间能被3整除的整数，每5个一行
+
+        function out35() {
+            var count = 0;
+            for (var i = 19; i++ < 80;) {
+                if (i % 3 === 0) {
+                    count++;
+                    document.write(i + ",");
+                    console.log(i);
+                }
+                if (count % 5 === 0 && count !== 0) {
+                    document.write("<br>");
+                }
+            }
+
+        }
+
+        // out35();
+        // 打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
+        function outLeapYear12() {
+            var count = 0;
+            for (var i = 999; i++ < 2000;) {
+                if (i % 400 === 0 || i % 4 === 0 && i % 100 !== 0) {
+                    count++;
+                    document.write(i + ",");
+                }
+                if (count % 4 === 0 && count !== 0) {
+                    document.write("<br>");
+                }
+            }
+        }
+        // outLeapYear12();
+        
+        // @ 图像
+        function ait(r) {
+            var row = 0;
+            while (row++ < r) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+                    document.write("&nbsp; &nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    document.write("@");
+                }
+                document.write("<br>");
+            }
+
+        }
+        ait(4);
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
