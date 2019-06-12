@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0612作业</title>
+    <style>
+        table{
+            border: 1px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+
+    
+    <input type="text" id="num">
+    <input type="button" value="计算" id="btn">
+
+    <!-- <area shape="" coords="" href="" alt=""> -->
+    
+
+    <script>
+
+document.write("<br/><br/>1 编写一个函数，计算两个数字的和差积商<br/>");       
+        function calculator(num1 , num2, sign){
+            switch(sign){
+                case "+":
+                    return Number(num1) + Number(num2); 
+                    break;
+                case "-":
+                    return num1 - num2;
+                    break;
+                case "*":
+                    return num1 * num2;
+                    break;
+                case "/":
+                    return num1 / num2;
+                    break;
+                case "%": 
+                    return num1 % num2;
+                    break;
+                    default: return "尚不支持"; break;
+            }
+
+        }
+        document.write(calculator(50, 2, "*"));
+
+document.write("<br/><br/>2 编写函数，求圆的面积<br/>");     
+        function circular(r){
+            return Math.PI * r * r;
+        }
+        document.write(circular(10));
+        
+document.write("<br/><br/>3 编写函数，判断一个字符串的内容是不是纯数字<br/>");     
+        function isNumber(str){
+            return !isNaN(Number(str));
+        }
+        document.write(isNumber("123a"));
+
+
+document.write("<br/><br/>4 编写一个函数，穷举计算三个数字的大小，按从小到大的顺序输出。<br/>");
+        function sort(a, b, c){
+            if(a > b){
+                if(c < b){
+                    return (c +"<"+b+"<"+a);
+                }else{
+                    if(c > a){
+                        return  (b + "<" + a +"<"+ c );
+                    }else{
+                        return (b + "<" + c + "<" + a);
+                    }
+                }
+            }else{
+                if(c > b){
+                    return (a + "<" + b + "<" + c);
+                }else{
+                    if(c > a){
+                        return (a + "<" + c + "<" + b);
+                    }else{
+                        return (c + "<" + a + "<" + b);
+                    }
+                }
+            }
+        }
+        document.write(sort(2, 5, 3));
+        
+document.write("<br/><br/>5 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字<br/>");
+        function print(n,m){
+            document.write("<table>");
+                for(var i = 0; i < n; i++){
+                    document.write("<tr>");
+                        for(var j = 0; j < m; j++){
+                            document.write("<td>");
+                            document.write(Math.round(Math.random() * 100 ) );
+                            document.write("</td>");
+                        }
+                    document.write("</tr>");
+                }
+            document.write("</table>");
+        }
+        print(3,4);
+
+document.write("<br/><br/>6 编写一个函数，生成4位数字的验证码<br/>");
+        function checkcode(){
+            // return parseInt(Math.random()*9000 + 1000);
+            var count = 0;
+            do{
+                count = parseInt(Math.random()*10000);
+            }while(count < 1000){
+                return count;
+            };
+        }
+
+        document.write(checkcode());
+        
+        
+document.write("<br/><br/>7 求m-n之间数字的和<br/>");
+        function sum(m , n){
+            var summ = 0;
+            if(m > n){
+                for( var i = n ; i <= m ; i ++ ){
+                    summ += i;
+                }
+            }else{
+                for(var i = m; i <= n; i++){
+                    summ += i;
+                }
+            }
+            return summ;
+        }
+        document.write(sum(5, 10));
+
+document.write("<br/><br/>8 编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。<br/>");
+        function digit(num , k){
+            return parseInt( (num % Math.pow(10, k) / Math.pow(10,k-1) ) );
+        }
+        document.write(digit(12345, 2));
+
+document.write("<br/><br/>9 编写函数计算一个数字的长度 <br/>");
+        function getLength(num){
+            var leng = 0;
+            while(num >= 1){
+                leng ++;
+                num /= 10;
+            }
+            return leng;
+        }
+        document.write(getLength(123456789));
+        
+document.write("<br/><br/>10 编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。<br/>");
+        function getoddNumber(a , b){
+            var count = 0;
+            if(b > a){
+                for(var i = a; i <= b ; i ++){
+                    for (var j = a; j <= b; j++){
+                        if(i != j){
+                            var _temp = (""+i+j);
+                            if(_temp % 2){
+                                console.log(_temp);
+                                count ++ ;
+                            }
+                        }
+                    }
+                }
+            }else{
+                for(var i = b; i <= a ; i ++){
+                    for (var j = b; j <= a; j++){
+                        if(i != j){
+                            var _temp = (""+i+j);
+                            if(_temp % 2){
+                                console.log(_temp);
+                                count ++ ;
+                            }
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+        document.write(getoddNumber(2,5));
+
+document.write("<br/><br/>11 某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，<br/>");
+document.write("加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，<br/>");
+document.write("第二位和第三位交换，请编写一个函数，传入原文，输出密文<br/>");
+        function hash(num){
+            var a = (parseInt(num/1000) + 5) % 10;
+            var b = (parseInt((num % 1000) / 100) + 5) % 10;
+            var c = (parseInt((num % 100) / 10) + 5) % 10;
+            var d = (parseInt(num % 10) + 5) % 10;
+            
+            console.log (a,b,c,d);
+            var _temp = ("" + d + c + b + a);
+            return Number(_temp);
+d
+        }
+        document.write(hash(6732));
+
+        document.write("解密<br/>");
+        function decrypt(num){
+            // var a = parseInt(num/1000);
+            // var b = parseInt((num % 1000) / 100);
+            // var c = parseInt((num % 100) / 10);
+            // var d = parseInt(num % 10) ;
+            var a = digit(num,4);
+            var b = digit(num,3);
+            var c = digit(num,2);
+            var d = digit(num,1);
+            console.log (a,b,c,d);
+            a -= 5;
+            b -= 5;
+            c -= 5;
+            d -= 5;
+            if(a < 0){
+                a += 10;
+            }
+            if(b < 0){
+                b += 10;
+            }
+            if(c < 0){
+                c += 10;
+            }
+            if(d < 0){
+                d += 10;
+            }
+            var _temp = (""+d+c+b+a);
+            return Number(_temp);
+        }
+        document.write(decrypt(3778));
+
+document.write("<br/><br/>12 编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n<br/>");
+        function sumNum(num){
+            var resSum = 0;
+            if(num % 2){
+                for(var i=1 ; i <= num; i+=2){
+                    resSum += 1 / i;
+                }
+            }else{
+                for(var i=2 ; i <= num; i+=2){
+                    resSum += 1 / i;
+                }
+            }
+            return resSum;
+        }
+        document.write(sumNum(4));
+
+document.write("<br/><br/>13 使用函数完成任意数字阶乘的计算<br/>");
+        function factorial(n){
+            console.log(n);
+            var res = 1;
+            for(var i = 1; i++ < n; ){
+                res *= i;
+            }
+            return res;
+        }
+        document.write(factorial(5));
+
+        
+document.write("<br/><br/>14 要求：页面输入任意数字，点击按钮后计算该数字的阶乘<br/>");
+        btn.onclick = function (){
+            num.value = factorial(num.value);
+            // document.getElementById("num").value
+        };
+        // btn.onclick = factorial(num.value);
+
+
+document.write("<br/><br/>15 创建一个对象，表示一个学生的信息<br/>");      
+        function student(name ,sex, age){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            console.log(this); //window
+            return this;
+        }
+        var p1 = new Object(); //var p1 = {}
+        p1 = student("李四", "男","23");
+        document.write(p1.name);
+
+
+document.write("<br/><br/>16 鼠标操作div触发事件<br/>");  
+        document.write('<div id="sup" style="width:100px; height:100px; background-color: blue"></div>');
+        sup.ondblclick = function(){
+            console.log("双击");
+            sup.style="background-color:red; width:200px; height:100px";
+            document.getElementById("sup").innerHTML="您双击触发,单击还原";
+
+        }
+        sup.onmouseover = function(){
+            document.getElementById("sup").innerHTML="鼠标移动到标签上，覆盖";
+        }
+        sup.onmouseout = function(){
+            document.getElementById("sup").innerHTML="鼠标离开标签";
+        }
+        sup.onmousedown = function(){
+            document.getElementById("sup").innerHTML="鼠标按下";
+        }
+        sup.onmouseup = function(){
+            document.getElementById("sup").innerHTML="鼠标抬起";
+            console.log("鼠标抬起");
+        }
+        // sup.onmousemove = function(){
+        //     document.getElementById("sup").innerHTML="鼠标移动";
+        // }
+        
+        sup.onclick = function(){
+            console.log("鼠标单击");
+        
+            sup.style="background-color:blue; width:100px; height:100px";
+        }
+
+document.write("<br/><br/>17 键盘操作输入框事件<br/>");  
+    document.write('<textarea name="" id="textview" cols="30" rows="10"></textarea>');
+
+    textview.onfocus = function(){
+            console.log("获取焦点");
+        }
+    textview.onkeydown = function(){
+            console.log("键盘按下");
+        }
+    textview.onkeypress = function(){
+            console.log("按键一次完成");
+        }
+    textview.oninput = function(){
+            console.log("正在输入");
+        }
+
+    textview.onkeyup = function(){
+            console.log("按键抬起");
+        }
+    
+
+    textview.onchange = function(){
+            console.log("内容改变");
+            
+            document.getElementById("textview").value="文本域的内容改变触发 只可能在失去焦点之前，内容未改变也不好触发";
+
+        }
+
+        
+    textview.onblur = function(){
+            console.log("失去焦点");
+        }
+    
+    
+
+
+
+
+    window.onload = function(){
+            console.log("加载完成");
+        }
+    window.onscroll = function(){
+            console.log("滚动条改变");
+        }
+    window.resize = function(){
+            console.log("窗口缩放");
+            alert("");
+        }
+
+
+
+    </script>
+</body>
+</html>
