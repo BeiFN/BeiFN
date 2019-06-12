@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>JS基本语法</title>
+      <style type="text/css">
+            *{padding: 0; margin: 0;}
+            html,body{
+                 width: 100%; height: 100%;
+                 background: #9CBC2C;
+                 font-family: "微软雅黑";
+            }
+            ul,ol,input { list-style: none; border: none;}
+            .main{ width:500px; margin: 50px auto; }
+            .main .step{
+                 padding-left: 43px;
+                 color: #384313; font-size: 16px; font-weight: bold;
+                text-shadow: 0 1px 1px #c0d576; line-height: 40px;
+            }
+            .main ul li {
+                 width: 400px; height: 25px;
+                 padding-left: 10px;padding-top: 5px; padding-bottom: 5px;
+                 background: rgba(255, 255, 255, .3);
+                 margin: auto; border: solid 2px #e3ebc3;
+                 border-color: rgba(255, 255, 255, .6);
+                 border-radius: 5px; margin-bottom: 4px;
+            }
+            .main ul li label{
+                 font-size: 13px; width: 110px; color: #111111;
+                 padding-left: 5px;
+            }
+            .main ul li input{
+                 border-radius: 3px;
+                 border: #FC3 solid 1px;
+                 width: 250px; height: 25px; outline: none;
+                 padding-left: 5px; margin-left: 35px;
+            }
+            .main .savebtn{
+                 display: block; width: 140px; height: 40px; line-height: 40px;
+                 text-align: center; color: #E3EBC3;
+                 font-weight: bold; cursor: pointer;
+                 border-radius: 5px; margin: 10px auto;
+                 box-shadow: 1px 1px 1px 0px gray;
+                 background: linear-gradient(#50B9FD,#1158A8);
+            }
+       </style>
+</head>
+<body>
+      <script>
+            //求商要加persaInt,切记
+            // var k = -99;
+            // var res = k-- * 2  + k ++ - ++ k + k * 3 % k --
+            // //res1 -99 * 2= -198           k=-100
+            // //res2 -198 + -100 =-298       k=-99
+            // //res3 -298+98=-200            k=-98
+            // //res4 -200+(98*3%98) = -200   k=-99
+            // // res=-200
+
+
+            //第一题
+            // var all=89;
+            // var day=all/24;
+            // var hours=all%24;
+            // day=parseInt(day);
+            // console.log(day+ "天" + hours+ "小时");
+
+            // //第二题
+            // var abc=80;
+            // var ab=5/9 *(abc-32);
+            // ab *=1000;
+            // ab=parseInt(ab);
+            // ab /=1000;
+            // console.log(ab+"摄氏度"+ abc +"华氏度");
+
+            // //第三题
+            // var k=-2;
+            // alert(++k + k++ + ++k + k);
+            // res1 -1-1=-2  k=0
+            // res2 -2+1=-1  k=1
+            // res3 -1+1=0   k=1
+
+            // //第四题
+            // var sum=10000;
+            // for(var i=0;i<50;i++)
+            // {
+            //       sum=sum+sum*0.05;
+            // }
+            // console.log(sum);
+
+      //     //第五题
+      //       var year=9012;
+      //       if(year%4===0 && year%100!==0)
+      //       {
+      //             alert(year+"年是闰年");
+      //       }
+      //       else if(year%400===0)
+      //       {
+      //             alert(year+"年是闰年");
+      //       }
+      //       else
+      //       {
+      //             alert(year+"年不是闰年");
+      //       }  
+
+            // //第六题
+            // var score=78;
+
+            // if(score>=90 && score<=100)
+            // {
+            //       alert("成绩等级为A");
+            // }
+            // else if(score<=89 && score>=70)
+            // {
+            //       alert("成绩等级为B");
+            // }
+            // else if(score<=69 && score>=60)
+            // {
+            //       alert("成绩等级为C");
+            // }
+            // else
+            // {
+            //       alert("成绩等级为D");
+            // }
+            
+
+            //第七题
+            // var dayNumber=55;
+            // if(dayNumber<=7 && dayNumber>0)
+            // {
+            //       switch(parseInt(dayNumber))
+            //       {
+            //             case 1:alert("星期一");break;
+            //             case 2:alert("星期二");break;
+            //             case 3:alert("星期三");break;
+            //             case 4:alert("星期四");break;
+            //             case 5:alert("星期五");break;
+            //             case 6:alert("星期六");break;
+            //             case 7:alert("星期日");break;
+            //       }    
+            // }
+            // else
+            // {
+            //       switch(dayNumber%7)
+            //       {
+            //             case 0:alert("星期日");break;
+            //             case 1:alert("星期一");break;
+            //             case 2:alert("星期二");break;
+            //             case 3:alert("星期三");break;
+            //             case 4:alert("星期四");break;
+            //             case 5:alert("星期五");break;
+            //             case 6:alert("星期六");break;
+            //       }
+            // }
+           
+            //第八题
+            // var month=4;
+            // if(month===1 ||month===3 ||month===5 ||month===7 ||month===8 ||month===10 ||month===12)
+            // {
+            //       alert("本月有31天");
+            // }
+            // else if(month===2)
+            // {
+            //       alert("本月有28天");
+            // }
+            // else
+            // {
+            //       alert("本月有30天");
+            // }
+            
+            // //第九题 范围：大于0 等于0 小于0
+            // var number=-9;
+            // if(number>0)
+            // {
+            //       alert("大于0");
+            // }
+            // else if(number===0)
+            // {
+            //       alert("等于0");
+            // }
+            // else
+            // {
+            //       alert("小于0");
+            // }
+
+            // //第十题
+            // var whole_number=78;
+            // if(whole_number%2===0 && whole_number!==0)
+            // {
+            //       alert("该整数是偶数");
+            // }
+            // else if(whole_number===0)
+            // {
+            //       alert("非奇非偶");
+            // }
+            // else
+            // {
+            //       alert("该整数为奇数");
+            // }
+
+            //第十一题
+            // var height=173;
+            // var weight_1=130;
+            // var weight_2=(height-108)*2;
+            // if(weight_1-weight_2<10 && weight_1-weight_2>-10)
+            // {
+            //       alert("体重合适");
+            // }
+            // else
+            // {
+            //       alert("体重不合适");
+            // }
+
+            //第十二题
+            // var x = 2;
+            // switch(x)
+            // {
+            //       case 1 : console.log(1);
+            //       case 2 : console.log(2);
+            //       default : break;
+            //       case 3 : console.log(3);
+            // } 输出为2 (2为字符串)
+
+            //第十三题
+            // var date=20160211;
+            // var year=parseInt(date/10000);
+            // var month=parseInt((date%10000)/100);
+            // var day=parseInt(date%100);
+            // if(year%4===0 && year%100!==0 ||year%400===0)
+            // {
+            //       switch(month)
+            //       {
+            //           case 1:alert(day);break;
+            //           case 2:alert(day+31);break;
+            //           case 3:alert(day+60);break;
+            //           case 4:alert(day+91);break;
+            //           case 5:alert(day+121);break;  
+            //           case 6:alert(day+152);break;
+            //           case 7:alert(day+182);break;
+            //           case 8:alert(day+213);break;
+            //           case 9:alert(day+244);break;
+            //           case 10:alert(day+274);break;
+            //           case 11:alert(day+305);break;
+            //           case 12:alert(day+335);break;
+            //       }
+            // }
+            // else
+            // {
+            //       switch(month)
+            //       {
+            //           case 1:alert(day);break;
+            //           case 2:alert(day+31);break;
+            //           case 3:alert(day+59);break;
+            //           case 4:alert(day+90);break;
+            //           case 5:alert(day+120);break;  
+            //           case 6:alert(day+151);break;
+            //           case 7:alert(day+181);break;
+            //           case 8:alert(day+212);break;
+            //           case 9:alert(day+243);break;
+            //           case 10:alert(day+273);break;
+            //           case 11:alert(day+304);break;
+            //           case 12:alert(day+334);break;
+            //       }
+            // }
+
+            //第十四题 计算器
+            
+            //第十五题
+          
+            
+
+      </script>      
+
+      <div class="main">
+          <span class="step">Step1:用户详细资料</span>
+          <ul>
+              <li>
+                   <label>用户名称:</label>
+                   <input type="text" placeholder="请输入用户名" />
+              </li>
+              <li>
+                   <label>邮件地址:</label>
+                   <input type="text" placeholder="example@qq.com" />
+              </li>
+              <li>
+                   <label>练习电话:</label>
+                   <input type="text" placeholder="13539008452" />
+              </li>
+          </ul>
+          <span class="step">Step2:家庭住址（收货地址）</span>
+          <ul>
+              <li>
+                   <label>详细地址:</label>
+                   <input type="text" placeholder="请输入用户名" />
+              </li>
+              <li>
+                   <label>邮政编码:</label>
+                   <input type="text" placeholder="example@qq.com" />
+              </li>
+              <li>
+                   <label>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家:</label>
+                   <input type="text" placeholder="13539008452" />
+              </li>
+          </ul>
+          <span class="savebtn">保存</span>
+     </div>
+</body>
+</html>
