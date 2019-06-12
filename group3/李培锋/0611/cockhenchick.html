@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        《张丘建算经》 成书于公元 5  世纪， 作者是北魏人． 书中最后一道题堪称亮点， 通常也被称为 “ 百钱买百鸡 ” 问题，民间则流传着县令考问神童的佳话书中原文如下：今有鸡翁一， 值钱五； 鸡母一， 值钱三； 鸡雏三， 值钱一； 百钱买鸡百只， 问鸡翁、 母、雏各几何？<br/>
+        <script>
+            var cock = -1;
+            
+            while(cock++ < 20){
+                var hen = -1;
+                var chick = 0;
+                while(hen++ < 33){
+                    chick=100 -cock -hen;
+                    if(5*cock+3*hen+chick/3===100){
+                        document.write("公鸡有"+cock+"只；母鸡有"+hen+"只；小鸡有"+chick+"只<br>")
+                    }
+                }
+
+            }
+        </script>
+</body>
+</html>
