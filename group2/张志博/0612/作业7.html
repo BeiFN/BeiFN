@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //菱形
+        var num_i = 0;
+        while(num_i++ < 3){
+            var num_space = 0;
+            while( num_space ++ < 3-num_i){
+                document.write("&nbsp;&nbsp;");
+            }
+            var num_j = 0;
+            while(num_j++ <num_i*2-1){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+        while(num_i -- >1){
+            var num_space = 0;
+            while(num_space  ++ < 3 - num_i){
+                document.write("&nbsp;&nbsp;")
+            }
+            var num_j = 0;
+            while(num_j ++ < num_i*2-1){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+
+
+    </script>
+</body>
+</html>
