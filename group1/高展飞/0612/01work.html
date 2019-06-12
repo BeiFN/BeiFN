@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="text"  id="num1">
+        <select  id="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text"   id="num2">
+        <button id="sum">计算</button>
+        <script  src="../libs/common.js"></script> -->
+        <input type="text"  id="num1">
+        <button id="factorial">计算</button>
+        <div id="dv" style="background-color: burlywood;width:300px;height:200px;"></div>
+    <script>
+        // 1.啥时候运算
+        // 2.运算时咋取值    元素.value获取值
+        // sum.onclick=function(){
+        //     var  a=  num1.value;
+        //     var  b=  num2.value;
+        //     var o = opt.value;
+        //     //var  res =(a,b,o);
+        //     console.log(foo(a,b,o));
+
+
+        //     // switch(o){
+        //     //     case "+":
+        //     //         console.log(Number(a)+Number(b));
+        //     //         break;
+        //     //     case "-":
+        //     //         console.log(a-b);
+        //     //         break;
+        //     //     case"*":
+        //     //         console.log(a*b);
+        //     //         break;
+        //     //     case"/":
+        //     //         console.log(a/b);
+        //     //         break;
+        //     //     case"%":
+        //     //         console.log(a%b);
+        //     //         break;
+        //     //     defualt:
+        //     //         console.log("暂不支持该运算");
+
+        //     // }
+        // }
+        //编写函数，求圆的面积
+        //    function circle(r){
+        //        return Math.PI*r*r;
+        //    }     
+
+        //    console.log(circle(2).toFixed(2));
+        //编写函数，判断一个字符串的内容是不是纯数字
+            //isNaN使用时第一步是Number()
+            // function number(str) {
+            //     return !isNaN(str);
+            // }
+            // var a = number("1");
+            // var b = number("1a");
+            // console.log(a, b);
+        //编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
+            // function sort(a,b,c){
+            //     if(a<b&&a<c){
+            //         if(b<c){
+            //             console.log(a,b,c);
+            //         }else{
+            //             console.log(a,c,b);
+            //         }
+            //     }
+            //     if(b<a&&b<c){
+            //         if(a<c){
+            //             console.log(b,a,c);
+            //         }else{
+            //             console.log(b,c,a);
+            //         }
+            //     }
+            //     if(c<a&&c<b){
+            //         if(a<b){
+            //             console.log(c,a,b);
+            //         }else{
+            //             console.log(c,b,a);
+            //         }
+            //     }
+            // }
+            // sort(2,6,4);
+        //编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        //    function randomTab(){
+        //         var num=Math.round(Math.random()*100);
+        //         return num;
+        //    }
+         //  console.log(randomTab());
+            // function print(n,m){
+            //     document.write("<table border='1'>");
+            //         for(var i=0;i<m;i++){
+            //             document.write("<tr>");
+            //                 for(var j=0;j<n;j++){
+            //                     document.write("<td>");
+            //                     document.write(Math.round(Math.random()*100));
+            //                     document.write("</td>");
+            //                 }
+            //             document.write("</tr>");
+            //         }
+            //     document.write("</table>");
+            // }
+            // print(2,3);
+        //编写一个函数，生成4位数字的验证码
+            // function four(){
+            //     for(var i=0;i<4;i++){
+            //         var num=Math.round(Math.random()*9);
+                   
+            //         document.write(""+num);
+            //     }
+            //     document.write("<br/>");
+            // }
+            // four();
+        //求m-n之间数字的和
+            // function sum(m,n){
+            //     var sum1=0;
+            //     for(var i=m;i<=n;i++){
+            //         sum1 += i;
+            //     }
+            //     return  sum1;
+            // }
+            // console.log(sum(2,3));
+        //编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。
+            // function digit(num,k){
+            //      var k_num=0;
+            //     for(var i=0;i<k;i++){
+            //         k_num=num%Math.pow(10,k);
+            //         k_num=parseInt(k_num/Math.pow(10,k-1));
+            //     }
+            //     return k_num;
+            // }
+            // console.log(digit(1234,2));
+        //编写函数计算一个数字的长度
+
+            // function long(num){
+            //     var count=0;
+            //     while(num>1){
+            //        count++;
+            //        num=num/10;
+            //     }
+            //    return count;
+            // }
+            // console.log(long(290));
+        //编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+        //比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+                // function amount(m,n){
+                    
+                //     for(var i=m;i<=n;i++){
+                //         for(var j=m;j<=n;j++){
+                            
+                //             console.log(" "+i+j);
+                //         }
+                //     }
+                //     return " "+i+j;
+                // }
+                // console.log( amount(1,5));
+        //某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+        //加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+        //第二位和第三位交换，请编写一个函数，传入原文，输出密文
+                    // function trans(num){
+                        
+                            
+                    //     var g=num%10;
+                    //     g=(g+5)%10;
+                    //     var s=parseInt(num%100/10);
+                    //     s=(s+5)%10;
+                    //     var b=parseInt(num%1000/100);
+                    //     b=(b+5)%10;
+                    //     var q=parseInt(num/1000);
+                    //     q=(q+5)%10;
+                    //     num=(" "+g+s+b+q);
+                    //     return num;
+                    // }
+                    // console.log( trans(4444));
+        //编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n
+                // function diao(num){
+                //     var sum=0;
+                //     if(num%2){
+                //         for(var i=1;i<=num;i++){
+                //             sum+=1/(2*i-1);
+                //         }
+                //     }else{
+                //         for(var i=1;i<=num;i++){
+                //             sum+=1/(2*i);
+                //         }
+                //     }
+                //     return sum;
+                // }
+                // console.log(diao(2));
+        //使用函数完成任意数字阶乘的计算
+                // function factorial(num){
+                //     var temp=1;
+                //     for(var i=1;i<=num;i++){
+                //         temp=temp*i;
+                //     }
+                //     return temp;
+                // }
+                // console.log(factorial(3));
+        //要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+               
+                // function factorial1(num){
+                //     var temp=1;
+                //     for(var i=1;i<=num;i++){
+                //         temp=temp*i;
+                //     }
+                //     return temp;
+                // }
+                // //console.log(factorial(3));
+                // factorial.onclick=function(){
+                //     var a=num1.value;
+                //    alert(factorial1(a));
+                // }
+        // 创建一个对象，表示一个学生的信息
+                // var student={name:"小明", sex:"男", hobby:"baskatball" };
+                // factorial.onclick=function (){
+                //     var a=num1.value;
+                //     while(a==student.name){
+                //         console.log(student.name);
+                //         console.log(student.sex);
+                //         console.log(student.hobby);
+                //         break;
+                //     }
+                // }
+        //div  鼠标触发
+                dv.ondblclick=function(){
+                    document.write("<textarea>");
+                    document.write("您刚刚双击了div");
+                    document.write("</textarea>");
+                }
+        //
+                
+
+                
+           
+    </script>
+
+</body>
+
+</html>
