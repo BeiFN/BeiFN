@@ -132,12 +132,12 @@
         username.addEventListener("input", inputHandler);
         function inputHandler(e) {
             if (/^[a-zA-Z0-9_-]{4,16}$/.test(username.value)) {
-                username.nextElementSibling.innerHTML="ok";
+                username.nextElementSibling.innerHTML = "ok";
                 return;
             }
-            username.nextElementSibling.innerHTML="no";
+            username.nextElementSibling.innerHTML = "no";
         }
-        
+
         //email/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
         //phone/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/
 

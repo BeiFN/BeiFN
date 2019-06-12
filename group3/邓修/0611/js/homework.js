@@ -5,7 +5,7 @@
 //     temp+=count;
 //     // console.log(count);
 // }
-// console.log(temp);
+// console.log("100以内所有偶数的和为" + temp);
 
 //打印图形
 // 直角三角形
@@ -84,7 +84,7 @@
 //     while (count++ < num) {
 //         temp *= count;
 //     }
-//     console.log(temp);
+//     console.log(num + "的阶乘为" + temp);
 //     return temp;
 // }
 // factorial(100);
@@ -96,7 +96,7 @@
 //     temp+=count;
 //     // console.log(count);
 // }
-// console.log(temp);
+// console.log("1+3+5+...+99的和为" + temp);
 
 //99乘法表
 // var count_row=0;
@@ -162,7 +162,7 @@
 //打印出1-100里所有的偶数
 // var count=0;
 // while((count+=2) <= 100){
-//     console.log(count);
+//     console.log("1+2!+3!+...+5!的值为" + count);
 // }
 
 //打印出1-100里所有的奇数
@@ -178,7 +178,7 @@
 // while(count ++ < 100){
 //     temp+=1/count*Math.pow(symbol,count-1);
 // }
-// console.log(temp);
+// console.log("1/1-1/2+1/3-1/4…..1/100的和为" + temp);
 
 //输出20-80之间能被3整除的整数，每5个一行
 // for(var count1=19,count2=0;count1 ++ < 80;){
@@ -208,7 +208,7 @@
 // var count=99;
 // while(count ++ < 199){
 //     if(count % 3 === 1 && count % 4 === 2 && count % 5 === 3){
-//         console.log(count);
+//         console.log("共" + count  + "人");
 //     }
 // }
 
@@ -216,7 +216,7 @@
 // for(var num1,num2=1;;num2++){
 //     num1=150-num2;
 //     if(num1 === num2*3+10){
-//         console.log(num1,num2);
+//         console.log("被除数是" + num1 + "," + "除数是" +num2);
 //         break;
 //     }
 // }
@@ -248,7 +248,7 @@
 //     var hen=-1;
 //     while(hen ++ < 33){
 //         if(cock * 5 + hen * 3 + (100-cock-hen)/3 === 100){
-//             console.log(cock,hen,100-cock-hen);
+//             console.log("鸡翁买" + cock + "只," + "鸡母买" + hen + "只," + "鸡雏买" + (100-cock-hen) + "只");
 //         }
 //     }
 // }
