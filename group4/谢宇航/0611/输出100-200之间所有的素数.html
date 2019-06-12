@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断质数</title>
+</head>
+<body>
+	<script>
+        //判断质数
+        function isPrime(x) {
+            if(x <= 1) return false;
+            var sqrtX = Math.floor(Math.sqrt(x));
+            for(var i = 2; i <= sqrtX; i++)
+                if(x % i == 0) return false;
+            return true;
+        }
+        //输出质数
+        for(var cont = 100; cont <= 200; cont++)
+            if(isPrime(cont)) console.log(cont);
+	</script>
+</body>
+</html>
