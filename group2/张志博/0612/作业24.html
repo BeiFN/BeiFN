@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //两个自然数相除 , 商 3 余 10, 被除数 , 除数 , 商 , 余数的和是 163, 求被除数 , 除数
+        var a = 10;
+        while(a++ <163){
+            if(a + 3 +10 + (3*a+10) ===163){
+                var b = 3*a +10;
+                document.write("除数是"+a+",被除数是"+b);
+            }
+        }
+    </script>
+</body>
+</html>
