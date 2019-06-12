@@ -1,0 +1,45 @@
+header{
+	width: 100%;
+	height: 56px;
+	background-color: #ffe300;
+}
+
+.w1209{
+	width: 1226px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.logo{
+	float: left;
+}
+
+.logo img{
+	width: 120px;
+	height: 20px;
+	margin-top: 18px;
+}
+
+.nav{
+	height: 56px;
+	float: left;
+	margin-left: 170px;
+}
+
+.nav li{
+	float: left;
+	padding: 0 24px;
+	font-size: 14px;
+	line-height: 56px;
+	height: 56px;
+	color: #282828;
+}
+
+.nav li:first-child{
+	font-weight: bold;
+}
+
+.nav li:hover{
+	background-color: #282828;
+	color: #ffe300;
+}
