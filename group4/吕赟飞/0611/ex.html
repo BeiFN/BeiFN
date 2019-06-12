@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+
+<body id="body">
+
+    <input type="text" id="num1">
+    <select id="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="num2">
+    <button id="sum">计算</button>
+
     <script src="ex.js"></script>
+    <script>
+        body.style.backgroundColor = randomRGBAColor();
+
+        sum.onclick = function () {
+            var a = num1.value;
+            var b = num2.value;
+            var o = opt.value;
+            var res = calculator(a, b, o);
+
+            console.log(res);
+        }
+
+    </script>
 </body>
+
 </html>
