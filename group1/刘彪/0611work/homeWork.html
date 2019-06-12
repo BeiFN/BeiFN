@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+// 1.案例 输出100个数字
+        // var num = 0;
+        // while(num++<100)
+        // {
+        //     console.log(num);
+
+        // }
+
+// 2.案例  打印100以内 7的倍数
+        // var num2 = 0;
+        // while(num2++<100)
+        // {
+        //     if(! (num2%7))
+        //     { 
+        //        console.log(num2);
+        //     }
+
+        // }
+
+// 3.案例  打印100以内的奇数
+        // var num3 = -1;
+        // while((num3 += 2 )<100){
+        //     console.log(num3);
+        // }
+
+// 4.案例  打印100以内所有偶数的和
+        // var num4 = 0;
+        // var sum = 0;
+        // while((num4+=2) <100){
+        //     sum+=num4;
+        // }
+        // console.log(sum);
+
+//5.1打印图形 矩形
+        // var row = 0;
+        // while(row++<5)
+        // {
+        //     var col = 0;
+        //     while(col++<10)
+        //     {
+        //         document.write("*");
+
+        //     }
+        //     document.write("<br>");
+        // }
+
+//5.2打印图形 下三角
+        // var row = 0;
+        // while(row++<5){
+        //     var col = 0;
+        //     while(col++<row){
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+// 5.3打印图形 菱形
+
+        // var row=0;
+        // while(row++ <3)
+        // {
+        //     var col=0;
+
+        //     var space=0;
+        //         while(space++<(3-row)){
+        //             document.write(" &nbsp");
+        //         }
+        //     while(col++<(2*row-1))
+        //     {
+
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+        //  var row1=3;
+        // while(row1-- >0)
+        // {
+        //     var col1=0;
+
+        //     var space1=0;
+        //         while(space1++<(3-row1)){
+        //             document.write(" &nbsp");
+        //         }
+        //     while(col1++<(2*row1-1))
+        //     {
+
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+// 5.4打印图形 等腰三角@
+        // var row = 0;
+        // while(row++ <4){
+        //     var col = 0;
+        //     var space = 0;
+        //     while(space++<(4-row)){
+        //         document.write("&nbsp &nbsp");
+        //     }
+        //     while(col++<(2*row-1)){
+        //         document.write("@");
+        //     }
+        //     document.write("<br>");
+        // }
+
+// 6.打印100–200之间所有能被3或者7整除的数
+        //  var num = 99;
+        //  while(num++ <200){
+        //    if(!(num%3)||!(num%7))
+        //    {
+        //        document.write(num+"<br>");
+        //    }
+        //  }
+
+// 7.计算5的阶乘   5!
+        // var count = 0;
+        // var amass = 1;
+        // while(count++<5){
+        //     amass*=count;
+        // }
+        // alert(amass);
+
+//8. 计算1+3+5+...+99的和
+        // var num = -1;
+        // var sum = 0;
+        // while((num+=2) <100)
+        // {
+        //     sum+=num;
+        // }
+        // alert(sum);
+
+
+//9.九九乘法表
+        // var num1 = 0;
+
+        // while (num1++ < 9) {
+        //     var num2 = 0;
+        //     while (num2++ < num1) {
+        //         document.write(num2+"*"+num1+"="+num1*num2+"&nbsp &nbsp");
+        //     }
+        //     document.write("<br>");
+        // }
+
+//10.求100-999之间的水仙花数。
+        // var num = 99;
+        // while(num++ <999)
+        // {
+        //     var ge = num%10;
+        //     var shi = parseInt( num%100/10);
+        //     var bai = parseInt( num/100);
+        //     if(Math.pow(ge,3)+Math.pow(shi,3)+Math.pow(bai,3)==num)
+        //     {
+        //         console.log(num);
+        //     }
+        // }
+
+// 11.输出100-200之间所有的素数  
+       
+        // for( var i=100;i<201;i++)
+        // {
+        //     var flag=1;
+        //     for(var j=2;j<i;j++)
+        //     {
+        //         if(i%j==0)
+        //         {
+        //             flag=0;
+        //         }
+        //     }
+        //     if(flag)
+        //     {
+        //         console.log(i);
+        //     }
+        // }
+
+//12.求s=a+aa+aaa+aaaa+….+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222 var n = 5;
+        // var num = 2;
+        // var  num2=0;
+        // var sum = 0;
+        //  for(var i=0;i<5;i++)
+        //  {
+        //      num2+=num*Math.pow(10,i);
+        //      sum+=num2;
+        //  }
+        //  alert(sum);
+
+//13.求1+2!+3!+...+10!的值
+
+        // var sum=0;
+        // for(var i=1;i<10;i++)
+        // {
+        //     var  count=1;
+        //     for(var j=1;j<=i;j++)
+        //     {
+        //         count*=j;
+        //     }
+        //     sum+=count;
+        // }
+        // alert(sum);
+
+// 14.打印出1-100里所有的偶数
+        // for(var i=2;i<=100;i+=2){
+        //    console.log(i);
+        // }
+
+//15.打印出1-100里所有的奇数
+        // for(var i=1;i<=100;i+=2){
+        //        console.log(i);
+        //     }
+
+// 16.求出1/1-1/2+1/3-1/4…..1/100的和 var i=1;  i*-1*-1
+        // var sum=0;
+        // for(var i=1;i<101;i++)
+        // {
+        //     sum+=1/i *Math.pow(-1,i+1);
+        // }
+        // alert(sum);
+
+
+// 17.输出20-80之间能被3整除的整数，每5个一行
+        // var count = 0;
+        // for (var i = 20; i <= 80; i++) {
+
+        //     if (!(i % 3)) {
+        //         document.write(i + "&nbsp");
+        //         count++;
+        //     }
+        //     if (!(count%5)) {
+        //         document.write("<br>");   
+        //     }
+        // }
+
+// 18.打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
+        // for(var i=1000;i<=2000;i++)
+        // {
+        //     if(i%400==0||i%4==0&&i%100!=0){
+        //         document.write(i+"<br>");
+        //     }
+        // }
+
+        
+// 19.操场上 100 多人排队 ,3 人一组多 1 人 ,4 人一组多 2 人 ,5 人一组多 3 人 , 共多少人
+        //  for(var i=100;i<200;i++){
+        //      if(i%3==1&&i%4==2&&i%5==3)
+        //      {
+        //          console.log(i);
+        //      }
+        //  }
+            
+// 20.两个自然数相除 , 商 3 余 10, 被除数 , 除数 , 商 , 余数的和是 163, 求被除数 , 除数
+        //     for(var i=11;i<140;i++)
+        //     {
+        //         for(var j=11;j<i;j++)
+        //         {
+        //             if(3*j+10==i&&i+j+3+10==163){
+        //                 console.log("被除数："+i+"，除数是"+j);
+        //             }
+        //         }
+        //     }
+
+
+        
+// 21.假设某人有 100,000  现金。 每经过一次路口需要进行一次交费。 交费规则为当他现金大于50,000  时每次需要交 5%.
+        // 如果现金小于等于 50,000  时每次交 5,000 。 请写一程序计算此人可以经过多少次这个路口
+        //     var count=0;
+        //     var money=100000;
+        // while(money>=0)
+        // {
+        //     if(money>50000){
+        //         money-=money*0.05;
+        //         count++;
+        //     }else if(money<=50000&&money>0){
+        //         money-=5000;
+        //         count++;
+        //     }
+        // }
+        // alert("可以通过"+count+"次路口");
+        
+//22今有鸡翁一， 值钱五； 鸡母一， 值钱三； 鸡雏三， 值钱一； 百钱买鸡百只， 问鸡翁、 母、雏各几何？
+        // var coke = -1;
+       
+        // while(coke++ <20)
+        // {
+        //     var hen = -1;
+            
+        //     while(hen++<33)
+        //     {
+        //         var chick=100-hen-coke;
+        //         if(5*coke+3*hen+chick/3==100)
+        //         {
+        //             console.log("公鸡："+coke+"母鸡："+hen+"小鸡："+chick);
+        //         }
+        //     }
+
+        // }
+            
+
+
+    </script>
+</body>
+
+</html>
