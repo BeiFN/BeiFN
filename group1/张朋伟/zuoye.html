@@ -212,14 +212,30 @@
         // 求s=a+aa+aaa+aaaa+….+aa...a的值，其中a是一个数字。
 
 
-        // var a =5;n=2//2位数
+        // var a =5;n=3//2位数
         // var i = 0,s = 0;
         // while(i++ < n){
         //     var sum = 0;
-        //     while(i-->0){
-        //     sum += Math.pow(10,i)*a;
+        //     var j = 0;
+        //     while(j++ < i){
+               
+        //     sum += Math.pow(10,j-1)*a;
+           
         //     }
         //     s+=sum;
+        // }
+        // console.log(s);
+
+
+        
+        // var n = 3, a = 5, s  = 0;
+        // for(var i = 0;i++ < n;){
+        //     var sum = 0,j = 0;
+        //     while (j++ <i){
+        //         sum += Math.pow(10,j - 1)*a
+        //     }
+        //     s +=sum;
+            
         // }
         // console.log(s);
 
@@ -314,7 +330,7 @@
         //             document.write(i+"</br>")
         //         } else {
         //             document.write(i+"&nbsp;");
-                 
+
         //         }
         //     }
 
@@ -352,10 +368,36 @@
         // }
         // 假设某人有 100,000  现金。 每经过一次路口需要进行一次交费。 交费规则为当他现金大于50,000 
         // 时每次需要交 5%如果现金小于等于 50,000  时每次交 5,000 。 请写一程序计算此人可以经过多少次这个路口
+
+
+        // var cash = 100000;
+        // var count = 0;
+        // while (true) {
+        //     cash = cash * 0.95;
+        //     count++;
+        //     if(cash <= 50000){
+        //         break;
+        //     }
+        // }
+        // while(true){
+
+        //     cash -= 5000;
+        //     if(cash < 0){
+        //         break;
+        //     }else{
+        //         count++;
+        //     }
+        // }
+        // console.log(count);
+
+
+
+
+
         // 《张丘建算经》 成书于公元 5  世纪， 作者是北魏人． 书中最后一道题堪称亮点， 通常也被称为 
         //“ 百钱买百鸡 ” 问题，民间则流传着县令考问神童的佳话书中原文如下：今有鸡翁一， 值钱五； 鸡母一， 值钱三；
         // 鸡雏三， 值钱一； 百钱买鸡百只， 问鸡翁、 母、雏各几何？
-        
+
         // var cock = -1;
         // while(cock++ < 20){
         //     var hen = -1;
@@ -364,11 +406,9 @@
         //        if(cock * 5 + hen * 3 + chick/3 === 100) {
         //          console.log(cock,hen,chick);
         //        }
-               
+
         //     }
         // }
-
-           
     </script>
 
 </body>
