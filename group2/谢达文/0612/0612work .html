@@ -258,6 +258,23 @@
             
         // }
 
+
+        // // 两个自然数相除 , 商 3 余 10, 被除数 , 除数 , 商 , 余数的和是 163, 求被除数 , 除数 
+        var chushu;
+        var beichushu;
+        for(beichushu = 0; beichushu++ < 163;)
+        {   
+            for(chushu = 0;chushu < beichushu;chushu++)
+            {
+                if(163 == beichushu + chushu +3 +10 && chushu * 3 + 10 == beichushu)
+           {
+               document.write(beichushu + "&nbsp"+chushu);
+               document.write("<br>");
+           } 
+            }
+           
+        }
+        
         // 假设某人有 100,000  现金。 每经过一次路口需要进行一次交费。 交费规则为当他现金大于50,000  时每次需要交 5%
         // 如果现金小于等于 50,000  时每次交 5,000 。 请写一程序计算此人可以经过多少次这个路口
     //    var count = 0;
