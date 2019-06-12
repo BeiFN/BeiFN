@@ -48,13 +48,7 @@
            case 9: console.log('A');break;
            case 8: console.log('B'); break;
            case 7: console.log('C');break;
-           case 6:
-           case 5:
-           case 4:
-           case 3:
-           case 2:
-           case 1:
-           case 0: console.log('D');  default: break;
+           default: console.log('D');
         }
        //根据输入的数字，返回星期几
        var a=10;
@@ -70,6 +64,7 @@
        }
        //根据输入月份，输出每月天数
        var month=5;
+       var year=2019;
        switch(month){
                 case 1:
 				case 3:
@@ -77,12 +72,13 @@
 				case 7:
 				case 8:
 				case 10:
-				case 12: console.log(31);
-				case 2: if(year%400==0||(year%100!=0&&year%4==0))
-                        console.log(29);					
-						else
-                        console.log(28);
-						
+				case 12: console.log(31);break;
+				case 2: if(year%400==0||(year%100!=0&&year%4==0)){
+                        console.log(29);
+                        }					
+						else{
+                        console.log(28);break;
+                    }
 				default:console.log(30);
 			}
     //判断一个整数，属于哪个范围：大于0；小于0；等于0
@@ -106,7 +102,7 @@
     var height=170;
     var weight=100;
     var temp=(height-108)*2;
-    if(weight-temp>=10 ||temp-weight<=10){
+    if(weight-temp>=10 && temp-weight<=10){
         console.log("体重合适");
     }
     else{
@@ -157,6 +153,7 @@ switch(x){
     //k=-98    res=-200
     //k=-98   res=-200
     //k=-99   res=-200
+    
    
     </script>
 </body>
