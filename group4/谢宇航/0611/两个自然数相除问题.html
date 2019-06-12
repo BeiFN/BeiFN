@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两个自然数相除 , 商 3 余 10, 被除数 , 除数 , 商 , 余数的和是 163, 求被除数 , 除数</title>
+</head>
+<body>
+	<script>
+		// 两个自然数相除 , 商 3 余 10, 被除数 , 除数 , 商 , 余数的和是 163, 求被除数 , 除数
+		// 除数 divisor
+		// 被除数 dividend
+		for(var divisor = 1; divisor <= 50; divisor++){
+			for(var dividend = 1; dividend <= 150; dividend++){
+				if(Math.floor(dividend / divisor) === 3 && dividend % divisor === 10 && (divisor + dividend === 150)) 
+					document.write("被除数为" + dividend + "&nbsp;&nbsp;&nbsp;&nbsp;除数为" + divisor);
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求100-999之间的水仙花数</title>
+</head>
+<body>
+	<script>
+		var ge, shi, bai;
+		for(var num = 100; num < 1000; num++){
+			ge = num % 10;
+			shi = Math.floor(num % 100 / 10);
+			bai = Math.floor(num / 100);
+			if(Math.pow(ge, 3) + Math.pow(shi, 3) + Math.pow(bai, 3) === num)
+				console.log(num);
+		}
+	</script>
+</body>
+</html>
