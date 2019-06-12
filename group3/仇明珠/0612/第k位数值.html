@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function digit(num, k){
+          if(num/Math.pow(10,k-1)===0){
+              return 0;
+          }else{
+              return (parseInt((num/Math.pow(10,k-1)))%10);
+          }
+      }
+      console.log(digit(34550,3));
+    
+    </script>
+</body>
+</html>

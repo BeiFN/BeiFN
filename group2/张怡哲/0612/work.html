@@ -235,35 +235,34 @@
         // }
 
         //20、
-        // var money=100000;
-        // for(var i=0;true;){
-        //     if(money>50000){
-        //         money=money-0.05*money;
-        //     }else{
-        //         money-=5000;
-        //     }
-        //     if(money<=0){
-        //         break;
-        //     }else{
-        //         i++;
-        //     }
-        // }
-        // console.log(i);
-
-        //21、
-        var cock;
-        var hen;
-        var chick;
-        for(var i=0;i++<20;){
-            for(var j=0;j++<33;){
-                if(5*i+3*j+(100-i-j)/3===100){
-                    cock=i;
-                    hen=j;
-                    chick=100-cock-hen;
-                    console.log(cock,hen,chick);
-                }
+        var money=100000;
+        for(var i=0;true;){
+            if(money>50000){
+                money*=0.95;
+            }else{
+                money-=5000;
+            }
+            i++;
+            if(money<5000){
+                break;
             }
         }
+        console.log(i);
+
+        //21、
+        // var cock;
+        // var hen;
+        // var chick;
+        // for(var i=0;i++<20;){
+        //     for(var j=0;j++<33;){
+        //         if(5*i+3*j+(100-i-j)/3===100){
+        //             cock=i;
+        //             hen=j;
+        //             chick=100-cock-hen;
+        //             console.log(cock,hen,chick);
+        //         }
+        //     }
+        // }
     </script>
 </body>
 </html>
