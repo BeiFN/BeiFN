@@ -2,7 +2,7 @@ header{
 	width: 100%;
 	height: 56px;
 	background-color: #ffe300;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .w1209{
@@ -27,7 +27,7 @@ header{
 	margin-left: 170px;
 }
 
-.nav li{
+.nav>li{
 	float: left;
 	padding: 0 24px;
 	font-size: 14px;
@@ -35,13 +35,14 @@ header{
 	height: 56px;
 	color: #282828;
 	cursor: pointer;
+	position: relative;
 }
 
-.nav li:first-child{
+.nav>li:first-child{
 	font-weight: bold;
 }
 
-.nav li:hover{
+.nav>li:hover{
 	background-color: #282828;
 	color: #ffe300;
 }
@@ -54,6 +55,139 @@ header{
 .nav li a{
 	display: block;
 	height: 100%;
+}
+
+.find:hover .find-hide{
+	display: block;
+}
+
+.pos:hover .side-hide{
+	display: block;
+}
+
+.activity:hover .side-hide{
+	display: block;
+}
+
+.active1:hover .side-hide{
+	display: block;
+}
+
+.course:hover .side-hide{
+	display: block;
+}
+
+.active2:hover .side-hide{
+	display: block;
+}
+
+.find-hide{
+	position: absolute;
+	top: 56px;
+	left: 0;
+	background-color: #fff;
+	z-index: 9999;
+	width: 664px;
+	height: 144px;
+	border-radius: 0 0 5px 5px;
+	overflow: hidden;
+	display: none;
+}
+
+.find-top{
+	box-sizing: border-box;
+	width: 664px;
+	height: 93px;
+	border-bottom: 1px solid #eaeaea;
+    line-height: 0;
+    overflow: hidden;
+    padding: 11px 17px 17px;
+}
+
+.find-top li{
+	width: 90px;
+	height: 28px;
+	margin-top: 4px;
+	padding: 0;
+	line-height: 28px;
+	position: relative;
+	float: left;
+	text-align: center;
+	font-size: 14px;
+}
+
+.find-top li a{
+	display: inline-block;
+	min-width: 42px;
+	height: 28px;
+	text-align: center;
+	line-height: 28px;
+	margin: 0 6px;
+	padding: 0 7px;
+	color: #444;
+	border-radius: 5px;
+}
+
+.find-top li i{
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: #ddd;
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.find-top li a:hover{
+	background-color: #ffe300;
+}
+
+.find-bottom{
+	padding: 0 30px;
+	color: #444;
+	line-height: 50px;
+}
+
+.find-bottom a{
+	display: inline-block;
+	margin-right: 40px;
+	padding-right: 15px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou.svg) right no-repeat;
+    background-size: 10px 10px;
+    float: left;
+}
+
+.find-bottom a:hover{
+	color: #d36f16;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou2.svg) right no-repeat;
+    background-size: 10px 10px;
+}
+
+.side-hide{
+	width: 152px;
+	border-radius: 0 0 5px 5px;
+	background-color: #fff;
+	padding: 6px 0;
+	position: absolute;
+	top: 56px;
+	left: 0;
+	z-index: 999;
+	display: none;
+}
+
+.side-hide a{
+	box-sizing: border-box;
+	padding-left: 20px;
+	display: inline-block;
+	font-size: 14px;
+	color: #444;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+}
+
+.side-hide a:hover{
+	background-color: #ffe300;
 }
 
 .active1 i{
@@ -224,7 +358,7 @@ header{
 	left: 30px;
 	top: 50%;
 	transform: translateY(-50%);
-	z-index: 9999;
+	z-index: 999;
 	background: transparent no-repeat center;
 }
 
@@ -236,7 +370,7 @@ header{
 	right: 30px;
 	top: 50%;
 	transform: translateY(-50%);
-	z-index: 9999;
+	z-index: 999;
 	background: transparent no-repeat center;
 }
 
