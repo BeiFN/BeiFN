@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .public {
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 100px;
+            color: #333333;
+            float: left;
+            margin-bottom: 50px;
+        }
+        
+        #click {
+            width: 200px;
+            background-color: aqua;
+            font-size: 20px;
+            margin-right: 50px;
+        }
+        
+        #tip {
+            width: 500px;
+        }
+        
+        #tip2 {
+            width: 500px;
+            margin-left: 50px;
+        }
+        
+        textarea {
+            display: block;
+            clear: left;
+            float: left;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="click" class="public">DIV</div>
+    <div id="tip" class="public"></div>
+    <textarea id="textarea" cols="30" rows="10"></textarea>
+    <div id="tip2" class="public"></div>
+
+    <script>
+        var div = document.getElementById("click");
+        var tip = document.getElementById("tip");
+        var tip2 = document.getElementById("tip2");
+        var textarea = document.getElementById("textarea");
+
+        div.addEventListener("dblclick", clickHandler);
+        textarea.addEventListener("change", changeHandler);
+
+        function clickHandler() {
+            tip.innerHTML = "您刚刚双击了DIV，触发了dblclick事件";
+        }
+
+        function changeHandler() {
+            tip2.innerHTML = "输入框内容被改变，触发了onchange事件";
+        }
+    </script>
+</body>
+
+</html>
