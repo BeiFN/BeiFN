@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+</head>
+<body>
+    <input type="text" id="i1"></input>
+    <select id="suan">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+        <option>%</option>
+    </select>
+    <input type="text" id="i2">
+    <input type="button" id="tijiao" value="提交">
+
+    <br/>
+
+
+    <input type="text" id="i3" placeholder="输入需要阶乘的数字">
+    <input type="button" id="jisuan" value="点击进行计算">
+
+    <!-- <script src="js/test.js"></script> -->
+    <script>
+    function calculator(a,b,o) {
+    switch(o){
+        // 因为加法他会当成string 结果就成了ab
+        case "+":return Number(a)+Number(b);break;
+        case "-":return a-b;break;
+        case "*":return a*b;break;
+        case "/":return a/b;break;
+        case "%":return a%b;break;
+        }
+    }
+    // 编写一个函数，计算两个数字的和差积商
+        tijiao.onclick=function(){
+            var a = i1.value;
+            var b = i2.value;
+            var o = suan.value;
+            var res = calculator(a,b,o)
+            alert(res); 
+        }
+    
+    // 编写函数，求圆的面积
+        var banjing = 2;
+        function circular(r){
+            console.log(Math.PI*r*r);
+        }
+        circular(banjing)
+
+    // 编写函数，判断一个字符串的内容是不是纯数字
+        var num = "123";
+        function isNumber(num){
+            console.log(num+"这个数字为纯数字： "+!isNaN(num));
+        }
+        isNumber(num)
+    //编写一个函数，计算三个数字的大小，按从小到大的顺序输出
+        
+        // function sort(a,b,c){
+        //     if(a>b){
+        //         if(b>c){
+        //             console.log(c+","+b+","+a)
+        //             // c>b  c>a a>b
+        //         }else if(c>a){
+        //             console.log(b+","+a+","+c)
+        //         }else{
+        //             console.log(b+","+c+","+a)
+        //         }
+        //     }else{
+        //         // b>a
+        //        if(a>c){
+        //            console.log(c+","+a+","+b);
+        //         // a<c 
+        //        }else if(b>c){
+        //            console.log(a+","+c+","+b)
+        //        }else{
+        //            console.log(a+","+b+","+c)
+        //        }
+        //     }
+        // }
+        function sort(a,b,c){
+            if(a>b&&a>c){
+                if(b>c){
+                    console.log(c+","+b+","+a);
+                }else{
+                    console.log(b+","+c+","+a);
+                }
+            }
+            if(b>a&&b>c){
+                if(a>c){
+                    console.log(c+","+a+","+b);
+                }else{
+                    console.log(a+","+c+","+b);
+                }
+            }
+            if(c>a&&c>b){
+                if(a>b){
+                    console.log(b+","+a+","+c);
+                }else{
+                    console.log(a+","+b+","+c)
+                }
+            }
+        }
+        sort(223,435,423);
+
+        // 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        function createRandom(n,m){
+            document.write("<table style='border:1px solid black;border-collapse:collapse;'>")
+            for(var i=0;i++<n;){
+                document.write("<tr>")
+                for(var j = 0;j++<m;){
+                    var res = parseInt(Math.random()*101)
+                    document.write("<td style='border:1px solid black'>"+res+"</td>")
+                }
+                document.write("</tr>")
+            }
+            document.write("</table>")
+        }
+        createRandom(10,2)
+
+        // 编写一个函数，生成4位数字的验证码 1000-9999 0 8999
+        function yanZheng(){
+          var res = parseInt(Math.random()*9000+1000);
+          return res;
+            // alert(res)
+        }
+        var res = yanZheng();
+        console.log("四位验证码是"+res);
+
+
+        // 求m-n之间数字的和
+        function getSum(m,n){
+            var sum = 0;
+            for(var i=m;i<=n;i++){
+                sum+=i;
+            }
+            // return sum;
+            console.log(m+"到"+n+"之间数字的和是"+sum);
+        }
+        getSum(1,3);
+
+        //编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，
+        //如果num位数不足k位则返回0。 1234   %10/1   %100/10  %1000/100   13 
+        function digit(num,k){
+            var tmp = parseInt(num%(Math.pow(10,k))/(Math.pow(10,k-1)))
+            //10以内的数字单独判断
+            if(num<10&&k>1){
+                return 0;
+            // 10以上的数字正常判断
+            }else if(num>=10){
+                if(tmp>10){
+                    return 0;
+                }else{
+                    return tmp;
+                }
+            }
+        }
+         var res = digit(123,4)
+         console.log(res)
+
+
+        //  编写函数计算一个数字的长度
+        function numLength(num){
+            //1354 /10 /10 /10 /10
+            var length = 0;
+            for(var i = 1;num>1;i++){
+                num /=10;
+                length++;
+            }
+            return length;
+        }
+        var num = 12312312124;
+        var length = numLength(num)
+        console.log(num+"的长度是"+length)
+
+
+        // 编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+        // 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+        function odd(m,n){
+            //放置用户输入的数字是前一个大后一小的类型
+            if(m>n){
+                var t = m;
+                m = n;
+                n = t;
+            }
+            for(var i = m; i <= n;i++){
+                for(var j=m;j<=n;j++){
+                    //末尾数是奇数
+                    if(j%2){
+                        if(i===j) continue                    
+                        console.log(""+i+j)
+                    }
+                }
+            }
+        }
+        odd(2,4)
+
+//       某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+//   加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+//   第二位和第三位交换，请编写一个函数，传入原文，输出密文
+        function password(num){  //1237
+            var n1 = num%10;
+            var n2 = parseInt(num%100/10)
+            var n3 = parseInt(num%1000/100)
+            var n4 = parseInt(num/1000)
+            // console.log(n1+","+n2+n3+n4)
+            n1 = (n1+5)%10
+            n2 = (n2+5)%10
+            n3 = (n3+5)%10
+            n4 = (n4+5)%10
+            // console.log()
+            // 这样就把顺序倒过来了 
+            console.log(""+n1+n2+n3+n4)
+        }
+        password(1234)  //6 7 8 9   9 8 7 6
+
+
+        // 编写一个函数，输入n为偶数时，
+        // 调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n
+        function sum(n){
+            if(n<1){console.log("您输入的数字有误")}
+            var sum = 0;
+            if(n%2){//奇数
+                for(var i = 0;i++<n;){
+                    if(i%2){
+                        sum += Math.pow(i,-1)
+                    }
+                }
+            }else{ //偶数
+                for(var i = 0;i++<n;){
+                    if(!(i%2)){
+                        sum += Math.pow(i,-1)
+                    }
+                }
+            }
+            console.log(sum);
+        }
+        sum(3)
+
+
+        // 使用函数完成任意数字阶乘的计算  3! 1*2*3
+        function jiecheng(num){
+            var ji = 1;
+            for(var i =0;i++<num;){
+                ji*=i;
+            }
+            return ji;
+        }
+        var res = jiecheng(4);
+        console.log(res);
+        
+
+        // 要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+        jisuan.onclick=function(){
+            var a = i3.value;
+            var res = jiecheng(a);
+            alert(res)
+        }
+
+        // 创建一个对象，表示一个学生的信息
+        var student = {"name":"张三","age":18,"sex":"男"}
+        console.log(student)
+
+
+    </script>
+</body>
+</html>
