@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button id="btn">更换颜色</button>
+    <br>
+    <input type="text" id="num1" value="">
+    <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="num2" value="">
+    <br>
+    <button id="btn1">计算</button>
+    <script>
+        // function randomBtnColor(){
+        //     var r=Math.round(Math.random()*255);
+        //     var g=Math.round(Math.random()*255);
+        //     var b=Math.round(Math.random()*255);
+        //     var randomColor="rgb("+r+","+g+","+b+")";
+        //     return randomColor;
+        // }
+        // btn.onclick=function(){
+
+        //     body.style.backgroundColor=randomBtnColor();
+        // }
+
+        // function randomBtnColor(){
+        //     var r=Math.round(Math.random()*255);
+        //     var g=Math.round(Math.random()*255);
+        //     var b=Math.round(Math.random()*255);
+        //     var randomColor="rgb("+r+","+g+","+b+")"
+        //     return randomColor;
+        // }
+        // btn.onclick=function(){
+        //     body.style.backgroundColor=randomBtnColor();
+        // }
+
+        function randomBtnColor(){
+            var r=Math.round(Math.random()*255);
+            var g=Math.round(Math.random()*255);
+            var b=Math.round(Math.random()*255);
+            var randomColor="rgb("+r+","+g+","+b+")";
+            return randomColor;
+        }
+        body.style.backgroundColor=randomBtnColor();
+        btn.onclick=function(){
+            body.style.backgroundColor=randomBtnColor();
+        }
+
+        // function caculator(a,o,b){
+        //     switch(o){
+        //         case "+":
+        //             return Number(a)+Number(b);
+        //             break;
+        //         case "-":
+        //             return a-b;
+        //             break;
+        //         case "*":
+        //             return a*b;
+        //             break;
+        //         case "/":
+        //             return a/b;
+        //             break;
+        //     }
+        // }
+        // btn1.onclick=function(){
+        //     var a=num1.value;
+        //     var b=num2.value;
+        //     var operator=op.value;
+        //     alert(caculator(a,operator,b));
+        // }
+
+        // function caculator(a,o,b){
+        //     switch(o){
+        //         case "+":
+        //             return Number(a)+Number(b);
+        //             break;
+        //         case "-":
+        //             return a-b;
+        //             break;
+        //         case "*":
+        //             return a*b;
+        //             break;
+        //         case "/":
+        //             return a/b;
+        //             break;
+        //     }
+        // }
+        // btn1.onclick=function(){
+        //     var a=num1.value;
+        //     var b=num2.value;
+        //     var operator=op.value;
+        //     alert(caculator(a,operator,b));
+        // }
+
+        // function caculator(a,o,b){
+        //     switch(o){
+        //         case "+":
+        //             return Number(a)+Number(b);
+        //             break;
+        //         case "-":
+        //             return a-b;
+        //             break;
+        //         case "*":
+        //             return a*b;
+        //             break;
+        //         case "/":
+        //             return a/b;
+        //             break;
+        //     }
+        // }
+        // btn1.onclick=function(){
+        //     var a=num1.value;
+        //     var b=num2.value;
+        //     var operator=op.value;
+        //     alert(caculator(a,operator,b));
+        // }
+    </script>
+</body>
+</html>

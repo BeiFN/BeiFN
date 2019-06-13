@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+        #mouse{
+            width: 300px;
+            height: 200px;
+            background-color: deepskyblue;
+            border: 1px solid #000;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 200px;
+            margin: 100px auto;
+        }
+        #keybord{
+            display: block;
+            width: 300px;
+            height: 200px;
+            overflow: scroll;
+            resize: none;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要求：页面输入任意数字，点击按钮后计算该数字的阶乘 -->
+    <!-- <input id="num" type="text" placeholder="请输入数字">
+    <button id="cal">计算阶乘</button> -->
+
+    <!-- 请使用鼠标操作DIV触发事件 -->
+        <!-- <div id="mouse">DIV</div> -->
+
+    <!-- 请使用键盘操作输入框触发事件 -->
+        <!-- <textarea id="keybord" cols="30" rows="10">ACCCC</textarea> -->
+
+    <script src="js/homework.js"></script>
+    <script src="../libs/public.js"></script>
+    <script>
+
+        //编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        // function table(n, m) {
+        //     for (var i = 0; i < n; i++) {
+        //         for (var j = 0; j < m; j++) {
+        //             document.write(randomNum(0, 100) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");//调用公共的生成随机数函数
+        //         }
+        //         document.write("<br/>");
+        //     }
+        // }
+        // table(5, 6);
+
+        //编写一个函数，生成4位数字的验证码
+        // function verificationCode(){
+        //     for(var temp="",i=0; i<4; i++){
+        //         temp+=randomNum(0,9);
+        //     }
+        //     return temp;
+        // }
+        // console.log(verificationCode());
+
+        //要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+        // cal.onclick=function(){
+        //     alert(factorial(num.value));
+        // }
+
+        //请使用鼠标操作DIV触发事件
+        // mouse.ondblclick=function(){
+        //     // alert("双击");
+        //     mouse.style.width="600px";
+        //     mouse.style.backgroundColor="white";
+        //     mouse.innerHTML="您刚刚双击了DIV，触发了dblclick事件";
+        // }
+
+        //请使用键盘操作输入框触发事件
+        // keybord.onchange=function(){
+        //     // alert("已经改变");
+        //     keybord.style.width="600px";
+        //     keybord.style.textAlign="center";
+        //     keybord.style.lineHeight="200px";
+        //     keybord.value="输入框内容被改变，触发了onchange事件";
+        //     keybord.style.overflow="visible";
+        // }
+    </script>
+</body>
+
+</html>
