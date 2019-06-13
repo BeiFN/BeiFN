@@ -165,6 +165,7 @@ header{
 
 .side-hide{
 	width: 152px;
+	border-radius: 0 0 5px 5px;
 	background-color: #fff;
 	padding: 6px 0;
 	position: absolute;
@@ -188,20 +189,6 @@ header{
 .side-hide a:hover{
 	background-color: #ffe300;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .active1 i{
 	height: 18px;
