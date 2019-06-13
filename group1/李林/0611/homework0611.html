@@ -36,12 +36,10 @@
 
         //99乘法表
         var mul = 0;
-        var coount2 = 0;
-        
-        for(i = 1; i < 10;i ++){
-            for(j = 1; j < 10; j++){
+         for(i = 0; i < 10;i ++){
+            for(j = 1; j <= i; j++){
              mul=i*j;
-            document.write(i+"X"+j+ "="+mul+"    ");
+            document.write(j+"X"+i+ "="+mul+"    ");
             
             }   
             document.write("<br>");
@@ -101,7 +99,7 @@
             }
         }
 
-        求出1/1-1/2+1/3-1/4…..1/100的和 
+        // 求出1/1-1/2+1/3-1/4…..1/100的和 
        
         var symbol = 1;
         var sum = 0;
@@ -185,26 +183,12 @@
     while(cock ++ < 20){
         var hen = 0;
         while(hen ++ < 33){
-            if(cock * 5 + hen * 3 + chick * 1 / 3 === 100 && chick + cock + hen === 100){
-              console.log(cock+"  "+hen+"  "+chick);
+            if(cock * 5 + hen * 3 + chick / 3 === 100 && chick + cock + hen === 100){
+                console.log(cock+"  "+hen+"  "+chick);
             }
         }
         }
      
-
-
-
-
-  
-
-
-
-           
-
-       
-       
-    
-      
-    </script>
+       </script>
 </body>
 </html>

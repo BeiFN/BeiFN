@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随堂代码</title>
+</head>
+<body>
+    <script>
+        // 语句;
+            // 关键字 + () + {}
+            // 关键字 : 表明语句用途;
+            // () 条件 : 布尔值;
+            // {} 作用 : 写代码; 一组代码放在大括号之中; 
+
+            // 配合 else 和 else if 两组关键字实现复杂功能;
+
+            // 1. 非是既否;  是否是闰年  =>  if else  
+            // if(true){
+            // }else{
+            // }     
+
+            // 单分支结构;
+
+            // 2. 多分支结构;适用判断条件为范围
+            
+            // 多分支范围 ;
+            // var score = 80;
+            // if(score >= 90 && score <= 100){
+            //       alert("成绩为A")
+            // }else if( score >= 70 && score < 90){
+            //       alert("成绩为B");
+            // }else if( score >= 60 && score < 70){
+            //       alert("成绩为C");
+            // }else{
+            //       alert("成绩为D");
+            // }
+
+            // 多分支结构 => switch;适用判断条件为固定值
+            // 判定每月有多少天;
+            // var month = 1;
+            // var year = 9012;
+
+            // switch(month){
+            //       case 1:
+            //             alert("1月有31天");
+            //             break;
+            //       case 3:
+            //             alert("3月有31天");
+            //             break;
+            //       case 5:
+            //             alert("5月有31天");
+            //             break;
+            //       case 7:
+            //             alert("7月有31天");
+            //             break;
+            //       case 8:
+            //             alert("8月有31天");
+            //             break;
+            //       case 10:
+            //             alert("10月有31天");
+            //             break;
+            //       case 12:
+            //             alert("12月有31天");
+            //             break;
+            // }
+
+            // switch 特性 :
+
+            // 特性1 :
+            // 如果switch条件满足了某个case，然后我们的switch会继续向下执行下面所有的条件代码;
+            // 穿透特性;
+
+            // 阻止穿透 : break;
+
+            // 什么情况下选择switch 而不选择 else if;
+            // 条件必须是具体值 , 而不能是范围。 推荐使用 switch ;
+
+
+            // 特性2:
+            // 小括号里的条件, 和case的比对是绝对比对 === ,如果数据类型不等那么不会继续比对了;
+            
+
+            // 根据一个数字日期，判断这个日期是这一年的第几天
+            //例如： "20160211"，计算后结果为42
+            
+            // var date = string % 100;
+            // var month = parseInt(string % 10000 / 100);
+            // var year = parseInt(string / 10000);
+            // var dateForFeb = 28;
+            // // 2月总天数 (dateForFeb)
+            // if(year % 400 === 0 || year % 4 === 0 && year % 100 !== 0){
+            //       dateForFeb = 29;
+            // }else{
+            //       dateForFeb = 28;
+            // }
+            // switch(month){
+            //       case 1:
+            //             alert("经过了" + date + "天")
+            //             break;
+            //       case 2:
+            //             alert("经过了" + (date + 31) + "天");
+            //             break;
+            //       case 3:
+            //             alert("经过了" + (date + dateForFeb + 31 ) + "天");
+            //             break;
+            //       case 4:
+            //             alert("经过了" + (date + dateForFeb + 62 ) + "天");
+            //             break;
+            //       case 5:
+            //             alert("经过了" + (date + dateForFeb + 92 ) + "天");
+            //             break;
+            //       case 6:
+            //             alert("经过了" + (date + dateForFeb + 123 ) + "天");
+            //             break;
+            //       case 7:
+            //             alert("经过了" + (date + dateForFeb + 153 ) + "天");
+            //             break;
+            //       case 8:
+            //             alert("经过了" + (date + dateForFeb + 184 ) + "天");
+            //             break;
+            //       case 9:
+            //             alert("经过了" + (date + dateForFeb + 215 ) + "天");
+            //             break;
+            //       case 10:
+            //             alert("经过了" + (date + dateForFeb + 245 ) + "天");
+            //             break;
+            //       case 11:
+            //             alert("经过了" + (date + dateForFeb + 276 ) + "天");
+            //             break;                        
+            //       case 12:
+            //             alert("经过了" + (date + dateForFeb + 306 ) + "天");
+            //             break;                     
+            // }
+
+
+
+            // 循环结构: 多次重复执行某段程序的时候，让计算机帮忙执行重复多次的某段代码 
+            // 1.while(){}    2. do{}while(){}   3. for(){}
+
+            // 死循环; 没有结束条件
+            // while(true){
+            //       console.log(1);
+            // }
+            
+            // 活循环;有结束标志性语句
+
+            // var count = 0;
+            // while(count < 100){
+            //       // 重复执行的代码;
+            //       count ++;
+            //       // console.log(count);
+            //       document.write("Hello World<br>");
+            // }
+
+            // while(count++ < 10){
+            //       // 重复执行的代码;
+            //       // count ++;
+            //       console.log(count);
+            //       // document.write("Hello World<br>");
+            // }
+
+             // 1. 循环执行次数 ; 2. 循环内部操作;
+            
+            // 控制台断点;Sources
+          
+
+            // 打印1~100所有的偶数;
+            
+            // 穷举 ; 列出所有可能情况
+            // var count = 0;
+            // while(count ++ < 100){
+            //       // console.log(count) ;// 1 ~ 100;
+            //       // if(count % 2 == 0){
+            //       //       console.log(count)
+            //       // }
+            //       //优化
+            //       if(!(count % 2)){
+            //             console.log(count)
+            //       }
+            // }  
+
+            // 算法;
+            // var count = 0;
+            // while((count += 2) < 100 ){
+            //       console.log(count);
+            // }
+
+            // 测试程序性能;
+            // console.time("任意字符串");//测试代码段之前使用
+            // console.timeEnd("和前面字符串相同");//测试代码段之后使用
+
+            // console.time("qiong");
+            // var count = 0;
+            // while(count ++ < 100){
+            //       // console.log(count) ;// 1 ~ 100;
+            //       // if(count % 2 == 0){
+            //       //       console.log(count)
+            //       // }
+            //       //优化
+            //       if(!(count % 2)){
+            //             console.log(count)
+            //       }
+            // }  
+            // console.timeEnd("qiong");
+            
+
+            // console.time("suan");
+            // var count2 = 0;
+            // while((count2 += 2) < 100 ){
+            //       console.log(count2);
+            // }
+            // console.timeEnd("suan")
+
+
+            // var count = -1;
+            // // while( count ++ < 100){
+            // //       if(count % 2){
+            // //             console.log(count);
+            // //       }
+            // // }
+            // while( (count += 2 )< 100){
+            //     console.log(count);
+            // }
+
+
+            // 容器 ;
+            // 1 ~ 100 所有整数的和;累加
+            // var temp = 0;
+            // while(count ++ < 100){
+            //       temp += count;
+            // }
+            // console.log(temp);
+
+            // 2. 计算 1~100 之间所有7 的倍数的和;
+            // var count = 0;
+            // var temp = 0;
+            // while(count++ < 100){
+            //       if(count % 7 === 0){
+            //             temp += count;
+            //       }
+            // }
+            // console.log(temp);
+
+
+            // 水仙花数; 自恋数;
+            // 三位数;  123 => abc    a³ + b³ + c³ = abc 
+            
+            // var count = 99;
+            // var num = 0;
+            // while(count ++ < 999){
+            //       // console.log(count);
+            //       var ge = count % 10;
+            //       var shi = parseInt(count % 100 / 10);
+            //       var bai = parseInt(count / 100) ; 
+            //       if(ge * ge * ge + shi * shi * shi + bai * bai * bai === count){
+            //             console.log(count);
+            //       }
+            // }
+            // 水仙花数太丑怎么办 ? 
+
+            // n 次方; 
+            // Math.pow(num , fang);
+
+            // 执行次数;
+            // var count = 0;
+            // while(count ++ < 10){
+            //       // 错误示范;
+            //       var count = 0;
+            //       while(count ++ < 10){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+            // 1. 同样的变量只能存在一个变量;
+            // 2. 循环嵌套的时候会一个循环一个循环的执行;先执行内层循环
+
+            // var count_row = 0;
+            // while(count_row ++ < 10){
+            //       // 正确示范;
+            //       var count_col = 0;
+            //       while(count_col ++ < 10){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+
+            // 直角三角形 ;
+
+            // 控制了每次打印星星的数量;
+
+            // var count_row = 0;
+            // while(count_row ++ < 10){
+            //       // 错误示范;
+            //       // ------------打印星星部分start--------------------
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+      
+
+            // 打印等腰三角形
+
+            // var count_row = 0;
+            // while(count_row ++ < 5){
+
+            //       // 1    1 
+            //       // 3    2 
+            //       // 5    3
+            //       // 7    4 
+            //       // 9    5
+            //       // 11   2 * n - 1;
+            //       var count_space = 0;
+            //       while(count_space++ < 5 - count_row){
+            //             document.write("&nbsp;&nbsp;");
+            //       }
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row * 2 - 1){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+
+            // 打印菱形;
+            // var count_row = 0;
+            // while(count_row ++ < 5){
+            //       var count_space = 0;
+            //       while(count_space++ < 5 - count_row){
+            //             document.write("&nbsp;&nbsp;");
+            //       }
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row * 2 - 1){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+            // count_row -= 1;
+            // while(count_row -- > 1){
+            //       var count_space = 0;
+            //       while(count_space++ < 5 - count_row){
+            //             document.write("&nbsp;&nbsp;");
+            //       }
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row * 2 - 1){
+            //             document.write("✡");
+            //       }
+            //       document.write("<br>");
+            // }
+
+
+            // 空心菱形;
+
+            // var count_row = 0;
+            // while(count_row ++ < 5){
+            //       var count_space = 0;
+            //       while(count_space++ < 5 - count_row){
+            //             document.write("&nbsp;&nbsp;");
+            //       }
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row * 2 - 1){  // 5 4 3 2 1 
+            //             // 分清楚开头和结尾;
+            //             if(count_col === 1 || count_col === count_row * 2 - 1){
+            //                   document.write("✡");
+            //             }else{
+            //                   document.write("&nbsp;&nbsp;")
+            //             }
+            //       }
+            //       document.write("<br>");
+            // }
+            // count_row -= 1;
+            // while(count_row -- > 1){
+            //       var count_space = 0;
+            //       while(count_space++ < 5 - count_row){
+            //             document.write("&nbsp;&nbsp;");
+            //       }
+            //       var count_col = 0;
+            //       while(count_col ++ < count_row * 2 - 1){
+            //             if(count_col === 1 || count_col === count_row * 2 - 1){
+            //                   document.write("✡");
+            //             }else{
+            //                   document.write("&nbsp;&nbsp;")
+            //             }
+            //       }
+            //       document.write("<br>");
+            // }
+
+            // 打印1 ~ 100 之间的素数;
+            // 素数定义       : 只能被1和其本身整除的数，这就叫素数;
+            // 整除 : 除数 一定小于被除数; 
+            // 反证法;
+            // 标识变量:flag;
+            
+            // var count = 1;
+            // while(count ++ < 100){
+            //       var flag_count = true ; //，假设这个count 是素数; 判定 count 是不是素数;找到count不是素数的依据;
+            //       var num = 1;
+            //       while(num ++ < (count / 2){
+            //             if(count % num === 0){ 
+            //                   // 只要进入了这个逻辑 , 那么 count 就一定不是素数;
+            //                   // 如果进入了这里那么逻辑记录为false;
+            //                   flag_count = false;
+            //             }
+            //       }
+            //       // 如果经过了，上面的循环，没有进入 if 逻辑那么这个数就是素数;
+            //       if(flag_count){
+            //             console.log(count);
+            //       }
+            // }
+
+
+            // 循环之中的关键字 ;
+
+            // break;跳出循环  
+            // continue ; 跳出本次循环，继续下一次循环
+
+            
+            // var count1 = 0;
+            // while(count1 ++ < 10){
+            //       if(count1 == 5){
+            //             break;
+            //       }
+            //       console.log(count1);
+            // }
+            // break : 终止循环，让循环不再执行了;可以用于结束死循环
+
+            // var count2 = 0;
+            // while(count2 ++ < 10){
+            //       if(count2 == 5){
+            //             continue;
+            //       }
+            //       console.log(count2);
+            // }
+            // continue  : 略过本次循环;
+
+            
+            // 3. break ; continue ;
+
+
+
+            // 百钱白鸡 ; 解题思路，穷举法，列出最多能买的公鸡数和母鸡数，小鸡数可由（100-公鸡数-母鸡数）得到
+            // 公鸡5块钱一只，母鸡三块钱一直，三只小鸡一块钱 ; 100块钱买一百只鸡;
+            
+            // 公鸡
+            // var cock = -1; 
+            // // 小鸡;
+            // var chick = 0;
+            // while(cock ++ < 20){
+            //       // 母鸡;
+            //       var hen = -1;
+            //       while(hen ++ < 33){
+            //             chick = 100 - cock - hen;
+            //             if(cock * 5 + hen* 3 + chick / 3 === 100){
+            //                   console.log(cock,hen,chick);
+            //             }
+            //       }
+            // }
+
+            // while(条件满足，执行下面循环体){}  
+            
+            // do{
+                // 执行一次循环体
+                // }while(条件满足，继续上面循环体，否则执行下面代码块结束)
+                // {}
+
+            // while(false){
+            //       console.log(" while ...")
+            // }
+
+            // do{
+            //       // 无论如何都会先执行do里面代码;
+            //       console.log("do ...");      
+            //       // 如果while 条件为true ,那么 会循环执行do之中代码;
+            // }while(false){
+            //       // 一旦while循环条件为false,那么while代码块就执行了;
+            //       console.log("while ...");
+            // }
+
+            // 1~100  打印 1 ~ 100 之中所有的整数 , 打印结束之后弹出警告框结束了。
+            
+            // var count = 0;
+            // do{   
+            //       console.log(count);
+            // }while( count ++ < 100){
+            //       alert("打印结束了");
+            // }
+
+            // do while 比 while 多执行一次;
+            // 多一个循环终止功能;
+
+            // for 循环 ; 是高级循环封装;
+
+            // for(声明变量;循环逻辑;自增自减用){
+
+            // }
+
+            // for(var i = 0 ; i < 10 ; i ++){
+            //       console.log(i);
+            // }
+            
+            // 简写;
+            // for(var i = 0 ; i++ < 10 ; ){
+            //       console.log(i);
+            // }
+
+            //  for(var count = 0 ; true ; ){
+            //       count ++;
+            //       console.log(count);
+            //       if(count === 10){
+            //             break;
+            //       }
+            //  }
+           
+
+    </script>
+</body>
+</html>
