@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <input type="text" name="" id="num1">
+    <button id="btn">点我算阶乘</button>
+
+    <script>
+        btn.onclick = factorial;
+        function factorial() {
+            var num=num1.value;
+            var pro = 1;
+            for (i = 1; i <= num; i++) {
+                pro = pro * i
+            }
+            alert(pro);
+        }
+        factorial();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input_box">
+    <button id="button">calculate</button>
+    <span id="answer"></span>
+
+    <script>
+        var input = document.getElementById("input_box");
+        var button = document.getElementById("button");
+        var answer = document.getElementById("answer");
+
+        button.addEventListener("click", clickHandler);
+
+        function clickHandler() {
+            answer.innerText = factorial(Number(input.value));
+        }
+
+        function factorial(n) {
+            var sum = 1;
+            while (n > 0) {
+                sum *= n;
+                n--;
+            }
+            return sum;
+        }
+    </script>
+</body>
+
+</html>
