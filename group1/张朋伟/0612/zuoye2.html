@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="number">
+
+    <button id="go">计算</button>
+</body>
+<script>
+    go.onclick = function () {
+        var num = Number(number.value);
+        // console.log(num);
+        var i = 0;
+        var s = 1;
+        while (i++ < num) {  
+            s *= i;
+        }
+        alert(s);
+    }
+</script>
+
+</html>
