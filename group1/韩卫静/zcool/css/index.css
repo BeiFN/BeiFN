@@ -206,3 +206,58 @@
     height: 168px;
     border-radius: 4px;
 }
+
+/* ---------空白分割区---------- */
+.space_part{
+    height: 55px;
+}
+
+/* -----------中部导航栏------------ */
+.middle_nav{
+    height: 56px;
+    width: 1130px;
+    margin: 0 auto;
+}
+.middle_nav ul{
+    height: 56px;
+    text-align: center;
+}
+.middle_nav ul li{
+    display: inline-block;
+    margin: 0 30px;
+}
+.middle_nav ul li a{
+    display: block;
+    font-size: 16px;
+    color: #999;
+    line-height: 54px;
+    border-bottom: 2px solid transparent;
+}
+.middle_nav ul #sytj a{
+    color: #282828;
+    border-bottom: 2px solid #444;  
+}
+.middle_nav ul li a:hover{
+    color: #282828;
+    border-bottom: 2px solid #444;    
+}
+
+/* ------作品展示部分----- */
+.pro_list{
+    background-color: rgb(244, 244, 244);
+}
+.list_content{
+    width: 1130px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.list_body{
+    width: 1150px;
+}
+.list_body li{
+    width: 210px;
+    height: 308px;
+    float: left;
+    margin: 0 20px 20px 0;
+    background-color: #ffd;
+}
