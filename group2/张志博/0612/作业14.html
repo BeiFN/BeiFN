@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //输出100-200之间所有的素数 
+        var num =  99;
+        while(num ++ <200){
+            var flag =true;
+            var a = 1;
+            while(a ++ <num - 1){
+                if(num%a == 0){
+                    flag = false;
+                }
+            }
+            if(flag){
+                console.log(num);
+            }
+        }
+    </script>
+</body>
+</html>

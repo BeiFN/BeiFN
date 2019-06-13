@@ -235,7 +235,7 @@
         for (var h = 0; h <= hen; h++) {
             for (var c = 0; c <= cock; c++) {
                 var chick = 100 - h - c;
-                if (chick / 3 + h * 3 + c * 5 === 100) {
+                if (c * 5 + h * 3+chick / 3  === 100) {
                     console.log(chick, h, c);
                 }
             }

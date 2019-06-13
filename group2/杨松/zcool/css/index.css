@@ -1,0 +1,67 @@
+/*header logo*/
+.header{background-color:#ffe300;height: 56px;width: 100%;}
+.header .nav{height:56px;position: relative;margin: 0 70px;}
+.header .nav .logo{position: absolute;left: 0;top:18px;}
+/*header menu*/
+.header .nav .menu{margin:0 auto;height:56px}
+.header .nav .menu .menu-box{text-align: center;}
+.header .nav .menu .menu-box ul{ height: 56px;margin: 0 auto;display: inline-block;}
+.header .nav .menu .menu-box ul li{float: left;cursor: pointer;height: 56px;line-height: 56px;text-align: left;padding: 0 24px;font-size: 14px;}
+.header .nav .menu .menu-box ul li span{display: inline-block;background:url("https://static.zcool.cn/git_z/build/images/svg/nav-more.svg") no-repeat left center;width: 20px;height: 56px;background-size: 20px auto;}
+.header .nav .menu .menu-box ul li .sup-top{display: inline-block;width: 8px;height: 8px;border-radius: 50%;background: #ff4a3b;margin: 0 0 2px 3px;position: absolute;top: 20px;}
+.header .nav .menu .menu-box ul li:hover{background-color:#282828}
+.header .nav .menu .menu-box ul li:hover a {color:#ffe300}
+/*header search*/
+.search{width: 540px;margin: 0 auto;position: relative;z-index: 9;}
+.header .nav .search input{width: 470px;height: 52px;color: #444;background: #ffe300;position: absolute;font-size: 14px;line-height: 50px;padding-left: 40px;border:0;outline: 0;display: none}
+.header .nav .search span{display: inline-block;background: url("https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1") no-repeat;width: 20px;height: 20px;position: absolute;right: 0;z-index: 1;cursor: pointer;margin-top: 18px;display: none}
+.header .nav .search-unlogin{position: absolute;top: 0;right: 192px;width: 60px;height: 56px;text-align: center;line-height: 56px;cursor: pointer;}
+.header .nav i{display: inline-block;background: url("https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1") no-repeat;width: 20px;height: 20px;margin-top: 18px;}
+
+/*header upload login*/
+.nav-right{width: 192px;height: 56px;position: absolute;top: 0;right: 0;}
+.nav-right .upload{float: left;position: relative;}
+.nav-right .upload a{height: 20px;display:inline-block;padding: 10px 16px}
+.nav-right .upload .upload-pic{display: inline-block;background: url("https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg") center center no-repeat;width: 30px;height: 20px;}
+.nav-right .login-reg{float: left}
+.nav-right .login-reg li{float: left;line-height: 56px; cursor: pointer;position: relative;}
+.nav-right .login-reg a{margin-left: 20px;padding: 0;}
+/*轮播区域*/
+.main{height: 500px;width: 100%;}
+.main .banner{max-width: 1130px;height: 286px;margin:20px auto;border-radius: 5px;
+    overflow: hidden;position: relative}
+.main .banner ul{animation:banner 18s ease-out infinite;width: 7910px;position: relative;}
+.main .banner img{width:1130px;border-radius: 5px;float: left;}
+.prev ,.next{position: absolute;background: transparent no-repeat center;text-indent: -99em;  width: 13px;height: 100%;padding: 0 80px; }
+.main .banner .prev{background: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2") no-repeat 30px center;left: 0;width: 13px;height: 100%;padding: 0 80px;}
+.main .banner .next{background: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2") no-repeat 91px center;right: 0;}
+
+@-webkit-keyframes banner {
+    0%, 10% {
+        margin-left: 0;
+    }
+    15%, 25% {
+        margin-left: -1130px;
+    }
+    30%, 40% {
+        margin-left: -2260px;
+    }
+    45%, 60% {
+        margin-left: -3390px;
+    }
+    65%, 75% {
+        margin-left: -4520px;
+    }
+    80%, 90% {
+        margin-left: -5650px;
+    }
+    100% {
+        margin-left: -6780px;
+    }
+
+}
+/*广告区域*/
+.main .adv{margin: 0 auto;max-width: 1130px;}
+.main .adv ul{float: left;height: 170px;width: 100%}
+.main .adv ul li{float: left;margin-right: 20px;width: 100%;max-width: 210px;height: 170px;border-radius: 5px}
+.main .adv ul li img{width: 210px!important;height: 170px!important;border-radius: 5px;border: 0}
