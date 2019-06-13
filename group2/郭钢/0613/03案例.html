@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="common.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #1aa9e2;
+            font-size: 16px;
+            line-height: 200px;
+            text-align: center;
+            margin: 50px 0; 
+        }
+        textarea{
+            margin: 0 43%;
+        }
+        .test{
+            width: 200px;
+            height: 50px;
+            text-align: center;
+        }
+        .result{
+            width: 300px;
+            height:100px ;
+            display: none;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+  
+    <!-- 双击事件 -->
+    <div class="box" id="box">
+        DIV
+    </div>
+  
+    <!-- onchange事件 -->
+    <input  id="test" placeholder="你输入信息试试" class="test">
+    <input  id="result" class="result">
+
+
+
+    <!-- 编写一个函数，计算两个数字的和差积商 -->
+    <!-- <input type="text" id="num1">
+    <select id="symbol">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="num2">
+    <button id="op">计算</button>
+    <input type="text" id="result"> -->
+
+
+    <!-- 要求：页面输入任意数字，点击按钮后计算该数字的阶乘 -->
+    <!-- <input type="text" id="num">
+    <button id="op">计算</button>
+    <input type="text" id="result"> -->
+
+</body>
+<script>
+
+    // 编写一个函数，计算两个数字的和差积商
+    // op.onclick = function () {
+    //     var a = num1.value;
+    //     var b = num2.value;
+    //     var o = symbol.value;
+    //     result.value = calculator(a, b, o);
+    // }
+
+
+    // 编写函数，求圆的面积
+    // function area(r){
+    //     var s = Math.PI * Math.pow(r,2);
+    //     return s;
+    // }
+    // console.log("半径为5的圆的面积为:" + area(5));
+
+
+
+    // 编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
+    // function sort(num1, num2, num3) {
+    //     var max = Math.max(num1, num2, num3);
+    //     var min = Math.min(num1, num2, num3);
+    //     var middle = num1 + num2 + num3 - max - min;
+    //     console.log(min, middle, max);
+    // }
+    // sort(5,8,3);
+
+
+    // 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+    // function table(n, m) {
+    //     document.write("<table cellspacing=10px >");
+    //     for (var i = 0; i++ < n;) {
+    //         document.write("<tr>");
+    //         for (var j = 0; j++ < m;) {
+    //             document.write("<td>")
+    //             document.write(parseInt(Math.random()*101))
+    //             document.write("</td>")
+    //         }
+    //         document.write("</tr>");
+    //     }
+    //     document.write("</table>");
+    // }
+    // table(5, 6)
+
+
+    // 编写一个函数，生成4位数字的验证码
+    // function verify() {
+    //     var num = parseInt(Math.random() * 9000) + 1000;
+    //     console.log("四位的验证码为:" + num);
+    // }
+    // verify();
+
+
+
+    // 求m-n之间数字的和
+    // function sum(m, n) {
+    //     if (m == n) console.log("这两个数之间的和为" + m * 2);
+    //     else if (m > n) {
+    //         var count = 0;
+    //         for (var i = n; i <= m; i++) {
+    //             count += i;
+    //         }
+    //         console.log("这两个数之间的和为" + count);
+    //     }
+    //     else {
+    //         var count = 0;
+    //         for (var i = m; i <= n; i++) {
+    //             count += i;
+    //         }
+    //         console.log("这两个数之间的和为" + count);
+    //     }
+    // }
+    // sum(9, 6)
+
+
+   
+    // 编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。
+    // function digit(num, k) {
+    //     console.log(parseInt(num / Math.pow(10, k - 1))%10);
+    // }
+    // digit(123456,6)
+
+
+  
+  
+    // 编写函数计算一个数字的长度
+    // function numberLength(num){
+    //     for(var count = 0;num>=1;count++){
+    //         num /= 10;
+    //     }
+    //     console.log("这个数字的长度为" + count);
+    // }
+    // numberLength(14565464);
+
+
+ 
+ 
+    // 编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+    // 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+    // function odd(m, n) {
+    //     for (var i = m; i <= n; i++) {
+    //         for (var j = m; j <= n; j++) {
+    //             var sum = "" + i + j;
+    //             if (i != j && parseInt(sum) % 2) console.log(sum);
+    //         }
+    //     }
+    // }
+    // odd(5, 9)
+
+
+
+    // 某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+    // 加密规则如下：每位数字都加上5, 然后用除以10的余数代替该数字，再将第一位和第四位交换，
+    // 第二位和第三位交换，请编写一个函数，传入原文，输出密文
+    // function encrypt(num) {
+    //     var a = (num % 10 + 5) % 10;
+    //     var b = (parseInt(num / 10) % 10 + 5) % 10;
+    //     var c = (parseInt(num / 100) % 10 + 5) % 10;
+    //     var d = (parseInt(num / 1000) + 5) % 10;
+    //     console.log("加密后的文字为:" + a + b + c + d);
+    // }
+    // encrypt(5473);
+
+
+   
+   
+    // 编写一个函数，输入n为偶数时，调用函数求1 / 2 + 1 / 4 +...+1 / n, 当输入n为奇数时，调用函数求1 / 1 + 1 / 3 +...+1 / n
+    // function sum(n) {
+    //     if (n % 2) odd(n);
+    //     else even(n);
+    //     function odd(n) {
+    //         for (var i = 1, count = 0; i <= n; i += 2) {
+    //             count += 1 / i;
+    //         }
+    //         console.log(count)
+    //     }
+    //     function even(n) {
+    //         for (var i = 2, count = 0; i <= n; i += 2) {
+    //             count += 1 / i;
+    //         }
+    //         console.log(count);
+    //     }
+    // }
+    // sum(4);
+
+
+    
+    
+    // 使用函数完成任意数字阶乘的计算
+    // function factorial(n) {
+    //     for (var i = 0, count = 1; i++ < n;) {
+    //         count *= i;
+    //     }
+    //     console.log(count);
+    // }
+    // factorial(5)
+
+  
+  
+    // 要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+    // op.onclick = function () {
+    //     var number = num.value;
+    //     for (var i = number, count = 1; i > 0; i--) {
+    //         count *= i;
+    //     }
+    //     result.value = count;
+    // }
+
+
+    // 创建一个对象，表示一个学生的信息
+    // var student = {
+    //     姓名: "张三",
+    //     年龄: 18,
+    //     性别: "男",
+    //     爱好: "玩游戏",
+    //     特点: "玩游戏太菜",
+    //     go:function(){
+    //         console.log("去旅行");
+    //     },
+    // }
+    // console.log(student.姓名,student["特点"]);
+    // student.go();
+
+
+    // 双击事件
+    box.ondblclick = function () {
+        box.style.backgroundColor = "red";
+        box.style.width = "400px";
+        box.style.height = "150px";
+        box.style.lineHeight = "150px";
+        box.innerHTML = "您刚刚双击了DIV，触发了dblclick事件"
+    }
+
+
+    // onchange事件
+    test.onchange = function(){
+        result.style.display="inline";
+        result.placeholder = "输入框内容被改变，触发了onchange事件"
+    }
+
+</script>
+
+</html>
