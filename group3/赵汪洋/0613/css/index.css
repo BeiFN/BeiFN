@@ -1,0 +1,32 @@
+/* all */
+html,body{background: #f4f4f4;}
+body{font: 14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;color: #282828;}
+/* header */
+.header{height: 56px;background: #ffe300;}
+.header .nav{height: 56px;margin: 0 70px;position: relative;text-align: center;position: relative;}
+.header .nav .logo {position: absolute;top: 18px;left: 0;}
+.header .nav .logo a img{width: 120px;height: 20px;}
+.header .nav .menu{height: 56px;margin: 0 auto;text-align: center;display: inline-block;}
+.header .nav .menu li{float: left;height: 56px;line-height: 56px;}
+.header .nav .menu li a{display: inline-block;padding: 0 24px;}
+.header .nav .menu .index a{font-weight: 600;}
+.header .nav .menu .zhengban a{padding: 0 42px 0 24px;position: relative;}
+.header .nav .menu .zhengban a div{position: absolute;top: 10px;left: 82px;height: 18px;line-height: 18px;padding: 0 3px;font-size: 12px;color: #fff;background: #ea4335;}
+.header .nav .menu .zhengban a div:after{content: "";position: absolute;left: 0;bottom: -5px;border-top: 5px solid transparent;border-right: none;border-bottom: 5px solid transparent;border-left: 5px solid #ea4335;}
+.header .nav .menu .more{padding: 0 20px;position: relative;}
+.header .nav .menu .more i{display: inline-block;background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat left center;width: 20px;height: 56px;background-size: 20px auto;}
+.header .nav .menu .more sup{display: inline-block;width: 8px;height: 8px;border-radius: 50%;background: #ff4a3b;margin: 0 0 2px 13px;position: absolute;top: 20px;}
+.header .nav .search{position: absolute;top: 0;right: 192px;width: 60px;height: 56px;text-align: center;line-height: 56px;}
+.header .nav .search i{display: inline-block;background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;width: 20px;height: 20px;margin-top: 18px;}
+.header .nav .register{width: 192px;height: 56px;position: absolute;top: 0;right: 0;}
+.header .nav .register .upload{height: 20px;padding: 18px 16px;display: inline-block;}
+.header .nav .register .upload:after{content: "";display: inline-block;background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) center center no-repeat;width: 30px;height: 20px;}
+.header .nav .register .denglu,.zhuce{line-height: 60px;margin-left: 20px;}
+.header .nav .register .denglu i{display: inline-block;width: 1px;height: 10px;background: #444;margin-left: 20px;}
+/* banner */
+.banner{background: #ffffff;padding: 20px 0 35px 0;height: 500px;text-align: center;}
+.banner div{margin: 0 auto;background: url(https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w) no-repeat;display: inline-block;height: 286px;width: 1130px;}
+
+
+
+
