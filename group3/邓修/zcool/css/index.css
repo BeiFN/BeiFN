@@ -1,0 +1,333 @@
+body, html {
+    height: 100%;
+    background: #f4f4f4;
+}
+/* 头部 */
+#header{
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+}
+.nav{
+    height: 56px;
+    margin: 0 70px;
+    position: relative;
+}
+.nav .logo{
+    position: absolute;
+    top: 18px;
+    left: 0;
+}
+.logo img{
+    width: 120px;
+    height: 20px;
+}
+.nav .menu-list{
+    height: 56px;
+    /* margin: 0 auto; */
+    margin-left: 371px;
+    display: inline-block;
+}
+.nav .menu-list li{
+    float: left;
+    cursor: pointer;
+    height: 56px;
+    line-height: 56px;
+    text-align: left;
+}
+.nav .menu-list li:hover{
+    background: #282828;
+    color: #ffe300;
+}
+.menu-list .header-menu-withmore{
+    position: relative;
+}
+.nav .menu-list li a.menu-list-box{
+    color: inherit;
+    display: inline-block;
+    padding: 0 24px;
+}
+.index a{
+    font-weight: 600;
+}
+.menu-list .more{
+    position: absolute;
+    background: #fff;
+    top: 56px;
+    left: 0;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    border-radius: 0 0 4px 4px;
+    color: #444;
+    z-index: 14;
+}
+.hide{
+    display: none;
+}
+.menu-list .header-menu-withmore:hover .more{
+    display: block;
+}
+.menu-list .more{
+    width: 152px;
+    padding: 6px 0;
+    position: absolute;
+    background: #fff;
+    top: 56px;
+}
+.menu-list .more p{
+    height: 44px;
+    line-height: 44px;
+    cursor: pointer;
+}
+.menu-list .more p:hover{
+    background: #ffe300;
+}
+.menu-list .header-menu-withmore p a{
+    width: 152px;
+    padding-left: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+}
+/* 发现 */
+.menu-list .discover .discover-box{
+    width: 664px;
+    padding: 0;
+    left: 0;
+}
+.menu-list .discover .discover-box .discover-box-list{
+    border-bottom: 1px solid #eaeaea;
+    line-height: 0;
+    overflow: hidden;
+    padding: 11px 17px 17px;
+}
+.menu-list .discover .discover-box .discover-check-all{
+    padding: 0 30px;
+    line-height: 51px;
+}
+.menu-list .discover .discover-box .discover-box-list div{
+    float: left;
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    margin-top: 4px;
+    text-align: center;
+}
+.menu-list .discover .discover-box .discover-box-list a{
+    display: inline-block;
+    min-width: 42px;
+    _width: 42px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 7px;
+    text-align: center;
+    position: relative;
+    margin: 0 6px;
+    border-radius: 4px;
+}
+.menu-list .discover .discover-box .discover-box-list a:hover{
+    background: #ffe300;
+    color: #444;
+}
+.menu-list .discover .discover-box i{
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: #ddd;
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+.menu-list .discover .discover-box .discover-check-all a{
+    margin-right: 40px;
+    color: #444;
+    padding-right: 15px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou.svg) right no-repeat;
+    background-size: 10px 10px;
+}
+.menu-list .discover .discover-box .discover-check-all a:hover{
+    color: #d36f16;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou2.svg) right no-repeat;
+    background-size: 10px 10px;
+}
+/* 正版素材 */
+.nav .menu-list li.legal-copy a.menu-list-box{
+    padding: 0 42px 0 24px;
+}
+.sales-icon {
+    height: 18px;
+    line-height: 18px;
+    padding: 0 3px;
+    font-size: 12px;
+    color: #fff;
+    background: #ea4335;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    display: inline-block;
+}
+.sales-icon:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+.legal-copy .sales-icon{
+    left: 82px;
+}
+.legal-copy .more .sales-icon{
+    left: 50px;
+}
+/* 更多... */
+.menu-list .more-menu span.menu-tit-box{
+    padding: 0 20px;
+}
+.more-menu span.menu-tit-box i{
+    display: inline-block;
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 20px;
+    height: 56px;
+    background-size: 20px auto;
+}
+sup.subnav-dot-sup {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4a3b;
+    margin: 0 0 2px 3px;
+    position: absolute;
+    top: 20px;
+}
+.more sup.subnav-dot-sup{
+    top: 12px;
+}
+.more-menu:hover span.menu-tit-box i{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg);
+}
+/* 搜索 */
+#header .nav .search{
+    position: absolute;
+    top: 0;
+    right: 192px;
+    width: 60px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    cursor: pointer;
+}
+#header .nav .search i{
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-top: 18px;
+}
+#header .nav .search:hover{
+    background: #282828;
+}
+#header .nav .search:hover i{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1) no-repeat;
+}
+/* 用户中心 */
+#header .nav .user-center{
+    width: 192px;
+    height: 56px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/* 上传文件 */
+#header .nav .user-center .upload{
+    float: left;
+    position: relative;
+}
+.nav .user-center .upload .upload-link{
+    height: 20px;
+    padding: 18px 16px;
+    display: inline-block;
+}
+.nav .user-center a.upload-link:after{
+    content: "";
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) center center no-repeat;
+    width: 30px;
+    height: 20px;
+}
+#header .nav .upload:hover{
+    background: #282828;
+}
+#header .nav .upload:hover a.upload-link:after{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg) center center no-repeat;
+}
+/* 登录和注册 */
+#header .nav .user-center .unlogin{
+    float: left;
+}
+.nav .user-center .unlogin li{
+    line-height: 60px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+}
+.nav .user-center .unlogin a{
+    margin-left: 20px;
+    padding: 0;
+    display: inline-block;
+}
+.nav .user-center .unlogin i{
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: #444;
+    margin-left: 20px;
+}
+/* 页面轮播图 */
+.slider-adv-box{
+    background: #fff;
+    padding: 20px 0 35px 0;
+    height: 500px;
+}
+.slider-adv-box .slider-adv{
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+.slider{
+    margin: 0 auto;
+    max-width: 1130px;
+    height: 286px;
+}
+.clear{
+    height: 20px;
+    clear: both;
+}
+.advtop{
+    margin: 0px auto;
+    max-width: 1130px;
+}
+.slider-adv .slider img{
+    width: 1130px;
+    height: 286px;
+}
+.slider-adv .advtop ul{
+    margin-right: -20px;
+    height: 170px;
+}
+.slider-adv .advtop li{
+    float: left;
+    margin-right: 20px;
+    width: 100%;
+    max-width: 210px;
+}
+.slider-adv .advtop img{
+    width: 210px!important;
+    height: 168px!important;
+    border-radius: 4px;
+}
+/* 页面主体导航 */
