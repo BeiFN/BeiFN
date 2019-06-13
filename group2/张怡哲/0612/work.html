@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、
+        // for(var i=0;i++<100;){
+        //     console.log(i);
+        // }
+
+        // 2、
+        // for(var i=0;i++<100;){
+        //     if(!(i%7)){
+        //         console.log(i);
+        //     }
+        // }
+
+        // 3、
+        // for(var i=0;i++<100;){
+        //     if(i%2){
+        //         console.log(i);
+        //     }
+        // }
+        // 4、
+        // var sum=0;
+        // for(var i=0;i++<100;){
+        //     if(!(i%2)){
+        //         sum+=i;
+        //     }
+        // }
+        // console.log(sum);
+
+        // 5、
+        // ①、
+        // for(var i=0;i++<4;){
+        //     for(var j=0;j++<10;){
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+        // ②、
+        // for(var i=0;i++<5;){
+        //     for(var j=0;j++<i;){
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+        // ③、
+        // for(var i=0;i++<3;){
+        //     for(var k=0;k++<3-i;){
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     for(var j=0;j++<(2*i-1);){
+        //         document.write("*");
+        //     }
+        //         document.write("<br>");
+        // }
+        // for(i=3;i-->0;){
+        //     for(var k=0;k++<3-i;){
+        //         document.write("&nbsp;&nbsp;");
+        //     }
+        //     for(var j=0;j++<(2*i-1);){
+        //         document.write("*");
+        //     }
+        //         document.write("<br>");
+        // }
+        // ④、
+        // for(var i=0;i++<4;){
+        //     for(var k=0;k++<4-i;){
+        //         document.write("&nbsp;&nbsp;&nbsp;");
+        //     }
+        //     for(var j=0;j++<(2*i)-1;){
+        //         document.write("@");
+        //     }
+        //         document.write("<br>");
+        // }
+
+        // 5、
+        // for(var i=100;i++<200;){
+        //     if(!(i%3)||!(i%7)){
+        //         console.log(i);
+        //     }
+        // }
+
+        // 6、
+        // var jiecheng=1;
+        // for(var i=0;i++<100;){
+        //     jiecheng*=i;
+        //     console.log(i+"的阶乘为"+jiecheng);
+        // }
+
+        // 7、
+        // var sum=0;
+        // for(var i=0;i++<100;){
+        //     if(i%2){
+        //         sum+=i;
+        //     }
+        // }
+        // console.log(sum);
+
+        // 8、
+        // for(var i=0;i++<9;){
+        //     for(var j=0;j++<i;){
+        //         document.write(j+"*"+i+"="+i*j+"&nbsp;&nbsp;&nbsp;");
+        //     }
+        //     document.write("<br>");
+        // }
+
+        // 9、
+        // var ge=0;
+        // var shi=0;
+        // var bai=0;
+        // for(var i=100;i++<999;){
+        //     ge=i%10;
+        //     shi=parseInt(i%100/10);
+        //     bai=parseInt(i/100);
+        //     if(i===Math.pow(ge,3)+Math.pow(shi,3)+Math.pow(bai,3)){
+        //         console.log(i);
+        //     }
+        // }
+
+        // 10、
+        // for(var i=100;i++<200;){
+        //     var flag=true;
+        //     for(var j=1;j++<i-1;){
+        //         if(i%j===0){
+        //             flag=false;
+        //             break;
+        //         }
+        //     }
+        //     if(flag){
+        //         console.log(i);
+        //     }
+        // }
+
+        // 11、
+        // var sum=0;
+        // var count=8;
+        // var n=4;
+        // for(var i=-1;i++<count;){
+        //     var num=0;
+        //     for(var j=-1;j++<i;){
+        //         num+=n*Math.pow(10,j);
+        //     }
+        //     console.log(num);
+        //     sum+=num;
+        // }
+        //     console.log(sum);
+
+        //12、
+        // var sum=0;
+        // for(var i=0;i++<10;){
+        //     var jiecheng=1;
+        //     for(var j=0;j++<i;){
+        //         jiecheng*=j;
+        //     }
+        //     console.log(jiecheng);
+        //     sum+=jiecheng;
+        // }
+        // console.log(sum);
+
+        //13、
+        // for(var i=0;i++<100;){
+        //     if(!(i%2)){
+        //         console.log(i);
+        //     }
+        // }
+
+        //14、
+        // for(var i=0;i++<100;){
+        //     if(i%2){
+        //         console.log(i);
+        //     }
+        // }
+
+        //15、
+        // var sum=0;
+        // for(var i=0;i++<100;){
+        //     sum+=1/(Math.pow((-1),(i+1))*i);
+        //     console.log(sum);
+        // }
+        // console.log(sum);
+
+        //16、
+        // var j=0;
+        // for(var i=20;i++<80;){
+        //     if(i%3===0){
+        //         document.write(i+"&nbsp;&nbsp;&nbsp;");
+        //         j++
+        //     }
+        //     if(j%5===0){
+        //         document.write("<br>");
+        //         j=0;
+        //     }
+        // }
+
+        //17、
+        // var j=0;
+        // for(var i=1000;i++<2000;){
+        //     if(i%400===0||i%4===0&&i%100!==0){
+        //         document.write(i+"&nbsp;&nbsp;&nbsp;");
+        //         j++;
+        //     }
+        //     if(j%5===0){
+        //         document.write("<br>");
+        //         j=0;
+        //     }
+        // }
+
+        //18、
+        // for(var i=100;i++<200;){
+        //     if(i%3===1&&i%4===2&&i%5===3){
+        //         console.log(i);
+        //     }
+        // }
+
+        // 19、
+        // var flag=false;
+        // for(var i=1; i++;){
+        //     for(var j=1;j++<i;){
+        //         if(i%j===10&&parseInt(i/j)===3&&(i+j+3+10)===163){
+        //             console.log(i,j);
+        //             flag=true;
+        //             break;
+        //         }
+        //     }
+        //     if(flag===true){
+        //         break;
+        //     }
+        // }
+
+        //20、
+        var money=100000;
+        for(var i=0;true;){
+            if(money>50000){
+                money*=0.95;
+            }else{
+                money-=5000;
+            }
+            i++;
+            if(money<5000){
+                break;
+            }
+        }
+        console.log(i);
+
+        //21、
+        // var cock;
+        // var hen;
+        // var chick;
+        // for(var i=0;i++<20;){
+        //     for(var j=0;j++<33;){
+        //         if(5*i+3*j+(100-i-j)/3===100){
+        //             cock=i;
+        //             hen=j;
+        //             chick=100-cock-hen;
+        //             console.log(cock,hen,chick);
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+</html>

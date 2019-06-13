@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击更换颜色</title>
+    <style>
+        button{
+            width: 80px;
+            height: 50px;
+            border-radius:5px;
+            display:block;
+            margin:20px auto;
+        }
+    </style>
+</head>
+<body id="mybody">
+
+    <button id="mybutton">更换颜色</button>
+    
+    <script>
+
+        var mybutton=document.getElementById("mybutton");
+        var mybody=document.getElementById("mybody");
+        mybutton.onclick=function (){
+            mybody.style.backgroundColor=bgColor();
+        }
+        mybody.onmouseover=function (){
+            mybutton.style.backgroundColor=bgColor();
+        }
+
+        function bgColor(){
+            var r=Math.round(Math.random()*255);
+            var g=Math.round(Math.random()*255);
+            var b=Math.round(Math.random()*255);
+            var a=Math.random().toFixed(2);
+                return "rgba("+r+","+g+","+b+","+a+")";
+        }
+
+    </script>
+
+</body>
+</html>
