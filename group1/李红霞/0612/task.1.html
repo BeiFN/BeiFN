@@ -9,7 +9,8 @@
 <body>
     <input type="text" id="num">
     <button id="btn">点击计算阶乘</button>
-
+    <div id="box">DIV</div>
+    <input type="text" id="inp">
     <script>
 /*
         //编写一个函数，计算两个数字的和差积商
@@ -231,9 +232,19 @@
         //创建一个对象，表示一个学生的信息
 
         //使用鼠标操作DIV触发事件
+        box.style.width = "100px";
+        box.style.height = "50px"
+        box.style.margin = "20px"
+        box.style.backgroundColor = "rgb(0, 0, 255)"
+        box.ondblclick = function(){
+            document.write("您刚刚双击了DIV,触发了dblclick事件。")
+        }
+
 
         //使用键盘操作输入框触发事件
-
+        inp.onchange = function(){
+            document.write("输入框内容被改变，触发了onchange事件");
+        }
 
     </script>
 </body>

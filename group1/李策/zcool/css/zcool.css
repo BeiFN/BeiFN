@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+body,html{
+    width: 1326px;
+}
+.w1130{
+    width: 1130px;
+}
+.head{
+    height: 56px;
+    background:#ffe300;
+    padding-left: 73px;
+    padding-right:83px;
+}
+.head img{
+    float:left;
+}
+.head li{
+    float:left;
+    text-align: center;
+}
+.head li>a{
+    width: 79px;
+    height: 56px;
+    color:black;
+    font-size: 16px;
+    display:block;
+    line-height: 56px;
+}
+.head p{
+    width: 70px;
+    border-right: 1px solid #222;
+}
