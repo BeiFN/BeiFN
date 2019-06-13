@@ -7,13 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+
     <script>
-        var count = -1;
-        var tem = 0;
-        while((count+=2) < 100){
-            tem+= count;
-        }
-        console.log("1+3+5...+99等于"+tem);
+  
+        //编写函数，求圆的面积
+        var cir =  function(r){
+            return r*r*Math.PI;
+        }; //创建一个函数对象
+        var rCircle = 2;//给定圆的半径
+        var area = cir(rCircle);
+        alert("圆面积为：" + area);
+
     </script>
 </body>
 </html>

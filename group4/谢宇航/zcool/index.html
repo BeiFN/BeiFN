@@ -12,7 +12,6 @@
 		href="https://static.zcool.cn/git_z/z/site/favicon.ico?version=1559726126806">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/public.css">
-	<!-- <script src="js/banner.js"></script> -->
 </head>
 
 <body>
@@ -1006,61 +1005,59 @@
 		</div>
 	</div>
 </body>
-
+<script src="js/banner.js"></script>
 </html>
 
 <script>
-	var position = 0;
-	var imgCon = document.querySelector(".banner-img");
-	init();
+	// var position = 0;
+	// var imgCon = document.querySelector(".banner-img");
+	// init();
 
-	//获取左右两个按钮，并且设置点击监听事件
-	function init() {
-		var leftBn = document.querySelector("#pre");
-		var rightBn = document.querySelector("#next");
-		var banner = document.querySelector(".banner");
-		leftBn.addEventListener("click", clickHandler);
-		rightBn.addEventListener("click", clickHandler);
-		banner.addEventListener("mouseenter", clearTime);
-		banner.addEventListener("mouseleave", startTime);
-	}
+	// //获取左右两个按钮，并且设置点击监听事件
+	// function init() {
+	// 	var leftBn = document.querySelector("#pre");
+	// 	var rightBn = document.querySelector("#next");
+	// 	var banner = document.querySelector(".banner");
+	// 	leftBn.addEventListener("click", clickHandler);
+	// 	rightBn.addEventListener("click", clickHandler);
+	// 	banner.addEventListener("mouseenter", clearTime);
+	// 	banner.addEventListener("mouseleave", startTime);
+	// }
 
-	function clickHandler(e) {
-		if(this.id === "pre"){
-			position--;
-			if(position < 0) position = 7;
-		}
-		else{
-			position++;
-			if(position > 7) position = 0;
-		}
-		imgMove();
-	}
+	// function clickHandler(e) {
+	// 	if(this.id === "pre"){
+	// 		position--;
+	// 		if(position < 0) position = 7;
+	// 	}
+	// 	else{
+	// 		position++;
+	// 		if(position > 7) position = 0;
+	// 	}
+	// 	imgMove();
+	// }
 
-	//banner图位置移动
-	function imgMove() {
-		imgCon.style.left=-position*1130+"px";
-	}
+	// //banner图位置移动
+	// function imgMove() {
+	// 	imgCon.style.left=-position*1130+"px";
+	// }
 
-	//轮播
-	var time = setInterval(move1, 3000);
+	// //轮播
+	// var time = setInterval(move1, 3000);
 
-	function move1() {
-		position++;
-		if(position > 7) position = 0;
-		imgMove();
-	}
+	// function move1() {
+	// 	position++;
+	// 	if(position > 7) position = 0;
+	// 	imgMove();
+	// }
 
-	function startTime(e) {
-		time = setInterval(move1, 3000);
-	}
+	// function startTime(e) {
+	// 	time = setInterval(move1, 3000);
+	// }
 
-	function clearTime(e) {
-		console.log(time);
-		clearInterval(time);
-		console.log(time);
+	// function clearTime(e) {
+	// 	console.log(time);
+	// 	clearInterval(time);
+	// 	console.log(time);
 
-	}
-
-
+	// }
 </script>
