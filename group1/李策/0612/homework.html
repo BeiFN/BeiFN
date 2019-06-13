@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="s1">
+    <button id="anniu">计算阶乘</button>
+    <div id="test" style="width: 200px;height: 200px;background:#00f;">老铁666</div>
+    <script>
+        //              计算器
+
+
+        // function cal(a,c,b){
+        //     switch(c){
+        //         case" + ":
+        //             return a + b;
+        //             break;
+        //         case" - ":
+        //             return a - b;
+        //             break;
+        //         case" * ":
+        //             return a * b;
+        //             break;
+        //         case" / ":
+        //             return a / b;
+        //             break;
+        //         case" % ":
+        //             return a % b;
+        //             break;
+        //     }
+        // }
+        // alert(cal(5," * ",7))
+
+
+        //              圆的面积
+
+
+        // function circle( r ){
+        //     return Math.PI*r*r
+        // }
+
+
+        //              判断纯数字
+
+
+        // function judge(a){
+        //     return !isNaN(Number(a))
+        // }
+        // alert(judge("11fuck u! bitch!"))
+        // alert(judge("12356879"))
+
+
+        //              比较
+
+
+        // function sort(a,b,c){
+        //     if( a > b && b > c){
+        //         console.log(c,b,a);
+        //     }
+        //     if( a > b && c > a){
+        //         console.log(b,a,c);
+        //     }
+        //     if( b > a && a > c){
+        //         console.log(c,a,b);
+        //     }
+        //     if( b > a && c > b){
+        //         console.log(a,b,c);
+        //     }
+        //     if( a > c && c > b){
+        //         console.log(b,c,a);
+        //     }
+        //     if( c > a && b > c){
+        //         console.log(a,c,b);
+        //     }
+        // }
+
+
+        //              表格
+
+
+        // function table(m, n) {
+        //     document.write("<table>")
+        //     for (var i = 0; i < n; i++) {
+        //         document.write("<tr>")
+        //         for (var j = 0; j < m; j++) {
+        //             document.write("<td>");
+        //             document.write(Math.round(Math.random() * 100));
+        //             document.write("</td>");
+        //         }
+        //         document.write("</tr>");
+        //     }
+        //     document.write("</table>");
+        // }
+        // table(3,4);
+
+
+        //              验证码
+
+
+        // function verify(){
+        //     console.log(parseInt(Math.random()*9000)+1000);
+        // }
+        // verify();
+
+
+        //              m+..+n
+
+
+        // function sum(m, n) {
+        //     var t = 0;
+        //     for (var s = m; s <= n; s++) {
+        //         t += s;
+        //     }
+        //     return t;
+        // }
+        // console.log(sum(1,10));
+
+
+        //              第k位数
+
+
+        // function digit(a,k){
+        //     for( i = 0; i < k; i++){
+        //         var key = a % 10;
+        //         a = parseInt( a / 10 );
+        //     }
+        //     return key;
+        // }
+        // alert(digit(123154,10));
+
+
+        //              长度
+
+
+        // function len(num){
+        //     var count = 0;
+        //     while(num !== 0){
+        //         count++;
+        //         num = parseInt(num / 10);
+        //     }
+        //     return count;
+        // }
+        // alert(len(1234567));
+
+
+        //              组成数字
+
+
+        // function makeup(m, n) {
+        //     var count = 0;
+        //     if (n > m) {
+        //         for (var i = m; i <= n; i++) {
+        //             for (var j = m; j <= n; j++) {
+        //                 if (i === j) { continue; }
+        //                 if ((i * 10 + j) % 2) {
+        //                     console.log(i * 10 + j);
+        //                     count++;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     else if (n < m) {
+        //         for (var i = n; i <= m; i++) {
+        //             for (var j = n; j <= m; j++) {
+        //                 if (i === j) { continue; }
+        //                 if ((i * 10 + j) % 2) {
+        //                     console.log(i * 10 + j);
+        //                     count++;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     return count;
+        // }
+        // alert(makeup(1,7));
+
+
+        //              密码
+
+
+        // function sicrit(s){
+        //     var a = (parseInt( s % 10 / 1) + 5) % 10;
+        //     var b = (parseInt( s % 100 / 10) + 5) % 10;
+        //     var c = (parseInt( s % 1000 / 100) + 5) % 10;
+        //     var d = (parseInt( s % 10000 / 1000) + 5) % 10;
+        //     return 1000 * a + 100 * b + 10 * c + d;
+        // }
+        // alert(sicrit(1324))
+
+
+        //              分母累加
+
+
+        // function sum(n){
+        //     var s = 0;
+        //     for( var a = 1 + !(n % 2); a <= n; a += 2){
+        //         s = s + 1 / a;
+        //     }
+        //     return s;
+        // }
+        // console.log(sum(101))
+
+
+        //              阶乘
+
+
+        // function factorial(n){
+        //     var a = 1;
+        //     for( var b = 1; b <= n; b++){
+        //         a *= b;
+        //     }
+        //     return a;
+        // }
+        // alert(factorial(5));
+
+
+        //              页面输入
+
+
+        // anniu.onclick = function (n) {
+        //     n = Number(s1.value);
+        //     var a = 1;
+        //     for (var b = 1; b <= n; b++) {
+        //         a *= b;
+        //     }
+        //     alert(a);
+        // }
+
+
+        //              对象
+
+
+        // var liyifeng = {
+        //     height: "180cm",
+        //     age: 23,
+        //     weight: "75kg"
+        // }
+        // console.log(liyifeng.height);
+
+
+        //              双击div
+
+
+        // test.ondblclick = function () {
+        //     alert("感谢老铁，双击666")
+        // }
+
+
+        //              键盘输入
+
+        var count = 0;
+        s1.onkeypress = function(){
+            count++;
+            console.log("输入"+count+"字")
+        }
+    </script>
+</body>
+
+</html>

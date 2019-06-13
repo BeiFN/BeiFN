@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../libs/common.js"></script>
+    <style>
+        #box{
+            width: 200px;
+            height: 100px;
+            margin-top: 50px;
+            background: #0000ff;
+            color: black;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        #txt{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="facti" type="text">
+    <input id="facBtn" type="button" value="计算"> <br>
+    <div id="box">Div</div>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <script>
+        // 编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
+        // function thrNumSort(a, b, c) {
+        //     if (a < b && a < c) {
+        //         if (b < c) {
+        //             return a + "," + b + "," + c;
+        //         } else {
+        //             return a + "," + c + "," + b;
+        //         }
+        //     } else if(b < c && b < a) {
+        //         if(c < a) {
+        //             return b + "," + c + "," + a;
+        //         } else {
+        //             return b + "," + a + "," + c;
+        //         }
+        //     } else if(c < a && c < b){
+        //         if(a < b) {
+        //             return c + "," + a + "," + b;
+        //         } else {
+        //             return c + "," + b + "," + a;
+        //         }
+        //     }
+        // }
+        // 优化
+        // function thrNumSort(a, b, c){
+        //     if(a < b && a < c) {
+        //         if(b < c) {
+        //             return a + "," + b + "," + c;
+        //         } else {
+        //             return a + "," + c + "," + b;
+        //         }
+        //     } else if(b < c) {
+        //         if(a < c) {
+        //             return b + "," + a + "," + c;
+        //         } else {
+        //             return b + "," + c + "," + a;
+        //         }
+        //     } else if(a < b){
+        //         return c + "," + a + "," + b;
+        //     } else {
+        //         return c + "," + b + "," + a;
+        //     }
+        // }
+        // console.log(thrNumSort(4,60,4));
+
+
+        // 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        // function tabNM(n, m){
+        //     document.write("<table>");
+        //     for(var i = 0; i++ < n;) {
+        //         document.write("<tr>");
+        //             for(var j = 0; j++ < m;) {
+        //                 document.write("<td>");
+        //                 document.write(Math.round(Math.random() * 100));
+        //                 document.write("</td>");
+        //             }
+        //         document.write("</tr>");
+        //     }
+        //     document.write("</table>");
+        // }
+        // tabNM(8,4);
+
+
+
+        // 编写一个函数，生成4位数字的验证码 (0,1]      (0,9000]+1000 向下取整   1000  10000
+        // function verifiCode(){
+        //     return Math.floor(Math.random() * 9000 + 1000);
+        // }
+        // console.log(verifiCode());
+
+
+
+        // 求m-n之间数字的和
+        // function sumMN(m, n) {
+        //     if(parseInt(m) != m || parseInt(n) != n) {
+        //         throw new Error("输入不合法");
+        //     } else if(m === n) {
+        //         return 2 * m;
+        //     } else {
+        //         var mi = Math.min(m, n);
+        //         var mx = Math.max(m, n);
+        //         var sum = 0;
+        //         for(var i = mi; i <= mx; i++) {
+        //             sum += i;
+        //         }
+        //         return sum;
+        //     }
+        // }
+        // console.log(sumMN(100,1));
+
+
+
+
+        // 编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。  12345 12
+        // function digit(num, k) {
+        //     if(num <= Math.pow(10, k-1) - 1) {
+        //         return 0;
+        //     } else {
+        //         return parseInt(num / Math.pow(10, k-1)) % 10;
+        //     }
+        // }
+        // console.log(digit(54321, 6));
+
+
+
+        // 编写函数计算一个数字的长度
+        // function lenNum(num) {
+        //     var sNum = "" + num;
+        //     return sNum.length;
+        // }
+        // console.log(lenNum(0));
+        
+        // 方法二
+        // function lenNum(num) {
+        //     var i = 1;
+        //     while(true) {
+        //         if(num > Math.pow(10, i) - 1) {
+        //             i++;
+        //         } else {
+        //             return i;
+        //         }
+        //     }
+        // }
+        // console.log(lenNum(123456));
+
+
+
+
+        // 编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+        // 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+        // function oddGroup(m, n) {
+        //     var count = 0;
+        //     if(m == n) {
+        //         throw new Error("输入不合法");
+        //     } else {
+        //         var mi = Math.min(m, n);
+        //         var mx = Math.max(m, n);
+        //         for(var i = mi; i <= mx; i++ ) {
+        //             for(var j = mi; j <= mx; j++) {
+        //                 if(i != j) {
+        //                     var temp = i * 10 + j;
+        //                     if(temp % 2 != 0) {
+        //                         count++;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         return count;
+        //     }
+        // }
+        // console.log(oddGroup(3, 0));
+
+
+
+
+        // 某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+        // 加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+        // 第二位和第三位交换，请编写一个函数，传入原文，输出密文
+        // function ciph(num) {
+        //     var a = (num % 10 + 5) % 10;
+        //     var b = (parseInt(num / 10) % 10 + 5) % 10;
+        //     var c = (parseInt(num / 100) % 10 + 5) % 10;
+        //     var d = (parseInt(num /1000) + 5) % 10;
+        //     return a * 1000 + b * 100 + c * 10 + d;
+        // }
+        // console.log(ciph(1234));  // 9876
+
+
+
+        // 编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n
+        // function decSum(n) {
+        //     var sum = 0;
+        //     if(n % 2 == 0) {
+        //         for(var i = 2; i <= n; i += 2) {
+        //             sum += 1 / i;
+        //         }
+        //     } else {
+        //         for(var j = 1; j <= n; j += 2 ) {
+        //             sum += 1 / i;
+        //         }
+        //     }
+        //     return sum;
+        // }
+        // console.log(decSum(4));
+
+
+
+        // 使用函数完成任意数字阶乘的计算
+        // function factorial(n) {
+        //     var result = 1;
+        //     for(var i = 0; i++ < n;) {
+        //         result *= i;
+        //     }
+        //     return result;
+        // }
+        // console.log(factorial(5));
+
+
+
+        // 要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+        // facBtn.onclick = function() {
+        //     var n = facti.value;
+        //     var result = 1;
+        //     for(var i = 0; i++ < n;) {
+        //         result *= i;
+        //     }
+        //     facti.value = result;
+        // }
+
+
+
+        // 创建一个对象，表示一个学生的信息
+        // var info = {
+        //     name : "zhangsan",
+        //     age : "18",
+        //     id : 123456789
+        // }
+        // console.log(info.id);
+
+
+        // 事件添加
+        // box.ondblclick = function() {
+        //     console.log("您刚刚双击了div,触发了dbclick事件");
+        // }
+
+        // txt.onchange = function() {
+        //     console.log("输入框内容改变，触发了onchange事件");
+        // }
+
+
+    </script>
+</body>
+
+</html>

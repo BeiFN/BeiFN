@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //打印正直角三角形
+        // var count_row=0;
+        // while(count_row++<10){
+        //     var count_col=0;
+        //     while(count_col++<count_row){
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+        // 打印倒三角
+        // var count_row=10;
+        // while(count_row-->0){
+        //     var count_col=0;
+        //     while(count_col++<count_row){
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+       // 打印等腰三角型
+        // var count_row=0;
+        // while(count_row++<5){
+        //     var count_space=0;
+        //     while(count_space++<5-count_row){
+        //         document.write("&nbsp;");
+        //     }
+        //     var count_col=0;
+        //     while(count_col++<count_row*2-1)
+        //     {
+        //         document.write("*");
+        //     }
+        //     document.write("<br>");
+        // }
+
+        //打印倒等腰三角形
+        var count_row=5;
+        while(count_row-->1){
+            var count_space = 0;
+              while(count_space++ < 5 - count_row){
+                    document.write("&nbsp;&nbsp;");
+              }
+              var count_col = 0;
+              while(count_col ++ < count_row * 2 - 1){
+                     document.write("✡");
+              }
+              document.write("<br>");
+        }
+        //打印菱形
+        var row1=0;
+        while(row1++<5){
+            var space1=0;
+            while(space1++<5-row1){
+                document.write("&nbsp;&nbsp;");
+            }
+            var col1=0;
+            while(col1++< row1*2-1){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        while(row1-->1){
+            var space1=0;
+            while(space1++<5-row1){
+                document.write("&nbsp;");
+            }
+            var col1=0;
+            while(col1++<row1*2-1){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+
+        
+        document.write("<br>");
+        document.write("<br>");
+        
+        //打印空菱形
+        var row2=0;
+        while(row2++<5){
+            var space2=0;
+            while(space2++<5-row2){
+                document.write("&nbsp;");
+            }
+            var col2=0;
+            while(col2++< row2*2-1){
+                if(col2===1||col2===row2*2-1){
+                    document.write("*");
+                }
+                else{
+                    document.write("&nbsp;");
+                }          
+            }
+            document.write("<br>");
+        }
+        while(row2-->1){
+            var space2=0;
+            while(space2++<5-row2){
+                document.write("&nbsp;");
+            }
+            var col2=0;
+            while(col2++<row2*2-1){
+                if(col2===1||col2===row2*2-1){
+                    document.write("*");
+                }
+                else{
+                    document.write("&nbsp;");
+                }  
+            }
+            document.write("<br>");
+        }
+
+
+
+    </script>
+</body>
+</html>
