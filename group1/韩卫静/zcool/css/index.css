@@ -1,14 +1,23 @@
 
+
+/* ----------logo和导航栏部分------- */
 #logo_nav{
     height: 56px;
     background-color: #ffe300;
 }
 .logo_part{
-    width: 1180px;
+    width: 1450px;
     margin: 0 auto;
+}
+.logo_part>img{
+    width: 120px;
+    height: 20px;
+    float: left;
+    margin-top: 18px;
 }
 .center_nav{
     float: left;
+    margin-left: 225px;
 }
 .center_nav li {
     float: left;
@@ -20,4 +29,152 @@
     color: #282828;
     line-height: 56px;
     padding: 0 24px;
+}
+.center_nav .li1 a{
+    font-weight: bold;
+}
+.center_nav li a:hover{
+    background-color: #282828;
+    color: #ffe300;
+}
+
+.material {
+    position: relative;
+}
+.center_nav .material a{
+    padding-right: 46px;}
+.material .sale_icon{
+    position: absolute;
+    left: 82px;
+    top:10px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #ea4335;
+    padding: 0 3px;
+}
+.sale_icon::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+.moreli{
+    width: 60px;
+    position: relative;
+}
+.moreli>span{
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color:  #ff4a3b;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+
+.center_nav .moreli a{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat center center;
+    height: 56px; 
+    background-size: 20px 20px;
+}
+
+
+.right_nav .cloudli a{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat center center;
+    height: 56px; 
+    background-size: 20px 20px; 
+    margin-left: 200px;
+}
+.right_nav .searchli a{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat center center;
+    height: 56px; 
+    background-size: 30px 20px; 
+}
+.right_nav{
+    float: right;
+}
+.right_nav span{
+    float: left;
+    height: 12px;
+    width: 1px;
+    border-right: 1px solid #222;
+    margin-top: 22px;
+}
+.right_nav li{
+    float: left;
+}
+.right_nav li a{
+    display: block;
+    font-size: 14px;
+    color: #282828;
+    line-height: 56px;
+    padding: 0 22px;
+}
+
+/* ----------banner图片部分------- */
+.carousel{
+    position: relative;
+}
+.carousel img{
+    margin: 20px auto;
+    width: 1130px;
+    border-radius: 4px;
+}
+
+.carousel_sup{
+    width: 1130px;
+    height: 286px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -565px;
+}
+.goleft{
+    display: none;
+    width: 56px;
+    height: 56px;
+    margin-top:115px;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat ;
+    float: left;
+}
+.goright{
+    display: none;
+    width: 56px;
+    height: 56px;
+    margin-top:115px;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat ;
+    float: right;
+}
+.carousel_sup:hover .go_btn{
+    display: block;
+}
+.sub_banner{
+    width: 1130px;
+    height: 170px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.sub_banner ul{
+    width: 1150px;
+}
+.sub_banner ul li{
+    float: left;
+}
+.sub_banner ul li a{
+    display: block;
+    margin-right: 20px;
+}
+.sub_banner ul li img{
+    width: 210px;
+    height: 168px;
+    border-radius: 4px;
 }
