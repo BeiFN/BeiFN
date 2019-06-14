@@ -98,19 +98,19 @@
 
         // 编写一个函数， 计算任意两个数字之间所能组成的奇数个数， 数字必须是个位数。
         // 比如： 计算0~3 之间能组成的奇数是： 01、 03、 13、 21、 23、 31
-        
-        function odd(n, m) {
-            for (var i = n; i <= m; i++) {
-                for (j = n; j <= m; j++) {
-                    if (i == j)
-                         continue;
-                    var temp = ''+i + j;
-                    if (temp % 2)
-                        console.log(temp)
-                }
-            }
-        }
-        odd(2, 8);
+
+        // function odd(n, m) {
+        //     for (var i = n; i <= m; i++) {
+        //         for (j = n; j <= m; j++) {
+        //             if (i == j)
+        //                  continue;
+        //             var temp = ''+i + j;
+        //             if (temp % 2)
+        //                 console.log(temp)
+        //         }
+        //     }
+        // }
+        // odd(2, 8);
 
 
         //         某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
@@ -179,6 +179,44 @@
         // for(var i in student){
         //     console.log(i);
         // }
+
+
+        //    function bb (){
+        //         document.write("dfjksafdsfd")
+        //     }
+
+        //    var a = function cc (){
+        //         document.write("222222222222")
+        //     }
+        //      cc();
+        //辗转相除法
+
+        // function xx(x, y) {
+        //     do {
+        //         var r = x % y;
+        //         x = y;
+        //         y = r;
+        //     } while (r !== 0)
+        //       return x;
+
+        // }
+        // console.log(xx(17, 24));
+        //更相减损法
+        // function divisor(x, y) { //更相减损法
+        //     if (x % 2 == 0 && y % 2 == 0) {
+        //         return 2 * divisor(x / 2, y / 2);
+        //     } else {
+        //         var max = Math.max(x, y);
+        //         var min = Math.min(x, y);
+        //         var cha = max - min;
+        //         if (cha == min) {
+        //             return min;
+        //         } else {
+        //             return divisor(cha, min);
+        //         }
+        //     }
+        // }
+        // console.log(divisor(2,252));
     </script>
 </body>
 

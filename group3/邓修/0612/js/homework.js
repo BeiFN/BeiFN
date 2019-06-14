@@ -151,14 +151,16 @@
 
 //创建一个对象，表示一个学生的信息
 // var student={
-//     "name": "邓修",
-//     "ID": "430426xxxxxxxxxxxx",
-//     "weight": 110,
-//     "height": 175,
-//     "grade": 60
+//     name: "邓修",
+//     ID: "430426xxxxxxxxxxxx",
+//     weight: 110,
+//     height: 175,
+//     grade: 60,
+//     class: "GP-12"
 // };
 // document.write("姓名：" + student.name + "<br/>");
 // document.write("身份证号：" + student.ID + "<br/>");
 // document.write("身高：" + student.height + "<br/>");
 // document.write("体重：" + student.weight + "<br/>");
+// document.write("班级：" + student.class + "<br/>");
 // document.write("成绩：" + student.grade + "<br/>");
