@@ -15,8 +15,7 @@
 <body>
 
     
-    <input type="text" id="num">
-    <input type="button" value="计算" id="btn">
+    
 
     <!-- <area shape="" coords="" href="" alt=""> -->
     
@@ -258,6 +257,10 @@ document.write("<br/><br/>13 使用函数完成任意数字阶乘的计算<br/>"
 
         
 document.write("<br/><br/>14 要求：页面输入任意数字，点击按钮后计算该数字的阶乘<br/>");
+    document.write('<input type="text" id="num">');
+    document.write('<input type="button" value="计算" id="btn">');
+    
+    
         btn.onclick = function (){
             num.value = factorial(num.value);
             // document.getElementById("num").value
@@ -333,7 +336,7 @@ document.write("<br/><br/>17 键盘操作输入框事件<br/>");
     textview.onchange = function(){
             console.log("内容改变");
             
-            document.getElementById("textview").value="文本域的内容改变触发 只可能在失去焦点之前，内容未改变也不好触发";
+            document.getElementById("textview").value="文本域的内容改变触发 只可能在失去焦点之前，内容未改变也不会触发";
 
         }
 

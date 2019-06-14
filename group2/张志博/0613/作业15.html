@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{width: 200px;
+        height: 100px;
+        background: #ff0;
+        line-height: 100px;
+        text-align: center;
+        font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="test">
+        DIV
+    </div>
+    <textarea name="" id="test2" cols="30" rows="10">aaa</textarea>
+    <script>
+        // douclick = test.value;
+        test.ondblclick = function(){
+         document.write("刚刚双击了");
+        }
+        test2.onchange = function(){
+            document.write("输入框内容被改变");
+        }
+    </script>
+</body>
+</html>
