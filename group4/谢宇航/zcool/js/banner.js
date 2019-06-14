@@ -20,7 +20,9 @@
 		}
 		else{
 			position++;
-			if(position > 7) position = 0;
+			if(position > 7) {
+				position = 0;
+			}
 		}
 		imgMove();
 	}
@@ -41,7 +43,7 @@
 	function startTime(e) {
 		time = setInterval(move1, 4000);
 	}
-	
+
 	function clearTime(e) {
 		clearInterval(time);
 	}
