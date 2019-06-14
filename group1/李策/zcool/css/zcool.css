@@ -1,33 +1,424 @@
 @charset "utf-8";
 /* CSS Document */
 body,html{
-    width: 1326px;
+    width: 1349px;
 }
 .w1130{
     width: 1130px;
+    margin:0 auto;
 }
 .head{
+    width: 100%;
     height: 56px;
     background:#ffe300;
-    padding-left: 73px;
-    padding-right:83px;
+    font-size: 12px;
 }
-.head img{
+.w1209{
+    width: 1209px;
+    margin:0 auto;
+}
+.logoimg{ 
     float:left;
+    width: 120px;
+    height: 20px;
+    margin: 18px 165px 0 0;
+}
+
+.head ul{
+    float:left;
+    width: 671px;
 }
 .head li{
     float:left;
     text-align: center;
 }
+.head li:hover>a{
+    color:yellow;
+    background: #282828;
+    position: relative;
+}
 .head li>a{
-    width: 79px;
+    width: 76px;
     height: 56px;
     color:black;
-    font-size: 16px;
+    font-size: 14px;
     display:block;
     line-height: 56px;
 }
+.head li:hover .discover{
+    display:block;
+}
+.discover{
+    width: 664px;
+    height: 144px;
+    display:none;
+    position: absolute;
+    top: 56px;
+    z-index: 3;
+    font-size: 14px;
+    background:#fff;
+}
+.discover1{
+    width: 630px;
+    height: 64px;
+    padding:11px 17px 17px;
+    border-bottom:1px solid #eaeaea;
+}
+.discover1 a{
+    width: 90px;
+    height: 28px;
+    float:left;
+    margin-top:4px;
+    line-height: 28px;
+    text-align: center;
+    position: relative;
+}
+.discover1 a:hover{
+    background: #ffe300;
+}
+.discover1 i{
+    height:14px;
+    width: 1px;
+    background: #ddd;
+    display: inline-block;
+    position:absolute;
+    right:0;
+    top:5px;
+}
+.discover2{
+    width: 604px;
+    height: 51px;
+    padding:0 30px;
+    line-height: 51px;
+    text-align: left;
+}
+.discover2 a{
+    margin-right:40px;
+    color:#444;
+    padding-right:15px;
+    background:url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou.svg) no-repeat 61px 5px;
+    background-size: 10px 10px;
+    outline:2px;
+
+}
+.pos{
+    position: relative;
+}
+.pos:hover .position{
+    display:block;
+}
+.position{
+    width: 152px;
+    height: 132px;
+    padding:6px 0;
+    position: absolute;
+    top:56px;
+    right:-76px;
+    z-index: 3;
+    background: #fff;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    display:none;
+}
+.position>p{
+    width: 132px;
+    height: 44px!important;
+    padding-left: 20px;
+}
+.position>p:hover{
+    background: #ffe300;
+}
+.position p a{
+    margin:0px!important;
+    line-height: 44px!important;
+    float: left;
+}
+.act{
+    position: relative;
+}
+.act:hover>.active{
+    display: block;
+}
+.act>.active{
+    width: 152px;
+    height: 220px;
+    padding:6px 0;
+    position: absolute;
+    top:56px;
+    right:-76px;
+    z-index: 3;
+    background: #fff;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    display:none;
+}
+.act>.active>p{    
+    height: 44px!important;
+    width: 132px;
+    padding-left: 20px;
+}
+.active p a{
+    margin:0px!important;
+    line-height: 44px!important;
+    float: left;
+}
+.active>p:hover{
+    background: #ffe300;
+}
+.su>a{
+    width: 66px;
+    padding:0 32px 0 14px;;
+}
+.su{
+    position: relative;
+}
+.su:hover>.sucai{
+    display:block;
+}
+.su>.sucai{
+    width: 152px;
+    height: 176px;
+    padding:6px 0;
+    position:absolute;
+    top:56px;
+    right:-30px;
+    z-index: 3;
+    background:#fff;
+    display: none;
+}
+.su>.sucai>p{
+    height: 44px!important;
+    width: 132px;
+    padding-left: 20px;
+    position: relative;
+}
+.sucai p a{
+    margin:0px!important;
+    line-height: 44px!important;
+    float: left;
+}
+.pi{
+    width: 48px;
+    height: 18px;
+    padding: 0 3px;
+    background: #ea4335;
+    color:#fff;
+    position: relative;
+    top:5px;
+    left:-22px;
+}
+.pi:after{
+    content:"";
+    height: 0;
+    position: absolute;
+    bottom:-5px;
+    left:0px;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:5px solid #ea4335;
+}
+.sucai>p:hover{
+    background: #ffe300;
+}
+.lesson{
+    position: relative;
+}
+.lesson>.alllesson{
+    width: 152px;
+    height: 44px;
+    padding:6px 0;
+    position:absolute;
+    top:56px;
+    right:-76px;
+    z-index: 3;
+    background:#fff;
+    display:none;
+}
+.lesson:hover .alllesson{
+    display:block;
+}
+.lesson>.alllesson>p{
+    height: 44px!important;
+    width: 132px;
+    padding-left: 20px;
+    position: relative;
+}
+.alllesson>p:hover{
+    background: #ffe300;
+}
+.alllesson p a{
+    margin:0px!important;
+    line-height: 44px!important;
+    float: left;
+}
+.head ul>span{
+    position: relative;
+    top:11px;
+    left:-176px;
+    background: #ea4335;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    color:#fff;
+    padding:1px 3px;
+}
+.head ul span::after{
+    content:"";
+    height: 0;
+    position: absolute;
+    bottom:-5px;
+    left:0;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:5px solid #ea4335;
+}
+.dian{
+    font-weight: bold;
+    position: relative;
+    width: 60px!important;
+}
+.dian>em{
+    font-size: 45px;
+    color:#f00;
+    position: absolute;
+    top:-18px;
+    left:40px;
+}
+.large{
+    float: left;
+    margin-left:1px;
+    margin-right:3px;
+}
+.large a{
+    width: 60px;
+    height: 38px;
+    display: block;
+}
+.large a i{
+    width: 20px;
+    height: 20px;
+    display: block;
+    background:url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;
+    margin: 18px auto;
+}
+.large:hover{
+    background: #282828;
+}
+.large:hover i{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1);
+}
+.cloud{
+    float: left;
+}
+.cloud a{
+    width: 62px;
+    height: 38px;
+    display: block;  
+}
+.cloud a i{
+    width: 30px;
+    height: 20px;
+    display: block;
+    background:url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat;
+    margin: 18px auto;
+}
+.cloud:hover{background: #282828;}
+.cloud:hover i{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg) no-repeat;
+}
 .head p{
-    width: 70px;
-    border-right: 1px solid #222;
+    float : left;
+    height: 56px;
+}
+.head p a{
+    margin-left: 20px;
+    line-height: 60px;
+    font-size: 14px;
+}
+.head p i{
+    margin-left: 20px;
+    height: 10px;
+    background: #282828;
+    width: 1px;
+    display: inline-block;
+}
+.slider{
+    width: 1130px;
+    height: 286px;
+    margin-top: 20px;
+    position: relative;
+}
+.magic:hover .h2861{
+    display:block;
+}
+.magic:hover .h2862{
+    display:block;
+}
+.h2861{
+    width: 200px;
+    height: 286px;
+    position: absolute;
+    top: 50px;
+    left: 140px;
+    display: none;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat 0 143px;
+}
+.h2861:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat 0 143px;
+}
+.h2862{
+    width: 200px;
+    position: absolute;
+    height: 286px;
+    top: 50px;
+    right: 8px;
+    display: none;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat 0 143px;;
+}
+.h2862:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat 0 143px;
+}
+.spitline{height: 20px;}
+.advertise{
+    height: 170px;
+    padding-bottom: 55px;
+}
+.advertise>.w1130>ul{
+    margin-right:-20px;
+}
+.advertise>.w1130>ul>li{
+    width: 210px;
+    height: 173px;
+    margin-right:20px;
+    float:left; 
+}
+.advertise li img{
+    width: 210px;
+    height: 168px;
+}
+.main-nav{
+    width: 100%;
+    height: 56px;
+    min-height: 56px;
+    position:sticky;
+    top:0;
+    z-index: 10;
+}
+.main-nav .clearfix{
+    position: relative;
+    text-align: center;
+    margin:0 auto;
+}
+.main-nav>.w1130>.clearfix>li{
+    width: 64px;
+    height: 56px;
+    padding:0 30px;
+    display: inline-block;  
+}
+.clearfix>li>a{
+    font-size: 16px;
+    line-height: 1em;
+    padding:19px 0;
+    color: #999;
+    display: block;
+}
+.main-nav>.w1130>.clearfix>li:hover>a{
+    border-bottom:2px solid #444;
+    color:#282828;
 }
