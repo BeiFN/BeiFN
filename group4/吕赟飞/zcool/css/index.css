@@ -1,0 +1,549 @@
+/* 版心 */
+.w1130{
+    width: 1130px;
+    margin: 0 auto;
+}
+
+
+/* 头部 */
+header{
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+}
+
+/* 导航 */
+header nav{
+    height: 56px;
+    margin: 0 70px;
+    font-size: 14px;
+    color: #282828;
+}
+
+header nav .logo{
+    float: left;
+    margin: 18px 160px 0 0;
+}
+
+header nav .menu{
+    float: left;
+    height: 56px;
+}
+
+header nav .menu>li{
+    float: left;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 24px;
+}
+
+header nav .menu>li a{
+    height: 100%;
+    display: block;
+}
+
+header nav .menu>li:hover{
+    background-color: #282828;
+    color: #ffe300;
+}
+
+header nav .menu>li:nth-child(1){
+    font-weight: bold;
+}
+
+header nav .menu>li:nth-child(2){
+    position: relative;
+}
+
+header nav .menu>li:nth-child(2) .discover{
+    width: 664px;
+    height: 144px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 56px;
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    color: #444;
+    border-radius: 4px;
+}
+
+header nav .menu>li:nth-child(2):hover .discover{
+    display: block;
+}
+
+header nav .menu>li:nth-child(2) .discover .top{
+    height: 93px;
+    padding: 11px 17px 17px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li{
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    float: left;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li a{
+    border-right: 1px solid #eee;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li:hover a{
+    background: #ffe300;
+}
+
+header nav .menu>li:nth-child(2) .discover .bottom{
+    height: 51px;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+header nav .menu>li:nth-child(2) .discover .bottom li{
+    float: left;
+    width: 70px;
+    line-height: 51px;
+    margin-right: 40px;
+}
+
+header nav .menu>li:nth-child(4){
+    position: relative;
+}
+
+header nav .menu>li:nth-child(4) .post{
+    position: absolute;
+    width: 152px;
+    height: 144px;
+    left: 0;
+    top: 56px;
+    background: #fff;
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    color: #444;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+header nav .menu>li:nth-child(4):hover .post{
+    display: block;
+}
+
+header nav .menu>li:nth-child(4) .post li{
+    width: 100%;
+    height: 44px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+header nav .menu>li:nth-child(4) .post li:hover{
+    background: #ffe300;
+}
+
+header nav .menu>li:nth-child(8) i{
+    display: inline-block;
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 20px;
+    height: 56px;
+    background-size: 20px auto;
+}
+
+header nav .menu>li:nth-child(8):hover i{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg)
+}
+
+header nav .login{
+    float: right;
+    margin-top: 21px;
+}
+
+header nav .login li{
+    float: left;
+    line-height: 1em;
+    padding: 0 20px;
+}
+
+header nav .login li:nth-child(1){
+    border-right: 1px solid #282828;
+}
+
+
+header nav .tool{
+    float: right;
+}
+
+header nav .tool li{
+    float: left;
+    text-align: center;
+    height: 56px;
+    line-height: 62px;
+    padding: 0 18px;
+}
+
+header nav .tool li:hover{
+    background-color: #282828;
+}
+
+header nav .tool li:nth-child(1) i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1)
+}
+
+header nav .tool li:nth-child(1):hover i{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1)
+}
+
+
+header nav .tool li:nth-child(2) i{
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) center center no-repeat;
+}
+
+header nav .tool li:nth-child(2):hover i{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg)
+}
+
+/* 主体 */
+section{
+    width: 100%;
+}
+
+/* 轮播图 */
+#banner{
+    height: 286px;
+    position: relative;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+#images{
+    width: 6780px;
+    height: 286px;
+    font-size: 0;
+    position: absolute;
+    transition: .5s all ease-in-out;
+}
+
+#images img{
+    width: 1130px;
+    height: 286px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#leftBtn{
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 128px;
+    transition: .5s all ease-in-out;
+}
+
+#rightBtn{
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 128px;
+    transition: .5s all ease-in-out;
+}
+
+#banner:hover #leftBtn{
+    display: block;
+}
+
+#banner:hover #rightBtn{
+    display: block;
+}
+
+/* 广告位 */
+section .adv{
+    height: 170px;
+    margin: 20px auto 55px;
+    overflow: hidden;
+}
+
+section .adv ul{
+    width: 1150px;
+}
+
+section .adv li{
+    float: left;
+    width: 210px;
+    height: 170px;
+    margin-right: 20px;
+}
+
+section .adv li img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+/* 吸顶导航 */
+#navs{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1em;
+    color: #999;
+    background: #fff;
+}
+
+#navs li{
+    display: inline-block;
+    padding: 0 30px;
+}
+
+#navs li a{
+    display: block;
+    padding: 19px 0;
+    border-bottom: 2px solid transparent;
+}
+
+#navs li:hover a{
+    color: #282828;
+    border-bottom: 2px solid #444;
+}
+
+#navs li:nth-child(1) a{
+    color: #282828;
+    border-bottom: 2px solid #444;
+}
+
+/* 首页推荐 */
+.content{
+    width: 100%;
+    background: #eee;
+}
+
+.content ul{
+    width: 1150px;
+}
+.content li{
+    float: left;
+    width: 210px;
+    margin: 20px 20px 20px 0;
+}
+
+.content li .card_img{
+    width: 100%;
+    height: 158px;
+}
+.content li .card_img img{
+    width: 100%;
+    height: 100%;
+}
+
+.content li .card_info{
+    width: 100%;
+    height: 100px;
+    padding: 11px 16px 13px;
+    background: #fff;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+.content li .card_info h4{
+    font-size: 14px;
+    color: #333;
+    width: 178px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.content li .card_info h5{
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 17px;
+}
+
+.content li .card_info p{
+    font-size: 12px;
+    line-height: 1em;
+    color: #bbb;
+}
+
+.content li .card_info p span{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.content li .card_info p span:nth-child(1)::before{
+    content: "";
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat left center;
+}
+.content li .card_info p span:nth-child(2)::before{
+    content: "";
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat left center;
+}
+.content li .card_info p span:nth-child(3)::before{
+    content: "";
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat left center;
+}
+
+.content li .card_item{
+    width: 210px;
+    height: 50px;
+    background: #fff;
+    padding: 0 16px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.content li .card_item .more{
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: relative;
+}
+.content li .card_item .more img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.content li .card_item>span{
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.content li .card_item>em{
+    float: right;
+    color: #bbb;
+    line-height: 50px;
+}
+
+
+.content li .card_item .more .author{
+    display: none;
+    text-align: center;
+    width: 210px;
+    height: 280px;
+    position: absolute;
+    top: -280px;
+    left: -16px;
+    background: #fff;
+    padding: 30px 0 20px;
+    box-sizing: border-box;
+}
+
+.content li .card_item .more:hover .author{
+    display: block;
+}
+
+.content li .card_item .more .author img{
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+}
+
+.content li .card_item .more .author>p{
+    font-size: 16px;
+    color: #333;
+    margin-top: 4px;
+}
+
+.content li .card_item .more .author>strong{
+    font-size: 12px;
+    color: #bbb;
+}
+
+.content li .card_item .more .author>a{
+    display: inline-block;
+    width: 100px;
+    font-size: 12px;
+    margin: 16px 0;
+    color: #bbb;
+}
+
+.content li .card_item .more .author>a em{
+    font-weight: bold;
+    color: #282828;
+}
+
+.content li .card_item .more .author>i{
+    width: 80px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    display: inline-block;
+    margin: 0 5px;
+    color: #444;
+    background: #fff;
+    border: 1px solid #282828;
+    border-radius: 4px;
+}
+.content li .card_item .more .author>i:nth-last-child(2){
+    background: #ffe300;
+    border: 1px solid #ffe300;
+}
+
+/* 底部 */
+footer{
+    width: 100%;
+    height: 299px;
+    background: #282828;
+}
+
+footer .top_left{
+    float: left;
+
+}
+
+footer .top_left li{
+    float: left;
+    height: 130px;
+    line-height: 130px;
+    color: #666;
+    font-size: 14px;
+    margin-right: 38px;
+}
+
+footer .top_right{
+    float: right;
+}
+
+
+
+/* 返回顶部 */
+
+#backTop{
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index: 999;
+    right: 20px;
+    bottom: 100px;
+    border-radius: 4px;
+    background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAJCAYAAADtj3ZXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNDRCMDUzQUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZGNDRCMDU0QUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY0NEIwNTFBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY0NEIwNTJBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PJl6MAAAAmUlEQVR42mL4//8/Aw6sBsQHoTRWNbg06gPxi/8QAKINiNVsBcTvoRrfQun3UHG8mt2B+CtUwyog5oHS/6Hi7rg0hwDxT6jC2UDMDBUH0XOg4iD5UHTNyUD8B6qgG4gZ0VwE4vdA5f9A1YM1FwPxP6hENZ7QZ4DK/4eqLwYJdADxXyDOIqARhrOg6jtgTjIjUiMMg9QzAgQYANxouJaSk05sAAAAAElFTkSuQmCC) no-repeat center;
+}
