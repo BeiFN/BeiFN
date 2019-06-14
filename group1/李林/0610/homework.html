@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //  为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+    var days= parseInt(89 / 24);
+    var hours=89%24;
+    console.log("战士共作战"+days+"天"+hours+"小时")
+    // 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+
+    // 提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位末尾非0小数
+    var fag = 80;
+    var cen = 5/9*(fag-32);
+    cen*=1000;
+    cen=parseInt(cen);
+    cen/=1000;
+    console.log("当前美国的温度为 : "+ cen +"摄氏度 ,"+ fag +"华氏度");
+    
+    var k=-2;
+    temp= ++k + k++ + ++k + k;
+    //(-1-1+1+1)
+    console.log(temp)
+
+    //入职薪水10K，每年涨幅5%，50年后工资多少？
+            var j=10;
+			for(i=1;i<=50;i++){
+                j+=j*0.05;
+            }
+            console.log("50年后工资"+j+"k");
+    //根据输入的数字，判断是否为闰年
+     var year=2019;
+     if(year%400===0||year%4===0&&year%100 !==0){
+         console.log(year+"是闰年");
+     }else{
+        console.log(year+"不是闰年");
+     }
+     //根据输入的成绩，判定成绩的等级A\B\C\D
+       var a=80;
+       var core=parseInt(a/10);
+       switch(core){
+           case 10:
+           case 9: console.log('A');break;
+           case 8: console.log('B'); break;
+           case 7: console.log('C');break;
+           default: console.log('D');
+        }
+       //根据输入的数字，返回星期几
+       var a=10;
+       var week=a%7;
+       switch(week){
+           case 1:console.log("星期一");break;
+           case 2: console.log("星期二"); break;
+           case 3: console.log("星期三"); break;
+           case 4:console.log("星期四"); break;
+           case 5:console.log("星期五");break;
+           case 6: console.log("星期六");break;
+           case 7:console.log("星期天"); default: break;
+       }
+       //根据输入月份，输出每月天数
+       var month=5;
+       var year=2019;
+       switch(month){
+                case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12: console.log(31);break;
+				case 2: if(year%400==0||(year%100!=0&&year%4==0)){
+                        console.log(29);
+                        }					
+						else{
+                        console.log(28);break;
+                    }
+				default:console.log(30);
+			}
+    //判断一个整数，属于哪个范围：大于0；小于0；等于0
+    var i=0;
+    if(i<0){
+        console.log("小于0");
+    }else if(i>0){
+        console.log("大于0");
+    }else{
+        console.log("等于0");
+    }
+   //判断一个整数是偶数还是奇数，并输出判断结果
+   var i=0;
+   if( i%2 ==0){
+       console.log("该整数为偶数");
+    }
+       else{
+        console.log("该整数为奇数");
+    }
+    //开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+    var height=170;
+    var weight=100;
+    var temp=(height-108)*2;
+    if(weight-temp>=10 && temp-weight<=10){
+        console.log("体重合适");
+    }
+    else{
+        console.log("体重不合适");
+    }
+ //2
+ var x = 2;
+switch(x){
+     case 1 : console.log(1);
+     case 2 : console.log(2);
+     default : break;
+     case 3 : console.log(3);
+}
+ //根据一个数字日期，判断这个日期是这一年的第几天
+   var date1="20160211";
+   var year=parseInt(Number(date1)/10000);
+	var month=parseInt(Number(date1)/100)%100;
+	var day=Number(date1)%100;
+		
+	var days=0;
+		for(var i=month-1;i>0;i--)
+			days+=month1(i);
+        console.log(days+=day);
+        function month1(month){
+		switch(month){
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12: return 31;
+				case 2: 
+						if(year%400==0||(year%100!=0&&year%4==0))
+                        return 29;					
+						else
+                        return 28;
+						
+				default: return 30;
+            }
+        }
+    //-200
+    var k=-99;
+    var res=k-- *2 + k++ - ++k + k * 3 % k--;
+    console.log(res);
+    //k=-100  res=-198
+    //k=-99   res=-298
+    //k=-98    res=-200
+    //k=-98   res=-200
+    //k=-99   res=-200
+    
+   
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS函数</title>
+</head>
+<body id="body">
+    <button onclick="handerClick()">点击</button>
+    <button id="btn">再点我试试</button>
+    <input type="text" id="text" placeholder="键盘事件">
+    <input type="text" id="inp" placeholder="元素事件">
+
+    <!-- 随机颜色事件 -->
+    <button id="btn1">点击变色</button>
+    <!-- 
+        标准写法 编程高内聚低耦合
+        html css js 结构分离
+     -->
+    <script>
+
+        // 随机数
+        // Math.random();伪随机 范围大于0小于1的小数  规范文档MDN
+        // 读文档  1.概述  2.用法 3.返回值，运算结果  4 兼容性  5demo 案例
+
+        // 随机一位数
+        var randomNum = parseInt(Math.random() * 10);
+        // 随机2位数
+        var randomNum = parseInt(Math.random() * 100);
+
+        // 范围随机数：  3-20；
+        // var num = 3+parseInt(Math.random() * 18);
+        // Math.round 四舍五入方法
+
+        btn1.onclick = randomBodyColor;
+        // btn1.onmousemove = randomBodyColor;
+        document.onmousemove = randomBtnColor;
+        function randomBtnColor(){
+            //运算=》结果
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            var randomColor = "rgb("+r+","+g+","+b+")";
+            //实现 ==》业务 该部分代码不封装，
+            btn1.style.backgroundColor = randomColor;
+        }
+        function randomBodyColor(){
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            var randomColor = "rgb("+r+","+g+","+b+")";
+            body.style.backgroundColor = randomColor;
+        }
+        randomBodyColor();
+
+        function handerClick(){
+            alert("点什么呀");
+        }
+
+        // document.getElementById();
+        // id简化版本标记元素
+        console.log(btn);
+        // 给标签添加事件
+        //当按钮btn被点击时
+        btn.onclick = function(){
+            alert("我就点点");
+        }
+        //双击 
+        // btn.ondblclick
+        
+        //鼠标按下
+        // btn.onmousedown
+        // onmouseup 抬起
+        // btn.onmouseover 覆盖
+        // btn.onmouseout 移出
+        // btn.onmousemove 移动
+
+        // text.onkeydown 按下
+
+        // 窗口事件  window.onload加载结束触发
+        // window.onload加载结束触发
+
+        //鼠标事件  键盘事件  元素事件 窗口事件
+
+
+        // 函数：一等公民（对象是国王），函数式编程，组件化开发的基础
+        // 闭包  作用域 作用域链 AO 执行环境 垃圾回收机制
+        // 函数的作用：解决 和变量基本一致，用来存储代码块，提高代码可读性和复用性
+
+        // 函数 功能,function 
+        // foo方法名 代表功能 () 条件  {}代码块
+        // 极大降低维护成本，方便自己维护
+        // 函数功能要单一，但是不要太庞大
+        // 函数的设计原则， 高内聚 低耦合
+        // API:语言本身提供给用户实现某些功能的函数
+        // 具名函数   
+        function foo(){
+
+        }
+
+        // 匿名函数:无法调用，属于垃圾内容  语法错误Uncaught SyntaxError: Function statements require a function name
+        // function (){}
+        // 需要一个变量存放调用它,下面方法合法
+        var foo = function(){}
+        
+        // 加括号 + - !(号称最快) ~，转换成运算，不解析语法错误，,立即调用函数
+
+        (function (){
+            console.log("hello");
+        })
+
+        // 特殊写法
+        var foo = function poo(){
+            console.log("特殊写法")
+            console.log(poo);
+        }
+        // foo(); 
+        // poo(); //该方法未定义
+        //1.可访问性：当具名函数给变量赋值时，具名函数的函数名，只能在函数内部可以访问
+        // 2.读写特性 这个具名函数是只读；
+        // 变量：可读写性，  常亮 只读性
+
+
+        /*
+            1.声明具名函数 function foo(){}
+            2.匿名函数 1.赋值给变量， 2.立即执行（作用域），添加计算符
+            3.特殊类型 var foo = function poo(){} 可以正常使用foo，poo只在函数内部可用
+        */
+
+        //事件
+        // 函数可以在适当的时间调用函数。
+        // 用户操作，导致我们程序上进行一定的处理。 在浏览器端JS是事件驱动的。
+        // 事件是发生在标签（元素、节点）上的
+
+
+
+
+
+
+
+
+
+
+        // 函数调用
+        document.write("<br/>");
+        chengFaBiao();
+        lingXing();
+
+        function chengFaBiao(){
+            var n12Num = 0;
+            while(n12Num ++ < 9){
+                var n12key = 0;
+                while(n12key++ < n12Num){
+                    console.log(n12Num,n12key);
+                    document.write(n12key + "*" + n12Num + "=" + (n12Num*n12key) + "&nbsp;&nbsp;&nbsp;&nbsp;");
+                }
+                document.write("<br/>");
+            }
+        }
+
+        function lingXing(){
+            var n7Num = 0;
+            while(n7Num ++ < 3){
+                var n7k = 0;
+                while(n7k ++ < 3 - n7Num){
+                    document.write("&nbsp;&nbsp;");
+                }
+                var n7j = 0;
+                while(n7j ++ < 2*n7Num-1){
+                    document.write("*");
+                }
+                document.write("<br/>");
+            }
+            n7Num -= 1;
+            while(n7Num-- > 1) {
+                var n7k = 0;
+                while(n7k ++ < 3 - n7Num){
+                    document.write("&nbsp;&nbsp;");
+                }
+                var n7j = 0;
+                while(n7j ++ < 2*n7Num-1){
+                    document.write("*");
+                }
+                document.write("<br/>");
+            }
+        }
+
+        //函数返回值
+        // 但凡是没有return的函数，那么这时候都没有返回值
+        // return  就是函数中的关键字，这个关键值表示函数的运算结果，运行结果只能有一个。
+        // 结束函数运行。
+
+        // 随机颜色封装
+        function randomRGBAColor(){
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            var a = Math.random().toFixed(2);
+            var randomColor = "rgba("+ r +","+ g +","+ b +","+ a +")";
+            return randomColor;
+        }
+        console.log(randomRGBAColor());
+
+        cobtn.style.backgroundColor = randomRGBAColor();
+        
+
+    </script>
+    <button id="cobtn">彩色按钮</button>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function hash(num){
+            var ge=(num%10+5)%10;
+            var shi=(parseInt(num%100/10)+5)%10;
+            var bai=(parseInt(num%1000/100)+5)%10;
+            var qian=(parseInt(num/1000)+5)%10;
+            var res=ge*1000+shi*100+bai*10+qian;
+            console.log(res);
+        }
+        hash(1234);
+        
+    </script>
+</body>
+</html>
