@@ -18,7 +18,6 @@ header nav{
     margin: 0 70px;
     font-size: 14px;
     color: #282828;
-    overflow: hidden;
 }
 
 header nav .logo{
@@ -31,23 +30,122 @@ header nav .menu{
     height: 56px;
 }
 
-header nav .menu li{
+header nav .menu>li{
     float: left;
     height: 56px;
     line-height: 56px;
     padding: 0 24px;
 }
 
-header nav .menu li:hover{
+header nav .menu>li a{
+    height: 100%;
+    display: block;
+}
+
+header nav .menu>li:hover{
     background-color: #282828;
     color: #ffe300;
 }
 
-header nav .menu li:nth-child(1){
+header nav .menu>li:nth-child(1){
     font-weight: bold;
 }
 
-header nav .menu li:nth-child(8) i{
+header nav .menu>li:nth-child(2){
+    position: relative;
+}
+
+header nav .menu>li:nth-child(2) .discover{
+    width: 664px;
+    height: 144px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 56px;
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    color: #444;
+    border-radius: 4px;
+}
+
+header nav .menu>li:nth-child(2):hover .discover{
+    display: block;
+}
+
+header nav .menu>li:nth-child(2) .discover .top{
+    height: 93px;
+    padding: 11px 17px 17px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li{
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    float: left;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li a{
+    border-right: 1px solid #eee;
+}
+
+header nav .menu>li:nth-child(2) .discover .top li:hover a{
+    background: #ffe300;
+}
+
+header nav .menu>li:nth-child(2) .discover .bottom{
+    height: 51px;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+header nav .menu>li:nth-child(2) .discover .bottom li{
+    float: left;
+    width: 70px;
+    line-height: 51px;
+    margin-right: 40px;
+}
+
+header nav .menu>li:nth-child(4){
+    position: relative;
+}
+
+header nav .menu>li:nth-child(4) .post{
+    position: absolute;
+    width: 152px;
+    height: 144px;
+    left: 0;
+    top: 56px;
+    background: #fff;
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    color: #444;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+header nav .menu>li:nth-child(4):hover .post{
+    display: block;
+}
+
+header nav .menu>li:nth-child(4) .post li{
+    width: 100%;
+    height: 44px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+header nav .menu>li:nth-child(4) .post li:hover{
+    background: #ffe300;
+}
+
+header nav .menu>li:nth-child(8) i{
     display: inline-block;
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg);
     background-repeat: no-repeat;
@@ -57,7 +155,7 @@ header nav .menu li:nth-child(8) i{
     background-size: 20px auto;
 }
 
-header nav .menu li:nth-child(8):hover i{
+header nav .menu>li:nth-child(8):hover i{
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg)
 }
 
@@ -84,7 +182,7 @@ header nav .tool{
 header nav .tool li{
     float: left;
     text-align: center;
-    height: 62px;
+    height: 56px;
     line-height: 62px;
     padding: 0 18px;
 }
@@ -416,6 +514,25 @@ footer{
     background: #282828;
 }
 
+footer .top_left{
+    float: left;
+
+}
+
+footer .top_left li{
+    float: left;
+    height: 130px;
+    line-height: 130px;
+    color: #666;
+    font-size: 14px;
+    margin-right: 38px;
+}
+
+footer .top_right{
+    float: right;
+}
+
+
 
 /* 返回顶部 */
 
@@ -424,6 +541,7 @@ footer{
     width: 50px;
     height: 50px;
     position: fixed;
+    z-index: 999;
     right: 20px;
     bottom: 100px;
     border-radius: 4px;
