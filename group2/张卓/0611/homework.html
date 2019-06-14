@@ -157,51 +157,77 @@
         var dateDay = (date%10000)%100;
         // console.log(year+" "+riqi)
         // 写一个判断闰年的函数可以重复调用
-        function runnian(year) {
-            if(year%400===0||year%4===0&&year%100!==0){
-              return true;
-            }else{
-              return false;
-            }
-        }
-        if(runnian(dateYear)===true){
+        // function runnian(year) {
+        //     if(year%400===0||year%4===0&&year%100!==0){
+        //       return true;
+        //     }else{
+        //       return false;
+        //     }
+        // }
+        // if(runnian(dateYear)===true){
 
-            switch (dateMonth-1) {
-                case 12:dateDay+=31;
-                case 11:dateDay+=30;
-                case 10:dateDay+=31;
-                case 9:dateDay+=30;
-                case 8:dateDay+=31;
-                case 7:dateDay+=31;
-                case 6:dateDay+=30;
-                case 5:dateDay+=31;
-                case 4:dateDay+=30;
-                case 3:dateDay+=31;
-                case 2:dateDay+=29;
-                case 1:dateDay+=31;
-                default:
-                    break;
-            }
-        }else{
-            // 只有二月份不一样
-            switch (dateMonth-1) {
-                case 12:dateDay+=31;
-                case 11:dateDay+=30;
-                case 10:dateDay+=31;
-                case 9:dateDay+=30;
-                case 8:dateDay+=31;
-                case 7:dateDay+=31;
-                case 6:dateDay+=30;
-                case 5:dateDay+=31;
-                case 4:dateDay+=30;
-                case 3:dateDay+=31;
-                case 2:dateDay+=28;
-                case 1:dateDay+=31;
-                default:
-                    break;
-                }
-            }
-        console.log(date+"是这一年的第"+dateDay+"天")
+        //     switch (dateMonth-1) {
+        //         case 12:dateDay+=31;
+        //         case 11:dateDay+=30;
+        //         case 10:dateDay+=31;
+        //         case 9:dateDay+=30;
+        //         case 8:dateDay+=31;
+        //         case 7:dateDay+=31;
+        //         case 6:dateDay+=30;
+        //         case 5:dateDay+=31;
+        //         case 4:dateDay+=30;
+        //         case 3:dateDay+=31;
+        //         case 2:dateDay+=29;
+        //         case 1:dateDay+=31;
+        //         default:
+        //             break;
+        //     }
+        // }else{
+        //     // 只有二月份不一样
+        //     switch (dateMonth-1) {
+        //         case 12:dateDay+=31;
+        //         case 11:dateDay+=30;
+        //         case 10:dateDay+=31;
+        //         case 9:dateDay+=30;
+        //         case 8:dateDay+=31;
+        //         case 7:dateDay+=31;
+        //         case 6:dateDay+=30;
+        //         case 5:dateDay+=31;
+        //         case 4:dateDay+=30;
+        //         case 3:dateDay+=31;
+        //         case 2:dateDay+=28;
+        //         case 1:dateDay+=31;
+        //         default:
+        //             break;
+        //         }
+        //     }
+        // console.log(date+"是这一年的第"+dateDay+"天")
+        var date = 20160211;
+        var dateYear =parseInt(date/10000);
+        var dateMonth =parseInt((date%10000)/100);
+        var dateDay = date%100;
+        dateForFeb = 28;
+        if(year%400===0||year%4===0&&year%100!==0){
+            dateForFeb = 29;
+        }
+
+        switch (dateMonth-1) {
+            case 12:dateDay+=31;
+            case 11:dateDay+=30;
+            case 10:dateDay+=31;
+            case 9:dateDay+=30;
+            case 8:dateDay+=31;
+            case 7:dateDay+=31;
+            case 6:dateDay+=30;
+            case 5:dateDay+=31;
+            case 4:dateDay+=30;
+            case 3:dateDay+=31;
+            case 2:dateDay+=dateForFeb;
+            case 1:dateDay+=31;
+            default:
+                break;
+        }
+         console.log(date+"是这一年的第"+dateDay+"天")
 
 
         // console.log(NaN == NaN);
