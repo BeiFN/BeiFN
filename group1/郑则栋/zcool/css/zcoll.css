@@ -1,0 +1,395 @@
+a {
+    color: #282828;
+    font-size: 14px;
+    /* display: block; */
+}
+
+.header {
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+}
+
+.w1122 {
+    width: 1122px;
+    height: 100%;
+    margin: 0 auto;
+    /* background: gainsboro; */
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    /* height: 20px; */
+    top: 18px;
+    left: 0;
+}
+
+.logo a {
+    display: block;
+    width: 120px;
+    height: 20px;
+}
+
+.logo a img {
+    display: block;
+}
+
+.header_1 {
+    text-align: center;
+}
+
+.list_ul {
+    height: 56px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.list_ul>li {
+    float: left;
+    height: 56px;
+    cursor: pointer;
+    position: relative;
+}
+
+.list_ul li>a {
+    display: block;
+    padding: 0 24px;
+    height: 56px;
+    line-height: 56px;
+}
+
+.list_ul_sixth {
+    width: 60px;
+}
+
+.list_ul_sixth i {
+    display: inline-block;
+    width: 20px;
+    height: 56px;
+    background: url("https://static.zcool.cn/git_z/build/images/svg/nav-more.svg") no-repeat left center;
+}
+
+.list_ul_sixth sup {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    background-color: red;
+    top: 20px;
+    margin-left: 4px;
+}
+
+.list_ul li:hover {
+    background: #282828;
+}
+
+.list_ul li:hover>a {
+    color: #ffe300;
+}
+
+.list_ul li:hover>i {
+    background: url("https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg") no-repeat left center;
+}
+
+.copy {
+    position: relative;
+}
+
+.sucai {
+    width: 30px;
+    height: 18px;
+    background: red;
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 82px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.sucai:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+
+.search {
+    width: 60px;
+    height: 56px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 192px;
+}
+
+.search i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;
+    /* margin-top: 18px; */
+    margin: 18px auto;
+}
+
+.search:hover {
+    background: #282828 !important;
+}
+
+.search:hover i {
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1) no-repeat;
+}
+
+.header_2 {
+    float: left;
+    width: 192px;
+    height: 56px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 56px;
+}
+
+.cloud {
+    float: left;
+    width: 62px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.cloud>a {
+    display: block;
+    width: 62px;
+    height: 56px;
+    line-height: 56px;
+    overflow: hidden;
+}
+
+.cloud>a::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 20px;
+    background: url("https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg") no-repeat;
+    margin: 18px auto;
+}
+
+.cloud:hover {
+    background: #282828;
+}
+
+.cloud:hover a::after {
+    background: url("https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg") no-repeat;
+}
+
+.log {
+    float: left;
+}
+
+.log li {
+    float: left;
+    margin-left: 20px
+}
+
+.log li a {
+    display: block;
+}
+
+.login {
+    width: 49px;
+    position: relative;
+}
+
+.res {
+    width: 29px;
+}
+
+.login span {
+    /* display: inline-block;
+    vertical-align: middle; */
+    width: 1px;
+    height: 10px;
+    background: #282828;
+    position: absolute;
+    top: 24px;
+    right: 0;
+}
+.shu:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.discover {
+    width: 664px;
+    position: absolute;
+    cursor: auto;
+    display: none;
+    z-index: 10;
+    background-color: white;
+}
+
+.disc1 {
+    width: 630px;
+    height: 64px;
+    padding: 11px 17px 17px;
+}
+
+.disc1 div {
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.disc1 div a {
+    line-height: 28px;
+}
+
+.disc2 {
+    width: 604;
+    height: 51px;
+    padding: 0 30px;
+    text-align: left;
+}
+
+.disc2 a {
+    padding-right: 15px;
+    margin-right: 40px;
+    background: url("https://static.zcool.cn/git_z/build/images/svg/gengduojiantou.svg") no-repeat right;
+    color: #444;
+    background-size: 10px 10px;
+}
+
+.faxian:hover .discover {
+    display: block;
+}
+
+.zhi {
+    display: none;
+    width: 152px;
+    position: absolute;
+    padding: 6px 0 6px 0;
+    z-index: 10;
+    background-color: white;
+}
+
+.zhi p {
+    text-align: left;
+    padding-left: 20px;
+    width: 132px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.zhiwei:hover .zhi {
+    display: block;
+}
+
+.active:hover .zhi {
+    display: block;
+}
+
+.copy:hover .zhi {
+    display: block;
+}
+
+.soexp {
+    width: 48px;
+    height: 18px;
+    background: red;
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.copy .soexp:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+
+.lesson:hover .zhi {
+    display: block;
+}
+
+.list_ul_sixth:hover .zhi {
+    display: block;
+}
+
+.bigimg {
+    width: 100%;
+    height: 500px;
+    padding: 20px 0 35px 0;
+}
+.w1130 {
+    width: 1130px;
+    height: 100%;
+    margin: 0 auto;
+    /* background: gainsboro; */
+    position: relative;
+}
+.bigimg_1{
+    position: relative;
+}
+.bigimg_1 img{
+    vertical-align: middle;
+    height: auto;
+    width: 100%;
+}
+.bigimg_1 div{
+    width: 50px;
+    height: 50px;
+    border-radius:100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    background: rgba(00, 0, 0, 0.2);
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 5;
+}
+.gt{
+    right: 0;
+}
+.white{
+    width: 100%;
+    height: 20px;
+}
+.five_img li{
+    float: left;
+    padding-right: 20px;
+}
+.five_img li a img{
+    width: 210px;
+    height: 168px;
+}
+.bigimg_img1{
+    display: block;
+}
+.bigimg_img2{
+    display: none;
+}
+.bigimg_img3{
+    display:none;
+}
