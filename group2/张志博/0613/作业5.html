@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        function print(n,m){
+            document.write("<table>");
+            for(var i = 0;i<n;i++){
+                document.write("<tr>");
+                for(var j = 0;j<m;j++){
+                    document.write("<td>")
+                    document.write(Math.round(Math.random()*100));
+                    document.write("&nbsp;&nbsp;")
+                    document.write("</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>")
+        }
+        print(5,9);
+    </script>
+</body>
+</html>

@@ -201,11 +201,9 @@
         var n = 2;
         var count = 4;
         var sum = 0;
-        for (var i = 0; i < count; i++) {
-            var num = 0;
-            for (var j = 0; j < i; j++) {
-                num += n * Math.pow(10, j);
-            }
+        var num = 0;
+        for (var j = 0; j < count; j++) {
+            num += n * Math.pow(10, j);
             sum += num;
         }
         console.log(sum);
@@ -272,15 +270,13 @@
         }
 
         //19. 假设某人有 100,000  现金。 每经过一次路口需要进行一次交费。 交费规则为当他现金大于50,000  时每次需要交 5%;如果现金小于等于 50,000  时每次交 5,000 。 请写一程序计算此人可以经过多少次这个路口
-        var count = 0, money = 100000;
-        for (; ;) {
-            count++;
+
+        for (var count = 0, money = 100000; money > 5000; count++) {
             if (money > 50000) {
                 money *= 0.95;
             } else {
                 money -= 5000;
             }
-            if (money < 5000) break;
         }
         console.log(count);
 
