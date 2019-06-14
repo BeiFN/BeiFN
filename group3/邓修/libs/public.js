@@ -1,5 +1,5 @@
 /**
- * version : 0.0.2;
+ * version : 0.0.3;
  * author : dengxiu;
  * date : 2019.06.12;
  */
@@ -22,5 +22,5 @@ function randomRGBAColor() {
  * 返回最小值到最大值之间的随机整数
  */
 function randomNum(num1,num2){
-    return num1+Math.round(Math.random()*num2);
+    return num1+Math.round(Math.random()*(num2-num1));//修改错误，num2 ==> num2-num1
 }
