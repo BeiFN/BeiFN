@@ -1,3 +1,4 @@
+
 // 编写一个函数，计算两个数字的和差积商
 function math(num1, operator, num2) {
     var res;
