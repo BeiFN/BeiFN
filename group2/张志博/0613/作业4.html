@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //编写函数，判断一个字符串的内容是不是纯数字
+        function compare(a,b,c){
+            var  t;
+            if(a>b){
+                t = a;
+                a = b;
+                b = t;
+            }
+            if(a>c){
+                t = a;
+                a = c;
+                c = t;
+            }
+            if(b>c){
+                t = b;
+                b = c;
+                c = t;
+            }
+            console.log("从小到大依次为："+a,b,c);
+            
+        }
+        compare(7,11,9);
+        compare(99,11,9);
+        compare(7,11,6);
+
+          
+    </script>
+</body>
+</html>

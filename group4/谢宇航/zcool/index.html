@@ -12,7 +12,6 @@
 		href="https://static.zcool.cn/git_z/z/site/favicon.ico?version=1559726126806">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/public.css">
-	<!-- <script src="js/banner.js"></script> -->
 </head>
 
 <body>
@@ -23,13 +22,78 @@
 			</h1>
 			<ul class="nav">
 				<li><a href="#">首页</a></li>
-				<li><a href="#">发现</a></li>
+				<li class="find">
+					<a href="#">发现</a>
+					<div class="find-hide">
+						<div class="find-top">
+							<ul>
+								<li><a href="#">平面</a><i></i></li>
+								<li><a href="#">UI</a><i></i></li>
+								<li><a href="#">网页</a><i></i></li>
+								<li><a href="#">插画</a><i></i></li>
+								<li><a href="#">动漫</a><i></i></li>
+								<li><a href="#">摄影</a><i></i></li>
+								<li><a href="#">空间</a></li>
+								<li><a href="#">工业/产品</a><i></i></li>
+								<li><a href="#">三维</a><i></i></li>
+								<li><a href="#">影视</a><i></i></li>
+								<li><a href="#">手工艺</a><i></i></li>
+								<li><a href="#">纯艺术</a><i></i></li>
+								<li><a href="#">服装</a><i></i></li>
+								<li><a href="#">其他</a></li>
+							</ul>
+						</div>
+						<div class="find-bottom">
+							<a href="#">精选作品</a>
+							<a href="#">精选文章</a>
+							<a href="#">精选收藏</a>
+						</div>
+					</div>
+				</li>
 				<li><a href="#">同城</a></li>
-				<li><a href="#">职位</a></li>
-				<li><a href="#">活动</a></li>
-				<li class="active1"><a href="#">正版素材</a><i>特惠</i></li>
-				<li><a href="#">课程</a></li>
-				<li class="active2"><em></em></li>
+				<li class="pos">
+					<a href="#">职位</a>
+					<div class="side-hide">
+						<a href="#">职位</a>
+						<a href="#">公司</a>
+						<a href="#">+发布职位</a>
+					</div>
+				</li>
+				<li class="activity">
+					<a href="#">活动</a>
+					<div class="side-hide">
+						<a href="#">设计大赛</a>
+						<a href="#">专题策划</a>
+						<a href="#">线上活动</a>
+						<a href="#">线下活动</a>
+						<a href="#">学习音频</a>
+					</div>
+				</li>
+				<li class="active1">
+					<a href="#">正版素材</a>
+					<i>特惠</i>
+					<div class="side-hide">
+						<a href="#">图片</a>
+						<a href="#">视频</a>
+						<a href="#">字体</a>
+						<a href="#">音乐</a>
+					</div>
+				</li>
+				<li class="course">
+					<a href="#">课程</a>
+					<div class="side-hide">
+						<a href="#">正在热销</a>
+					</div>
+				</li>
+				<li class="active2">
+					<em></em>
+					<div class="side-hide">
+						<a href="#">榜单</a>
+						<a href="#">设计师</a>
+						<a href="#">站酷APP</a>
+						<a href="#">站酷字体</a>
+					</div>
+				</li>
 			</ul>
 			<ul class="unlogin">
 				<li><a href="#">登录<i></i></a></li>
@@ -45,7 +109,7 @@
 				<ul>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/01a34e5d0284e5a801205e4bb485f7.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
@@ -81,13 +145,13 @@
 					</li>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/016f0c5d01a9c7a801213ec2fa2eb3.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/01cef95d0069b3a801213ec22e9d2f.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/01db905d0284a4a801213ec2fa188b.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
@@ -940,62 +1004,63 @@
 			</div>
 		</div>
 	</div>
+	<div class="side-bar">
+		
+	</div>
 </body>
-
+<script src="js/banner.js"></script>
 </html>
 
 <script>
-	var position = 0;
-	var imgCon = document.querySelector(".banner-img");
-	init();
+	// var position = 0;
+	// var imgCon = document.querySelector(".banner-img");
+	// init();
 
-	//获取左右两个按钮，并且设置点击监听事件
-	function init() {
-		var leftBn = document.querySelector("#pre");
-		var rightBn = document.querySelector("#next");
-		var banner = document.querySelector(".banner");
-		leftBn.addEventListener("click", clickHandler);
-		rightBn.addEventListener("click", clickHandler);
-		banner.addEventListener("mouseenter", clearTime);
-		banner.addEventListener("mouseleave", startTime);
-	}
+	// //获取左右两个按钮，并且设置点击监听事件
+	// function init() {
+	// 	var leftBn = document.querySelector("#pre");
+	// 	var rightBn = document.querySelector("#next");
+	// 	var banner = document.querySelector(".banner");
+	// 	leftBn.addEventListener("click", clickHandler);
+	// 	rightBn.addEventListener("click", clickHandler);
+	// 	banner.addEventListener("mouseenter", clearTime);
+	// 	banner.addEventListener("mouseleave", startTime);
+	// }
 
-	function clickHandler(e) {
-		if(this.id === "pre"){
-			position--;
-			if(position < 0) position = 7;
-		}
-		else{
-			position++;
-			if(position > 7) position = 0;
-		}
-		imgMove();
-	}
+	// function clickHandler(e) {
+	// 	if(this.id === "pre"){
+	// 		position--;
+	// 		if(position < 0) position = 7;
+	// 	}
+	// 	else{
+	// 		position++;
+	// 		if(position > 7) position = 0;
+	// 	}
+	// 	imgMove();
+	// }
 
-	//banner图位置移动
-	function imgMove() {
-		imgCon.style.left=-position*1130+"px";
-	}
+	// //banner图位置移动
+	// function imgMove() {
+	// 	imgCon.style.left=-position*1130+"px";
+	// }
 
-	//轮播
-	var time = setInterval(move1, 3000);
+	// //轮播
+	// var time = setInterval(move1, 3000);
 
-	function move1() {
-		position++;
-		if(position > 7) position = 0;
-		imgMove();
-	}
+	// function move1() {
+	// 	position++;
+	// 	if(position > 7) position = 0;
+	// 	imgMove();
+	// }
 
-	function startTime(e) {
-		time = setInterval(move1, 3000);
-	}
+	// function startTime(e) {
+	// 	time = setInterval(move1, 3000);
+	// }
 
-	function clearTime(e) {
-		console.log(time);
-		clearInterval(time);
-		console.log(time);
+	// function clearTime(e) {
+	// 	console.log(time);
+	// 	clearInterval(time);
+	// 	console.log(time);
 
-	}
-
-
+	// }
 </script>
