@@ -8,14 +8,17 @@
 </head>
 <body>
     <script> 
-                      //这个写的有毛病
-        var a=0;
+        var a=2;
+        var add=0;
         var sum=0;
-        while(a++ <10)
+        for(i=0; i<10;i++)
         {
-            sum=a+(a*10+a)+(a*100+a*10+a)+(a*1000+a*100+a*10+a)+(a*10000+a*1000+a*100+a*10+a);
-            console.log(sum);
+        
+            add+=a*Math.pow(10,i);
+            sum+=add;
+            
         }
+        console.log(sum);
 
 
     </script>    
