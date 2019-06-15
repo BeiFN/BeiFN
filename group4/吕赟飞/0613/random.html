@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0"></div>
+    <script>
+        var arr = [
+            "杨铿", "王迎尊", "李腾达", "崔垚", "王子航", "龙凤洁", "秦晓琪", "周学昊",
+            "马宏瑶", "潘思佳", "谢宇航", "段凯", "田茂兴", "许芳芳", "吕紫阳", "沈子钦", "丁英杰", "席朝勃",
+            "朱星韦", "姚天才", "赵堃", "张良", "边圆皓", "张建安", "房斐", "孙文秀", "蔡于富", "白爽",
+            "杨皓", "管伟", "刘宝云", "吕赟飞", "王宁", "丁文震", "曹洪祥", "杜飞", "徐智宣", "王雪松", "吴东鹏",
+            "王立韬", "张盼盼", "李智鹏", "司幸", "谢孟", "张鹏", "杨丰锐", "刘玉", "王鹏程", "买鹏", "王鹏飞",
+            "孙璐", "杨兵泉", "盛云云", "谢冉冉", "李爱新", "芦国锋", "郭钼", "张明宇", "张宏斌", "张凤岐", "陈佳楠", "苏晨晨",
+            "李建宇", "林腾", "唐曼慧", "李凯晨", "刘阿谨", "王文杰", "杨模翔", "全威", "代江婷", "刘培", "郝阳阳", "荣星"
+        ];
+
+        var n = 0
+        var bool = true
+        init()
+
+        function init() {
+            var div = document.getElementById("div0");
+            arr.sort(function () {
+                return Math.random() - 0.5;
+            });
+            document.onclick = function (e) {
+                arr.splice((n === 0 ? arr.length - 1 : n - 1), 1);
+                bool = !bool;
+            }
+            setInterval(animation, 100, div);
+        }
+
+        function animation(div) {
+            if (!bool) return;
+            div.innerHTML = arr[n];
+            n++;
+            if (n > arr.length - 1) n = 0;
+        }
+
+    </script>
+</body>
+
+</html>
