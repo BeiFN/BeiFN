@@ -9,7 +9,7 @@ onmousemove 鼠标移动
 键盘事件:
 onkeydown   键盘按下
 onkeyup     键盘松开
-onkeypress  按一次键盘
+onkeypress  按一次键盘  
 元素事件:
 onfocus     获取焦点
 onblur      失去焦点
