@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+    var list = [13, 14, 15, 13, 15, 20 ,80];
+    function norepeat(arr){
+        var count=0;
+        var newArr=[];
+        for(var i=0;i<arr.length-1;i++){
+           for(var k=i+1;k<arr.length;k++){
+               if(arr[i]==arr[k]){
+                   arr[k]=null;
+               }
+           }
+        }
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]!=null){
+                newArr[count++]=arr[i];
+            }
+        }
+        return newArr;
+    }
+    console.log(norepeat(list));
+    </script>
+</body>
+</html>

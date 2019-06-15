@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我生密码</button>
+    <script>
+
+        // 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+           function norepeat(arr){
+               var newArr=[];
+               for(i=0;i<arr.length;i++){
+                   if(newArr.indexOf(arr[i])===-1){
+                       newArr.push(arr[i]);
+                   }
+               }
+               return newArr;
+           }
+           var arr=[10,20,30,40,50,50,50,50,60,60];
+           console.log(norepeat(arr));
+
+
+
+
+        // 编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+        function has(arr, n) {
+            var flag = false;
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i] === 60) {
+                    flag = true;
+                }
+            }
+            return flag;
+        }
+        var arr = [10, 20, 30];
+        var arr = [10, 20, 30, 50, 60];
+        console.log(has(arr, 60));
+
+
+
+
+        // 编写函数map(arr) 把数组中的每一位数字都增加30%
+        function map(arr){
+            var newArr=[];
+            for(i=0;i<arr.length;i++){
+                newArr.push(arr[i]*0.3+arr[i]);
+            }
+            return newArr;
+        }
+        var arr=[1,2,3,4,5];
+        console.log(map(arr));
+
+
+
+
+        // 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+          function randomFiveNum(){
+              var arr=[];
+              var tRandomNum=parseInt(Math.random()*100000);
+              var sRandomNum=String(tRandomNum);
+              for(i=0;i<sRandomNum.length;i++){
+                  arr.push(sRandomNum[i]);
+              }
+              console.log("随机生成的五位数是"+tRandomNum);
+              console.log("共有"+sRandomNum.length+"位");
+              for(i=0;i<arr.length;i++){
+                  console.log("第"+(i+1)+"位是"+sRandomNum[i]);
+              }
+          }
+          randomFiveNum();
+
+
+
+
+        // 点击按钮，生成数字字母验证码
+        btn.onclick=code;
+        function code(){
+            var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
+            for(var i=0;i<4;i++){
+                document.write(list[parseInt(Math.random()*list.length)])
+            }
+        }
+
+
+
+
+        // 请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
+            function join(arr, sp) {
+                var str = "";
+                for (var i = 0; i < arr.length; i++) {
+                    if (i === (arr.length - 1)) {
+                        str += arr[i];
+                    } else {
+                        str += (arr[i] + sp);
+                    }
+                }
+                return str;
+            }
+           console.log(join([1,2,3],"%"));
+
+
+        // 随机点名程序
+        var namelist=["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹",]
+        function randomName(){
+            return namelist[parseInt(Math.random()*namelist.length)];
+        }
+        console.log(randomName());
+
+
+
+
+        // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
+        // 然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。
+        var arr = [];
+        var NewArr = [];
+        var average = 0;
+        arr.length = 30;
+        for (var i = 1; i <= arr.length; i++) {
+            arr[i - 1] = 2 * i;
+            if (i % 5 !== 0) {
+                average += arr[i - 1];
+            } else {
+                NewArr.push(average / 5);
+                average = 0;
+            }
+        }
+        console.log(arr);
+        console.log(NewArr);
+
+
+        // 通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数
+        // 然后输出该数组的左下半三角。试编程
+        var arr = [],
+            sum = [];
+        for (var i = 1; i <= 25; i++) {
+            arr.push(i);
+            if (i % 5 === 0) {
+                sum.push(arr);
+                var arr = [];
+            }
+        }
+        for (var i = 0; i < sum.length; i++) {
+            sum[i].length = i + 1;
+            document.write(sum[i] + "<br>");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
