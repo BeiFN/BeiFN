@@ -30,7 +30,11 @@
         function join (arr,sign){
             var sum = " ";
             for(var i = 0;i < arr.length ;i++){
-                sum += arr[i] + sign ;
+                if(i === (arr.length-1) ){
+                    sum += arr[i];
+                }else{
+                 sum += arr[i] + sign ;
+                }
             }
             return sum ;
         }
