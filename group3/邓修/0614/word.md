@@ -10,3 +10,4 @@
 10. Array.prototype.indexOf() 找某一项在数组中第一次出现的位置
 11. Array.prototype.lastIndexOf() 找某一项在数组中最后一次出现的位置
 12. Array.prototype.slice() 拷贝数组中的一段内容
+13. instanceof 判定原产地，即判定类型
