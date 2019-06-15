@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随堂练习-对象</title>
+</head>
+<body>
+    <script>
+        // function foo(){
+
+        // }
+        // foo = 20;
+        // foo();
+
+        // 变量：可以赋值。可以改变存储容量  
+
+        // 同名全局变量和局部变量，哪个优先级高?
+        // 
+
+/*
+ MD 使用  #标题
+ JS代码块~ 
+ ```javascript
+
+// 赋值
+    var foo = function(){}
+//  2.立即执行  创建作用域//作用 避免大量的全局变量使用
+    +function(){}();  
+
+    var foo = function foo(){}
+
+            // 作用域  在JavaScript中，函数大括号内部即为一个独立的作用域。在JavaScript暂时（3-5版本）没有块级作用域；ES6版本
+// 2015年步入正轨 ES6  ES2015 每年9月发布
+
+全局作用域
+window对象承载了所有的全局变量
+在全局作用域中声明的变量就是全局变量，只要不被函数大括号包裹即为全局变量
+全局变量特性：跟着程序常驻内存，程序关闭全局变量才会被卸载，因为有这样的特性，所有要避免滥用全局变量。
+
+局部作用域因为程序在执行的时候，会对函数进行特殊处理，解析器会给函数创建独立的执行环境，根据执行环境创建一个独立的作用域（AO）
+这个活动对象用来存储临时的局部变量，局部作用域在执行结束之后会被内存自动释放。
+
+在函数大括号中声明的变量叫局部变量
+朝生暮死
+
+ ```
+*/
+
+
+            // 对象  JavaScript 万物皆对象。
+            /*
+            基本类型
+            函数    
+            */ 
+
+            // var obj = {};
+            // console.log(obj);
+            // console.log(typeof(obj));
+            // // 关于控制台，如果控制台没有打开，会把所有性能放在渲染上，放在js解析上，不会给控制台分配太多性能，所以显示日志都是比较笼统的数据。
+            // // 如果打开控制台则会显示想象内容
+
+
+            // // 对象的本质是存数据 分类存储
+            // // 同类别的数据，放在一起进行集中处理，这样的结构就是对象
+
+            // var group1 = {
+            //     "key" : "value",
+            //     // key唯一，value可以修改
+            // }
+
+            // var group1 = {
+            //     "a" : "A",
+            //     "b" : "B",
+            //     "c" : "A",
+            //     "d" : "D",
+            //     e : "ee",
+            // }
+            // console.log(group1);
+
+
+            // // .运算符，权重仅次于()  [] 标准模式， .简化模式 
+            // //取值  .   => 后面的内容比较特殊，既不是变量，又不是字符串，而是直接写的字母，这个字母直接表示对象之中的key值
+            // console.log(group1.a);
+            // console.log(group1["a"]);
+
+            // // 取出所有值  遍历 for in 循环，专用于变量对象，或者数组  
+            // // for()循环自己定义结束条件  
+            // // for in   挨个拿key值进行循环，直到undefined为止
+            // // in 某个属性是否存在于对象之中
+            // for( var key in group1){
+            //     // 在for in循环中，想要取得变量中字符串的key值，必须使用[];
+            //     console.log(key, group1[key], group1.key);
+            // }
+
+            // // 对象声明
+            // var obj = {};
+            // obj.XXX === obj["XXX"];
+
+
+            // // 赋值
+            // group1.f = "jflwj";
+            // group1.g = "jlji";
+            // group1["g"] = "aaaa";
+
+            // // 声明对象
+            // var obj = {}; //字面量声明
+            // var obj2 = new Object(); // 构造函数
+            // //带有new的函数调用的是构造函数
+            // console.log(obj, obj2);
+
+            // console.log(obj === obj2);
+
+            // var lhg = {
+            //     "姓名" : "李红贵",
+            //     "性别" : "男",
+            //     "年龄" : "25",
+            //     "身高" : "173cm",
+            //     "体重" : "75kg",
+            //     "学历" : "本科",
+            //     "婚恋状况" : "未婚未恋",
+            // }
+            // // 用中文作为key容易出现问题，所以要避免用中文作为key
+
+            // var lihg = {
+            //     "name" : "lihonggui",
+            //     "sex" : "man",
+            //     "age" : "25",
+            //     "height" : "173cm",
+            //     "weight" : "75kg",
+            // }
+
+            // console.log(lhg);
+            // console.log(lhg.姓名);
+            // console.log(lhg["性别"]);
+
+            // // 增删改查
+            // delete lhg.性别;
+
+
+            // 引用类型  函数，对象，数组  创建时回创建全新的存储空间，把当前空间的地址赋值给对象变量。
+            // 内存结构
+            /*
+            IO input输入  output输出 
+            栈  
+            数据进出方式 ，数据放进栈这个操作叫进栈也叫压栈，先进后出FILO first in last out
+
+            堆 FIFO 先入先出
+            数据结构
+
+
+            内存结构： 基本类型，比对的是值，引用类型比对的是地址。
+            值传值  引用传值
+
+
+            1.内存 
+            栈 先进后出
+            堆 先进先出
+
+            hash 哈希关系，唯一对应
+            引用类型 函数、对象、数组
+
+
+
+            */
+
+
+            // arguments关键字 //伪数组
+
+            // console.log({} instanceof Array);//判断原产地
+            // console.log ([] instanceof Array);
+            // function foo(){
+
+            // }
+            // console.log(foo instanceof Function);
+            // // instanceof 尽量别判断Object，
+            // // 数组是对象的子集
+
+            // // arguments 用来处理不定参（不确定有几个参数）；  参数们
+            // sum = 0;
+            // function foo(){
+            //     console.log(arguments);
+            //     console.log(arguments[0]);
+            //     for(var index in arguments){
+            //         console.log(arguments[index]);
+            //         sum += arguments[index];
+            //     }
+            //     return sum;
+            // }
+            // console.log(foo(1,2,3,4));
+
+            // arguments.length  数组长度
+
+            // for in   for
+
+
+
+            /**********************递归***********************/ 
+                // function countNumber(n){
+                //     n ++ ;
+                //     console.log(n);
+                //     countNumber(n);
+                //     // 死循环
+                // }
+
+                // countNumber(1);
+                // 递归比较耗时，
+
+                // function fib(n){
+                //     if(n==1 || n==2){
+                //         return 1;
+                //     }
+                //     return fib(n - 1) + fib(n - 2);
+                // }
+
+                // console.log( fib(5) );
+
+                // function jc(num){
+                //     if(num === 1){
+                //         return 1;
+                //     }
+                //     return num * jc (num-1);
+                // }
+                // console.log(jc(10));
+
+                // function sum(num){
+                //     if(num === 1){
+                //         return 1;
+                //     }
+                //     return sum(num - 1) +num;
+                // }
+                // 找终止条件
+
+                // // 最大公约数
+                // function  maxys(m , n){
+                //     var r = m % n;
+                //     m = n;
+                //     n = r;
+
+                //     if(r === 0){
+                //         return m;
+                //     }
+                //     return maxys(m, n);
+                // }
+                // console.log(maxys(5, 10));
+
+
+                // function diguijiansun(x, y){
+                //     if(x % 2 ===0 && y % 2===0){
+                //         x = x /2;
+                //         y = y / 2;
+                //     }
+                // }
+
+                // 递归  一种逻辑简单，但性能极差，如果递归深度不可控，切勿使用递归在项目之中。
+                // 使用递归  1.找到根源  2.找到计算方式 千万不要忘记返回
+
+
+                // 函数 对象  闭包  
+
+                // localStorage = {}
+                // var foo =  (function (){
+                //     var answer = {"1":"a", "2":"B"};
+                //     function foo(){
+                //         console.log(answer);
+                //     }
+                //     foo();
+                //     return foo;
+                // })();
+                // 保证变量的隐私性
+                // 局部变量的生命周期延长
+
+
+                // 闭包 前提  函数嵌套
+                // 1.外部函数生命的变量，在内部函数被引用了；
+                // 2.内部函数被返回到了全局，进行随时的引用。
+                // 声明会先提升局部变量，再提升整体函数。
+
+
+                       
+                    // 预编译
+                    // 闭包使用
+                    // 原型 
+                    // 多线程
+                    // 数据结构
+                    // 应用层
+
+
+                    // 数组 有序数列
+                    // 数组声明方式的不同
+
+                    // 增
+                    var arr1 = [10];//字面量声明，含一个个元素10的数组
+                    var arr2 = new Array(10);//构造函数只传递一个参数的话，那么意味着当前构造的数组有参数个空参数。
+
+                    // 删
+                    var array1 = [1,2,2,3,4,5];
+                    console.log(array1);
+                    //清空
+                    array1.length = 0;//官方方法清除彻底
+                    array1 = []; //赋值为空
+
+                    // 改
+                    // 对项的修改
+                    // 1.静态修改  
+                    array1[0] = 10;
+                    // 2.删除之后赋值，数组API，专门为数组创建的API，只对数组有效
+                    // 删除 ; 
+
+            // 1. 清空 ;
+            // arr.length = 0;
+            // console.log(arr);
+            // 2. 清空;
+            // arr = [];
+            
+            // ***改 ;
+            var arr = [1,2,3,4,5,6];
+            // 对项的修改
+            // 1. 静态赋值;
+            // arr[0] = 10;
+            // console.log(arr);
+
+            // 2. 删除之后重新复制 ;  数组 API , 专门为数组类型创建的API，仅对数组有效;
+            
+            // Array.prototype.pop()
+            // Array.prototype.push()
+            // Array.prototype.shift()
+            // Array.prototype.unshift()
+            //** Array.prototype.splice()
+            
+            // pop 是删除数组最后一项的方法 ;  pop的返回值是删除掉的数据;
+            // console.log(arr.pop());
+            // console.log(arr);
+
+            // push 是想数组后面新增数据的方法 ; push 的返回值是新数组的length ;  
+            // console.log(arr.push(8,1,2,3,4,5,6,6,8,9,9));
+            // console.log(arr);
+
+            // shift 是删除数组第一项的方法 ; shift的返回值是删除掉的数据;
+            
+            // ① 删除对应位置的内容 ;
+            // console.log(arr.shift());
+            // console.log(arr.unshift(10));
+
+            // splice (index,2)
+            // console.log(arr.splice(3,2))
+            // console.log(arr);
+
+            // ② 可以替换删除掉的内容;
+            
+            // console.log(arr.splice(3,1,"hello world"));
+            // console.log(arr);
+            
+            // 拼接;
+            // Array.prototype.concat()
+            // var arr1 = [1,2,3];
+            // var arr2 = [4,5,6];
+            // var arr3 = [4,5,6];
+
+            // console.log(arr1.concat(arr2,arr3));
+
+            // 数组的转换功能 ;
+            // 把数组转换成字符串;
+            // Array.prototype.join()
+            // var arr = [2019,6,14];
+            // // "2019/6/14"
+            // console.log(arr.join("/"))
+            // console.log(arr.join("~"))
+
+            // // Array.prototype.toString()
+            // console.log(arr.toString());
+
+            // 查 
+            // 遍历;
+
+            var arr = [1,2,3,4,5,3,6];
+            // for in  for ;
+            
+            // for(var index in arr){
+            //       console.log(arr[index]);
+            // }
+
+            // 找某一项在数组之中的位置;
+
+            console.log(arr.indexOf(3));    //第一个 3 在数组之中的下标;
+            console.log(arr.lastIndexOf(3));//最后一个 3 在数组之中的下标;
+
+            // Array.prototype.indexOf()
+            // Array.prototype.lastIndexOf()
+
+            // 拷贝子数组，不改变原数组 传入参数（star，end）起、止下标，只写一个下标拷贝到最后，包括star不包括end。
+            // Array.prototype.slice()
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
