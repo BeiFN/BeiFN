@@ -140,7 +140,16 @@
 
         // 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
         function norepeat(arr) {
-            
+            var arrNew = [];
+            for(var i = 0; i < arr.length; i++) {
+                for(var j = 0; j < arr.length; j++) {
+                    if(arr[i] == arr[j]) {
+                        arr.splice(j, 1);
+                        j--;
+                    }
+                }
+            }
+            return arr;
         }
 
         
