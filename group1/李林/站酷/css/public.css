@@ -1,0 +1,39 @@
+body,p,td,th,fieldset,legend,option,textarea,
+button,hr,input,h1,h2,h3,h4,h5,h6,ol,ul,dd,dl{
+	margin:0;padding:0;
+	}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a{
+	outline: none;
+	display: inline-block;
+	text-decoration: none;
+	color: #0d131a;
+}
+ul,ol{
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+span{display: block;}
+body{
+	font-size:14px;
+	color: #282828;
+	text-align: center;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+.clearfix::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+i{font-style: normal;}
