@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0614homework</title>
+</head>
+<body>
+	<button onclick="randomCode()">随机验证码</button><input type="text">
+	<script>
+		// 1.通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+		function printTriangle() {
+			var arr = [];
+			for(var i = 0; i < 5; i++){
+				arr[i] = new Array();
+				for(var j = 0; j < 5; j++){
+					arr[i][j] = Math.floor(Math.random() * 25 + 1);
+					if(j <= i) document.write(arr[i][j] + "&nbsp;&nbsp;&nbsp;");
+				}
+				document.write("<br>");
+			}
+		}
+		// printTriangle();
+
+		//2.定义一个含有30个整型元素的数组,按顺序分别赋予从2开始的偶数,然后按顺序每五个数求出一个平均值,放在另一个数组中并输出
+		function printAverageArray() {
+			var arr = new Array(30);
+			var average = [], sum = 0;
+			for(var i = 0; i < arr.length; i++){
+				arr[i] = (i + 1) * 2;
+				sum += arr[i];
+				if((i + 1) % 5 === 0){
+					average.push(sum / 5);
+					sum = 0;
+				}
+			}
+			console.log(average.join(" "));
+		}
+		// printAverageArray();
+
+		//3.随机点名程序
+		var namelist = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪","袁江明","刘志","金天琛","仇明珠","袁志敏","崔婉悦"];
+		function randName(){
+		     return namelist[parseInt(Math.random()*namelist.length)];
+		}
+		// console.log(randName());
+
+		//4.点击按钮，生成数字字母验证码
+		function randomCode() {
+			var char = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n','o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'], code = [];
+			for(var i = 0; i < 4; i++)
+				code.push(char[Math.floor(Math.random() * char.length)]);
+			document.querySelector("input").value = code.join("");
+		}
+
+		//5.请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
+		function funcJoin(arr, sp) {
+			var str = "";
+	        for(var i=0; i<arr.length; i++){
+                if(i==(arr.length-1)) str += arr[i];     
+                else str += (arr[i]+sp);
+	        }
+		}
+
+		//6.随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+		function printEachNum() {
+			var num = Math.floor(Math.random() * 100000);
+			var arr = [];
+			while(num){
+				arr.unshift(num % 10);
+				num = Math.floor(num / 10);
+			}
+			console.log(arr, arr.length);
+		}
+		// printEachNum();
+
+		//7.编写函数map(arr) 把数组中的每一位数字都增加30%
+		function arrMap(arr, num) {
+			return arr.map(function (n) {
+				return n * num;
+			})
+		}
+		// console.log(arrMap([10000, 12000, 15000, 18000], 1.3));
+
+		//8.编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+		function has(arr, num) {
+			return arr.some(function (n) {
+				return n === num;
+			})
+		}
+		// console.log(has([10,20,30,40,50,60], 60));
+
+		//9.编写函数deleterepeat(arr) 将数组的重复元素去掉，并返回新的数组
+		
+		//(1)
+        var arr1=[1,3,5,2,1,4,3,1,2,5,3,1,2,1];
+        function deleteRepeat(arr1) {
+            var arr = [];
+            for(var i = 0; i < arr1.length; i++)
+                if(arr.indexOf(arr1[i]) == -1)
+                    arr.push(arr1[i]);
+            return arr;
+        }
+        console.log(deleteRepeat(arr1));
+
+        //(2)
+         function deleteRepeat2(arr){
+            var arr1=[];
+            for (var i = 0; i < arr.length; i++) {
+                if(arr.indexOf(arr[i])==i){
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+        console.log(deleteRepeat2(arr1));
+
+        //(3)
+        function deleteRepeat3(arr){
+            var obj = {};
+            for(var i = 0; i < arr.length; i++){
+                if(!obj[arr[i]])
+                    obj[arr[i]] = 1;
+                else
+                    obj[arr[i]]++;
+            }
+            return obj;
+        }
+        console.log(deleteRepeat3(arr1));
+	</script>
+</body>
+</html>
