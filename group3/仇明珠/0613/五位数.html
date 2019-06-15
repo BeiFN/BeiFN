@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button>随机产生五位数</button>
+    <script>
+        $("document").ready(function(){
+            $("button").click(function(){
+                var num=Math.round(Math.random()*99999);
+                var str="从高到低位为";
+                console.log("总有位数:"+num.toString().length);
+                for(var i=0;i<num.toString().length;i++){
+                    str+=(num.toString()[i]+" ");
+                }
+                console.log(str);
+            })
+        })
+    </script>
+</body>
+</html>

@@ -12,7 +12,6 @@
 		href="https://static.zcool.cn/git_z/z/site/favicon.ico?version=1559726126806">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/public.css">
-	<!-- <script src="js/banner.js"></script> -->
 </head>
 
 <body>
@@ -110,7 +109,7 @@
 				<ul>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/01a34e5d0284e5a801205e4bb485f7.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
@@ -146,13 +145,13 @@
 					</li>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/016f0c5d01a9c7a801213ec2fa2eb3.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="https://img.zcool.cn/community/01cef95d0069b3a801213ec22e9d2f.jpg@1380w" alt="hi"
+							<img src="https://img.zcool.cn/community/01db905d0284a4a801213ec2fa188b.jpg@1380w" alt="hi"
 								width="1130" height="">
 						</a>
 					</li>
@@ -1005,62 +1004,63 @@
 			</div>
 		</div>
 	</div>
+	<div class="side-bar">
+		
+	</div>
 </body>
-
+<script src="js/banner.js"></script>
 </html>
 
 <script>
-	var position = 0;
-	var imgCon = document.querySelector(".banner-img");
-	init();
+	// var position = 0;
+	// var imgCon = document.querySelector(".banner-img");
+	// init();
 
-	//获取左右两个按钮，并且设置点击监听事件
-	function init() {
-		var leftBn = document.querySelector("#pre");
-		var rightBn = document.querySelector("#next");
-		var banner = document.querySelector(".banner");
-		leftBn.addEventListener("click", clickHandler);
-		rightBn.addEventListener("click", clickHandler);
-		banner.addEventListener("mouseenter", clearTime);
-		banner.addEventListener("mouseleave", startTime);
-	}
+	// //获取左右两个按钮，并且设置点击监听事件
+	// function init() {
+	// 	var leftBn = document.querySelector("#pre");
+	// 	var rightBn = document.querySelector("#next");
+	// 	var banner = document.querySelector(".banner");
+	// 	leftBn.addEventListener("click", clickHandler);
+	// 	rightBn.addEventListener("click", clickHandler);
+	// 	banner.addEventListener("mouseenter", clearTime);
+	// 	banner.addEventListener("mouseleave", startTime);
+	// }
 
-	function clickHandler(e) {
-		if(this.id === "pre"){
-			position--;
-			if(position < 0) position = 7;
-		}
-		else{
-			position++;
-			if(position > 7) position = 0;
-		}
-		imgMove();
-	}
+	// function clickHandler(e) {
+	// 	if(this.id === "pre"){
+	// 		position--;
+	// 		if(position < 0) position = 7;
+	// 	}
+	// 	else{
+	// 		position++;
+	// 		if(position > 7) position = 0;
+	// 	}
+	// 	imgMove();
+	// }
 
-	//banner图位置移动
-	function imgMove() {
-		imgCon.style.left=-position*1130+"px";
-	}
+	// //banner图位置移动
+	// function imgMove() {
+	// 	imgCon.style.left=-position*1130+"px";
+	// }
 
-	//轮播
-	var time = setInterval(move1, 3000);
+	// //轮播
+	// var time = setInterval(move1, 3000);
 
-	function move1() {
-		position++;
-		if(position > 7) position = 0;
-		imgMove();
-	}
+	// function move1() {
+	// 	position++;
+	// 	if(position > 7) position = 0;
+	// 	imgMove();
+	// }
 
-	function startTime(e) {
-		time = setInterval(move1, 3000);
-	}
+	// function startTime(e) {
+	// 	time = setInterval(move1, 3000);
+	// }
 
-	function clearTime(e) {
-		console.log(time);
-		clearInterval(time);
-		console.log(time);
+	// function clearTime(e) {
+	// 	console.log(time);
+	// 	clearInterval(time);
+	// 	console.log(time);
 
-	}
-
-
+	// }
 </script>

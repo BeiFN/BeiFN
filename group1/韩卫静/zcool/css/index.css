@@ -19,9 +19,10 @@
     float: left;
     margin-left: 225px;
 }
-.center_nav li {
+.center_nav>li {
     float: left;
     text-align: center;
+    position: relative;
 }
 .center_nav li a{
     display: block;
@@ -36,6 +37,9 @@
 .center_nav li a:hover{
     background-color: #282828;
     color: #ffe300;
+}
+.center_nav li:hover .hidden_ul{
+    display: block;
 }
 
 .material {
@@ -81,7 +85,7 @@
 }
 
 
-.center_nav .moreli a{
+.center_nav .moreli>a{
     background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat center center;
     height: 56px; 
     background-size: 20px 20px;
@@ -119,12 +123,36 @@
     line-height: 56px;
     padding: 0 22px;
 }
+/* -----导航栏的二级菜单--------- */
+.hidden_ul{
+    display: none;
+    width: 150px;
+    position: absolute;
+    top: 56px;
+    padding-top: 5px;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid rgb(232,232,232);
+    border-top: 0;
+}
+.center_nav .hidden_ul a{
+    display: block;
+    font-size: 14px;
+    color: #282828;
+    line-height: 44px;
+    padding: 0 24px;
+}
+.center_nav .hidden_ul a:hover{
+    background-color: #ffe300;  
+    color: #282828;
+}
 
 /* ----------banner图片部分------- */
 .carousel{
     position: relative;
 }
-.carousel img{
+.carousel>img{
     margin: 20px auto;
     width: 1130px;
     border-radius: 4px;
@@ -177,4 +205,59 @@
     width: 210px;
     height: 168px;
     border-radius: 4px;
+}
+
+/* ---------空白分割区---------- */
+.space_part{
+    height: 55px;
+}
+
+/* -----------中部导航栏------------ */
+.middle_nav{
+    height: 56px;
+    width: 1130px;
+    margin: 0 auto;
+}
+.middle_nav ul{
+    height: 56px;
+    text-align: center;
+}
+.middle_nav ul li{
+    display: inline-block;
+    margin: 0 30px;
+}
+.middle_nav ul li a{
+    display: block;
+    font-size: 16px;
+    color: #999;
+    line-height: 54px;
+    border-bottom: 2px solid transparent;
+}
+.middle_nav ul #sytj a{
+    color: #282828;
+    border-bottom: 2px solid #444;  
+}
+.middle_nav ul li a:hover{
+    color: #282828;
+    border-bottom: 2px solid #444;    
+}
+
+/* ------作品展示部分----- */
+.pro_list{
+    background-color: rgb(244, 244, 244);
+}
+.list_content{
+    width: 1130px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.list_body{
+    width: 1150px;
+}
+.list_body li{
+    width: 210px;
+    height: 308px;
+    float: left;
+    margin: 0 20px 20px 0;
+    background-color: #ffd;
 }
