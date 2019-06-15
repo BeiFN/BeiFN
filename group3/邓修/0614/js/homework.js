@@ -20,13 +20,21 @@
 //定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
 // function average(){
 //     var arr1=[],arr2=[],temp=0;
-//     for(var i=2;arr1.length<30;i+=2){
-//         arr1.push(i);
-//     }
-//     // console.log(arr1);
-//     for(var j=0;j<arr1.length;j++){
-//         temp+=arr1[j];
-//         if((j+1)%5===0){
+//     // for(var i=2;arr1.length<30;i+=2){        //可以优化
+//     //     arr1.push(i);
+//     // }
+//     // // console.log(arr1);
+//     // for(var j=0;j<arr1.length;j++){
+//     //     temp+=arr1[j];
+//     //     if((j+1)%5===0){
+//     //         arr2.push(temp/5);
+//     //         temp=0;
+//     //     }
+//     // }
+//     for(var i=0;i++<30;){
+//         arr1.push(i*2);
+//         temp+=(i*2);
+//         if(!(i%5)){
 //             arr2.push(temp/5);
 //             temp=0;
 //         }
@@ -48,19 +56,23 @@
 //请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
 // function join(arr, char) {
 //     if (arr instanceof Array) {     //判断是否是数组
-//         for (var i = 0, result = []; i < arr.length; i++) {
-//             result.push(arr[i] + "");
-//             result.push(char);
+//         // for (var i = 0, result = []; i < arr.length; i++) {      //用字符串
+//         //     result.push(arr[i] + "");
+//         //     result.push(char);
+//         // }
+//         // result.pop();
+//         var str="";
+//         for(var i=0;i<arr.length;i++){
+//             str+= i===0? arr[i] : (char+arr[i]);
 //         }
-//         result.pop();
-//         return result;
+//         return str;
 //     }
 //     else {
 //         console.log("error:Not A Array!");
 //         return 0;
 //     }
 // }
-// console.log(join([1,2,3],"%"));
+// console.log(join([1,2,3],"/"));
 
 //编写函数map(arr) 把数组中的每一位数字都增加30%
 // function map(arr) {
@@ -74,23 +86,35 @@
 
 //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
 // function has(arr,num){
-//     for(var i in arr){
-//         if(arr[i] === num)
-//             return true;
-//     }
-//     return false;
+//     // for(var i in arr){
+//     //     if(arr[i] === num)
+//     //         return true;
+//     // }
+//     // return false;
+//     if(arr.indexOf(num)===-1)   return false;
+//     else    return true;
 // }
 // var a=[1,2,3,4,5,6,60,7,8,9,10,11];
 // console.log(has(a,60));
 
 //编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
 // function norepeat(arr) {
-//     for (var i = 0; i < arr.length; i++) {
-//         for (var j = i + 1; j < arr.length; j++) {
-//             if (arr[i] === arr[j])
-//                 arr.splice(j, 1);
-//         }
+//     // for (var i = 0; i < arr.length; i++) {
+//     //     for (var j = i + 1; j < arr.length; j++) {
+//     //         if (arr[i] === arr[j])
+//     //             arr.splice(j, 1);
+//     //     }
+//     // }
+//     // return arr;
+
+//     var _temp=[];
+//     for(var i=0;i<arr.length;i++){
+//         if(i===0 || _temp.indexOf(arr[i])===-1)
+//             _temp.push(arr[i]);
 //     }
-//     return arr;
+//     return _temp;
+
+//     //ES6去重
+//     // return Array.from(new Set(arr));
 // }
 // console.log(norepeat([13, 14, 15, 13, 15, 20, 80, 21, 77, 14, 80, 21]));
