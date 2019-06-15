@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export2.dtd">
+<en-export export-date="20190614T004502Z" application="Evernote/Windows" version="6.x">
+<note><title>0611课堂笔记</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
+
+<en-note><div>0611课堂笔记</div><div>for( var i = 0; i &lt; 10 ; i++){}——————函数运行10次，i从0加到10，自增10次，第10次自增后结束循环——————第一次开始循环时，i的值为0；</div><div>for( var i = 0; i++ &lt; 10 ;){}——————函数运行10次，i从0加到11，自增10次，第10次自增厚结束循环——————第一次开始循环时，i的值已经为1，但第一次判断循环条件时，i的值为0；</div><div>for( var i = 0; i + 1 &lt; 10; i++){}——————函数执行9次，i从0加到9，自增9次，第9次自增后结束循环——————第一次开始循环时，i的值为0，最后一次判断循环条件时，i的值为9，但i+1=10。</div></en-note>]]></content><created>20190613T122846Z</created><updated>20190614T001826Z</updated><tag>0611</tag><note-attributes><author>963775030@qq.com</author><source>desktop.win</source><source-application>yinxiang.win32</source-application></note-attributes></note></en-export>
