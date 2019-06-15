@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var I = {
+        //     "name" : "常浩",
+        //     "weight" : "138斤",
+        //     "height" : "170",
+        //     "birthday": "97/11/11",
+        //     "age"    : "18,实际22",
+        //     "address"  : "河南开封"
+        // }
+        // // for( var key in I ){
+        // //     console.log(key,I[key]);
+        // // }
+        
+
+
+
+        // I.name = "changhao";
+        // console.log(I["name"]);
+        // console.log( I["age"]);
+
+
+        //辗转相除  求最大公约数
+        // function digui(m,n){
+        //     var r = m % n;
+        //     m = n ;
+        //     n = r;
+        //     if(r === 0){
+        //         return m;
+        //     }else{
+        //        return digui (m,n) ;
+        //     }
+        // }
+        // console.log(digui (15,3));
+
+        //更相减损
+        // function di(x,y){
+        //     if(x % 2 === 0 && y % 2 === 0){
+        //         x = x / 2;
+        //         y = y / 2;
+        //         return di( x , y) * 2;
+        //     }else{
+        //         var cha = x > y ? x - y : y - x;
+        //        if(cha  === (x > y ? y : x)){
+        //             return cha;
+        //        }else{
+        //            return di(cha , x > y ? y : x);
+        //        }
+        //     }
+        // }
+        // console.log(di(15,5));
+
+
+        //for循环遍历数组
+        // var arr = [34,5,83,23,5 ]
+        // for( var i = 0;i < arr.length;i++){
+        //     console.log(arr[i]);
+        // }
+
+
+        // for(var i = 0 ,value; value = arr[i++];){
+        //     console.log(value);
+        // }
+
+        //arguments
+        // function sum(){
+        //     console.log(arguments);
+        // }
+        // sum();
+        // function sum(a,b,c,d){
+        //     var temp = 0;
+        //     for(var i = 0 ; i < arguments.length ; i++){
+        //          temp  +=  arguments[i];
+
+        //     }
+        //     console.log(temp);
+        // }
+        // sum(1,2);
+        
+        //递归实现100以内奇数之和
+        // function odd(a){
+        //     if(a%2 !== 0){
+        //         if(a === 1){
+        //             return 1;
+        //         }else{
+        //             return odd(a-2)+a;
+        //         }
+        //     }else{
+        //         a -= 1;
+        //         if(a == 1){
+        //             return 1; 
+        //         }else{
+        //             return odd(a-2)+a;
+        //         }
+        //     }
+        // }
+        // console.log(odd(4));
+
+        // 递归实现100以内阶乘
+        // function jiecheng(a){
+        //     if(a === 1){
+        //         return 1;
+        //     }else{
+        //         return jiecheng(a-1)*a;
+        //     }
+        // }
+        // console.log(jiecheng(3));
+
+        //  function foo(o){
+        //           o.a++;
+        //           o = {a : 20}
+        //           o.a ++;
+        //     }
+        //     var obj = {a : 10};  //实质是地址  
+        //     foo(obj);
+        //     console.log(obj);
+    </script>
+</body>
+</html>
