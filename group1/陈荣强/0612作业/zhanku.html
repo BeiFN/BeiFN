@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>站酷</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/javascript-zhanku.js"></script>
+</head>
+<body>
+    <!-- logo--head--nav -->
+    <div class="head">
+        <img src="https://static.zcool.cn/git_z/z/common/images/svg/logo.svg" width="120" height="20" alt="">
+        <ul class="nav">
+            <li class="shouye"><a href="#">首页</a></li>
+            <li class="discover"><a href="#">发现</a>
+                <div class="dis_list">
+                    <div class="dis_top">
+                        <ul>
+                            <li><a href="#">平面</a></li>
+                            <li><a href="#">UI</a></li>
+                            <li><a href="#">网页</a></li>
+                            <li><a href="#">插画</a></li>
+                            <li><a href="#">动漫</a></li>
+                            <li><a href="#">摄影</a></li>
+                            <li><a href="#">空间</a></li>
+                            <li><a href="#">工业</a></li>
+                            <li><a href="#">三维</a></li>
+                            <li><a href="#">影视</a></li>
+                            <li><a href="#">手工艺</a></li>
+                            <li><a href="#">纯艺术</a></li>
+                            <li><a href="#">服装</a></li>
+                            <li><a href="#">其他</a></li>
+                        </ul>
+                    </div>
+                    <div class="dis_bottom"></div>
+                </div>
+            </li>
+            <li class="tongcheng"><a href="#">同城</a></li>
+            <li class="zhiwei"><a href="#">职位</a></li>
+            <li class="huodong"><a href="#">活动</a></li>
+            <li class="zhengban"><a href="#">正版课程</a>
+               <div class="sale"><i>特惠</i></div>
+            </li>
+            <li class="kecheng"<a href="#">课程</a></li>
+            <li class="more"><a href="#"><i></i><sup></sup></a></li>
+        </ul>
+        <div class="search">
+            <i></i>
+        </div>
+        <div class="right">
+            <div class="upload"><i></i></div>
+            <ul class="login">
+                <li class="login_enter"><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 内容去 -->
+    <div class="main">
+
+        <!-- 轮播图 -->
+        <div class="banner">
+            <div class="slider_ban" id="slider_ban">
+                <div class="slider_pic" id="slider_pic">
+                    <div class="row_left" id="row_left"><a href="#""><img src="img/row_left.png" alt=""></a></div>
+                    <div class="row_right" id="row_right"><a href="#""><img src="img/row_right.png" alt=""></a></div>
+                    <div class="all_banner" id="all_banner">
+                        <ul class="ban_pic" id="ban_pic"> 
+                            <li id="img1"><a href="#"><img src="https://img.zcool.cn/community/01576e5d0002a3a801213ec2c0e506.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/016f0c5d01a9c7a801213ec2fa2eb3.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/0164b75d01b57ca801213ec203a326.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/01576e5d0002a3a801213ec2c0e506.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/016f0c5d01a9c7a801213ec2fa2eb3.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6.jpg@1380w" alt=""></a></li>
+                            <li><a href="#"><img src="https://img.zcool.cn/community/0164b75d01b57ca801213ec203a326.jpg@1380w" alt=""></a></li>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="clear"></div>
+                <!-- 广告图片区 -->
+                <div class="ad">
+                    <ul class="ad_pic">
+                        <li><a href="#"><img src="https://reviveimg.hellorf.com/www/images/86a2f2a0a9ceaf1fa0a59efdf3e05cdc.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="https://reviveimg.hellorf.com/www/images/18fae9f156bdf4d8d2e81977517ec00f.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="https://reviveimg.hellorf.com/www/images/eb54dd400a2658107452b4ce7f77bd80.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="https://reviveimg.hellorf.com/www/images/8529995423d84dbd64b4b6d9b1497acd.jpg" alt=""></a></li>
+                        <li class="ad_pic_last"><a href="#"><img src="https://reviveimg.hellorf.com/www/images/dc93177599f2d1af811c2831a859afef.jpg" alt=""></a></li>
+                    </ul>        
+                </div>
+            </div>
+        </div>
+            <!--文字导航区  -->
+            <div class="text_nav">
+                <div class="text_center">
+                    <ul class="text_list">
+                        <li><a href="#">首页推荐</a></li>
+                        <li class="li2" id="li2"><a href="#">最新发布</a></li>
+                        <li class="li3" id="li3"><a href="#">上升最快</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 同种格式图片区 -->
+            <div class="pic">
+               <div class="box_list">
+                    <div class="pic_box">
+                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                        <div class="info">
+                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                            <p class="info-detail">动画-短片/四格漫画</p>
+                            <p class="info_item">
+                                <span class="view">666</span>
+                                <span class="xinxi">8</span>
+                                <span class="dianzan">9</span>
+                            </p>
+                        </div>
+                        <div class="pic_footer">
+                            <span class="footer_left">
+                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                <a href="#">非人哉漫画</a>
+                            </span>
+                            <span class="time">1小时前</span>
+                        </div>
+                    </div>
+
+                    <div class="pic_box">
+                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                            <div class="info">
+                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                <p class="info-detail">动画-短片/四格漫画</p>
+                                <p class="info_item">
+                                    <span class="view">666</span>
+                                    <span class="xinxi">8</span>
+                                    <span class="dianzan">9</span>
+                                </p>
+                            </div>
+                            <div class="pic_footer">
+                                <span class="footer_left">
+                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                    <a href="#">非人哉漫画</a>
+                                </span>
+                                <span class="time">1小时前</span>
+                            </div>
+                        </div>
+                        <div class="pic_box">
+                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                <div class="info">
+                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                    <p class="info_item">
+                                        <span class="view">666</span>
+                                        <span class="xinxi">8</span>
+                                        <span class="dianzan">9</span>
+                                    </p>
+                                </div>
+                                <div class="pic_footer">
+                                    <span class="footer_left">
+                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                        <a href="#">非人哉漫画</a>
+                                    </span>
+                                    <span class="time">1小时前</span>
+                                </div>
+                            </div>
+
+                            <div class="pic_box">
+                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                    <div class="info">
+                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                        <p class="info_item">
+                                            <span class="view">666</span>
+                                            <span class="xinxi">8</span>
+                                            <span class="dianzan">9</span>
+                                        </p>
+                                    </div>
+                                    <div class="pic_footer">
+                                        <span class="footer_left">
+                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                            <a href="#">非人哉漫画</a>
+                                        </span>
+                                        <span class="time">1小时前</span>
+                                    </div>
+                                </div>
+
+                                <div class="pic_box">
+                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                        <div class="info">
+                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                            <p class="info_item">
+                                                <span class="view">666</span>
+                                                <span class="xinxi">8</span>
+                                                <span class="dianzan">9</span>
+                                            </p>
+                                        </div>
+                                        <div class="pic_footer">
+                                            <span class="footer_left">
+                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                <a href="#">非人哉漫画</a>
+                                            </span>
+                                            <span class="time">1小时前</span>
+                                        </div>
+                                    </div>            
+
+                                    <div class="pic_box">
+                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                            <div class="info">
+                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                <p class="info_item">
+                                                    <span class="view">666</span>
+                                                    <span class="xinxi">8</span>
+                                                    <span class="dianzan">9</span>
+                                                </p>
+                                            </div>
+                                            <div class="pic_footer">
+                                                <span class="footer_left">
+                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                    <a href="#">非人哉漫画</a>
+                                                </span>
+                                                <span class="time">1小时前</span>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="pic_box">
+                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                <div class="info">
+                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                    <p class="info_item">
+                                                        <span class="view">666</span>
+                                                        <span class="xinxi">8</span>
+                                                        <span class="dianzan">9</span>
+                                                    </p>
+                                                </div>
+                                                <div class="pic_footer">
+                                                    <span class="footer_left">
+                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                        <a href="#">非人哉漫画</a>
+                                                    </span>
+                                                    <span class="time">1小时前</span>
+                                                </div>
+                                            </div>
+                                            <div class="pic_box">
+                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                    <div class="info">
+                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                        <p class="info_item">
+                                                            <span class="view">666</span>
+                                                            <span class="xinxi">8</span>
+                                                            <span class="dianzan">9</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="pic_footer">
+                                                        <span class="footer_left">
+                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                            <a href="#">非人哉漫画</a>
+                                                        </span>
+                                                        <span class="time">1小时前</span>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="pic_box">
+                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                        <div class="info">
+                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                            <p class="info_item">
+                                                                <span class="view">666</span>
+                                                                <span class="xinxi">8</span>
+                                                                <span class="dianzan">9</span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="pic_footer">
+                                                            <span class="footer_left">
+                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                <a href="#">非人哉漫画</a>
+                                                            </span>
+                                                            <span class="time">1小时前</span>
+                                                        </div>
+                                                    </div>
+                    
+                                                    <div class="pic_box">
+                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                            <div class="info">
+                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                <p class="info_item">
+                                                                    <span class="view">666</span>
+                                                                    <span class="xinxi">8</span>
+                                                                    <span class="dianzan">9</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="pic_footer">
+                                                                <span class="footer_left">
+                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                    <a href="#">非人哉漫画</a>
+                                                                </span>
+                                                                <span class="time">1小时前</span>
+                                                            </div>
+                                                        </div>  
+
+                                                        <div class="pic_box">
+                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                <div class="info">
+                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                    <p class="info_item">
+                                                                        <span class="view">666</span>
+                                                                        <span class="xinxi">8</span>
+                                                                        <span class="dianzan">9</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="pic_footer">
+                                                                    <span class="footer_left">
+                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                        <a href="#">非人哉漫画</a>
+                                                                    </span>
+                                                                    <span class="time">1小时前</span>
+                                                                </div>
+                                                            </div>
+                                        
+                                                            <div class="pic_box">
+                                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                    <div class="info">
+                                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                                        <p class="info_item">
+                                                                            <span class="view">666</span>
+                                                                            <span class="xinxi">8</span>
+                                                                            <span class="dianzan">9</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="pic_footer">
+                                                                        <span class="footer_left">
+                                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                            <a href="#">非人哉漫画</a>
+                                                                        </span>
+                                                                        <span class="time">1小时前</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="pic_box">
+                                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                        <div class="info">
+                                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                                            <p class="info_item">
+                                                                                <span class="view">666</span>
+                                                                                <span class="xinxi">8</span>
+                                                                                <span class="dianzan">9</span>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="pic_footer">
+                                                                            <span class="footer_left">
+                                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                <a href="#">非人哉漫画</a>
+                                                                            </span>
+                                                                            <span class="time">1小时前</span>
+                                                                        </div>
+                                                                    </div>
+                                        
+                                                                    <div class="pic_box">
+                                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                            <div class="info">
+                                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                <p class="info_item">
+                                                                                    <span class="view">666</span>
+                                                                                    <span class="xinxi">8</span>
+                                                                                    <span class="dianzan">9</span>
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="pic_footer">
+                                                                                <span class="footer_left">
+                                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                    <a href="#">非人哉漫画</a>
+                                                                                </span>
+                                                                                <span class="time">1小时前</span>
+                                                                            </div>
+                                                                        </div>
+                                        
+                                                                        <div class="pic_box">
+                                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                <div class="info">
+                                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                    <p class="info_item">
+                                                                                        <span class="view">666</span>
+                                                                                        <span class="xinxi">8</span>
+                                                                                        <span class="dianzan">9</span>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="pic_footer">
+                                                                                    <span class="footer_left">
+                                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                        <a href="#">非人哉漫画</a>
+                                                                                    </span>
+                                                                                    <span class="time">1小时前</span>
+                                                                                </div>
+                                                                            </div>  
+
+                                                                            <div class="pic_box">
+                                                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                    <div class="info">
+                                                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                        <p class="info_item">
+                                                                                            <span class="view">666</span>
+                                                                                            <span class="xinxi">8</span>
+                                                                                            <span class="dianzan">9</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="pic_footer">
+                                                                                        <span class="footer_left">
+                                                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                            <a href="#">非人哉漫画</a>
+                                                                                        </span>
+                                                                                        <span class="time">1小时前</span>
+                                                                                    </div>
+                                                                                </div>
+                                                            
+                                                                                <div class="pic_box">
+                                                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                        <div class="info">
+                                                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                            <p class="info_item">
+                                                                                                <span class="view">666</span>
+                                                                                                <span class="xinxi">8</span>
+                                                                                                <span class="dianzan">9</span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="pic_footer">
+                                                                                            <span class="footer_left">
+                                                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                <a href="#">非人哉漫画</a>
+                                                                                            </span>
+                                                                                            <span class="time">1小时前</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="pic_box">
+                                                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                            <div class="info">
+                                                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                <p class="info_item">
+                                                                                                    <span class="view">666</span>
+                                                                                                    <span class="xinxi">8</span>
+                                                                                                    <span class="dianzan">9</span>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <div class="pic_footer">
+                                                                                                <span class="footer_left">
+                                                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                    <a href="#">非人哉漫画</a>
+                                                                                                </span>
+                                                                                                <span class="time">1小时前</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                            
+                                                                                        <div class="pic_box">
+                                                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                <div class="info">
+                                                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                    <p class="info_item">
+                                                                                                        <span class="view">666</span>
+                                                                                                        <span class="xinxi">8</span>
+                                                                                                        <span class="dianzan">9</span>
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                                <div class="pic_footer">
+                                                                                                    <span class="footer_left">
+                                                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                        <a href="#">非人哉漫画</a>
+                                                                                                    </span>
+                                                                                                    <span class="time">1小时前</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                            
+                                                                                            <div class="pic_box">
+                                                                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                    <div class="info">
+                                                                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                        <p class="info_item">
+                                                                                                            <span class="view">666</span>
+                                                                                                            <span class="xinxi">8</span>
+                                                                                                            <span class="dianzan">9</span>
+                                                                                                        </p>
+                                                                                                    </div>
+                                                                                                    <div class="pic_footer">
+                                                                                                        <span class="footer_left">
+                                                                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                            <a href="#">非人哉漫画</a>
+                                                                                                        </span>
+                                                                                                        <span class="time">1小时前</span>
+                                                                                                    </div>
+                                                                                                </div>  <div class="pic_box">
+                                                                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                        <div class="info">
+                                                                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                            <p class="info_item">
+                                                                                                                <span class="view">666</span>
+                                                                                                                <span class="xinxi">8</span>
+                                                                                                                <span class="dianzan">9</span>
+                                                                                                            </p>
+                                                                                                        </div>
+                                                                                                        <div class="pic_footer">
+                                                                                                            <span class="footer_left">
+                                                                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                                <a href="#">非人哉漫画</a>
+                                                                                                            </span>
+                                                                                                            <span class="time">1小时前</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                
+                                                                                                    <div class="pic_box">
+                                                                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                            <div class="info">
+                                                                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                                <p class="info_item">
+                                                                                                                    <span class="view">666</span>
+                                                                                                                    <span class="xinxi">8</span>
+                                                                                                                    <span class="dianzan">9</span>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                            <div class="pic_footer">
+                                                                                                                <span class="footer_left">
+                                                                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                                    <a href="#">非人哉漫画</a>
+                                                                                                                </span>
+                                                                                                                <span class="time">1小时前</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="pic_box">
+                                                                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                                <div class="info">
+                                                                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                                    <p class="info_item">
+                                                                                                                        <span class="view">666</span>
+                                                                                                                        <span class="xinxi">8</span>
+                                                                                                                        <span class="dianzan">9</span>
+                                                                                                                    </p>
+                                                                                                                </div>
+                                                                                                                <div class="pic_footer">
+                                                                                                                    <span class="footer_left">
+                                                                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                                        <a href="#">非人哉漫画</a>
+                                                                                                                    </span>
+                                                                                                                    <span class="time">1小时前</span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                
+                                                                                                            <div class="pic_box">
+                                                                                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                                    <div class="info">
+                                                                                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                                        <p class="info_item">
+                                                                                                                            <span class="view">666</span>
+                                                                                                                            <span class="xinxi">8</span>
+                                                                                                                            <span class="dianzan">9</span>
+                                                                                                                        </p>
+                                                                                                                    </div>
+                                                                                                                    <div class="pic_footer">
+                                                                                                                        <span class="footer_left">
+                                                                                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                                            <a href="#">非人哉漫画</a>
+                                                                                                                        </span>
+                                                                                                                        <span class="time">1小时前</span>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                
+                                                                                                                <div class="pic_box">
+                                                                                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                                                        <div class="info">
+                                                                                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                                                            <p class="info_item">
+                                                                                                                                <span class="view">666</span>
+                                                                                                                                <span class="xinxi">8</span>
+                                                                                                                                <span class="dianzan">9</span>
+                                                                                                                            </p>
+                                                                                                                        </div>
+                                                                                                                        <div class="pic_footer">
+                                                                                                                            <span class="footer_left">
+                                                                                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                                                                <a href="#">非人哉漫画</a>
+                                                                                                                            </span>
+                                                                                                                            <span class="time">1小时前</span>
+                                                                                                                        </div>
+                                                                                                                    </div>  <div class="pic_box">
+                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                        <div class="info">
+                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                            <p class="info-detail">动画-短片/四格漫画</p>
+                            <p class="info_item">
+                                <span class="view">666</span>
+                                <span class="xinxi">8</span>
+                                <span class="dianzan">9</span>
+                            </p>
+                        </div>
+                        <div class="pic_footer">
+                            <span class="footer_left">
+                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                <a href="#">非人哉漫画</a>
+                            </span>
+                            <span class="time">1小时前</span>
+                        </div>
+                    </div>
+
+                    <div class="pic_box">
+                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                            <div class="info">
+                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                <p class="info-detail">动画-短片/四格漫画</p>
+                                <p class="info_item">
+                                    <span class="view">666</span>
+                                    <span class="xinxi">8</span>
+                                    <span class="dianzan">9</span>
+                                </p>
+                            </div>
+                            <div class="pic_footer">
+                                <span class="footer_left">
+                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                    <a href="#">非人哉漫画</a>
+                                </span>
+                                <span class="time">1小时前</span>
+                            </div>
+                        </div>
+                        <div class="pic_box">
+                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                <div class="info">
+                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                    <p class="info_item">
+                                        <span class="view">666</span>
+                                        <span class="xinxi">8</span>
+                                        <span class="dianzan">9</span>
+                                    </p>
+                                </div>
+                                <div class="pic_footer">
+                                    <span class="footer_left">
+                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                        <a href="#">非人哉漫画</a>
+                                    </span>
+                                    <span class="time">1小时前</span>
+                                </div>
+                            </div>
+
+                            <div class="pic_box">
+                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                    <div class="info">
+                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                        <p class="info_item">
+                                            <span class="view">666</span>
+                                            <span class="xinxi">8</span>
+                                            <span class="dianzan">9</span>
+                                        </p>
+                                    </div>
+                                    <div class="pic_footer">
+                                        <span class="footer_left">
+                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                            <a href="#">非人哉漫画</a>
+                                        </span>
+                                        <span class="time">1小时前</span>
+                                    </div>
+                                </div>
+
+                                <div class="pic_box">
+                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                        <div class="info">
+                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                            <p class="info_item">
+                                                <span class="view">666</span>
+                                                <span class="xinxi">8</span>
+                                                <span class="dianzan">9</span>
+                                            </p>
+                                        </div>
+                                        <div class="pic_footer">
+                                            <span class="footer_left">
+                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                <a href="#">非人哉漫画</a>
+                                            </span>
+                                            <span class="time">1小时前</span>
+                                        </div>
+                                    </div>  
+
+
+                                    <div class="pic_box">
+                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                            <div class="info">
+                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                <p class="info_item">
+                                                    <span class="view">666</span>
+                                                    <span class="xinxi">8</span>
+                                                    <span class="dianzan">9</span>
+                                                </p>
+                                            </div>
+                                            <div class="pic_footer">
+                                                <span class="footer_left">
+                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                    <a href="#">非人哉漫画</a>
+                                                </span>
+                                                <span class="time">1小时前</span>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="pic_box">
+                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                <div class="info">
+                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                    <p class="info_item">
+                                                        <span class="view">666</span>
+                                                        <span class="xinxi">8</span>
+                                                        <span class="dianzan">9</span>
+                                                    </p>
+                                                </div>
+                                                <div class="pic_footer">
+                                                    <span class="footer_left">
+                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                        <a href="#">非人哉漫画</a>
+                                                    </span>
+                                                    <span class="time">1小时前</span>
+                                                </div>
+                                            </div>
+                                            <div class="pic_box">
+                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                    <div class="info">
+                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                        <p class="info_item">
+                                                            <span class="view">666</span>
+                                                            <span class="xinxi">8</span>
+                                                            <span class="dianzan">9</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="pic_footer">
+                                                        <span class="footer_left">
+                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                            <a href="#">非人哉漫画</a>
+                                                        </span>
+                                                        <span class="time">1小时前</span>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="pic_box">
+                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                        <div class="info">
+                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                            <p class="info_item">
+                                                                <span class="view">666</span>
+                                                                <span class="xinxi">8</span>
+                                                                <span class="dianzan">9</span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="pic_footer">
+                                                            <span class="footer_left">
+                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                <a href="#">非人哉漫画</a>
+                                                            </span>
+                                                            <span class="time">1小时前</span>
+                                                        </div>
+                                                    </div>
+                    
+                                                    <div class="pic_box">
+                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                            <div class="info">
+                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                <p class="info_item">
+                                                                    <span class="view">666</span>
+                                                                    <span class="xinxi">8</span>
+                                                                    <span class="dianzan">9</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="pic_footer">
+                                                                <span class="footer_left">
+                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                    <a href="#">非人哉漫画</a>
+                                                                </span>
+                                                                <span class="time">1小时前</span>
+                                                            </div>
+                                                        </div>  
+
+
+                                                        <div class="pic_box">
+                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                <div class="info">
+                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                    <p class="info_item">
+                                                                        <span class="view">666</span>
+                                                                        <span class="xinxi">8</span>
+                                                                        <span class="dianzan">9</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="pic_footer">
+                                                                    <span class="footer_left">
+                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                        <a href="#">非人哉漫画</a>
+                                                                    </span>
+                                                                    <span class="time">1小时前</span>
+                                                                </div>
+                                                            </div>
+                                        
+                                                            <div class="pic_box">
+                                                                    <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                    <div class="info">
+                                                                        <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                        <p class="info-detail">动画-短片/四格漫画</p>
+                                                                        <p class="info_item">
+                                                                            <span class="view">666</span>
+                                                                            <span class="xinxi">8</span>
+                                                                            <span class="dianzan">9</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="pic_footer">
+                                                                        <span class="footer_left">
+                                                                            <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                            <a href="#">非人哉漫画</a>
+                                                                        </span>
+                                                                        <span class="time">1小时前</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="pic_box">
+                                                                        <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                        <div class="info">
+                                                                            <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                            <p class="info-detail">动画-短片/四格漫画</p>
+                                                                            <p class="info_item">
+                                                                                <span class="view">666</span>
+                                                                                <span class="xinxi">8</span>
+                                                                                <span class="dianzan">9</span>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="pic_footer">
+                                                                            <span class="footer_left">
+                                                                                <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                <a href="#">非人哉漫画</a>
+                                                                            </span>
+                                                                            <span class="time">1小时前</span>
+                                                                        </div>
+                                                                    </div>
+                                        
+                                                                    <div class="pic_box">
+                                                                            <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                            <div class="info">
+                                                                                <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                <p class="info_item">
+                                                                                    <span class="view">666</span>
+                                                                                    <span class="xinxi">8</span>
+                                                                                    <span class="dianzan">9</span>
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="pic_footer">
+                                                                                <span class="footer_left">
+                                                                                    <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                    <a href="#">非人哉漫画</a>
+                                                                                </span>
+                                                                                <span class="time">1小时前</span>
+                                                                            </div>
+                                                                        </div>
+                                        
+                                                                        <div class="pic_box">
+                                                                                <a href="#"><img src="https://img.zcool.cn/community/01636b5d009911a801213ec2fdda4d.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></a>
+                                                                                <div class="info">
+                                                                                    <p class="info-title"><a href="#">非人哉470-472</a></p>
+                                                                                    <p class="info-detail">动画-短片/四格漫画</p>
+                                                                                    <p class="info_item">
+                                                                                        <span class="view">666</span>
+                                                                                        <span class="xinxi">8</span>
+                                                                                        <span class="dianzan">9</span>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="pic_footer">
+                                                                                    <span class="footer_left">
+                                                                                        <img src="https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+                                                                                        <a href="#">非人哉漫画</a>
+                                                                                    </span>
+                                                                                    <span class="time">1小时前</span>
+                                                                                </div>
+                                                                            </div>  
+                                                                       </div>
+                                                                    </div>
+                 <!-- 页面按钮 --------------------------------------------------------------->
+                <div class="pagerow"></div>
+                <div class="page_turn">
+                    <div class="page_button">
+                        <a href="#">1</a>
+                        <a href="#">2</a>   
+                        <a href="#">3</a>   
+                        <a href="#">4</a>   
+                        <a href="#">5</a>   
+                        <a href="#">6</a>   
+                        <a href="#">7</a>      
+                        <a href="#">···</a>   
+                        <a href="#">99</a>   
+                        <a href="#">100</a>
+                        <a href="#"></a>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        
+        function ban(){
+            // 鼠标事件，轮播图导航图标
+            slider_ban.onmouseover = function(){
+                row_left.style.display = "block";
+                row_right.style.display = "block";
+            }
+            
+            slider_ban.onmouseout = function(){
+                row_left.style.display = "none";
+                row_right.style.display = "none";
+            }
+            // 鼠标事件，内容区li边框
+            // li2.style.border = "none";
+            // li3.style.border = "none";
+            // li2.onmouseover = function(){
+            //     li2.style.border = "block";
+            // }
+            
+            // li2.onmouseout = function(){
+            //     li2.style.border = "none";
+            // }
+
+            // row_left.onclick = function(){
+            //     timer=setInterval(function()
+            //     {
+                   
+            //         all_banner.style.left=all_banner.offsetLeft+5+'px';
+            //     },40)
+            // } 
+        }
+        ban();
+    </script>
+</body>
+</html>

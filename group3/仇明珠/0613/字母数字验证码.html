@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <button>生成验证码</button>
+    <p></p>
+    <script>
+        $("document").ready(function(){
+            $("button").click(function(){
+                var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
+                var str="";
+                for(var i=0;i<4;i++){
+                    str+=list[parseInt(Math.random()*list.length)];
+                }
+                $("p").html("<pre>" + str+ "</pre>");
+            });
+        })
+    </script>
+</body>
+</html>
