@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击按钮，生成数字字母验证码</button>
+    <script>
+//通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+        // var arr = new Array();
+        // for(var i = 0;i < 5;i++){
+        //     arr[i] = new Array(i);
+        //     for(var j = 0;j < 5;j++){
+        //         arr[j] = Array(j) ;
+        //         // arr[i][j];
+        //         console.log(arr[i][j]);
+        //     }
+        // }
+        // var arr = [[1,2],[3,4]];
+        // console.log(arr[0][1]);
+
+
+//定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。
+        // var arr1 = [];
+        // for(i = 2;i < 100000;i + 2){
+        //     if(arr1.push(i) === 30){
+        //         break;
+        //     }
+        //     var count = 0;
+        //     var average = 0;
+        //     var sum = 0;
+        //     var arr2 = [];
+            
+        //     for(var i in arr1){
+        //         count ++ ;
+        //         sum += arr1[i];
+        //         if(!(count % 5)){
+        //             average = sum / 5;
+        //             arr2.push(average);
+        //             sum = 0;
+        //         } 
+        //     } 
+        // }
+        // console.log(arr2);
+
+//请编写一个函数join，将数组的每一位按照指定字符链接起来 ，
+//例如： join([1,2,3], "%")， 运行结果"1%2%3";
+        // function join(){
+        //     var arr = [1,2,3];
+        //     var str = "";
+        //     for(var i = 0;i < arr.length;i ++){
+        //         if(i === arr.length - 1){
+        //             str = str + arr[i];
+        //         }else{
+        //             str = str + arr[i] + "%";
+        //         }
+        //     }
+        //     return str;
+        // }
+        // console.log(join());
+
+//点击按钮，生成数字字母验证码
+    // var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
+    // var a = list[parseInt(Math.random() * 13)];
+    // console.log(a);
+    // function code(a,b,c,d){
+    //     list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
+    //     a = list[parseInt(Math.random() * 13)];
+    //     b = list[parseInt(Math.random() * 13)];
+    //     c = list[parseInt(Math.random() * 13)];
+    //     d = list[parseInt(Math.random() * 13)];
+    //     var sum = a + b + c + d;
+    //     alert(sum);
+    // }
+    // btn.onclick = code;
+
+//随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+    // function sum(){
+    //     var num = parseInt(1 + Math.random() * 100000);
+    //     var count = 0;
+    //     var k = 0;
+    //     for(i = 0;i < 10;i ++){
+    //         k = num % 10;
+    //         if(!(num < 1)){
+    //             num /= 10;
+    //             count ++;
+    //         }
+    //     }
+    //     console.log(count,k);
+    // }
+    // sum();
+
+//随机点名
+    // function randName(){
+    //     var namelist = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪","袁江明","刘志","金天琛","仇明珠","袁志敏","崔婉悦"];
+    //     return  namelist[parseInt(Math.random()*namelist.length)];
+    // }   
+    // console.log(randName());
+
+//编写函数map(arr) 把数组中的每一位数字都增加30%
+    // function map(){
+    //     var list = [10000, 12000, 15000, 18000];
+    //     for(i = 0;i < list.length;i ++){
+    //         list[i] = list[i] * 1.3;
+    //     } 
+    //     return list;
+    // }
+    // console.log(map());
+
+//编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+    // function has(){
+    //     var arr = [1,2,3,60];
+    //     for(i = 0;i < arr.length;i ++ ){
+    //         if(arr[i] === 60){
+    //             retrun true;
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+    //     return bool;
+    // }
+    // console.log(has());
+
+
+   
+    </script>
+</body>
+</html>

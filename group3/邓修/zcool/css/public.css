@@ -1,0 +1,53 @@
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{ 
+    margin:0;
+    padding:0;
+}
+ul,ol,li{
+    list-style:none;
+}
+a{
+    text-decoration:none; 
+    color: inherit;
+}
+i,em{
+    font-style:normal;
+}
+b,strong{
+    font-weight: normal;
+}
+h1,h2,h4,h3,h5,h6,b,strong{
+    font-weight:normal;
+    font-size: 16px;
+}
+img{
+    border:0;
+    display:block;
+    /*vertical-align: middle;*/
+}
+input{
+    outline:none;
+    border: 0;
+}
+body{
+    font-family:"微软雅黑"; 
+    font-size:14px; 
+    line-height: 1.5em;
+    color:#282828;
+}
+
+table{
+    border-collapse:collapse;
+}
+/*万能清除法，针对IE8及以上浏览器中的高度塌陷*/
+.clear:after{
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+/*针对IE7及以下浏览器中的高度塌陷*/
+.clear{
+    zoom: 1;
+}
+/*a:hover{text-decoration:underline;}*/
