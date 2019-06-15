@@ -110,6 +110,7 @@ document.write("<br/><br/>3. 递归辗转相除法求最大公约数。<br/>");
             }
         }
         console.log(zzxcf(18,45));
+        document.write(zzxcf(18,45));
 
 
 
@@ -140,6 +141,7 @@ document.write("<br/><br/>4. 递归更相减损法求最大公约数。<br/>");
             }
         }
         console.log(zzxcf(20,45));
+        document.write(zzxcf(20,45));
 
 document.write("<br/><br/>5. 递归计算斐波那契数列。<br/>");
         function fbnq(x){
@@ -150,6 +152,7 @@ document.write("<br/><br/>5. 递归计算斐波那契数列。<br/>");
             }
         }
         console.log(fbnq(7));
+        document.write(fbnq(7));
 
 document.write("<br/><br/><h1>数组</h1><br/>");
 
@@ -181,11 +184,58 @@ document.write("<br/><br/>1. 通过循环生成顺序为一个5×5的二维数�
 document.write("<br/><br/>2. 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。<br/>");
 
 document.write("<br/><br/>3. 随机点名程序<br/>");
-var namelist = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪","袁江明","刘志","金天琛","仇明珠","袁志敏","崔婉悦"];
+var namelist = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "李红贵", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪","袁江明","刘志","金天琛","仇明珠","袁志敏","崔婉悦"];
+        function randomName(arr){
+            document.write(arr[parseInt(Math.random() * namelist.length)]);
+            return arr[parseInt(Math.random() * namelist.length)];
+        }
+        randomName(namelist);
 
-document.write("<br/><br/>4. 点击按钮，生成数字字母验证码var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];<br/>");
+document.write("<br/><br/>4. 输入位数，点击按钮，生成输入位数数字和字母验证码var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];<br/>");
+        document.write('<input type = "text" id = "num4">');
+        document.write('<input type= "button" value = "计算" id = "btn4">');
+        // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//每次获取验证，全局数组减去验证码数组
+        function randomCode(num){
+            console.log(num);
+            // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码不存在重复数据
+            var code = "";
+            for(var i = 0; i < num; i++){
+                var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码存在重复数据
+                console.log(listCod.length);
+                var arr1 = listCod.splice( parseInt( Math.random() * listCod.length ) ,1);
+                console.log(arr1);
+                console.log(listCod);
+                code += arr1[0];
+
+                // code += (listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]);
+                //上下两行代码截取的不是同一个字符串
+                // console.log((listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]));
+                // console.log(code);
+            }
+            console.log(code);
+            return code;
+            
+        }
+        btn4.onclick = function(){
+        // randomCode(parseInt(num4.value));
+            num4.value = randomCode(parseInt(num4.value));
+        }
+
 
 document.write("<br/><br/>5. 请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], '%')， 运行结果'1%2%3';<br/>");
+        function join(arr,p){
+            var str = "";
+            for(var i = 0; i < arr.length; i ++){
+                if(i != arr.length-1){
+                    str = str + arr[i] + p;
+                }else{
+                    str += arr[i];
+                }
+            }
+            return str;
+        }
+        document.write(join([1,2,3], "-"));
+
 
 document.write("<br/><br/>6. 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么<br/>");
 

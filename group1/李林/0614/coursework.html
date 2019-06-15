@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //对象
+    //   var group1 = {
+    //       "a":"李红贵",
+    //       "b":"则栋",
+    //       "c":"朋伟",
+    //       "d":"荣强",
+    //       "e" :"红霞"
+    //   }    
+    //   for(var key in group1){
+    //       console.log(key,group1[key]);
+    //   }
+
+    //对象地址
+   
+    // function foo(o){
+    //     o.a++;
+    //     o = {a:20}
+    //     o.a++;
+    // }
+    // var obj={a:10};
+    // foo(obj);
+    // console.log(obj);
+
+    //arguments 参数
+    // console.log({} instanceof Array);
+    // function foo(){
+    // //     var sum = 0;
+    // //     for(var index in arguments){
+    // //         console.log(arguments[index]);
+    // //         sum += arguments[index];
+    // //     }
+    // // return sum;
+    // //for循环
+    //     // for(var i = 0;i <arguments.length;i ++){
+    //     //       console.log(i);
+    //         //   console.log(arguments[i]);
+    //     // }
+    //       //高阶不考虑数组中数0
+    //     for(var i = 0,value;value = arguments[i++];){
+    //         console.log(value);
+    //     }
+    // }
+    // foo(1,2,3,4,5,65,7);
+
+    //callee 指向函数本身
+    // function foo(){
+    //     arguments.callee();
+    // }
+    // foo();
+    
+    //报数
+    function countNum(n){
+        n++;
+        
+        // console.log(n);
+        if(n ===10){
+            return 10;
+        }
+        countNum(n);
+    }
+    var n = 1;
+    console.log(countNum(n));
+
+    </script>
+</body>
+</html>
