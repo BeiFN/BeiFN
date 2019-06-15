@@ -61,17 +61,20 @@
 	        }
 		}
 
-		//6.随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
-		function printEachNum() {
-			var num = Math.floor(Math.random() * 100000);
-			var arr = [];
-			while(num){
-				arr.unshift(num % 10);
-				num = Math.floor(num / 10);
-			}
+		//6.任意数(整数)，然后输出该数共有多少位，每位分别是什么
+		function printEachNum(num) {
+			var arr = [];  //数组保存每位数
+			num = num >= 0 ? num : -num;  //将num变为正数
+			do{
+				arr.unshift(num % 10);    //头插法保存每位数保证顺序存储
+				num = Math.floor(num / 10);   //去掉最后一位并向下取整
+			}while(num);  // 终止条件为num = 0 并且num = 0时保证执行一次
 			console.log(arr, arr.length);
 		}
-		// printEachNum();
+		printEachNum(-123456);
+		printEachNum(123456);
+		printEachNum(0);
+
 
 		//7.编写函数map(arr) 把数组中的每一位数字都增加30%
 		function arrMap(arr, num) {
