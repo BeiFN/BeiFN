@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+        // var arr=[];
+        // for(var i=0;i++<5;)
+        // {
+        //     var tempArr=[];
+        //     for(var k=5*(i-1);k++<5*i;)
+        //     {
+        //         tempArr.push(k);
+        //     }
+        //     arr.push(tempArr);
+        // }
+        // console.log(arr);
+        // for(var i=0;i<arr.length;i++)
+        // {
+        //     console.log("第"+i+"行");
+        //     for(var k=0;k<=i;k++)
+        //     {
+        //         console.log(arr[i][k]);
+        //     }
+        // }
+       
+
+               
+    //定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+    //   var list = [];
+    //   var res = [];
+    //   var _tempSum = 0;
+    //   for(var i = 0 ; i++ < 30 ; ){
+    //         _tempSum += i * 2;
+    //         list.push(i * 2)            
+    //         if(i % 5===0){
+    //               res.push(_tempSum / 5);
+    //               _tempSum = 0;
+    //         }
+    //   }
+    //   console.log(list);
+    //   console.log(res);
+
+
+
+    //  随机点名程序
+            // var str = "杨怀智,千锋彭于晏,邓修,谢宇航,吕赟飞,郭森,谢鑫鹏,王旭,刘彪,郭振宁,张卓,郭钢,浦文卓,郑则栋,李培锋,仇明珠,尹亚亭,祖莹,李嵩,陈荣强,刘宝灵,高展飞,朱盟,李红贵,刘深,杜豪刚,陆凤妹,谢达文,潘思佳,蒿倩,黄应锁,林海松,杨松,王鹏,常浩,李林,韩卫静,文君豪,李罗,张志博,封雨忱,赵汪洋,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,李红霞,肖光瑞,李策,张怡哲,费殷植,张朋伟,庞浩,徐佳伟";
+            // var nameList = str.split(",");
+            // function getRandomInt(min , max ){
+            //       return min + Math.round(Math.random() * (max - min));
+            // }
+            // document.onclick = function(){
+            //       var randomInt = getRandomInt(0,nameList.length - 1);
+            //       console.log(nameList.splice(randomInt,1));
+            // }
+
+
+     // 点击按钮，生成数字字母验证码
+            // function pass()
+            // {
+            //     var list=[1,2,3,4,5,6,7,8,9,0,'a','b','c'];
+            //     for(var i=0;i++<4;)
+            //     {
+            //         var n= Math.round(Math.random() * 12 + 1);
+            //         console.log(list[n]);
+            //     }
+            // }
+            // document.onclick = pass;
+      
+
+
+    //请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
+    //   function join( arr , symbol )
+    //   {
+    //         var str = "";
+    //         for(var i = 0 ; i < arr.length ; i ++)
+    //         {
+    //               str +=  (i === 0 ? "" : symbol) + arr[i] ;
+    //         }
+    //         return str;
+    //   }
+    //   console.log(join([1,2,3], "%"));
+
+
+    //随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+    //    function number(num)
+    //    {
+    //     console.log("每位分别是");
+    //     for(var count=0,temp=num;temp>=1;(temp=temp/10) &&count++)
+    //     { 
+    //         var no=parseInt(num % Math.pow(10,count+1)/Math.pow(10,count));
+    //         console.log(no);
+    //     }
+    //     console.log("这个数字有"+count+"位");
+    //    }
+    //   number(1645);
+        
+
+        
+    //编写函数map(arr) 把数组中的每一位数字都增加30%
+    // function map(arr)
+    // {
+    //         for(var i = 0 , item ; item = arr[i];i++ )
+    //         {
+    //               arr[i] = item * 1.3;
+    //         }
+    // }
+    //   var list = [10000, 12000, 15000, 18000];
+    //   map(list);
+    //   console.log(list);
+
+
+    // 编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+    // function has(arr)
+    // {
+    //     var flag=false;
+    //     for(var i=0;i++<arr.length;)
+    //     {
+    //         if(arr[i]===60)
+    //         {
+    //             flag=true;
+    //             break;
+    //         }
+    //     }
+    //     return flag;
+    // }
+    // var list=[20,50,70,60]; 
+    // console.log(has(list));
+
+
+    //编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+        // function norepeat(arr)
+        // {
+        //     console.log(Array.from(new Set(arr)));//一句话去重
+        // }
+        // var list=[1,2,1,2,3,5];
+        // norepeat(list);
+
+
+    </script>
+</body>
+</html>
