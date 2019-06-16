@@ -1,0 +1,420 @@
+/* 导航条制作 */
+.content
+{
+    width: 1180px;
+    margin: 0 auto;
+}
+.top
+{
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+}
+.top .top_content
+{
+    width: 1280px;
+    height: 56px;
+    
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+.top .top_content p
+{   
+    position: absolute;
+    top:18px;
+    left: 0;
+}
+.top .top_content .nav
+{
+    margin: 0 auto;
+    display: inline-block;
+    height: 56px;
+}
+.top .top_content .nav li
+{
+    float: left;
+    font-size: 14px;
+    line-height: 56px;
+    width: 80px;
+}
+.top .top_content .nav li:hover
+{
+    background: #999999;
+}
+.top .top_content span
+{
+    position: absolute;
+    top: 0;
+    right: 200px;
+    width: 60px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+}
+.top .top_content span:hover
+{
+    background: #999999;
+}
+.top .top_content span i
+{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: inline-block;
+    top: 18px;
+}
+.top .top_content .nav_right
+{
+    float: right;
+    position: relative;
+    width: 130px;
+    height: 56px;
+}
+.top .top_content .nav_right li:nth-child(1)
+{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: -37px;
+   top: -4px;
+}
+.top .top_content .nav_right li
+{
+    float: left;
+    text-align: center;
+    height: 14px;
+    line-height: 14px;
+    width: 62px;
+    margin-top: 20px;
+}
+
+/* 轮播图制作 */
+.lunbo
+{
+    width: 100%;
+    height: 500px;
+    padding: 20px 0 35px 0;
+}
+.lunbo .content
+{
+    
+    
+    height: 500px;;
+}
+.lunbo .content .lunbo_head
+{
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.lunbo .content .lunbo_head ul
+{
+    overflow: hidden;
+    height: 300px;
+}
+.lunbo .content .lunbo_head ul>li
+{
+    height: 300px;
+    width: 100%;
+}
+.lunbo .content .lunbo_head #jian1
+{
+    left: 5px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 125px;
+    background: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2") no-repeat;
+}
+.lunbo .content .lunbo_head #jian2
+{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 125px;
+    right: -13px;
+    background: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2") no-repeat;
+}
+.lunbo .content .lunbo_head a
+{
+    display: none;
+}
+.lunbo .content .lunbo_head:hover a
+{
+    display: block;
+}
+.lunbo .content ul{
+    height: 200px;
+  margin-top: 20px;
+  margin-left: 5px;
+   width: 100%;
+}
+.lunbo .content ul li
+{
+    float: left;
+    width: 226px;
+    margin-right: 10px;
+}
+
+/* 主题部分导航 */
+.neirong_nav
+{
+    position: sticky;
+    top: 0;
+    margin: 60px auto;
+  
+    height: 0;
+    margin-left: 450px;
+}
+.neirong_nav>li
+{
+   line-height: 42px;
+   text-align: center;
+   float: left;
+   width:100px;
+   font-size: 18px;
+}
+.neirong_nav>li:hover
+{
+    border-bottom: 2px solid #000;
+}
+/* 中间导航部分 */
+.center_nav
+{
+    margin-top:50px;
+    width: 100%;
+    height: 56px;
+}
+.center_nav .content
+{
+    height: 56px;
+}
+.center_nav .content ul
+{
+    height: 56px;
+    text-align: center;
+    width: 100%;
+    
+}
+.center_nav .content ul li
+{
+   margin-top: 23px;
+    line-height: 24px;
+    display: inline-block;
+    font-size: 20px;
+    color:#000;
+    width: 100px;;
+   
+}
+.center_nav .content ul li:hover
+{
+    border-bottom: 2px solid #000;
+}
+/* 工作区 */
+.work
+{
+    background:rgba(96,96,96,0.1);
+    height:3900px;
+    width: 100%;
+   
+
+}
+.work .content
+{
+    background:rgba(96,96,96,0.1);
+   height:3900px;
+}
+.work .content .work_box1
+{
+    margin-bottom: 10px;
+    width: 226px;
+    height: 345px;
+   background: #fff;
+    float: left;
+    margin-right: 10px;
+}
+.work .content .work_box1 ul
+{
+    margin-top: 10px;
+}
+.work .content .work_box1 ul li
+{margin-top:5px;}
+.work .content .work_box1 .dianzan
+{
+    border-bottom: 1px solid #999999;
+    height: 40px;
+}
+.work .content .work_box1 .dianzan li
+{
+    float: left;
+    height: 40px;
+    color: #999999;
+   width: 60px;
+   text-align: center;
+}
+.work .content .work_box1 .name_time
+{
+    height: 40px;
+   
+}
+.work .content .work_box1 .name_time li
+{
+    height: 40px;
+    float: left;
+    line-height: 40px;
+    width: 110px;
+    text-align: center;
+}
+.work .content .work_box1 .name_time li:nth-child(2)
+{
+    color: #999999;
+}
+
+/* 工作区翻页 */
+.trans 
+{
+    width: 100%;
+    height: 40px;
+}
+.trans .content
+{height: 40px;}
+.trans .content ul
+{
+    margin-top: 40px;
+    text-align: center;
+}
+.trans .content ul li
+{
+  
+    border: 1px solid #999999;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.trans .content ul li:hover
+{
+    background: #ffe300;
+}
+/* 猜你喜欢 */
+.guestyoulike
+{
+    margin-top:30px;
+    height: 294px;
+    width: 100%;
+    background:rgba(96,96,96,0.1);
+}
+.guestyoulike .content
+{
+    height: 294px;
+    background:rgba(96,96,96,0.1);
+}
+.guestyoulike .content p
+{
+    height: 51px;
+    background: #fff;
+}
+.guestyoulike .content p span
+{
+    float: right;
+}
+.guestyoulike .content ul
+{
+    height: 243px;
+    background: #fff;
+}
+.guestyoulike .content ul li
+{
+    float: left;
+    width: 221px;
+    margin-right: 15px;
+    height: 243px;
+    
+    
+}
+.guestyoulike .content ul li:nth-child(5)
+{
+    margin: 0;
+}
+.guestyoulike .content ul li p
+{
+    height: 48px;
+    line-height: 48px;
+}
+.guestyoulike .content ul li p span
+{
+    float: right;
+    margin-top: 14px;
+}
+
+/* 底部设计 */
+.footer
+{
+    background: #333;
+    height: 229px;
+    width: 100%;
+   
+}
+.footer .content
+{
+    height: 229px;
+   
+}
+.footer .content .footer_top
+{
+    height: 129px;
+    border-bottom: 1px solid #999999;
+    overflow: hidden;
+    position: relative;
+}
+.footer .content .footer_top ul
+{
+    margin-top:63px;
+    height: 23px;
+}
+.footer .content .footer_top ul li
+{
+    float: left;
+    width: 72px;
+    text-align: center;
+    color: #999999;
+}
+.footer .content .footer_top ul li img{float: left;}
+
+.footer .content .footer_top span
+{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    clear: both;
+    display: block;
+}
+.footer .content .footer_top span:nth-child(2)
+{
+    right: 50px;
+}
+.footer .content>ul
+{
+    margin-top:20px;
+}
+.footer .content>ul li
+{
+    float: left;
+    color: #999999;
+    margin-right: 9px;
+    margin-left: 9px; 
+    margin-top:15px;
+    text-align: center;
+    border-right:1px solid #999999; 
+}
+.footer .content>ul li a
+{
+    color: #999999;
+    text-align: center;
+    display: inline-block;
+}
