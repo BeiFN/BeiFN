@@ -45,7 +45,7 @@
 .menu_list_centent li{
     float: left;
 }
-.menu_list_centent li>a{
+.menu_list_centent>li>a{
     position: relative;
     color: #282828;
     padding: 0 24px;
@@ -59,17 +59,18 @@
     
     font-weight: 600;
 }
-.menu_list_centent li:hover{
+.menu_list_centent>li:hover{
     /* 被覆盖变色 */
     background-color: #282828;
 }
-.menu_list_centent li:hover>a{
+.menu_list_centent>li:hover>a{
     color: #ffe300;
 }
 
 
 .supTH{
     /* 特惠图标 */
+    z-index: 2;
     position: relative;
     background-color: #ea4335;
     color: white;
@@ -78,12 +79,15 @@
     padding: 0 3px;
 }
 .supTHX{
-    padding:  0 8px;
+    /* padding:  0 8px; */
+    top: -8px;
+    right: 2px;
 }
 .menu_list_centent .new{
     padding-right: 5px;
 }
 .supTHS{
+    z-index: 1;
     position: absolute;
     display: inline-block;
     right: 33px;
@@ -97,10 +101,12 @@
     border-top: 5px solid transparent; */
 }
 .supTHS6{
-    right: 70px;
+    right: 68px;
+    top: 23px;
 }
 .supTHST{
-    right: 94px;
+    right: 92px;
+    top: 23px;
 }
 
 /* 更多按钮 */  
@@ -141,6 +147,7 @@
     width: 152px;
     background-color: #fff;
     z-index: 2;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
 }
 .hidLi{
     position: relative;
@@ -148,11 +155,65 @@
 .hidLi:hover .hiddList{
     display: block;
 }
+
+
 /* 发现 */
 .findLi .hiddList{
     width: 664px;
-    height: 200px;
+    /* height: 200px; */
 }
+.liOne{
+    padding: 11px 17px 17px;
+    border-bottom: 1px solid #eaeaea;
+}
+.typeCla{
+    height: 60px;
+}
+.liOne li{
+    position: relative;
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    
+}
+.typeCla li a{
+    padding: 0 7px;
+    margin: 0 16px;
+    border-radius: 5px;
+    text-align:  center;
+    line-height: 28px;
+}
+.typeCla li .longB{
+    margin: 0 6px;
+}
+.typeCla li a:hover{
+    background-color: #ffe300;
+    
+}
+.liOne li span{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 1px;
+    height: 14px;
+    background-color: #ddd;
+}
+.litwo{
+    padding: 0 30px;
+}
+.litwo li{
+    padding-right: 15px;
+    margin-right: 40px;
+    line-height: 60px;
+}
+.litwo li:hover a{
+    color: #d36f16;
+}
+
+
+
+
 
 
 /* 更多 */
