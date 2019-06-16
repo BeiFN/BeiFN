@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1:------------------------------------------
+        function mySlice(targetArray, start, end) {
+            var arr = [];
+            for (var i = start ? start : 0; i < (end ? end : targetArray.length); i++) {
+                arr.push(targetArray[i]);
+            }
+            return arr;
+        }
+
+        function foo() {
+            console.log(mySlice(arguments));
+        }
+        foo(1, 2, 3, 4, 5, 6)
+
+        // 2:------------------------------------------
+        function foo(){
+            console.log([].slice.call(arguments));
+        }
+        foo(1, 2, 3, 4, 5, 6)
+
+
+        // 3:-----------------------------------------
+        function foo(){
+            console.log(mySlice().call(arguments));
+        }
+        function mySlice(){
+            return Array.prototype.slice;
+        }
+        foo(1, 2, 3, 4, 5, 6);
+
+
+
+
+    </script>
+
+</body>
+
+</html>
