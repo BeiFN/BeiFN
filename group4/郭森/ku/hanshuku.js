@@ -13,7 +13,7 @@
  * 
  * @randomColor          随机颜色               无    *可选：透明度 =随机数（.5~1）
  * 
- * @xhrGet               xhr发送GET请求         xhrGet(url[,data],callback)，路径，对象，回调函数
+ * @xhrGet               xhr发送GET请求         xhrGet(url[,data]).then(callback)，路径，对象，回调函数
  * 
  * @xhrPost              xhr发送Post请求 
  * 
@@ -217,7 +217,7 @@ function randomColor(opacity = 0) {
     ]
     return `rgba(${r},${g},${b},${a})`;
 }
-// xhr发送GET/POST请求  xhrGet/xhrPOST(url[,data],callback)，路径，对象，回调函数
+// xhr发送GET/POST请求  xhrGet/xhrPOST(url[,data]).then(callback)，路径，对象，回调函数
 function xhrGet(url, data) {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
