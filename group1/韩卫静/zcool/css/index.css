@@ -252,10 +252,10 @@
     margin: 0 auto;
     overflow: hidden;
 }
-.list_body{
+#list_body{
     width: 1150px;
 }
-.list_body li{
+#list_body li{
     width: 210px;
     height: 308px;
     float: left;
@@ -265,7 +265,7 @@
     background-color: #fff;
     overflow: hidden;
 }
-.list_body li>img{
+#list_body li>img{
     width: 210px;
     height: 158px;
 }
@@ -456,4 +456,65 @@
     background-color: #282828;
     font-size: 14px;
     color: #666;
+}
+.foot_con{
+    width: 1130px;
+    margin: 0 auto;
+    height: 130px;
+    border-bottom: 1px solid #333;
+} 
+.foot_con ul{
+    float: left;
+}
+.foot_con ul li{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 130px;
+}
+.foot_con ul li a{
+    font-size: 14px;
+    line-height: 19px;
+    color: #666;
+    margin-right:34px;
+}
+.phone{
+    position: relative;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-mobile.svg?v=1) no-repeat left center;
+}
+.phone a{   
+    padding-left: 25px;
+}
+.phone a:hover i{
+    position: absolute;
+    display: block;
+    background: url(https://static.zcool.cn/git_z/build/images/footer-mobile-code.png) no-repeat;
+    width: 122px;
+    height: 131px;
+    bottom: 78px;
+    left: -20px;
+}
+.foot_right{
+    float: right;
+    position: relative;
+}
+.foot_right a{
+    display: inline-block;
+    width: 26px;
+    height: 21px;
+    margin-left: 40px;
+    background-repeat: no-repeat;
+    margin-top: 55px;
+}
+.foot_right .weixin{background-image: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1)}
+.foot_right .weibo{background-image: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1)}
+
+.foot_right .weixin:hover i{
+    position: absolute;
+    display: block;
+    background: url(https://static.zcool.cn/git_z/build/images/footer-weixin-code.jpg) no-repeat;
+    width: 122px;
+    height: 131px;
+    background-size: 122px 131px;
+    bottom: 50px;
+    left: -20px;
 }
