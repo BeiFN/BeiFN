@@ -136,7 +136,6 @@
                 document.write("</tr>");
             }
             document.write("</table>");
-            
         }
         getTab(8,8);
 
@@ -168,6 +167,17 @@
         // }
         // console.log(digit(12356,1));
 
+        //9.编写函数计算一个数字的长度
+        // function numLength(num){
+        //     var n=num;
+        //     var temp=0;
+        //     while(num!=0){
+        //         num=parseInt(num/10);
+        //         temp++;
+        //     }
+        //     return n+"数字的长度为："+temp+"位";
+        // }
+        // console.log(numLength(123));
 
         // 10.编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
         // function number(num1,num2){
@@ -208,7 +218,15 @@
         // }
         // alert(jiecheng(10));
 
-        // 13.div 鼠标事件
+        // 13.创建一个对象，表示一个学生的信息
+        // var student={
+        //     name : "Mr.Du",
+        //     sex : "男",
+        //     age : 21
+        // }
+        // alert(student.name+" "+student.sex+" "+student.age);
+
+        // 14.div 鼠标事件
         var mydiv=document.getElementById("mydiv");
             mydiv.ondblclick=function (){
                mydiv.innerHTML="你刚才双击了我，触发了ondblclick事件";
@@ -241,7 +259,7 @@
                 mydiv.style.background="#01ff66";
             }
 
-        // 14 text 键盘事件
+        // 15.text 键盘事件
         var text=document.getElementById("text");
         text.onkeydown=function (){
             text.innerHTML="你键盘按下，触发了onkeydown事件";

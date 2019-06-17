@@ -1,10 +1,12 @@
 .header{
     width: 100%;
     height: 56px;
-    background: #ffe300;;
+    background: #ffe300;
+    position: relative;
+    z-index: 9999;
 }
 .header_c{
-    width: 1404px;
+    /* width: 1404px; */
     height: 56px;
     background: #ffe300;
     margin: 0 auto; 
@@ -20,10 +22,10 @@
 }
 .header_menu .h_logo{
     float: left;
-    margin:  20px 0 21px 3px;
+    margin:  20px 0 21px 70px;
     width: 110px;
     height: 20px;
-    background: url(../img/logo.svg) no-repeat center left;
+    background: url(https://static.zcool.cn/git_z/z/common/images/svg/logo.svg) no-repeat center left;
 }
 
 .header_menu li{
@@ -64,6 +66,21 @@
     border-bottom: 5px solid transparent;
     border-left: 5px solid #ea4335;
 }
+.jc_1{
+    position: relative;
+}
+.header_menu .h_xsth {
+    width: 55px;
+    position: absolute;
+    left:55px;
+    top: 10px;
+}
+.header_menu .h_xsth1 {
+    width: 55px;
+    position: absolute;
+    left:78px;
+    top: 10px
+}
 .header_menu .h_more{
     width: 60px;
     height: 56px;
@@ -71,7 +88,7 @@
 }
 .header_menu .menu_box i {
     display: inline-block;
-    background: url(../img/nav-more.svg)no-repeat right center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg)no-repeat right center;
     width: 20px;
     height: 56px;
     margin: 0 3px 0 14px;
@@ -98,7 +115,7 @@
     height: 20px;
  position: relative;
  top: 6px;
-    background: url(../img/nav-search.svg) no-repeat center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat center;
 }
 .header_r #h_upload{
     display: inline-block;
@@ -106,7 +123,7 @@
     height: 20px;
     position: relative;
    top: 6px;
-    background: url(../img/nav-upload.svg) no-repeat center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat center;
 }
 
 .h_border a{
@@ -151,7 +168,7 @@
     height: 20px;
     position: relative;
     top: 6px;
-    background: url(../img/nav-search-hover.svg) no-repeat center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1) no-repeat center;
 }
 .header_r .h_bg2:hover #h_upload{
     display: inline-block;
@@ -159,11 +176,11 @@
     height: 20px;
     position: relative;
     top: 6px;
-    background: url(../img/nav-upload-hover.svg) no-repeat center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg) no-repeat center;
 }
 .header_menu li:hover .menu_box i {
     display: inline-block;
-    background: url(../img/nav-more-hover.svg)no-repeat right center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg)no-repeat right center;
     width: 20px;
     height: 56px;
     margin: 0 3px 0 14px;
@@ -219,7 +236,7 @@
  }
 
 
- .h_zw,.h_hd,.h_jc,.h_kt,.h_kc{
+ .h_zw,.h_hd,.h_kt,.h_jc,.h_kc{
      display: none;
      position: absolute;
  }
@@ -241,3 +258,452 @@
  }
  
  
+
+ /* banner */
+
+
+ .banner{
+     width: 1263px;
+     height: 530px;
+     position: relative;
+     z-index: 1;
+     /* background: lightblue; */
+ }
+ .b_inner{
+     width: 1263px;
+     height: 498px;
+     position: relative;
+     margin-top: 20px;
+ }
+ .b_img{
+    width: 1130px;
+    height: 286px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+ }
+ .b_img img{
+     width: 1130px;
+     height: 286px;
+ }
+
+.b_pre,.b_next{
+    width: 52px;
+    height: 52px;
+    display: none;
+    cursor: pointer;
+}
+.b_pre{
+    position: absolute;
+    top: 120px;
+    left: 90px;
+    float: left;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2)no-repeat center;
+}
+.b_next{
+    position: absolute;
+    top: 120px;
+    left:1120px;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2)no-repeat center;
+}
+
+.b_img:hover .b_pre{
+    display: block;
+}
+.b_img:hover .b_next{
+    display: block;
+}
+.b_img:hover .b_pre:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2)no-repeat center;
+}
+.b_img:hover .b_next:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2)no-repeat center;
+}
+
+
+ .b_link {
+  width: 1130px;
+  height: 192px;
+  margin: 0 auto;
+  /* background: lightgreen; */
+ }
+ .b_link li{
+     margin-right: 20px;
+     float: left;
+ }
+ .b_link .b_border0{
+     margin-right: 0;
+ }
+ .b_link img{
+     width: 210px;
+     height: 168px;
+ }
+
+
+ /* main */
+ .main{
+     width: 100%;
+     height:auto;
+ }
+ .m_title{
+     width: 1130px;
+     height: 56px;
+     line-height: 56px;
+     text-align: center;
+     margin: 0 auto;
+     /* position: sticky; */
+     /* top: 606px; */
+    
+ }
+ .m_title ul{
+     width: 400px;
+     height: 56px;
+     margin: 0 auto;
+ }
+ .m_title li{
+     float: left;
+     font-size: 16px;
+     text-align: center;
+     padding: 0 30px;
+ }
+ .m_title li a{
+     display: block;
+     width: 64px;
+     height: 56px;
+ }
+ .m_title li .m_border{
+    border-bottom: 1px solid #282828;
+ }
+ .m_title a:hover{
+    border-bottom: 2px solid #282828;
+ }
+ 
+ /* content */
+ .content{
+     width: 100%;
+     height: 3130px;
+     position: relative;
+     top: -18px;
+     clear: both;
+     background:#eeeeec;
+ }
+ .c_inner{
+     width: 1130px;
+     height:auto;
+     margin: 0 auto;
+     position: relative;
+     top: 20px;
+
+ }
+ 
+ .c_link{
+     height: 308px;
+
+     margin-top: 20px;
+ }
+
+ .c_link dl{
+     float: left;
+     width: 210px;
+     height: 308px;
+     background: #fff;
+     margin-right: 20px;
+ }
+ .c_link .c_border0{
+     margin-right: 0;
+ }
+ .c_link dl img{
+     width:210px;
+     height: 158px;
+ }
+ .c_link .c_word{
+     padding: 11px 16px 13px;
+     height: 75px;
+ }
+ 
+ .c_link .c_word a{
+     display: block;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     
+ }
+
+ .c_link .c_word a:hover{
+     color: #d36f16;
+ }
+ .c_word .c_wz{
+     font-size: 12px;
+     color: #bbbbbb;
+     margin: 0 0 17px;
+     line-height: 18px;
+ }
+ .c_word .c_info1,.c_word .c_info2,.c_word .c_info3{
+    position: relative;
+    top: 10px;
+     font-size: 12px;
+ }
+ .c_link .c_info1 i{
+    display: inline-block;
+    position: relative;
+    top: 2px;
+     width: 16px;
+     height: 16px;
+     margin: 0 5px 0 0 ;
+     background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1)no-repeat 0 4px;
+     /* background-size: contain; */
+ }
+ .c_link .c_info2 i{
+    display: inline-block;
+    position: relative;
+    top: 3px;
+     width: 16px;
+     height: 16px;
+     margin: 0 5px 0 0 ;
+     background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1)no-repeat 0 2px;
+}
+.c_link .c_info3 i{
+    display: inline-block;
+  position: relative;
+    top: 3px;
+     width: 16px;
+     height: 16px;
+     margin: 0 5px 0 0 ;
+     background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1)no-repeat;
+}
+.c_bottom{
+    width: 210px;
+    height: 49px;
+    border-top: 1px solid #eeeeee;
+}
+
+.c_bottom .c_tx{
+    display: inline-block;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 16px;
+    color: #bbbbbb;
+}
+.c_bottom .c_tx i{
+    display: inline-block;
+    width: 25px;
+    vertical-align: middle;
+    margin-right: 16px;
+    height: 25px;
+    background: url(https://img.zcool.cn/community/04c19857b360af0000018c1b4fdfe0.jpg@160w_160h_1c_1e_1o_100sh.jpg) no-repeat center;
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.c_bottom .c_hour{
+    text-align: right;
+    line-height: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+/* page */
+.page{
+    clear: both;
+    width: 540px;
+    height: 40px;
+    /* background: lawngreen; */
+    position: relative;
+    top: 50px;
+    margin: 0 auto;
+}
+.page li {
+    float: left;
+    width: 38px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid #bbbbbb;
+    height: 38px;
+    border-radius: 5px;
+    margin:0 3px;
+}
+.page .p_border0{
+    margin-right: 0;
+}
+.page .p_bg{
+    background: #ffe300;
+    border: 1px solid #ffe300;
+}
+.page li:hover{
+    background: #ffe300;
+    border: 1px solid #ffe300;
+    color: #282828;
+}
+.page a{
+    color: #666;
+}
+
+
+/* g_bg */
+.g_bg{
+    width: 1130px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 80px;
+    background: url(https://reviveimg.hellorf.com/www/images/fdd02806257d0f8a4f39a3f606cdb7b4.jpg)no-repeat;
+    background-size: contain;
+}
+
+
+/* guess */
+.guess{
+    width: 1130px;
+    height: 250px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    /* background: #d36f16; */
+}
+.guess .g_txt{
+    height: 50px;
+    line-height: 50px;
+    /* background: lawngreen; */
+}
+.guess .g_txt .g_xh{
+      float: left;
+      /* background: lightblue; */
+}
+.guess .g_txt .g_hyh{
+    float: right; 
+    color:#ff4a3b; 
+    /* background: #ffe300; */
+}
+.g_pic dl{
+    float: left;
+    width: 210px;
+    height: 203px;
+    margin-right: 20px;
+    background: #fff;
+}
+.g_pic .g_border0{
+    margin-right: 0;
+}
+.g_pic img{
+    width: 210px;
+    height: 158px;
+}
+.g_pic dd{
+    width: 210px;
+    height: 45px;
+    line-height: 45px;
+}
+.g_pic dd a{
+    display: inline-block;
+    width: 154px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #282828;
+    margin-left: 16px;
+}
+.g_pic dd a:hover{
+    color: #ff4a3b;
+}
+.g_pic .g_hj{
+    float: right;
+    width: 25px;
+    height: 25px;
+  position: relative;
+  top: 12px;
+ margin-right: 15px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/bianjijingxuan.svg?v=1) no-repeat center;
+}
+
+
+/* footer */
+.footer{
+    width: 100%;
+    height: 229px;
+    background: #282828;
+    color: #666;
+    position: relative;
+    top: -18px;
+}
+.f_top{
+    width: 1130px;
+    height: 130px;
+    margin: 0 auto;
+    border-bottom: 1px solid #333;
+}
+.f_top_left{
+    float: left;
+    width: 951px;
+    height: 130px;
+    line-height: 130px;
+    text-align: center;
+}
+.f_top_left li{
+    float: left;
+}
+.f_moblie {
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-mobile.svg?v=1)no-repeat center left;
+}
+.f_moblie .f_phone {
+    display: inline-block;
+    margin-left: 25px;
+}
+.f_top_left li a{
+    margin: 0 38px 0 0;
+    color: #666;
+    line-height: 18px;
+}
+
+.f_top_right{
+    float: right;
+    width: 135px;
+    height: 130px;
+}
+.f_top_right .f_icon_weixin{
+    display: inline-block;
+    width: 25px;
+    height: 21px;
+    margin: 50px 0 0 40px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1)no-repeat center;
+}
+.f_top_right .f_icon_weibo{
+    display: inline-block;
+    width: 26px;
+    height: 21px;
+    margin: 50px 0 0 30px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1)no-repeat center;
+}
+.f_bottom{
+    width: 1130px;
+    height: 99px;
+    margin: 0 auto;
+}
+.f_bottom_inner{
+    width: 1130px;
+    height: 69px;
+    margin: 0 auto;
+    position: relative;
+    top:15px;
+    
+}
+.f_bottom_inner .f_police{
+    background: url(https://static.zcool.cn/git_z/build/images/icon-police.png) no-repeat center left;
+}
+.f_bottom li{
+    font-size: 12px;
+    float: left;
+    line-height: 16px;
+    padding: 0 20px;
+    margin-top: 15px;
+    border-right: 1px solid #333;
+}
+.f_bottom .f_bottom_li{
+    padding: 0 15px;
+    margin-left: -16px;
+}
+.f_bottom .f_b_border0{
+    border-right: 0;
+}
+.f_bottom li a{
+    font-size: 12px;
+   
+}

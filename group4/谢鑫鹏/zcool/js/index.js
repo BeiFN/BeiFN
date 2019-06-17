@@ -72,7 +72,7 @@ next.addEventListener("click",nextImg);
 /**
  * 顶部悬浮子导航
  */
-var subNav = document.getElementById("to-top");
+var subNav = document.getElementById("in-top");
 
 window.onscroll = function(){
     var scrollTop = document.documentElement.scrollTop;
@@ -1120,5 +1120,24 @@ for(var i = 0; i < json1.length; i ++){
     </div>
     `
 }
-console.log(str1);
+// console.log(str1);
 mainBox.innerHTML = str1;
+
+/**
+ * 回到顶部
+ */
+var backTop = document.getElementById("back-top");
+
+window.onscroll = function(){
+    var scrollTop = document.documentElement.scrollTop;
+    console.log(scrollTop);
+    if(scrollTop >= 300){
+        backTop.style.display = "block";
+    }else{
+        backTop.style.display = "none";
+    }
+}
+
+backTop.addEventListener("click",function(){
+    document.documentElement.scrollTop = 0;
+});
