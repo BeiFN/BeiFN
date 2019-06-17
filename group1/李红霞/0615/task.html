@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" style="margin: 0 auto; width: 120px; height: 70px; ">点击获取验证码</button>
+    <script>
+/*
+        //通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程
+        var arr = [];
+        for(var i = 0; i < 5; i++){
+            var arr1 = [];
+            for(var j = 0; j < 5; j++){
+                arr1.push(j + 5*i + 1);
+            }
+            arr.push(arr1);
+            // console.log(arr1)
+        }
+        for(var k = 0; k < arr.length; k++){
+                for(var m = 0; m < k; m++){
+                        document.write(arr[k][m]);
+                }
+                document.write("<br>");
+        }
+*/
+
+/*
+        //定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，
+        //放在另一个数组中并输出。试编程。
+        var arr = new Array(30);
+        var arr1 = [];
+        var temp = 0;
+        for(var i = 0; i < arr.length; i++){
+            arr[i] = 2 * (i+1);
+            temp += arr[i];
+            if((i+1)%5 == 0){
+                arr1[parseInt(i/5)] = temp/5;
+                temp = 0;
+            }
+        }
+        console.log(arr);
+        console.log(arr1);
+*/
+
+/*
+        //随机点名程序
+        var namelist = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪","袁江明","刘志","金天琛","仇明珠","袁志敏","崔婉悦"]
+        function click(namelist){
+            var index = parseInt(Math.random()*namelist.length);
+            return namelist[index];
+        }
+        console.log(click(namelist));
+*/
+
+/*
+        //点击按钮，生成数字字母验证码
+        btn.onclick = function(){
+            var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
+            var str = "";
+            for(var i = 0; i < 4; i++){
+                var index = parseInt(Math.random()*list.length);
+                str += list[index];
+            }
+            console.log(str);
+        }
+*/
+
+/*
+        //请编写一个函数join，将数组的每一位按照指定字符链接起来 ，
+        //例如： join([1,2,3], "%")， 运行结果"1%2%3";
+        function join(arr, sign){
+            var str = "";
+            for(var i = 0; i < arr.length; i++){
+                if(i != arr.length-1)
+                    str += arr[i] + "%";
+                else
+                    str += arr[i];
+            }
+            return str;
+        }
+        var arr = [1,2,3];
+        var sign = "%";
+        console.log(join(arr, sign));
+*/
+
+/*
+        //随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+        var num =10000 + parseInt(Math.random() * 90000);
+        var num1 = num;
+        console.log("这个随机数是"+num);
+        var count = 0;
+        while(num >= 1){
+            num /= 10;
+            count ++ ;
+        }
+        console.log("这个随机数共有"+count+"位");
+        for(var i = 0; i++ < count; ){
+            var temp = parseInt(num1 % Math.pow(10,i)/Math.pow(10, i-1))
+            console.log("第" + (count-i+1) + "位为" + temp);
+        }
+*/
+
+/*
+        //编写函数map(arr) 把数组中的每一位数字都增加30%
+        function map(arr){
+            for(var i = 0; i < arr.length; i++){
+                arr[i] = arr[i]*1.3;
+            }
+            return arr;
+        }
+        var arr = [1,4,6,3,6,2,5];
+        console.log(arr);
+        for(var k in map(arr)){
+            console.log(arr[k]);  //数组的for in遍历
+        }
+*/
+
+/*
+        //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+        function has(arr, value){
+            for(var i = 0 ; i < arr.length; i++){
+                if(arr[i] == value){
+                    return true;
+                }
+            }
+            return false;
+        }
+        var arr = [3,2,45,4,6];
+        console.log(has(arr, 60)) ;
+*/
+
+/*
+        //编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+        function norepeat(arr){
+            var arr1 = [];
+            for(var i = 0; i < arr.length; i++){
+                flag = arr1.indexOf(arr[i]);
+                if(flag == -1){
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+        var arr = [2,3,6,6,8,0,3,3,6,5,4,2];
+        console.log(norepeat(arr));
+*/
+
+    </script>
+</body>
+</html>

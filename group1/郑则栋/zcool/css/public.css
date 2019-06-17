@@ -36,4 +36,6 @@ a img{
 .fr{
 	float: right;
 }
-
+.disnone{
+	display: none;
+}

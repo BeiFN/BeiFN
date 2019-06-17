@@ -8,16 +8,18 @@
 </head>
 <body>
     <script>
-        var money1=100000;
+        var money=100000;
         var count1=0;
-        while((money1-=money1*0.05) >50000)
+        while(money>50000)
         {
+            money-=money*0.05;
             count1++;
         }
-        var money2=50000;
+        
         var count2=0;
-        while((money2-=5000) >=5000)
+        while(money>=5000)
         {
+            money-=5000;
             count2++;
         }
         count=count1+count2;
