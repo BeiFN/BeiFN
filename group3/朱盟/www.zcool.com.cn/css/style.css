@@ -1,0 +1,114 @@
+.w1130 {
+    width: 1130px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#header {
+    width: 100%;
+    height: 56px;
+    background-color: #ffe300;
+}
+
+.nav {
+    width: 1209px;
+    height: 56px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav a {
+    display: inline-block;
+    padding: 0 24px;
+    color: #282828;
+}
+
+.nav .logo {
+    position: absolute;
+    top: 18px;
+    left: 0;
+}
+
+.nav ul {
+    float: right;
+}
+
+.nav ul li {
+    float: left;
+    cursor: pointer;
+    height: 56px;
+    line-height: 56px;
+    text-align: start;
+    text-align: left;
+    /* text-align: center; */
+}
+
+.nav ul li:hover {
+    background-color: #282828;
+}
+
+.nav ul li:hover a {
+    color: #ffe300;
+}
+.nav ul li.none:hover{
+    background-color: #ffe300;
+}
+
+.nav ul li.none:hover a {
+    color:#282828;
+}
+
+.nav li.on {
+    font-weight: 600;
+}
+
+.nav li i {
+    display: inline-block;
+    width: 20px;
+    height: 56px;
+    background-size: 20px auto;
+}
+
+.nav li.more i {
+    background: url(../images/nav-more.svg) no-repeat center center;
+}
+
+.nav li.more:hover i {
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg) no-repeat center center;
+}
+.nav li.search{
+    margin-left: 32px;
+}
+
+.nav li.search i{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat center center;
+}
+.nav li.search:hover i {
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg) no-repeat center center;
+}
+
+
+.nav li.upload i{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat center center;
+}
+.nav li.upload:hover i {
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg) no-repeat center center;
+}
+.nav p{
+    clear: both;
+    /* float: right; */
+}
+.nav li.none a{
+    padding: 0px;
+}
+li.none i{
+    width: 1px;
+    padding: 0px 5px;
+}
+/* 
+https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg
+https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg
+https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1
+https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1 */
