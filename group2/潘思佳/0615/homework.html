@@ -16,9 +16,10 @@
             var count = 0;
             for (var i = 0; i < 5; i++) {
                 arr[i] = new Array();
-                for (var j = 0; j < 5; j++) {
-                    arr[i][j] = ++count;
-                }
+                // for (var j = 0; j < 5; j++) {
+                //     arr[i][j] = ++count;
+                // }
+                arr[i].push(++count);
             }
 
             for (var m = 0; m < 5; m++) {
@@ -81,12 +82,14 @@
         //编写函数map(arr) 把数组中的每一位数字都增加30%
         var list = [10000, 12000, 15000, 18000];
 
-        function map(arr) {
-            for (var i = 0; i < arr.length; i++) {
-                arr[i] *= 1.3;
-            }
-            console.log(arr);
+        function myMap(arr) {
+            var newarr = arr.map(function(e) {
+                return e * 1.3;
+            })
+            console.log(newarr);
         }
+
+        myMap(list);
 
         //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
         function has(arr, num) {
@@ -107,7 +110,6 @@
             }
             console.log(arr);
         }
-        norepeat(list2);
     </script>
 </body>
 
