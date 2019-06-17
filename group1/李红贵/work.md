@@ -115,7 +115,7 @@ console.log(obj.key);//取值
 obj.key = "";//赋值
 
 
-var obj2 = new Object();// 构造函数
+var obj2 = new Object({"key":value});// 构造函数方式初始化
 obj2.a = 333;
 obj2["cc"] = "string";
 obj2[obj2["cc"]] = [1,2,3];
