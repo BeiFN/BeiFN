@@ -285,7 +285,7 @@
     line-height: 20px;
 }
 .card_info_title a:hover{
-    color: rgb(211, 211, 22);
+    color: #d36f16;
 }
 .card_info_type,.card_info_com{
     font-size: 12px;
@@ -326,7 +326,7 @@
     margin-right: 10px;
 }
 .card_uper_name>a:hover{
-    color: rgb(211, 211, 22);
+    color: #d36f16;
 }
 .card_uper_name:hover {
 
@@ -334,5 +334,126 @@
 .card_uper_time{
     width: 52px;
     text-align: right;
-    float: right;}
+    float: right;
+}
 
+/* 图片翻页部分----------- */
+.list_pages{
+    height: 40px;
+    width: 1130px;
+    /* background-color: #f4d; */
+    margin: 20px auto;
+}
+.list_pages ul{
+    text-align: center;
+    margin: 0 auto;
+}
+.list_pages ul li{
+    display: inline-block;
+}
+.list_pages ul li a{
+    display: block;
+    color: #999;
+    font-size: 14px;
+    line-height: 39px;
+    margin: 0 3px;
+    border: 1px solid #E9E9E9;
+    width: 40px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 4px;
+}
+.list_pages ul .first_pages a{
+    font-weight: 400;
+    color: #333;
+    background-color: #ffe300;
+    border-radius: 4px;
+    border: 1px solid #ffe300;
+}
+.list_pages ul li a:hover{
+    font-weight: 400;
+    color: #333;
+    background-color: #ffe300;
+    border-radius: 4px;
+    border: 1px solid #ffe300;
+}
+
+.list_pages ul .next_pages a{
+    color: transparent;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAABzCAYAAACVZlKoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjkyNUQyRjRDQzBFMTExRTY4MjYzRDVEMzhDRjY1MzAzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjkyNUQyRjREQzBFMTExRTY4MjYzRDVEMzhDRjY1MzAzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTI1RDJGNEFDMEUxMTFFNjgyNjNENUQzOENGNjUzMDMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTI1RDJGNEJDMEUxMTFFNjgyNjNENUQzOENGNjUzMDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4e0v4DAAABz0lEQVR42uyZu0oDURCGN6s+gUY7G6s0NhY2FuIdLBQRC0vRLXyDGES0sxIELVJ4aTUiKiiiRqwsbASR1VdQ4wsIrv/AbLMkJjuzeCEz8AUCycfZc2bP+eGkgiBwkijXSaga6SOfz9f8B8/zxCNqBrPaR2sBl6BDI0qz5BRkpSKSXIETkJOuGkmK4BAsSpe/FVyDAliS9lEbS/bAsqYhqcU/QYO4IbleQB9PshtnfqIiqlfQDy5YlpOKQtkAy1JgQSqieovIsprOLrFsCKxq37V3MAiek9iPSLZV7UepP7dDmshEJqpX0Y/mI9GjHYDeJETrfPb3aEU3YBrsg27tqlFKm+GQ1aVd/jMwx7JOzZFNdQSawDmfuI+ahixwBNzhDCAaEdUUGOfcFEhHNAHWwDB4ks7RKNgEI+BBOtk0gm2W3UuXn+ZiF4yBO01DzvME32pSLdXkr29sFrRMZKK6jjWZTKbmP/i+b7HGYo3FGos1FmtMZCIT/dM0kubDUvVo4f1Ru0YUSo6dGq423CQklUSxJeVEIklUJJZERZQ26ALqQ9yQXOElVJG/r2gOSLGsXIgQySrFmtiy7xJbLFm1dy2UlZLYj0i2YSFCX18CDAAxOYX9xIgpMAAAAABJRU5ErkJggg==) no-repeat;
+    background-position: 14px -23px;
+}
+.list_pages ul .next_pages a:hover{
+    color: transparent;
+    background-position: 14px -54px;
+}
+
+/* 底部banner图------ */
+.bottom_banner{
+    width: 1130px;
+    margin: 0px auto;
+}
+.bottom_banner img{
+    width: 1130px;
+    height: 100px;
+    border-radius: 4px;
+}
+.bottom_banner a{
+    display: block;
+    margin-top: 30px;
+}
+.guess_like{
+    width: 1130px;
+    margin: 20px auto;
+    font-size: 14px;
+    color: #666;
+    line-height: 14px;
+}
+.guess_like a{
+    float: right;
+    color: #d36f16;
+}
+.guess_like_pic{
+    width: 1130px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.guess_like_pic ul {
+    width: 1150px;
+}
+.guess_like_pic ul li{
+    width: 210px;
+    height: 203px;
+    float: left;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0 20px 20px 0;
+}
+.guess_like_pic ul li>img{
+    width: 210px;
+    height: 158px;
+    border-radius: 4px 4px 0 0 ;
+}
+.guess_like_pic ul li>a{
+    font-size: 14px;
+    color: #282828;
+    line-height: 21px;
+    vertical-align: middle;
+    padding: 12px 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    width: 164px;
+}
+.guess_like_pic ul li>a:hover{
+    color: #d36f16;
+}
+
+/* 底栏部分 */
+.footer{
+    height: 229px;
+    background-color: #282828;
+    font-size: 14px;
+    color: #666;
+}

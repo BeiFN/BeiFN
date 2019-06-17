@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //桶排序 
+    // var arr = [3,7,45,67,32];
+    // var buk = [];
+    // for  (var i = 0 ; i < arr.length ; i ++ ){
+    //     buk[ arr[i] ] = 1;
+    // }
+    // arr.length = 0;
+    // for(var index in buk){
+    //     arr.push(Number(index));
+    // }
+    // console.log(arr);
+
+    //选择排序
+    // var arr = [3,7,45,67,32];
+    // for (var count = 0 ; count < arr.length-1; count ++ ){
+    //     var min = arr[count];
+    //     var index = count;
+    //     for(var i = count + 1 ; i < length - 1;i ++){
+    //         if ( arr[i] < min){
+    //             index = i ;
+    //             min = arr[index];
+    //         }
+    //         arr[index] = arr[count];
+    //         arr[count] = min ; 
+    //     }
+    // }
+    // console.log(arr);
+
+    //冒泡排序
+    // var arr = [3,5,6,2,1,8,0,6,3];
+    // for ( var count = 0 ; count < arr.length-1  ; count ++){
+    //     for(var i = 0; i< arr.length-1-count;i++){
+    //         // if (arr[i] > arr[i+1]){
+    //         //     var temp = arr[i];
+    //         //     arr[i] = arr[i+1];
+    //         //     arr [i+1] = temp;
+    //         // } 
+    //         console.log(arr[count],arr[i]);
+    //     }
+    // }
+    // console.log(arr);
+
+    //快速排序
+    // var arr = [3,5,6,2,1,8,0,6,3];
+    // function kuai(arr){
+    //     if(arr.length <= 1){
+    //         return arr;
+    //     }
+    //     var index = parseInt( arr.length/2 )
+    //     var mid = arr[index];
+    //     var lefT =[];
+    //     var righT = [] ;
+    //     for( var i = 0;i < arr.length; i++){
+    //         if(i === index){
+    //             continue
+    //         }
+    //         arr[i] > mid ? righT.push(arr[i]) : lefT.push(arr[i]);
+    //     }
+    //     return kuai(lefT).concat([mid],kuai(righT));
+    // }
+    // console.log(kuai(arr));
+
+    // var arr = [3,5,6,2,1,8,0,6,3];
+    // function quick(arr){
+    //     if(arr.length <= 1){
+    //         return arr;
+    //     }
+    //     var Left = [];
+    //     var Right = [];
+    //     var index = parseInt( arr.length/2);
+    //     var mid = arr[index];
+    //     for (var i = 0 ; i < arr.length ;i ++){
+    //         if (i === index){
+    //             continue;
+    //         }else if(mid > arr[i]){
+    //             Left.push(arr[i]);
+    //         }else {
+    //             Right.push(arr[i]);
+    //         }
+    //     }
+    //     return quick(Left).concat([mid] , quick(Right) );
+    // }
+    // console.log(quick(arr));
+
+    // 快速排序   找中点分左右
+    // var arr = [3,2,7,9,4,6,0,2];
+    // function    kuaisu(arr){
+    //     if(arr.length <= 1){
+    //         return arr;          //找出终止条件
+    //     }
+    //     var  midindex =  parseInt( arr.length/2 );   ///找出中间的下标值
+    //     var  mid = arr[midindex] ;                       //中间值
+    //     var  lefT = [];                      //创建左右数组
+    //     var  righT = [];
+    //     for( var i =0 ; i < arr.length ;i++){        先遍历数组
+    //         if(i === midindex){                  如果是中间值得话  就原地不动 
+    //             continue;
+    //         }else if(mid > arr[i]){               如果是小于中间值的话  就放在左边的数组
+    //             lefT.push(arr[i]);
+    //         }else{
+    //             righT.push(arr[i]);
+    //         }
+    //     }
+    //     return kuaisu(lefT).concat([mid],kuaisu(righT));   拼接一下数组  重新返回计算
+    // }
+    // console.log(kuaisu(arr));
+
+    //冒泡排序
+    // var arr = [3,2,7,9,4,6,0,5];
+    // for(i = 0 ;i < arr.length-1;i++){  //循环的次数；
+    //     for(k = 0 ;k < arr.length-1-i;k++){  //两两比较   每次都是需要从开头进行比较的   最大或者最小的是放在队伍的末尾 -i的意思是最后的拍好顺序的不用再进行比较
+    //         if(arr[k]<arr[k+1]){
+    //             var temp = arr[k];
+    //                 arr[k] = arr[k+1];
+    //                 arr[k+1] = temp;
+    //         }
+    //     }
+
+    // }
+    // console.log(arr);
+    
+    //桶排序
+    // var arr = [3,2,7,9,4,6,0,5];
+    // var list = [];
+    // for(var i = 0 ; i < arr.length; i ++){
+    //     list[arr[i]] = 1;            //往里面灌水赋值；
+    // }
+    // arr.length = 0;                  //清空原数组
+    // for(var index in list){          //遍历list   空的项是会自动忽略的
+    //     arr.push(Number(index));     //在新数组中加list的下标值
+    // }
+    // console.log(arr);
+
+
+    //选择排序   假设第一个值是最值   反证法
+    // var arr = [3,2,7,9,4,6,0,5];                                            
+        
+        //选择排序
+    var arr = [3,7,45,67,32];
+    for (var count = 0 ; count < arr.length-1; count ++ ){
+        var min = arr[count];
+        var index = count;
+        for(var i = count + 1 ; i < arr.length;i ++){
+            if ( arr[i] < arr[index]){
+                index = i ;
+                min = arr[index];
+            }
+        }
+        arr[index] = arr[count];
+        arr[count] = min ; 
+    }
+    console.log(arr);
+    </script>
+</body>
+</html>
