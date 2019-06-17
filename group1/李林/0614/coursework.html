@@ -59,17 +59,100 @@
     // foo();
     
     //报数
-    function countNum(n){
-        n++;
+    // function countNum(n){
+    //     n++;
         
-        // console.log(n);
-        if(n ===10){
-            return 10;
-        }
-        countNum(n);
-    }
-    var n = 1;
-    console.log(countNum(n));
+    //     // console.log(n);
+    //     if(n ===10){
+    //         return 10;
+    //     }
+    //     countNum(n);
+    // }
+    // var n = 1;
+    // console.log(countNum(n));//undefined
+    
+    // 兔子数列 ;  斐波那契数列;
+    
+    // function fib(n){
+    //     if(n === 1 ||n ===2){
+    //         return 1;
+    //     }
+    //     return fib(n-1) + fib(n-2);
+    // }
+         
+    //阶乘
+    // function factorial(num){
+    //     if(num ===1){
+    //         return 1;
+    //     }
+    //     return num * factorial(num-1);
+    // }
+
+    //辗转相除法
+    // function divisor(m,n){
+    //     var r = m % n
+    //     m = n;
+    //     n = r;
+    //     if(r ===0){
+    //         console.log(m);
+    //     }else{
+    //         return divisor(m,n);
+    //     }
+    // }
+
+    //更相减损法
+    // function fn(x,y){
+    //     if(x % 2 ===0 && y % 2 === 0){
+    //         x /= 2;
+    //         y /= 2;
+    //         return fn(x,y) * 2;
+    //     }else{
+    //         var temp = x > y ? x-y:y-x;
+    //         if(temp ===(x > y ? y:x)){
+    //             return temp;
+    //         }else{
+    //             return fn(temp,x > y? y: x);
+    //         }
+    //     }
+    // }
+
+    //斐波那契数列
+    //1  1  2  3   5  8  13  21  34  55  89 .........
+    // function f(x){
+    //     if(x === 1 || y ===2){
+    //         return 1;
+    //     }
+    //     return f(x-1) + f(x -2);
+    // }
+
+    //考试系统
+    // var foo = (function(){
+    //     var answer = {"1":"A","2":"B","3":"C"};
+    //     function foo(){
+    //         console.log(answer);
+    //     }
+    //     return foo;
+    // } )();
+    // foo();
+    // document.onclick = foo;
+    
+    //闭包故事
+    // function home(){
+    //     var ID = 16;
+    //     var cat = function(){
+    //         for(var i = 0; i < ID; i++){
+    //             console.log("喵");
+    //         }
+    //     }
+    //     return cat;
+    // }
+    // var key = home();
+
+    //闭包练习
+    
+
+
+
 
     </script>
 </body>
