@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06-12作业</title>
+</head>
+<style>
+    #box{
+        width:900px;height:800px;background:blanchedalmond;margin: 0 auto;
+    }
+    #div1{width: 300px;height:200px;background:orange;float:left;margin: 20px;}
+    #div2{width: 500px;height:200px;background: #fff;float:left;margin: 20px;}
+    #div3{width: 500px;height:200px;background: #fff;float:right;margin: 20px;}
+
+
+</style>
+<body>
+    <input id ="ipt" type="text">
+    <button id="btn">点击我获取阶乘结果</button>
+
+    <div id="box">
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <textarea id="txt1" style="width:300px;height:200px"></textarea>
+        <div id="div3"></div>
+    </div>
+
+
+            <!-- 01-编写一个函数，计算两个数字的和差积商 -->
+        <!-- <input type="text" id ="num1" >
+            <select id="sel">
+                <option>+</option>          
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+                <option>%</option>
+            </select>
+            <input type="text" id ="num2">
+            <button id="btn">计算</button> -->
+            <!-- <script>
+                btn.onclick = function (){
+                    var a = num1.value;
+                    var b = num2.value;
+                    var o = sel.value;
+                    res = calc(a, b, o);
+                    alert(res);
+                
+                function calc(a, b ,o) {
+                    switch(o){
+                        case"+":
+                                return Number(a)+Number(b);
+                                break;
+                        case"*":
+                                return a*b;
+                                break;
+                        case "-":
+                                return a-b;
+                                break;
+                        case "/":
+                                return a/b;
+                                break;
+                        case "%":
+                                return a%b;  
+                                break;    
+                        default:
+                        return("没有这种操作！");         
+                    }
+                }
+                }
+            </script> -->
+        <script>
+        //02-编写函数，求圆的面积
+        // function cicl(r){
+        //     res = r * r *(Math.PI).toFixed(2) ;
+        //     alert(res);
+        // }
+        // cicl(3);
+
+        //02-编写函数，判断一个字符串的内容是不是纯数字
+        // function A(argu){
+        //     Number(argu);
+        //     return isNaN(argu);
+        // }
+        // console.log(A("13"));
+
+    //03- 编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
+        // var a;
+        // var b;
+        // var c;
+        // function sort(a, b, c){
+        //     if(a < b && a < c){
+        //         if(b < c){
+        //             console(a, b, c);
+        //         }else{
+        //             console.log(a, c, b);
+        //         }
+        //     }
+        //     if(b < a && b < c){
+        //         if(a < c){
+        //             console.log(b , a, c)
+        //         }else{
+        //             console.log(b, c, a)
+        //         }
+        //     }
+        //     if(c < a && c < b){
+        //         if(a < b){
+        //             console.log(c, a, b)
+        //         }else{
+        //             console.log(c, b, a)
+        //         }
+        //     }
+        // }
+        // console.log(sort(9,5,6));
+
+        // 04-编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        // function table(n ,m){
+        //     for(i = 0; i < n; i++){
+        //         var j = 0;
+        //      for(j = 0; j < m; j++){
+        //         document.write(parseInt(Math.random() *100));
+        //         document.write("&nbsp;&nbsp;")
+        //         }
+        //         document.write("</br>");
+        //     }
+        // }
+        // table(5,6);
+
+        // 05-编写一个函数，生成4位数字的验证码
+        
+        // function Num(){
+        //     num = parseInt(Math.random() *9000) +1000;
+        //     document.write(num);
+        // }
+        // Num();
+
+        //06-求m-n之间数字的和
+
+        // function sum(m,n){
+        //     var s = 0;
+        //     if( m <= n){
+        //         for(m;m < n; m++){s += m}
+        //     }else{
+        //         for(n; n < m; n++){s += n}
+        //     }
+        //     console.log(s);
+        // }
+        // sum(12,3);
+
+        //07-编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。 
+        // function digit(num, k){
+        //     res = num % Math.pow(10,k);
+        //     fina = parseInt(res / Math.pow(10, k - 1));
+        //     alert(fina);
+        // }
+        // digit(987654321, 18);
+
+        // 08-编写函数计算一个数字的长度
+        // function length(num){
+        //     var count = 0;
+        //     for(var i = 0; num > 1; i++){
+        //     if(num / Math.pow(10, i) > 1){
+        //         count++;
+        //     }
+        //   }
+        //     console.log(count);
+        // }
+        // length(232398879634543);
+
+        // function length(num){
+        //     for(count = 0; num >= 1; count ++){
+        //         num /10;
+        //     }
+        //    console.log(count);
+        // }
+        // num(523452);
+      
+
+
+        // 09-编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+        // 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+        //    function odd_sum(m , n){
+        //        var count = 0;
+        //         for(var i = m; i< n; i++){
+        //             for(var j = m;  j< n; j++){
+        //                 res = ""+i+j; 
+        //                      //把两个数拼接起来    
+        //                 if(res % 2){
+        //                    console.log(res);
+        //                    count++;
+        //                 }
+        //             }
+        //         }
+        //     return count; 
+        //    }
+        //    console.log(odd_sum(1, 10));
+
+
+        //10-某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+        //加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+        //第二位和第三位交换，请编写一个函数，传入原文，输出密文
+    
+            // var num;
+            // function password(num){
+            //     var ge = parseInt((num % 10) +5) % 10;
+            //     var shi =parseInt((parseInt(num % 100 / 10) + 5) % 10); 
+            //     var bai =parseInt((parseInt(num % 1000 / 100) + 5) % 10);
+            //     var qian =parseInt((parseInt(num % 10000 *10) + 5) % 10);
+                
+            //     console.log(ge,shi,bai,qian);
+            // }
+            // password(2345);
+
+           //11-编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n
+            //    function num(n){
+            //        if(n % 2 == 0){
+            //            even(n);
+            //            console.log(even(n))
+            //        }else{
+            //            odd(n);
+            //            console.log(odd(n))
+            //        }
+            //    }
+            //    num(4);
+
+            //    function even(n){
+            //        var s = 0;
+            //        for(var i = 1; i < n; i++){
+            //            s += 1 /(2 * i);
+            //        }
+            //     return s;
+            //    }
+            
+
+            //    function odd(n){
+            //        var k = 0;
+            //        for(var i = 1; i < n; i++){
+            //            k += 1 / (2 * i - 1);
+            //        }
+            //        return k;
+            //    }
+
+            //12- 使用函数完成任意数字阶乘的计算
+            // function factorial(num){
+            //     var s = 1;
+            //     for(var i = 1; i<= num; i++){
+            //         s *=i;
+            //     }
+            //     console.log(s);
+            // }
+            // factorial(10);
+
+            // 13-要求：页面输入任意数字，点击按钮后计算该数字的阶乘
+            
+            //     btn.onclick = function (){
+            //     var num = ipt.value;
+            //     var s = 1;
+            //     for(var i = 1; i<= num; i++){
+            //         s *=i;
+            //     }
+            //     alert(s);
+            // }
+
+            // 14-创建一个对象，表示一个学生的信息
+            function student(name,age,sex){
+                
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.person = function(){console.log(stu.name)};
+            }
+            var stu1 = new student("chen");
+
+
+            //15-鼠标键盘事件
+            div1.onclick = mouseEvent;
+            div2.ondblclick = double;
+            txt1.onchange = txt2;
+            function mouseEvent(){
+                  div2.innerHTML = "您刚刚双击了DIV触发了dblclick事件"; 
+            }
+
+            function txt2(){
+                div3.innerHTML = "输入框内容分改变，触发了onchange事件";
+            }
+
+
+
+           
+
+
+
+
+
+
+
+        
+      
+            
+            
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+</script>
+</body>
+</html>

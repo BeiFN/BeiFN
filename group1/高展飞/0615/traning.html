@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1000,200,500,900,300,2000];
+        // 桶排序
+        // 根据数组中的数据在内存中安排相同数量的“桶”，然后遍历数组将其放进对应数的“桶”中，按顺序输出即可排序
+        // 桶排序会自动删除数组中重复的项
+        // var bocket = [];
+        // for(var i = 0;i<arr.length;i++){
+        //     bocket[arr[i]]=1;
+        // }
+        // console.log(bocket);
+        // arr.length=0;
+        // for( var qq in bocket){    //for  in 遍历输出的是字符串
+        //     arr.push(Number(qq));
+        // }
+        // console.log(arr);
+
+        //选择排序
+        //思路：假设最小值，两两相互比较，如果假设最小值比 后边的值大，则互换值，继续比较结果是
+        //找到最小值，放在第一位，，，，，此后步骤同上
+        //与冒泡排序一样，外层比较次数为7次，总次数固定。
+        // for (var i=0;i<arr.length-1;i++){
+        //     var min=arr[i];
+        //     var count=i;
+        //     for(var j =i+1;j<arr.length;j++){
+        //         if(min>arr[j]){
+        //             count=j;
+        //             min=arr[count];
+        //         }
+        //     }
+        //     arr[count]=arr[i];
+        //     arr[i]=min;
+        // }
+        // console.log(arr);
+        //冒泡排序
+        //从左至右，相邻的项比较，大的（小的）后移，大的一直往后两两比较，直至最后一位。比较次数固定。
+        // for(var i = 0 ; i < arr.length - 1 ; i++){
+        //     for(var j = i + 1 ;j < arr.length ; j++){
+        //         if(arr[i] > arr[j]){
+        //             var temp = arr[i];
+        //             arr[i] = arr[j];
+        //             arr[j] = temp;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+        //快速排序  本身是一个递归，递归条件    ①  终止条件  ②计算规则
+        //找中点，分左右。
+        // function  quickSort(arr){
+        //     //终止条件
+        //     if(arr.length <= 1){return arr;}
+        //     //计算规则
+
+        //       //找中点
+        //       var middle = parseInt(arr.length/2);
+        //         //var mid =arr[middle];
+        //         //分左右
+        //         var  left = [];
+        //         var  right = [];
+        //     for(var i = 0;i<arr.length;i++){
+              
+        //         if(i === middle){continue;}
+        //         if(arr[i]<arr[middle]){
+        //             left.push(arr[i]);
+        //         }else{
+        //             right.push(arr[i]);
+        //         }
+        //     }
+        //     return quickSort(left).concat(arr[middle],quickSort(right));
+        // }
+        // console.log(quickSort(arr));
+        //数组去重
+        //1，桶排序
+         var  arr = [1,3,43,4,5,6,6,4,3,6,3,7,1]
+        var  bocket=[];
+        for (var i = 0;i<arr.length;i++){
+            bocket[arr[i]]=1;
+        }
+        console.log(bocket);
+        arr.length=0;
+        for(var  index  in  bocket){
+            arr.push(Number(index));
+        }
+        console.log(arr);
+        //2.利用数组函数   arr.indexOf();   该函数输入数值，数组存在该值时返回对应下表，否则返回-1
+        var temp = [];
+        for (var i = 0;i < arr.length;i++){
+            if(i===0|| temp.indexOf(arr[i])=== -1){
+                temp.push(arr[i]);
+            }
+        } 
+        console.log(temp);
+        //3.一句去重法
+          //属于ES6去重
+                //Array.from():   将伪数组转换成真数组；
+                //new Set (arr): ES6的新结构：  key;key,  value:value;
+                //Set结构是不允许重复的一个数据结构
+        console.log(Array.from(new  Set(arr)));
+                
+
+
+    </script>
+</body>
+</html>

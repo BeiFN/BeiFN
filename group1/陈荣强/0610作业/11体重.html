@@ -8,15 +8,15 @@
 </head>
 <body>
     <script>
-        var height = 175;
-        var weight = 140;
+        var height = 170;
+        var weight = 130;
         var stan = (height - 108)*2;
-        
-        if(weight >= stan && weight <= stan){
-            console.log("你的体重不标准")
+        if(weight >= stan - 10 && weight <= stan + 10){
+            alert("你的体重标准")
         }else{
-            console.log("你的体重标准")
+            alert("你的体重不标准")
         } 
+
     </script>
 </body>
 </html>
