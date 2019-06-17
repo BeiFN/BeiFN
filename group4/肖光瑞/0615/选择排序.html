@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [2, 3, 1, 9, 5, 7, 6, 4, 8]
+        for (var i = 0; i < arr.length - 1; i++) {
+            var min = arr[i],
+                index = i;
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[index]) {
+                    index = j;
+                }
+            }
+            min = arr[index];
+            arr[index] = arr[i];
+            arr[i] = min;
+        }
+        console.log(arr)
+    </script>
+</body>
+
+</html>
