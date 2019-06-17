@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>字符串过滤</title>
+</head>
+<style type="text/css">
+    *{
+        padding: 0; margin: 0;
+    }
+    #edit {
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+        overflow: hidden;
+    }
+    #commentlist {
+        margin: 0 auto;
+        width: 1000px;
+    }
+    #commentlist .comment{
+        width: 800px;
+        min-height: 80px;
+        margin: 20px auto;
+        background: pink;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+    }
+    #commentlist .comment p{
+        margin: 10px 10px;
+    }
+    #sendBtn {
+        display: block;
+        margin: 10px auto;
+        width: 100px;
+        height : 30px;
+        line-height: 30px;
+        background: red;
+        box-shadow: 0 0 2px #000;
+        border-radius: 4px;
+    }
+
+    #sendBtn:hover{
+        cursor: pointer;
+        background: linear-gradient(to bottom, #fee, #f40);
+    }
+</style>
+<body>
+<div id="edit">
+    <p>请输入你的发言:</p>
+    <p>
+        <textarea name="" rows="5" cols="60"></textarea>
+    </p>
+    <p><a class="send" id="sendBtn">发送</a></p>
+</div>
+<div id="commentlist">
+    <div class="comment">
+        <p>杨松:</p>
+        <p style="word-break: break-all;">
+            好的开始是成功的一半！
+        </p>
+        <p style="text-align: right;">2019/06/17 22:22</p>
+    </div>
+    <div class="comment">
+        <p>杨松:</p>
+        <p style="word-break: break-all;">
+            好的开始是成功的一半！
+        </p>
+        <p style="text-align: right;">2019/06/17 22:22</p>
+    </div>
+    <div class="comment">
+        <p>杨松:</p>
+        <p style="word-break: break-all;">
+            好的开始是成功的一半！
+        </p>
+        <p style="text-align: right;">2019/06/17 22:22</p>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+
+</script>
+</html>
