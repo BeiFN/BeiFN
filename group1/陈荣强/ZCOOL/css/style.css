@@ -1,0 +1,110 @@
+/* 头部导航栏 */
+.head{width:100%;height: 56px;background:#ffe300;position: relative;}
+.head img{position:absolute; left: 72px;top:18px;}
+.head .nav{float: left;margin-left:360px;}
+.head .nav li{float:left;height: 56px;padding:0 24px;line-height: 56px;}
+.head .nav li a{font-size:14px;color:#000;}
+.head .nav li:hover{background:#000;}
+.head .nav li:hover a{color:#ffe300;}
+.head .zhengban{position:relative;width:74px}
+.zhengban .sale{width:24px;height:18px;padding:0 3px;text-align:center;position: absolute;top:10px;left:82px;line-height:18px;cursor: pointer;font-size:12px;}
+.zhengban .sale i{color:#fff;background:#ea4335}
+.zhengban .sale::after{content: "";position: absolute;left:3px;bottom: -5px; border-top: 5px solid transparent;border-right: none;border-bottom: 5px solid transparent;border-left: 5px solid #ea4335;}
+.head .more{width:12px;height:56px;position: relative;}
+.head .more i{top:26px;width:20px;height:56px;position:absolute;background: no-repeat url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg)}
+.head .more sup{width:8px;height:8px;border-radius:50%;position: absolute;top: 18px;left:44px}
+.head .search{width:60px;height:56px;right:278px;position: absolute;}
+.head .search i{margin:18px;width:20px;height:20px;display:block;background:url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;}
+.head .right{width:193px;height:56px;float:right;margin-right:85px}
+.right .upload{width:62px;height:56px;float:left}
+.right .upload i{width:30px;height:20px;display:block;margin:18px 16px;background:url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat}
+.right .login{width:117px;height:56px;float:right;}
+.right .login li{margin:21px 0;height:14px;text-align:center;float:left;line-height:14px;;padding: 0 10px;width:30px}
+.right .login li a{font-size:14px;color:#000;line-height:14px;}
+.right .login .login_enter{border-right:1px solid #000;}
+
+/* 二级菜单 */
+.discover{position: relative;}
+.discover .dis_list{display:block;width:664px;height:146px;background:#fff;position: absolute;z-index:1;border-radius: 4px;}
+.dis_list .dis_top{height:90px;border-bottom:1px solid #ccc;overflow: hidden}
+.discover .dis_top ul{margin-left:-1px;}
+.discover .dis_top ul li{width:45px;height:16px;border-left:1px solid #ccc;float:left;line-height:14px;text-align:center;margin-top:20px;}
+.discover .dis_top ul li a{line-height: 14px;font-size:14px;color:#000;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 所有内容区  W：1349 H:3722  */
+.main{width:1349px;height:3722px;background:greenyellow;}
+
+/*轮播图 */ 
+.banner{width:1349px;height:500px;padding:20px 0 35px 0}
+.slider_ban{width:1349px;height:499px;}
+.slider_pic{width:1130px;height:286px;;margin:0 auto;position: relative;}
+
+/* 轮播图上的箭头 */
+.row_left,.row_right{width:50px;height:50px;background:rgba(0,0,0,0.8);border-radius:50%;position:absolute;}
+.row_left a img{width:14px;height:24px;margin:13px 18px;}
+.row_right a img{width:14px;height:24px;margin:13px 18px;}
+.row_left{top:118px;left:30px;display:none;}
+.row_right{top:118px;right:30px;display:none;}
+/* .slider_ban .slider_pic:hover .row_left{display:block;}
+.slider_ban .slider_pic:hover .row_right{display:block;} */
+
+.slider_pic img{width:1130px;height:286px;}
+.all_banner{width:9040px;height:286px;}
+.all_banner .ban_pic li{float:left;width:1130px;}
+.clear{height:20px;}
+.ad{width:1130px;height:170px;margin:0 auto;}
+.ad .ad_pic li img{width:210px;height:168px;border-radius:6px;}
+.ad .ad_pic li{float: left;margin-right:20px;}
+.ad .ad_pic .ad_pic_last{margin-right:0;}
+
+.text_nav{width:1349px;height:56px;}
+.text_nav .text_center{width:1130px;height:56px;margin:0 auto;}
+.text_list{margin-left:400px;}
+.text_list li{width:124px;text-align:center;height:56px;float:left;margin:0 auto;line-height: 56px;border-bottom:2px solid #666;}
+.text_list li a{color:#282828;font-size:16px;}
+.text_list .li2{border-bottom:none;}
+.text_list .li3{border-bottom:none;}
+.text_list li:hover{border-bottom:2px solid #666;}
+
+/* 同种格式图片区 */
+.pic{width:1130px;height:2624px;margin:0 auto;}
+.box_list{width:1150px;height:2624px;margin-top:20px;}
+.pic_box{width:210px;height:308px;float:left;margin-right:20px;margin-bottom:20px;}
+.pic_box img{width:210px;height:158px;}
+.pic_box .info{width:186px;height:68px;position: relative;padding:11px 16px 13px}
+.info_title{font-size:14px;padding-top:4px;}
+.info_title a{color:#333;}
+.info_title a:hover{color:#92703a}
+.info .info-detail{font-size:12px;padding-bottom:17px;color:#bbb}
+.info_item{font-size:12px;color:#bbb;position: absolute;}
+.info_item .view{background:url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat;}
+.info_item .view::before{content: "";display: inline-block;width: 16px;height: 16px;vertical-align: top;margin-right: 5px;}
+.info_item .xinxi{background:url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat;}
+.info_item .xinxi::before{content: "";display: inline-block;width: 16px;height: 16px;vertical-align: top;margin-right: 5px;}
+.info_item .dianzan{background:url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat;}
+.info_item .dianzan::before{content: "";display: inline-block;width: 16px;height: 16px;vertical-align: top;margin-right: 5px;}
+.info_item span{margin:0 10px 0 0;}
+.pic_box .pic_footer{width:178px;height:50px;border-top:1px solid #ccc;position: relative;padding:0 16px;}
+.pic_footer img{width:30px;height:30px;position: absolute;margin:10px 10px 10px 0;}
+.footer_left a{font-size:12px;color:#ccc;line-height:50px;padding-left:40px}
+.time{font-size:12px;color:#bbb;line-height: 50px;margin-left:20px;}
+
+
+.pagerow{width:1349px;height:40px;}
+.page_turn{width:1390px; height:40px;}
+.page_button{width:1390px;text-align:center;}
+.page_button a{margin:0 3px;width:40px;height:40px; border-radius: 2px;background:#fff;display:inline-block;line-height:40px;text-align:center;font-size:14px;vertical-align:top;}
+
+
