@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 100px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            margin: 50px auto;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input id="btn" type="button" value="点名">
+    <div id="box"></div>
+    <script>
+        var arr = ["杨怀智","邓修","谢宇航","吕赟飞","郭森","谢鑫鹏","王旭","李富贵","薛旺财","柴二狗"];
+        var flag = false;
+        document.onkeydown = function() {
+            flag = true;
+        }
+        btn.onclick = function() {
+            if(flag) {
+                box.innerHTML = "吴彦祖";
+            } else {
+                var index = Math.floor(Math.random() * arr.length);
+                console.log(index);
+                box.innerHTML = arr[index];
+            }
+        }
+        
+
+
+    </script>
+
+
+
+
+</body>
+</html>

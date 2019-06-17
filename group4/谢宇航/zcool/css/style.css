@@ -469,7 +469,6 @@ header{
 	float: left;
 	background-color: #fff;
 	border-radius: 3px;
-	overflow: hidden;
 }
 
 .card-img{
@@ -481,6 +480,65 @@ header{
 	width: 210px;
 	height: 158px;
 }
+
+.card-item{
+	position: relative;
+}
+
+.author{
+    position: absolute;
+    border-radius: 4px;
+    width: 210px;
+    height: 229px;
+    z-index: 99;
+    left: 0;
+    bottom: 49px;
+    background: #fff;
+    box-shadow: 2px 6px 15px rgba(0,0,0,.15);
+    text-align: center;
+    padding: 30px 0 21px;
+    display: none;
+}
+
+.author img{
+	border-radius: 50%;
+    width: 80px!important;
+    height: 80px!important;
+    margin: 0!important;
+}
+
+.author p{
+	color: #333;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 10px 0 0 0;
+	line-height: 21px;
+}
+
+.author strong{
+    font-size: 12px;
+    color: #bbb;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card-info{
 	width: 210px;
