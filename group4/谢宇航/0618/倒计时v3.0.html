@@ -70,18 +70,18 @@
                 clearInterval(timeInterval);
                 return false;
             }
-            var hour = document.querySelector(".hour");
-            var minute = document.querySelector(".minute");
-            var second = document.querySelector(".second");
             var arr = [];
             arr[0] = Math.floor(rest / 1000 / 60 / 60);
             arr[1] = Math.floor(rest / 1000 / 60 % 60);
             arr[2] = Math.floor(rest / 1000 % 60);
-            return arr;
+            writeTimer(arr);
         }
 
         // 写入页面
         function writeTimer(arr) {
+            var hour = document.querySelector(".hour");
+            var minute = document.querySelector(".minute");
+            var second = document.querySelector(".second");
             hour.textContent = arr[0] < 10 ? "0" + arr[0] : "" + arr[0];
             minute.textContent = arr[1] < 10 ? "0" + arr[1] : "" + arr[1];
             second.textContent = arr[2] < 10 ? "0" + arr[2] : "" + arr[2];

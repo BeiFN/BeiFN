@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证码的生成</title>
+</head>
+<body>
+    <script>
+        function create(){
+            var str = "";
+            for(var i = 0; i < 6; i++){
+               str += randomNum();
+            }
+            console.log(str);
+        }
+        function randomNum(){
+            do{
+                var i = Math.round(Math.random() * 42 + 48);
+            }while(i >= 58 && i <= 64)
+            return String.fromCharCode(i);
+        }
+        create();
+    </script>
+</body>
+</html>
