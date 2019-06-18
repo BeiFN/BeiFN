@@ -1,0 +1,291 @@
+@charset "utf-8";
+/* CSS Document */
+.nav{
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+    color: #282828;
+    text-align: center;
+}
+.nav .nav_1{
+    width: 1202px;
+    height: 56px;
+    margin: 0 auto;
+}
+.nav .nav_1 .logo{
+    height: 56px;
+    width: 120px;
+    float: left;
+}
+.nav .nav_1 .logo a{
+    width: 120px;
+    height: 56px;
+    font-size: 0px;
+    line-height: 56px;
+}
+.nav .nav_1 .logo a img{
+    width: 120px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.nav .nav_1 .nav_1_ul{
+    height: 100%;
+    display: inline-block;
+    line-height: 56px;
+    vertical-align: middle;
+}
+.nav_1_ul .find{
+    width: 664px;
+    height: 170px;
+    background: #fff;
+    position: absolute;
+    top: 56px;
+    left:0;
+    border: 1px solid #f2f2f2;
+
+}
+.nav_1_ul .find .top{
+    width: 630px;
+    height: 93px;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 11px 17px 17px 17px;
+    color: #444444;
+}
+.nav_1_ul .find .top .top_ul li{
+    width: 70px;
+    height: 28px;
+    margin: 4px 0 0 0;
+    float: left;
+    line-height: 28px;
+    text-align: center;
+}
+.nav_1_ul .find .top .top_ul li a{
+    color: #444444;
+    text-align: center;
+    display: block;
+    margin:0 3px;
+}
+.nav_1_ul .find .top .top_ul li i{
+    width: 1px;
+    height: 18px;
+    background: #f2f2f2;
+}
+.nav_1_ul .find .top .top_ul li:hover{
+    background: none;
+}
+.nav_1_ul .find .top .top_ul li a:hover{
+    color: #444444;
+    background: #ffe300;
+}
+.nav_1_ul .find .bottom{
+    width: 604px;
+    height: 30px;
+    padding: 0px 30px;
+}
+.nav_1_ul .find .bottom a{
+    float: left;
+    text-align: left;
+    margin-right: 50px;
+    color: #444444;
+}
+.nav .nav_1 .nav_1_ul li{
+    float: left;
+    display: block;
+    padding: 0 24px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.nav .nav_1 .nav_1_ul li:hover{
+    background: #282828;
+    overflow: visible;
+}
+.nav_1_ul li:hover a{
+     color: #ffe300; 
+}
+.nav .nav_1 .nav_1_ul li a i{
+    display: inline-block;
+    width: 20px;
+    height: 56px;
+    text-align: center;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat left center;   
+    width: 20px;
+    vertical-align: middle;
+}
+.nav .nav_1 .nav_1_ul li a sup{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4a3b;
+    margin: 0 0 2px 3px;
+    position: absolute;
+    top: 20px;
+}
+.nav .nav_1 .search{
+    width: 60px;
+    height: 56px;
+    display: block;
+    line-height: 56px;
+    font-size: 0;
+    text-align: center;
+    float: right;
+}
+.nav .nav_1 .search:hover{
+    background: #282828;
+    color: #ffe300;
+}
+.nav .nav_1 .search i{
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat left center;
+}
+.nav .nav_1 .right{
+    width: 192px;
+    height: 56px;
+    float: right;
+}
+.nav .nav_1 .right .pic{
+    display: inline-block;
+    width: 60px;
+    height: 56px;
+    font-size: 0px;
+    line-height: 56px;
+    text-align: center;
+}
+.nav .nav_1 .right .pic::after{
+    content: " ";
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat;
+    vertical-align: middle;
+    margin-top: -10px;
+}
+.nav .nav_1 .right .login{
+    width: 49px;
+    height: 56px;
+    margin-right: 20px;
+    display: inline-block;
+    line-height: 56px;
+}
+.nav .nav_1 .right i{
+    width: 1px;
+    background: #282828;
+    vertical-align: middle;
+    display: inline-block;
+    height: 14px;
+}
+.nav .nav_1 .right  .register{
+    height: 56px;
+    line-height: 56px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.W1130{
+    width: 1130px;
+    margin: 0 auto;
+}
+.body1{
+    width: 100%;
+    height: 555px;
+    padding: 20px 0 35px 0;
+}
+.body1_1{
+    width: 100%;
+    height: 499px;
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+.body1_1_div{
+    width: 1130px;
+    margin: 0 auto;
+    height: 286px;
+}
+body1_1_div_left{
+    width: 80px;
+    height: 80px;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat ;
+    background-position: 91px center;
+    position: absolute;
+    top: 250px;
+    left: 20px;
+}
+.body_1_1_top{
+    display: block;
+    width: 1130px;
+    margin: 0 auto;
+    height: 286px;
+
+}
+
+.body1_1_middle{
+    width: 100%;
+    height: 20px;
+}
+.body1_1_bottom{
+    overflow: hidden;
+}
+.body1_1_bottom li{
+    float: left;
+    margin-right:20px; 
+
+}
+.body1_1_bottom li img{
+    width: 210px;
+    height: 168px;
+    display: block;
+}
+.body1_1_bottom .nomargin{
+    margin: 0;
+}
+.body1_2{
+    width: 1130px;
+    height: 56px;
+    text-align: center;
+}
+.body1_2_ul{
+    height: 56px;
+    display: inline-block;
+    font-size: 16px;
+}
+.body1_2_ul li{
+    width: 64px;
+    height: 56px;
+    padding: 0 30px;
+    float: left;
+}
+.body1_2_ul li a{
+    display:inline-block;
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+    color: #282828;
+    border-bottom: 2px solid #fff;
+}
+.body1_2_ul li a:hover{
+    border-bottom: 2px solid #282828;
+}
+.body2{
+    width: 100%;
+    overflow: hidden;
+    background: #f2f2f2;
+    min-height: 100px;
+    margin-top: -13px;
+}
+.body2_1{
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.body2_1 div{
+    width: 210px;
+    height: 308px;
+    background: #ffe300;
+    margin-right: 20px;
+    float: left;
+}
