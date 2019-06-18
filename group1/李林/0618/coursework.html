@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    /* .point{
+        width: 10px;
+        height: 10px;
+        background: #000;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    } */
+    /* #edit{
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+        overflow: hidden;
+    }
+    #commentlist{
+        margin: 0 auto;
+        width: 1000px;
+    }
+    #commentlist .comment{
+        width: 800px;
+        min-height: 80px;
+        margin: 20px auto;
+        background:darkkhaki;
+        border-radius: 3px;
+        position: absolute;
+        overflow: hidden;
+    }
+    #commentlist .comment  p{
+        margin: 10px 10px;
+    }
+    #sendBtn{
+        display: block;
+        margin: 10px auto;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        background:linear-gradient(to bottom,#faa,#f40);
+    }
+    #sendBtn:hover{
+        cursor: pointer;
+        background:linear-gradient(to bottom, #fee,#f40);
+    } */
+
+    </style>
+</head>
+<body>
+    <!-- <div id="container"></div>
+    <div class="point"></div> -->
+    
+    <!-- <div id="edit">
+            <p>请输入你的发言:</p>
+            <p>
+                 <textarea id="text" rows="5" cols="60"></textarea>
+            </p>
+            <p><a class="send" id="sendBtn">发送</a></p>
+        </div>
+        <div id="commentlist">
+            <div class="comment">
+                 <p>张三疯:</p>
+                 <p style="word-break: break-all;">
+                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 </p>
+                 <p style="text-align: right;">2016/9/4 16:06</p>
+            </div>
+            <div class="comment">
+                 <p>张三疯:</p>
+                 <p style="word-break: break-all;">
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 </p>
+                 <p style="text-align: right;">2016/9/4 16:06</p>
+            </div>
+            <div class="comment">
+                 <p>张三疯:</p>
+                 <p style="word-break: break-all;">
+                 xxxxxxxxxxxxxxxxxxxxxx
+                 </p>
+                 <p style="text-align: right;">2016/9/4 16:06</p>
+            </div>
+    </div> -->
+
+    <!-- <input type="text" placeholder="请输入用户名" id="username"> -->
+     <!-- <div id="container">倒计时：
+        <span id="days_box"></span>
+        <span id="hour_box"></span>:
+        <span id="minute_box"></span>:
+        <span id="second_box"></span>
+    </div> -->
+
+  
+    <button id="box1">1</button>
+    <img src="https://img14.360buyimg.com/mobilecms/s280x280_jfs/t1/48795/9/1731/82817/5cf784b4Ec2864e1d/3280cc1fdccaf51a.jpg!q90.webp" alt="">
+    <button id="box2">2</button>
+    <img src="https://img11.360buyimg.com/mobilecms/s280x280_jfs/t1/75447/12/1703/138105/5d00c307E8c76fd95/d38825c500d47aa4.jpg!q90.webp" alt="">
+
+    <!-- <img  id="top_logo" src="https://m.360buyimg.com/babel/jfs/t1/40553/9/6775/75726/5d070fefEfd281f62/a002b3833c8e5deb.jpg" alt=""> -->
+    <script>
+        // 打印圆
+    // var r = 100,angle = 0;
+    // for(var i = 0; i < 100; i ++){
+    //     angle +=3.6;
+    //     var numLeft = Math.cos(Math.PI / 180 * angle) * r + 200;
+    //     var numTop = Math.sin(Math.PI / 180 * angle) * r + 200;
+    //     var styleStr = "left:"+numLeft+"px;top:"+numTop+"px";
+    //     container.innerHTML +='<div class="point"style="'+styleStr+'">';        
+    // }
+      
+       //留言对话框
+    //    sendBtn.onclick = handlerClick;
+    //    function handlerClick(){
+       
+    //        var iptStr = text.value;
+    //        var htmlStr = '<div class="comment">'+
+    //                     '<p>张三疯：</p>'+
+    //                     '<p style="word-break:break-all;">'+
+    //                       iptStr+
+    //                     '</p>'+
+    //                     '<p style="text-align:right;">2016/9/4 16:06</p>'+
+    //                     '</div>';
+    //       commentlist.innerHTML = htmlStr + commentlist.innerHTML;
+    //       text.select();
+                
+    //    }
+     
+     //表单验证
+    //  username.onblur = handlerBlur;
+    //  function handlerBlur(){
+    //      //获取输入内容
+    //      var content = username.value;
+    //      //验证用户名长度
+    //      if(content.length >= 6 && content.length <=20){
+    //          username.style.borderColor = "green";
+    //      }else{
+    //          username.style.borderColor = "red";
+    //          alert("用户名长度应该在6~20位之间");
+    //          return false;
+    //      }
+    //      //验证首字符
+    //      if(isNaN(content[0])){
+    //          username.style.borderColor = "green";
+    //      }else{
+    //          username.style.borderColor = "red";
+    //          alert("首字符不能为数字");
+    //          return false;
+    //      }
+    //      for(var i = 0, letter; letter = content[i ++];){
+    //          var ascii = letter.charCodeAt(0);
+    //          if(!(ascii >= 48 && ascii <=57 || ascii >=65 && ascii <= 90 ||ascii >= 97 && ascii <=122 || ascii === 95)){
+    //              alert("只能以数字，字母，下划线进行命名");
+    //              username.style.borderColor = "red";
+    //              return false;
+
+    //          }
+
+    //      }
+    //  }
+
+    //游戏
+
+
+
+     //倒计时
+    //  setInterval(countDown, 1000 );
+    //  function countDown(){
+    //      var countArray = getCountDown(2019,08,19);
+    //      days_box.innerHTML = countArray[3];
+    //      hour_box.innerHTML = countArray[0];
+    //      minute_box.innerHTML = countArray[1];
+    //      second_box.innerHTML = countArray[2];
+    //  }
+    // countDown();
+    // function getCountDown(){
+    //     var 
+    //         hour = 0;
+    //         minute = 0;
+    //         second = 0;
+    //     var targetDate = new Date();
+    //     targetDate.setFullYear(arguments[0]);
+    //     targetDate.setMonth(arguments[1] - 1);
+    //     targetDate.setDate(arguments[2]);
+
+    //     if(arguments.length > 3){
+    //         hour = arguments[3];
+    //         minute = arguments[4];
+    //         second = arguments[5];
+    //     }
+    //     targetDate.setHours(hour);
+    //     targetDate.setMinutes(minute);
+    //     var targetTime = targetDate.setDate.setSeconds(second);
+       
+    //     var reduce = targetTime - Date.now();
+
+    //     var second = parseInt(reduce / 1000 % 60);
+    //     var minute = parseInt(reduce / 1000 / 60 % 60);
+    //     var hour = parseInt(reduce / 1000 / 3600);
+    //     var days = hour > 24 ? parseInt(hour / 24) : 0;
+    //     hour = hour > 24 ? hour % 24 :hour;
+
+    //     return [
+    //         hour < 10 ? "0" + hour : "" + hour,
+    //         minute < 10 ? "0" + minute:"" + minute,
+    //         second < 10 ? "0" + second:"" + second,
+    //         days
+    //     ];
+    // }
+    
+    //定时器
+    // var interval_id = null;
+    // var count = 0;
+    // interval_id = setInterval(callback,1000);
+    // function callback(){
+    //     count ++;
+    //     console.log(count);
+    //     if(count ===0){
+    //         clearInterval(interval_id);
+    //     }
+    // }
+    
+    // var hideInterval_id = null;
+    // hideInterval_id = setInterval(hideLogo, 5000)
+    // function hideLogo(){
+    //     top_logo.style.display = "none";
+    //     clearInterval(hideInterval_id);
+    // }
+      //延时器
+    // setTimeout( hideLogo , 5000 );
+    //         function hideLogo(){
+    //               top_logo.style.display = "none";
+    //         }
+
+       //跨页面传值
+    //    box1.onclik = handlerClick1;
+    //    box2.onclik = handlerClick2;
+    //    function handlerClick1(){
+    //               location.href = "bom2.html#"+1;
+    //         }
+    //         function handlerClick2(){
+    //               location.href = "bom2.html#"+2;
+    //     }
+    </script>
+</body>
+</html>
