@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #pro1 {
+
+            width: 800px;
+            height: 20px;
+            margin: 100px auto;
+
+        }
+
+        #pro2 {
+            height: 20px;
+            width: 10px;
+            border-radius:2px;
+            background: linear-gradient(to right, #f0f, #f00)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pro1">
+        <p id="pro2">aaaaaaaaaaaaa</p>
+    </div>
+    <script>
+        var _width =10;
+        var pro_interval = null;
+        pro_interval = setInterval(progress, 50);
+
+        function progress() {
+            _width += 5;
+         
+            pro2.style.width = _width+ "px"
+            if (_width === 800) {
+                clearInterval(pro_interval);
+            }
+        }
+    </script>
+</body>
+
+</html>

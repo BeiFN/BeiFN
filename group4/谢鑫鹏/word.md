@@ -105,4 +105,79 @@ window 窗口的统一入口
   
   ```
 
+<<<<<<< HEAD
   
+=======
+  ### 字符串
+  
+* charCodeAt 返回索引处字符的Unicod编码
+
+* fromCharCode 一个长度为N的字符串，由N个指定的UTF-16代码单元组成.
+
+  ```javascript
+  var str = "a";
+  console.log(str.charCodeAt(0)); //97
+  console.log(String.fromCharCode(97)); //a
+  ```
+
+* 补全位数（ES7方法）:
+
+  padEnd（位数，“ ”） 在右边补
+
+  padStart（位数，“”） 在左边补
+
+  ```javascript
+  var str ="1";
+  console.log(str.padEnd(3,"0")); //100
+  console.log(str.padStart(2,"0")); //01
+  ```
+
+* 重复
+
+  ```javascript
+  console.log(str.repeat(4)); //1111
+  ```
+
+* 拆分字符串，返回数组
+
+  ```javascript
+  var str = "2019/6/17";
+  console.log(str.split("/")); //["2019","6","17"]
+  console.log(str.split("")); //["2", "0", "1", "9", "/", "6", "/", "1", "7"]
+  ```
+
+* 截取 两种大致一样，对负数的处理不同
+  substring 负数作为0;
+  slice 负数就从右到左;
+
+  ```javascript
+  console.log(str.substring(-1,3)); //201
+  console.log(str.slice(-1)); //7
+  ```
+
+* toLocalLowerCase 小写
+  toLocalUpperCase 大写
+
+  ```javascript
+  var str = "hello";
+  console.log(str.toLocaleLowerCase()); //hello
+  console.log(str.toLocaleUpperCase()); //HELLO
+  ```
+
+* 替换，原字符串不变，返回一个新字符串
+
+  ```javascript
+  var str = "hello"
+  var newStr = str.replace("ll","aa");
+  ```
+
+* 删除字符两端的空格，中间的空格不变
+
+  ```javascript
+  var str = " sdfawa ase ";
+  console.log(str.trim()); //sdfawa ase
+  ```
+
+
+
+>>>>>>> 09edf89d90f31e8b91bff981ca42a8b33fc07fd3

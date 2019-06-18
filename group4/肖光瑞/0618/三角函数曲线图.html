@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            position: relative;
+            height: 0px;
+            margin: 300px auto;
+            border-top: solid 1px gainsboro;
+        }
+
+        .point {
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <!-- <div id="point"></div> -->
+    <script>
+        var distance = 0;
+        var timer = 0;
+        timer = setInterval(function () {
+            var rad = distance * (Math.PI / 180);
+            var numLeft = distance;
+            var numTop = -100 * Math.sin(rad);
+            var styleStr = "left:" + numLeft + "px;top:" + numTop + "px";
+            container.innerHTML += '<div class="point" style="' + styleStr + '">';
+            distance += 5;
+            if (distance == 1000) {
+                clearInterval(timer)
+            }
+        }, 30)
+
+    </script>
+</body>
+
+</html>

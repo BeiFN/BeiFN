@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input id="text1" type="text"  placeholder="请输入日期:例：20160617"/>
+        <input id="btn1" type="button" value="计算"/>
+    <script>
+        btn1.onclick=tian;
+        function tian(){
+            var string=text1.value;
+            var date = string % 100;
+            var month = parseInt(string % 10000 / 100);
+            var year = parseInt(string / 10000);
+            var dateForFeb = 28;
+            if(year % 400 === 0 || year % 4 === 0 && year % 100 !== 0){
+                  dateForFeb = 29;
+            }else{
+                  dateForFeb = 28;
+            }
+            switch(month){
+                  case 1:
+                        alert("经过了" + date + "天")
+                        break;
+                  case 2:
+                        alert("经过了" + (date + 31) + "天");
+                        break;
+                  case 3:
+                        alert("经过了" + (date + dateForFeb + 31 ) + "天");
+                        break;
+                  case 4:
+                        
+                        alert("经过了" + (date + dateForFeb + 62 ) + "天");
+                        break;
+                  case 5:
+                       
+                        alert("经过了" + (date + dateForFeb + 92 ) + "天");
+                        break;
+                  case 6:
+                        
+                        alert("经过了" + (date + dateForFeb + 123 ) + "天");
+                        break;
+                  case 7:
+                        
+                        alert("经过了" + (date + dateForFeb + 153 ) + "天");
+                        break;
+                  case 8:
+                        
+                        alert("经过了" + (date + dateForFeb + 184 ) + "天");
+                        break;
+                  case 9:
+                        
+                        alert("经过了" + (date + dateForFeb + 215 ) + "天");
+                        break;
+                  case 10:
+                       
+                        alert("经过了" + (date + dateForFeb + 245 ) + "天");
+                        break;
+                  case 11:
+                        
+                        alert("经过了" + (date + dateForFeb + 276 ) + "天");
+                        break;                        
+                  case 12:
+                       
+                        alert("经过了" + (date + dateForFeb + 306 ) + "天");
+                        break;                     
+            }
+        }
+    </script>
+</body>
+</html>
