@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器</title>
+    <style>
+        #hidView{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="hidView"></div>
+    <script>
+        // 每间隔1000ms，那么浏览器会帮忙调用一次回调方法
+        // 定时器开启
+        // setInterval(callback, 1000);
+        // function callback(){
+        //     console.log(1);
+        // }
+
+        // 定时器关闭
+        // setInterval()  返回值，在单个程序中每个定时器返回的结果是唯一的，
+        // 返回值标志当前定时器的唯一性，方便后期进行关闭
+
+
+        // setInterval(callback, 1000);
+        // function callback(){
+        //     console.log(1);
+        //     clearInterval(1);//简单粗暴
+        // }
+
+        // var interval_id = null;
+        // interval_id = setInterval(callback,100);
+        // var count = 0;
+        // function callback(){
+        //     count++;
+        //     console.log(count);
+        //     if(count===10){
+        //         clearInterval(interval_id);//关闭定时器
+        //     }
+        // }
+
+        // var timer = null;
+        // timer = setInterval(hideLogo,3000);
+        // function hideLogo(){
+        //     hidView.style.display = "none";
+        //     clearInterval(timer);
+        // }
+
+        setTimeout(hideLogo,5000);
+        function hideLogo(){
+            hidView.style.display = "none";
+        }
+
+    </script>
+</body>
+</html>
