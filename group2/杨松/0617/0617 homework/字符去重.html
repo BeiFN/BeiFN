@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //已知字符串“a,a,b,c,c,d,f,g,j,j”编程实现以下功能。
+    //统计每个字符出现的次数，结果显示 a 2、b 1、c 2、d1
+    //去掉重复的字符，使结果显示 abcd
+    var str = "a,a,b,c,c,d,f,g,j,j".split(",");
+    var obj = {};
+    for(var i in str) {
+        if(!obj[ str[i] ]) {
+            obj[ str[i] ] = 1;
+        } else {
+            obj[ str[i] ] += 1;
+        }
+    }
+
+    for(var i in obj) {
+        console.log("字符"+ i + "出现的次数：" + obj[i]);
+    }
+    var arr = [];
+    for(var i in obj) {
+        arr.push(i);
+    }
+    console.log(arr);
+</script>
+</body>
+</html>

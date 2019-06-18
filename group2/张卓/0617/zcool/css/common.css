@@ -1,0 +1,12 @@
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h2,h3,h4,h5,h6,ol,ul,dd,dl{margin: 0;padding: 0;}
+li{list-style: none;}
+a{text-decoration: none;color: #666;}
+i,em{font-style: normal;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight: normal;}
+img{border: none;display: block;}
+input{outline: none;}
+body{
+	font-family: "微软雅黑";font-size: 14px;color:#666;
+}
+table{border-collapse: collapse;}
+a:hover{text-decoration: none;}

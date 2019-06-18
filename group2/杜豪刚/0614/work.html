@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>作业</title>
     <style>
-        button{
+        button {
             width: 150px;
             height: 50px;
-            background-color:pink;
-            margin:100px 0 0 100px;
-            border:0;
-            border-radius:5px;
+            background-color: pink;
+            margin: 100px 0 0 100px;
+            border: 0;
+            border-radius: 5px;
         }
     </style>
 </head>
-
 <body>
-
     <button id="mybutton">随即生成验证码</button>
-
     <script>
-
-        //随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
-        // function randomNumber(){
-        //     var str=parseInt(Math.random()*100000);
-        //     var strTo=str.toString();
-        //     var strLen=strTo.length;
-        //     console.log("该数一共为"+str);
-        //     console.log("该数一共有"+strLen+"位");
-        //     var obj={ };
-        //     for(var i=0;i<strLen;i++){
-        //         obj[i]=parseInt(strTo[i]);
-        //     }
-        //     for(var j=0;j<strLen;j++){
-        //         console.log("第"+(j+1)+"位为"+obj[j]);
+        // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+        // var arr = [];
+        // var stu = [];
+        // var sum = 0;
+        // for (var i = 0; i++ < 30;) {
+        //     sum += i * 2;
+        //     arr.push(i * 2)
+        //     if (!(i % 5)) {
+        //         stu.push(sum / 5);
+        //         sum = 0;
         //     }
         // }
-        // randomNumber();
+        // console.log(stu);
 
         // 随机点名程序
         // function raName(){
@@ -75,11 +69,28 @@
         // function join(arr,sp){
         //     var str="";
         //     for(var i=0;i<arr.length;i++){
-        //         // console.log(arr[i]);
-        //         str+=(arr[i]+sp);
+        //         str+=( i == 0 ? "":sp )+arr[i];
         //     }
+        //     return str;
         // }
         // console.log(join(arr,"%"));
+
+        //随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+        // function randomNumber(){
+        //     var str=parseInt(Math.random()*100000);
+        //     var strTo=str.toString();
+        //     var strLen=strTo.length;
+        //     console.log("该数一共为"+str);
+        //     console.log("该数一共有"+strLen+"位");
+        //     var obj={ };
+        //     for(var i=0;i<strLen;i++){
+        //         obj[i]=parseInt(strTo[i]);
+        //     }
+        //     for(var j=0;j<strLen;j++){
+        //         console.log("第"+(j+1)+"位为"+obj[j]);
+        //     }
+        // }
+        // randomNumber();
 
         // 编写函数map(arr) 把数组中的每一位数字都增加30%
         // var arr = [10000, 12000, 15000, 18000];
@@ -102,9 +113,18 @@
         // }
         // console.log(has(list,60));
 
-
+        // 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+        // var list = [13, 14, 15, 13, 15, 20 ,80];
+        // function norepeat(arr){
+        //     var temp=[];
+        //     for(var i in arr){
+        //         if(temp.indexOf(arr[i]) == -1){
+        //             temp.push(arr[i]);
+        //         }
+        //     }
+        //     return temp;
+        // }
+        // console.log(norepeat(list));
     </script>
-
 </body>
-
 </html>
