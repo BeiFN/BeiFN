@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var json = {
+            "goods": [{
+                    "name": "张飞0",
+                    "age": 25
+                },
+                {
+                    "name": "张飞1",
+                    "age": 25
+                },
+                {
+                    "name": "张飞2",
+                    "age": 25
+                },
+                {
+                    "name": "张飞3",
+                    "age": 25
+                },
+                {
+                    "name": "张飞4",
+                    "age": 25
+                }
+
+
+            ]
+
+        }
+
+        var str = [];
+        for (var i = 0; i < json.goods.length; i++) {
+            item = json.goods[i];
+            str +=
+                "<li>" +
+                item.name + "&nbsp;&nbsp;&nbsp;" +
+                item.age +
+                "</li>"
+        }
+        document.write(str);
+    </script>
+
+</body>
+
+</html>

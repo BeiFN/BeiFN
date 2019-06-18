@@ -9,11 +9,49 @@
 </head>
 
 <body>
-    <button id="btn" style="width:50px;height: 30px;"></button>
+    <!-- <button id="btn" style="width:50px;height: 30px;"></button> -->
     <script>
         //1
         // 通过循环生成顺序为一个5×5的二维数组a赋1到25的自然数，
         // 然后输出该数组的左下半三角。试编程。
+        // function sanJiao(n,flag) {  
+        //     n = n ? n : 5;
+        //     var arr = [];
+        //     var flag ;
+
+        //     for (var i = 0; i < n; i++) {
+        //         var temparr = [];
+        //         if (flag) {
+        //             for (var j = (i) * n + 1; j <= (i + 1) * n; j++) {
+        //                 temparr.push(j)
+        //             }
+        //         } else {
+        //             for (var k = 0; k < n; k++) {
+        //                 temparr.push(Math.round(Math.random() * 24) + 1);
+        //             }
+
+
+        //         }
+
+        //         arr.push(temparr);
+        //     }
+
+
+        //     for (var k = 0; k < arr.length; k++) {
+        //         console.log("_____________");
+        //         for (var x = 0; x <= k; x++) {
+
+        //             console.log(arr[k][x])
+        //         }
+        //     }
+        //     // console.log(arr);
+
+
+
+        // }
+
+
+        // console.log(sanJiao(6,false));
 
 
 
@@ -21,6 +59,22 @@
         //2
         // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
         // 然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+        // function avg() {
+        //     var a = [];   
+        //     var sum = 0;
+        //     for (i = 0; i++ < 30;) {
+        //         var add = i * 2;
+        //         // console.log(add)
+        //         sum += add;
+        //         if (i % 5 === 0) {
+        //             a.push(parseInt(sum / 5));
+        //             sum = 0;
+
+        //         }
+        //     }
+        //     return a;
+        // }
+        // console.log(avg());
 
 
 
@@ -53,16 +107,36 @@
 
         //5 请编写一个函数join，将数组的每一位按照指定字符链接起来 ，
         // 例如： join([1,2,3], "%")， 运行结果"1%2%3";
-        // function lianjie(a) {
-        //     return console.log(a.join("%"));
+        // function lianjie(a, symbol) {
+        //     var str = "";
+        //     for (var i in a) {
+        //         if (i == 0) {               //此时要求值相等即可
+        //            str = str + "" + a[i];
+        //             // console.log(str);
+        //         } else {
+        //           str =  str + symbol + a[i];
+        //         }
 
+        //     }
+        //     console.log(str);
         // }
-        // var a = ["5", "5", "5"];
-        // lianjie(a);
+
+        // var a = [2, 4, 2, 4, 6];
+        // lianjie(a, "%");
 
         //6
         //随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
 
+        function shuzi() {
+            var count;
+            for (count = 1; count < 10; count++) {
+                var b = parseInt(123 / 10)
+                console.log(b)
+            }
+            console.log(count);
+        }
+        // var a = 1254;
+        shuzi();
 
         //7
         //编写函数map(arr) 把数组中的每一位数字都增加30%
@@ -82,19 +156,51 @@
         //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
 
         // function has(arr, num) {
-        //     if (arr.length == num) {
-        //         return true;
+        //     var flag = false;
+        //     for (n in arr) {
+        //         if (arr[n] === num)
+        //             flag = true;
+
         //     }
-        //         return false;
-
+        //     return flag;
         // }
-        // var a = ["2"];
-        // console.log(has(a,60));
-
+        // var a = [2, 600];
+        // console.log(has(a, 60));
 
         //9 
         // 编写函数 norepeat(arr) 将数组的重复元素去掉，并返回新的数组
-        
+
+        //第一种方式
+        // var arr = [1, 2, 334, 5, 3, 3, 45, 6, 6, 6, 6, 6, 9];
+
+        // function norepeat(arr) {
+        //     var temparr = [];
+        //     for (var i in arr) {
+        //         if (i === 0 || temparr.indexOf(arr[i]) === -1) {
+        //             temparr.push(arr[i])
+        //         }
+        //     }
+        //     return temparr;
+        // }
+        // console.log(norepeat(arr));
+
+        //第二种方式
+        // console.log(Array.from(new Set(arr)));
+
+        // 第三种方式  桶排序
+        // function quchong() {
+        //     var boo = [];
+        //     for (var i in arr) {
+        //         boo[arr[i]] = 1;//内容数字变成下标
+        //     }
+        //     arr = [];//清空原来素组
+        //     for (var j in boo) {//遍历装有内容的桶的下标
+        //        arr.push(j)// 下标放入数组
+        //     }
+        //     console.log(arr);//输出
+        // }
+
+        // quchong(arr);//调用 传参
     </script>
 </body>
 

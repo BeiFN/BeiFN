@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪随机算法</title>
+</head>
+<body>
+    <script>
+        var count = 0; 
+        var pcount = 0; 
+        var fixp =  0.2; 
+        var c = 0.0557;
+        var _time = null ; 
+        _time = setInterval(alg,1000);
+        function alg(){
+            var num = Math.random();
+            count++;
+            if(num<=fixp){
+                pcount++;
+                fixp = c;
+            }else{
+                fixp += c;
+            }
+            if(count === 20){
+                clearInterval(_time);
+            }
+            console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
+        }
+    </script>
+</body>
+</html>
