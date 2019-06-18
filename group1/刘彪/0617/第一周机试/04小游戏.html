@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            min-width: 20px;
+            background: tan;
+            min-height: 20px;
+        }
+
+        span {
+
+            color: red;
+
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <button id="startGa">游戏开始</button>
+    <div id="banner"></div>
+
+    <script>
+        startGa.onclick = function () {
+            // 人物初始数据
+            var someone = {
+                name: "一个虚拟人物",
+                hp: 100
+            }
+            // 人物异常事件列表
+            
+              var  eventList= [
+                    {
+                        type: "吃了一颗毒蘑菇",
+                        harm: 20
+                    },
+                    {
+                        type: "走路崴了脚",
+                        harm: 2
+                    },
+                    {
+                        type: "淋雨感了冒",
+                        harm: 5
+                    }
+                ]
+        
+            // 人物死亡方式列表
+            var dieList = ["狗带了", "玩完了", "去世了"]
+            var str = "";
+            var day = 1;
+            while (true) {
+                var rand = parseInt(3 * Math.random());
+                var item = eventList[rand];
+                someone.hp -= item.harm;
+                if (someone.hp > 0) {
+
+                    str += "<p>" + '第' + day + '天：' + '<span>' + someone.name + '</span>' + '因为' + '<span>' + item.type + '</span>' +
+                        '而减少了' + '<span>' + item.harm + 'hp' + '</span>' + '血量剩余' + '<span>' + someone.hp + 'hp' + '</span>' + "</p>";
+                    day++;
+
+                }
+                else {
+                    str += "<p>" + '第' + day + '天：' + '<span>' + someone.name + '</span>' + '因为' + '<span>' + item.type + '</span>' +
+                        '而减少了' + '<span>' + item.harm + 'hp,' + '</span>' + '<span>' + dieList[rand] + '</span>' + '游戏结束' + "</p>";
+                    banner.innerHTML = str;
+                    break;
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

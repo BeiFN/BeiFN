@@ -507,5 +507,108 @@
 .l211:hover .cover{
     display: block;
 }
+<<<<<<< HEAD
+=======
+.foot{
+    width: 100%;
+    height: 229px;
+    background: #282828;
+    color: #666;
+}
+.foot_center{
+    width: 84%;
+    height:100%;
+    margin: 0 auto;
+}
+.f1{
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #333;
+}
+.f1 .f11{
+    float: left;
+    height: 100%;
+    
+}
+.f11 li{
+    float: left;
+    margin-right: 38px;
+    padding: 50px 0;
+    line-height: 50px;
+    position: relative;
+}
+.f11 li span{
+    width: 14px;
+    height: 23px;
+    display: inline-block;
+    position: absolute;
+    top: 55px;
+}
+.f11 li span img{
+    width: 14px;
+    height: 23px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.f11 li em{
+    display: inline-block;
+    margin-left: 23px;
+}
+.f12{
+    float: left;
+    height:65px;
+    margin-top: 65px;
+    padding-left:100px; 
+}
+.f12 .weixin{
+    width: 25px;
+    height: 21px;
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1) no-repeat;
+    
+}
+.f12 .weibo{
+    width: 26px;
+    height: 21px;
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1) no-repeat;
+    margin-left: 50px;
+}
+.f2{
+    width: 100%;
+    height: 12px;
+    margin-top: 20px;
+}
+.f2 ul li{
+    float: left;
+    padding: 0 25px;
+    margin: 10px 0;
+    border-right: 1px solid #666;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.f2 ul li a{
+    font-size: 12px;
+}
+.f2 .f21,.f2 .f22{
+    padding-left: 0;
+}
+.f2 .f23,.f2 .f24,.f2 .f25{
+    border:none;
+}
+.f2 .f25{
+    float: right;
+}
+.f2 ul li span{
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    background: url(https://static.zcool.cn/git_z/build/images/icon-police.png) no-repeat;
+}
+
+>>>>>>> 09edf89d90f31e8b91bff981ca42a8b33fc07fd3
 
 
