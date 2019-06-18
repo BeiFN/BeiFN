@@ -115,7 +115,7 @@ console.log(obj.key);//取值
 obj.key = "";//赋值
 
 
-var obj2 = new Object();// 构造函数
+var obj2 = new Object({"key":value});// 构造函数方式初始化
 obj2.a = 333;
 obj2["cc"] = "string";
 obj2[obj2["cc"]] = [1,2,3];
@@ -226,9 +226,87 @@ function foo(a,b,c,d){
 
 ```
 
+***JS day5  0615 数组排序
+1.innerHTML 盒子内容文字修改
+2.value input值修改
+3.sort  数组系统排序方法arr.sort(function(a,b)){return a-b;}
 
 
+***JS day5  0617 字符串系统方法
 
+1.fromCharCode() 
+<!-- 返回传入ascii码对应的字符并组成字符串返回，该方法不能单独获取在高代码点位上的字符 -->
+
+2.fromCodePoint()
+<!-- 返回传入ascii码对应的字符并组成字符串返回，该方法能获取在高代码点位上的字符 -->
+
+3.charAt() 
+<!-- 获取对应位置字符，超出返回空字符 -->
+
+4.charCodeAt()
+<!-- 获取对应位置字符及对应的ascii码，超出NaN -->
+
+5.codePointAt()
+<!-- 获取对应位置字符对应的ascii码，可以获取高代码点位上字符-->
+
+6.concat()
+<!-- 字符串拼接，拼接括号内字符 -->
+
+7.endsWith()
+<!-- 判断字符串结尾 -->
+
+8.startsWith()
+<!-- 判断字符串开头 -->
+
+9.includes()
+<!-- 判断是否包含字串 -->
+
+10.indexOf()
+<!-- 字符首次出现位置 -->
+
+11.lastIndexOf()
+<!-- 字符最后出现位置,加2表示右边第二次出现的位置 -->
+
+12.localeCompare()
+<!-- 字符判断大小 -->
+
+13.padEnd()
+<!-- 用参数2在末尾重复补充字符串到参数1长度,参数二不填用空格补齐,参数1小于目标长度则不变 -->
+
+14.padStart()
+<!-- 用参数2在开头重复补充字符串到参数1长度,参数二不填用空格补齐,参数1小于目标长度则不变 -->
+
+15.repeat()
+<!-- 构建新字符串返回,参数为重复次数 -->
+
+16.slice()
+<!-- 拷贝字串以新字符串返回 -->
+
+17.substring()
+<!-- 拷贝子字符串 包括前值,不包含后值 -->
+
+18.split()
+<!-- 查找字符串中的字符，并返回找到的前 3 个分割元素（splits） -->
+
+19.toLocaleLowerCase()
+20.toLowerCase()
+<!-- 转小写 -->
+
+21.toLocaleUpperCase()
+22.toUpperCase()
+<!-- 转大写 -->
+
+23.trim()
+<!--  清两边空格-->
+
+24.trimRight()
+<!--  清右空格-->
+
+25.trimLeft()
+<!-- 清左空格 -->
+
+26.toString()
+<!-- 方法返回指定对象的字符串形式,还可以转其他进制数 -->
 
 
 
