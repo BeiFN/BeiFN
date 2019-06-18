@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="rows" placeholder="请输入行数">
+    <input type="text" id="cols" placeholder="请输入列数"> 
+    <button id="btn1">打印星星（打印输入框中对应行对应列的星星）</button>
+    <button id="btn2">打印等腰三角形（只需输入行即可）</button>
+
+    <script>
+       
+
+        btn1.onclick = function(){
+            
+             var rCount = rows.value;
+             var cCount = cols.value;
+             if(rCount==""||cCount=="")
+             {
+                 alert("必须输入行数和列数！");
+             }
+             else{
+             for(var i = 0;i<rCount;i++){
+                 for(var j = 0;j<cCount;j++){
+                    document.write("*");
+                 }
+                 document.write("<br>");
+             }
+            }
+        }
+
+        btn2.onclick = function(){
+             var rCount = rows.value;
+             if(rCount=="")
+             {
+                 alert("必须输入行数");
+             }
+             else{
+                    
+                for(var i = 0;i<rCount;i++){
+                    for(var count = 0;count<rCount-i;count++)
+                            {
+                                document.write("&nbsp");
+                            }
+                    for(var j = 0;j<=i;j++){
+                            
+                            document.write("*");
+                        }
+                        document.write("<br>")
+                    }
+                   
+
+                }
+             }
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
