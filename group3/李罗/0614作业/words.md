@@ -52,7 +52,7 @@ window.onscroll 滚动条发生滚动
  10.找某一项在数组之中的位置;
             console.log(arr.indexOf(3));    // 3 在数组之中的下标;
             console.log(arr.lastIndexOf(3));// 3 在数组之中的下标;
-            Array.prototype.indexOf()；：从左到右
+            Array.prototype.indexOf()；：从左到右(判断这个元素在不在数组中)
             Array.prototype.lastIndexOf()；：从右到左
 11.Array.prototype.slice():返回一个新的数组对象(由begin开始，但是不包括end)
             arr.slice();// [0, end]
