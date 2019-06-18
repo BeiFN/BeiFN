@@ -17,7 +17,7 @@
 
 **3.元素事件**
 
-* onfouse  获取焦点
+* onfocus  获取焦点
 * onblur  失去焦点  
 * oninput  正在输入
 * onchange  已经改变
