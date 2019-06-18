@@ -13,17 +13,35 @@
 
     <button id="bian">peng我变色</button>
     <script>
-        function ccolor() {
-            var r = Math.round(Math.random() * 50) + 205;
-            var g = Math.round(Math.random() * 55);
-            var b = parseInt(Math.random() * 100);
-            var color = "rgb" + "(" + r + "," + g + "," + b + ")"; //rgb(255,25,255)
-            return color;
-        }
+        // function ccolor() {
+        //     var r = Math.round(Math.random() * 50) + 205;
+        //     var g = Math.round(Math.random() * 55);
+        //     var b = parseInt(Math.random() * 100);
+        //     var color = "rgb" + "(" + r + "," + g + "," + b + ")"; //rgb(255,25,255)
+        //     return color;
+        // }
 
-        bian.onmousemove = function () {
-            bian.style.background = ccolor();
+        // bian.onmousemove = function () {
+        //     bian.style.background = ccolor();
+        // }
+
+        var a = 100;
+        function m1() {
+            var a = 200;
+            function m2() {
+                console.log(a);
+            }
+            m2();
+            console.log(a);
         }
+        m1();
+        console.log(a)
+
+        // (function (num) {
+        //     if (num == 0) return 1;
+        //     return num * arguments.callee(num - 1);
+        // })(5);
+
     </script>
 </body>
 

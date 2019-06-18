@@ -1,0 +1,41 @@
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+h1,h2,h4,h3,h5,h6,b,strong
+{
+	font-weight:normal;
+}
+input{
+	outline: none;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0; 
+}
+a img{
+	border: 0;
+}
+.clear:after{
+	content: "123";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both;
+	overflow: hidden;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.disnone{
+	display: none;
+}

@@ -1,0 +1,331 @@
+ a, body, button, caption, dd, div, dl, dt, em, figure, form, h1, h2, h3, h4, h5, h6, html, i, img, input, label, li, ol, p, span, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul {
+    margin: 0;
+    padding: 0;}
+    li{list-style: none;}
+a{text-decoration: none;
+color:#000;}
+body{
+    font-size:14px;
+}
+.header{
+    width:auto;
+    margin:0 auto;
+
+    height: 56px;
+
+}
+ .w1380{
+    width:1380px;
+    margin:auto; } 
+
+
+    
+.main1{
+    width:1400px;
+    height: 800px;
+    left:50%;
+    margin-left:-690px;
+    background:#f00;
+    position: absolute;
+}
+
+.nav{
+    height:56px;
+    width:1763px;
+    margin:auto;
+    background:#FFE300;
+    position: relative;
+}
+.nav img{
+    width:120px;
+    height:20px;
+    position: absolute;
+    top:0;
+    bottom:0;
+    margin: auto;
+}
+.nav ul{
+    width:638px;
+    height:56px;
+    margin:auto;
+  
+  
+}
+.nav ul .tehui{
+    padding-right:48px;
+    position: relative;
+}
+.tehui span{
+    display:block;
+    position: absolute;
+    width:40px;
+    height:20px;
+    line-height:20px;
+
+    text-align:center;
+    color:#fff;
+    background:#f00;
+    right:6px;
+    top:5px;
+}
+.tehui::after{
+    content:"";
+    border-left:5px solid #f00;
+    border-top:0px solid transparent;
+    border-bottom:5px solid transparent;
+    border-right: 0;
+    position: absolute;
+    top:25px;
+    right:41px;
+
+
+}
+.nav>ul>li{
+    float: left;
+    height:56px;
+     
+}
+.nav>ul>li>a{
+    display:block;
+    height:56px;
+    padding:0 24px;
+    line-height:56px;
+  
+
+}
+.nav ul a:hover{
+    background:#000;
+    color:#FFE300;
+}
+.nav ul .last{
+    width:33px;
+    padding:0 10px;
+    position: relative;
+}
+.nav ul .last span img{
+    width:20px;
+    height: 56px;
+    margin-left:10px;
+
+}
+.nav ul .last:after{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:5px;
+    background:#f00;
+    position: absolute;
+    top:5px;
+    right: -10px;
+}
+.nav p{
+    display:inline-block;
+    text-align: center;
+    height:56px;
+    position: absolute;
+    right:0;
+    top:0px;
+}
+#search,#up{
+    width:20px;
+    height:20px;
+   
+}
+.nav p>a{
+    float:left;
+    width:60px;
+    height:56px;
+    position: relative;
+    
+   }
+   .nav p>a img{
+       width:20px;
+       height:20px;
+       left:0;
+       right:0;
+       margin: auto;
+       position: absolute;
+   }
+
+.nav p span a{
+    text-align: center;
+    line-height: 56px;
+    float: left;
+   
+}
+c>a{
+    display: block;
+    width: 60px;
+    height: 56px;
+}
+.nav p .last{
+    line-height: 56px;
+
+    margin-right: 30px;
+    margin-left:20px;
+}
+.nav  p>a:hover{
+    background: #f00;
+}
+.nav p #line{
+    display: inline-block;
+    width:1px;
+    height: 12px;
+    background:#000;
+    position: absolute;
+    top:23px;
+    right: 42px;
+}
+
+.banner{
+    margin:25px 0;
+    background:rgb(221, 135, 135);
+    position: relative;
+}
+
+.banner1{
+    width: 1380px;
+    height: 350px;
+    margin:auto;
+
+}
+.banner1{
+    position: relative;
+}
+.banner1 ul img{
+    width: 1380px;
+    height:350px;
+    position: absolute;
+}
+.banner1 .left{
+    display: block;
+    width:52px;
+    height:52px;
+    position: absolute;
+    left:30px;
+    top:50%;
+    margin-top:-26px;
+    background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2)
+    no-repeat center
+}
+.banner1 .left:hover{
+    background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2)
+}
+.banner1 .right{
+    display: block;
+    width:52px;
+    height:52px;
+    position: absolute;
+    right:30px;
+    top:50%;
+    margin-top:-26px;
+    background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2)
+    no-repeat center
+}
+.banner1 .right:hover{
+    background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2)
+}
+.find{
+    position: relative;
+}
+.find_er{
+    position: absolute;
+}
+.find_er{
+    padding:10px 20px;
+    width:660px;
+    height:140px;
+    background:#fff;
+    display:none;
+
+}
+.find_er li{
+    width: 90px;
+    height:25px;
+    float: left;
+    text-align: center;
+
+}
+.find_er li a{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color:#000;
+    background:#fff;
+
+}
+.nav .find:hover .find_er{
+    display: block;
+   
+}
+.find_er li a:hover{
+    background:#FFE300;
+    color:#000;
+  
+
+}
+.header{
+    position: relative;
+    z-index: 2;
+    background:#FFE300;
+    
+}
+
+.banner{
+     position: absolute;
+     z-index: 1;
+     margin-left:50%;
+     left:50%;
+     margin-left:-690px
+}
+.banner2{
+    width: auto;
+    height: 20px;
+    background:#fff;
+
+}
+.banner3{
+    width: 1380px;
+    height: 210px;
+    margin:auto;
+
+
+}
+
+.banner3 ul{
+    overflow: hidden;
+}
+.banner3 li{
+    float: left;
+}
+    .banner3 li img{
+        width:260px;
+        height:208px;
+        border-radius:4px;
+        margin-right:20px;
+    }
+    .banner3 li #last{
+        margin-right:0;
+    }
+    .banner3 h3{
+        height:56px; ;
+        width:1380px;
+        
+        text-align: center;
+    }
+    .banner3 h3 a{
+        /* display:inline-block; */
+        height:56px;
+        width:64px;
+        padding: 0 30px;
+        line-height: 56px;
+     
+
+    }
+    .main {
+        margin-top:640px;
+        width:auto;
+        height: 500px;;
+        background: #ff0;
+        position: relative;
+
+    }

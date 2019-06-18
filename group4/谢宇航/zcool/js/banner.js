@@ -20,14 +20,16 @@
 		}
 		else{
 			position++;
-			if(position > 7) position = 0;
+			if(position > 7) {
+				position = 0;
+			}
 		}
 		imgMove();
 	}
 
 	//banner图位置移动
 	function imgMove() {
-		imgCon.style.left =-position*1130+"px";
+		imgCon.style.left = -position*1130+"px";
 	}
 
 	//轮播
@@ -41,7 +43,7 @@
 	function startTime(e) {
 		time = setInterval(move1, 4000);
 	}
-	
+
 	function clearTime(e) {
 		clearInterval(time);
 	}
