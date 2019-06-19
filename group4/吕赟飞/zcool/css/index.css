@@ -1,61 +1,61 @@
 /* 版心 */
-.w1130{
+.w1130 {
     width: 1130px;
     margin: 0 auto;
 }
 
 
 /* 头部 */
-header{
+header {
     width: 100%;
     height: 56px;
     background: #ffe300;
 }
 
 /* 导航 */
-header nav{
+header nav {
     height: 56px;
     margin: 0 70px;
     font-size: 14px;
     color: #282828;
 }
 
-header nav .logo{
+header nav .logo {
     float: left;
     margin: 18px 160px 0 0;
 }
 
-header nav .menu{
+header nav .menu {
     float: left;
     height: 56px;
 }
 
-header nav .menu>li{
+header nav .menu>li {
     float: left;
     height: 56px;
     line-height: 56px;
     padding: 0 24px;
 }
 
-header nav .menu>li a{
+header nav .menu>li a {
     height: 100%;
     display: block;
 }
 
-header nav .menu>li:hover{
+header nav .menu>li:hover {
     background-color: #282828;
     color: #ffe300;
 }
 
-header nav .menu>li:nth-child(1){
+header nav .menu>li:nth-child(1) {
     font-weight: bold;
 }
 
-header nav .menu>li:nth-child(2){
+header nav .menu>li:nth-child(2) {
     position: relative;
 }
 
-header nav .menu>li:nth-child(2) .discover{
+header nav .menu>li:nth-child(2) .discover {
     width: 664px;
     height: 144px;
     background: #fff;
@@ -69,18 +69,18 @@ header nav .menu>li:nth-child(2) .discover{
     border-radius: 4px;
 }
 
-header nav .menu>li:nth-child(2):hover .discover{
+header nav .menu>li:nth-child(2):hover .discover {
     display: block;
 }
 
-header nav .menu>li:nth-child(2) .discover .top{
+header nav .menu>li:nth-child(2) .discover .top {
     height: 93px;
     padding: 11px 17px 17px;
     box-sizing: border-box;
     border-bottom: 1px solid #eee;
 }
 
-header nav .menu>li:nth-child(2) .discover .top li{
+header nav .menu>li:nth-child(2) .discover .top li {
     width: 90px;
     height: 28px;
     line-height: 28px;
@@ -89,32 +89,32 @@ header nav .menu>li:nth-child(2) .discover .top li{
     margin-bottom: 7px;
 }
 
-header nav .menu>li:nth-child(2) .discover .top li a{
+header nav .menu>li:nth-child(2) .discover .top li a {
     border-right: 1px solid #eee;
 }
 
-header nav .menu>li:nth-child(2) .discover .top li:hover a{
+header nav .menu>li:nth-child(2) .discover .top li:hover a {
     background: #ffe300;
 }
 
-header nav .menu>li:nth-child(2) .discover .bottom{
+header nav .menu>li:nth-child(2) .discover .bottom {
     height: 51px;
     padding-left: 30px;
     box-sizing: border-box;
 }
 
-header nav .menu>li:nth-child(2) .discover .bottom li{
+header nav .menu>li:nth-child(2) .discover .bottom li {
     float: left;
     width: 70px;
     line-height: 51px;
     margin-right: 40px;
 }
 
-header nav .menu>li:nth-child(4){
+header nav .menu>li:nth-child(4) {
     position: relative;
 }
 
-header nav .menu>li:nth-child(4) .post{
+header nav .menu>li:nth-child(4) .post {
     position: absolute;
     width: 152px;
     height: 144px;
@@ -130,22 +130,22 @@ header nav .menu>li:nth-child(4) .post{
     border-radius: 4px;
 }
 
-header nav .menu>li:nth-child(4):hover .post{
+header nav .menu>li:nth-child(4):hover .post {
     display: block;
 }
 
-header nav .menu>li:nth-child(4) .post li{
+header nav .menu>li:nth-child(4) .post li {
     width: 100%;
     height: 44px;
     padding-left: 20px;
     box-sizing: border-box;
 }
 
-header nav .menu>li:nth-child(4) .post li:hover{
+header nav .menu>li:nth-child(4) .post li:hover {
     background: #ffe300;
 }
 
-header nav .menu>li:nth-child(8) i{
+header nav .menu>li:nth-child(8) i {
     display: inline-block;
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg);
     background-repeat: no-repeat;
@@ -155,31 +155,31 @@ header nav .menu>li:nth-child(8) i{
     background-size: 20px auto;
 }
 
-header nav .menu>li:nth-child(8):hover i{
+header nav .menu>li:nth-child(8):hover i {
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg)
 }
 
-header nav .login{
+header nav .login {
     float: right;
     margin-top: 21px;
 }
 
-header nav .login li{
+header nav .login li {
     float: left;
     line-height: 1em;
     padding: 0 20px;
 }
 
-header nav .login li:nth-child(1){
+header nav .login li:nth-child(1) {
     border-right: 1px solid #282828;
 }
 
 
-header nav .tool{
+header nav .tool {
     float: right;
 }
 
-header nav .tool li{
+header nav .tool li {
     float: left;
     text-align: center;
     height: 56px;
@@ -187,47 +187,47 @@ header nav .tool li{
     padding: 0 18px;
 }
 
-header nav .tool li:hover{
+header nav .tool li:hover {
     background-color: #282828;
 }
 
-header nav .tool li:nth-child(1) i{
+header nav .tool li:nth-child(1) i {
     display: inline-block;
     width: 20px;
     height: 20px;
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1)
 }
 
-header nav .tool li:nth-child(1):hover i{
+header nav .tool li:nth-child(1):hover i {
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1)
 }
 
 
-header nav .tool li:nth-child(2) i{
+header nav .tool li:nth-child(2) i {
     display: inline-block;
     width: 30px;
     height: 20px;
     background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) center center no-repeat;
 }
 
-header nav .tool li:nth-child(2):hover i{
+header nav .tool li:nth-child(2):hover i {
     background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg)
 }
 
 /* 主体 */
-section{
+section {
     width: 100%;
 }
 
 /* 轮播图 */
-#banner{
+#banner {
     height: 286px;
     position: relative;
     overflow: hidden;
     padding-top: 20px;
 }
 
-#images{
+#images {
     width: 6780px;
     height: 286px;
     font-size: 0;
@@ -235,14 +235,14 @@ section{
     transition: .5s all ease-in-out;
 }
 
-#images img{
+#images img {
     width: 1130px;
     height: 286px;
     border-radius: 4px;
     display: inline-block;
 }
 
-#leftBtn{
+#leftBtn {
     display: none;
     position: absolute;
     left: 20px;
@@ -250,7 +250,7 @@ section{
     transition: .5s all ease-in-out;
 }
 
-#rightBtn{
+#rightBtn {
     display: none;
     position: absolute;
     right: 20px;
@@ -258,40 +258,40 @@ section{
     transition: .5s all ease-in-out;
 }
 
-#banner:hover #leftBtn{
+#banner:hover #leftBtn {
     display: block;
 }
 
-#banner:hover #rightBtn{
+#banner:hover #rightBtn {
     display: block;
 }
 
 /* 广告位 */
-section .adv{
+section .adv {
     height: 170px;
     margin: 20px auto 55px;
     overflow: hidden;
 }
 
-section .adv ul{
+section .adv ul {
     width: 1150px;
 }
 
-section .adv li{
+section .adv li {
     float: left;
     width: 210px;
     height: 170px;
     margin-right: 20px;
 }
 
-section .adv li img{
+section .adv li img {
     width: 100%;
     height: 100%;
     border-radius: 4px;
 }
 
 /* 吸顶导航 */
-#navs{
+#navs {
     width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -301,52 +301,54 @@ section .adv li img{
     background: #fff;
 }
 
-#navs li{
+#navs li {
     display: inline-block;
     padding: 0 30px;
 }
 
-#navs li a{
+#navs li a {
     display: block;
     padding: 19px 0;
     border-bottom: 2px solid transparent;
 }
 
-#navs li:hover a{
+#navs li:hover a {
     color: #282828;
     border-bottom: 2px solid #444;
 }
 
-#navs li:nth-child(1) a{
+#navs li:nth-child(1) a {
     color: #282828;
     border-bottom: 2px solid #444;
 }
 
 /* 首页推荐 */
-.content{
+.content {
     width: 100%;
     background: #eee;
 }
 
-.content ul{
+.content ul {
     width: 1150px;
 }
-.content li{
+
+.content li {
     float: left;
     width: 210px;
     margin: 20px 20px 20px 0;
 }
 
-.content li .card_img{
+.content li .card_img {
     width: 100%;
     height: 158px;
 }
-.content li .card_img img{
+
+.content li .card_img img {
     width: 100%;
     height: 100%;
 }
 
-.content li .card_info{
+.content li .card_info {
     width: 100%;
     height: 100px;
     padding: 11px 16px 13px;
@@ -355,7 +357,7 @@ section .adv li img{
     border-bottom: 1px solid #eee;
 }
 
-.content li .card_info h4{
+.content li .card_info h4 {
     font-size: 14px;
     color: #333;
     width: 178px;
@@ -364,23 +366,24 @@ section .adv li img{
     text-overflow: ellipsis;
 }
 
-.content li .card_info h5{
+.content li .card_info h5 {
     font-size: 12px;
     color: #bbb;
     margin-bottom: 17px;
 }
 
-.content li .card_info p{
+.content li .card_info p {
     font-size: 12px;
     line-height: 1em;
     color: #bbb;
 }
 
-.content li .card_info p span{
+.content li .card_info p span {
     margin-right: 10px;
     vertical-align: middle;
 }
-.content li .card_info p span:nth-child(1)::before{
+
+.content li .card_info p span:nth-child(1)::before {
     content: "";
     display: inline-block;
     margin-right: 5px;
@@ -389,7 +392,8 @@ section .adv li img{
     height: 16px;
     background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat left center;
 }
-.content li .card_info p span:nth-child(2)::before{
+
+.content li .card_info p span:nth-child(2)::before {
     content: "";
     display: inline-block;
     margin-right: 5px;
@@ -398,7 +402,8 @@ section .adv li img{
     height: 16px;
     background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat left center;
 }
-.content li .card_info p span:nth-child(3)::before{
+
+.content li .card_info p span:nth-child(3)::before {
     content: "";
     display: inline-block;
     margin-right: 5px;
@@ -408,7 +413,7 @@ section .adv li img{
     background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat left center;
 }
 
-.content li .card_item{
+.content li .card_item {
     width: 210px;
     height: 50px;
     background: #fff;
@@ -417,7 +422,7 @@ section .adv li img{
     font-size: 12px;
 }
 
-.content li .card_item .more{
+.content li .card_item .more {
     width: 24px;
     height: 24px;
     display: inline-block;
@@ -425,25 +430,26 @@ section .adv li img{
     margin-right: 10px;
     position: relative;
 }
-.content li .card_item .more img{
+
+.content li .card_item .more img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.content li .card_item>span{
+.content li .card_item>span {
     vertical-align: middle;
     line-height: 50px;
 }
 
-.content li .card_item>em{
+.content li .card_item>em {
     float: right;
     color: #bbb;
     line-height: 50px;
 }
 
 
-.content li .card_item .more .author{
+.content li .card_item .more .author {
     display: none;
     text-align: center;
     width: 210px;
@@ -456,28 +462,28 @@ section .adv li img{
     box-sizing: border-box;
 }
 
-.content li .card_item .more:hover .author{
+.content li .card_item .more:hover .author {
     display: block;
 }
 
-.content li .card_item .more .author img{
+.content li .card_item .more .author img {
     width: 80px;
     height: 80px;
     display: inline-block;
 }
 
-.content li .card_item .more .author>p{
+.content li .card_item .more .author>p {
     font-size: 16px;
     color: #333;
     margin-top: 4px;
 }
 
-.content li .card_item .more .author>strong{
+.content li .card_item .more .author>strong {
     font-size: 12px;
     color: #bbb;
 }
 
-.content li .card_item .more .author>a{
+.content li .card_item .more .author>a {
     display: inline-block;
     width: 100px;
     font-size: 12px;
@@ -485,12 +491,12 @@ section .adv li img{
     color: #bbb;
 }
 
-.content li .card_item .more .author>a em{
+.content li .card_item .more .author>a em {
     font-weight: bold;
     color: #282828;
 }
 
-.content li .card_item .more .author>i{
+.content li .card_item .more .author>i {
     width: 80px;
     height: 32px;
     text-align: center;
@@ -502,23 +508,24 @@ section .adv li img{
     border: 1px solid #282828;
     border-radius: 4px;
 }
-.content li .card_item .more .author>i:nth-last-child(2){
+
+.content li .card_item .more .author>i:nth-last-child(2) {
     background: #ffe300;
     border: 1px solid #ffe300;
 }
 
 /* 底部 */
-footer{
+footer {
     width: 100%;
     height: 299px;
     background: #282828;
 }
 
-footer .top_left{
+footer .top_left {
     float: left;
 }
 
-footer .top_left li{
+footer .top_left li {
     float: left;
     height: 130px;
     line-height: 130px;
@@ -527,7 +534,7 @@ footer .top_left li{
     margin-right: 38px;
 }
 
-footer .top_right{
+footer .top_right {
     float: right;
 }
 
@@ -535,7 +542,7 @@ footer .top_right{
 
 /* 返回顶部 */
 
-#backTop{
+#backTop {
     display: none;
     width: 50px;
     height: 50px;
