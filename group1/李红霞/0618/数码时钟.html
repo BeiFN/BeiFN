@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span id="hour"> 00 </span>:
+    <span id="minite"> 00 </span>:
+    <span id="second"> 00 </span>
+    <script>
+        setInterval(time, 1000);
+        function time(){
+            var nTime = new Date();
+            var hours = nTime.getHours() < 10? "0"+nTime.getHours():nTime.getHours();
+            var minites = nTime.getMinutes() < 10? "0"+nTime.getMinutes():nTime.getMinutes();
+            var seconds = nTime.getSeconds() < 10? "0"+nTime.getSeconds():nTime.getSeconds();
+            console.log(hours, minites, seconds)
+            hour.innerHTML = hours;
+            minite.innerHTML = minites;
+            second.innerHTML = seconds;
+        }
+        time()
+    </script>
+</body>
+</html>

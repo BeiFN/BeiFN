@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //统计字符串中每个字符的个数  
+        //对象具有自动去重的功能
+        var str = "hello world";
+        var temp = {};
+        for(var i in str){
+            if(temp[str[i]] == undefined){
+                temp[str[i]] = 1;
+            }else{
+                temp[str[i]] ++;
+            }
+        }
+        for(var i in temp){
+            console.log(i, temp[i]);
+        }
+    </script>
+</body>
+</html>
