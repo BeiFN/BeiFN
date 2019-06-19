@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <script>
+            createSpan();   
+            setInterval(countTime,1000);
+            
+            function countTime(){
+                var arrayList = getTime(2019,6,20);
+                var spanList = document.querySelectorAll("span");
+                
+                spanList[1].innerHTML = arrayList[1]+":";
+                spanList[2].innerHTML = arrayList[2];
+                spanList[0].innerHTML = arrayList[0]+":";
+            }
+           
+            countTime();
+
+            function createSpan(){
+                var span = null;
+                // var spanList = [];
+                for(var i = 0 ; i ++ < 3 ;){
+                    span = document.createElement("span");
+                    // spanList.push(span)
+                    document.body.appendChild(span);                                     
+                }               
+            }      
+            function getTime(){
+                var 
+                    hour    = 0,
+                    minute  = 0,
+                    second  = 0,
+                    setTime = new Date(),
+                    tagTime = null      ;
+
+                setTime.setFullYear(arguments[0]);
+                setTime.setMonth(arguments[1]-1);
+                setTime.setDate(arguments[2]);
+
+                if(arguments.length > 3){
+                    hour = arguments[3];
+                    minute = arguments[4];
+                    second = arguments[5];
+                }
+
+                setTime.setHours(hour);
+                setTime.setMinutes(minute);
+                tagTime = setTime.setSeconds(second);               
+                tagTime = setTime - Date.now();
+
+                var hours   = parseInt(tagTime/1000/3600)   ;
+                var minutes = parseInt(tagTime/1000/60 %60) ;
+                var seconds = parseInt(tagTime/1000%3600%60);
+
+                return [
+                    hours   > 10? ""+hours   : "0"+hours  ,
+                    minutes > 10? ""+minutes : "0"+minutes,
+                    seconds > 10? ""+seconds : "0"+seconds,
+                ];
+            }
+    </script>
+</body>
+</html>

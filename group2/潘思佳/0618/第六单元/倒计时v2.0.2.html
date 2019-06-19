@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="hourBox" placeholder="小时">
+    <input type="text" id="minuteBox" placeholder="分钟">
+    <input type="text" id="secondBox" placeholder="秒">
+    <button id="startButton">start</button>
+    <div id="container">
+        <span id="hour_box">00</span> ：
+        <span id="minute_box">00</span>：
+        <span id="second_box">00</span>
+    </div>
+    <script>
+        startButton.addEventListener("click", clickHandler);
+        var lock = false;
+
+        function clickHandler() {
+            if (lock) { //在倒计时时不可以再次点击start
+                return;
+            }
+            lock = true;
+
+            //将不合法输入排除
+            var timeArr = proofreading(hourBox.value, minuteBox.value, secondBox.value);
+
+            //计算相对时间
+            var tempTime = new Date().getTime() + parseInt(timeArr[0]) * 3600 * 1000 + parseInt(timeArr[1]) * 60 * 1000 + parseInt(timeArr[2]) * 1000;
+            var targetTime = new Date(tempTime);
+
+            //开始倒计时
+
+            var interValTime = setInterval(function() {
+                countDown(targetTime, interValTime);
+            }, 200);
+        }
+
+        //倒计时
+        function countDown(targetTime, interValTime) {
+            var relativeTime = targetTime - Date.now();
+            if (relativeTime <= 0) {
+                clearInterval(interValTime);
+                lock = false;
+                return false;
+            }
+            hour_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 3600));
+            minute_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 60 % 60));
+            second_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 % 60));
+        }
+
+        function judgeNumber(num) {
+            return num < 10 ? "0" + num : "" + num;
+        }
+
+        function proofreading(temp_hour, temp_minute, temp_second) {
+            var arr = [temp_hour, temp_minute, temp_second];
+            if (arr.some(function(e) {
+                    if (e < 0 || e == "") return true;
+                })) {
+                alert("请输入正整数");
+                return false;
+            }
+            return arr;
+        }
+    </script>
+</body>
+
+</html>
