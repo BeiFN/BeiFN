@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id ="btn">点击生成验证码</button>
+    <input type="text" id = "txt">
+    <script>
+        btn.onclick = function () {
+            txt.value = yanZhengMa();
+        }
+
+
+        function yanZhengMa() {
+            var str = "";
+            for (var count = 0; count < 6;) {
+                var asc = Math.round(Math.random() * 122);
+                if (asc <= 57 && asc >= 48 || asc >= 65 && asc <= 90 || asc > 97) {
+                    var c = String.fromCharCode(asc);
+                    str += c;
+                    count++;
+                }
+            }
+            return str;
+        }
+
+    </script>
+</body>
+</html>

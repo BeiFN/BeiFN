@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        div{float: left;}
+    </style>
+</head>
+<body>
+<div>
+    <div id="hours0">0</div>
+    <div id="hours1">0</div>
+    <div>:</div>
+    <div id="minutes0">0</div>
+    <div id="minutes1">0</div>
+    <div>:</div>
+    <div id="seconds0">0</div>
+    <div id="seconds1">0</div>
+</div>
+<script>
+    setInterval(function() {
+        var now = new Date();
+        var hour = now.getHours();
+        var min = now.getMinutes();
+        var sec = now.getSeconds();
+
+        hours0.innerHTML = parseInt(hour / 10);
+        hours1.innerHTML = hour % 10;
+        minutes0.innerHTML = parseInt(min / 10);
+        minutes1.innerHTML = min % 10;
+        seconds0.innerHTML = parseInt(sec / 10);
+        seconds1.innerHTML = sec % 10;
+        //console.log(hours0,hours1)
+
+    });
+</script>
+</body>
+</html>

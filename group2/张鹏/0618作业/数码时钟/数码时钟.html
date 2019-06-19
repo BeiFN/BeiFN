@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>数码时钟</title>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+</style>
+</head>
+
+<body>
+	<div id="div">
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+		时
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+		分
+		<img src="img/0.png" />
+		<img src="img/0.png" />
+		秒
+	</div>
+</body>
+
+<script type="text/javascript">
+	var imgs = document.getElementsByTagName("img");
+	
+	console.log(imgs);
+	
+	setInterval(function(){
+		var now = new Date(); //获取当前时间
+		var h = now.getHours();  //小时
+		var m = now.getMinutes(); //分钟
+		var s = now.getSeconds(); //秒
+		
+		//不足两位的前面补0，并转为字符串类型
+		h = h<10?"0"+h:h+"";  
+		m = m<10?"0"+m:m+"";
+		s = s<10?"0"+s:s+"";
+		
+		console.log(h , m , s);
+		
+		imgs[0].src = "img/" + h[0] + ".png";
+		imgs[1].src = "img/" + h[1] + ".png";
+		
+		imgs[2].src = "img/" + m[0] + ".png";
+		imgs[3].src = "img/" + m[1] + ".png";
+		
+		imgs[4].src = "img/" + s[0] + ".png";
+		imgs[5].src = "img/" + s[1] + ".png";
+	},1000);
+</script>
+</html>
