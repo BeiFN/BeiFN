@@ -12,16 +12,20 @@
               margin: 0 auto;
               width: 1000px;
               font-family: "微软雅黑";
-               color: grey;
+              color: grey;
+              text-indent: 2em;
           }
      </style>
-  
+     <script type="text/javascript">
+
+     </script>
      <body>
           请输入要替换的内容：
           <input type="text" name="precontent" id="precontent" value="" />
           请输入替换后的内容：
-          <input type="text" name="reconteent" id="recontent" value="" />
-          <div class="comment" id="textContent">
+          <input type="text" name="reconteent" id="recontent" value="" onblur="replaceStr()" />
+
+          <div class="comment">
               与以往不同的韩国恐怖片。没有幽灵，没有不可抗力。比较血腥，却湮没在对人性的挖掘中。
          那时，她是一个孕妇，带着学生们去春游，迎来了意外的早产。儿子严重的面部畸形，凡事都追求完美的丈夫，在孩子该读小学的年纪，强行将他拖入了地下室，而自己，在贝多芬的乐曲声中，上吊自尽。几年后，畸形儿也失踪了。
 　　 现在，她老了，隐居在深山的村落。已经瘫痪的她，未来的日子无多。一直照料着她的，是曾经的学生小美。为了让老师开心，她联络了当年的几位同学，准备开一场派对。世浩、恩英、达峰、顺姬、浩明都来了，害羞鬼正元也来了。
@@ -61,25 +65,18 @@
 末尾弹奏着贝多芬的《月光》，那一刻，即使审判，也不再令贞媛恐惧
           </div>
      </body>
-
-     <script>
-           document.onkeydown = function(evt){
-                  var e = event || evt;
-                  if( e.keyCode === 13){
-                      handlerReplace();
-                  }
-           }
-           function handlerReplace(){
-              
-                  var preText = precontent.value;
-                  var reText = recontent.value;
-                  var allText = textContent.innerHTML;
-        
-                  allText = allText.replace(preText,reText);
-                  
-                 
-                  textContent.innerHTML = allText;
-                 ;
-           }
-     </script>
 </html>
+
+<script>
+    function replaceStr() {
+        var pre = document.querySelector("#precontent");
+        var preValue = pre.value;
+        var replaceStr = document.querySelector("#recontent");
+        var repValue = replaceStr.value;
+        var comment = document.querySelector(".comment");
+        var content = comment.textContent;
+        var reg = new RegExp(preValue, "g");
+        console.log(reg);
+        comment.textContent = content.replace(reg, repValue);
+    }
+</script>

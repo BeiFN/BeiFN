@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条</title>
+    <style>
+        #progressbox{
+            width: 600px;
+            height: 20px;
+            border-radius: 5px;
+            border:1px solid gray;
+            margin: 100px auto;
+            box-shadow: 2px 2px 5px grey;
+        }
+        #progress{
+            height: 20px;
+            background: linear-gradient(to right,white,black )
+        }
+    </style>
+</head>
+<body>
+    <div id="progressbox">
+        <div id="progress"></div>
+    </div>
+    <script>
+        var kuan = 0;
+        var targetKuan = 600;
+        var chuoId = setInterval(gaiJinDu,30)
+        function gaiJinDu(){
+            kuan += 30;
+            if(kuan==600){
+                clearInterval(chuoId)
+            }
+            progress.style.width = kuan+"px"
+        }
+        
+    </script>
+</body>
+</html>

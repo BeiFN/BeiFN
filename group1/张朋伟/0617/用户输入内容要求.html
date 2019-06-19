@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="qq" placeholder="输入6-16位用户名">
+    <script>
+        qq.onblur = check1;
+
+        function check1() {
+            var cont = qq.value;
+            console.log(cont);
+            if (cont.length >= 6 && cont.length <= 16) {
+                qq.style.borderColor = "green";
+            } else {
+                qq.style.borderColor = "red";
+                alert("账户名位数不匹配");
+                return false;
+
+            }
+            if (!(isNaN(cont[0]))) {
+                alert("第一个字符不能是数字");
+                qq.style.borderColor = "red";
+                return false;
+
+
+            } else {
+                qq.style.borderColor = "green";
+                // return false;
+
+
+            }
+            for (var i in cont) {
+
+                if (!(cont[1].charCodeAt >= 48 && cont[1].charCodeAt <= 57 || cont[1].charCodeAt >= 65 && cont[1]
+                        .charCodeAt <= 90 || cont[1].charCodeAt === 90)) {
+                    alert("只能以数字字母下划线开头");
+                    qq.style.borderColor = "red";
+                    return false;
+                }
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
