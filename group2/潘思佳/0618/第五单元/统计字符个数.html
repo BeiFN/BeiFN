@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = "aabbcxsdexdfskAdddsfwe";
+        str = str.toLowerCase();
+        for (var asc = 97; asc <= 122; asc++) {
+            var count = 0;
+            for (var i in str) {
+                if (str.charCodeAt(i) == asc) {
+                    count++;
+                }
+            }
+            if (count) console.log("字符" + String.fromCharCode(asc) + "的个数是：" + count);
+        }
+    </script>
+</body>
+
+</html>

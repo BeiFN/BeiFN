@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        用户名：<input type="text" id = "username" ><br>
+        密码:<input type="password" id ="pwd" ><br>
+        <button id = "btn">注册</button>
+    <script>
+  
+    //     btn.onclick = check;
+    //     function check(){
+    //     var username = document.getElementById("username").value;
+    //     var password = document.getElementById("pwd").value;
+    //     //用户名长度6-20
+    //     if(username.length < 6 || username.length > 20) {
+    //         alert("用户名长度不对！！！");
+    //     }
+    //     //数字不能开头
+    //     if(username.charCodeAt(0) >= 48 && username.charCodeAt(0) <= 57){
+    //         alert("用户名不可以用数字开头！")
+    //     } 
+    //     //只能包含数字、字母、下划线
+    //     for(var i in username) {
+    //         var asc = username.charCodeAt(i);
+    //         //48-57   65-90   97-122 95
+    //         if( (asc>=48&&asc<=57) || (asc>=65&&asc<=90) || (asc>=97&&asc<=122) || asc==95 ) {
+
+    //         } else {
+    //             alert("用户名只能使用数字字母下划线");
+    //             break;
+    //         }
+    //     }
+    // }
+    //用户名长度6-20
+        username.onblur = handlerBlur;
+            function handlerBlur() {
+                var content = username.value;
+                if (content.length >= 6 && content.length <= 20) {
+                    username.style.borderColor = "green";
+                } else {
+                    username.style.borderColor = "red";
+                    alert("用户名长度应该在6 - 20 位之间");
+                    return false;
+                }
+                if (isNaN(content[0])) {
+                    username.style.borderColor = "green";
+                } else {
+                    username.style.borderColor = "red";
+                    alert("首字符不能为数字");
+                    return false;
+                }
+                for (var i = 0, letter; letter = content[i++];) {
+                    var ascii = letter.charCodeAt(0);
+                    if (!(ascii >= 48 && ascii <= 57 || ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122 || ascii === 95)) {
+                        alert("只能以数字字母下划线进行命名");
+                        username.style.borderColor = "red";
+                        return false;
+                    }
+                }
+            }
+    </script>
+</body>
+</html>
