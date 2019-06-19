@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>中秋倒计时</title>
+		<style type="text/css">
+			#time_left {
+				background: #000;
+				width: 850px;
+				height: 300px;
+				text-align: center;
+				line-height: 300px;
+				font-size: 40px;
+				color: yellow;
+				margin: 200px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="time_left">
+
+		</div>
+		<script type="text/javascript">
+			var d = new Date("2019-09-13"); //设定日期
+			d.setHours(18); //设定时
+			d.setMinutes(0); //分
+			d.setSeconds(0); //秒
+			var t = setInterval(function() {
+				var now = new Date(); //获取当前时间
+				var timeLeft = d.getTime() - now.getTime();//当前时间据目标时间的毫秒数差
+				console.log(timeLeft);
+				days = parseInt(timeLeft / 1000 / 3600 / 24);//除1000为秒,除3600为时,除24为天
+				hours = parseInt(timeLeft / 1000 / 3600 - days * 24);//剩余所有小时数-剩余天数×24=剩余小时数
+				min = parseInt(timeLeft / 1000 / 60 - hours * 60 - days * 24 * 60);//剩余所有分钟数-剩余小时数*60-剩余天数*24*60=剩余分钟数
+				sec = parseInt(timeLeft / 1000 - min * 60 - hours * 3600 - days * 24 * 3600);//剩余秒数
+				time_left.innerText = "距离中秋佳节还有" + days + "天，" + hours + "小时," + min + "分钟，" + sec + "秒";
+				if(days==0&&hours==0&&min==0&&sec==0){
+					clearInterval(t);//当倒计时为0即结束时，则计时器停止!
+				}
+			}, 1000);
+		</script>
+	</body>
+</html>

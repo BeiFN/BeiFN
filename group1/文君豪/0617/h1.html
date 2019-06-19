@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="user">
+    <input type="text" id="password">
+    <button id="btn">提交</button>
+    <script>
+        btn.onclick = submit;
+        function submit()
+        {
+            var user_value = user.value;
+            var password_value = password.value;
+            if(user_value.length<=6)
+            {
+                alert("您的用户名长度太短，请重新输入");
+            }
+            else 
+            {
+                if(user_value[0]<=57 && user_value[0]>=48)
+                {
+                   
+                    alert("首字母不能以数字开头")
+                }
+                else
+                {
+                    for(var index in user_value)
+                    {
+                        // if(user_value[index])
+
+
+                        console.log(user_value[index])
+                    }
+                }
+                 
+            }
+        }
+    
+    </script>
+</body>
+</html>
