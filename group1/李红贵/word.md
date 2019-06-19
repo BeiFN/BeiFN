@@ -314,46 +314,80 @@ function foo(a,b,c,d){
 ***JS day6  0618 
 
 **Date日期
-Date.UTC(96, 1, 2, 3, 4, 5)
-<!-- 到目标UTC时间的毫秒数 -->
-Date.now()
-Date.parse()
-Date.prototype.getDate()
-Date.prototype.getDay()
-Date.prototype.getFullYear()
-Date.prototype.getHours()
-Date.prototype.getMilliseconds()
-Date.prototype.getMinutes()
-Date.prototype.getMonth()
-Date.prototype.getSeconds()
-Date.prototype.getTime()
-Date.prototype.getTimezoneOffset()
-Date.prototype.getUTCDate()
-Date.prototype.getUTCDay()
-Date.prototype.getUTCFullYear()
-Date.prototype.getUTCHours()
-Date.prototype.getUTCMilliseconds()
-Date.prototype.getUTCMinutes()
-Date.prototype.getUTCMonth()
-Date.prototype.getUTCSeconds()
-Date.prototype.getYear()
-Date.prototype.setDate()
-Date.prototype.setFullYear()
-Date.prototype.setHours()
-Date.prototype.setMilliseconds()
-Date.prototype.setMinutes()
-Date.prototype.setMonth()
-Date.prototype.setSeconds()
-Date.prototype.setTime()
-Date.prototype.setUTCDate()
-Date.prototype.setUTCFullYear()
-Date.prototype.setUTCHours()
-Date.prototype.setUTCMilliseconds()
-Date.prototype.setUTCMinutes()
-Date.prototype.setUTCMonth()
-Date.prototype.setUTCSeconds()
-Date.prototype.setYear()
-Date.prototype.toDateString()
+1.Date.UTC(96, 1, 2, 3, 4, 5)
+<!-- 到目标UTC时间的毫秒数 世界原子时 -->
+2.Date.now()
+<!-- Date.now() 方法返回自1970年1月1日 00:00:00 UTC到当前时间的毫秒数。 -->
+3.Date.parse()
+<!-- 解析一个表示某个日期的字符串，并返回从1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的UTC时间）的毫秒数，日期格式不合法返回NaN -->
+
+```javascript
+var d = new Date();//日期对象默认时间是系统时间
+console.log(d.getDate());
+console.log(d.getDay());
+```
+4.getDate()
+<!-- 根据本地时间对象，返回一个指定的日期对象为一个月中的哪一日（从1--31）。 -->
+
+5.getDay()
+<!-- 根据本地时间对象，获取星期几 -->
+
+6.getFullYear()
+<!-- 获取年份 -->
+
+7.getHours()
+<!-- 获取小时 -->
+
+8.getMilliseconds()
+<!-- 获取毫秒数 -->
+
+9.getMinutes()
+<!-- 获取分钟 -->
+
+10.getSeconds()
+<!-- 获取秒 -->
+
+11.getTime()
+<!-- 获取一个时间到格林威志时间毫秒数 -->
+
+
+12.getTimezoneOffset()
+<!-- getTimezoneOffset() 方法返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟。
+
+ -->
+13.getUTCDate()
+<!-- 以世界时为标准，返回一个指定的日期对象为一个月中的第几天 -->
+14.getUTCDay()
+15.getUTCFullYear()
+16.getUTCHours()
+17.getUTCMilliseconds()
+18.getUTCMinutes()
+19.getUTCMonth()
+20.getUTCSeconds()
+21.getYear()
+
+22.setDate()
+<!-- 根据本地时间来指定一个日期对象的天数。 -->
+22.setFullYear()
+23.setHours()
+24.setMilliseconds()
+25.setMinutes()
+26.setMonth()
+27.setSeconds()
+28.setTime()
+29.setUTCDate()
+30.setUTCFullYear()
+31.setUTCHours()
+32.setUTCMilliseconds()
+33.setUTCMinutes()
+34.setUTCMonth()
+35.setUTCSeconds()
+36.setYear()
+<!-- 和setFullYear()一样，已废弃 -->
+
+
+37.toDateString()
+<!-- 以特定的格式显示周几、月、日、年 -->
 Date.prototype.toGMTString()
 Date.prototype.toISOString()
 Date.prototype.toJSON()
@@ -367,3 +401,16 @@ Date.prototype.toTimeString()
 Date.prototype.toUTCString()
 Date.prototype.valueOf()
 Date.prototype[@@toPrimitive]
+
+setInterval
+<!-- 设置定时器 -->
+
+clearInterval
+<!-- 清除定时器 -->
+
+
+    1 toDateString()    以特定的格式显示周几、月、日、年
+    2 toTimeString()    以特定的格式显示时、分、秒和时区
+    3 toLocaleDateString()  以特定的格式显示周几、月、日和年
+    4 toUTCString       以特定的格式显示完整的UTC日期
+    5 valueof           返回毫秒数，等同于getTime
