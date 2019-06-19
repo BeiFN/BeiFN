@@ -105,6 +105,9 @@ window 窗口的统一入口
   
   ```
 
+<<<<<<< HEAD
+  
+=======
   ### 字符串
   
 * charCodeAt 返回索引处字符的Unicod编码
@@ -177,3 +180,4 @@ window 窗口的统一入口
 
 
 
+>>>>>>> 09edf89d90f31e8b91bff981ca42a8b33fc07fd3

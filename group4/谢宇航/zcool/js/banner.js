@@ -29,7 +29,7 @@
 
 	//banner图位置移动
 	function imgMove() {
-		imgCon.style.left =-position*1130+"px";
+		imgCon.style.left = -position*1130+"px";
 	}
 
 	//轮播

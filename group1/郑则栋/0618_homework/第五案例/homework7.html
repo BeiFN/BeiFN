@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三角函数曲线图 </title>
+
+
+    <style>
+        .box {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigbox"></div>
+
+    <div class="box"></div>
+
+    <script>
+        var jiao=0;
+        for (i = 0; i < 100; i++) {
+            jiao += 3.6;
+            var x = Math.sin(Math.PI / 180 * jiao)  *100+500;
+            var y = Math.cos(Math.PI / 180 * jiao) * 100+400;
+            document.querySelector(".bigbox").innerHTML+='<div class="box" style="top:'+x+'px;left:'+y+'px"></div>';
+        }
+        // <div class="box" style="top:'+x+'px;left:'+y+'px"></div>
+
+    </script>
+
+
+</body>
+
+</html>
