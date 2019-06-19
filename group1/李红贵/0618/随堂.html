@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Math对象数学</title>
+    <style>
+        .point{
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            /* float: left; */
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .graph {
+              position: relative;   height: 0px;
+              margin: 300px auto; border-top: solid 1px gainsboro;
+          }
+    </style>
+</head>
+<body>
+    <!-- <div id="conten"></div>
+    <div class="point"></div> -->
+
+    <div id="graph" class="graph">
+    </div>
+    <script>
+        // console.log(Math);
+        // console.log(Math.max(1,3,6,9));
+        // // 三角函数
+        // // 画一排点
+
+        // // for(var i = 0; i<10; i++){
+           
+        // //     conten.innerHTML += '<div class="point" style="left:'+ i*100 +'px"></div>'
+        // // }
+
+        // var r = 100;
+        // var angle = 0;
+        // for(var i = 0; i< 100; i++){
+        //     angle += 3.6;
+        //     var numLeft = Math.cos(Math.PI/180*angle) * r +200;
+        //     var numTop = Math.sin(Math.PI/180 *angle) * r +200;
+        //     // 圆
+
+        //     numLeft = i*3;//sin曲线
+        //     // numTop = i*3;//cos曲线
+
+        //     var styleText = "left:"+numLeft+"px;top:"+numTop+"px";
+        //     conten.innerHTML += '<div class="point" style="'+ styleText+'"></div>';
+        // }
+
+
+
+        var degree = 0;
+        var times =   setInterval(function(){
+              var radian = degree * (Math.PI/180);
+              var div = document.createElement("div");
+              div.className = "point";
+              div.style.left = degree+"px";
+              div.style.top = -100 * Math.sin(radian)+"px";
+              graph.appendChild(div);
+              degree += 1;
+              if(degree >= 540){
+                clearInterval(times);
+              }
+          },10);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hash1</title>
+    <style>
+        a{
+            display:block;
+            width: 40px;
+            height: 30px;
+            background:#f00;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="content1">
+        <img src="https://img14.360buyimg.com/mobilecms/s280x280_jfs/t1/48795/9/1731/82817/5cf784b4Ec2864e1d/3280cc1fdccaf51a.jpg!q90.webp" alt=""/>
+        <button id="btn1">1</button>
+    </div>
+
+    <div id="content2">
+        <img src="https://img11.360buyimg.com/mobilecms/s280x280_jfs/t1/75447/12/1703/138105/5d00c307E8c76fd95/d38825c500d47aa4.jpg!q90.webp" alt=""/>
+        <button id="btn2">2</button>
+    </div> 
+
+    <script>
+        btn1.onclick = slip1;
+        btn2.onclick = slip2;
+
+        function slip1 (){
+            location.href="hash2.html#" +1;
+        }
+        function slip2 (){
+            location.href="hash2.html#" +2;
+        }
+    </script>
+</body>
+</html>
