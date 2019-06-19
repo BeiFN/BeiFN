@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
     *{margin: 0;padding: 0;}
-    /* .point{
+    .point{
         width: 10px;
         height: 10px;
         background: #000;
@@ -15,7 +15,7 @@
         position: absolute;
         left: 0;
         top: 0;
-    } */
+    }
     /* #edit{
         margin: 0 auto;
         width: 1000px;
@@ -45,18 +45,33 @@
         height: 30px;
         line-height: 30px;
         background:linear-gradient(to bottom,#faa,#f40);
+        box-shadow: 0 0 2px #000;
+        border-radius:4px;
     }
     #sendBtn:hover{
         cursor: pointer;
         background:linear-gradient(to bottom, #fee,#f40);
     } */
+    #progress_bar{
+                  width: 600px;
+                  height: 20px;
+                  border-radius: 5px;
+                  box-shadow: 0 0 5px #ddd;
+                  margin: 100px auto;
+            }
+
+            #progress{
+                  width: 10px;
+                  height: 20px;
+                  background:linear-gradient(to right ,#fff,#000);
+            }
 
     </style>
 </head>
 <body>
     <!-- <div id="container"></div>
-    <div class="point"></div> -->
-    
+    <div class="point"></div>
+     -->
     <!-- <div id="edit">
             <p>请输入你的发言:</p>
             <p>
@@ -97,18 +112,25 @@
     </div> -->
 
     <!-- <input type="text" placeholder="请输入用户名" id="username"> -->
+        
+    <!-- <button id="btn">开始游戏</button>
+     <div id="container"></div> -->
+
      <!-- <div id="container">倒计时：
         <span id="days_box"></span>
         <span id="hour_box"></span>:
         <span id="minute_box"></span>:
         <span id="second_box"></span>
     </div> -->
-
+     
+    <div id="progress_bar">
+        <div id="progress"></div>
+  </div>
   
-    <button id="box1">1</button>
+    <!-- <button id="box1">1</button>
     <img src="https://img14.360buyimg.com/mobilecms/s280x280_jfs/t1/48795/9/1731/82817/5cf784b4Ec2864e1d/3280cc1fdccaf51a.jpg!q90.webp" alt="">
     <button id="box2">2</button>
-    <img src="https://img11.360buyimg.com/mobilecms/s280x280_jfs/t1/75447/12/1703/138105/5d00c307E8c76fd95/d38825c500d47aa4.jpg!q90.webp" alt="">
+    <img src="https://img11.360buyimg.com/mobilecms/s280x280_jfs/t1/75447/12/1703/138105/5d00c307E8c76fd95/d38825c500d47aa4.jpg!q90.webp" alt=""> -->
 
     <!-- <img  id="top_logo" src="https://m.360buyimg.com/babel/jfs/t1/40553/9/6775/75726/5d070fefEfd281f62/a002b3833c8e5deb.jpg" alt=""> -->
     <script>
@@ -121,6 +143,25 @@
     //     var styleStr = "left:"+numLeft+"px;top:"+numTop+"px";
     //     container.innerHTML +='<div class="point"style="'+styleStr+'">';        
     // }
+     
+     //三角函数,正弦函数
+    //  var r = 100, angle = 0;
+    //  for(var i = 0; i < 100; i ++){
+    //      angle +=3.6;
+    //      var numLeft = i*10;
+    //      var numTop = Math.sin(Math.PI /180 * angle) * r + 200;
+    //      var styleStr = "left:"+ numLeft +"px;top:"+ numTop +"px";
+    //      container.innerHTML += '<div class="point" style="'+styleStr+'">';
+    //  }
+       //三角函数,余弦函数
+    //    var r = 100, angle = 0;
+    //  for(var i = 0; i < 100; i ++){
+    //      angle +=3.6;
+    //      var numLeft = i*10;
+    //      var numTop = Math.cos(Math.PI /180 * angle) * r + 200;
+    //      var styleStr = "left:"+ numLeft +"px;top:"+ numTop +"px";
+    //      container.innerHTML += '<div class="point" style="'+styleStr+'">';
+    //  }
       
        //留言对话框
     //    sendBtn.onclick = handlerClick;
@@ -173,8 +214,98 @@
     //  }
 
     //游戏
+    // var someone = {
+    //         name : "一个虚拟人物",
+	// 	    hp : 100
+    //   }
+    //   var eventList = [
+	// 		{
+	// 		 type : "吃了一颗毒蘑菇" ,
+	// 		 harm : 20
+	// 		},
+	// 		{
+	// 		 type : "走路崴了脚" ,
+	// 		 harm : 2
+	// 		},
+	// 		{
+	// 		 type : "淋雨感了冒",
+	// 		 harm : 5
+	// 		}
+	// ]
+      // 人物死亡方式列表
+	// function playGame(){
+    //         var dieList = [ "狗带了" ,"玩完了","去世了"]
+    //         var html = "";
+    //         for(var i = 0 ; true; i++){
+    //               var randomInt = getRandomInt(0,eventList.length - 1);
+    //               someone.hp -= eventList[randomInt].harm;
 
+    //               if(someone.hp <= 0){
+    //                     //终止游戏;
+    //                     html += "<p>" +
+    //                                 someone.name + ""+
+    //                                 "因为 "+ eventList[randomInt].type +"而减少了"+ eventList[randomInt].harm + "hp" + 
+    //                                 dieList[getRandomInt(0,2)]+"。游戏结束"+
+    //                           "</p>"
+    //               }else{
+    //                     html += "<p>" +
+    //                           someone.name + ""+
+    //                           "因为 "+ eventList[randomInt].type +"而减少了"+
+    //                           eventList[randomInt].harm + "血量剩余" +
+    //                           someone.hp + "hp" 
+    //                     "</p>"
+    //               }
+    //               container.innerHTML = html;
+    //               //重置游戏
+    //               if(someone.hp <= 0){
+    //                     someone.hp = 100;
+    //                     html = "";
+    //                     break;
+    //               }
+    //         }
+    //   }
 
+    //   function getRandomInt(min,max){
+    //         return min + Math.round(Math.random() * (max - min));
+    //   }
+    //   btn.onclick = playGame;
+
+    //统计字符串
+    // var str = "a,a,b,c,c,d,f,g,j,j"
+    // var arr = str.split(",");
+    // var _temp = {};
+    // for(var i = 0; i<arr.length; i ++){
+    //     if(arr[i] in _temp){
+    //         _temp[arr[i]] ++;
+    //     }else{
+    //         _temp[arr[i]] = 1;
+    //     }  
+    // }
+    // console.log(_temp);
+    
+    //进度条
+    var progress_width = 0;
+    var progress_interval = null;
+    var target = 600;
+    progress_interval = setInterval(progressing,30)
+    function progressing(prop){
+        if(prop !== undefined && typeof prop === "number"){
+                        progress_width = target * prop / 100;
+                  }else{
+                        progress_width += 5 ;     
+                  }
+                  progress.style.width = progress_width + "px";
+                  if(progress_width === target){
+                        clearInterval(progress_interval);
+                        // history.back(1)
+                        history.go(-1);
+                  }
+            }
+            progressing(30);
+        
+            document.onclick = function(){
+                  progressing(0);
+    }
 
      //倒计时
     //  setInterval(countDown, 1000 );
