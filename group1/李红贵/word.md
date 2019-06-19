@@ -244,7 +244,7 @@ function foo(a,b,c,d){
 <!-- 获取对应位置字符，超出返回空字符 -->
 
 4.charCodeAt()
-<!-- 获取对应位置字符及对应的ascii码，超出NaN -->
+<!-- 获取对应位置字符及对应的ascii码，超出返回NaN -->
 
 5.codePointAt()
 <!-- 获取对应位置字符对应的ascii码，可以获取高代码点位上字符-->
@@ -280,13 +280,13 @@ function foo(a,b,c,d){
 <!-- 构建新字符串返回,参数为重复次数 -->
 
 16.slice()
-<!-- 拷贝字串以新字符串返回 -->
+<!-- 拷贝字串以新字符串返回 参数可为负数，负数表示从右边开始-->
 
 17.substring()
-<!-- 拷贝子字符串 包括前值,不包含后值 -->
+<!-- 拷贝子字符串 包括前值,不包含后值 ，负数为0-->
 
 18.split()
-<!-- 查找字符串中的字符，并返回找到的前 3 个分割元素（splits） -->
+<!-- 查找字符串中的字符，并返回找到的前 个分割元素（splits） -->
 
 19.toLocaleLowerCase()
 20.toLowerCase()
@@ -310,3 +310,60 @@ function foo(a,b,c,d){
 
 
 
+
+***JS day6  0618 
+
+**Date日期
+Date.UTC(96, 1, 2, 3, 4, 5)
+<!-- 到目标UTC时间的毫秒数 -->
+Date.now()
+Date.parse()
+Date.prototype.getDate()
+Date.prototype.getDay()
+Date.prototype.getFullYear()
+Date.prototype.getHours()
+Date.prototype.getMilliseconds()
+Date.prototype.getMinutes()
+Date.prototype.getMonth()
+Date.prototype.getSeconds()
+Date.prototype.getTime()
+Date.prototype.getTimezoneOffset()
+Date.prototype.getUTCDate()
+Date.prototype.getUTCDay()
+Date.prototype.getUTCFullYear()
+Date.prototype.getUTCHours()
+Date.prototype.getUTCMilliseconds()
+Date.prototype.getUTCMinutes()
+Date.prototype.getUTCMonth()
+Date.prototype.getUTCSeconds()
+Date.prototype.getYear()
+Date.prototype.setDate()
+Date.prototype.setFullYear()
+Date.prototype.setHours()
+Date.prototype.setMilliseconds()
+Date.prototype.setMinutes()
+Date.prototype.setMonth()
+Date.prototype.setSeconds()
+Date.prototype.setTime()
+Date.prototype.setUTCDate()
+Date.prototype.setUTCFullYear()
+Date.prototype.setUTCHours()
+Date.prototype.setUTCMilliseconds()
+Date.prototype.setUTCMinutes()
+Date.prototype.setUTCMonth()
+Date.prototype.setUTCSeconds()
+Date.prototype.setYear()
+Date.prototype.toDateString()
+Date.prototype.toGMTString()
+Date.prototype.toISOString()
+Date.prototype.toJSON()
+Date.prototype.toLocaleDateString()
+Date.prototype.toLocaleFormat()
+Date.prototype.toLocaleString()
+Date.prototype.toLocaleTimeString()
+Date.prototype.toSource()
+Date.prototype.toString()
+Date.prototype.toTimeString()
+Date.prototype.toUTCString()
+Date.prototype.valueOf()
+Date.prototype[@@toPrimitive]

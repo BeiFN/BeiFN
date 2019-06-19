@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0618</title>
+</head>
+<body>
+    
+
+
+        <!-- 倒计时 -->
+              
+            <!-- <script>
+            
+                var nowDay =  100;
+                var h = parseInt(nowDay/24);
+                var m = nowDay%24;
+                var t = setInterval(function(){
+                    nowDay--;
+                    if(nowDay===0){
+                        clearInterval(t);
+                        return false;
+                    }
+                    console.log(h,m);
+                },1000);
+            
+            
+            
+            </script> -->
+
+            <p>倒计时</p>
+            <p id="demo"></p>
+            <script>
+            var myVar=setInterval(function(){myTimer()},1000);
+            function myTimer(){
+                var d=new Date();
+                var t=d.toLocaleTimeString();
+                document.getElementById("demo").innerHTML=t;
+            }
+            </script>
+
+
+
+
+
+        <!-- 数码时钟 -->
+
+                
+
+
+
+
+
+</body>
+</html>
