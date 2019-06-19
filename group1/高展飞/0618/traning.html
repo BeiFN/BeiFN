@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            padding: 0; margin: 0;
+        }
+        #edit {
+            margin: 0 auto;
+            width: 1000px;
+            text-align: center;
+            overflow: hidden;
+        }
+        #commentlist {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        #commentlist .comment{
+            width: 800px;
+            min-height: 80px;
+            margin: 20px auto;
+            background: darkkhaki;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        #commentlist .comment p{
+            margin: 10px 10px;
+        }
+        #sendBtn {
+            display: block;
+            margin: 10px auto;
+            width: 100px;
+            height : 30px;
+            line-height: 30px;
+            background: linear-gradient(to bottom, #faa, #f40);
+            box-shadow: 0 0 2px #000;
+            border-radius: 4px;
+        }
+
+        #sendBtn:hover{
+            cursor: pointer;
+            background: linear-gradient(to bottom, #fee, #f40);
+        }
+        #progress_bar{
+                  width: 600px;
+                  height: 20px;
+                  border-radius: 5px;
+                  box-shadow: 0 0 5px #ddd;
+                  margin: 100px auto;
+            }
+
+            #progress{
+                  width: 10px;
+                  height: 20px;
+                  background:linear-gradient(to right ,#fff,#000);
+            }
+   </style>
+</head>
+<body>
+        <div id="box">
+                <span id="days_box"></span> ： 
+                <span id="hour_box">00</span> ： 
+                <span id="minute_box">00</span>：
+                <span id="second_box">00</span>
+          </div>
+          
+      <div id="progress_bar">
+            <div id="progress"></div>
+      </div>
+<!-- 
+        <div id="edit">
+                <p>请输入你的发言:</p>
+                <p>
+                     <textarea id="text" rows="5" cols="60"></textarea>
+                </p>
+                <p><a class="send" id="sendBtn">发送</a></p>
+            </div>
+            <div id="commentlist">
+                <div class="comment">
+                     <p>张三疯:</p>
+                     <p style="word-break: break-all;">
+                     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                     </p>
+                     <p style="text-align: right;">2016/9/4 16:06</p>
+                </div>
+                <div class="comment">
+                     <p>张三疯:</p>
+                     <p style="word-break: break-all;">
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                     </p>
+                     <p style="text-align: right;">2016/9/4 16:06</p>
+                </div>
+                <div class="comment">
+                     <p>张三疯:</p>
+                     <p style="word-break: break-all;">
+                     xxxxxxxxxxxxxxxxxxxxxx
+                     </p>
+                     <p style="text-align: right;">2016/9/4 16:06</p>
+                </div>
+            </div> -->
+        <img  id="top_logo" src="https://m.360buyimg.com/babel/jfs/t1/40553/9/6775/75726/5d070fefEfd281f62/a002b3833c8e5deb.jpg" alt="">
+    <script>
+        //数十下，结束
+        // var interval_id = null;
+        // var count = 0;
+        // interval_id = setInterval( callback , 10 );
+        // function callback(){
+        //     count ++;
+        //     console.log(count);
+        //     if(count===10){
+        //         clearInterval(interval_id);
+        //     }
+        // }
+        //图片5秒后消失(一)d定时器
+        // var hideInterval_id = null;
+        // hideInterval_id = setInterval(hideLogo ,5000);
+        // function hideLogo(){
+        //     top_logo.style.display = "none";
+        //     //加上clearInterval 会关闭计时器，只执行一次
+        //     clearInterval(hideInterval_id);
+        // }
+        //延时器 =》只会执行一次（二）
+        // setTimeout( hideLogo , 5000 );
+        // function hideLogo(){
+        //     top_logo.style.display = "none";
+        // }
+
+//留言对话框
+
+        // sendBtn.onclick = handlerClick;
+        // function handlerClick(){
+        //     var iptStr = text.value;
+        //     var htmlStr =  '<div class="comment">'+
+        //                     '<p>张三疯:</p>'+
+        //                     '<p style="word-break: break-all;">'+
+        //                         iptStr+
+        //                     '</p>'+
+        //                     '<p style="text-align: right;">2016/9/4 16:06</p>'+
+        //                 '</div>'
+        //                 //htmlStr 放在commentlist.innerHTML前边，会打印在上边，反之下边
+        //     commentlist.innerHTML = htmlStr  + commentlist.innerHTML;
+        //     //发送后选中框内的内容
+        //     text.select();
+        // }
+//倒计时
+//实现  去重   封装  复用
+        // setInterval (countDown , 1000);
+        // function countDown(){
+        //     var countArray  =  getCountDown(2019,6 ,20);
+
+        //     days_box.innerHTML = countArray[3];
+        //     hour_box.innerHTML =countArray[0];
+        //     minute_box.innerHTML = countArray[1];
+        //     second_box.innerHTML = countArray[2];
+           
+
+        // }
+        //  //页面在加载时，需要调用一下，否则会出现清零现象
+        //  countDown();
+
+        // function  getCountDown(){
+        //     //1.只用传年月日
+        //     //2.年月日时分秒；
+
+        //     var hour = 0,minute = 0,second = 0;
+        //     //因为参数不确定，所以使用arguments处理
+        //     var targetDate = new Date();
+        //     targetDate.setFullYear(arguments[0]);
+        //     targetDate.setMonth(arguments[1]-1);
+        //     targetDate.setDate(arguments[2]);
+        //     // 根据参数不同，我们进行不同的计算；
+        //     if(arguments.length > 3){
+        //         hour = arguments[3];
+        //         minute = arguments[4];
+        //         second = arguments[5];
+        //     }
+        //     targetDate.setHours(hour);
+        //     targetDate.setMinutes(minute);
+        //     var targetTime = targetDate.setSeconds(second);
+        //     var reduce = targetTime - Date.now();
+
+        //     var second = parseInt ( reduce / 1000 % 60);
+        //     var minute = parseInt(reduce /1000  % 3600  / 60);
+        //     var hour = parseInt(reduce / 1000 /3600);
+        //     var days = hour >24?  parseInt(hour/24) : 0;
+        //     hour  = hour>24?  hour % 24 : hour;
+
+        //     return [
+        //         hour < 10? "0"+hour :""+hour,
+        //         minute < 10? "0"+minute :""+minute,
+        //         second <10? "0"+second : ""+second,
+        //         days ? days: ""
+        //     ];
+        // }
+        //实现
+        // function getCountDown(){
+        //     //设定目标，获取目标的毫秒数；
+        //     var targetDate = new Date();
+        //     //在未赋值之前为系统默认值。
+        //     targetDate.setFullYear(2019);  //2019 6 18
+        //     targetDate.setMonth(6);   //2019 7 18
+        //     targetDate.setDate(20);    //2019  7 20
+        //     targetDate.setHours(0);
+        //     targetDate.setMinutes(0);
+        //     targetDate.setMilliseconds(0);
+        //     //targetDate.setSeconds(0);
+        //     var targetTime = targetDate.setSeconds();
+        //     //取得差值
+        //     console.log(targetTime);
+        //     var reduce = tarTime - Date.now();
+        //     console.log(reduce);
+        //     //运算
+        //     var second = parseInt(reduce / 1000 % 60);
+        //     var minute = parseInt( reduce /1000 % 3600 /60);
+        //     var hour = parseInt(reduce / 1000 /3600);
+        //     //
+        //     return [
+        //             hour < 10 ? "0"+hour : ""+hour,
+        //             minute < 10 ?"0"+minute : ""+minute,
+        //             second < 10 ? "0"+second : ""+second
+        //     ]
+        // }
+//进度条
+        // var progress_width = 0;
+        // var progress_interval = null;
+        // var target = 600;
+        // progress_interval = setInterval(progressing  ,30);
+        // function progressing (prop){
+        //     if(prop !== undefined&& typeof prop === "number"){
+        //         progress_width = target*prop /100;
+        //     }else{
+        //         progress_width += 1;
+        //     }
+        //     progress.style.width = progress_width +"px";
+        //     if(progress_width === target){
+        //         clearInterval(progress_interval);
+        //     }
+           
+        // }
+        // progressing(30);
+        //     //注意要让函数处于低耦合，高内聚状态，降低与定时器的耦合
+        //     document.onclick =function (){
+        //         progressing(0);
+        //     }
+// //统计字符串中每个字符的个数？"aabbcxsdexdfskdddsfwe"
+//         var str = "aabbcxsdexdfskdddsfwe";
+//         var arr = str.split("");
+//         console.log(arr);
+//         var temp = {};
+//         for(var i = 0;i<arr.length;i++){
+           
+//                 if(arr[i] in temp){
+//                     temp[arr[i]]++;
+//                 }else{
+//                     temp[arr[i]]=1;
+//                 }
+        
+//         }
+//         console.log(temp);
+//         for(var dd in temp){
+//             console.log("字符串中"+dd+"有"+temp[dd]+"个");
+//         }
+//生成一个6位 数字字母混合的验证码    AE3L5F
+        //获取生成验证码的字母和数字，并转换成数组
+        
+        function achieve(){
+            var str1 = "";
+            var str2 = "";
+            for(var i =65;i<91;i++){
+            str1 += String.fromCharCode(i)
+            }
+            for(var j =48;j<58;j++){
+            str2 += String.fromCharCode(j)
+            }
+            var str =str1 +str2;
+            //console.log(str);
+            
+            return str.split("");
+        }
+        var arr = achieve ();
+           console.log(arr);
+        //生成6位数验证码
+        function idCode(){
+            var sum = "";
+            for(var m =0; m<6;m++){
+                sum += arr[ Math.round(Math.random()*(arr.length-1))];
+            // console.log(a);
+            }
+           return sum;
+           //console.log(sum);
+        }
+        console.log(idCode());
+    </script>
+</body>
+</html>

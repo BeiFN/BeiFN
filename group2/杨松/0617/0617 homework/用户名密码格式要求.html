@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户名密码格式要求</title>
+</head>
+<body>
+用户名：<input type="text" placeholder="请输入用户名" id="username"><br>
+密&nbsp;&nbsp;&nbsp;码：<input type="password" placeholder="请输入密码" id="password">
+<input type="submit" is="submit" >
+<script>
+    function check(){
+      var user=username.value;
+      var pwd=password.value;
+        //用户名长度6-20
+        if(user.length < 6 || user.length > 20) {
+            alert("用户名长度不对！！！");
+        }
+        //数字不能开头
+        if(user.charCodeAt(0) >= 48 && user.charCodeAt(0) <= 57){
+            alert("用户名不可以用数字开头！")
+        }
+        //只能包含数字、字母、下划线
+        for(var i in user) {
+            var asc = user.charCodeAt(i);
+            //48-57   65-90   97-122 95
+            if( (asc>=48&&asc<=57) || (asc>=65&&asc<=90) || (asc>=97&&asc<=122) || asc==95 ) {
+
+            } else {
+                alert("用户名只能使用数字字母下划线");
+                break;
+            }
+        }
+    }
+    check();
+</script>
+</body>
+</html>

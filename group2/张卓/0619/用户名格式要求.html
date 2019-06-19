@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入用户名" id="username">
+    <script>
+        var txt = username.value;
+        //位数是6-20  位
+        username.onblur = function () {
+            if ((txt.length >= 6) &&(txt.length <= 20)) {
+                console.log(txt.length)
+                username.style.borderColor = green;
+                return false;
+            }else{
+                console.log(txt.length)
+                alert("请输入6-20位的用户名")
+                username.style.borderColor = green;
+                return false;
+            }
+            //开头不能是数字
+            if (!(isNaN(txt.charAt(0)))) {
+                alert("开头不能是数字")
+                return false;
+            }
+
+            //用户名中只能有 字母 数字 下划线  
+            //首先转换成ASCII码
+            for (var i = 0, letter; letter = txt[i++];) {
+                var ascii = letter.charCodeAt(0)
+                if (!(ascii>=48&&ascii<=57||ascii>=65&&ascii<=90||ascii>=97&&ascii<=122||ascii===95)) {
+                    alert("用户名中只能有字母数字和下划线")
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

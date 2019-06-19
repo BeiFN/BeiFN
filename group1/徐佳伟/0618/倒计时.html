@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <span id="hours">1</span>:
+    <span id="mins">2</span>:
+    <span id="secs">3</span>
+    <script>
+    // 倒计时
+    setInterval(countDown,1000);
+    function countDown(){
+        var countArray = getCountDown(2019,6,19);
+        hours.innerHTML = countArray[0];
+        mins.innerHTML  = countArray[1];
+        secs.innerHTML  = countArray[2];
+    }
+    countDown();
+
+    function getCountDown(){
+
+        var hours      = 0,
+            minutes    = 0,
+            seconds    = 0;
+            targetDate = new Date();
+        targetDate.setFullYear(arguments[0]);
+        targetDate.setMonth   (arguments[1]-1);
+        targetDate.setDate    (arguments[2]);
+        console.log(targetDate);
+        if(arguments.length > 3){
+            hours   = arguments[3];
+            minutes = arguments[4];
+            seconds = arguments[5];
+        }
+
+        targetDate.setHours  (hours);
+        targetDate.setMinutes(minutes);      
+        targetDate.setMilliseconds(0);
+
+        var targeTime = targetDate.setSeconds(seconds);
+        var reduce    = targeTime - Date.now();
+        // console.log(reduce);
+
+        var sec  = parseInt(reduce/1000 % 60);
+        var min  = parseInt(reduce/1000 /60 %60);
+        var hour = parseInt(reduce/1000/3600);
+        // console.log(hour,min,sec);
+       return [
+                hour < 10 ? "0"+ hour : "" + hour,
+                min  < 10 ? "0"+ min  : "" + min,
+                sec  < 10 ? "0"+ sec  : "" + sec
+            ];
+    }
+       
+
+    </script>
+</body>
+</html>
