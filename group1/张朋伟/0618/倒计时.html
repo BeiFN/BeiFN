@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <script>
+            getCountDown(2019, 8, 8);
+            //获取目标时间
+            // var target = "2019,8,8";
+            function getCountDown() {
+                var hours = 0;
+                var minute = 0;
+                var second = 0;
+
+                var targetDate = new Date();
+                targetDate.setFullYear = arguments[0];
+                target.setMonth = arguments[1];
+                targetDate.setDate = arguments[2];
+
+
+                if (arguments.length > 3) {
+                    hours = arguments[3];
+                    minute = arguments[4];
+                    second = arguments[5];
+                }
+                targetDate.setHours(hours);
+                targetDate.setMinutes(minute);
+                targetDate.setSeconds(second);
+
+                var diff = targetDate - Date.now();
+                
+
+
+
+            }
+        </script>
+    </body>
+
+    </html>
+
+</body>
+
+</html>

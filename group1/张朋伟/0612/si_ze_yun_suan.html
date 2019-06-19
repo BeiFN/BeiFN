@@ -18,6 +18,49 @@
         <option value="*">*</option>
         <option value="/">/</option>
         <option value="%">%</option>
+    </select>
+
+    <input type="text" id="num2">
+    <button id="jisuan">计算</button>
+
+    <script>
+        jisuan.onclick = function ji() {
+            var n1 = num1.value;
+            var op = opt.value;
+            var n2 = num2.value;
+            // console.log(opt);
+            res = js(n1, n2, op);
+            alert(res);
+        }
+
+
+        function js(n1, n2, op) {
+            switch (op) {
+                case "+":
+                    return Number(n1) + Number(n2);
+                    break;
+                case "-":
+                    return n1 - n2;
+                    break;
+                case "*":
+                    return n1 * n2;
+                    break;
+                case "/":
+                    return n1 / n2;
+                    break;
+                case "%":
+                    return n1 % n2;
+                    break;
+            }
+        }
+    </script>
+    <!-- <input type="text" id="num1">
+    <select name="" id="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
 
     </select>
 
@@ -27,14 +70,13 @@
 
     <script>
         sum.onclick = function jisaunqi() {
+
             var a = num1.value;
             var b = num2.value;
             var o  = opt.value;
             res = ccc(a, b, o);
             // console.log(a,b,o);
-            console.log(res);
-
-            
+            console.log(res);   
         }
 
 
@@ -63,7 +105,7 @@
             }
 
 
-        }
+        } -->
     </script>
 </body>
 

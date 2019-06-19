@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span id="s1"></span>
+    <script>
+        //分钟秒数计时器
+        function getCutDown(minute,second){
+            if(arguments.length==1){
+               var sed=arguments[0];
+               var mie=0;
+            }else{
+                var mie=arguments[0];
+                var sed=arguments[1];
+            }
+          
+            var totalsecond=mie*60+sed;
+            cutDown(totalsecond,"s1");
+        }
+        function cutDown(totalsecond,eleId){
+           var b=totalsecond;
+           var box=document.getElementById(eleId);
+            timer=setInterval(function(){
+                 box.innerHTML=(b--);
+                 if(b<0){
+                clearInterval(timer);
+            }
+            },1000)
+           
+        }    
+        getCutDown(10);
+    </script>
+</body>
+</html>

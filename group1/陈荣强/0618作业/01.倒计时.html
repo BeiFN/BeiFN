@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+<style>
+    #box{width:250px;height:50px;color:sandybrown;font-weight:bold; text-align: center;line-height: 50px;background:greenyellow;border-radius: 10px;margin: 0 auto}
+</style>
+</head>
+<body>
+    <div id = "box"></div>
+    <script>
+        var total = 3600;
+        var t = setInterval(function(){
+            total--;
+            if(total == 0){
+                clearInterval(t);
+                return;
+                }
+                var minutes = parseInt(total/60) , seconds = total%60;
+                // console.log(str1, str2);
+                box.innerHTML = "倒计时还有:"+minutes+"分"+seconds+"秒";
+            }, 1000);
+    </script>
+</body>
+</html>
