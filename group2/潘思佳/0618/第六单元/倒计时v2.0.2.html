@@ -36,21 +36,23 @@
             var targetTime = new Date(tempTime);
 
             //开始倒计时
+
             var interValTime = setInterval(function() {
-                countDown(targetTime);
+                countDown(targetTime, interValTime);
             }, 200);
         }
 
         //倒计时
-        function countDown(targetTime) {
+        function countDown(targetTime, interValTime) {
             var relativeTime = targetTime - Date.now();
-            hour_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 3600));
-            minute_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 60 % 60));
-            second_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 % 60));
             if (relativeTime <= 0) {
                 clearInterval(interValTime);
                 lock = false;
+                return false;
             }
+            hour_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 3600));
+            minute_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 / 60 % 60));
+            second_box.innerHTML = judgeNumber(parseInt((relativeTime) / 1000 % 60));
         }
 
         function judgeNumber(num) {
