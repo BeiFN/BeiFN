@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成一个6位数字字母混合的验证码</title>
+</head>
+<body>
+    <textarea name="" id="container" cols="20" rows="1"></textarea>
+    <button id="btn">点击生成验证码</button>
+    <script>
+
+        btn.onclick = produceMa;
+
+        function produceMa(){
+            //数字 48-57 //大写字母 65-90 //小写字母 97-122
+
+            var str = "";
+            for (var i = 0; i < 6; i++) {
+                var num = 48 + Math.round(Math.random() * 9); 
+                var UpCase = 65 + Math.round(Math.random() * 25);
+                var LowerCase = 97 + Math.round(Math.random() * 25);
+                var randomArr = [num, UpCase, LowerCase];//随机数字，大写，小写的ASCII码存入数组
+                // console.log(randomArr);
+                var randomNum = parseInt(Math.random() * 3);
+                str+=String.fromCharCode(randomArr[randomNum]);
+            }
+           container.innerHTML = str;
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        button,
+        textarea {
+            vertical-align: top;
+        }
+        
+        textarea {
+            overflow: auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="startButton">begin</button>
+    <div id="contentBox"></div>
+    <script>
+        var count = 0;
+        var happenCount = 0;
+        var fixp = 0.4;
+        var seed = 0.13421;
+        var timeInterval
+
+        startButton.onclick = function() {
+            timeInterval = setInterval(randomNumber, 100);
+        }
+
+        function randomNumber() {
+            count++;
+            var num = Math.random();
+            if (num < fixp) {
+                happenCount++;
+                fixp = seed;
+            } else {
+                fixp += seed;
+            }
+            contentBox.innerHTML += "执行" + count + "次，共发生" + happenCount + "次" + "<br/>";
+            if (count >= 20) {
+                contentBox.innerHTML += "结束<br/>";
+                clearInterval(timeInterval);
+            }
+        }
+    </script>
+</body>
+
+</html>
