@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hash2</title>
+</head>
+
+<body>
+    <div id="cla">
+    </div>
+
+    <script>
+        var good = [{
+                "url": "https://img14.360buyimg.com/mobilecms/s280x280_jfs/t1/48795/9/1731/82817/5cf784b4Ec2864e1d/3280cc1fdccaf51a.jpg!q90.webp",
+                "id": 1
+            },
+
+            {
+                "url": "https://img11.360buyimg.com/mobilecms/s280x280_jfs/t1/75447/12/1703/138105/5d00c307E8c76fd95/d38825c500d47aa4.jpg!q90.webp",
+                "id": 2
+            }
+        ]
+        var outId = location.hash.substring(1);
+        console.log(outId);
+        for (var i =0; i < good.length; i++) {
+            var item = good[i];
+            // console.log(item);
+            // console.log(item.id);
+
+
+            if (item.id == outId) {
+                // console.log(1);
+                cla.innerHTML =
+                    '<img src="' + item.url + '" alt="">';
+                    break;
+            }
+            // console.log(item[url])
+        }
+
+
+        // }
+    </script>
+</body>
+
+</html>
