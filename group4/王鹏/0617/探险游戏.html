@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            line-height: 30px;
+            width: 800px;
+            font-size: 20px;
+            padding: 50px;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+        #game {
+            border: 0;
+            width: 200px;
+            height: 60px;
+            background: orange;
+            font-size: 25px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <input id="game" type="button" value="点击开始探险">
+    <div id="box">
+
+    </div>
+    
+    
+
+    <script>
+        var xiao = {
+            name: "肖光瑞",
+            hp: 100
+        }
+        var eventList = [
+            {
+                type: "猜到了一颗毒蘑菇",
+                harm: 20
+            },
+            {
+                type: "走路被岩雀绊了一跤",
+                harm: 4
+            },
+            {
+                type: "淋雨感冒了",
+                harm: 5
+            },
+            {
+                type: "飞檐走壁闪到了腰",
+                harm: 3
+            },
+            {
+                type: "开啤酒瓶盖磕掉了牙",
+                harm: 8
+            },
+            {
+                type: "被盲僧踢了一脚&nbsp;一库",
+                harm: 12
+            },
+            {
+                type: "被剑圣追了八条街",
+                harm: 5
+            },
+            {
+                type: "被托儿索的风刮到了&nbsp;哈撒给",
+                harm: 16
+            },
+            {
+                type: "被托儿索的风刮到了&nbsp;哈撒给",
+                harm: 16
+            }
+        ];
+        var dieList = ["狗带了", "嗝屁了", "玩完了", "去世了"];
+        box.innerHTML = xiao.name + "快乐的走进召唤师峡谷。。。";
+        game.onclick = function () {
+            var box = document.getElementById("box");
+            var name = xiao.name;
+            box.innerHTML = xiao.name + "快乐的走进召唤师峡谷。。。" + "<br/>";
+            
+            for (var hp = xiao.hp, count = 1; true; count++) {
+                var event = eventList[Math.floor(Math.random() * eventList.length)];
+                var type = event.type;
+                var harm = event.harm;
+                var die = dieList[Math.floor(Math.random() * dieList.length)];
+                hp -= harm;
+                if (hp > 0) {
+                    box.innerHTML += "第" + count + "天&nbsp;&nbsp;" + name + "&nbsp;&nbsp;因为&nbsp;&nbsp;" + type + "&nbsp;&nbsp;减少了&nbsp;&nbsp;" + harm +"&nbsp;&nbsp;hp," + "血量剩余&nbsp;&nbsp;" + hp + "&nbsp;&nbsp;hp" + "<br/>";
+                } else {
+                    box.innerHTML += "第" + count + "天&nbsp;&nbsp;" + name + "&nbsp;&nbsp;因为&nbsp;&nbsp;" + type + "&nbsp;&nbsp;减少了&nbsp;&nbsp;" + harm +"&nbsp;&nbsp;hp," + "血量剩余&nbsp;&nbsp;" + 0 + "&nbsp;&nbsp;hp" + die;
+                    break;
+                }
+            }
+            console.log(event);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

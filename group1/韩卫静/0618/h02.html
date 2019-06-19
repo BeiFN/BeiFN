@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #pro_bar{
+            width: 500px;
+            height: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 4px #aaa;
+            margin: 100px auto;
+        }
+        #progress{
+            width: 50%;
+            height: 15px;
+            background: linear-gradient(to right, #ddd,#000);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pro_bar">
+        <div id="progress">
+
+        </div>
+    </div>
+
+    <script>
+        var inter_p = setInterval(progressing,50);
+        var w = 0;
+        function progressing(){
+            w++;
+            if(w === 100){
+                clearInterval(inter_p);
+            }
+            progress.style.width = w +"%";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>输入框的默认提示</title>
+</head>
+ <body>
+
+     <input type="text" id="searchinput" onfocus="foc()" onblur="blu()" class="searchinput" value="请输入你要查询的内容"/>
+
+     <script>
+        function foc(){
+            var oInput = document.getElementById("searchinput");
+            if(oInput.value == "请输入你要查询的内容") {
+                oInput.value = "";
+            }
+        }
+    
+        function blu(){
+            var oInput = document.getElementById("searchinput");
+            if(oInput.value == "") {
+                oInput.value = "请输入你要查询的内容";
+            }
+        }
+
+     
+     </script>
+ </body>
+</html>
