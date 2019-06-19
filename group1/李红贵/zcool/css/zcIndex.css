@@ -205,7 +205,7 @@
 .litwo li{
     padding-right: 15px;
     margin-right: 40px;
-    line-height: 60px;
+    line-height: 50px;
 }
 .litwo li:hover a{
     color: #d36f16;
@@ -233,17 +233,6 @@
 .chidList:hover{
     background-color: #ffe300;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -315,12 +304,17 @@
     margin-top: 21px;
 }
 
-/* ---------------------------------- */
+/* ------------------轮播图---------------- */
 .banner{
     margin-top: 20px;
     background-color: rgba(222, 222, 222, 0.2);
     height: 286px;
     position: relative;
+}
+/* 版心 */
+.mainSupCont{
+    margin: 0 auto;
+    width: 1130px;
 }
 
 .mainban{
@@ -340,6 +334,8 @@
     height: 286px;
     line-height: 286px;
 }
+
+/* 左右按钮隐藏 */
 .hidd{
     display: none;
     width: 150px;
@@ -352,11 +348,12 @@
     display: block;
 }
 
+/* 中间链接点击 */
 .cent{
     width: 830px;
     height: 100%;
 }
-
+/* 轮播图片显示 */
 .imgView{
     display: inline-block;
     width: 52px;
@@ -366,13 +363,14 @@
     background-position: center center;
     background-size: contain;
 }
+/* 左边上一条*/
 .lasto{
     background-image: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2");
 }
 .lefti:hover .lasto{
     background-image: url("https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2");
 }
-
+/* 右边下一条 */
 .nexto{
     background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
 }
@@ -380,4 +378,315 @@
     background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2);
 }
 
+/* 推荐底部盒子 */
+.ecommendSup{
+    margin-top: 20px;
+}
 
+/* 推荐内容盒子 */
+.ecoConSup{
+    /* height: 168px; */
+}
+
+.eco{
+    float: left;
+    width: 210px;
+    height: 168px;
+    background-color: red;
+    border-radius: 4px;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-position: center,center;
+    background-size: contain;
+
+}
+.eco1{
+    background-image: url(https://reviveimg.hellorf.com/www/images/7dcf1af8eed6588b58255058e7e0889c.jpg);
+}
+
+.eco2{
+    background-image: url(https://reviveimg.hellorf.com/www/images/d5123dc2b65fab76bd224fc07598b38f.jpg);
+}
+.eco3{
+    background-image: url(https://reviveimg.hellorf.com/www/images/3cc3afb6713d88acc8529f11f7907ffc.jpg);
+}
+.eco4{
+    background-image: url(https://reviveimg.hellorf.com/www/images/18fae9f156bdf4d8d2e81977517ec00f.jpg);
+}
+.eco5{
+    margin-right: 0;
+    background-image: url(https://reviveimg.hellorf.com/www/images/c0c6c58d8099a1ffb099d3285b7e60a2.jpg);
+}
+.eco>a{
+    width: 100%;
+    height: 100%;
+}
+
+.contentNavSup{
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* 作品导航 */
+.contentNav{
+    
+    width: 320px;
+    height: 60px;
+    margin: 0 auto;
+    /* background-color:#f4f4f4; */
+    margin-top: 40px;
+
+}
+.contentNav a{
+    margin-left: 64px;
+    width: 64px;
+    height: 58px;
+    line-height: 58px;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    float: left;
+}
+.contentNav .oneNav{
+    margin-left: 0;
+    color: #282828;
+    border-bottom: 2px solid #282828;
+}
+.contentNav a:hover{
+    
+    border-bottom: 2px solid #282828;
+    color: #282828;
+}
+
+
+/* 所有作品 */
+.contentSupView{
+    /* height: 1500px; */
+    background-color: #f4f4f4;
+}
+.allWorks{
+    padding: 20px 0;
+    /* height: 460px; */
+}
+
+/* 作品信息 */
+.work{
+    float: left;
+    width: 210px;
+    height: 308px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.lineLastWork{
+    margin-right: 0;
+}
+/* 图片封面 */
+.work_img{
+    width: 100%;
+    height: 158px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 4px 4px 0 0;
+
+}
+.work_1 .work_img{
+    background-image: url(https://img.zcool.cn/community/01e92e5d04cc65a801205e4bb91910.jpg@260w_195h_1c_1e_1o_100sh.jpg);
+
+}
+/* 作品介绍 */
+.work_info{
+    width: 178px;
+    height: 75px;
+    background-color: #fff;
+    padding: 11px 16px 13px;
+    border-bottom: 1px solid #eee;
+}
+/* 标题 */
+.work_title{
+    /* display: inline-block; */
+    text-align: left;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    color: #333;
+}
+.work_title:hover{
+    color: #d36f16;
+}
+/* 类型 */
+.work_type{
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 17px;
+}
+
+/* 关注量 */
+.readers{
+    /* display: inline-block; */
+    text-indent: 21px;
+    padding-left: 18px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 12px;
+    color: #bbb;
+    margin-right: 8px;
+    
+    background-position: left center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+}
+.guanzhu{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1);
+}
+.pinlun{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1);
+}
+.zhan{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1);
+}
+
+
+/* 作者 */
+.work_author{
+    padding: 0 16px;
+}
+.author_allInfo{
+    float: left;
+    position: relative;
+}
+
+.author_btn{
+    float: left;
+    width: 150px;
+    height: 100%;
+}
+.head_img{
+    float: left;
+    margin-top: 13px;
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background-size: 100% 100%;
+
+}
+.head_img1{
+
+    background-image: url(https://img.zcool.cn/community/031b7c95c243ec7a80121df90ab503d.jpg@80w_80h_1c_1e_1o_100sh.jpg);
+
+}
+.auth_name{
+    float: left;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    text-align: left;
+    color: #333;
+
+}
+.author_allInfo:hover .auth_name{
+    color: #d36f16;
+}
+.cre_time{
+    float: right;
+    width: 60px;
+    height: 100%;
+    text-align: right;
+    line-height: 50px;
+    font-size: 12px;
+    color: #bbb;
+}
+/* 覆盖坦诚框 */
+.author_allInfo:hover .author_hidd{
+    display: block;
+}
+.author_hidd{
+    position: absolute;
+    top: -278px;
+    left: -16px;
+    z-index: 3;
+    background-color: yellow;
+    width: 210px;
+    height: 278px;
+}
+
+
+/* 页码控制 */
+.pageSup{
+    /* height: 40px; */
+    background-color: #f4f4f4;
+}
+.mainCont{
+    margin: 0 auto;
+    width: 552px;
+    height: 40px;
+}
+.mainCont a{
+    float: left;
+    border-radius: 4px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e9e9e9;
+    line-height: 38px;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 3px;
+    color: #999;
+    background-color: #fff;
+
+}
+
+.mainCont a:hover, .mainCont .firstOne{
+    background-color: #ffe300;
+    border: 1px solid #ffe300;
+    color: #333;
+}
+.mainCont .ellipsis:hover{
+    color: #999;
+    background-color: #fff;
+    border: 1px solid #e9e9e9;
+}
+.supview{
+    background-color: #f4f4f4;
+}
+
+/* 霓虹背景 */
+.backgImg{
+    height: 100px;
+    margin-top: 30px;
+    border-radius: 4px;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-image: url(https://reviveimg.hellorf.com/www/images/fdd02806257d0f8a4f39a3f606cdb7b4.jpg);
+}
+.backgImg a{
+    width:100%;
+    height: 100%;
+}
+
+
+/* 猜你喜欢 */
+.guessYouLike{
+    height: 230px;
+}
+
+
+
+/* 底部 */
+.foot{
+    height: 229px;
+    background-color:#282828;
+    color: #666;
+}

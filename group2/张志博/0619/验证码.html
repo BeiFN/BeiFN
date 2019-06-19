@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">按钮</button>
+    <script>
+        btn.onclick = function(){
+            ipt.value = ma();
+        }
+        function ma(){
+            var str = "";
+            for(var count = 0;count<4;){
+                var asc = Math.round(Math.random()*122);
+                if(asc <=57 && asc >=48 ||asc >= 65 &&asc <= 90 ||asc>97){
+                    var s = String.fromCharCode(asc);
+                    str +=s;
+                    count++;
+                }
+            }
+            return str;
+        }
+    </script>
+</body>
+</html>

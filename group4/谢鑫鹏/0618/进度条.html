@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 600px;
+            height: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ddd;
+            margin: 100px auto;
+        }
+
+        #content{
+            width: 10px;
+            height: 20px;
+            background:linear-gradient(to right ,red,blue);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="content"></div>
+    </div>
+
+    <script>
+        var box = document.getElementById("box");
+        var content = document.getElementById("content");
+        var target = 600;
+        var timer = null;
+        var width = 0;
+
+        function add(speed){
+            width += 10;
+            console.log(width);
+            content.style.width = width + "px";
+            if(width >= target){
+                clearInterval(timer);
+                content.style.width = target + "px";
+            }
+        }
+        timer = setInterval(add,20);
+        
+    </script>
+</body>
+</html>
