@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证用户输入</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入用户名" id="username">
+
+    <script>
+        var username = document.getElementById("username");
+        function verify(){
+            var name = username.value;
+            if(name.length >= 6 && name.length <= 20){
+                username.style.borderColor = "green";
+            }else{
+                username.style.borderColor = "red";
+                alert("长度要在6-20位之间");
+                return false;
+            }
+            if(isNaN(name[0])){
+                username.style.borderColor = "green";
+            }else{
+                username.style.borderColor = "red";
+                alert("第一位不能为数字");
+                return false;
+            }
+            for(var i = 0; i < name.length; i++){
+                var ascii = name[i].charCodeAt(0);
+                if(ascii >= 48 && ascii <=57 || ascii >=65 &&ascii <=90 || ascii >= 97 && ascii <=122 || ascii === 95){
+                    username.style.borderColor = "green";
+                }else{
+                    username.style.borderColor = "red";
+                    alert("只能是数字字母下划线");
+                    return false;
+                }
+            }
+        }
+
+        username.addEventListener("blur",verify);
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            height: 400px;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="username" placeholder="用户名"><i>*用户名是6-20位的数字，字母下划线切不能以数字开头</i>
+        <input type="text" id="pwd" placeholder="密码"><i>*密码是8-15位的数字，字母下划线数字组成</i>
+    </div>
+    <button id="btn">登录</button>
+    <script>
+    btn.onclick = function login(){
+        
+         check();
+    }
+    function check(){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("pwd").value;
+        //用户名长度6-20
+        if(username.length < 6 || username.length > 20) {
+            alert("用户名长度不对！！！");
+        }
+        //数字不能开头
+        if(username.charCodeAt(0) >= 48 && username.charCodeAt(0) <= 57){
+            alert("用户名不可以用数字开头！")
+        } 
+        //只能包含数字、字母、下划线
+        for(var i in username) {
+            var asc = username.charCodeAt(i);
+            //48-57   65-90   97-122 95
+            if( (asc>=48&&asc<=57) || (asc>=65&&asc<=90) || (asc>=97&&asc<=122) || asc==95 ) {
+
+            } else {
+                alert("用户名只能使用数字字母下划线");
+                break;
+            }
+        }
+        //密码长度为8---15
+        if(password.length < 8 || password.length>15){
+            alert("用户名长度不正确");
+        }
+        //密码只能包含数字、字母、下划线
+        for(var i in password){
+            var asc = password.charCodeAt(i);
+            if((asc>=48&&asc<=57) || (asc>=65&&asc<=90) || (asc>=97&&asc<=122) || asc==95){
+
+            }else{
+                alert("密码只能是数字下划线字母");
+                break;
+            }
+        }
+}
+    </script>
+</body>
+</html>
