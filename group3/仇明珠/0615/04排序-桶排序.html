@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            // 一个严重偏科的排序;
+            // 速度;
+
+            // var arr = [];
+            // arr[100] = 10;
+            // console.log(arr);
+            var arr = [1000,1000,2000,500,400,3000];
+            var bocket = [];
+            // 向对应的桶里装水;
+            for(var i = 0 ; i < arr.length; i++){
+                  bocket[arr[i]] = 1;
+            }
+            console.log(bocket);
+
+            arr.length = 0;
+            for(var index in bocket){
+                  // console.log(1);
+                  // console.log(Number(index));
+                  arr.push(Number(index))
+            }
+            console.log(arr);
+
+      </script>
+</body>
+</html>
