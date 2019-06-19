@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            text-align: center
+        }
+
+        #btn {
+
+            width: 80px;
+            height: 40px;
+            background: #f2f;
+        }
+
+        #content {
+            width: 800px;
+            background: #ff0;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <p>请输入你的发言</p>
+        <p><textarea name="" id="text" cols="60" rows="6"></textarea></p>
+        <p><button id="btn">发送</button></p>
+    </div>
+
+
+    <div id="content">
+        <div id="list">
+            fashfjdhfasjfhasjfhsadfjhsdfhdkjfhjjg
+            ffaksjfhsadkjhndkjhfjhfjskadhfasdkjfhafd
+        </div>
+
+    </div>
+    <script>
+        //获取数据
+        btn.onclick = function () {
+            var text1 = text.value;
+            // console.log(text1);
+            // list.innerHTML = text1;
+            list.innerHTML =
+                '<div id="list">' +
+                '<p style="text-align:left">张朋伟</p>' +
+                '<p style="text-align:center">' + text1 + '</p>' +
+                '</div>'
+            content.innerHTML = list.innerHTML + content.innerHTML
+            text.select();
+        }
+    </script>
+</body>
+
+</html>

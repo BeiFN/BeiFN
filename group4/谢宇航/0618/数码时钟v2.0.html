@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数码时钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dabox {
+            width: 300px;
+            height: 300px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .box {
+            width: 280px;
+            height: 280px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .box li {
+            list-style: none;
+            height: 140px;
+            position: absolute;
+            left: 135px;
+            transform-origin: bottom center;
+            font-size: 18px;
+        }
+
+        .one {
+            transform: rotate(30deg);
+        }
+
+        .two {
+            transform: rotate(60deg);
+        }
+
+        .three {
+            transform: rotate(90deg);
+        }
+
+        .four {
+            transform: rotate(120deg);
+        }
+
+        .five {
+            transform: rotate(150deg);
+        }
+
+        .six {
+            transform: rotate(180deg);
+        }
+
+        .seven {
+            transform: rotate(210deg);
+        }
+
+        .eight {
+            transform: rotate(240deg);
+        }
+
+        .nine {
+            transform: rotate(270deg);
+        }
+
+        .ten {
+            transform: rotate(300deg);
+        }
+
+        .eleven {
+            transform: rotate(330deg);
+        }
+
+        .twelve {
+            transform: rotate(360deg);
+        }
+
+        #hour{
+            position: absolute;
+            transform-origin: center bottom;
+            width: 8px;
+            height: 80px;
+            background-color: #444;
+            left: 149px;
+            top: 70px;
+            border-radius: 4px;
+        }
+
+        #minute{
+            position: absolute;
+            transform-origin: center bottom;
+            width: 4px;
+            height: 110px;
+            background-color: #222;
+            left: 151px;
+            top: 40px;
+            border-radius: 4px;
+        }
+
+        #second {
+            width: 2px;
+            height: 130px;
+            background-color: #666;
+            position: absolute;
+            top: 20px;
+            left: 152px;
+            transform-origin: center bottom;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dabox">
+        <ul class="box">
+            <li class="one">1</li>
+            <li class="two">2</li>
+            <li class="three">3</li>
+            <li class="four">4</li>
+            <li class="five">5</li>
+            <li class="six">6</li>
+            <li class="seven">7</li>
+            <li class="eight">8</li>
+            <li class="nine">9</li>
+            <li class="ten">10</li>
+            <li class="eleven">11</li>
+            <li class="twelve">12</li>
+        </ul>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+</body>
+<script>
+    clock();
+    function clock() {
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+        var second = document.getElementById("second");
+        var minute = document.getElementById("minute");
+        var hour   = document.getElementById("hour");
+        requestAnimationFrame(animation);  //执行一个动画
+    }
+
+    function animation() {
+            requestAnimationFrame(animation);
+            var now = new Date();
+            seconds = now.getSeconds() * 6 + now.getMilliseconds() * 6 / 1000;
+            minutes = now.getMinutes() * 6 + now.getSeconds() * 6 / 60;
+            hours   = now.getHours() * 30 + now.getMinutes() * 30 / 60 + now.getSeconds() * 30 / 3600;
+            second.style.transform = "rotate(" + seconds + "deg)";
+            minute.style.transform = "rotate(" + minutes + "deg)";
+            hour.style.transform   = "rotate(" + hours + "deg)";
+        }
+</script>
+</html>

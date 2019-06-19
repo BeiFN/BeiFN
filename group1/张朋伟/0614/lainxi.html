@@ -43,12 +43,18 @@
 
         //田姐发的面试题
 
-        // function t(n){         
+        // function t(n) {
+        //     //变量声明提升
+        //     //赋值
+        //     //函数整体提升
+
         //     console.log(n);
-        //     var n = 2;
-        //     function n(){
+
+        //     function n() {
 
         //     }
+        //      var n = 2;
+
         //     console.log(n);
         // }
         // t(1);
@@ -57,25 +63,40 @@
         // function foo(o) {
         //     // o 指向 {a : 10}
         //     o.a++;
+        //     console.log(o.a); //11
+        //     var  o =  {a : 20};
+        //     console.log(o.a); //20
+        
         // }
         // //一个对象
         // var obj = {
         //     a: 10
         // }; // obj里面其实是这个对象的地址;
         //  foo(obj); // 
-        // console.log(obj); //11
-
+       // console.log(obj); //11
+            
+       //闭包作用
         // 变量的隐私性;  
-            // 局部变量的生命周期延长了;
+        // 局部变量的生命周期延长了;
 
-            var foo = (function(){
-                  var answer = { "1" : "A" , "2" : "B" , "3" : "C"};
-                  function poo(){
-                        console.log(answer);
-                  }
-                  return poo;
-            })(); //立即调用函数有赋值给了foo变量；
-            foo(); //foo获取了poo的地址；
+        // var foo = (function(){
+        //       var answer = { "1" : "A" , "2" : "B" , "3" : "C"};
+        //       function poo(){
+        //             console.log(answer);
+        //       }
+        //       return poo;
+        // })(); //立即调用函数有赋值给了foo变量；
+        // foo(); //foo获取了poo的地址；
+
+
+
+            var a ;
+			a in window;//true
+			"a" in window; //undefined in windows//  true
+			
+			// var a = 10;
+			// a in windows;//  10 in window ?  false
+            "a" in window  //  "a" ==key
     </script>
 
 </body>
