@@ -1,5 +1,4 @@
 +function () {
-    
     var name = document.getElementById('name'),
         pwd = document.getElementById('pwd'),
         again = document.getElementById('again'),
@@ -10,46 +9,38 @@
         againTip = document.getElementById('againTip');
 
     // 绑定事件
-    name.addEventListener('blur', verification.bind(name,usernameRule));
-    pwd.addEventListener('blur', verification.bind(pwd,passwordRule));
-    pwd.addEventListener('blur', pwdAgain);
-    again.addEventListener('blur', pwdAgain);
-    email.addEventListener('blur', verification.bind(email,emailRule));
+    name.addEventListener('blur', verification.bind(name, usernameRule));
+    pwd.addEventListener('blur', verification.bind(pwd, passwordRule));
+    email.addEventListener('blur', verification.bind(email, emailRule));
+    pwd.addEventListener('blur', verification.bind(again, againRule));
+    again.addEventListener('blur', verification.bind(again, againRule));
     // 正则验证
     function verification(rule) {
-        var item=this.parentElement;
-        var tip=item.nextElementSibling.children[0];
-        tip.style.display = 'block';
-        tip.style.color = '#cc5';
-        if (rule(this, (text,num)=>{tip.innerHTML=text;})) {
-            var index = item.className.indexOf('success');
-            index === -1 ? item.className += ' success' : '';
+        var iptBox = this.parentElement;
+        var tipEle = iptBox.nextElementSibling.children[0];
+        tipEle.style.display = 'block';
+        if (rule(this, (text, num) => { tipEle.innerHTML = text; })) {
+            var index = iptBox.className.indexOf('success');
+            index === -1 ? iptBox.className += ' success' : '';
+            tipEle.style.color = '#ccc';
         } else {
-            var arr = item.className.split(' '),
-                index = arr.indexOf('success');
-            index === -1 ? '' : arr.splice(index, 1);
-            item.className = arr.join(' ');
+            var classNameArr = iptBox.className.split(' '),
+                index = classNameArr.indexOf('success');
+            index === -1 ? '' : classNameArr.splice(index, 1);
+            iptBox.className = classNameArr.join(' ');
+            tipEle.style.color = '#cc5';
         }
     }
-    // 密码二次验证
-    function pwdAgain() {
-        if (again.value === '') {
-            againTip.innerHTML = '请再次输入密码';
-            againTip.style.display = 'block';
+    // 密码二次验证规则
+    function againRule(input, callback) {
+        if (!pwd.value) {
+            return false;
+        }
+        if (input.value === pwd.value) {
+            return true;
         } else {
-            if (again.value === pwd.value) {
-                var index = again.parentElement.className.indexOf('success');
-                index === -1 ? again.parentElement.className += ' success' : '';
-                againTip.innerHTML = '';
-            } else {
-                var arr = again.parentElement.className.split(' '),
-                    index = arr.indexOf('success');
-                index === -1 ? '' : arr.splice(index, 1);
-                again.parentElement.className = arr.join(' ');
-                againTip.style.display = 'block';
-                againTip.style.color = '#cc5';
-                againTip.innerHTML = '两次密码输入不一致';
-            }
+            callback('两次密码输入不一致');
+            return false;
         }
     }
 }();
