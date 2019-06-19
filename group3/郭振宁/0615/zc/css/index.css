@@ -1,0 +1,249 @@
+.w1380 {
+    width: 1380px;
+    margin: 0 auto;
+}
+.header {
+    width: 100%;
+    height: 56px;
+    background: #ffe300;
+}
+.header .w1548 {
+    width: 1548px;
+    margin: 0 auto;
+}
+.header img {
+    width: 120px;
+    height: 20px;
+    margin-top: 18px;
+    float: left;
+}
+.header .nav {
+    float: left;
+    margin-left: 317px;
+}
+.header .nav>li {
+    float: left;
+    height: 56px;  
+}
+.header .nav>li>a {
+    display: block;
+    height: 56px;
+    padding: 0 24px;
+    line-height: 56px;
+    color: black;
+}
+.header .nav>li:nth-child(6) {
+    position: relative;
+}
+.sellicon {
+    width: 30px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    color: white;
+    text-align: center;
+    background: #ea4335;
+    position: absolute;
+    left: 82px;
+    top: 10px;
+}
+.sellicon:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+.header .nav>li:nth-last-child(1) {
+    position: relative;
+}
+.header .nav>li:nth-last-child(1)>a {
+    padding: 0 30px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat center;
+    background-size: 20px auto;
+}
+.header .nav>li:nth-last-child(1) p {
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    left: 44px;
+    top: 20px;
+}
+.header .nav>li:hover>a{
+    background-color: black;
+    color: #ffe300;
+}
+.header .nav .ellipsis:hover>a {
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg);
+}
+.header>a {
+    float: right;
+    width: 60px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    color: black;
+}
+.header .line {
+    width: 1px;
+}
+.header .line i {
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: black;
+}
+.header .find {
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.header .cloud {
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg);
+    background-size: 30px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.header .find:hover {
+    background-color: black;
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1);
+}
+.header .cloud:hover {
+    background-color: black;
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg);
+}
+.more {
+    width: 152px;
+    display: none;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    padding: 6px 0;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    background: white;
+    z-index: 1;
+}
+.more li a{
+    display: block;
+    line-height: 44px;
+    height: 44px;
+    color: #444;
+    padding-left: 20px;
+}
+.ellipsis {
+    width: 60px;
+}
+.more li a:hover {
+    background: #ffe300;
+}
+.header .nav>li:hover ul{
+    display: block;
+}
+.course , .activity , .job , .samecity , .discover , .index {
+    width: 76px;
+}
+.header .w1548 .material>a {
+    padding-right: 42px;
+}
+.material {
+    width: 122px;
+}
+.category {
+    width: 630px;
+    overflow: hidden;
+    padding: 11px 17px 0 17px;
+}
+.category li {
+    width: 90px;
+    height: 28px;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+.category li a {
+   display: inline-block;
+   padding: 0;
+   line-height: 28px;
+   padding: 0 7px;
+   height: 28px;
+   border-radius: 4px;
+   color: #444;
+}
+.category li i {
+    width: 1px;
+    height: 14px;
+    display: inline-block;
+    background: #ddd;
+    position: absolute;
+    top: 8px;
+    right: 0;
+}
+.category p {
+    clear: both;
+    width: 649px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    margin-top: 20px;
+    position: relative;
+}
+.category p a {
+    margin-right: 40px;
+    color: #444;
+}
+.distance {
+    padding-bottom: 20px;
+}
+.category p span {
+    width: 664px;
+    height: 1px;
+    background: #eaeaea;
+    position: absolute;
+    left: -17px;
+    top: -1px;
+}
+.category p a:hover {
+    color: #d36f16;
+}
+.slideshow {
+    height: 350px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.slideshow .left_button {
+    display: block;
+    width: 130px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat center;
+}
+.slideshow .right_button {
+    display: block;
+    width: 130px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat center;
+}
+.slideshow .left_button:hover {
+    background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2);
+}
+.slideshow .right_button:hover {
+    background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2);
+}
+.pic_box {
+    width: 5520px;
+    position: absolute;
+}
+.pic_box a {
+    float: left;
+}

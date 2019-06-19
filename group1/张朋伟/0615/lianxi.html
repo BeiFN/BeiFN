@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //桶排序
+
+        //   var arr = [6,2,3,5,8,19];
+        //   var sort = [];
+        //   for( var i in arr){
+        //       sort[arr[i]] = 1;
+        //   }
+        //   for (var j in sort){
+        //       console.log(j);
+        //   }
+
+        //选择排序
+        // var arr = [10, 2, 3, 5, 8, 9];
+
+        // for (var i = 0; i < arr.length - 1; i++) {
+        //     var min = arr[i];
+        //      var index = i;
+        //     for (var j = i + 1; j < arr.length; j++) {
+        //         if (arr[j] < min){
+        //             index = j;
+        //             min = arr[index];
+        //         }
+        //     }
+        //     arr[index] = arr[i];
+        //     arr[i] = min;
+        // }
+        // console.log(arr);
+
+
+        //快速排序
+        // var arr = [21, 5, 41, 7];
+
+        // function squitSort(arr) {
+        //     if (arr.length <= 1)
+        //         return arr;
+        //     var left = [];
+        //     var right = [];
+        //     midIndex = parseInt(arr.length / 2);
+        //     var mid = arr[midIndex];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (i === midIndex)
+        //             continue;
+        //         if (arr[i] < mid) {
+        //             left.push(arr[i])
+
+        //         } else {
+        //             right.push(arr[i])
+        //         }
+        //     }
+        //     // console.log(left, arr[midIndex], right);
+        //     return squitSort(left).concat([mid],squitSort(right));
+
+        // }
+        // console.log(squitSort(arr));
+
+
+
+        // function squit(arr) {
+        //     if (arr.length <= 1)
+        //         return arr;
+        //     var left = [];
+        //     var right = [];
+        //     midIndex = parseInt(arr.length / 2);
+        //     var mid = arr[midIndex];
+        //     for (var i in arr) {
+        //         if (midIndex === i) continue;
+        //         if (arr[i] < mid) {
+        //             left.push(arr[i])
+        //             }
+        //             else {
+        //                 right.push(arr[i])
+        //             }
+        //         }
+        //         return squit(left).concat([mid],squit(right))
+
+
+        //     }
+
+
+        //     //
+
+        //     console.log(squit(arr));
+        //冒泡排序
+        // var arr = [2, 25, 41,8,34,676,7];
+
+        // function maopao(arr) {
+        //     var temp;
+        //     for (var i = 0;i <arr.length - 1; i++){
+        //         for (var j = 0; j < arr.length - 1- i; j++ ){
+        //             if(arr[j] > arr[j + 1]){
+        //                 temp = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr [j + 1] = temp;   
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // console.log(maopao(arr));
+
+
+
+        // function myslice(arr,start,end) {
+        //     var arr1 = [];
+        //     for (var i = start ? start : 0; i < (end ? end : arr.length); i++) {
+        //         arr1.push(arr[i]);
+        //     }
+        //     console.log(arr1);
+        // }
+        // var arr = [2, 3, 6, 7, 3, 4, 6, 7];
+        // myslice(arr,3, 4);
+    </script>
+</body>
+
+</html>

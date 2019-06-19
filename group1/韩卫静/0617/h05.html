@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试密码强度</title>
+    <style>
+        div{
+            width: 500px;
+            margin:  0 auto;
+        }
+        span{
+            display: inline-block;
+            margin-left: 40px;
+            height: 20px;
+            width: 30px;
+            text-align: center;
+            box-shadow: 0 0 2px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        请输入密码：
+        <input id="passwd" type="text">
+        <br>
+        <br>
+         密码强度 <span id="lspan"></span>
+    </div>
+
+    <script>
+        passwd.oninput  = function(){
+            var str = passwd.value;
+            var level = 0;
+            for(var i in str){
+                var asc = str.charCodeAt(i);
+                if( (asc>=65&&asc<=90) || (asc>=97&&asc<=122)){
+                    level += 2;
+                }else if(asc>=48&&asc<=57){
+                    level += 1;
+                }else if(asc>=35&&asc<=47){
+                    level += 3;
+                }
+            }
+
+            if(level <=8){
+                lspan.style.background = "#e00";
+                lspan.innerHTML = "弱";
+            }else if(level >8 && level <17){
+                lspan.style.background = "#ee0";
+                lspan.innerHTML = "中";
+            }else if(level >= 17){
+                lspan.style.background = "#0e0";
+                lspan.innerHTML = "强";
+            }
+        }
+    </script>
+</body>
+</html>

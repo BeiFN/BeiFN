@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="../../public/css/normal.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../public/js/normal.js"></script>
+    <title> EMB学习制作|吃火星的宝宝|朱盟 </title>
+</head>
+
+<body>
+    <script>
+        // function foo(o) {
+        //     o.a++;
+        //     var o =10;
+        //     o.b=2;
+        // }
+
+        // var obj={a:10};
+        // foo(obj);
+
+        //// 桶排序
+        // var arr = [400, 5000, 200, 100];
+        // var bocket = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     bocket[arr[i]] = "1";
+        // }
+        // arr = [];
+        // for (const key in bocket) {
+        //     arr.push(Number(key));
+        // }
+        // console.log(arr);
+
+        //选择排序 （假设排序）
+
+        function selectionSort(arr) {
+
+            for (var count = 0; count <= arr.length - 1; count++) {//最后一个还用和其他的比较吗？
+                var min = arr[count];
+                var index = count;
+                for(var i=count+1;i<arr.length;i++)//从自己身后那个开始比较排序，直到最后一个比较完，得出最小的
+                {
+                    if(min>arr[i]){
+                        min=arr[i];// 这里有两个任务 ，首先是记录小的值，其次动态的换最小值的对比
+                        console.log("(---"+i,min=arr[i]);
+                        index=i;
+                    }
+                }
+                //现在是当前参与比较的 最小的得出来了 ，那开始时换位置吧
+                //×  min=arr[index]; 放在外面错了
+                console.log("!----"+index,arr[index]);
+                arr[index]=arr[count];
+                arr[count] = min;
+            }
+            // console.log(arr);
+            
+        }
+
+        // selectionSort([5,7,2,1,8,9]);
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作业-字符串过滤</title>
+</head>
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #edit {
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+        overflow: hidden;
+    }
+    #commentlist {
+        margin: 0 auto;
+        width: 1000px;
+    }
+    #commentlist .comment {
+        width: 800px;
+        min-height: 80px;
+        margin: 20px auto;
+        background: darkkhaki;
+        border-radius: 5px;
+        padding:10px;
+        position: relative;
+        overflow: hidden;
+    }
+    #commentlist .comment p {
+        margin: 10px 10px;
+    }
+    #sendBtn {
+        display: block;
+        margin: 10px auto;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        background: linear-gradient(to bottom, #faa, #f40);
+        box-shadow: 0 0 2px #000;
+        border-radius: 4px;
+    }
+    #sendBtn:hover {
+        cursor: pointer;
+        background: linear-gradient(to bottom, #fee, #f40);
+    }
+    #txt{
+        resize: none;
+        width: 360px;
+        height: 100px;
+        margin: 20px auto;
+        padding:8px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <div id="edit">
+        <p>请输入你的发言:</p>
+        <p>
+            <textarea id="txt" name="" rows="5" cols="60"></textarea>
+        </p>
+        <p><a class="send" id="sendBtn">发送</a></p>
+    </div>
+    <div id="commentlist">
+    </div>
+</body>
+<script type="text/javascript">
+    var sendBtn = document.getElementById("sendBtn");
+    var txt = document.getElementById("txt");
+    var commentlist = document.getElementById("commentlist");
+    sendBtn.onclick = function () {
+        var txtValue = txt.value;
+        var date=new Date();
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var dates=date.getDate();
+        var h=date.getHours();
+        var m=date.getMinutes();
+        var conValue = '<div class="comment">'
+                        + '<p>一个有梦想的Cat:</p>'
+                        + '<p style="word-break: break-all;">'
+                        +  txtValue
+                        + '</p>'
+                        + '<p style="text-align: right;">'+year+"-"+month+"-"+dates+"  "+h+":"+m+'</p>'
+                        + '</div>';
+        commentlist.innerHTML=conValue+commentlist.innerHTML;
+        txt.select();
+    }
+</script>
+</html>
