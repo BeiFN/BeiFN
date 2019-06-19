@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #progress_bar{
+        width: 600px;
+        height: 20px;
+        margin: 0 auto;
+        border: 1px solid black;
+    }
+    #progress{
+        width: 0px;
+        height: 20px;
+        background-color: red;
+    }
+</style>
 </head>
 <body>
 
@@ -18,32 +35,39 @@
         <br/>
         <a href="./输入判断.html">案例5自定义密码规则</a>
         <br/>
+
+        <a href="./随堂.html">案例三角函数</a>
+        <br/>
+
+        <!-- <input type="text" id="searchinput" onfocus="foc()" onblur="blu()" class="searchinput" value="请输入你要查询的内容"/> -->
+    
+    
     <script>
         // 5单元
-
-        var count = 0; //总攻击次数
-        var pcount = 0; //暴击次数
-        var fixp =  0.2; //期望概率
-        var c = 0.0557; //种子
+        document.write("<br/><br/>暴击统计<br/>"); 
+        // var count = 0; //总攻击次数
+        // var pcount = 0; //暴击次数
+        // var fixp =  0.2; //期望概率
+        // var c = 0.0557; //种子
 
         // var timers = null;
         // timers = setInterval(function(){
 
-        var timers = setInterval(function(){
+        // var timers = setInterval(function(){
 
-            var num = Math.random();
-            count++;
-            if(num<=fixp){
-            pcount++;
-            fixp = c;
-            }else{
-            fixp += c;
-            }
-            console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
-            if(count === 10){
-                clearInterval(timers);
-            }
-        },1000);
+        //     var num = Math.random();
+        //     count++;
+        //     if(num<=fixp){
+        //     pcount++;
+        //     fixp = c;
+        //     }else{
+        //     fixp += c;
+        //     }
+        //     console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
+        //     if(count === 10){
+        //         clearInterval(timers);
+        //     }
+        // },1000);
 
         // var timers = null;
         // timers = setInterval(baoji,1000);
@@ -54,10 +78,10 @@
         //     var num = Math.random();
         //     count++;
         //     if(num<=fixp){
-        //     pcount++;
-        //     fixp = c;
+        //         pcount++;
+        //         fixp = c;
         //     }else{
-        //     fixp += c;
+        //         fixp += c;
         //     }
         //     console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
 
@@ -65,6 +89,92 @@
         //         clearInterval(timers);
         //     }
         // }
+
+        document.write("<br/><br/>输入框默认提示<br/>"); 
+        document.write('<input type="text" id="searchinput" onfocus="foc()" onblur="blu()" class="searchinput" value="请输入你要查询的内容"/>')
+        
+        var oInput = document.getElementById("searchinput");
+        oInput.style.color = "gray";
+        function foc(){
+            // var oInput = document.getElementById("searchinput");
+            if(oInput.value == "请输入你要查询的内容") {
+                oInput.value = "";
+                oInput.style.color = "gray";
+            }else{
+                oInput.style.color = "black";
+            }
+        }
+
+        function blu(){
+            // var oInput = document.getElementById("searchinput");
+            if(oInput.value == "") {
+                oInput.value = "请输入你要查询的内容";
+                oInput.style.color = "gray";
+
+            }else{
+                oInput.style.color = "black";
+            }
+        }
+
+
+        document.write("<br/><br/>倒计时<br/>"); 
+        document.write('<div id="container"><span id="sen_box">00</span></div>');
+
+        var jiange = 1000;
+        var allTime = 10000;
+        var times = setInterval(showDate,jiange);
+        // showDate(dateArr);
+
+        function showDate(){
+            // console.log("aaa");
+            
+            var dateArray =  getDHMSFromTimeStamp(allTime);
+            console.log(dateArray[2]);
+            sen_box.innerHTML = dateArray[2];
+            allTime -= jiange;
+            if(dateArray[2] <= 0){
+                clearInterval(times);
+            }
+        }
+        showDate();
+
+        function getDHMSFromTimeStamp(reduce){
+            var secondt = parseInt( reduce / 1000 % 60);
+            var minute = parseInt(reduce/1000/60 %60);
+            var hours = parseInt(reduce/1000/3600);
+            var days = hours > 24 ? parseInt(hours / 24) : 0;  
+            hours = (hours > 24 ? hours % 24 : hours);
+            return [
+                        hours < 10 ? "0" + hours : "" + hours ,
+                        minute < 10 ? "0" + minute : "" +minute ,
+                        secondt < 10 ? "0" + secondt : "" +secondt ,
+                        days
+                    ];
+
+        }
+    
+
+        document.write("<br/><br/>进度条<br/>"); 
+        document.write('<div id="progress_bar">'+
+            '<div id="progress"></div>'+
+        '</div>');
+        window.onload = function(){
+        var num = 5;
+        var div = document.getElementById("progress_bar");
+        var progress_width = 0;
+        var t = setInterval(function(){
+        if(num == 0) {
+            clearInterval(t);
+            div.style.display = "none";
+            return;
+        }
+        progress.innerHTML = --num;
+        
+        progress_width += 120;
+        console.log(progress_width);
+        progress.style.width = progress_width + "px";
+    },1000);
+}
 
     </script>
 </body>
