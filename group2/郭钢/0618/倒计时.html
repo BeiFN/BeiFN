@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: #00fff0;
+            line-height: 300px;
+            text-align: center;
+            font-size: 60px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span id="daysGet"></span>
+        <span id="hoursGet"></span>
+        <span id="minutesGet"></span>
+        <span id="secondsGet"></span>
+    </div>
+</body>
+<script>
+    // 倒计时
+    setInterval(tarTime, 1000);
+        
+
+    function tarTime() {
+        var arr = goTime(2019,6,19);
+        hoursGet.innerHTML = arr[0] + ":";
+        minutesGet.innerHTML = arr[1] + ":";
+        secondsGet.innerHTML = arr[2];
+        daysGet.innerHTML = arr[3];
+
+    }
+
+    tarTime(2019,7,19)
+
+
+    function goTime() {
+        var hour = 0,
+            minute = 0,
+            second = 0;
+        day = 0;
+        var year = arguments[0];
+        var month = arguments[1];
+        var date = arguments[2];
+
+        if (arguments.length > 3) {
+            hour = arguments[3];
+            minute = arguments[4];
+            second = arguments[5];
+        }
+        var targetTime = new Date();
+        targetTime.setFullYear(year);
+        targetTime.setMonth(month-1);
+        targetTime.setDate(date);
+        targetTime.setHours(hour);
+        targetTime.setMinutes(minute);
+        targetTime.setSeconds(second);
+        var tarMi = targetTime.getTime();
+        var nowTime = Date.now();
+        var chazhi = tarMi - nowTime;
+        var cha_second = parseInt(chazhi / 1000 % 60);
+        var cha_minute = parseInt(chazhi / 1000 / 60 % 60);
+        var cha_hour = parseInt(chazhi / 1000 / 3600);
+        day = cha_hour < 24 ? day : parseInt(cha_hour / 24);
+        cha_hour = cha_hour%24;
+        return [
+            cha_hour < 10 ? "0" + cha_hour : "" + cha_hour,
+            cha_minute < 10 ? "0" + cha_minute : "" + cha_minute,
+            cha_second < 10 ? "0" + cha_second : "" + cha_second,
+            day>0?""+day:""
+        ]
+    }
+
+
+
+</script>
+
+</html>
