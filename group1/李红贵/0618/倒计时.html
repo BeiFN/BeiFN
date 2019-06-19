@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <span id="day_box">00</span>:
+        <span id="hour_box">00</span>:
+        <span id="min_box">00</span>:
+        <span id="sen_box">00</span>
+    </div>
+
+
+    <script>
+        // // 实现 去重 封装 复用
+        // function nowTime(){
+        //     var d = new Date();
+        //     console.log(d.toDateString(), d.getHours(), d.getMinutes(), d.getSeconds());
+        // }
+        // nowTime();
+
+        // setInterval(countDowm, 1000);
+        // function countDowm(){
+        //     var targetDate= new Date();
+        //     targetDate.setFullYear(2019);
+        //     targetDate.setMonth(5);
+        //     targetDate.setDate(19);
+        //     targetDate.setHours(0);
+        //     targetDate.setMinutes(0);
+        //     targetDate.setMilliseconds(0);
+        //     var targetTime = targetDate.setSeconds(0);
+        //     console.log(targetTime);
+
+        //     var reduce = targetTime - Date.now();
+        //     var secondt = parseInt( reduce / 1000 % 60);
+        //     // var minute = parseInt(reduce/1000 % 3600 / 60);   //总秒数 = reduce / 1000;    %3600减去整小时，
+        //     var minute = parseInt(reduce/1000/60 %60);
+        //     var hours = parseInt(reduce/1000/3600);
+        //     console.log()
+        //     hour_box.innerHTML = hours;
+        //     min_box.innerHTML = minute;
+        //     sen_box.innerHTML = secondt;
+
+        // }
+
+        // getTimeStampFromDateStr(2019,6,19);
+        
+
+        // console.log(timeSta);
+        // var dateArr = getDHMSFromTimeStamp(timeSta);
+        // console.log(dateArr);
+        // setInterval(showDate() , 1000 );
+
+        setInterval(showDate,1000);
+        // showDate(dateArr);
+
+        function showDate(){
+            var timeSta = getTimeStampFromDateStr(2019,6,19);
+            var dateArray =  getDHMSFromTimeStamp(timeSta);
+            hour_box.innerHTML = dateArray[0];
+            min_box.innerHTML = dateArray[1];
+            sen_box.innerHTML = dateArray[2];
+            day_box.innerHTML = dateArray[3];
+        }
+        showDate();
+
+        function getDHMSFromTimeStamp(reduce){
+            var secondt = parseInt( reduce / 1000 % 60);
+            var minute = parseInt(reduce/1000/60 %60);
+            var hours = parseInt(reduce/1000/3600);
+            var days = hours > 24 ? parseInt(hours / 24) : 0;  
+            hours = (hours > 24 ? hours % 24 : hours);
+            return [
+                        hours < 10 ? "0" + hours : "" + hours ,
+                        minute < 10 ? "0" + minute : "" +minute ,
+                        secondt < 10 ? "0" + secondt : "" +secondt ,
+                        days
+                    ];
+
+        }
+
+        function getTimeStampFromDateStr(){
+            // 1. 只传年月日 ;
+            // 2. 年月日时分秒;
+            var 
+                hour   = 0,
+                minute = 0,
+                second = 0;
+
+            var targetDate = new Date();
+
+
+            console.log(arguments);
+
+
+            targetDate.setFullYear(arguments[0]); // 2019 6 18 
+            targetDate.setMonth   (arguments[1] - 1);       // 2019 7 18 
+            targetDate.setDate    (arguments[2]);       // 2019 7 10 
+
+            // 根据参数不同,我们会进行不同的计算;
+            if( arguments.length > 3){
+                hour   = arguments[3];
+                minute = arguments[4];
+                second = arguments[5];
+            }
+            targetDate.setHours  (hour);
+            targetDate.setMinutes(minute);
+            var targetTime = targetDate.setSeconds(second);
+            console.log(targetTime);
+
+            var reduce = targetTime - Date.now();
+            console.log(reduce);
+            return reduce;
+
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

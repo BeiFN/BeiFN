@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三角函数曲线图</title>
+    <style>
+        .dian {
+            width: 6px;
+            height: 6px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dian"></div>
+
+    <div id="content">
+
+    </div>
+    <script>
+        var angle = 0;
+        var r = 100;
+        for (var i = 0; i < 100; i++) {
+            angle += 3.6
+            var left = Math.cos(Math.PI / 180 * angle) * r + 200
+            // var t = Math.sin(Math.PI / 180 * angle) * r + 200
+            // 这里命名不能用top  用top不生效
+            var t = i*10
+            console.log(top)
+            var str = 'style="left:' + left + 'px;top:' + t + 'px"';
+            content.innerHTML += '<div class="dian" ' + str + '</div>';
+        }
+    </script>
+</body>
+
+</html>
