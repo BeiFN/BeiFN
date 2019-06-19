@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <a href="../0617/全局检索替换.html">案例1检索替换</a>
+        <br/>
+        <a href="./练习留言框.html">案例2留言框</a>
+        <br/>
+        <a href="./输入判断.html">案例3用户名密码格式</a>
+        <br/>
+        <a href="./统计字符串.html">案例4统计字符个数</a>
+        <br/>
+        <a href="./输入判断.html">案例5自定义密码规则</a>
+        <br/>
+    <script>
+        // 5单元
+
+        var count = 0; //总攻击次数
+        var pcount = 0; //暴击次数
+        var fixp =  0.2; //期望概率
+        var c = 0.0557; //种子
+
+        // var timers = null;
+        // timers = setInterval(function(){
+
+        var timers = setInterval(function(){
+
+            var num = Math.random();
+            count++;
+            if(num<=fixp){
+            pcount++;
+            fixp = c;
+            }else{
+            fixp += c;
+            }
+            console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
+            if(count === 10){
+                clearInterval(timers);
+            }
+        },1000);
+
+        // var timers = null;
+        // timers = setInterval(baoji,1000);
+
+        // var timers = setInterval(baoji,1000);
+
+        // function baoji(){
+        //     var num = Math.random();
+        //     count++;
+        //     if(num<=fixp){
+        //     pcount++;
+        //     fixp = c;
+        //     }else{
+        //     fixp += c;
+        //     }
+        //     console.log("当前第"+count+"次攻击，暴击次数"+pcount+"次，实际概率为："+pcount/count);
+
+        //     if(count === 10){
+        //         clearInterval(timers);
+        //     }
+        // }
+
+    </script>
+</body>
+</html>
