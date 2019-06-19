@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易年历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #lis {
+            list-style: none;
+        }
+
+        #lis li {
+            width: 120px;
+            height: 100px;
+
+            text-align: center;
+            float: left;
+            margin: 20px 40px;
+            background: #990;
+
+        }
+
+        .active {
+            background: rgb(48, 43, 36);
+            color: ghostwhite
+        }
+
+        .main {
+            width: 600px;
+            height: 750px;
+            /* background: #f0f; */
+            margin: 50px auto;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <ul id="lis">
+            <li>
+                <h3>1月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>2月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>3月</h3>
+                <p>January</p>
+            </li>
+
+
+            <li>
+                <h3>4月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>5月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>6月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>7月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>8月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>9月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>10月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>11月</h3>
+                <p>January</p>
+            </li>
+
+            <li>
+                <h3>12月</h3>
+                <p>January</p>
+            </li>
+            <textarea name="" id="text" cols="80" rows="10"></textarea>
+        </ul>
+    </div>
+</body>
+<script>
+    var tip = [
+        "一月真开心",
+        "二月来了",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一月",
+        "十二月",
+    ]
+    var ele_lis = document.getElementById("lis").children;
+    for (var i = 0, li; li = ele_lis[i++];) {
+        // li.index = i-1;
+        li.onclick = function () {
+            for (var k = 0; k < ele_lis.length; k++)
+                console.log("1");
+                console.log(ele_lis.length);
+                // ele_lis[k].className = "";
+        }
+        this.className = "active";
+    }
+</script>
+
+</html>
