@@ -20,8 +20,17 @@
         }
         console.log(_temp);
         for(var attr in _temp){
-            console.log(attr,_temp[attr]);
+            // console.log(attr,_temp[attr]);
+            console.log("字符"+ attr + "出现的次数：" + _temp[attr]);
         }
+
+        var arr = [];
+        for(var i in _temp) {
+            arr.push(i);
+        }
+        console.log(arr);
+
+
     </script>
 </body>
 </html>

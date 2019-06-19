@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 30px;
+            height: 30px;
+            border: 2px solid #000;
+            color: black;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 30px;
+            position: absolute;
+            top: 10px;
+            left: 1150px;
+        }
+    </style>
+</head>
+<body>
+    <img id="img1" src="https://img10.360buyimg.com/babel/s1200x80_jfs/t1/45276/38/2665/115327/5d077911E25cd0edb/04ea20bd54a82ef0.jpg!cc_1200x80">
+    <div id="box"></div>
+    <script>
+        var time = 15;
+        box.innerHTML = time;
+        var s1 = setInterval(function(){
+            time--;
+            box.innerHTML = time;
+            if(time === 0) {
+                box.style.display = "none";
+                img1.style.display = "none";
+                clearInterval(s1);
+            }
+        },1000);
+    </script>
+
+
+
+</body>
+</html>

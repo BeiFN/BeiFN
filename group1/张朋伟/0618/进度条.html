@@ -31,10 +31,11 @@
 
 <body>
     <div id="pro1">
-        <p id="pro2">aaaaaaaaaaaaa</p>
+        <p id="pro2">进度条</p>
     </div>
     <script>
-        var _width =10;
+        var start = 50;
+        var _width =0;
         var pro_interval = null;
         pro_interval = setInterval(progress, 50);
 
@@ -42,7 +43,7 @@
             _width += 5;
          
             pro2.style.width = _width+ "px"
-            if (_width === 800) {
+            if (_width > 800) {
                 clearInterval(pro_interval);
             }
         }
