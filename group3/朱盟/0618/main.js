@@ -233,14 +233,22 @@ clockHandler();
 // 进度条
 
 var pbar = Timer(function (count) {
-    // if(progressing.style.width==="100%" ){
-    //     // clearInterval(pbar);
-    // }
-    // if(progressing.style.width==="100%" ){
-  
-    // }
-   progressing.style.width = -count + "%";
-}, 100, 200);
+    var str = 100 - (count - 1);
+    progressing.style.width = str + "%";
+    var i = Number(str);
+    if (i<80) {
+        alertAd("加载中" + str + "%" + "... 嗨起来了！");
+    } else if(i<100&&i>=80){
+        alertAd("...再见了，我会想你的");
+        ad.style.width=50+(100-i)+"%";
+        ad.style.height=50+(100-i)+"%";
+    }else{
+        ad.style.display="none";
+        adclose.style.display="none";
+        progressBar.style.display="none";
+    }
+    console.log(str + "%");
+}, 100, 100);
 
 
 
@@ -262,6 +270,18 @@ var pbar = Timer(function (count) {
 
 // 广告弹出窗
 
+function alertAd(str) {
+    ad.innerHTML = str;
+}
+
+adclose.onclick=function(){
+    ad.style.display="none";
+    adclose.style.display="none";
+    progressBar.style.display="none";
+    clearTimeout(pbar);
+}
+
+
 // window.onload = function(){
 //     var fdiv = document.getElementById("filldiv");
 //     var percent = document.getElementById("percent");
@@ -274,6 +294,8 @@ var pbar = Timer(function (count) {
 // }
 
 // 顶部悬浮
+// API 参考
+// https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onscroll
 
 // window.onscroll = function(){
 //     var div2 = document.getElementById("div2");
@@ -286,6 +308,19 @@ var pbar = Timer(function (count) {
 //         div2.style.top = "400px";
 //     }
 // }
+
+// var boxh= box.style.height; +"box h:"+boxh
+window.onscroll=function(){
+    // clearInterval(pbar);
+    var x=window.pageXOffset;
+    var y=window.pageYOffset;
+    console.log("检测到页面滚动事件:"+window.pageXOffset+" "+window.pageYOffset );
+    ad.style.top=y+"px";
+    
+    
+}
+
+
 
 // 回到顶部
 

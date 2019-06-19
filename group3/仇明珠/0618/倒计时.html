@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <span id="s1"></span>
+    <span id="s2"></span>
+    <span id="s3"></span>
+    <span id="s4"></span>
+    <script>
+       cutDown("s1","s2","s3","s4");
+       setInterval(function(){
+           cutDown("s1","s2","s3","s4")
+       },1000);
+        function cutDown(day_box,hour_box,minute_box,second_box){
+            var day_box=document.getElementById(day_box);
+            var hour_box=document.getElementById(hour_box);
+            var minute_box=document.getElementById(minute_box);
+            var second_box=document.getElementById(second_box);
+            var arr=getCutDown(2019,6,19);
+            hour_box.innerHTML=arr[1];
+            minute_box.innerHTML=arr[2];
+            second_box.innerHTML=arr[3];
+            if(arr[0]!=0){
+                day_box.innerHTML=arr[0];
+            }
+        }
+        function getCutDown(year,month,data,hour,minute,second){
+            if(arguments.length<4){
+                hour=0;
+                minute=0;
+                second=0;
+            }
+            var endTime=new Date(year,month-1,data,hour,minute,second);
+            var time=endTime-Date.now();
+            var hour=parseInt(time/1000/3600)>9?parseInt(time/1000/3600):"0"+parseInt(time/1000/3600);
+            var minute=parseInt(time/1000/60%60)>9?parseInt(time/1000/60%60):"0"+parseInt(time/1000/60%60);
+            var second=parseInt(time/1000%60)>9?parseInt(time/1000%60):"0"+parseInt(time/1000%60);
+            var day= hour>24?parseInt(hour/24):0;
+            hour=hour>9?"0"+hour-24*day:hour-24*day;
+            return [day,hour,minute,second];
+        }
+      
+    </script>
+</body>
+</html>
