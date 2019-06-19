@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            position: relative;
+            margin: 50px auto;
+            width: 190px;
+            height: 275px;
+            background: #e83632;
+            color: #fff;
+        }
+
+        .sk_tit {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 42px;
+            font-size: 34px;
+        }
+
+        .sk_subtit {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 90px;
+            color: #f19999;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 20px;
+        }
+
+        .sk_ico {
+            background-image: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sprite.seckill@2x.png);
+            background-position: -32.5px 0;
+            -moz-background-size: 52.5px 40px;
+            background-size: 52.5px 40px;
+        }
+
+        .sk_ico {
+            position: absolute;
+            left: 86px;
+            top: 126px;
+            display: block;
+            width: 20px;
+            height: 33px;
+        }
+
+        .sk_desc {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: 170px;
+            font-size: 16px;
+        }
+
+        .sk_cd {
+            position: absolute;
+            top: 212px;
+            left: 30px;
+            height: 40px;
+        }
+
+        .cd_item {
+            float: left;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background: #000;
+            line-height: 40px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="sk_tit">京东秒杀</div>
+        <div class="sk_subtit">FLASH DEALS</div>
+        <div class="sk_ico"></div>
+
+        <div class="sk_desc">本场距离结束还剩</div>
+        <div class="sk_cd">
+            <div class="cd">
+                <div class="cd_item cd_hour"><span id="hour">00</span></div>
+                <div class="cd_item cd_minute"><span id="min">00</span></div>
+                <div class="cd_item cd_second"><span id="sec">00</span></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var hourBox = document.getElementById("hour"),
+            minBox = document.getElementById("min"),
+            secBox = document.getElementById("sec");
+        function getTime() {
+            var now = new Date();
+            var hour = now.getHours();
+            var min = now.getMinutes();
+            var sec = now.getSeconds();
+
+            var num1 = parseInt(hour / 10),
+                num2 = hour % 10,
+                num3 = parseInt(min / 10),
+                num4 = min % 10,
+                num5 = parseInt(sec / 10),
+                num6 = sec % 10;
+            hourBox.innerHTML = "" + num1 + num2;
+            minBox.innerHTML = "" + num3 + num4;
+            secBox.innerHTML = "" + num5 + num6;
+        }
+        getTime();
+        setInterval(getTime, 1000);
+    </script>
+</body>
+
+</html>

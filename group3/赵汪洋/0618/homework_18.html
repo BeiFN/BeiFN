@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0618作业——06单元案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #progress_bar {
+            width: 600px;
+            height: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ddd;
+            margin: 100px auto;
+        }
+
+        #progress {
+            width: 10px;
+            height: 20px;
+            background: linear-gradient(to right, #fff, #000);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="container"></div> -->
+
+    <div id="progress_bar">
+        <div id="progress"></div>
+    </div>
+    <script>
+        // 倒计时
+        // setInterval(getCountDown, 1000);
+        // getCountDown();
+
+        // function getCountDown() {
+        //     var targetDate = new Date();
+        //     targetDate.setFullYear(2019);
+        //     targetDate.setMonth(5);
+        //     targetDate.setDate(18);
+        //     // 不设置时分秒它会自动获取当前时间的时分秒并一直刷新
+        //     targetDate.setHours(22);
+        //     targetDate.setMinutes(0);
+        //     targetDate.setSeconds(0);
+        //     // console.log(targetDate.setMilliseconds(0)); // 所有set的返回值都是毫秒数
+        //     // console.log(targetDate.setFullYear(2019)); // 1565107200000
+        //     // console.log(Date.now()); // 1560859118868
+        //     var targetTime = targetDate.setMilliseconds(0);
+        //     var reduce = parseInt((targetTime - Date.now()) / 1000);
+        //     // console.log(reduce); // 4247961
+        //     var second = reduce % 60;
+        //     var minute = parseInt(reduce / 60) % 60;
+        //     var hour = parseInt(reduce / 3600);
+        //     var outPut = [hour < 10 ? "0" + hour : "" + hour,
+        //         minute < 10 ? "0" + minute : "" + minute,
+        //         second < 10 ? "0" + second : "" + second
+        //     ];
+        //     container.innerHTML = outPut;
+        // }
+
+        // 数码时钟
+        // setInterval(getCountDown, 1000);
+        // getCountDown();
+        // function getCountDown(){
+        //     var targetDate = new Date();
+        //     // targetDate.setFullYear(2019);
+        //     // targetDate.setMonth(5);
+        //     // targetDate.setDate(18);
+        //     var second = targetDate.getSeconds();
+        //     var minute = targetDate.getMinutes();
+        //     var hour = targetDate.getHours();
+        //     var outPut = [hour < 10 ? "0" + hour : "" + hour,
+        //             minute < 10 ? "0" + minute : "" + minute,
+        //             second < 10 ? "0" + second : "" + second];
+        //     container.innerHTML = outPut;
+        // }
+
+        // 进度条
+        // var progress_width = 0;
+        // var progress_interval = null;
+        // var target = 600;
+        // progress_interval = setInterval(progressing, 30)
+
+        // function progressing(prop) {
+        //     if (prop !== undefined && typeof prop === "number") {
+        //         progress_width = target * prop / 100;
+        //     } else {
+        //         progress_width += 5;
+        //     }
+        //     progress.style.width = progress_width + "px";
+        //     if (progress_width === target) {
+        //         clearInterval(progress_interval);
+        //         history.go(-1);
+        //     }
+        // }
+        // progressing(30);
+        // document.onclick = function () {
+        //     progressing(0);
+        // }
+
+        // 广告弹出窗
+
+        // 顶部悬浮
+
+        // 回到顶部
+    </script>
+</body>
+
+</html>

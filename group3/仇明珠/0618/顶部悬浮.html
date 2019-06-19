@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+        margin:0;
+        padding:0;
+    }
+    body,html{
+        width:100%;
+        height:100%;
+    }
+    li{
+        list-style: none;
+        padding:20px 50px;
+        flex: 1;
+    }
+    .logo{
+        width:100%;
+        height:300px;
+    }
+    #ul1{
+        display:flex;
+        width:100%;
+        height:50px;
+        background:blueviolet;
+        top:0;
+        left:0;
+    }
+    .temp{
+        height:1000px;
+        width:100px;
+        background:brown;
+    }
+    </style>
+</head>
+<body>
+    <div class="logo">
+       欢迎欢迎，热烈欢迎！
+    </div>
+    <ul id="ul1">
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+        <li>首页</li>
+    </ul>
+    <div class="temp"></div>
+    <script>
+       window.onscroll=function(){
+        var scrollTop = document.documentElement.scrollTop;
+       if(scrollTop >= 300){
+                        ul1.style.position = "fixed";
+                  }else{
+                      ul1.style.position = "static";
+                  }
+    
+       }   
+    </script>
+</body>
+</html>

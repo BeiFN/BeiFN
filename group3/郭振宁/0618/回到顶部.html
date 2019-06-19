@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        #top_bar {
+            width: 100px;
+            height: 100px;
+            background: cornflowerblue;
+            position: absolute;
+            left: 1500px;
+            top: 500px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="top_bar"></div>
+    <script>
+        top_bar.onclick = handerClick;
+        function handerClick() {
+            var top = document.documentElement.scrollTop;
+            // console.log(top);
+            document.documentElement.scrollTop = "0px";
+        }
+        window.onscroll = distance;
+        function distance() {
+            var top = document.documentElement.scrollTop;
+            console.log(top);
+            if(top > 300) {
+                top_bar.style.display = "block";
+            }else {
+                top_bar.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+</html>

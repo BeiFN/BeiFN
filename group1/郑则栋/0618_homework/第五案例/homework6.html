@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证码的生成？</title>
+    <style>
+    .box{
+        width: 120px;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 40px;
+        /* background: black; */
+        border-radius: 5px;
+        box-shadow: 4px 4px ;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="box"></div>
+    <Script>
+    document.querySelector(".box").onclick=function(){
+        document.querySelector(".box").innerHTML="";
+        for(var i=0 ;i++<4;){
+        var ram=parseInt(Math.random()*24)+97;
+        var alp= String.fromCharCode(ram);
+        console.log(alp);
+        document.querySelector(".box").innerHTML+=alp+"   ";
+        
+    }
+    }
+  
+    
+    
+    
+    </Script>
+
+
+
+
+
+
+
+</body>
+</html>
