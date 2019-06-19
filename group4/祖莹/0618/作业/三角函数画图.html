@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .point {
+            width: 10px;
+            height: 10px;
+            background: orange;
+            border-radius: 50%;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <div class="point"></div>
+    <script>
+        // 圆
+        var r = 100;
+        var angle = 0;
+        for (var i = 0; i < 100; i++) {
+            angle += 3.6;
+            var numLeft = Math.cos(Math.PI / 180 * angle) * r + 100;
+            var numTop = Math.sin(Math.PI / 180 * angle) * r + 500;
+            var styleStr = "left:" + numLeft + "px;top:" + numTop + "px";
+            container.innerHTML += '<div class="point" style="' + styleStr + '">';
+        }
+
+        // 正弦
+        var r = 150;
+        var angle = 0;
+        for (var i = 0; i < 150; i++) {
+            angle += 3.6;
+            var numLeft = i * 5;
+            var numTop = Math.sin(Math.PI / 180 * angle) * r +150;
+            var styleStr = "left:" + numLeft + "px;top:" + numTop + "px";
+            container.innerHTML += '<div class="point" style="' + styleStr + '">';
+        }
+
+        // 倒着
+        var r = 150;
+        var angle = 0;
+        for (var i = 0; i < 150; i++) {
+            angle += 3.6;
+            var numLeft = Math.cos(Math.PI / 180 * angle) * r + 1000;
+            var numTop = i * 5;
+            var styleStr = "left:" + numLeft + "px;top:" + numTop + "px";
+            container.innerHTML += '<div class="point" style="' + styleStr + '">';
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <div class="context">
+        <span id="hour"></span>
+        <span id="minutes"></span>
+        <span id="seconds"></span>
+    </div>
+    <script>
+        var chuoid = setInterval(gengxinTime,1000)
+        console.log(Date.now())
+
+        
+        function gengxinTime(){
+            var targetTime = new Date();
+            //new 的Date对象可以进行更改
+            targetTime.setFullYear("2019");
+            targetTime.setMonth("10");
+            targetTime.setDate("8")
+            targetTime.setHours("12")
+            targetTime.setMinutes("12")
+            var allMiao = targetTime.setSeconds("0");
+            //用目标时间减去当前时间就是倒计时的时间差
+            var chaMiao = allMiao - Date.now();
+            if(chaMiao==0){
+                clearInterval(chuoid)
+            }
+            // 秒
+            var miao = parseInt(chaMiao/1000%60)
+            //分   %3600就是除去小时之后的所有分钟数  /60得到的parseInt之后就是完整的分钟
+            var fen = parseInt(chaMiao/1000%3600/60)
+            //时
+            var shi = parseInt(chaMiao/1000/3600);
+            if(shi>24){
+                shi = shi%24
+            }
+            var miao = miao>=10?""+miao:"0"+miao;
+            var fen = fen>=10?""+fen:"0"+fen;
+            var shi = shi>=10?""+shi:"0"+shi;
+            
+            hour.innerHTML = shi;
+            minutes.innerHTML = fen;
+            seconds.innerHTML = miao;
+
+            console.log(shi,fen,miao)
+        }
+        gengxinTime()
+        
+
+    </script>
+</body>
+</html>
