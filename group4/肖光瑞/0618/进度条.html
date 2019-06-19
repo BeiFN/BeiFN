@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #progress-bar {
+            width: 598px;
+            height: 20px;
+            border-radius: 5px;
+            margin: 200px auto;
+            border: 1px solid #ddd;
+        }
+
+        #progress {
+            height: 20px;
+            border-radius: 5px;
+            background: linear-gradient(to right, pink, skyblue);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress-bar">
+        <div id="progress">
+
+        </div>
+    </div>
+    <script>
+        var proBar = document.getElementById("progress-bar"),
+            pro = document.getElementById("progress"),
+            proWidth = 0,
+            timer = 0,
+            proBarWidth = proBar.offsetWidth;
+
+        timer = setInterval(progressing, 50)
+        function progressing(prop) {
+            if (prop !== undefined && typeof prop === "number") {
+                proWidth = proBarWidth * prop / 100;
+            } else {
+                proWidth += 3;
+            }
+            pro.style.width = proWidth + "px";
+            if (proWidth >= proBarWidth) {
+                clearInterval(timer);
+            }
+        }
+        progressing(30)
+        document.onclick = function(){
+            progressing(0);
+        }
+    </script>
+</body>
+
+</html>
