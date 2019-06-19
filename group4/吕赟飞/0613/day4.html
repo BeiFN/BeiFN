@@ -33,11 +33,6 @@
             arr.push(2 * (i + 1));
             sum += arr[i];
             if ((i + 1) % 5 === 0) {
-                // var b = arr.splice(0, 5);
-                // var sum =0 ;
-                // for (var j = 0; j < 5; j++) {
-                //     sum += b[j];
-                // }
                 average.push(sum / 5);
                 sum = 0;
             }
@@ -51,6 +46,7 @@
         btn.onclick = function () {
             code.value = randomCode();
         }
+
         function randomCode() {
             var arr = []
             for (var i = 48; i < 123; i++) {
@@ -66,10 +62,14 @@
         }
 
         // 5.请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
-        function join(arr, str) {
-            document.write(arr.join(str))
+        function join(arr, symbol) {
+            var str = "";
+            for (var i = 0; i < arr.length; i++) {`
+                str += (i === 0 ? "" : symbol) + arr[i];
+            }
+            return str;
         }
-        join([1, 2, 3], "%")
+        console.log(join([1, 2, 3], "%"));
 
         // 6.随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
 
@@ -105,13 +105,6 @@
         }
         map([10, 20, 30])
 
-        // function map1(arr) {
-        //     return arr.map(function (num) {
-        //         return num * 1.3;
-        //     })
-        // }
-        // console.log(map1([10, 20, 30]))
-
         // 8.编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
 
         function has(arr, num) {
@@ -119,10 +112,6 @@
             else return true;
         }
         console.log(has([10, 20, 60], 60))
-
-        // console.log(arr.some(function (num) {
-        //     return num === 60;
-        // }))
 
         // 9.编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
 

@@ -1,0 +1,117 @@
+.head{height: 56px;width: 100%;background: #ffe300;}
+.nav{height: 100%;margin: 0 70px;position: relative;}
+.logo{height:25px;width: 120px;position: absolute;left: 0;top: 18px;}
+.nav_main .ul1{margin-left: 288px;}
+.nav_main .ul1 li{float:left;}
+.nav_main .ul1 li a{display: inline-block;font-size: 14px;height: 56px;line-height: 56px;padding: 0 24px;
+text-decoration: none;color: black;}
+.nav_main .ul1 .li1 a{font-weight: bold;}
+.nav_main .ul1 .li5 a{padding-right: 42px;}
+.nav_main .ul1 .li5{position: relative;}
+.nav_main .ul1 .preferential{position: absolute;top: 10px;left: 84px;background: red;font-size:12px;
+height: 18px;padding: 0 3px;}
+.nav_main .ul1 .li8{padding: 0 20px;}
+.nav_main .li8 span{background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat center;
+height: 52px;width: 20px;display: inline-block}
+.nav_main .ul1 a:hover{color: #ffe300; background-color: black;}
+.nav_right ul{float: right;} 
+.nav_right li{float: left;}
+.nav_right .magnifier{line-height: 56px;padding: 0 20px;}
+.nav_right .magnifier a{background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat;
+display: inline-block;height: 20px;width: 20px;vertical-align: middle;}
+.nav_right .could{line-height: 56px;padding: 0 16px;}
+.nav_right .could a{background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg) no-repeat ;
+display: inline-block;height: 20px;width: 30px;vertical-align: middle;}
+.nav_right .login .a1{height:56px;margin-left: 20px;padding-right: 17px;line-height: 60px;color: black;text-decoration: none;border-right: 1px solid black;}
+.nav_right .login .a2{height:56px;padding-left: 20px;margin-right: 17px;line-height: 60px;color: black;text-decoration: none;}
+.nav_right .magnifier:hover{background-color: rgba(68, 68, 68, 0.2);}
+.nav_right .could:hover{background-color: rgba(68, 68, 68, 0.2);}
+
+.nav_main .li2{position: relative;}
+.nav_main .discover {position: absolute;top: 56px;width: 655px;height: 144px;background: pink;display: none;}
+.nav_main .discover li{height: 36px;width: 90px;}
+
+
+.mid{width: 100%;height: 286px;margin: 20px 0;}
+.banner{height: 100%;width: 1130px;margin: 0 auto;position: relative;}
+.banner .picture{background: url(https://img.zcool.cn/community/01576e5d0002a3a801213ec2c0e506.jpg@1380w) no-repeat center;display: inline-block;height: 286px;;width: 100%;}
+.banner .next{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat;
+display: inline-block;height: 52px;width: 52px;position: absolute;top: 117px;right: 0;display: none;}
+.banner .pre{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat;
+display: inline-block;height: 52px;width: 52px;position: absolute;top: 117px;left: 0;display: none;}
+.banner:hover .pre{display: block;}
+.banner:hover .next{display: block;}
+
+.zcool{width: 100%;height: 173px;margin-bottom: 24px;}
+.photo{height: 100%;width: 1130px;margin: 0 auto;}
+.photo li{float: left;}
+.photo .ph1 img{display: inline-block;height: 173px;width: 210px;margin-right: 20px;}
+.photo .ph2 img{display: inline-block;height: 173px;width: 210px;margin-right: 20px;}
+.photo .ph3 img{display: inline-block;height: 173px;width: 210px;margin-right: 20px;}
+.photo .ph4 img{display: inline-block;height: 173px;width: 210px;margin-right: 20px;}
+.photo .ph5 img{display: inline-block;height: 173px;width: 210px;}
+
+.recommend{height: 56px;width: 100%px;position: sticky;top: 0;background: white;z-index: 111;}
+.recommend_mid{height: 100%;width: 1130px;margin: 0 auto;}
+.recommend_mid ul{text-align: center;}
+.recommend_mid li{display: inline-block;font-size:0;margin: 0 33px;}
+.recommend_mid .shouyetuijian{border-bottom: 2px solid black;color: black;}
+.recommend_mid .shouyetuijian a{color: black;}
+.recommend_mid li a{font-size: 16px;text-decoration:none;height: 54px;display: inline-block;line-height: 56px;}
+.recommend_mid li:hover{border-bottom: 2px solid black;}
+.recommend_mid li:hover a{color: black;}
+
+.display_section{width: 100%;height: 2644px;background: rgb(244,244,244);}
+.mid_section{height: 100%;width: 1150px;margin: 0 auto;position: relative;top: 20px;overflow: hidden;}
+
+
+.div_1{width: 210px;height: 308px;background: white;float: left;margin-right: 10px;margin-bottom: 20px;margin-left: 10px;}
+.div_1 .div_1_photo img{display: inline-block;height: 158px;width: 100%;}
+.div_1 .div_1_describe{height: 75px;width: 178px;padding: 11px 16px 13px;border-bottom: 1px solid #eee;}
+.div_1 .div_1_describe .div_1_title{margin-bottom: 1px; position: relative;height: 20px;line-height: 20px;
+white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.div_1 .div_1_describe .div_1_title a{text-decoration: none;}
+.div_1 .div_1_describe .div_1_title a:hover{color: red;}
+.div_1 .div_1_describe .div_1_type{font-size: 12px;height: 18px;margin-bottom: 17px;line-height: 18px;}
+.div_1 .div_1_describe .div_1_ietm .view_1{margin-right: 10px;
+ background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat 0 4px;
+ padding-left: 18px;}
+ .div_1 .div_1_describe .div_1_ietm .comment_1{margin-right: 10px;
+background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat 0px 3px;
+padding-left: 18px;}
+.div_1 .div_1_describe .div_1_ietm .agree_1{margin-right: 10px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat 0px 3px;
+    padding-left: 18px;}
+.div_1 .div_1_source{height: 46px;width: 210px;}
+.div_1 .div_1_source .head_portrait_1{color: #333;text-decoration: none;font-size: 12px;height: 120px;width: 46px;}
+.div_1 .div_1_source .head_portrait_1 a{line-height: 46px;text-decoration: none;margin-left: 15px;}
+.div_1 .div_1_source .head_portrait_1 a:hover{color: red;}
+.div_1 .div_1_source .head_portrait_1 img{height: 24px;width: 24px;border-radius: 50%;vertical-align: middle;
+display: inline-block;margin-right: 10px;}
+.div_1 .div_1_source .time_1{float: right;line-height: 46px;font-size: 12px;color: #666;margin-right: 15px;}
+
+
+.div_2{width: 210px;height: 308px;background: white;float: left;margin-right: 10px;margin-bottom: 20px;margin-left: 10px;}
+.div_2 .div_2_photo img{display: inline-block;height: 158px;width: 100%;}
+.div_2 .div_2_describe{height: 75px;width: 178px;padding: 11px 16px 13px;border-bottom: 1px solid #eee;}
+.div_2 .div_2_describe .div_2_title{margin-bottom: 1px; position: relative;height: 20px;line-height: 20px;
+white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.div_2 .div_2_describe .div_2_title a{text-decoration: none;}
+.div_2 .div_2_describe .div_2_title a:hover{color: red;}
+.div_2 .div_2_describe .div_2_type{font-size: 12px;height: 18px;margin-bottom: 17px;line-height: 18px;}
+.div_2 .div_2_describe .div_2_ietm .view_2{margin-right: 10px;
+ background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat 0 4px;
+ padding-left: 18px;}
+.div_2 .div_2_describe .div_2_ietm .comment_2{margin-right: 10px;
+background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat 0px 3px;
+padding-left: 18px;}
+.div_2 .div_2_describe .div_2_ietm .agree_2{margin-right: 10px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat 0px 3px;
+    padding-left: 18px;}
+.div_2 .div_2_source{height: 46px;width: 210px;}
+.div_2 .div_2_source .head_portrait_2{color: #333;text-decoration: none;font-size: 12px;height: 120px;width: 46px;}
+.div_2 .div_2_source .head_portrait_2 a{line-height: 46px;text-decoration: none;margin-left: 15px;}
+.div_2 .div_2_source .head_portrait_2 a:hover{color: red;}
+.div_2 .div_2_source .head_portrait_2 img{height: 24px;width: 24px;border-radius: 50%;vertical-align: middle;
+display: inline-block;}
+.div_2 .div_2_source .time_2{float: right;line-height: 46px;font-size: 12px;color: #666;margin-right: 15px;}

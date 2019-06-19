@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a = 10;
+
+        // //冒泡排序
+        // bubbleSort([2, 6, 1, 5, 9, 8, 4])
+
+        // function bubbleSort(arr) {
+        //     // 1. 循环排序次数;
+        //     for (var count = 0; count < arr.length - 1; count++) {
+        //         //2. 两两比对;
+        //         for (var i = 0; i < arr.length - 1 - count; i++) {
+        //             if (arr[i] > arr[i + 1]) {
+        //                 var temp = arr[i];
+        //                 arr[i] = arr[i + 1];
+        //                 arr[i + 1] = temp;
+        //             }
+        //         }
+        //     }
+        //     console.log(arr);
+        // }
+
+        // //选择排序
+        // selectSort([2, 6, 1, 5, 9, 8, 4])
+
+        // function selectSort(arr) {
+        //     for (var count = 0; count < arr.length - 1; count++) {
+        //         var index = count;
+        //         for (var i = count + 1; i < arr.length; i++) {
+        //             if (arr[i] < arr[index]) {
+        //                 index = i;
+        //             }
+        //         }
+        //         var temp = arr[index];
+        //         arr[index] = arr[count];
+        //         arr[count] = temp;
+        //     }
+        //     console.log(arr);
+        // }
+
+        // //快速排序
+        console.log(quickSort([1000, 1000, 2000, 500, 400, 3000]))
+
+        function quickSort(arr) {
+            if (arr.length <= 1) return arr;
+
+            var midIndex = parseInt(arr.length / 2);
+            var mid = arr[midIndex];
+            var left = [], right = [];
+
+            for (var i = 0; i < arr.length; i++) {
+                if (i === midIndex) continue;
+                if (mid > arr[i]) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return quickSort(left).concat([mid], quickSort(right));
+        }
+
+        // //桶排序
+        // bucketSort([1000, 1000, 2000, 500, 400, 3000])
+
+        function bucketSort(arr) {
+            var bucket = [];
+            for (var i = 0; i < arr.length; i++) {
+                bucket[arr[i]] = 1;
+            }
+
+            arr.length = 0;
+            for (var index in bucket) {
+                arr.push(Number(index))
+            }
+            console.log(arr);
+        }
+
+        // arr = [2,6,5,4,1,45,12]
+        // console.log(arr.slice(1,2),arr)
+
+
+
+        // var 吕赟飞 = new Object({ 喜欢: "秀" });
+        // console.log(吕赟飞);
+
+    </script>
+</body>
+
+</html>

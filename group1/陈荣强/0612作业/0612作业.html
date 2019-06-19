@@ -263,21 +263,21 @@
             // }
 
             // 14-创建一个对象，表示一个学生的信息
-            // function student(name,age,sex){
+            function student(name,age,sex){
                 
-            //     this.name = name;
-            //     this.age = age;
-            //     this.sex = sex;
-            //     this.person = function(){console.log(stu.name)};
-            // }
-            // var stu1 = new student("chen");
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.person = function(){console.log(stu.name)};
+            }
+            var stu1 = new student("chen");
 
 
             //15-鼠标键盘事件
-            div1.onclick = randomBgColor;
+            div1.onclick = mouseEvent;
             div2.ondblclick = double;
             txt1.onchange = txt2;
-            function randomBgColor(){
+            function mouseEvent(){
                   div2.innerHTML = "您刚刚双击了DIV触发了dblclick事件"; 
             }
 
