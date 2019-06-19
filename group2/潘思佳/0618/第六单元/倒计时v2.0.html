@@ -59,20 +59,12 @@
 
         function proofreading(temp_hour, temp_minute, temp_second) {
             var arr = [temp_hour, temp_minute, temp_second];
-
-            if (arr.some(function(e) { //防止无聊的人输入负数或空值
+            if (arr.some(function(e) {
                     if (e < 0 || e == "") return true;
                 })) {
                 alert("请输入正整数");
                 return false;
             }
-            // if (arr.some(function(e) {
-            //         return e != parseInt(e);
-            //     })) { //防止无聊的人输入小数
-            //     arr[0] = parseInt(arr[0]);
-            //     arr[1] = parseInt(arr[1]);
-            //     arr[2] = parseInt(arr[2]);
-            // }
             return arr;
         }
     </script>
