@@ -64,3 +64,24 @@
 //     container.innerHTML=year+month+wday+hour+minute+second;
 // }
 // nowTime();
+
+//进度条
+// var progress_width = 0;
+// var progress_interval = null;
+// var target = 600; // 目标点;
+// progress_interval = setInterval(progressing, 30)
+// function progressing(prop) {
+//     if (prop !== undefined && typeof prop === "number") {
+//         progress_width = target * prop / 100;
+//     } else {
+//         progress_width += 5;
+//     }
+//     progress.style.width = progress_width + "px";
+//     if (progress_width === target) {
+//         clearInterval(progress_interval);
+//     }
+// }
+// // progressing(30);
+// document.onclick = function () {
+//     progressing(0);
+// }
