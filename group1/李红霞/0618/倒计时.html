@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span id="hour"> 00 </span>:
+    <span id="minite"> 00 </span>:
+    <span id="second"> 00 </span>
+    <script>
+        //倒计时功能
+        //如何实现倒计时功能：1.创建目标时间 2.创建当前时间 3. 得到目标时间和当前时间到1970年1月1日的毫秒数
+        //4.得到目标时间和当前时间的时间差值 5.将时间差转化伪时，分，秒 6.利用定时器，每一秒更新一次
+        var reverseClear = setInterval(reverse,1000);
+        function reverse(){
+            var targetTime = new Date("2019/6/19 00:00:00");
+            var nowTime = new Date();
+            var tTime = targetTime.setSeconds(0);
+            // var nTime = nowTime.setSeconds(nowTime.getSeconds());
+            var cTime = tTime - Date.now();
+            var hours = parseInt(cTime/1000/3600)< 10?"0"+parseInt(cTime/1000/3600):parseInt(cTime/1000/3600);
+            var minites = parseInt((cTime/1000/60)%60)< 10?"0"+parseInt((cTime/1000/60)%60):parseInt((cTime/1000/60)%60);
+            var seconds = parseInt(cTime/1000%60) < 10?"0"+parseInt(cTime/1000%60):parseInt(cTime/1000%60);
+            console.log(hours, minites, seconds)
+            hour.innerHTML = hours;
+            minite.innerHTML = minites;
+            second.innerHTML = seconds;
+            if(cTime <= 0){
+                clearInterval(reverseClear);
+            }
+        }
+        reverse()
+    </script>
+</body>
+</html>

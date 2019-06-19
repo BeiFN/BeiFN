@@ -25,4 +25,44 @@ onload    加载结束
 onresize  改变窗口大小
 onscroll  滚动条发生滚动
 
+数组API
 
+var arr = [3,,45,6];
+清空
+arr.length = 0;
+arr = [];
+删除第一个 返回删除元素
+shift();
+第一位置添加
+unshift();
+删除最后一个，返回删除元素
+pop();
+添加都最后  返回？
+push();
+
+
+splice();
+array.splice(start,删除个数,在删除位置添加的元素)
+
+array.slice(start,end)可以只有开头
+slice();
+连接数组 返回新数组
+concat()返回新数组
+
+数组转字符串
+数组.join("中间连接符")
+
+
+
+
+字符串API
+字符串转数组：
+用法：string.split(separator,limit)
+
+解释：split方法把这个string分割成片段来创建一个字符串数组。可选参数limit可以限制被分割的片段数量。separator参数可以是一个字符串或一个正则表达式。如果
+
+separator是一个空字符，会返回一个单字符的数组。
+
+//再举一个简单的例子
+var a="0123456";
+var b=a.split("用这个符号截",3（截成几段); //b=["0","1","2"]
