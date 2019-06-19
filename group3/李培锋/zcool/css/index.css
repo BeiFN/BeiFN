@@ -29,13 +29,12 @@
 .search a{display: inline-block;width: 60px;height: 56px;}
 
 /*二级标题*/
-.discovery{position: absolute;z-index: 50;top:56px;left: 0;width: 665px;height: 145px;display: none;background:#dddddd; }
+.discovery{position: absolute ;z-index: 10;top:56px;left: 0;width: 665px;height: 145px;display: none;background:#fff; }
 .discovery li{float: left;width: 90px;height: 32px;position: relative;text-align: center;}
 .discovery li a{display: inline-block;font-size: 12px;line-height: 32px;height: 32px;color: #444444;}
 .discovery li b{display: inline-block;width: 1px;height: 14px;position: absolute;right: 1px;top: 7px;background: #dddddd;}
 .discovery-sort{float: left;margin-top: 13px;padding-bottom: 15px;border-bottom: 1px solid #eaeaea;padding-left: 17px;width: 648px;}
 .discovery-sort li a{display: inline-block;padding: 0 7px;line-height: 28px;border-radius: 4px;min-width: 42px;}
-
 
 .concentration{height: 51px;padding-left: 30px;width: 635px;}
 .concentration li{float: left;text-align: left;width: 55px;height: 51px;padding-right: 60px;background: url(https://static.zcool.cn/git_z/build/images/svg/gengduojiantou2.svg) no-repeat 66px 21px;background-size: 5px 10px;}
@@ -44,7 +43,6 @@
 .job-cont,.source-cont,.class-cont,.more-cont,.activity-cont{position: absolute;z-index: 10;;top: 56px;left: 0;width: 152px;padding: 6px 0;background: #fff;display: none;}
 .menu p{height: 44px;line-height: 44px;}
 .menu p a{padding-left: 20px;font-size: 12px;width: 152px;}
-.menu>li>div{position: absolute;top: 56px;left: 0;width: 152px;padding: 6px 0;background: #fff;display: none;}
 .more .more-cont p{height: 44px;line-height: 44px;background-image: none;}
 
 .menu>li:hover{background: #282828;}
@@ -67,6 +65,7 @@
 .next,.before{position: absolute;display: inline-block;width:13px;height: 100%;padding: 0 80px;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat 91px center;top: 0;right: 0;}
 .next,.before{display: none;}
 .before{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat 30px center;top: 0;left: 0;}
-
 .wall:hover>a{display: block;}
 
+.banner{margin-top: }
+.banner-sort li{width: 210px;height: 173px;float: left;}
