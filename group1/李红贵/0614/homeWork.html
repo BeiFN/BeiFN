@@ -64,209 +64,208 @@
 
 
 document.write("<br/><br/>1. 递归计算输入数的阶乘!<br/>");
-        // document.write('<input type="text" id="num">');
-        // document.write('<input type="button" value="计算" id="btn">');
-        // btn.onclick = function (){
-        //     num.value = jiecheng(parseInt(num.value));
-        //     // document.getElementById("num").value
-        // };
-        // function jiecheng(x){
-        //     console.log(x);
-        //     if(x <= 1 ){
-        //         return 1;
-        //     }else{
-        //         return x * jiecheng(x - 1);
-        //     }
-        // }
+        document.write('<input type="text" id="num">');
+        document.write('<input type="button" value="计算" id="btn">');
+        btn.onclick = function (){
+            num.value = jiecheng(parseInt(num.value));
+            // document.getElementById("num").value
+        };
+        function jiecheng(x){
+            console.log(x);
+            if(x <= 1 ){
+                return 1;
+            }else{
+                return x * jiecheng(x - 1);
+            }
+        }
 
 document.write("<br/><br/>2. 计算1到输入数的和。<br/>");
-        // document.write('<input type = "text" id = "num2">');
-        // document.write('<input type= "button" value = "计算" id = "btn2">');
-        // btn2.onclick = function(){
-        //     console.log(num2.value);
-        //     num2.value = leijia(parseInt(num2.value));
-        // };
-        // var sum = 0;
-        // function leijia(x){
-        //     if(x===1){
-        //         return 1;
-        //     }
-        //     else{
-        //         return x + leijia(x - 1);
-        //     }
-        // }
+        document.write('<input type = "text" id = "num2">');
+        document.write('<input type= "button" value = "计算" id = "btn2">');
+        btn2.onclick = function(){
+            console.log(num2.value);
+            num2.value = leijia(parseInt(num2.value));
+        };
+        var sum = 0;
+        function leijia(x){
+            if(x===1){
+                return 1;
+            }
+            else{
+                return x + leijia(x - 1);
+            }
+        }
 
 document.write("<br/><br/>3. 递归辗转相除法求最大公约数。<br/>");
-        // function zzxcf(m, n){
-        //     var r = m % n;
-        //     m = n;
-        //     n = r;
-        //     if(r === 0){
-        //         return m;
-        //     }else{
-        //         return zzxcf(m , n);
-        //     }
-        // }
-        // console.log(zzxcf(18,45));
-        // document.write(zzxcf(18,45));
+        function zzxcf(m, n){
+            var r = m % n;
+            m = n;
+            n = r;
+            if(r === 0){
+                return m;
+            }else{
+                return zzxcf(m , n);
+            }
+        }
+        console.log(zzxcf(18,45));
+        document.write(zzxcf(18,45));
 
 
 
 document.write("<br/><br/>4. 递归更相减损法求最大公约数。<br/>");
-        // function gxjsf(m , n){
-        //     if(m % 2 === 0 && n % 2 === 0 ){
-        //         m = m / 2;
-        //         n = n / 2;
-        //         return  2*gxjsf(m/2 , n/2);
-        //     }else{
-        //         var r = 0;
-        //         if(m > n){
-        //             r = m-n;
-        //             if(r === n){
-        //                 return r;
-        //             }else {
-        //                 return gxjsf(r , n);
-        //             }
-        //         }else{
-        //             r = n - m;
-        //             if(r === m){
-        //                 return r;
-        //             }else{
-        //                 return gxjsf(r, m);
-        //             }
-
-        //         }
-        //     }
-        // }
-        // console.log(zzxcf(20,45));
-        // document.write(zzxcf(20,45));
+        function gxjsf(m , n){
+            if(m % 2 === 0 && n % 2 === 0 ){
+                m = m / 2;
+                n = n / 2;
+                return  2*gxjsf(m/2 , n/2);
+            }else{
+                var r = 0;
+                if(m > n){
+                    r = m-n;
+                    if(r === n){
+                        return r;
+                    }else {
+                        return gxjsf(r , n);
+                    }
+                }else{
+                    r = n - m;
+                    if(r === m){
+                        return r;
+                    }else{
+                        return gxjsf(r, m);
+                    }
+                }
+            }
+        }
+        console.log(zzxcf(20,45));
+        document.write(zzxcf(20,45));
 
 document.write("<br/><br/>5. 递归计算斐波那契数列。<br/>");
-        // function fbnq(x){
-        //     if(x <= 2){
-        //         return 1;
-        //     }else{
-        //         return fbnq(x - 1) + fbnq(x - 2);
-        //     }
-        // }
-        // console.log(fbnq(7));
-        // document.write(fbnq(7));
+        function fbnq(x){
+            if(x <= 2){
+                return 1;
+            }else{
+                return fbnq(x - 1) + fbnq(x - 2);
+            }
+        }
+        console.log(fbnq(7));
+        document.write(fbnq(7));
 
 document.write("<br/><br/><h1>数组</h1><br/>");
 
 document.write("<br/><br/>1. 通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程。<br/>");
-        // function createArray(){
-        //     var array = [];
-        //     for(var i = 0; i < 5; i ++){
-        //         var arr1 = [];
-        //         for(var j = 0; j < 5; j ++){
-        //             arr1[j] = 5 * i + j + 1;
+        function createArray(){
+            var array = [];
+            for(var i = 0; i < 5; i ++){
+                var arr1 = [];
+                for(var j = 0; j < 5; j ++){
+                    arr1[j] = 5 * i + j + 1;
 
-        //             // console.log(arr1[j]);
-        //             if(j<=i){
-        //                 console.log(arr1[j]);
-        //                 document.write(arr1[j]+"&nbsp;&nbsp;");
-        //             }
+                    // console.log(arr1[j]);
+                    if(j<=i){
+                        console.log(arr1[j]);
+                        document.write(arr1[j]+"&nbsp;&nbsp;");
+                    }
                     
-        //         }
-        //         document.write("<br/>");
-        //         array[i] = arr1;
-        //         // document.write(arr1[i]);
-        //     }
-        //     console.log(array);
+                }
+                document.write("<br/>");
+                array[i] = arr1;
+                // document.write(arr1[i]);
+            }
+            console.log(array);
 
-        // }
-        // createArray();
+        }
+        createArray();
 
 
 document.write("<br/><br/>2. 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。<br/>");
-        // function averageValue(){
-        //     var list = [];
-        //     var res = [];
+        function averageValue(){
+            var list = [];
+            var res = [];
             
-        //     // for(var i = 0; i ++ < 30;){
-        //     //     list.push(i*2);
-        //     //     _sum += i*2; if(!( i % 5 )){
-        //     //         var _average = 0;
-        //     //         for(var k = i; k -- > i - 5;){
-        //     //             // console.log(k);
-        //     //             _average += list[k];
-        //     //         }
-        //     //         res.push(_average/5);
+            // for(var i = 0; i ++ < 30;){
+            //     list.push(i*2);
+            //     _sum += i*2; if(!( i % 5 )){
+            //         var _average = 0;
+            //         for(var k = i; k -- > i - 5;){
+            //             // console.log(k);
+            //             _average += list[k];
+            //         }
+            //         res.push(_average/5);
 
-        //     //     }
-        //     // }
+            //     }
+            // }
 
-        //     var _sum = 0;
-        //     for(var i = 0; i++ < 30; ){
-        //         _sum += i*2;
-        //         list.push(i*2);
-        //         if(!(i % 5)){
-        //             res.push(_sum/5);
-        //             _sum = 0;
-        //         }
-        //     }
-        //     return res;
-        // }
-        // console.log(averageValue());
-        // document.write(averageValue());
+            var _sum = 0;
+            for(var i = 0; i++ < 30; ){
+                _sum += i*2;
+                list.push(i*2);
+                if(!(i % 5)){
+                    res.push(_sum/5);
+                    _sum = 0;
+                }
+            }
+            return res;
+        }
+        console.log(averageValue());
+        document.write(averageValue());
 
 
 document.write("<br/><br/>3. 随机点名程序<br/>");
-// var str = "杨怀智,千锋彭于晏,邓修,谢宇航,吕赟飞,郭森,谢鑫鹏,王旭,刘彪,郭振宁,张卓,郭钢,浦文卓,郑则栋,李培锋,仇明珠,尹亚亭,祖莹,李嵩,陈荣强,刘宝灵,高展飞,朱盟,李红贵,刘深,杜豪刚,陆凤妹,谢达文,潘思佳,蒿倩,黄应锁,林海松,杨松,王鹏,常浩,李林,韩卫静,文君豪,李罗,张志博,封雨忱,赵汪洋,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,李红霞,肖光瑞,李策,张怡哲,费殷植,张朋伟,庞浩,徐佳伟";
-// var namelist = str.split(",");
+var str = "杨怀智,千锋彭于晏,邓修,谢宇航,吕赟飞,郭森,谢鑫鹏,王旭,刘彪,郭振宁,张卓,郭钢,浦文卓,郑则栋,李培锋,仇明珠,尹亚亭,祖莹,李嵩,陈荣强,刘宝灵,高展飞,朱盟,李红贵,刘深,杜豪刚,陆凤妹,谢达文,潘思佳,蒿倩,黄应锁,林海松,杨松,王鹏,常浩,李林,韩卫静,文君豪,李罗,张志博,封雨忱,赵汪洋,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,千锋彭于晏,李红霞,肖光瑞,李策,张怡哲,费殷植,张朋伟,庞浩,徐佳伟";
+var namelist = str.split(",");
 
-// //  4e00  9fa5  中文范围
-//         function randomName(arr){
-//             document.write(arr[parseInt(Math.random() * namelist.length)]);
-//             return arr[parseInt(Math.random() * namelist.length)];
-//         }
-//         randomName(namelist);
+//  4e00  9fa5  中文范围
+        function randomName(arr){
+            document.write(arr[parseInt(Math.random() * namelist.length)]);
+            return arr[parseInt(Math.random() * namelist.length)];
+        }
+        randomName(namelist);
 
 document.write("<br/><br/>4. 输入位数，点击按钮，生成输入位数数字和字母验证码var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];<br/>");
-        // document.write('<input type = "text" id = "num4">');
-        // document.write('<input type= "button" value = "计算" id = "btn4">');
-        // // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//每次获取验证，全局数组减去验证码数组
-        // function randomCode(num){
-        //     console.log(num);
-        //     // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码不存在重复数据
-        //     var code = "";
-        //     for(var i = 0; i < num; i++){
-        //         var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码存在重复数据
-        //         console.log(listCod.length);
-        //         var arr1 = listCod.splice( parseInt( Math.random() * listCod.length ) ,1);
-        //         console.log(arr1);
-        //         console.log(listCod);
-        //         code += arr1[0];
+        document.write('<input type = "text" id = "num4">');
+        document.write('<input type= "button" value = "计算" id = "btn4">');
+        // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//每次获取验证，全局数组减去验证码数组
+        function randomCode(num){
+            console.log(num);
+            // var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码不存在重复数据
+            var code = "";
+            for(var i = 0; i < num; i++){
+                var listCod = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];//验证码存在重复数据
+                console.log(listCod.length);
+                var arr1 = listCod.splice( parseInt( Math.random() * listCod.length ) ,1);
+                console.log(arr1);
+                console.log(listCod);
+                code += arr1[0];
 
-        //         // code += (listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]);
-        //         //上下两行代码截取的不是同一个字符串
-        //         // console.log((listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]));
-        //         // console.log(code);
-        //     }
-        //     console.log(code);
-        //     return code;
+                // code += (listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]);
+                //上下两行代码截取的不是同一个字符串
+                // console.log((listCod.splice( parseInt( Math.random() * listCod.length ) ,1)[0]));
+                // console.log(code);
+            }
+            console.log(code);
+            return code;
             
-        // }
-        // btn4.onclick = function(){
-        // // randomCode(parseInt(num4.value));
-        //     num4.value = randomCode(parseInt(num4.value));
-        // }
+        }
+        btn4.onclick = function(){
+        // randomCode(parseInt(num4.value));
+            num4.value = randomCode(parseInt(num4.value));
+        }
 
 
 document.write("<br/><br/>5. 请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], '%')， 运行结果'1%2%3';<br/>");
-        // function join(arr,p){
-        //     var str = "";
-        //     for(var i = 0; i < arr.length; i ++){
-        //         if(i != arr.length-1){
-        //             str = str + arr[i] + p;
-        //         }else{
-        //             str += arr[i];
-        //         }
-        //     }
-        //     return str;
-        // }
-        // document.write(join([1,2,3], "-"));
+        function join(arr,p){
+            var str = "";
+            for(var i = 0; i < arr.length; i ++){
+                if(i != arr.length-1){
+                    str = str + arr[i] + p;
+                }else{
+                    str += arr[i];
+                }
+            }
+            return str;
+        }
+        document.write(join([1,2,3], "-"));
 
 
 document.write("<br/><br/>6. 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么<br/>");
@@ -287,48 +286,48 @@ document.write("<br/><br/>6. 随机生成一个五位以内的数，然后输出
             // console.log(randomNumber);
 
 document.write("<br/><br/>7. 编写函数map(arr) 把数组var list = [10000, 12000, 15000, 18000];中的每一位数字都增加30%<br/>");
-        // function addNumber(arr){
-        //     for(var i = 0; i < arr.length; i++){
-        //         arr[i] *= 1.3;
-        //         // document.write(arr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;");
-        //     }
-        //     console.log(arr);
-        //     document.write(arr);
+        function addNumber(arr){
+            for(var i = 0; i < arr.length; i++){
+                arr[i] *= 1.3;
+                // document.write(arr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;");
+            }
+            console.log(arr);
+            document.write(arr);
             
-        // }
-        // var list = [10000, 12000, 15000, 18000];
-        // addNumber(list);
+        }
+        var list = [10000, 12000, 15000, 18000];
+        addNumber(list);
 
 
 document.write("<br/><br/>8. 编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型<br/>");
-        // function has(arr,a){
-        //     var bool = false;
-        //     for(var i in arr){
-        //         console.log(i,arr[i]);
-        //         if( arr[i] === a){
-        //             bool = true;
-        //             break;
-        //         }
-        //     }
-        //     document.write(bool);
+        function has(arr,a){
+            var bool = false;
+            for(var i in arr){
+                console.log(i,arr[i]);
+                if( arr[i] === a){
+                    bool = true;
+                    break;
+                }
+            }
+            document.write(bool);
 
-        // }
-        // has([1, 3, 56, 60, 3,],60);
+        }
+        has([1, 3, 56, 60, 3,],60);
 
 
 document.write("<br/><br/>9. 编写函数norepeat(arr) 将数组var list = [13, 14, 15, 13, 15, 20 ,80];的重复元素去掉，并返回新的数组<br/>");
-        // function norepeat(arr){
-        //     for(var i = 0; i < arr.length; i ++){
-        //         for(var j = i + 1; j < arr.length; j ++){
-        //             if(arr[j] === arr[i]){
-        //                 arr.splice(j,1);
-        //             }
-        //         }
-        //     }
-        //     document.write(arr);
-        // }
-        // var list = [13, 14, 15, 13, 15, 20 ,80];
-        // norepeat(list);
+        function norepeat(arr){
+            for(var i = 0; i < arr.length; i ++){
+                for(var j = i + 1; j < arr.length; j ++){
+                    if(arr[j] === arr[i]){
+                        arr.splice(j,1);
+                    }
+                }
+            }
+            document.write(arr);
+        }
+        var list = [13, 14, 15, 13, 15, 20 ,80];
+        norepeat(list);
 
 // 一句话去重  new Set(arr) :es6新结构； key:key, value:value;  set不允许重复的一个数据结构。
 // Array.from()将伪数组转成真数组

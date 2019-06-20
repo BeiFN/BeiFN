@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+
+<body>
+
+<script>
+    var total = 3600;
+    var t = setInterval(function () {
+        total--;
+        if (total == 0) {
+            clearInterval(t);
+            return;
+        }
+        console.log(parseInt(total / 60),parseInt(total % 60));
+     }, 1000);
+</script>
+
+</body>
+</html>
