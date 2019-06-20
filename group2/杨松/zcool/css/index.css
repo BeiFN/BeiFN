@@ -1,4 +1,4 @@
-/*header logo*/
+﻿/*header logo*/
 body{background-color: #f4f4f4}
 .header{background-color:#ffe300;height: 56px;width: 100%;}
 .header .nav{height:56px;position: relative;margin: 0 70px;}
@@ -127,7 +127,7 @@ body{background-color: #f4f4f4}
 .footer_list_r .wechet{background: url("https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1") no-repeat;width:25px;height:21px }
 .footer_list_r .wechet:hover{background: url("https://static.zcool.cn/git_z/build/images/svg/footer-share-weixinhover.svg?v=1") no-repeat;}
 .footer_list_r .blog{width: 26px;height: 21px;background: url("https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1") no-repeat;}
-.footer_list_r .blog:hover{width: 26px;height: 21px;background: url("https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1") no-repeat;}
+.footer_list_r .blog:hover{width: 26px;height: 21px;background: url("https://static.zcool.cn/git_z/build/images/svg/footer-share-weibohover.svg?v=1") no-repeat;}
 .footer .footer_wrap_bottom{margin-top: 20px;}
 .footer .footer_wrap_bottom{float: left;}
 .footer .footer_wrap_bottom .footer_bottom_list_t li{float: left;border-right: 1px solid #333;padding:0 35px 0 35px}
