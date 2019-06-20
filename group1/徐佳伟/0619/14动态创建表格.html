@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态表格创建</title>
+    <style>
+        table{
+            
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入行数">
+    <input type="text" placeholder="请输入列数">
+    <button id="btn">点击生成</button>
+    <div id="box">
+        <table ></table>
+
+    </div>
+    <script>
+       
+        var ele_btn = document.getElementById("btn");
+        ele_btn.onclick = handerClick;
+        function handerClick(){
+
+            var rows = document.querySelectorAll("input")[0].value;
+            var cols = document.querySelectorAll("input")[1].value; 
+            var table =document.createElement("table");
+            table.style.borderSpacing = 0;
+            table.style.width = 500 + "px";
+            table.style.height = 300 + "px";
+
+            document.getElementById("box").appendChild(table);
+            for( var i = 0; i++ < rows ;){
+                var tr = document.createElement("tr");
+                table.appendChild(tr);
+                for(var j = 0 ; j++ < cols ;){
+                    var td = document.createElement("td");
+                    td.style.border = "solid 1px";
+                    // td.innerHTML = Math.round( Math.random()*90+10 );
+                    tr.appendChild(td);
+                   
+                }
+            }
+           
+        }
+        
+        
+       
+    </script>
+</body>
+</html>

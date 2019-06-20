@@ -1,0 +1,11 @@
+body{
+    background: blue;
+}
+.box{
+    width:100px;
+    height: 100px;
+    margin: 0 auto;
+    background: red;
+    text-align: center;
+    line-height: 100px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 倒计时
+
+
+
+    <input type="text" placeholder="请输入敌军还有多少秒到达战场！" id="ipt">
+    <button id="btn">开始倒计时</button>
+    <script>
+        btn.onclick = function () {
+            var total = ipt.value;
+            var Intervalid = setInterval(cut, 1000);
+            function cut() {
+                total--;
+                console.log("敌军还有" + total + "秒到达战场，碾碎他们！");
+                if (total === 0) {
+                    clearInterval(Intervalid)
+                }
+            }
+        }
+    </script> -->
+
+
+    <!-- 数码时钟
+
+
+                    
+    <div id="box"></div>
+    <script>
+    setInterval(function(){
+    var now = new Date();
+    var hour = now.getHours();
+    var min = now.getMinutes();
+    var sec = now.getSeconds();
+
+
+    var n1 = parseInt(hour/10);
+    var n2 = hour%10;
+    var n3 = parseInt(min/10);
+    var n4 = min%10;
+    var n5 = parseInt(sec/10);
+    var n6 = sec%10;
+
+    console.log(hour+":"+min+":"+sec)
+    box.innerHTML = "" + n1 + n2 + " : " + n3 + n4 + " : " + n5 + n6;
+    }, 1000);
+    </script>
+-->
+
+
+                        <!-- 进度条
+
+
+
+
+
+<div id="box" style = "width:1px;height:20px;background-color:grey;"></div>
+    <script>
+        var count = 0 ;
+        var loading = setInterval(function(){
+            count += 3;
+            box.style.width = count + "px";
+            box.innerHTML ="已加载" + count/3 + "%";
+            if( count === 300 ){
+                clearInterval( loading );
+            }
+        },300)
+    </script> -->
+
+
+
+                            <!-- 倒数弹出
+
+
+
+<div class="" id="gift" style = "font-size : 35px; display : none;">Surprise!Motherfucker!</div>
+    <script>
+        var t = 5;
+        var daoshu = setInterval( function(){
+            t--;
+            if( t === 0){
+                gift.style.display = "block"
+                clearInterval( daoshu );
+            }
+        },1000)
+    </script> -->
+
+
+
+
+    
+</body>
+
+</html>
