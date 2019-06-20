@@ -1,0 +1,8 @@
+.box{
+    background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561025372043&di=d7d1f1b33cbe60fcc1d14f7f28cdae0e&imgtype=0&src=http%3A%2F%2Fwww.nieyun.com%2Fwp-content%2Fuploads%2F2011%2F07%2Fchaomengkeaixiaogoutupian1.jpg) no-repeat;
+    width: 600px;
+    height: 300px;
+    margin:  0 auto;
+    background-size: contain;
+    
+}

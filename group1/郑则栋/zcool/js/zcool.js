@@ -1,31 +1,36 @@
 //切换图片
 var gt = document.querySelector(".gt");
+var lt=document.querySelector(".lt");
 var img = document.querySelectorAll(".img");
-var i = 0;
-gt.onclick = function () {
+var i = 1;
+var k=img.length;
+gt.onclick = change_bigimg;
+lt.onclick= turn_left;
+setInterval(change_bigimg,10000);
 
-    img[i].style = "display:block;";
-    if (i++ < img.length - 1) {
-        // img[i].style="display:block;";
-        for (var j = 0; j < img.length; j++) {
-            img[j].style = "display:none;"
 
-            // console.log(img.length);
+
+
+function change_bigimg(){
+        for(var n in img){
+            img[n].style="display:none";
         }
-        img[i].style = "display:block;";
-
-    }
-    else {
-        i = 0;
-        for (var k = 0; k < img.length; k++) {
-            img[k].style = "display:none;"
-
-            // console.log(img.length);
-        }
-        img[0].style = "display:block;";
-    }
-    console.log(i, j);
+        img[i++].style="display:block";
+        if(i==img.length) i=0;
+        console.log(i,img.length)
 }
+
+function turn_left(){
+    for(var n in img){
+        img[n].style="display:none";
+    }
+
+        img[i--].style="display:block"
+        if(i<0) i=img.length-1;
+
+}
+
+
 
 //换一换
 // var exchange1=document.querySelectorAll(".eighth_bottom ul li");
@@ -38,12 +43,12 @@ document.querySelector(".exchange").onclick = function () {
     var sum = 0;
     while (true) {
         var radomNum = parseInt(Math.random() * exchange1.length);
-       var bool= contains(excarr, radomNum);
-        if (bool==true) continue;
+        var bool = contains(excarr, radomNum);
+        if (bool == true) continue;
         excarr.push(radomNum);
         exchange1[radomNum].style = "display:block";
         sum++;
-        if(sum==5) break;
+        if (sum == 5) break;
     }
 
 }

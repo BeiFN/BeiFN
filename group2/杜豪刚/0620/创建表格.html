@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建表格</title>
+    <style>
+        input {
+            width: 150px;
+            height: 20px;
+            margin: 30px 50px 0 20px;
+            border-radius: 3px;
+            padding: 10px;
+        }
+        button {
+            width: 100px;
+            height: 35px;
+            background: greenyellow;
+            border-radius: 6px;
+            margin: 30px 20px 50px 10px;
+        }
+        table {
+            margin: 0 auto;
+        }
+        .ele_td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="text1" placeholder="请输入行数：">
+    <input type="text" id="text2" placeholder="请输入列数：">
+    <button id="btn1">创建表格</button>
+    <button id="btn2">清空表格</button>
+    <script>
+        var text1 = document.getElementById("text1");
+        var text2 = document.getElementById("text2");
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        btn1.onclick = function () {
+            var row = text1.value;        //行数 
+            var col = text2.value;        //列数
+            if (row.length == 0 || col.length == 0) {
+                alert("行数或列数不能为空！")
+            } else {
+                var table = document.createElement("table");      //创建一个表格
+                for (var i = 0; i < row; i++) {
+                    var tr = document.createElement("tr");        //创建行
+                    for (var j = 0; j < col; j++) {
+                        var td = document.createElement("td");    //创建列
+                        tr.appendChild(td);                 //添加列
+                        var random = Math.round(Math.random() * 100);
+                        td.innerHTML = random < 10 ? "0" + random : random;
+                        td.className = "ele_td";
+                        td.style.backgroundColor = "#" + Math.round(Math.random() * 16777215).toString(16).padStart(6, 0);
+                    }
+                    table.appendChild(tr);                      //添加行
+                }
+                document.body.appendChild(table);               //添加一个表格
+            }
+            btn2.onclick=function(){
+                table.remove();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易年历👍</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: arial;
+        }
+
+        .calendar {
+            width: 210px;
+            margin: 0 auto;
+            padding: 10px 10px 20px 20px;
+            background: #eae9e9;
+        }
+
+        .calendar ul {
+            width: 210px;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+
+        .calendar li {
+            float: left;
+            width: 58px;
+            height: 54px;
+            margin: 10px 10px 0 0;
+            border: 1px solid #fff;
+            background: #424242;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .calendar li h2 {
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .calendar li p {
+            font-size: 14px;
+        }
+
+        .calendar .active {
+            border: 1px solid #424242;
+            background: #fff;
+            color: #e84a7e;
+        }
+
+        .calendar .active p {
+            font-weight: bold;
+        }
+
+        .calendar .text {
+            width: 178px;
+            padding: 0 10px 10px;
+            border: 1px solid #fff;
+            padding-top: 10px;
+            background: #f1f1f1;
+            color: #555;
+        }
+
+        .calendar .text h2 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .calendar .text p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tab" class="calendar">
+        <ul id="box">
+            <li class="active">
+                <h2>1</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>2</h2>
+                <p>FER</p>
+            </li>
+            <li>
+                <h2>3</h2>
+                <p>MAR</p>
+            </li>
+            <li>
+                <h2>4</h2>
+                <p>APR</p>
+            </li>
+            <li>
+                <h2>5</h2>
+                <p>MAY</p>
+            </li>
+            <li>
+                <h2>6</h2>
+                <p>JUN</p>
+            </li>
+            <li>
+                <h2>7</h2>
+                <p>JUL</p>
+            </li>
+            <li>
+                <h2>8</h2>
+                <p>AUG</p>
+            </li>
+            <li>
+                <h2>9</h2>
+                <p>SEP</p>
+            </li>
+            <li>
+                <h2>10</h2>
+                <p>OCT</p>
+            </li>
+            <li>
+                <h2>11</h2>
+                <p>NOV</p>
+            </li>
+            <li>
+                <h2>12</h2>
+                <p>DEC</p>
+            </li>
+        </ul>
+        <div class="text" id="txt">
+            <h2>1月活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧～</p>
+        </div>
+    </div>
+
+    <script>
+        var liLsit = document.getElementById("box").children,
+            txtList = document.getElementById("txt"),
+            h2 = txtList.children[0],
+            p = txtList.children[1],
+            evenList = [
+                "一个人看雪景",
+                "过个快乐年",
+                "来到千锋",
+                "我眼里只有学习",
+                "回学校答辩，极致快乐",
+                "苦逼的生活又重新开始了",
+                "学习学习",
+                "学习学习",
+                "学习学习",
+                "学习学习",
+                "找工作",
+                "拿到第一个月工资"
+            ];
+        for (var i = 0, li; li = liLsit[i++];) {
+            li.index = i - 1;
+            li.onclick = showTime;
+        }
+        function showTime() {
+            for (var i = 0; i < liLsit.length; i++) {
+                liLsit[i].className = "";
+            }
+            this.className = "active";
+            var evenChange = (this.index + 1) + "月活动";
+            h2.innerHTML = evenChange;
+            p.innerHTML = evenList[this.index];
+        }
+
+
+    </script>
+</body>
+
+</html>

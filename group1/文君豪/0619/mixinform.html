@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+          *{
+              margin: 0; padding: 0;
+          }
+          input{
+              outline: 0;
+          }
+          #pwd1_level {
+              list-style: none; margin: 10px; border-radius: 15px;
+              width: 174px; border: solid 1px gainsboro; height: 16px;
+          }
+          #pwd1_level li{
+              background: silver;  float: left;
+              width: 50px; margin: 4px; height: 8px;
+          }
+          #pwd1_level_tip {
+              margin: 10px; width: 174px; height: 16px;
+          }
+          #pwd1_level_tip div{
+              float: left; width: 58px; height: 16px;
+              text-align: center; line-height: 16px;
+              visibility: hidden;
+          }
+     </style>
+     <body>
+         <label for="pwd">用户名称</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <input type="text" name="pwd" id="pwd"  size="30" placeholder="请输入用户名"/>
+         <br>
+         <label for="pwd1">登陆密码</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <input type="text" name="pwd" id="pwd1"  size="30" placeholder="请输入密码"/>
+         <br>
+         <label for="pwd2">重复登陆密码</label>
+         <input type="text" name="pwd" id="pwd2"  size="30" placeholder="重复登陆密码"/>
+         
+<!--  -->
+         <ul id="pwd1_level">
+              <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;"></li>
+              <li></li>
+              <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;"></li>
+          </ul>
+          <div id="pwd1_level_tip">
+              <div id="">弱</div>
+              <div id="">中</div>
+              <div id="">强</div>
+          </div>
+
+          <label for="email">电子邮件</label>
+          <input type="text" name="pwd" id="email"  size="30" placeholder="请输入您的电子邮件"/>
+          <br>
+          <label for="truename">真实姓名</label>
+          <input type="text" name="pwd" id="truename"  size="30" placeholder="请输入您的真实姓名"/>
+          <br>
+          <label for="phone">中奖手机</label>
+          <input type="text" name="pwd" id="phone"  size="30" placeholder="请输入您的中奖通知手机"/>
+          <br>
+          <label for="code">验证码</label>&nbsp&nbsp&nbsp
+          <input type="text" name="pwd" id="code"  size="30" placeholder="请输入验证码"/>
+          
+          <input type="text" name="pwd" id="origincode" style="background:gray; border:none;"  size="5" />
+          <br>
+          <button style="width:50px;height:20px">提交</button>
+    </body>
+
+
+
+
+
+     <script>
+         /////用户名
+        var pwd = document.getElementById("pwd");
+
+        pwd.onblur = function()
+         {        
+            var pwd_value = pwd.value;
+            for(var i  = 0; i < pwd_value.length ; i++ )
+            {
+                if(pwd_value.length<6)
+                {
+                    alert("用户名密码必须大于6位")
+                }
+                else if(!( (pwd_value.charCodeAt(i) >= 48) && (pwd_value.charCodeAt(i) <=57) || (pwd_value.charCodeAt(i) >=97)&&(pwd_value.charCodeAt(i) <=122)  ||  (pwd_value.charCodeAt(i) >=65)&&(pwd_value.charCodeAt(i) <=90) ))
+                {
+                    alert("输入不符合标准")
+                }     
+            }
+
+         }
+        //  pwd1.onblur = function()
+        //  {
+        //     var race = {
+        //     "num" : false,
+        //     "letter" : false,
+        //     "symbol" : false
+        //     }
+          
+        //     var pwd1_value = pwd1.value;
+        //     for(var i= 0 , word; word=pwd1_value[i++] ; )
+        //     {
+        //         if(word>= 0 && word<=9 && race.num == false )
+        //         {
+        //             race.num= true;
+        //         }
+        //         if(race.letter == false && (word >='a')&&(word <='z') )
+        //         {
+        //             race.letter = true;
+        //         }
+        //         if(race.symbol == false && (word >='A')&&(word <='Z') )
+        //         {
+        //             race.symbol = true;
+        //         }
+        //     }
+        //     var count = 0;
+        //     for(var index in race)
+        //     {
+        //             race[index]? count++ : '';
+        //     }
+        //     console.log(count);
+        // }
+/////////////密码强度
+         var pwd1_level_tip = document.getElementById("pwd1_level_tip");
+          pwd1.onkeyup = function(){
+              if(/^\d+$/.test(this.value) || /^[a-zA-Z]+$/.test(this.value)) {
+                   pwd1_level.children[0].style.background = "red";
+                   pwd1_level.children[1].style.background = "white";
+                   pwd1_level.children[2].style.background = "white";
+                   pwd1_level_tip.children[0].style.visibility = "visible";
+                   pwd1_level_tip.children[1].style.visibility = "hidden";
+                   pwd1_level_tip.children[2].style.visibility = "hidden";
+                   console.log("弱");
+              } else if(/[^0-9a-zA-Z]+/.test(this.value)) {
+                   pwd1_level.children[0].style.background = "red";
+                   pwd1_level.children[1].style.background = "orange";
+                   pwd1_level.children[2].style.background = "green";
+                   pwd1_level_tip.children[0].style.visibility = "hidden";
+                   pwd1_level_tip.children[1].style.visibility = "hidden";
+                   pwd1_level_tip.children[2].style.visibility = "visible";
+                   console.log("强");
+              } else if(this.value != "") {
+                   pwd1_level.children[0].style.background = "red";
+                   pwd1_level.children[1].style.background = "orange";
+                   pwd1_level.children[2].style.background = "white";
+                   pwd1_level_tip.children[0].style.visibility = "hidden";
+                   pwd1_level_tip.children[1].style.visibility = "visible";
+                   pwd1_level_tip.children[2].style.visibility = "hidden";
+                   console.log("中");
+              } else {
+                   pwd1_level.children[0].style.background = "white";
+                   pwd1_level.children[1].style.background = "white";
+                   pwd1_level.children[2].style.background = "white";
+                   pwd1_level_tip.children[0].style.visibility = "hidden";
+                   pwd1_level_tip.children[1].style.visibility = "hidden";
+                   pwd1_level_tip.children[2].style.visibility = "hidden";
+                   console.log("中");
+              }
+          }
+
+        //重复登陆密码
+        pwd2.onblur = function()
+        {
+            var pwd2 = document.getElementById("pwd2");
+            var pwd1 = document.getElementById("pwd1");
+            if(!(pwd1.value===pwd2.value))
+            {
+                alert("密码输入不相同，请重新输入");
+
+            }
+
+        }
+//
+code.onfocus = produceMa;
+
+function produceMa(){
+            //数字 48-57 //大写字母 65-90 //小写字母 97-122
+
+            var str = "";
+            for (var i = 0; i < 4; i++) {
+                var num = 48 + Math.round(Math.random() * 9); 
+                var UpCase = 65 + Math.round(Math.random() * 25);
+                var LowerCase = 97 + Math.round(Math.random() * 25);
+                var randomArr = [num, UpCase, LowerCase];//随机数字，大写，小写的ASCII码存入数组
+                // console.log(randomArr);
+                var randomNum = parseInt(Math.random() * 3);
+                str+=String.fromCharCode(randomArr[randomNum]);
+            }
+            origincode.value = str;
+        }
+code.onblur=function()
+{
+    if(!(code.value===origincode.value))
+    {
+        alert("您输入的验证码不正确，请重新输入")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+     </script>
+</html>
