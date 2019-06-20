@@ -375,6 +375,7 @@ console.log(d.getDay());
 26.setMonth()
 27.setSeconds()
 28.setTime()
+<!-- 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。 -->
 29.setUTCDate()
 30.setUTCFullYear()
 31.setUTCHours()
@@ -393,12 +394,23 @@ Date.prototype.toISOString()
 Date.prototype.toJSON()
 Date.prototype.toLocaleDateString()
 Date.prototype.toLocaleFormat()
-Date.prototype.toLocaleString()
-Date.prototype.toLocaleTimeString()
+
+.toLocaleString()
+<!-- 已当地时间格式返回日期 -->
+
+toLocaleTimeString()
+<!-- 已当地时间格式返回时分秒 -->
+
 Date.prototype.toSource()
-Date.prototype.toString()
-Date.prototype.toTimeString()
+
+.toString()
+<!--  以字符串格式返回日期对象 方法返回一个字符串，表示该Date对象。-->
+
+.toTimeString()
+<!-- 返回日期对象的时分秒 -->
+
 Date.prototype.toUTCString()
+
 Date.prototype.valueOf()
 Date.prototype[@@toPrimitive]
 

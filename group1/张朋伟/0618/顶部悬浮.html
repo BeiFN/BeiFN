@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #jingubang {
+            height: 5000px;
+            width: 1px;
+            position: absolute;
+            left: 0;
+        }
+
+        #haed {
+            height: 500px;
+            width: 100%;
+            background: greenyellow;
+        }
+
+        #nav {
+            height: 50px;
+            width: 100%;
+            background: #F00;
+            position: absolute;
+        }
+
+        #goTop {
+            display: block;
+            width: 100px;
+            height: 80px;
+            background: #f0f;
+            line-height: 80px;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            border-radius: 8px;
+            position: absolute;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="haed"></div>
+    <div id="nav"></div>
+    <div>
+        <a id="goTop" href="#">回到顶部</a>
+
+    </div>
+    <div id="jingubang">
+    </div>
+
+    <script>
+        // var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        window.onscroll = function () {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if (scrollTop < 500) {
+                nav.style.position = "static";
+
+                goTop.style.display = "none";
+                // goTop.style.bottom = "50px";
+                // goTop.style.right = "50px";
+                // goTop.style.position = "fixed";
+
+
+
+            } else if (scrollTop >= 500) {
+                nav.style.top = "0";
+                nav.style.position = "fixed";
+                nav.style.display = "block";
+
+
+
+                goTop.style.position = "fixed";
+                goTop.style.display = "block";
+                goTop.style.bottom = "50px";
+                goTop.style.right = "50px";
+
+            } else if (scrollTop > 1500) {
+
+
+                //  goTop.style.cssText = "display:block;position:absolute;top:2000px";
+                goTop.style.position = "absolute";
+                goTop.style.top = "2000px";
+                goTop.style.display = "block";
+                goTop.style.right = "50px";
+
+
+
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
