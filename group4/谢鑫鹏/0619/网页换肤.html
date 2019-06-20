@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网页换肤</title>
+    <link id="link" rel="stylesheet" href="./css1.css">
+</head>
+<body>
+    <button class="btn">蓝色</button>
+    <button class="btn">绿色</button>
+    <div class="box"></div>
+
+    <script>
+        var list = [
+            "./css1.css",
+            "./css2.css",
+        ]
+        var btnList = document.querySelectorAll(".btn");
+        var link = document.getElementById("link");
+        for(var i = 0, btn; btn = btnList[i++]; ){
+            btn.index = i - 1;
+            btn.onclick = function(){
+                link.href = list[this.index];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+        ul{margin: 0 auto;width: 100px;height:300px;line-height: 30px;}
+        ul li {background-color: blue;text-align: center}
+    </style>
+</head>
+<body>
+    <ul id="lis">
+        <li><a href="">第一行</a></li>
+        <li><a href="">第二行</a></li>
+        <li><a href="">第三行</a></li>
+        <li><a href="">第四行</a></li>
+        <li><a href="">第五行</a></li>
+        <li><a href="">第六行</a></li>
+        <li><a href="">第七行</a></li>
+        <li><a href="">第八行</a></li>
+        <li><a href="">第九行</a></li>
+        <li><a href="">第十行</a></li>
+    </ul>
+<script>
+var ele_lis=document.getElementById("lis").children;
+var ele_li_a=document.querySelectorAll("li");
+for(var i=0;i<ele_lis.length;i++){
+    if(i%2===0){
+        ele_li_a[i].style.backgroundColor="red"
+    }
+}
+</script>
+</body>
+</html>
