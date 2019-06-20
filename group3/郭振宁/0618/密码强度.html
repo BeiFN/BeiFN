@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #low, #middle ,#high {
+            width: 50px;
+            height: 30px;
+            float: left;
+            border: 1px solid black;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div><input id="pass" type="text"></div> 
+    <div id="low"></div>
+    <div id="middle"></div>
+    <div id="high"></div>
+    <script>
+        pass.onkeyup = handerClick;
+        function handerClick() {
+            var str = pass.value;
+            // console.log(pass.value);
+            // console.log(str);
+            var boolNum = 0;
+            var boolStr = 0;
+            var special = 0;
+            for(var i=0,value; value = str[i++];) {
+                console.log(value);
+                var valueCode = value.charCodeAt[0];
+                console.log(valueCode);
+                if(valueCode >= 48 && valueCode <= 57) {
+                    boolNum = 1;
+                }
+                if(valueCode>=65 && valueCode<=90 || valueCode >=97 && valueCode <= 122) {
+                    boolStr = 1; 
+                }
+                if(valueCode === 95) {
+                    special = 1;
+                }
+            }
+            var bool = boolNum + boolStr + special;
+            console.log(boolNum,boolStr,special);
+            switch(bool) {
+                case 3 : high.style.backgroundColor = "red";
+                case 2 : middle.style.backgroundColor = "red";
+                case 1 : low.style.backgroundColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>
