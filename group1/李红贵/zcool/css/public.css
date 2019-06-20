@@ -21,7 +21,8 @@ i,em{font-style:normal;}
 h1,h2,h4,h3,h5,h6,b,strong{font-weight:normal;}
 
 /*去掉IE浏览器图片默认边框，转块级标签*/
-img{border:none;
+img{
+	border:none;
 	display:block;
 }
 
