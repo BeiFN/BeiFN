@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 800px;
+            height: 800px;
+            background: red;
+            color:green;
+            text-align: center;
+            line-height: 800px;
+            font-size: 200px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    // 广告弹出窗
+    setInterval(ad, 5000);
+    function ad() {
+        box.style.display = "block";
+        box.innerHTML = "BOOM";
+    }
+</script>
+
+</html>
