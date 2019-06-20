@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0; padding: 0;
+        }
+        input{
+            outline: 0;
+        }
+        #pwd_level {
+            list-style: none; margin: 10px; border-radius: 15px;
+            width: 174px; border: solid 1px gainsboro; height: 16px;
+        }
+        #pwd_level li{
+            background: silver;  float: left;
+            width: 50px; margin: 4px; height: 8px;
+        }
+        #pwd_level_tip {
+            margin: 10px; width: 174px; height: 16px;
+        }
+        #pwd_level_tip div{
+            float: left; width: 58px; height: 16px;
+            text-align: center; line-height: 16px;
+            visibility: hidden;
+        }
+        #progress_bar{height: 20px;width: 600px;border-radius: 2px;box-shadow: 0 0 10px red;margin:20px auto;}
+        #progress_child{height: 20px;width: 10px;background:linear-gradient(to right ,#fff,blue);}
+    </style>
+</head>
+<body>
+        <!--<div id="progress_bar">
+            <div id="progress_child"></div>
+        </div>-->
+        <!--<input type="text" placeholder="请输入用户名" id="username">-->
+        <!--<input type="text" id="text_1" placeholder="请输入年份">
+        <input type="text" id="text_2" placeholder="请输入月份">
+        <input type="text" id="text_3" placeholder="请输入日期">
+        <div id="container">
+                <span id="days_box"></span> 天： 
+                <span id="hour_box">00</span> 时： 
+                <span id="minute_box">00</span>分：
+                <span id="second_box">00</span>秒
+          </div>-->
+        <input type="text" name="pwd" id="pwd" value="" size="30"/>
+        <ul id="pwd_level">
+            <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;" id="li1"></li>
+            <li id="li2"></li>
+            <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;" id="li3"></li>
+        </ul>
+        <div id="pwd_level_tip">
+            <div id="low">弱</div>
+            <div id="middle">中</div>
+            <div id="strong">强</div>
+        </div>
+        <script>
+        //用户密码要求格式
+        // username.onblur = handlerBlur;
+        //     function handlerBlur()
+        //     {
+        //         var content = username.value;
+        //         if(content.length >= 6 && content.length <= 20)
+        //         {
+        //             username.style.borderColor = "green";
+        //         }else
+        //         {
+        //                 username.style.borderColor = "red";
+        //                 alert("用户名长度应该在6 - 20 位之间");
+
+        //                 return false;
+        //         }
+        //           if(isNaN(content[0]))
+        //         {
+        //                 username.style.borderColor = "green";
+        //         }else
+        //         {
+        //                 username.style.borderColor = "red";
+        //                 alert("首字符不能为数字");
+        //                 return false;
+        //         }
+
+        //         for(var i = 0 , letter; letter = content[i++]; )
+        //         {
+        //             var ascii =  letter.charCodeAt(0);
+        //             if(!(ascii >= 48 && ascii <= 57 ||  ascii>=65 && ascii<=90 || ascii >=97 && ascii <= 122 || ascii === 95))
+        //             {
+        //                 alert("只能以数字字母下划线进行命名");
+        //                 username.style.borderColor = "red";
+        //                 return false;
+        //             }
+
+        //         } 
+                  
+        //     }
+
+        //密码强度
+          
+            // pwd.onblur = password_strength();
+            // function password_strength()
+            // {
+            //     var text_content = pwd.value;
+            //     var count =text_content.split("") ;
+            //     for(var i = 0 ; i < count.length-1 ; i++)
+            //     {
+            //         if(!isNaN(count[i]))
+            //         {
+            //             li1.style.backgroundColor = "green";
+            //         }
+            //         else if(/^\d+$/.test(this.value) || /^[a-zA-Z]+$/.test(this.value))
+            //         {
+            //             li1.style.backgroundColor = "green";
+            //         }
+            //         else if(/[^0-9a-zA-Z]+/.test(this.value))
+            //         {
+            //             li3.style.backgroundColor = "red";
+            //         }
+                        
+                    
+            //     }
+            // }
+        //密码强度
+        //     var pwd_level_tip = document.getElementById("pwd_level_tip");
+        //     pwd.onkeyup = function(){
+        //       if(/^\d+$/.test(this.value) || /^[a-zA-Z]+$/.test(this.value)) {
+        //            pwd_level.children[0].style.background = "red";
+        //            pwd_level.children[1].style.background = "white";
+        //            pwd_level.children[2].style.background = "white";
+        //            pwd_level_tip.children[0].style.visibility = "visible";
+        //            pwd_level_tip.children[1].style.visibility = "hidden";
+        //            pwd_level_tip.children[2].style.visibility = "hidden";
+        //            console.log("弱");
+        //       } else if(/[^0-9a-zA-Z]+/.test(this.value)) {
+        //            pwd_level.children[0].style.background = "red";
+        //            pwd_level.children[1].style.background = "orange";
+        //            pwd_level.children[2].style.background = "green";
+        //            pwd_level_tip.children[0].style.visibility = "hidden";
+        //            pwd_level_tip.children[1].style.visibility = "hidden";
+        //            pwd_level_tip.children[2].style.visibility = "visible";
+        //            console.log("强");
+        //       } else if(this.value != "") {
+        //            pwd_level.children[0].style.background = "red";
+        //            pwd_level.children[1].style.background = "orange";
+        //            pwd_level.children[2].style.background = "white";
+        //            pwd_level_tip.children[0].style.visibility = "hidden";
+        //            pwd_level_tip.children[1].style.visibility = "visible";
+        //            pwd_level_tip.children[2].style.visibility = "hidden";
+        //            console.log("中");
+        //       } else {
+        //            pwd_level.children[0].style.background = "white";
+        //            pwd_level.children[1].style.background = "white";
+        //            pwd_level.children[2].style.background = "white";
+        //            pwd_level_tip.children[0].style.visibility = "hidden";
+        //            pwd_level_tip.children[1].style.visibility = "hidden";
+        //            pwd_level_tip.children[2].style.visibility = "hidden";
+        //            console.log("中");
+        //       }
+        //   }
+            
+
+
+        //倒计时
+        // setInterval( countDown , 1000 );
+        //     function countDown(){
+        //           var countArray = getCountDown(text_1.value,text_2.value,text_3.value);
+        //           days_box.innerHTML   = countArray[3] 
+        //           hour_box.innerHTML   = countArray[0];
+        //           minute_box.innerHTML = countArray[1]
+        //           second_box.innerHTML = countArray[2];
+        //     }
+        //     countDown();
+        //     function getCountDown(){
+        //           var 
+        //                 hour   = 0,
+        //                 minute = 0,
+        //                 second = 0;
+        //           var targetDate = new Date();
+        //           targetDate.setFullYear(arguments[0]); // 2019 6 18 
+        //           targetDate.setMonth   (arguments[1] - 1);       // 2019 7 18 
+        //           targetDate.setDate    (arguments[2]);       // 2019 7 10 
+        //           if( arguments.length > 3){
+        //                 hour   = arguments[3];
+        //                 minute = arguments[4];
+        //                 second = arguments[5];
+        //           }
+        //           targetDate.setHours  (hour);
+        //           targetDate.setMinutes(minute);
+        //           var targetTime = targetDate.setSeconds(second);
+        //           var reduce = targetTime - Date.now();
+        //           var second = parseInt(reduce / 1000 % 60) ;
+        //           var minute = parseInt(reduce / 1000 / 60 % 60);
+        //           var hour   = parseInt( reduce / 1000 / 3600);
+        //           var days   = hour > 24 ? parseInt(hour / 24) : 0;  
+        //           hour       = hour > 24 ? hour % 24 : hour;
+        //           return [
+        //                       hour < 10 ? "0" + hour : "" + hour ,
+        //                       minute < 10 ? "0" + minute : "" +minute ,
+        //                       second < 10 ? "0" + second : "" +second ,
+        //                       days
+        //                 ];
+        //     }
+
+        //进度条
+        // var prograss_width = 0;
+        // var prograss_id = setInterval(prograss_color , 30)
+        // var target = 600;
+        // function prograss_color()
+        // {
+        //     prograss_width +=5;
+        //     progress_child.style.width = prograss_width+"px";
+        //     if(prograss_width == target)
+        //     {
+        //         clearInterval(prograss_id);
+
+        //     }
+        // }
+
+
+        </script>
+</body>
+</html>

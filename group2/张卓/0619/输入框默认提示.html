@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>输入框默认提示</title>
+</head>
+
+<body>
+    <!-- 输入框的默认提示 -->
+    <input type="text" id="shurukuang" onfocus="f()" onblur="b()" value="请输入您想要输入的话" />
+    <script>
+        function f(){
+            // 当鼠标点击进去的时候 内容变成空白
+            // console.log(shurukuang.value)
+            if(shurukuang.value=="请输入您想要输入的话"){
+            shurukuang.value=""
+            }
+        }
+        function b(){
+            if(shurukuang.value==""){
+                shurukuang.value="请输入您想要输入的话"
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0618</title>
+</head>
+<body>
+    
+
+
+        <!-- 倒计时 -->
+              
+            <!-- <script>
+            
+                var nowDay =  100;
+                var h = parseInt(nowDay/24);
+                var m = nowDay%24;
+                var t = setInterval(function(){
+                    nowDay--;
+                    if(nowDay===0){
+                        clearInterval(t);
+                        return false;
+                    }
+                    console.log(h,m);
+                },1000);
+            
+            
+            
+            </script> -->
+
+
+
+            <!-- 倒计时 -->
+
+                    <div id="time">
+                        <span id="d">00</span>            <!--天--->
+                        <span id="h">00</span>            <!--小时--->
+                        <span id="m">00</span>            <!--分钟--->
+                        <span id="s">00</span>            <!--秒--->
+                    </div>
+
+                    <script>
+                        var oD = document.getElementById("d");
+                        var oH = document.getElementById("h");
+                        var oM = document.getElementById("m");
+                        var oS = document.getElementById("s");
+                        
+                            setInterval(function(){
+                                // 获取当前的时间
+                                var date = new Date();
+                                            var now = date.getTime();
+
+                                            // 结束时间
+
+                                            var endDate = new Date("2019/6/20 00:00:00");
+                                            var end = endDate.getTime() ;
+
+
+                                            // 时间差
+
+                                            var timeTotal = end - now;
+                                            
+
+                                            if(timeTotal >= 0){
+                                                var d = parseInt(timeTotal/1000/60/60/24);
+                                                var h = parseInt(timeTotal/1000/60/60%24);
+                                                var m = parseInt(timeTotal/1000/60%60);
+                                                var s = parseInt(timeTotal/1000%60);
+                                            }
+                                            else{
+                                                clearInterval();
+                                            }
+
+                                            oD.innerHTML = d + "天";
+                                            oH.innerHTML = h + "时";
+                                            oM.innerHTML = m + "分";
+                                            oS.innerHTML = s + "秒";
+                                        },1000)
+
+                    
+                    </script>     
+
+
+
+
+
+        <!-- 数码时钟 -->
+
+        <p>数码时钟:</p>
+        <p id="pp"></p>
+        
+        <script>
+            var oP = document.getElementById("pp");
+        var myVar = setInterval(function(){ myTimer() }, 1000);
+        
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            oP.innerHTML = t;
+        }
+        </script>
+             
+
+
+
+
+
+</body>
+</html>

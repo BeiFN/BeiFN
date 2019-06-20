@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入用户名" id="username">
+    <input type="password" placeholder="请输入密码" id="userpaw">
+    <script>
+        username.onblur = handlerBlur;
+        userpaw.onblur = pawHandlerBlur;
+
+        function handlerBlur() {
+            var content = username.value;
+            if (content.length >= 6 && content.length <= 20) {
+                username.style.borderColor = "green";
+            } else {
+                username.style.borderColor = "red";
+                alert("用户名长度应该在6 - 20 位之间");
+
+                return false;
+            }
+
+            if (isNaN(content[0])) {
+                username.style.borderColor = "green";
+            } else {
+                username.style.borderColor = "red";
+                alert("首字符不能为数字");
+                return false;
+            }
+
+            for (var i = 0, letter; letter = content[i++];) {
+                var ascii = letter.charCodeAt(0);
+                if (!(ascii >= 48 && ascii <= 57 || ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122 || ascii === 95)) {
+                    alert("只能以数字字母下划线进行命名");
+                    username.style.borderColor = "red";
+                    return false;
+                }
+            }
+        }
+
+        function pawHandlerBlur() {
+            var paw = userpaw.value;
+            if (paw.length >= 6 && paw.length <= 20) {
+                userpaw.style.borderColor = "green";
+            } else {
+                userpaw.style.borderColor = "red";
+                alert("密码长度应该在6 - 20 位之间");
+                return false;
+            }
+
+            for (var i = 0, letter; letter = paw[i++];) {
+                var ascii = letter.charCodeAt(0);
+                if (!(ascii >= 48 && ascii <= 57 || ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122 || ascii === 95)) {
+                    alert("只能以数字字母下划线设置密码");
+                    userpaw.style.borderColor = "red";
+                    return false;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = "a,a,b,c,c,d,f,g,j,j";
+        str = str.split(",").join("");
+        //统计每个字符出现的次数，结果显示 a 2、b 1、c 2、d1
+        for (var asc = 97; asc <= 122; asc++) {
+            var count = 0;
+            for (var i in str) {
+                if (str.charCodeAt(i) == asc) {
+                    count++;
+                }
+            }
+            if (count) console.log(String.fromCharCode(asc) + " " + count);
+        }
+
+        //去掉重复的字符，使结果显示 abcd
+        var arr = str.split("");
+        for (var i = 0; i < arr.length; i++) {
+            if (arr.indexOf(arr[i], i + 1) > -1) {
+                arr.splice(i, 1);
+                i--;
+            }
+        }
+        str = arr.join("");
+        console.log(str);
+    </script>
+</body>
+
+</html>
