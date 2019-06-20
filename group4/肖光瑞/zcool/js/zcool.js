@@ -96,19 +96,6 @@ init();
 startInterval();
 
 
-/**
- * 吸顶菜单
- */
-var menuSu = document.getElementById("menu-suction");
-window.onscroll = function () {
-    var scrollTop = document.documentElement.scrollTop;
-    if (scrollTop >= 600) {
-        menuSu.style.position = "fixed";
-        menuSu.style.top = 0;
-    } else {
-        menuSu.style.position = "static";
-    }
-}
 
 /**
  * 页面主体内容
@@ -173,29 +160,39 @@ for (var i = 0; i < k; i++) {
 contentBox.innerHTML = str;
 
 
+
 /**
- * 回到顶部
+ * 吸顶菜单 && 回到顶部
  */
-var goTop = document.getElementById("goTop");
+var menuSu = document.getElementById("menu-suction"),
+    goTop = document.getElementById("goTop");
+var bH = document.body.clientHeight,
+    cH = document.documentElement.clientHeight;
+console.log(bH)
+console.log(cH)
+
+window.onscroll = function () {
+    var scrollTop = document.documentElement.scrollTop,
+        sT = document.body.scrollTop;
+    if (scrollTop >= 605 || sT >= 605) {
+        menuSu.style.position = "fixed";
+        menuSu.style.top = 0;
+        goTop.style.display = "block";
+    } else {
+        menuSu.style.position = "static";
+        goTop.style.display = "none";
+    }
+    if (scrollTop > (bH - cH - 270)) {
+        goTop.style.position = "absolute";
+        goTop.style.bottom = 270 + "px"
+    } else {
+        goTop.style.position = "fixed";
+        goTop.style.bottom = 34 + "px";
+    }
+}
 function goTopF() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 }
-window.onscroll = function () {
-    var scrollTop = document.documentElement.scrollTop;
-    var sT = document.body.scrollTop;
-    if (scrollTop >= 375 || sT >= 375) {
-        goTop.style.display = "block";
-    } else {
-        goTop.style.display = "none";
-    }
-    // if ( < 270) {
-    //     goTop.style.bottom = 270 + "p)x"
-    //     goTop.style.transition = 0.5 + "s";
-    // } else {
-    //     goTop.style.bottom = 34 + "px";
-    //     goTop.style.transition = 0.5 + "s";
-    // }
-}
-
 goTop.addEventListener("click", goTopF);
+

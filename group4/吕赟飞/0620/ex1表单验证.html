@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #222;
+        }
+
+        form {
+            width: 500px;
+            height: 500px;
+            color: #ccc;
+            background: #333;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            color: blue;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        input {
+            width: 200px;
+            height: 20px;
+            border: none;
+            background: #ccc;
+        }
+
+        span {
+            display: inline-block;
+            width: 60px;
+            text-align: center;
+            background: #eee;
+            color: transparent;
+        }
+
+        .active {
+            color: #fff;
+            background: green;
+        }
+
+        #code,
+        #rcode {
+            width: 80px;
+            text-align: center;
+        }
+
+        #loginauto {
+            width: 10px;
+        }
+
+
+        button {
+            border: none;
+            /* display: inline-block; */
+            width: 80px;
+            height: 30px;
+            background: blue;
+            margin-left: 200px;
+            margin-right: 20px;
+        }
+
+        i {
+            font-style: normal;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-weight: normal;
+            width: 150px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 240px;
+            background: yellow;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <form action="#">
+            <h5></h5>
+            <fieldset>
+                <legend>账户详细资料</legend>
+                <p><label for="username">用户名称</label><input type="text" name="username" id="username"></p>
+                <p><label for="userpw">登录密码</label><input type="password" name="userpw" id="userpw"></p>
+                <p><label for="repw">重复登录密码</label><input type="password" name="repw" id="repw"></p>
+                <p><label>密码安全级别</label><span>低</span><span>中</span><span>高</span></p>
+            </fieldset>
+            <fieldset>
+                <legend>个人信息资料</legend>
+                <p><label for="email">电子邮件</label><input type="text" name="email" id="email"></p>
+                <p><label for="realname">真实姓名</label><input type="text" name="realname" id="realname"></p>
+                <p><label for="phone">中奖通知手机</label><input type="text" name="phone" id="phone"></p>
+                <p><label for="code">验证码</label><input type="text" name="code" id="code">&nbsp;<input type="text"
+                        name="rcode" id="rcode" readonly></p>
+            </fieldset>
+            <button>注册</button><input type="checkbox" id="loginauto"><i>10天内免密登录</i>
+        </form>
+    </div>
+
+    <script>
+        var username = document.getElementById("username");
+        var userpw = document.getElementById("userpw");
+        var repw = document.getElementById("repw");
+        var pwclass = document.getElementsByTagName("span");
+        var email = document.getElementById("email");
+        var realname = document.getElementById("realname");
+        var phone = document.getElementById("phone");
+        var code = document.getElementById("code");
+
+
+        
+
+
+        // 随机验证码
+        window.onload = function () {
+            rcode.value = randomCode();
+        }
+
+        function randomCode() {
+            var arr = []
+            for (var i = 48; i < 123; i++) {
+                if (i > 57 && i < 65) continue;
+                if (i > 90 && i < 97) continue;
+                arr.push(String.fromCharCode(i));
+            }
+            arr.sort(function () {
+                return Math.random() - 0.5;
+            });
+            arr.length = 4;
+            return (arr.join(""));
+        }
+    </script>
+
+
+</body>
+
+</html>

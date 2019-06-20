@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left:0;
+            right: 0;
+            top:0;
+            bottom:0;
+            margin: auto;
+            z-index : 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        window.onload = function(){
+            var box = document.getElementById("box");
+            var timer = null;
+            timer = setInterval(function(){
+                box.style.width = box.offsetWidth + 1 + "px";
+                console.log(box.offsetWidth);
+                if(box.style.width == "300px"){
+                    clearInterval(timer);
+                }
+            },10);
+        }
+    </script>
+</body>
+</html>

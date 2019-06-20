@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function ma (){
+        var count = 0;
+        var yzm = "";
+        for( ; count < 6;){
+            var asc = Math.round(Math.random()*42+48);
+            if( asc >= 18 && asc < 58){
+                yzm += String.fromCharCode(asc);
+                count++;
+            }
+            else if( asc >= 65 && asc < 91){
+                yzm += String.fromCharCode(asc);
+                count++;
+            }
+        }
+        document.write(yzm)
+    }
+    ma()
+    </script>
+</body>
+</html>
