@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>聊天窗口+延迟提示</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .chatWin{ width: 500px; height: 600px; border: 2px solid #222222; margin: 20px auto; background-color: #eee;position: relative; }
+        #messageBox{height: 450px;width: 100%; overflow-y: auto; }
+        #inputBox{height: 150px;background-color: #fff;}
+        .rightMes,.leftMes{min-height: 60px; width: 100%; padding: 10px 0;display: inline-block;}
+        .rightMes p,.leftMes p{ min-height: 50px;width: 250px; background-color: #788FE5; border-radius: 4px;padding: 5px; float: right; font-size: 14px; white-space: pre-wrap}
+        .leftMes p{float: left;}
+        .rightMes img{width: 40px; height: 40px; border-radius: 50%;float: right; margin: 0 5px; }
+        .leftMes img{width: 40px; height: 40px; border-radius: 50%;float: left; margin: 0 5px;}
+        #inputBox textarea{width: 400px; height: 100px; resize: none; margin: 5px;vertical-align: baseline;}
+        #inputBox button{width: 80px; height: 30px; border: 0; border-radius: 4px;background-color: #788FE5; position: relative; bottom: 17px;}
+        #personInfo{width: 200px; height: 100px; background: rgba(120,143,220,0.5); border-radius: 4px; position: absolute; top:80px; left: -220px; display: none; padding: 5px;}
+        #personInfo p{width: 190px; background-color:transparent; border-radius: 0;padding: 5px; font-size: 14px; white-space: pre-wrap};
+    </style>
+</head>
+<body>
+    <div class="chatWin">
+        <div id="messageBox">
+            <div class="rightMes">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2409562546,278052349&fm=27&gp=0.jpg" alt="">
+                <p>hello</p>
+            </div>
+            <div class="leftMes">
+                <img id="leftImg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2533885837,2191182440&fm=27&gp=0.jpg" alt="">
+                <p>how are you</p>
+                <div id="personInfo">
+                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2533885837,2191182440&fm=27&gp=0.jpg" alt="">
+                        <span>name</span>
+                        <p>个人资料</p>
+                </div>
+            </div>
+        </div>
+        <div id="inputBox">
+            <textarea id="textMex" cols="30" rows="10"></textarea>
+            <button id="sentMes">发送</button>
+        </div>
+    </div>
+
+
+    <script>
+        var mesBox = document.getElementById("messageBox");
+        // 聊天窗口
+        sentMes.onclick= function(){
+            var message = textMex.value;
+            var newDiv = document.createElement("div");
+            var rightImg = document.createElement("img");
+            rightImg.src = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2409562546,278052349&fm=27&gp=0.jpg";
+            newDiv.className = "rightMes";
+            var pEle = document.createElement("p");
+            pEle.innerText = message;
+            newDiv.appendChild(rightImg);
+            newDiv.appendChild(pEle);
+            mesBox.appendChild(newDiv);
+            textMex.value = "";
+        }
+
+        //延迟提示框
+        leftImg.onmouseover = function(){
+            var timer = setTimeout(function(){
+                personInfo.style.display = "block";
+            },500);
+        }
+        leftImg.onmouseout = function(){
+            var timer = setTimeout(function(){
+                personInfo.style.display = "none";
+            },500);
+        }
+    </script>
+</body>
+</html>
