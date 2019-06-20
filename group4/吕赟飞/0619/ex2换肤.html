@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link id="link" rel="stylesheet" href="./css2.css">
+</head>
+
+<body>
+    <button class="btn">律师函皮肤</button>
+    <button class="btn">短头发皮肤</button>
+
+<script>
+
+        var list = [
+            "./css1.css",
+            "./css2.css",
+        ]
+
+        var ele_btns = document.querySelectorAll(".btn");
+        var ele_link = document.getElementById("link");
+
+        for (var i = 0, btn; btn = ele_btns[i++];) {
+            btn.index = i - 1;
+            btn.onclick = function () {
+                ele_link.href = list[this.index];
+            }
+        }
+    </script>
+</body>
+
+</html>

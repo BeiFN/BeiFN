@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        
+        <span id="days_box">00</span> 天 
+        <span id="hour_box">00</span> 小时 
+        <span id="minute_box">00</span>分
+        <span id="second_box">00</span>秒
+  </div>
+  <script>
+    
+     setInterval(countDown("2019/6/20"),1000);
+    // function countDown(){
+    //     var date = new Date("2019/10/1")
+    //     var total = date.getTime() - Date.now();
+    //     var days =  parseInt( total / 1000 / 3600/24);
+    //     var second = parseInt(total / 1000 % 60) ;
+    //     var minute = parseInt(total / 1000 / 60 % 60);
+    //     var hour   = parseInt( total / 1000 / 3600 % 24);
+
+    //     days_box.innerHTML = days;
+    //     hour_box.innerHTML = hour;
+    //     minute_box.innerHTML = minute;
+    //     second_box.innerHTML = second;
+    // }
+
+    function countDown(time) {
+        var arr = getShiJian(time);
+        days_box.innerHTML = arr[3];
+        hour_box.innerHTML = arr[2];
+        minute_box.innerHTML = arr[1];
+        second_box.innerHTML = arr[0];
+        return function(){
+            countDown(time);
+        }
+    }
+
+    function getShiJian(time){
+        var date = new Date(time);
+        var total = date.getTime() - Date.now();
+
+        var second = parseInt(total / 1000 % 60);
+        var minute = parseInt(total / 1000 / 60 % 60);
+        var hour = parseInt(total / 1000 / 3600 % 24);
+        var days = parseInt(total / 1000 / 3600 / 24);
+
+        return [
+            second < 10 ? "0" + second : "" + second,
+            minute < 10 ? "0" + minute : "" + minute,
+            hour < 10 ? "0" + hour : "" + hour,
+            days < 10 ? "0" + days : "" + days
+        ];
+    }
+    // countDown("2019/10/1");
+  </script>
+</body>
+</html>

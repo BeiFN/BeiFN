@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态表单的创建</title>
+
+</head>
+<body>
+
+    <input id="row" type="text" placeholder="请输入行数">
+    <input id="col" type="text" placeholder="请输入列数">
+    <button id="btn">动态生成表格</button>
+    <div id="res"></div>
+
+    <script>
+        btn.onclick=makeTable;
+        function makeTable(){
+            var rowNum=row.value;
+            var colNum=col.value;
+            var ele_table=document.createElement("table");
+            for (var i = 0; i < rowNum; i++) {
+                var ele_tr = document.createElement("tr");
+                (function(){
+                    for (var j = 0; j < colNum; j++) {
+                        var ele_td = document.createElement("td");
+                        var randomInt=Math.round(Math.random()*255);
+                        ele_td.innerHTML=randomInt;
+                        var randomColor=Math.round(Math.random()*16777215);
+                        ele_td.style.background="#"+randomColor.toString(16);
+                        ele_tr.appendChild(ele_td);
+                    }
+                })();
+                ele_table.appendChild(ele_tr);
+            }
+            res.appendChild(ele_table);
+        }
+    </script>
+
+</body>
+</html>
