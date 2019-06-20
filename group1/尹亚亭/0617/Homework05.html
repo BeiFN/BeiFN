@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>密码强度</title>
+		
+	</head>
+	
+	<body>
+		
+		<input type="text" id="password" placeholder="请输入密码">
+		<p >密码强度：<span id="strength"></span></p>
+		
+		<script type="text/javascript">
+			
+			password.onblur=function(){
+				var pwValue=password.value;
+				var category={
+					letter:false,
+					num:false,
+					symbol:false,
+				}
+				
+				// !category.num  	NOT   	!num
+				// 
+				for (var i=0,element; element=pwValue[i++];) {
+					if(!category.letter && element.charCodeAt(0)>=65 && element.charCodeAt(0)<=90 || element.charCodeAt(0)>=97 &&element.charCodeAt(0)<=122){
+						category[0]=true;
+					}
+					if(!category.num && element.charCodeAt(0)>=48 && element.charCodeAt(0)<=57 )
+					{
+						category[1]=true;
+					}
+					if (!category.symbol && element.charCodeAt(0)>=32 &&element.charCodeAt(0)<=47) {
+						category[2]=true;
+					}
+				}
+				var count=0;
+				for (var index in category) {
+					category[index] ? count++ : false ;
+				}
+				
+				strength.innerHTML=count;
+			}
+		</script>
+	</body>
+</html>
