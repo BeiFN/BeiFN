@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{margin: 0;
+        padding : 0;
+    }
+    
+    #box{
+        width:300px;
+        margin: 0 auto ;
+    }
+    li{
+        height: 20px;
+        margin-top:5px;
+        list-style: none;
+    }
+</style>
+<body>
+    <ul id="box">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+    <script>
+        var ele_li = document.getElementById("box").children;
+
+        for( var i = 0 ,li ; li = ele_li[i++] ; ){
+            li.index = i-1 ;
+            if(li.index % 2 ===0){
+                li.style.backgroundColor = "red";
+            }else{
+                li.style.backgroundColor = "green";
+            }
+            li.onclick = function(){
+                ele_li[this.index].style.backgroundColor =randomRGBAColor();
+                ele_li[this.index].innerHTML = "干嘛点我，点我就变色给你看";
+            }
+        }
+        function randomRGBAColor() {
+                var r = Math.round(Math.random() * 255);
+                var g = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+                var a = Math.random().toFixed(2);
+                return "rgba(" + r + "," + g + "," + b + " ," + a + ")";
+            }
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
