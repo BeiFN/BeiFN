@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        margin: 0 auto;
+        width: 400px;
+        height: 409px;
+        border-bottom: 1px solid cadetblue;
+    }
+    li{
+        list-style: none;
+        width: 400px;
+        height: 40px;
+        border-top:1px solid cadetblue;
+    }
+    .redL{
+        background: red;
+    }
+    .yellowL{
+        background: yellow;
+    }
+</style>
+<body>
+    <ul id="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    let lis=document.querySelectorAll("li")
+
+    for(let i=0;i<lis.length;i++){
+        lis[i].index=i
+        lis[i].onmouseenter=function(){
+            if(this.index===0||this.index%2===0){
+                lis[this.index].className="redL"
+            }else if(this.index%2!=0){
+                lis[this.index].className="yellowL"
+            }
+        }
+        lis[i].onmouseleave=function(){
+            this.className=""
+        }
+    }
+</script>
+</html>
