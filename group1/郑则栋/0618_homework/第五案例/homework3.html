@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>密码格式</title>
+</head>
+
+<body>
+    <input type="text" id="inp">
+
+
+
+
+    <script>
+
+        document.onkeydown = function (e) {
+            if (e.keyCode === 13) {
+                var diff_grade = 0;
+                var inner = document.getElementById("inp").value;
+                if (inner.length < 6 || inner.length > 20) {
+                    alert("Your name is not god");
+                    return 0;
+                }
+                if (!(inner.charCodeAt() >= 65 && inner.charCodeAt() <= 90 || inner.charCodeAt() >= 97 && inner.charCodeAt() <= 120)) {
+                    alert("请用字母开头");
+                    return;
+                }
+                for (var i = 0; i < inner.length; i++) {
+                    if (!(inner[i].charCodeAt() >= 65 && inner[i].charCodeAt() <= 90 || inner[i].charCodeAt() >= 97 && inner[i].charCodeAt() <= 120 || inner[i].charCodeAt() >= 49 && inner[i].charCodeAt() <= 57 | inner[i].charCodeAt() == 95)) {
+                        alert("只能哟数字字母下划线，嘤嘤嘤");
+                        return;
+                    }
+                }
+
+
+            }
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

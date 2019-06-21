@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css1.css" id="link">
+</head>
+<body>
+    <form action="">
+        <input type="button" class="btn" value="Dog"/>
+        <input type="button" class="btn" value="animal"/>
+    </form>
+    <script>
+        var list=[
+            "./css1.css",
+            "./css2.css",
+        ];
+        
+     
+            var ele_btn = document.querySelectorAll(".btn");  //nodelist 伪数组
+            console.log(ele_btn);
+            var ele_link=document.getElementById("link")
+    
+            for(var i=0,skin;skin=ele_btn[i++];){           //建了两个skin对象分别代表两个按钮，{index:0,onclick:function1}{index:1,onclick:function2}
+                skin.index = i-1;
+                skin.onclick =function(){
+                    ele_link.href = list[this.index]
+                }
+
+            }
+      
+    </script>
+</body>
+</html>
