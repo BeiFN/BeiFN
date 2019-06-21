@@ -25,6 +25,7 @@
                 var ulsup = document.createElement("ul");
                 document.body.appendChild(ulsup);
                 console.log(nums);
+                var color = "";
                 for(var i=0; i++ < Number(nums);) {
                     console.log(i);
                     var lis = document.createElement("li");
@@ -36,6 +37,18 @@
                     }
                     lis.innerHTML = "第"+ (i-1) +"行";
                     ulsup.appendChild(lis);
+
+                    lis.onmouseover = function(){
+                        color = this.style.backgroundColor;
+                        this.style.backgroundColor = "#000";
+
+                        // color = lis.style.backgroundColor;
+                        // lis.style.backgroundColor = "#000";
+                    }
+                    lis.onmouseout = function(){
+                        this.style.backgroundColor = color;
+                        color = "";
+                    }
                 }
                 
             }

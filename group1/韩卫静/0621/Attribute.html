@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test" class = "box" style="width:100px; ">
+
+    </div>
+    <script>
+        var ele_d = document.getElementById("test");
+
+        //自定义改变元素属性的方法：
+
+        mySetAttribute(ele_d,"class","mybox");
+        console.log( myGetAttribute(ele_d,"style") );
+        //removeMyAttribute(ele_d,"style");
+
+
+        //设置元素的某个属性的属性值
+        function mySetAttribute(ele,attr,value){
+            if(!ele){
+                return undefined;
+            }
+            if(!attr){
+                return undefined;
+            }
+            value ? value : value = " ";
+            var myAttr = document.createAttribute(attr);
+            myAttr.value = value;
+            ele.setAttributeNode(myAttr);
+        }
+        //获取元素某个属性的属性值
+        function myGetAttribute(ele,attr){
+            if(!ele){
+                return undefined;
+            }
+            if(!attr){
+                return undefined;
+            }
+            var nodelist = ele.attributes;
+            for(var i =0,a; a = nodelist[i++];){
+                if(a.nodeName == attr ){
+                    return a.nodeValue;
+                }
+            }
+           return undefined;
+        }
+        //删除元素的某项属性-----------未完成
+        function removeMyAttribute(ele,attr){
+            var child = ele.attributes;
+            for(var i =0; i<child.length;i++){
+                
+                if(child[i].nodeName === attr){
+                    console.log(child[i]);
+                    
+                    //ele.removeChild(child[i]);
+                }
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>

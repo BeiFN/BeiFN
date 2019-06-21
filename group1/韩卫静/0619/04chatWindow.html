@@ -77,6 +77,16 @@
                 personInfo.style.display = "none";
             },500);
         }
+        personInfo.onmouseover = function(){
+            var timer = setTimeout(function(){
+                personInfo.style.display = "block";
+            },500);
+        }
+        personInfo.onmouseout = function(){
+            var timer = setTimeout(function(){
+                personInfo.style.display = "none";
+            },500);
+        }
     </script>
 </body>
 </html>
