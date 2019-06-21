@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box{
+            width: 600px;
+            height: 600px;
+            border: 1px solid #000;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #txt{
+            width: 580px;
+            height: 380px;
+            background: #ccc;
+            margin: 10px 10px 0 10px;
+        }
+        #inputtext{
+            width: 580px;
+            height: 200px;
+            background: #ddd;
+            margin: 0 10px;
+        }
+        #inputtext textarea {
+            width: 560px;
+            height: 150px;
+            background: #fff;
+            margin: 0 10px;
+            overflow-y: auto;
+        }
+        #inputtext button{
+            float: right;
+        }
+        .boy{
+            background: rgb(65, 161, 65);
+            float: left;
+        }
+        .girl{
+            background: rgb(228, 123, 123);
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="txt">
+            <span></span>
+        </div>
+        <div id="inputtext">
+            <select name="" id="someone">
+                <option>boy</option>
+                <option>girl</option>
+            </select>
+            <textarea name="" id="ipt" cols="30" rows="10"></textarea>
+            <button id="bnt">发送</button>
+        </div>
+    </div>
+
+    <script>
+        bnt.onclick = handerlOnclick;
+        function handerlOnclick(){
+            var option_value = document.getElementById("inputtext").children[0].value;
+            var textarea_value = document.getElementById("ipt").value;
+            var ele_span = document.getElementById("txt").children[0];
+            var span_value = ele_span.innerHTML
+            if(option_value = "boy"){
+                ele_span.className = "boy";
+                ele_span.innerHTML = span_value + textarea_value +"</br>";
+            }
+            if(option_value = "girl"){
+                ele_span.className ="";
+                ele_span.className = "girl";
+                ele_span.innerHTML = span_value + textarea_value +"</br>";
+            }
+        }
+    
+    
+    </script>
+</body>
+</html>
