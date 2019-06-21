@@ -1,13 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
-    
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="clock"></div>
+
+        <script>
+            //业务
+            oclock();
+
+            var stop = setInterval(oclock, 1000);
+
+
+            function oclock() {
+                var countArr = getCountDown(2019, 8, 8);
+                clock.innerHTML = countArr[3] + "天" + countArr[0] + '&nbsp;:&nbsp;' + countArr[1] + "&nbsp;:&nbsp;" +
+                    countArr[2];
+
+
+            }
+
+
+            //获取目标时间
+            // var target = "2019,8,8";
+            function getCountDown() {
+                var hours = 0;
+                var minute = 0;
+                var second = 0;
+
+                var targetDate = new Date();
+                targetDate.setFullYear(arguments[0]);
+                targetDate.setMonth(arguments[1]);
+                targetDate.setDate(arguments[2]);
+
+
+                if (arguments.length > 3) {
+                    hours = arguments[3];
+                    minute = arguments[4];
+                    second = arguments[5];
+                }
+                targetDate.setHours(hours);
+                targetDate.setMinutes(minute);
+                targetDate.setSeconds(second);
+
+                var diff = targetDate - Date.now();
+
+                var show_second = parseInt(diff / 1000 % 60);
+                var show_minute = parseInt(diff / 1000 / 60 % 60);
+                var show_hour = parseInt(diff / 1000 / 60 / 60 % 24);
+                var show_tian = parseInt(diff / 1000 / 60 / 60 / 24);
+
+                console.log(show_tian, show_second, show_minute, show_hour);
+                // var coun = 0;
+                // if (coun++ == 5) {
+                //     console.log(coun);
+                //     clearInterval(stop);
+                //     console.alert("stop");
+                // }
+                return [
+                    show_hour < 10 ? "0" + show_hour : "" + show_hour,
+                    show_minute < 10 ? "0" + show_minute : "" + show_minute,
+                    show_second < 10 ? "0" + show_second : "" + show_second,
+                    show_tian < 10 ? "0" + show_tian : "" + show_tian
+
+                ]
+
+            }
+        </script>
+    </body>
+
+    </html>
+
 </body>
+
 </html>

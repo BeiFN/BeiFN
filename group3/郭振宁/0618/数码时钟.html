@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            float: left;
+            margin-right: 20px;
+        }
+        .colon {
+            height: 50px;
+            font-size: 35px;
+            line-height: 32px;
+        }
+        #hour_box , #minute_box , #second_box {
+            width: 50px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+        <div id="hour_box"></div>
+        <div class="colon">:</div>
+        <div id="minute_box"></div>
+        <div class="colon">:</div>
+        <div id="second_box"></div>
+    </div>
+    <script>
+        setInterval(handerClick,1000);
+        function handerClick() {
+           
+            var timeArr = reduceTime(2019,6,19,1,10,0);
+            hour_box.innerHTML = '<img src = "img/'+timeArr[0].charAt(0)+'.png">';
+            hour_box.innerHTML += '<img src = "img/'+timeArr[0].charAt(1)+'.png">';
+            console.log(timeArr[1]);
+            minute_box.innerHTML = '<img src = "img/'+timeArr[1].charAt(0)+'.png">';
+            minute_box.innerHTML += '<img src = "img/'+timeArr[1].charAt(1)+'.png">';
+            
+            second_box.innerHTML = '<img src = "img/'+timeArr[2].charAt(0)+'.png">';
+            second_box.innerHTML += '<img src = "img/'+timeArr[2].charAt(1)+'.png">';
+            
+
+            // hour_box.innerHTML = timeArr[0];
+            // minute_box.innerHTML = timeArr[1];
+            // second_box.innerHTML = timeArr[2];
+
+            // console.log(LostHours,LostMinutes,LostSeconds);
+
+            // console.log(reduceSeconds);
+        }
+        handerClick();
+
+        function reduceTime() {
+            //重置目标时间
+            var targetName = new Date(arguments[0],arguments[1]-1,arguments[2]);
+            console.log(targetName);
+            if(arguments.length > 3) {
+                targetName = new Date(arguments[0],arguments[1]-1,arguments[2],arguments[3],arguments[4],arguments[5]);
+            }
+            
+            // targetName.setFullYear(2019);
+            // targetName.setMonth(5);
+            // targetName.setDate(19);
+            // targetName.setHours(0);
+            // targetName.setMinutes(0);
+            // targetName.setMilliseconds(0);
+            //拿到毫秒数
+            // var targetSeconds = targetName.setSeconds(0);
+            
+            //获取差值
+            // var reduceSeconds = targetSeconds - Date.now();
+            var reduceSeconds = targetName - Date.now();
+            
+            //计算时分秒
+            var LostHours = parseInt(reduceSeconds / 1000 / 60 / 60);
+            var LostMinutes = parseInt(reduceSeconds / 1000 / 60 % 60);
+            var LostSeconds = parseInt(reduceSeconds / 1000 % 60 );
+
+            return [LostHours <= 9? "0" + LostHours : "" + LostHours,
+                    LostMinutes <= 9? "0" + LostMinutes : "" + LostMinutes,
+                    LostSeconds  <= 9? "0" + LostSeconds : "" + LostSeconds];
+        }
+    </script>
+</body>
+</html>

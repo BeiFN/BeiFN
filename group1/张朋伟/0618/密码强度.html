@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="qq" placeholder="输入6-16位用户名">
+    <script>
+        qq.onblur = check1;
+
+        function check1() {
+            var cont = qq.value;
+            // console.log(cont);
+
+            var race = {
+                num: false,
+                char: false
+            }
+
+
+            for (var j in cont) {
+                if (cont[j] >= 0 && cont[j] <= 9) {
+                    qq.style.borderColor = "green";
+                    race.num = true;
+                    // console.log("11111111111111111111")
+                }
+                // console.log(cont[j].charCodeAt());
+
+
+
+                if (cont[j].charCodeAt() >= 97 && cont[j].charCodeAt() <= 122 || cont[j].charCodeAt() >= 65 && cont[j]
+                    .charCodeAt ()<= 90) {
+                    race.char = true;
+                    // console.log("22222222222222222222222")
+
+                }
+            }
+
+            var count = 0;
+            for (var i in race) {
+                if (race[i] == true)
+                    count++;
+            }
+            console.log(count)
+        }
+    </script>
+</body>
+
+</html>
