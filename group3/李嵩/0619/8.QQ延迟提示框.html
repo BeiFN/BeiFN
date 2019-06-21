@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            div{
+                float: left;
+                margin: 10px;
+            }
+            #div1{
+                width: 50px;
+                height: 50px;
+                background: red;
+            }
+            #div2{
+                width: 250px;
+                height: 180px;
+                background: #CCCCCC;
+                display: none;
+            }
+        </style>
+        <script>
+            window.onload=function(){
+                var odiv1=document.getElementById('div1');
+                var odiv2=document.getElementById('div2');
+                var timer=null;
+                odiv1.onmouseover=odiv2.onmouseover=function(){
+                    clearTimeout(timer);
+                    odiv2.style.display='block';
+                }
+                // odiv1.onmouseout=odvi2.onmouseout=function(){
+                //     timer=setTimeout(function(){
+                //         odiv2.style.display='none';
+                //     },500); 
+                // }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1"></div>
+        <div id="div2"></div>
+
+    </body>
+</html>
