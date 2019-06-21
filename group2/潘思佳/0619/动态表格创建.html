@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            width: 100px;
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="row" placeholder="行数">
+    <input type="text" id="col" placeholder="列数">
+    <button id="btn">click</button>
+    <script>
+        onload = function() {
+            var btn = document.getElementById("btn");
+            btn.onclick = function() {
+                var tab = document.createElement("table");
+                var rows = document.getElementById("row").value;
+                var cols = document.getElementById("col").value;
+                for (var i = 0; i < rows; i++) {
+                    var tr = document.createElement("tr");
+                    (function() {
+                        for (var i = 0; i < cols; i++) {
+                            var td = document.createElement("td");
+                            tr.appendChild(td);
+                        }
+                    })();
+                    tab.appendChild(tr);
+                }
+                document.body.appendChild(tab);
+            }
+        }
+    </script>
+</body>
+
+</html>
