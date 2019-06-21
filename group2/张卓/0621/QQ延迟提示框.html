@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QQ延时提示框</title>
+    <style>
+        *{margin:0;padding: 0;}
+        #bigbox{
+            width: 500px;
+            height: 500px;
+            background: gray;
+            position:relative;
+            margin: 0 auto;
+            
+        }
+        #tip{
+            width: 200px;
+            height: 200px;
+            background: white;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id = "bigbox">
+        这是qq的窗口
+        <div id="tip">这是延时的提示窗口 3秒后会关闭</div>
+    </div>
+    <script>
+        var tishi = document.getElementById("tip")
+        setTimeout(function(){
+            tishi.setAttribute("style","display:block")
+            setTimeout(function(){
+                tishi.setAttribute("style","display:none")
+             },3000)
+        },3000)
+
+        
+    </script>
+</body>
+</html>
