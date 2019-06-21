@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #progress_bar{
+                  width: 600px;
+                  height: 20px;
+                  border-radius: 5px;
+                  box-shadow: 0 0 5px #ddd;
+                  margin: 100px auto;
+            }
+
+            #progress{
+                  width: 10px;
+                  height: 20px;
+                  background:linear-gradient(to right ,#fff,#ddd);
+            }
+      </style>
+</head>
+<body>
+        <div id="progress_bar">
+            <div id="progress"></div>
+        </div>
+        <script>
+            var space=0;
+            var tar=600
+            var timer=setInterval(progressStart,1000);
+            function progressStart(){
+                if(arguments.length!=0){
+                   space=600*arguments[0]/100;
+                }else{
+                    space+=100;
+                }
+                progress.style.width=space+"px";
+                if(space==tar){
+                clearInterval(timer);
+            }
+            }
+            
+        </script>
+</body>
+</html>

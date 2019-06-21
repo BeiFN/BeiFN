@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 隔行变色 -->
+    <ul id="box">
+        <li>这是一部超写实的电影，编剧对故事的结构上也下了不少功夫，将这样一个在现实中比比皆是又</li>
+        <li>总被人忽略的悲剧，以如此艺术的方式还原到荧幕上来，并非易事</li>
+        <li>该片的血腥程度不输电锯惊魂，却不乏新意。所有的凶器都是文具之类的设置，饱含了导演的喻</li>
+        <li>意和讽刺。同时也大大增加了视觉刺激的效果.</li>
+        <li>电影的主题依然是复仇，这看上去似乎非常的平庸，然而同学们一个接一个的意外，让影片变的悬疑起</li>
+        <li>来。在最后的二十分钟，故事突然有了颠覆性的转折，瞬间将影片推向了高潮。这20分钟让影片完全</li>
+        <li>提升了一个档次，可以说之前所有的部分都是在为最后的剧情最铺垫。</li>
+    </ul>
+    <script>
+        var box = document.getElementById("box").children;
+         
+        changelineColor();
+        setInterval(changelineColor,1000);
+        function changelineColor(){
+            for(var i = 0;i < box.length;i++){
+                if(i % 2){
+                    var a = parseInt(Math.round(Math.random()*16777215));
+                    var b = a.toString(16);
+                    box[i].style.backgroundColor = "#" + b;
+                }  
+            }
+        }
+       // changelineColor();
+
+    </script>
+
+
+</body>
+</html>
