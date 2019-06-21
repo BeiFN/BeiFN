@@ -34,9 +34,18 @@
 
         .main {
             width: 600px;
-            height: 750px;
+            height: 550px;
             /* background: #f0f; */
             margin: 50px auto;
+            text-align: center;
+
+        }
+
+        #text {
+            width: 600px;
+            height: 100px;
+            background: gray;
+            margin:auto;
             text-align: center;
 
         }
@@ -106,35 +115,60 @@
                 <h3>12月</h3>
                 <p>January</p>
             </li>
-            <textarea name="" id="text" cols="80" rows="10"></textarea>
+
+
         </ul>
+        
     </div>
+    <div id="text">
+            <h4></h4>
+            <p></p>
+        </div>
 </body>
 <script>
     var tip = [
         "一月真开心",
         "二月来了",
-        "三月",
-        "四月",
-        "五月",
-        "六月",
-        "七月",
-        "八月",
-        "九月",
-        "十月",
-        "十一月",
-        "十二月",
+        "三月1111111111",
+        "四月11111111111",
+        "五月1111111111",
+        "六月111111111111",
+        "七月111111111111",
+        "八月11111111111",
+        "九月111111111111",
+        "十月111",
+        "十一月11111111111",
+        "十二月1111",
     ]
+    // 获取容器 大对象
     var ele_lis = document.getElementById("lis").children;
+    var ele_h4 = document.getElementById("text").children[0];
+    var ele_p = document.getElementById("text").children[1];
+
+
+
+
+    // 遍历获取小对象
     for (var i = 0, li; li = ele_lis[i++];) {
-        // li.index = i-1;
-        li.onclick = function () {
-            for (var k = 0; k < ele_lis.length; k++)
-                console.log("1");
-                console.log(ele_lis.length);
-                // ele_lis[k].className = "";
+        li.index = i - 1;
+        li.onclick = li_click;
+    }
+
+    function li_click() {
+        //样式改变
+        for (var k = 0; k < ele_lis.length; k++) {
+            // console.log(ele_lis.length);
+            ele_lis[k].className = "";
         }
+        console.log(this.index);
         this.className = "active";
+        //内容改变
+        //  ele_h= this.children[0];
+        ele_h4.innerHTML = this.index + 1 + "月";
+        ele_p.innerHTML = tip[this.index];
+
+
+
     }
 </script>
 
