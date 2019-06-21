@@ -45,33 +45,33 @@
           var pwd_level_tip = document.getElementById("pwd_level_tip");
           pwd.onkeyup = function(){
               if(/^\d+$/.test(this.value) || /^[a-zA-Z]+$/.test(this.value)) {
-                   pwd_level.children[0].style.background = "red";
-                   pwd_level.children[1].style.background = "white";
-                   pwd_level.children[2].style.background = "white";
+                //    pwd_level.children[0].style.background = "red";
+                //    pwd_level.children[1].style.background = "white";
+                //    pwd_level.children[2].style.background = "white";
                    pwd_level_tip.children[0].style.visibility = "visible";
                    pwd_level_tip.children[1].style.visibility = "hidden";
                    pwd_level_tip.children[2].style.visibility = "hidden";
                    console.log("弱");
               } else if(/[^0-9a-zA-Z]+/.test(this.value)) {
-                   pwd_level.children[0].style.background = "red";
-                   pwd_level.children[1].style.background = "orange";
-                   pwd_level.children[2].style.background = "green";
+                //    pwd_level.children[0].style.background = "red";
+                //    pwd_level.children[1].style.background = "orange";
+                //    pwd_level.children[2].style.background = "green";
                    pwd_level_tip.children[0].style.visibility = "hidden";
                    pwd_level_tip.children[1].style.visibility = "hidden";
                    pwd_level_tip.children[2].style.visibility = "visible";
                    console.log("强");
               } else if(this.value != "") {
-                   pwd_level.children[0].style.background = "red";
-                   pwd_level.children[1].style.background = "orange";
-                   pwd_level.children[2].style.background = "white";
+                //    pwd_level.children[0].style.background = "red";
+                //    pwd_level.children[1].style.background = "orange";
+                //    pwd_level.children[2].style.background = "white";
                    pwd_level_tip.children[0].style.visibility = "hidden";
                    pwd_level_tip.children[1].style.visibility = "visible";
                    pwd_level_tip.children[2].style.visibility = "hidden";
                    console.log("中");
               } else {
-                   pwd_level.children[0].style.background = "white";
-                   pwd_level.children[1].style.background = "white";
-                   pwd_level.children[2].style.background = "white";
+                //    pwd_level.children[0].style.background = "white";
+                //    pwd_level.children[1].style.background = "white";
+                //    pwd_level.children[2].style.background = "white";
                    pwd_level_tip.children[0].style.visibility = "hidden";
                    pwd_level_tip.children[1].style.visibility = "hidden";
                    pwd_level_tip.children[2].style.visibility = "hidden";

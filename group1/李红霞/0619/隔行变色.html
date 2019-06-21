@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        li{
+            width: 100%;
+            height: 80px;
+            margin-bottom: 20px;
+            background: #aa55dd;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        //实现隔行变色功能
+        // 1.获取到ul，遍历ul中的li得到li的伪数组，当li在数组中站的位置为奇数时改变背景色
+        var ul = document.getElementsByTagName("ul");
+        var ele_li = ul[0].children;
+        for(var i = 0 , li; li = ele_li[i++];){
+            if(i % 2 == 0){
+                li.style.backgroundColor = "#0f0";
+            }
+        }
+    </script>
+</body>
+</html>

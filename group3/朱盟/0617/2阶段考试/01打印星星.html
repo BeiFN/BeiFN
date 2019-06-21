@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印星星  朱盟 emb</title>
+</head>
+
+<body>
+
+    
+    <!-- 老师因为编码原因 我只能写英文 重新编码了，如果您看到乱码，请重新编码，请谅解！ -->
+
+    <input id="row" type="text" placeholder="请输入行数">
+    <input id="col" type="text" placeholder="请输入列数">
+    <button id="ok">打印 *</button>
+    <button id="okt">打印 三角</button>
+
+    <script>
+        ok.onclick = handler;
+        okt.onclick=handler;
+
+        // 行列打印
+        function square(r, c) {
+            if (arguments.length === 1) c = r;
+            var row = 0;
+            while (row++ < r) {
+                var colum = 0;
+                while (colum++ < c) {
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+        }
+
+
+
+        function triagle(r) {
+            var row = 0;
+            while (row++ < r) {
+                var spCount = 0;
+                while (spCount++ < r - row) {
+                    document.write("&nbsp;");
+                }
+                var colum = 0;
+                while (colum++ < row * 2 - 1) {
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+        }
+        // square();
+        // triagle(6);
+        function vaiput() {
+            var i = 0;
+            if (col.value.trim().length < 1 || isNaN(Number(Number(col.value)))) i=2;
+            if (row.value.trim().length < 1 || isNaN(Number(Number(row.value)))) i=1; 
+            return i;
+        }
+
+        function handler(ev) {
+            Element=ev.target;
+            var i=vaiput();
+            console.log(i);
+            // console.log(Element);
+            if(Element===ok){
+              if(i===0){
+                square(row.value,col.value);
+              }else if(i===1){
+                  alert("行数为空,或输入不合法");
+              }else{
+                alert("列数为空,或输入不合法");
+              }
+            }else{
+                if(i===0||i===2){
+                    triagle(row.value);
+                }
+                else{
+                    alert("行数为空,或输入不合法");
+                }
+            }
+            // console.log(row.value);
+            // console.log(col.value);
+        }    
+    </script>
+</body>
+
+</html>

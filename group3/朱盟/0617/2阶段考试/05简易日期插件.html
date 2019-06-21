@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易日期插件 朱盟 emb</title>
+</head>
+<style>
+     #box {
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        border: 1px solid #999;
+        border-radius: 5px;
+        font-size: 2em;
+        text-align: center;
+        overflow: auto;
+    }
+    button {
+        position: fixed;
+        bottom: 20%;
+        right: 30%;
+        border: 1px solid #666;
+        background: #666;
+        color: white;
+        border-radius: 3px;
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="box">
+            <input id="innumber" type="number" value="20190101">
+            <button id="ok">
+                计算
+            </button>
+            <br>
+            结果：
+            <input id="outnumber" type="number" value="" placeholder="0">
+    </div>
+   
+
+    <!-- 1.当点击按钮时，计算输入日期字符串从该年的1月1日到当前日期究竟有多少天 -->
+
+
+
+    <script>
+        //获取第几天
+        function isDayinY(day) {
+            day = day.toString();
+            if (day.length != 8) return false;
+            var y = parseInt(day / 10000); //隐式转换
+            var m = day.substring(4, 6);
+            var d = day.substring(6);
+            var nowDate = new Date(y, m - 1, d);
+            var yDate = new Date(y, 00, 01);
+            var res=(nowDate - yDate) / 1000 / 60 / 60 / 24;
+            console.log(res);
+            return res;
+        }
+        // isDayinY("20190103");
+
+        ok.onclick = function () {
+            outnumber.value = isDayinY(innumber.value); //执行结果 
+        }
+    </script>
+</body>
+
+</html>
