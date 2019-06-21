@@ -1127,12 +1127,21 @@ mainBox.innerHTML = str1;
  * 回到顶部
  */
 var backTop = document.getElementById("back-top");
+var bodyHeight = document.getElementById("body").offsetHeight;
 
 window.onscroll = function(){
+    console.log(bodyHeight);
     var scrollTop = document.documentElement.scrollTop;
-    console.log(scrollTop);
-    if(scrollTop >= 300){
+    // console.log(scrollTop);
+    if(bodyHeight - scrollTop > 270){
         backTop.style.display = "block";
+        if(scrollTop >= 1800){
+            backTop.style.position = "absolute";
+            backTop.style.bottom ="270px";
+        }else{
+            backTop.style.position = "fixed";
+            backTop.style.bottom ="34px";
+        }
     }else{
         backTop.style.display = "none";
     }
