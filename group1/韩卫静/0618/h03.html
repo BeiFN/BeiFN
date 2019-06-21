@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>---悬浮+跳转+固定练习---</title>
+    <style>
+        *{margin: 0; padding: 0;font-size: 20px;}
+        .jingubang{
+            width: 2px;
+            height: 4000px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #filldiv{  width: 100px;  height: 100px; background-color: #dd0; text-align: right;  line-height: 80px;}
+        .header{ width: 500px; height: 390px; margin: 0 auto; border: 5px solid #333;  border-radius: 4px;}
+        #nav{height: 50px; width: 100%; background-color: #fd0; text-align: center; font-size: 30px;line-height: 50px; z-index: 2;}
+        .content{ text-align: center; line-height: 80px; position: relative;}
+        .content ul{width: 800px; margin: 0 auto;}
+        .content li{list-style: none;height: 100px; margin: 20px; background-color: #fdd; box-shadow: 0 0 3px #333;}
+        #goTop{ width: 50px ; height: 50px; background-color: #ccc; display: none;border-radius: 4px;}
+        
+    </style>
+</head>
+<body>
+    <div class="jingubang">
+
+    </div>
+    <div class="header">
+        <div id="filldiv">
+                这是广告
+        </div>
+    </div>
+    <div id="nav">
+        导航栏
+    </div>
+    
+    <div class="content">
+        <ul>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+            <li>内容区</li>
+        </ul>
+        <div id="goTop">TOP</div>
+    </div>
+    
+    <script>
+        //广告弹出窗------------------
+        var fdiv = document.getElementById("filldiv");
+        window.onload = function(){
+            //var percent = document.getElementById("percent");
+            var timer = setInterval(function(){
+                fdiv.style.width = parseInt(fdiv.offsetWidth ) + 5 + "px";
+                if(fdiv.style.width == "500px") {
+                    clearInterval(timer);
+                }
+                //console.log(fdiv.offsetWidth );
+            },50);
+        }   
+        //顶部固定悬浮框----------------------
+        var ele_nav = document.getElementById("nav");
+        var ele_btn = document.getElementById("goTop");        
+        
+        window.onscroll = function(){
+            var topLength = document.body.scrollTop || document.documentElement.scrollTop;
+            if(topLength>=400){
+                ele_nav.style.position = "fixed";
+                ele_nav.style.top = "0";
+
+                ele_btn.style.display = "block";
+                ele_btn.style.position = "fixed";
+                ele_btn.style.bottom = "20px";
+                ele_btn.style.right = "200px";
+            }else{
+                ele_nav.style.position = "static";
+                ele_btn.style.display = "none";
+            }
+            if(topLength>1340){
+                ele_btn.style.display = "block";
+                ele_btn.style.position = "absolute";
+                ele_btn.style.bottom = "0px";
+            }
+            
+        }
+
+        //回到顶部--------------
+        goTop.onclick = function(){
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
+</body>
+</html>
