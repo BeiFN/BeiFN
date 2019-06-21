@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #progress_bar {
+            width: 600px;
+            height: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px deeppink;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        #progress {
+            width: 5%;
+            height: 20px;
+            background: deepskyblue;
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <div id="progress_bar">
+        <div id="progress"></div>
+    </div>
+    <script>
+        var progress_width = 0;
+        var progress_interval = null;
+
+        progress_interval = setInterval(progressing, 50)
+        function progressing() {
+            if (progress_width === 100) {
+                progress.textContent = "加载完成";
+                clearInterval(progress_interval);
+                return;
+            }
+            progress_width += 2;
+            progress.style.width = progress_width + "%";
+            progress.textContent = progress_width + "%";
+
+        }
+        progressing();
+
+
+
+
+    </script>
 </body>
+
 </html>

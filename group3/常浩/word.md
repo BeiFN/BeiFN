@@ -58,4 +58,12 @@ substring（star，end）包含star  但是不包含end  如果是负数的话  
 slice（star，end）  包含star 不包含end  如果是负数的话  代表的是从右到左
 trim         是去掉字符串左右两边的空格
 replace（要替换的内容，替换后的内容）查找替换 g代表的是全局查找
+concat  字符串的拼接 相当于+
+repeat  重复字符串  兼容性不好
+toString () 转换为字符串 任意类型都可以  还可以进行进制转换
 
+日期对象
+* valueOf  这个是返回的原始值   即为1970年1月吧1日到目标时间的毫秒数；  可以说是完全兼容的
+* toJSON   把date对象返回成字符串  有一定的格式   YYYY-MM-DDTHH:mm:ss.sssZ   应该是格林威治的时间
+* getTime   返回一个距离1970年到目标时间的差值  但是是毫秒数
+* toString  把日期对象转为字符串   该 toString 方法总是返回一个美式英语日期格式的字符串。

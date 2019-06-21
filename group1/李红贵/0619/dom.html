@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="view">我是标记
+        <div class="box"></div>
+    </div>
+    <!--  -->
+    <script>
+        // DOM js最有用的对象，就是设计最失败的对象
+        // 一个复杂庞大消耗性能很重要的对象
+        // DOM的结果
+        // attribute
+
+        // 原生提供的选择器，性能也差
+        // 1.id性能最好选择器， 2.dom对象遍历， 3.jQuery高性能选择器基于id选择器的封装
+
+        // ID选择器，性能和兼容性最好
+        // getElementById();
+        // 范围+选择器
+        // var box = document.getElementById("view");
+
+        // 只是找到了对象的引用
+        // console.log(box);
+
+        // 标签选择器
+        // var divs = document.getElementsByTagName("div");
+        // 所有多个元素选择器，获取来的元素一定是伪数组
+        // HTMLCollection   
+
+        // name选择器  NodeList
+
+        // 增加
+        var div = document.createElement("div");
+        console.log(document.createElement("div"));
+        div.innerHTML = "hello word";
+        console.log(div);
+
+        document.body.appendChild(div);
+        // 添加到尾部
+        // 如果appendChild操作的元素是已经存在于页面上的元素，
+        // 那么它会先删除页面上的这个元素，然后重新对元素进行插入。
+        document.body.appendChild(div);
+
+        // insertBefore
+        var box = document.getElementsByClassName("box");
+        var box1 = document.getElementById("view");
+        document.body.insertBefore(div,box1);
+
+        // 删
+        document.body.removeChild(box);
+        box.parentNode.removeChild(box);
+        box.remove();//语法升级
+
+        // 该
+        // 1.内容
+        // 2.属性
+        box.innerHTML = "我是box";  //标签语句以标签样式显示，取值连标签一起显示
+        box.innerText = "i am box";//转义，标签语句以字符串显示，取值只拿内容，不带标签
+
+        // 属性
+        // 三个操作属性的api  setAttribute(); getAttribute(); removeAttribute();
+
+        box.setAttribute("hellow","world");
+        box.removeAttribute("id");
+
+        // 简写方法
+        box.id = "fwfw";
+        box.class = "fff";
+        box.title = "name"
+
+        // dom.style.attr  //这样的属性赋值可以，取值尽量不用，只能获取行内样式
+        // 对性能消耗及其严重
+
+        // 浏览器多进程  渲染进程 页面加载
+        // 加载进程 图片加载，js代码加载  css代码加载  html代码加载
+        // js解析进程
+
+        // offset 系列方法耗性能  
+        // 渲染进程  回流（全局） 重绘（局部） 性能消耗教大
+        // offset系列方法  拿到盒模型的宽度，先抽出来获取数值再放回去，会让页面回流
+
+        // getComputedStyle
+
+
+    </script>
+</body>
+</html>
