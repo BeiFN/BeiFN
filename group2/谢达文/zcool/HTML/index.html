@@ -7,7 +7,9 @@
     <title>Zcool</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css"  />
-    
+    <style>
+        
+    </style>
 </head>
 <body>
    <div class="top">
@@ -54,7 +56,7 @@
        </div>
    </div>
   <!-- 中间导航部分 -->
-   <div class="center_nav">
+   <div class="center_nav" id="center_nav">
        <div class="content">
            <ul>
                <li><a href="#">首页推荐</a></li>
@@ -971,7 +973,7 @@
    <!-- advertisement -->
    <div class="adver">
        <div class="content">
-           <img src="https://reviveimg.hellorf.com/www/images/fdd02806257d0f8a4f39a3f606cdb7b4.jpg" width="1180px;">
+           <img src="https://reviveimg.hellorf.com/www/images/345e561975871c308cfab26e03e0aa86.jpg" width="1180px;">
        </div>
    </div>
 
@@ -1054,6 +1056,43 @@
         
     </div>
 </div>
-   </script>
+<div id="goTop">
+        <a href="#javascript"></a>
+</div>
+ <script>
+     window.onscroll = function()
+     {
+        var center_nav = document.getElementById("center_nav");
+        var _top = document.body.scrollTop || document.documentElement.scrollTop;
+        if(_top > 596)
+        {
+            center_nav.style.position = "fixed";
+            center_nav.style.top = "-56px";
+            center_nav.style.zIndex = "999";
+        }
+        else
+        {
+            center_nav.style.position = "static";
+        }
+        var goTop = document.getElementById("goTop");
+        if(_top > 4000)
+        {
+            goTop.style.position = "fixed";
+            goTop.style.top = "365px";
+            goTop.style.display = "block";
+        }
+        else
+        {
+            goTop.style.display = "none";
+        }
+        goTop.onclick = function ()
+        {
+            document.body.scrollTop = "0";
+            document.documentElement.scrollTop = "0";
+        }
+       
+     }
+     
+ </script>
 </body>
 </html>

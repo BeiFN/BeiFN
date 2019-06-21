@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>作业-密码强度</title>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    input {
+        outline: 0;
+    }
+    .box{
+        margin: 50px 0 0 100px;
+    }
+    #pwd{
+        height: 25px;
+        border-radius:3px;
+    }
+    #pwd_level {
+        list-style: none;
+        margin: 10px;
+        border-radius: 15px;
+        width: 174px;
+        border: solid 1px gainsboro;
+        height: 16px;
+    }
+    #pwd_level li {
+        background: silver;
+        float: left;
+        width: 50px;
+        margin: 4px;
+        height: 8px;
+    }
+    #pwd_level_tip {
+        margin: 10px;
+        width: 174px;
+        height: 16px;
+    }
+    #pwd_level_tip div {
+        float: left;
+        width: 58px;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+        visibility: hidden;
+    }
+</style>
+<body>
+    <div class="box">
+        <input type="text" name="pwd" id="pwd" value="" size="30" />
+        <ul id="pwd_level">
+            <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;"></li>
+            <li></li>
+            <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;"></li>
+        </ul>
+        <div id="pwd_level_tip">
+            <div id="">弱</div>
+            <div id="">中</div>
+            <div id="">强</div>
+        </div>
+    </div>  
+    <script>
+        var pwd=document.getElementById("pwd");
+        var btn=document.getElementById("btn");
+        var pwd_level=document.getElementById("pwd_level").children;
+        var pwd_level_tip=document.getElementById("pwd_level_tip").children;
+        pwd.onkeydown=function(){        
+            var pwdValue=pwd.value;
+            for(var index in pwdValue){
+                var t=pwdValue[index].charCodeAt(0);
+                var charType=0;
+                if(t>=48 && t <=57){
+                    charType = 0;                 //为0～9十个阿拉伯数字
+                    // console.log(charType);
+                }else if(t>=97 && t <=122 || t>=65 && t <=90){  
+                    charType=charType+1;        //为26个大写英文字母或者是为26个小写英文字母
+                    // console.log(charType);              
+                }else{
+                    charType=charType+2;         //为其他特殊字符
+                    // console.log(charType);
+                }
+                if(charType == 0){
+                    pwd_level_tip[0].style.visibility="visible";
+                    pwd_level_tip[1].style.visibility="hidden";
+                    pwd_level_tip[2].style.visibility="hidden";              
+                    pwd_level[0].style.backgroundColor="red";  
+                    pwd_level[1].style.backgroundColor="silver"; 
+                    pwd_level[2].style.backgroundColor="silver";
+                }else if(charType == 1){
+                    pwd_level_tip[0].style.visibility="hidden";
+                    pwd_level_tip[1].style.visibility="visible";
+                    pwd_level_tip[2].style.visibility="hidden";
+                    pwd_level[0].style.backgroundColor="silver";    
+                    pwd_level[1].style.backgroundColor="orange"; 
+                    pwd_level[2].style.backgroundColor="silver";
+                }else if(charType == 2){
+                    pwd_level_tip[0].style.visibility="hidden";
+                    pwd_level_tip[1].style.visibility="hidden";
+                    pwd_level_tip[2].style.visibility="visible";
+                    pwd_level[0].style.backgroundColor="silver"; 
+                    pwd_level[1].style.backgroundColor="silver";    
+                    pwd_level[2].style.backgroundColor="green";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
