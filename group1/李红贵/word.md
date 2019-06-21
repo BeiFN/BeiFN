@@ -357,6 +357,7 @@ console.log(d.getDay());
  -->
 13.getUTCDate()
 <!-- 以世界时为标准，返回一个指定的日期对象为一个月中的第几天 -->
+
 14.getUTCDay()
 15.getUTCFullYear()
 16.getUTCHours()
@@ -426,3 +427,28 @@ clearInterval
     3 toLocaleDateString()  以特定的格式显示周几、月、日和年
     4 toUTCString       以特定的格式显示完整的UTC日期
     5 valueof           返回毫秒数，等同于getTime
+
+
+
+
+***JS day6  0618 dom对象
+1.document.getElementById("IDName");  
+<!-- 根据id获取元素，得到单个标签元素 -->
+
+2.document.getElementByClass("className");
+<!-- 根据class名获取元素，得到的是伪数组 -->
+
+3.document.getElementByTagName("div");
+<!-- 根据标签名获取标签，用伪数组返回所有div -->
+
+4.document.getElementsByName("hello")；
+<!-- <div name="hello"></div> 根据name属性值获取标签 -->
+
+5.document.querySelector(".box");
+<!-- 根据class获取单个元素 -->
+
+6.document.querySelectorAll(".box");
+<!-- 获取所有class为box的元素 -->
+
+7.document.createElement("div");
+<!-- 添加 -->

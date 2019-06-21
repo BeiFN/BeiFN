@@ -60,17 +60,30 @@
            var sum = Number(Boolean(a)) + Number(Boolean(b)) + Number(Boolean(c));
            if (sum == 1){
                 pwd_level.children[0].style.background = "red";
+                pwd_level.children[1].style.background = "silver";
+                pwd_level.children[2].style.background = "silver";
+                pwd_level_tip.children[2].style.display = "none";
                 pwd_level_tip.children[0].style.display = "block";
+                pwd_level_tip.children[1].style.display = "none";
            }else if(sum == 2){
                 pwd_level.children[0].style.background = "red";
                 pwd_level.children[1].style.background = "orange";
+                pwd_level.children[2].style.background = "silver";
+                pwd_level_tip.children[2].style.display = "none";
                 pwd_level_tip.children[0].style.display = "none";
                 pwd_level_tip.children[1].style.display = "block";
-           }else{
+           }else if(sum == 3){
                 pwd_level.children[0].style.background = "red";
                 pwd_level.children[1].style.background = "orange";
                 pwd_level.children[2].style.background = "green";
                 pwd_level_tip.children[2].style.display = "block";
+                pwd_level_tip.children[0].style.display = "none";
+                pwd_level_tip.children[1].style.display = "none";
+           }else{
+                pwd_level.children[0].style.background = "silver";
+                pwd_level.children[1].style.background = "silver";
+                pwd_level.children[2].style.background = "silver";
+                pwd_level_tip.children[2].style.display = "none";
                 pwd_level_tip.children[0].style.display = "none";
                 pwd_level_tip.children[1].style.display = "none";
            }

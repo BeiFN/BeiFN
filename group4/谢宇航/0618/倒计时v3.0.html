@@ -52,12 +52,13 @@
         }
 
         // 点击事件
+        var timeInterval = null;
         function clickHandler(e) {
             var ipt = document.getElementById("ipt");
             var timeArr = ipt.value.split(":");
             var now = new Date().getTime();
             var targetTime = now + timeArr[0] * 60 * 60 * 1000 + timeArr[1] * 60 * 1000 + timeArr[2] * 1000;
-            var timeInterval = setInterval(function () {
+            timeInterval = setInterval(function () {
                 getCount(targetTime);
             }, 200);
         }
@@ -67,6 +68,7 @@
             var now = new Date().getTime();
             var rest = targetTime - now;
             if (rest <= 0) {
+                alert("timeout!")
                 clearInterval(timeInterval);
                 return false;
             }

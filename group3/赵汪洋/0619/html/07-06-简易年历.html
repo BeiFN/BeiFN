@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07-06简易年历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f6f9fc;
+            font-family: arial;
+        }
+
+        .calendar {
+            width: 210px;
+            margin: 0 auto;
+            padding: 20px 10px 20px 20px;
+            background-color: #eae9e9;
+        }
+
+        #box {
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            width: 58px;
+            height: 54px;
+            margin: 0 10px 10px 0;
+            list-style-type: none;
+            border: 1px solid #fff;
+            background-color: #424242;
+            color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        li p {
+            font-size: 14px;
+        }
+
+        .active {
+            border-color: #424242;
+            background-color: #fff;
+            color: #e847ae;
+        }
+
+        .active p {
+            font-weight: bold;
+        }
+
+        #txt {
+            width: 178px;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: #f1f1f1;
+            color: #555;
+        }
+
+        h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        #txt p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calendar">
+        <ul id="box">
+            <li class="active">
+                <h2>1</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>2</h2>
+                <p>FER</p>
+            </li>
+            <li>
+                <h2>3</h2>
+                <p>MAR</p>
+            </li>
+            <li>
+                <h2>4</h2>
+                <p>APR</p>
+            </li>
+            <li>
+                <h2>5</h2>
+                <p>MAY</p>
+            </li>
+            <li>
+                <h2>6</h2>
+                <p>JUN</p>
+            </li>
+            <li>
+                <h2>7</h2>
+                <p>JUL</p>
+            </li>
+            <li>
+                <h2>8</h2>
+                <p>AUG</p>
+            </li>
+            <li>
+                <h2>9</h2>
+                <p>SEP</p>
+            </li>
+            <li>
+                <h2>10</h2>
+                <p>OCT</p>
+            </li>
+            <li>
+                <h2>11</h2>
+                <p>NOV</p>
+            </li>
+            <li>
+                <h2>12</h2>
+                <p>DEC</p>
+            </li>
+        </ul>
+        <div id="txt">
+            <h3>1月活动</h3>
+            <p>快过年了，大家可以商量着去哪玩吧～</p>
+        </div>
+    </div>
+    <script>
+        var ele_lis = document.getElementById("box").children;
+        var ele_h3 = document.getElementById("txt").children[0];
+        var ele_p = document.getElementById("txt").children[1];
+        var list = [
+            "等着过年",
+            "过年",
+            "过完年缓缓",
+            "了解千锋",
+            "来到千锋",
+            "学习JS",
+            "学习JS",
+            "学习nodejs",
+            "学习框架",
+            "学习框架",
+            "找到工作",
+            "拿到第一个月工资"
+        ];
+        for (var i = 0, li; li = ele_lis[i++];) {
+            li.index = i - 1;
+            li.onclick = handlerLiClick;
+        }
+
+        function handlerLiClick() {
+            for (var i = 0; i < ele_lis.length; i++) {
+                ele_lis[i].className = "";
+            }
+            this.className = "active";
+            ele_h3.innerHTML = this.index + 1 + "月活动";
+            ele_p.innerHTML = list[this.index];
+        }
+    </script>
+</body>
+
+</html>
