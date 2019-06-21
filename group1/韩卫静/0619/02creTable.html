@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态创建表格</title>
+</head>
+<body>
+    <div class="container">
+        <input id="rows" type="text">
+        <input id="cols" type="text">
+        <button id="btn">create</button>
+        <div id="tableDiv">
+
+        </div>
+    </div>
+
+    <script>
+        var taCon = document.getElementById("tableDiv");
+
+        btn.onclick = function(){
+            var rowNum = rows.value;
+            var colNum = cols.value;
+            var newTable = document.createElement("table");
+
+            for(var r = 0; r < rowNum ; r++){
+                var newTr = document.createElement("tr");
+                for(var c = 0; c < colNum ; c++){
+                    var newTd = document.createElement("td");
+                    newTd.innerHTML = parseInt(Math.random()*100);
+                    newTd.style.backgroundColor = "#" + parseInt(Math.random()*16777216).toString(16);
+                    newTr.appendChild(newTd);
+                    //console.log("#" + parseInt(Math.random()*16777216).toString(16));
+                }
+                newTable.appendChild(newTr);
+            }
+
+            taCon.appendChild(newTable);
+        }
+    </script>
+</body>
+</html>
