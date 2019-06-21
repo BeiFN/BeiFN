@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link id="link" rel="stylesheet" href="./css1.css">
+</head>
+<body>
+    <button class="btn">短头发皮肤</button>
+    <button class="btn">律师函皮肤</button>
+    <script>
+        var list = ["./css1.css","./css2.css"]
+        var btn = document.querySelectorAll(".btn");
+        var link = document.getElementById("link")
+        for(var  i = 0, ele_btn ; ele_btn =btn[i++]; )
+        {
+            
+            btn[i-1].setAttribute("data_id",i-1)
+            
+            ele_btn.onclick= function()
+            {
+                var dataid=this.getAttribute("data_id")
+               link.href = list[dataid]
+            }
+        }
+    </script>
+    
+</body>
+</html>

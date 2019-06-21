@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>综合表单验证</title>
+    <link rel="stylesheet" href="css/public.css">
+    <style>
+        body{background-color: #ccc;color: #777474
+        }
+        #Dform{background-color: #333333;height: 565px ;width: 695px;margin: 50px auto;border-radius: 5px ;box-shadow: 0 5px 5px   #333;}
+        span{color: red}
+        #verify{width: 250px ;height: 20px;background-color: #fdfdd1;color: black;margin-left: 275px;border-radius: 4px}
+        #form span{margin-left: 95px;}
+        p{color: #a97b20;margin-left: 22px;padding-top: 10px}
+        label{margin-left: 100px;font-size: 14px}
+        h3{color: #1776a0;margin-top: 10px;font-size: 18px}
+        #form input {border-radius: 4px ;background-color: #999999;border: 0;margin-left: 20px;width:250px;height: 25px}
+        #form .level{width: 60px;height: 20px;text-align: center}
+        #submit{width: 100px;height: 35px;background-color: #2c67b5;border-radius: 10px;color: #b4bfd7;text-align: center;margin-left: 250px;margin-top: 55px;border: none;box-shadow:1px 1px 3px #b4bfd7;
+        }
+        #login{margin-left:10px ;color: #b4bfd7}
+        #checked{width: 15px;height: 15px;box-shadow: 1px 1px 3px #b4bfd7;position: relative;top:3px;left: 5px;}
+    </style>
+</head>
+<body>
+<div id="Dform" class="Dform">
+    <div>
+        <p>注意<span>*</span>为必填</p>
+    </div>
+    <input type="text" id="verify" >
+    <form action="" method="get" id="form" onsubmit="return true">
+        <h3>账户详细资料</h3><br>
+        <label>用户名称</label><span>*</span><input type="text" id="username"><br><br>
+        <label>登陆密码</label><span>*</span><input type="password" id="password"><br><br>
+        <label>重复密码</label><span>*</span><input type="password" id="conpass"><br><br>
+            <label>密码级别</label><span>!</span>
+            <input type="text" class="level" value="低">
+            <input type="text" class="level" value="中">
+            <input type="text" class="level" value="高">
+        <h3>个人信息资料</h3><br>
+        <label>电子邮件</label><span>*</span><input type="email" id="email"><br><br>
+        <label>真实姓名</label><span>*</span><input type="text" id="realname"><br><br>
+        <label>通知手机</label><span>*</span><input type="tel" id="phone"><br><br>
+        <label>验证码 &nbsp;&nbsp;&nbsp;</label><span>!</span><input type="text" id="code">
+    </form>
+    <div>
+        <a href="换肤.html"><input type="submit" value="注册" id="submit"></a>
+        <input type="checkbox" checked="checked" id="checked"><span id="login">十天免登陆</span>
+    </div>
+</div>
+<script>
+window.onload=function() {
+    username.onblur = handlerBlurUser;
+    username.onfocus= handlerFocusUser;
+    password.onfocus= handlerFocusPwd;
+    password.onblur = handlerBlurPwd;
+    conpass.onfocus = handlerFocusCon;
+    conpass.onblur  = handlerBlurCon;
+    email.onblur    =handlerBlurEmail;
+    email.onfocus   =handlerFocusEmail;
+    realname.onfocus=handlerFocusreal;
+    realname.onblur =handlerBlurreal;
+    phone.onfocus =handlerFocusPhone;
+    phone.onblur =handlerBlurPhone;
+    submit.onclick  = checkForm;
+    function handlerFocusUser() {
+        var user = document.getElementById("username");
+        /*写入提示信息*/
+        verify.value = "请输入您的用户名";
+        verify.style.color="red";
+        user.style.color = "#fff";
+    }
+    function handlerBlurUser()  {
+        var user = username.value;
+        //用户名输入判定
+        user.value ="";
+        if (user === "") {
+            verify.value = "用户名不能为空";
+            verify.style.color="red";
+            return false;
+        }
+        if (user.length >= 6 && user.length <= 20) {
+            verify.style.color = "green";
+        } else {
+            verify.style.color = "red";
+            verify.value = "用户名长度应该在6 - 20 位之间";
+            return false;
+        }
+        if (isNaN(user[0])) {
+            verify.style.color = "green";
+        } else {
+            verify.style.color = "red";
+            verify.value = "首字母不能为数字";
+            return false;
+        }
+        for (var i = 0, letter; letter = user[i++];) {
+            // console.log(letter)
+            var ascii = letter.charCodeAt(0);
+            if (!(ascii >= 48 && ascii <= 57 || ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122 || ascii === 95)) {
+                verify.style.color = "red";
+                verify.value = "用户名输入不合法，只能以数字字母下划线进行命名";
+                return false;
+            } else {
+                verify.style.color = "green";
+                verify.value = "用户名格式正确";
+                return true;
+            }
+        }
+    }
+    function handlerBlurPwd()   {
+        var pass=password.value;
+        if(pass ==="") {
+            verify.value = "请输入您的密码";
+            verify.style.color = "red";
+            return false;
+        }
+        if(pass.length >= 6 && pass.length <= 16 ){
+            verify.value = "密码格式正确";
+            verify.style.color = "green";
+            return true;
+        }else{
+            verify.value = "密码必须在6-16位之间";
+            verify.style.color = "red";
+            return false;
+        }
+}
+    function handlerFocusPwd()  {
+        var pass=password.value;
+        verify.value = "请输入您的密码";
+        verify.style.color="red";
+        password.style.color = "#fff";
+    }
+    function handlerBlurCon()   {
+        var conp=conpass.value;
+        var pass=password.value;
+        // console.log(conp,pass);
+        if(pass !== conp){
+            verify.value = "两次密码不一致，请重新输入";
+            verify.style.color="red";
+            return false;
+        }else {
+            verify.value = "密码输入正确";
+            verify.style.color = "green";
+            return true;
+        }
+    }
+    function handlerFocusCon()  {
+        verify.value = "请确认密码";
+    }
+    function handlerFocusEmail(){
+        verify.value="请输入您的邮箱";
+    }
+    function handlerBlurEmail() {
+        var emails =email.value;
+        if(emails ===''){
+            verify.value="邮箱不能为空";
+            verify.style.color="red";
+        }
+        //定义正则表达式的变量:邮箱正则
+        var reg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if(emails.search(reg) === -1) {
+            verify.value="邮箱格式错误！";
+            verify.style.color="red";
+            return false;
+        }else{
+            verify.value="邮箱格式正确！";
+            verify.style.color = "green";
+            return true;
+        }
+    }
+    function handlerFocusreal() {
+        verify.value="请输入真实姓名";
+    }
+    function handlerBlurreal()  {
+        var real = realname.value;
+        if (real === "") {
+            verify.value = "请输入您的名字";
+            verify.style.color = "red";
+            return false;
+        }
+        var realNameReg = (/[^\u4E00-\u9FA5a-zA-Z]/);
+        if (real.search(realNameReg) !== -1) {
+            verify.value = "姓名格式错误！";
+            verify.style.color = "red";
+            return false;
+        } else {
+            verify.value = "姓名格式正确！";
+            verify.style.color = "green";
+            return true;
+        }
+
+    }
+    function handlerFocusPhone(){
+        verify.value="请输入长度为11位的手机号";
+    }
+    function handlerBlurPhone() {
+        var tel =phone.value;
+        if(tel.length === 0){
+            verify.value="手机号不能为空";
+            verify.style.color="red";
+            return false;
+        }
+        if(tel.length !==11){
+            verify.value="手机号为11位有效数字";
+            verify.style.color="red";
+            return false;
+        }
+        var telReg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+         if(tel.search(telReg) === -1) {
+             verify.value="请输入有效的手机号";
+            return false;
+         }else {
+             verify.value = "手机号格式正确！";
+             verify.style.color = "green";
+             return true;
+         }
+
+    }
+    function checkForm()        {
+        if(handlerBlurUser() && handlerBlurPwd() && handlerBlurCon() && handlerBlurEmail() && handlerBlurreal() && handlerBlurPhone() ){
+            /*提交表单*/
+            alert("注册成功");
+            return true;
+        }else{
+            //阻止表单提交
+            return false;
+
+        }
+
+    }
+}
+
+</script>
+</body>
+</html>
