@@ -23,7 +23,7 @@
         #pro2 {
             height: 20px;
             width: 10px;
-            border-radius:2px;
+            border-radius: 2px;
             background: linear-gradient(to right, #f0f, #f00)
         }
     </style>
@@ -31,22 +31,39 @@
 
 <body>
     <div id="pro1">
-        <p id="pro2">进度条</p>
+        <p id="pro2"></p>
     </div>
     <script>
-        var start = 50;
-        var _width =0;
-        var pro_interval = null;
-        pro_interval = setInterval(progress, 50);
+        var end = 800;
+        var _width = 0;
+        var r = 5;
+        var start = 0
+        jindu(50,10,500);//进度函数 
 
-        function progress() {
-            _width += 5;
-         
-            pro2.style.width = _width+ "px"
-            if (_width > 800) {
-                clearInterval(pro_interval);
+        function jindu(start, r, end) {
+
+            start = start ? start : 0;
+            end = end ? end : 800;
+            r = r ? r : 5;
+            _width = start / 100 * end;
+
+            var pro_interval = setInterval(progress, 50);//周期函数
+
+            function progress() { //调用函数
+
+                _width += r;
+                // console.log(end);
+                console.log(_width);
+                // console.log(r);
+
+
+                pro2.style.width = _width + "px"
+                if (_width > end) {
+                    clearInterval(pro_interval);
+                }
             }
         }
+
     </script>
 </body>
 
