@@ -1,0 +1,120 @@
+.form_box {
+    width: 555px;
+    background-color: #333333;
+    margin: 50px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+#title {
+    display: block;
+    color: #e5b708;
+    margin: 9px 0 0 17px;
+}
+
+.red_point {
+    color: #e50705;
+}
+
+#hidden_box {
+    width: 153px;
+    height: 25px;
+    border: 1px solid #7c7c6a;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 13px;
+    left: 220px;
+    text-align: center;
+    line-height: 25px;
+    color: #464e4f;
+}
+
+.base_message {
+    margin: 12px 0 0 60px;
+}
+
+.base_message>p {
+    color: #00a1cc;
+    font-size: 14px;
+    margin-bottom: 26px;
+}
+
+.base_box {
+    margin-left: 26px;
+    margin-top: 16px;
+}
+
+#first_base_box {
+    margin-top: 0;
+}
+
+.base_box span:first-child {
+    color: #d2ccb6;
+}
+
+.input_box {
+    width: 200px;
+    height: 20px;
+    background-color: #999999;
+    border: 1px solid #464646;
+    border-radius: 3px;
+    color: #4f4d4c;
+    text-indent: 2px;
+}
+
+.base_box .red_point {
+    margin-left: 65px;
+}
+
+.base_box:nth-child(4) .red_point,
+.base_box:nth-child(5) .red_point {
+    margin-left: 42px;
+}
+
+.base_box ul {
+    display: inline-block;
+    overflow: hidden;
+    background-color: #e4e4e4;
+}
+
+.base_box ul li {
+    float: left;
+    width: 52px;
+    height: 19px;
+    text-align: center;
+    line-height: 19px;
+    color: #ffffff;
+}
+
+#random_verify_code {
+    width: 70px;
+}
+
+#second_base_box {
+    margin-left: 76px;
+}
+
+#verify_code {
+    width: 70px;
+}
+
+#login {
+    width: 88px;
+    height: 31px;
+    color: #ffffff;
+    background-color: #2c67b5;
+    text-align: center;
+    line-height: 31px;
+    border: 1px solid #7c7b79;
+    border-radius: 5px;
+    margin: 22px 0 11px 198px;
+    float: left;
+}
+
+.login_free {
+    float: left;
+    margin-top: 30px;
+    margin-left: 18px;
+    color: #ffffff;
+}
