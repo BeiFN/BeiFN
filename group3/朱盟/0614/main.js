@@ -1,299 +1,287 @@
-// 编写一个函数，计算两个数字的和差积商
+// 通过循环生成顺序为一个5×5的二维数组a 赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+
+// 1. 首先输出 5*5的二维数组
+
+function task1(r, c) {
 
 
-// function calculator(num1,num2,sign){
-//          switch(sign){
-//                   case "+" : console.log(num1+num2);     break;
-//                   case "-" : console.log(num1-num2);        break;
-//                   case "*" : console.log(num1*num2);        break;
-//                   case "/" : console.log(num1/num2);        break;
-//          }
-// }
-
-
-function calculator(a, b, sign) {
-    function add(a, b) {
-        return a + b
+    var arr = new Array(); //声明数组的第一层
+    var count = 0; //数组元素的生成
+    for (var i = 0; i < r; i++) {
+        arr[i] = new Array(); //循环生成数组，并生成第二层数组
+        for (var j = 0; j < c; j++) {
+            count++;
+            arr[i][j] = count; //遍历数组，并赋值
+            if (j <= i) console.log(arr[i][j]); //输出左三角的数，等于 输出 列<=行的情况；
+        }
     }
-
-    function del(a, b) {
-        return a - b
-    }
-
-    function mul(a, b) {
-        return a * b
-    }
-
-    function div(a, b) {
-        return a / b
-    }
-    switch (sign) {
-        case "+":
-            return add(a, b);
-        case "-":
-            return del(a, b);
-        case "*":
-            return mul(a, b);
-        case "/":
-            return div(a, b);
-    }
+    console.log(arr);
 }
-// console.log(calculator(1, 2, "/"));
+
+//  task1(5,5);
 
 
 
+// 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
 
-
-// 编写函数，求圆的面积
-
-function S() {
-    this.sircular = function (r) {
-        return Math.PI * Math.pow(r, 2);
+function task2() {
+    var iArr = []; //保存偶数的数组
+    var oArr = []; // 保存输出的数组
+    var _temp = 0; // 临时的求平均数变量
+    var count = 0; // 记录第几次求平均数
+    for (var i = 0; i++ < 30;) {
+        iArr[i] = i * 2; //偶数存入数组
+        _temp += i * 2; // 临时记录累加
+        if (!(i % 5)) { //如果到了该求的时候，如果除以5 余数为0，那么就求平均
+            oArr[count] = _temp / 5; //存入求平局结果 （average）
+            count++; // 记录次数增加
+            _temp = 0; //清空 average 器
+        };
     }
+    console.log(oArr);
 }
-// console.log(new S().sircular(5));
+
+// task2();
 
 
-//答案 function circular(r){
-//答案     return  Math.PI  * r  * r 
+//答案 var list = [];
+//答案 for(var i=2; i<=100000; i+=2){
+//答案      if(list.push(i) == 30) break;
+//答案 }
+//答案 var newlist = [];
+//答案 var count = 0;
+//答案 var sum = 0;
+//答案 for(var i in list){
+//答案      sum += list[i];
+//答案      if( ++count == 5){
+//答案           newlist.push(sum/5);
+//答案           count = sum = 0;
+//答案      }
 //答案 }
 
 
-// 编写函数，判断一个字符串的内容是不是纯数字
+// 随机点名程序
 
-// //isNaN
-function isNumber(num) {
-    return !isNaN(num);
-}
+// 随机数的生成函数
 
-
-// 编写一个函数，计算三个数字的大小，按从小到大的顺序输出。
-function smNum() {
-    var arr = [].slice.call(arguments);
-    console.log(arr);
-    for (var count = 0; count < arr.length - 1; count++) {
-        var min = arr[count];
-        var index = count;
-        for (var i = count + 1; i < arr.length; i++) {
-            if (min > arr[i]) {
-                min = arr[i];
-                index = i;
-            }
-        }
-        arr[index] = arr[count];
-        arr[count] = min;
-    }
-
-    console.log(arr);
-}
-
-// smNum(4,8,2,1);
-// //穷举
-
-
-// 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
-
-// function print(n,m){
-//     document.write("<table>");
-//     for(var i=0; i<n; i++){
-//         document.write("<tr>");
-//         for(var j=0; j<m; j++){
-//             document.write("<td>");
-//             document.write( Math.round( Math.random()*100 ) );
-//             document.write("</td>");
-//         }
-//         document.write("</tr>");
-//     }
-//     document.write("</table>");
-// }
-
-
-// 编写一个函数，生成4位数字的验证码
-
-
-function rondomNum(min, max) {
+function randomNumber(min, max) {
     return min + Math.round(Math.random() * (max - min));
 }
 
-//  console.log(rondomNum(1000,9999)) ;
-
-// function checkcode(){
-//         var num = parseInt(Math.random()*9000) + 1000;
-//         return num;
+// 测试 true
+// for(var i=0;i++<100;){
+//     console.log(randomNumber(0,10));
 // }
 
-// function checkcode(){
-//         var num = 0;
-//         do{
-//                 num = parseInt(Math.random()*10000);           
-//         } while( num < 1000);
-//         return num;
+var nameList = ["杨怀智", "杨浩然", "曹海涛", "徐悦颖", "费殷植", "崔钰", "毛亚如", "田聪", "薛守江", "宛学", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "王鲁平", "郭森", " 刘廷伟 ", "贺云皓", "郭文祥", "姚彬彬", "郑云鹏", "张子明", "郑凯旋", "郑军基", "田敬磊", "张博威", "周子正", "李佳佳", "赵毅雄", "王天元", "常征", "刘坤坤", "邵光耀", "朱世宇", "王海涛", "祖莹", "孙国庆", "李文豪", "徐良迎", "杜必平", "张宛宛", "赵倩", "刘顺杰", "许霞", "王浩", "王珑璇", "谢鑫鹏", "段长斌", "张媛媛", "钱广荣", "让金鹏", "夏明利", "何先清", "任权", "李金铭", "姜伟", "傅培钰", "汪鹏", "王正伟", "谢凯", "肖光瑞", "姬彩明", "高德宇", "郝婕宇", "滕云", "唐鑫", "龚鹏基", "谢海生", "丁鑫豪", "袁江明", "刘志", "金天琛", "仇明珠", "袁志敏", "崔婉悦"]
+
+
+// 根据随机数对应相应的名字
+function randomName() {
+    return nameList.splice(randomNumber(0, nameList.length - 1), 1)[0];
+    //splice  切出数组的一部分，并返回数组切掉的一部分；
+}
+
+// function randName(){
+//      return  namelist[parseInt(Math.random()*namelist.length)];
 // }
 
+function task3() {
+    console.log(randomName());
+}
+// task3();
+// document.onclick=task3;
 
-// 求m-n之间数字的和
 
-function sumnm(m, n) {
-    var _sum = 0;
-    for (var i = m; i <= n; i++) {
-        // console.log(i);
-        _sum += i;
+
+// a-z：97-122
+
+// A-Z：65-90
+
+// 0-9：48-57
+
+// a = {
+//     min: 97,
+//     max: 122
+// }
+// A = {
+//     min: 65,
+//     max: 90
+// }
+// Zero = {
+//     min: 48,
+//     max: 57
+// }
+// 点击按钮，生成数字字母验证码
+function randomChar(o) {
+    // 单字符生成
+    switch (o) {
+        case "a":
+            return String.fromCharCode(randomNumber(97, 122));
+            break;
+        case "A":
+            return String.fromCharCode(randomNumber(65, 90));
+            break;
+            break;
+        case "0":
+            return String.fromCharCode(randomNumber(48, 57));
+            break;
+
+        default:
+            return o;
+            break;
     }
-    console.log(_sum);
-    return _sum;
 
 }
 
+// 格式化生成验证码  A 代表大写字母 随机生成数字，并转化层所对应Ascll 码对应的随机字母，根据字母和数字的范围来生成
+function randomChars(express) {
 
-// sumnm(1,5);
+    var str = "";
+    for (const key in express) {
+        // console.log(key);
+        // console.log(randomChar(express[key]));
+        str += randomChar(express[key]);
+    }
+    return str;
+}
+// console.log(randomChar("A"));
+// console.log(randomChars("AA-AA-aa-0000")); 
 
 
-// function sum(m,n){
-//         var sum = 0;
-//         if(m>n){
-//                 for(var i=n; i<=m; i++){
-//                         sum += i;
-//                 }
-//         } else {
-//                 for(var i=m; i<=n; i++){
-//                         sum += i;
-//                 }
-//         }
-//         return sum;
+// document.onclick=function(){
+//     console.log(randomChars("AA00-aa00-0000")); 
 // }
 
+// var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
 
-// 编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，如果num位数不足k位则返回0。
 
-function digit(num, k) {
-    for (var i = 0, temp = num; temp >= 1; i++) {
+
+// 请编写一个函数join，将数组的每一位按照指定字符链接起来 ，例如： join([1,2,3], "%")， 运行结果"1%2%3";
+
+// self
+function ijoin(arr, symbol) {
+    var str = "";
+    for (const key in arr) {
+        // console.log(key);
+        str += (key === "0" ? "" : symbol) + arr[key]
+    }
+    console.log(str);
+    return str;
+}
+// ijoin([1,2,3],"^");
+
+
+
+//答案 function join(arr, sp){
+//答案         var str = "";
+//答案         for(var i=0; i<arr.length; i++){
+//答案                 if(i==(arr.length-1)){
+//答案                         str += arr[i];     
+//答案                 } else {
+//答案                         str += (arr[i]+sp);
+//答案                 }
+//答案         }
+//答案 }
+
+
+// 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+
+// method1
+// var i= randomChars("00000");
+// console.log(i) ;
+// for (const key in i) {
+//     console.log(i[key]) ;
+// }
+
+//  // 判定一个数字有几位; => 无论数字有几位;
+//  var num = 123456789;
+//  // count => 第n位;
+//  for(var count = 0,temp=num; temp >= 1; (temp = temp / 10 ) && count ++){
+//        // console.log(count);
+//        // num % 10 / 1
+//        // num % 100 / 10 
+//        // num % 1000 / 100 
+//        var _no = parseInt(num % Math.pow(10,count + 1) / Math.pow(10 , count));
+//        console.log(_no);
+//  }
+function numberDigit(number) {
+    str = "";
+    for (var i = 0, temp = number; temp >= 1; i++) {
+        str += parseInt(number % Math.pow(10, i + 1) / Math.pow(10, i));
         temp /= 10;
-        if (k === i + 1) {
-            console.log(i + 1, parseInt(num % Math.pow(10, i + 1) / Math.pow(10, i)));
-        }
     }
-    if (k > i) {
-        console.log(0);
-        return 0;
-    }
+    console.log(str);
     console.log(i);
+    return i;
 }
 
-// digit(1234,1);
-// function digit(num,k){
-//         var knum = 0;
-//         for(var i=1; i<=k; i++){
-//                 knum = num%10;
-//                 num = parseInt(num/10);
-//         }
-//         return knum;
-// }
-
-
-// 编写函数计算一个数字的长度
-
-// digit(1234,1);  同上
+// numberDigit(15596);
 
 
 
-// function getLength(num){
-//         var count = 0;
-//         while(num != 0){
-//                 num = parseInt(num/10);
-//                 count++;
-//         }
-//         return count;
-// }
-
-// function getLength(num){
-//         return num.toString().length;
-// }
 
 
-// 编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
-// 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
 
-function numberMaker(a, b) {
-    for (var i = a; i <= b; i++) {
-        for (var j = a; j <= b; j++) {
-            if (i === j) continue;
-            console.log(i + "" + j + "");
+function printEachNum(num) {
+    var arr = []; //数组保存每位数
+    num = num >= 0 ? num : -num; //将num变为正数
+    do {
+        arr.unshift(num % 10); //头插法保存每位数保证顺序存储
+        num = Math.floor(num / 10); //去掉最后一位并向下取整
+    } while (num); // 终止条件为num = 0 并且num = 0时保证执行一次
+    console.log(arr, arr.length);
+}
+// printEachNum(-123456);
+// printEachNum(123456);
+// printEachNum(0);
+
+
+
+
+
+// 编写函数map(arr) 把数组中的每一位数字都增加30%
+
+function up30(arr) {
+    for (const key in arr) {
+        arr[key] *= 1.3;
+    }
+    console.log(arr);
+}
+// up30([1,2,3]);
+
+// var list = [10000, 12000, 15000, 18000];
+
+
+// 编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+
+function has(arr, num) {
+    var has = false;
+    for (const key in arr) {
+        if (arr[key] === num) has = true;
+    }
+    return has;
+}
+// console.log(has([1,2,3],5)) ;
+
+
+// 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+
+var list = [13, 14, 15, 13, 15, 20, 80];
+
+//ES6 去重
+
+// console.log(Array.from(new Set(list))) ;
+
+// 糖豆去重
+function noRepeat(arr) {
+
+    var _temp = [];
+    for (var i = 0; i < arr.length; i++) {
+        if(i===0||_temp.indexOf(arr[i])===-1){
+            _temp.push(arr[i]);
         }
     }
-}
-// numberMaker(1,3);
-
-
-
-// function get(m,n){ 
-//         var count = 0;
-//         for(var i=n; i<=m; i++){
-//                 for(var j=n; j<=m; j++){
-//                         if(i==j) continue;
-//                         if( (i*10+j)%2 != 0 ){
-//                                 console.log(i*10+j);  
-//                                 count++;
-//                         }
-//                 }
-//         }
-//         return count;
-// }
-
-
-
-// 某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
-// 加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
-// 第二位和第三位交换，请编写一个函数，传入原文，输出密文
-function hash(num) {
-    var n1 = (num % 10 + 5) % 10;
-    var n2 = (parseInt(num % 100 / 10) + 5) % 10;
-    var n3 = (parseInt(num % 1000 / 100) + 5) % 10;
-    var n4 = (parseInt(num / 1000) + 5) % 10;
-    return n1 * 1000 + n2 * 100 + n3 * 10 + n4;
+    return _temp;
 }
 
-
-
-// 编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求1/1+1/3+...+1/n
-function sumall(n) {
-    var sum = 0;
-    for (var i = n; i > 0; i -= 2) {
-        // console.log(i);
-        sum += 1 / i;
-        // console.log(sum);
-    }
-    console.log(sum);
-}
-// sumall(9);
-
-
-
-
-// 使用函数完成任意数字阶乘的计算
-
-function jiecheng(num) {
-    var temp=1;
-    for (var i=1; i<=num;i++){
-        console.log(i);
-        temp*=i;
-    }
-
-    console.log(temp);
-    return temp;
-}
-
-// jiecheng(5);
-
-// 要求：页面输入任意数字，点击按钮后计算该数字的阶乘
-
-
-
-
-
-// 创建一个对象，表示一个学生的信息
-var student = {
-    name: "zm",
-    number: "666",
-    gender: "男",
-    age: 3
-}

@@ -1,0 +1,11 @@
+*{margin: 0; padding: 0}
+#box{
+    background: #cccccc;
+    width: 100%;
+    height: 750px;
+}
+button{
+    width: 100px;
+    height: 80px;
+    background: #aa66aa;
+}
