@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="test" style="width:100px;">
+    <div id="test" class = "box" style="width:100px; ">
 
     </div>
     <script>
@@ -15,7 +15,7 @@
 
         //自定义改变元素属性的方法：
 
-        mySetAttribute(ele_d,"id","box");
+        mySetAttribute(ele_d,"class","mybox");
         console.log( myGetAttribute(ele_d,"style") );
         //removeMyAttribute(ele_d,"style");
 
@@ -49,8 +49,17 @@
             }
            return undefined;
         }
-        //删除元素的某项属性
+        //删除元素的某项属性-----------未完成
         function removeMyAttribute(ele,attr){
+            var child = ele.attributes;
+            for(var i =0; i<child.length;i++){
+                
+                if(child[i].nodeName === attr){
+                    console.log(child[i]);
+                    
+                    //ele.removeChild(child[i]);
+                }
+            }
             
         }
     </script>
