@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="backImg1">背景图片1</button>
+    <button id="backImg2">背景图片2</button>
+    <script>
+        var img1 = document.getElementById("backImg1");
+        var img2 = document.getElementById("backImg2");
+
+        img1.addEventListener("click", clickImg1Handler);
+        img2.addEventListener("click", clickImg2Handler);
+
+        function clickImg1Handler() {
+            document.body.style.backgroundImage = "url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560956555521&di=376cfcfa76e539c71e763a4c73b82050&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180707%2F05%2F1530913914-bYpQqWxoRw.jpg)";
+        }
+
+        function clickImg2Handler() {
+            document.body.style.backgroundImage = "url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560956977600&di=992a403d1b42b5b4907f3b5cb2cd2450&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F03%2F66%2F30%2F8957b01dc7aa701.jpg)";
+        }
+    </script>
+</body>
+
+</html>

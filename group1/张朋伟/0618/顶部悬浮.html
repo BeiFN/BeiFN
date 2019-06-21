@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #jingubang {
+            height: 5000px;
+            width: 1px;
+            position: absolute;
+            left: 0;
+        }
+
+        #haed {
+            height: 500px;
+            width: 100%;
+            background: greenyellow;
+        }
+
+        #nav {
+            height: 50px;
+            width: 100%;
+            background: #F00;
+            /* position: absolute; */
+        }
+
+        #goTop {
+            width: 100px;
+            height: 80px;
+            background: #f0f;
+            line-height: 80px;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            border-radius: 8px;
+            position: absolute;
+            display: none;
+
+        }
+
+        .xian {
+            height: 2px;
+            background: #000;
+            margin-top: 2000px;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="haed"></div>
+    <div id="nav"></div>
+
+    <a id="goTop" href="#">回到顶部</a>
+    <div id="jingubang">
+    </div>
+    <div class="xian"></div>
+
+    <script>
+        // var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        window.onscroll = function () {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if (scrollTop < 500) {
+                nav.style.position = "static";
+                goTop.style.display = "none";
+                // console.log(scrollTop);
+            } else {
+                nav.style.top = "0";
+                nav.style.position = "fixed";
+                nav.style.display = "block";
+            }
+
+            if (scrollTop >= 2000) {
+
+                goTop.style.position = "absolute";
+                goTop.style.top = "2850px";
+                goTop.style.display = "block";
+                goTop.style.right = "50px";
+                // console.log(goTop.offsetTop);
+                // alert("停");
+
+            } else if (scrollTop < 2000 && scrollTop >= 500) {
+                // goTop.style.position = "fixed";
+                // goTop.style.bottom = "50px";
+                // goTop.style.right = "50px";
+                // goTop.style.display = "block";
+
+                goTop.style.cssText = "display:block;position:fixed;bottom:50px;right:50px;";
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

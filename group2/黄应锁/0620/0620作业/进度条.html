@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #content{
+            height: 25px;
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 200px;
+            background: #000;
+            position: relative;
+        }
+        #process{
+            height: 100%;
+            width: 0px;
+            background: green;
+        }
+        #baifenbi{
+            width:200px;
+            height: 100%;
+           text-align: center;
+           line-height: 25px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            font-size: 8px;
+            color: #fff;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id = "content">
+        <div id="process"></div>
+        <div id="baifenbi"></div>
+    </div>
+
+    <script>
+        
+        function star() {
+           var process_width = 0;
+           var setInterval_stop = setInterval(processing, 20);
+           function processing() {
+               process_width += 1;
+               process.style.width = process_width + "px";
+               var percentage = "加载进度：" + (process_width / 6).toFixed(2) + "%";
+               baifenbi.innerHTML = percentage;
+               if (process_width === 600) {
+                   clearInterval(setInterval_stop);
+               }
+           }
+        }
+        document.onclick = function () {
+            star();
+        }
+    
+    </script>
+</body>
+</html>
