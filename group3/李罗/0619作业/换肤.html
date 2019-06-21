@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤</title>
+    <link id="link" rel="stylesheet" href="./李易峰.css">
+    <!-- <link id="link" rel="stylesheet" href="./胡歌.css"> -->
+
+    <style>    
+        #box{width:500px;height: 300px;margin:0 auto;border:2px solid #eaeaea;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button class="btn">胡歌</button>
+        <button class="btn">李易峰</button>
+    </div>
+    <script>
+        var list=[
+            "./胡歌.css",
+            "./李易峰.css",
+        ]
+        var ele_btns=document.querySelectorAll(".btn");
+        var ele_link=document.getElementById("link");
+        for(var i=0,btn;btn=ele_btns[i];i++){
+            btn.index=i;
+            btn.onclick=function(){
+                // console.log(this.index);
+                ele_link.href=list[this.index];
+            }
+        }
+    </script>
+    
+</body>
+</html>
