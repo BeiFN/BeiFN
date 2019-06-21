@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #warp{width: 500px;height:20px;border: 1px solid #ccc;border-radius:5px;margin:0 auto;top:50px;}
+        #progress{overflow:hidden;position:relative;width:500px;height:20px;background:linear-gradient(to left,orange, green);border-radius: 5px;}
+        #num{position:absolute;float:right;right:0}
+  </style>
+</head>
+<body>
+    <div id="warp">
+        <div id="progress">
+            <div id="num"></div>
+        </div>
+    </div>
+    <script>
+        // var progress_width = 0;
+        // var target = 500;
+        // var inter_id = null;
+        // inter_id = setInterval(progressing, 10);
+
+        // function progressing(prop){
+        //     if(prop !== undefined && typeof prop === "number"){     //设置起点
+        //         progress_width = target * prop / 100;            
+        //     }else{
+        //         progress_width += 1 ;
+        //     }
+        //     var str = parseInt(progress_width / 5)+"%" ;     
+        //     num.innerHTML = str;                                //添加进度占比
+        //     progress.style.width = progress_width +'px';
+        //     if(progress_width === target){
+        //         clearInterval(inter_id);
+        //     }
+        // }
+        // progressing(30);
+        // document.onclick = function(){
+        //     progressing(0);  
+        // }
+
+        var d = new Date();
+        console.log(d.getUTCSeconds())
+    </script>
+</body>
+</html>

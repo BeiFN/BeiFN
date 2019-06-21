@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤 emb| 朱盟</title>
+
+    <link id="stylelink" rel="stylesheet" href="style1.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button id="style1">theme1</button>
+    <button id="style2">theme2</button>
+
+    <script>
+        var style_link = byId("stylelink");
+        var t1 = byId("style1");
+        var t2 = byId("style2");
+        var ts = document.querySelectorAll("button");
+
+        function byId(idName) {
+            return document.getElementById(idName);
+        }
+
+
+        // method1
+
+        t1.onclick = changecssHandler;
+        t2.onclick = changecssHandler;
+
+        function changecssHandler() {
+            style_link.href = this.id + ".css";
+            console.log(this.id);
+        }
+
+        // method 2 当元素多时    增加隐形对象标志法
+
+        for (let index = 0; index < ts.length; index++) {
+            const element = ts[index];
+            element.i = index;
+            element.onclick = function () {
+                style_link.href = "style"+(this.i+1) + ".css";
+                console.log(this.i);
+            }
+        }
+        console.log(ts);
+
+        // console.log(style_link);
+    </script>
+</body>
+
+</html>
