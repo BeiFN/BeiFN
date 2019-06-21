@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>倒计时</title>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+			setInterval(daojishi, 1000);
+
+			function daojishi() {
+				if (document.getElementById("box")) {
+					var funDiv = document.getElementById("box");
+					funDiv.remove();
+				}
+				// console.log(funDiv);
+				var d = new Date();
+				d.setHours(23);
+				d.setMinutes(0);
+				d.setSeconds(0);
+				var nTime = Date.now();
+				var cha = d - nTime;
+				var myHour = parseInt(cha / 1000 / 3600);
+				var myMinute = parseInt(cha / 1000 / 60 % 60);
+				var mySecond = parseInt(cha / 1000 % 60);
+				// console.log(myHour,myMinute,mySecond);
+				// console.log(cha)
+				var div = document.createElement("div");
+				div.id = "box";
+				div.innerHTML = "Hour:" + myHour + "Minute:" + myMinute + "Second:" + mySecond;
+				document.body.appendChild(div);
+				// document.body.innerHTML="222";
+
+
+
+			}
+		</script>
+
+
+
+
+
+	</body>
+</html>
