@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态表格创建</title>
+    <style>
+        #tablebox {
+            border: 1px solid black;
+            border-collapse: collapse
+        }
+
+        tr {
+            border: 1px solid black;
+            height: 30px;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 50px
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" id="addrow" value="点击增加行数">
+    <input type="button" id="cutrow" value="点击减少行数">
+    <input type="button" id="addcol" value="点击增加列数">
+    <input type="button" id="cutcol" value="点击减少列数">
+    <table id="tablebox">
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var arow = document.getElementById("addrow");
+        var crow = document.getElementById("cutrow");
+        var acol = document.getElementById("addcol");
+        var ccol = document.getElementById("cutcol");
+        //获取表
+        var tbox = document.getElementById("tablebox");
+        var tbod = tbox.children[0]
+        arow.onclick = function () {
+            //获取到列
+            // console.log(col_list)
+            var r = document.createElement("tr")
+            tbod.appendChild(r)
+            var col_list = tbod.children[0].children
+            if (col_list.length == 0) {
+                var c = document.createElement("td")
+                tbod.children[0].appendChild(c)
+            } else {
+                for (var i = 0; i++ < col_list.length;) {
+                    var c = document.createElement("td")
+                    // tbod的最后一个子元素 tr appendChild td
+                    tbod.lastChild.appendChild(c)
+                    //这个i是不对的
+                    // tbod.lastChild.children[i].innerHTML="2";
+
+                }
+            }
+        }
+        crow.onclick = function () {
+            var tr = tbod.lastChild
+            tr.remove();
+        }
+
+        acol.onclick = function () {
+            var trList = tbod.children;
+            if (trList.length == 0) {
+                var c = document.createElement("td")
+                var r = document.createElement("tr");
+                tbod.appendChild(r);
+                trList[0].appendChild(c);
+            } else {
+                var k = 0
+                for (; k < trList.length; k++) {
+                    var c = document.createElement("td")
+                    //for循环进行遍历的时候  这个c只创建了一个 所以给他放进来
+                    trList[k].appendChild(c);
+                }
+            }
+        }
+
+        ccol.onclick = function(){
+            // console.log(tbod.children) 获取里面的所有子元素列表
+            for(var i = 0 ; i< tbod.children.length;i++){
+                var c = tbod.children[i].lastChild
+                c.remove();
+            }
+        }
+
+    </script>
+</body>
+
+</html>

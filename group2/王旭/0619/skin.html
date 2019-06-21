@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link id="link" rel="stylesheet" href="">
+</head>
+<body>
+    <!-- 换肤 -->
+    <button class="btn">->-></button>
+    <button class="btn"><-<-</button>
+    <div class="box"></div>
+    <script>
+        var btn = document.querySelectorAll(".btn");
+        var list = ["css1.css","css2.css"];
+        var skin_list = document.getElementById("link");
+        for(var i = 0, b; b = btn[i++];){
+            b.index = i - 1;
+            b.onclick = function(){
+                skin_list.href = list[this.index] ;
+            }
+        }
+    
+    </script>
+</body>
+</html>
