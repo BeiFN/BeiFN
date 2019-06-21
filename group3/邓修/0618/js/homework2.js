@@ -65,7 +65,7 @@
 // }
 // nowTime();
 
-//进度条
+//进度条和广告弹出框
 // var progress_width = 0;
 // var progress_interval = null;
 // var target = 600; // 目标点;
@@ -76,12 +76,44 @@
 //     } else {
 //         progress_width += 5;
 //     }
+//     percent.innerHTML=parseInt(progress_width/6) + "%";
 //     progress.style.width = progress_width + "px";
 //     if (progress_width === target) {
+//         alert("广告");
 //         clearInterval(progress_interval);
 //     }
 // }
 // // progressing(30);
 // document.onclick = function () {
 //     progressing(0);
+// }
+
+//顶部悬浮和回到顶部
+// window.onscroll = function () {
+//     var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+//     // 1. 控制nav导航的定位属性和回到顶部按钮的隐藏;
+//     if (scrollTop >= 400) {
+//         nav.style.position = "fixed";
+//         nav.style.top = "0px";
+//     } else {
+//         nav.style.position = "static";
+//         goTop.style.display = "none";
+//     }
+
+//     // 2.控制回到顶部按钮的显示隐藏;
+//     if (scrollTop >= 1400) {
+//         // console.log(goTop.offsetTop);
+//         // alert("停");
+//         goTop.style.position = "absolute";
+//         goTop.style.top = "2000px";
+//         goTop.style.display = "block";
+//     } else if (scrollTop < 1400 && scrollTop >= 400) {
+//         goTop.style.cssText = "display:block;position:fixed;top:600px";
+//     }
+// }
+
+// goTop.onclick = function () {
+//     // 给scrollTop 赋值为 0;
+//     document.body.scrollTop = 0;
+//     document.documentElement.scrollTop = 0;
 // }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        width:1000px;
+        height: 20px;
+        margin-left: 10%;
+        margin-top:100px;
+    }
+    #box1{
+        position: relative;
+        background:linear-gradient(to right ,rgb(206, 200, 200),#000);
+    }
+    #box2{
+        position: absolute;
+        background: white;
+        top:0;
+    }
+</style>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script>
+    let box1=document.getElementById("box1")
+    let box2=document.getElementById("box2")
+    let timer=null;
+    let boxLeft=box2.style.left
+    let boxWidth=box2.style.width
+    window.onclick=function(){
+        clearInterval(timer)
+        let i=0;
+        let k=1000;
+        timer=setInterval(
+            function(){
+                if(i>=1000){
+                    clearInterval(timer)
+                    alert("加载完毕")
+                    return false
+                }
+                    i++
+                    k--
+                box2.style.left=i+"px"
+                box2.style.width=k+"px"
+            }
+        ),200
+    }
+</script>
+</html>

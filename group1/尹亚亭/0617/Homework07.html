@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绘制三角函数</title>
+    <style>
+        .point{
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: #0ff;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="show"></div>
+<div class="point"></div>
+
+<script>
+var r = 100;
+var angle = 0;
+
+for(var i = 0 ; i < 100 ; i++){
+    angle += 3.6;
+
+    var numLeft = i * 10;   
+    var numTop = Math.sin(Math.PI / 180 * angle) * r + 200;
+
+    var styleStr = "left:"+numLeft+"px;top:"+numTop+"px";
+    
+    show.innerHTML += '<div class="point" style="'+styleStr+'">';
+}
+
+</script>
+    
+</body>
+</html>

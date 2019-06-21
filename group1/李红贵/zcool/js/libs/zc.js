@@ -26,7 +26,18 @@ var bannImgArr = ['https://img.zcool.cn/community/014fa65d0002cba801213ec2a943f6
                     'https://img.zcool.cn/community/016f0c5d01a9c7a801213ec2fa2eb3.jpg@1380w',
                     'https://img.zcool.cn/community/0164b75d01b57ca801213ec203a326.jpg@1380w'];
 
+window.onload = function(){
+
+}
+
+
+var timers = null;
+timers = setInterval(changePage,5000);
      
+function changePage(){
+    page = changeBannerImg(page , "+");
+    changeImage(page);
+}
 lastBtn.onclick = function(){
     page = changeBannerImg(page , "-");
     changeImage(page);
@@ -79,7 +90,41 @@ function changeImage(page){
   }
                     
                     
-                    
+  window.onscroll = function(){
+    // screenTop//超出顶部的高度
+
+    // 有兼容性问题，浏览器升级后，无法还原，解决方案   分别加body和html高度
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+   
+    console.log(scrollTop);
+
+
+
+// 获取屏幕高
+    var hbody = window.innerHeight || document.body.offsetHeight
+    console.log(hbody);
+
+    if(scrollTop > 920){
+        console.log("定");
+        
+        goTop.style.position = "absolute";
+        goTop.style.right= "60px";
+        goTop.style.top = "1395px";
+    }else if(scrollTop >= 200 && scrollTop <= 920){
+        // 
+        goTop.style.cssText = "display:block; position:fixed; right:60px; bottom:50px";
+
+        // goTop.style.display = "block";
+        // goTop.style.position = "fixed";
+        // goTop.style.right= "60px";
+        // goTop.style.bottom= "50px";
+
+
+    }else {
+        goTop.style.display = "none";
+    }
+
+}                   
                     
 
 
