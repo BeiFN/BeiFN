@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #chat_window {
+            width: 700px;
+            height: 500px;
+            border: 2px solid orange;
+            margin: 20px auto;
+        }
+        
+        #chat_content {
+            width: 600px;
+            height: 400px;
+            border: 2px solid burlywood;
+            margin: 20px auto;
+        }
+        
+        .chat {
+            width: 500px;
+            margin: 10px auto;
+            font-size: 16px;
+        }
+        
+        #input_box {
+            margin: 0 10px 0 20px;
+            width: 600px;
+            height: 40px;
+            font-size: 20px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="chat_window">
+        <div id="chat_content"></div>
+        <input type="text" id="input_box">
+        <button id="btn">发送</button>
+    </div>
+    <script>
+        var chatContent = document.getElementById("chat_content");
+        var inputBox = document.getElementById("input_box");
+        var btn = document.getElementById("btn");
+
+        btn.addEventListener("click", clickHandler);
+
+        function clickHandler() {
+            var chatP = document.createElement("p");
+            chatP.innerHTML = inputBox.value;
+            chatP.className = "chat";
+            chatContent.appendChild(chatP);
+            inputBox.value = "";
+        }
+    </script>
+</body>
+
+</html>

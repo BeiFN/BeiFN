@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>腾讯充值-周末特惠</title>
+</head>
+<style>
+    body{
+        background:#f5f2eb;
+    }
+    #box{
+        margin: 0 auto;
+        width: 550px;
+        height: 324px;
+        border: 15px solid #c8bfc0;
+        background-image: url(./img/wenhao.jpeg);
+        background-size: 100%;
+        border-radius: 5px;
+    }
+    button{
+        float: left;
+        width: 91px;
+        height:30px;
+        border: 5px solid #dccdd2;
+        font-weight: bold;
+        color: rgb(71, 68, 68);
+        background: #f5f2eb;
+    }
+    #box2{
+        margin: 0 auto;
+        width: 550px;
+        height: 40px;
+    }
+    input{
+        margin-top: 3px;
+        margin-left:5px;
+        border: 2px solid rgb(128, 123, 123);
+        border-radius: 5%;
+        display: block;
+    }
+</style>
+<body>
+    <div id="box">
+        <input type="text" placeholder="请输入召唤师ID…">
+        <input type="text" placeholder="请输入大区…">
+    </div>
+    <div id="box2">
+        <button id="btn1">接Qlove</button>
+        <button id="btn2">Rookie</button>
+        <button id="btn3">Ning</button>
+        <button id="btn1">Baolan</button>
+        <button id="btn2">Theshy</button>
+        <button id="btn3">Duke</button>
+    </div>
+</body>
+<script>
+    let btnList=document.querySelectorAll("button")
+    let box=document.getElementById("box")
+    for(let i=0;i<btnList.length;i++){
+        btnList[i].index=i
+        btnList[i].addEventListener("click",changeImg)
+    }
+    function changeImg(){
+        box.style.backgroundImage='url(./img/'+(this.index+1)+'.jpg)'
+    }
+</script>
+</html>
