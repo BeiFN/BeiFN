@@ -31,7 +31,7 @@
             for (var j = 0; j < colsGet; j++) {
                 var col = document.createElement("td");
                 row.appendChild(col);
-                col.innerHTML = 1;
+                col.innerHTML = Math.round(Math.random()*1000);
             }
         }
         tableBox.innerHTML += table;
