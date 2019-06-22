@@ -3,6 +3,7 @@
 var ipt = $("title");
 var span1 = $("todocount");
 var ol = $("todolist");
+console.log(ol)
 var span2 = $("donecount");
 var ul = $("donelist");
 
