@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="row" placeholder="请输入行数">
+    <input type="text" id="col" placeholder="请输入列数">
+    <button id="btn">创建</button>
+    <script>
+   
+        btn.onclick = function(){
+        var tab = document.createElement("table");
+        var rows = row.value;
+        var cols = col.value;
+        for(var i=0; i<rows; i++) { //行数
+            var tr = document.createElement("tr");//创建一行
+                for(var j=0; j<cols; j++) { //列数
+                    var td = document.createElement("td");//创建一列
+                    td.innerHTML = Math.round( Math.random()*90+10 ); //单元格填写随机数字
+                    tr.appendChild(td);//将td放入tr
+                }
+            tab.appendChild(tr);
+        }
+        document.body.appendChild(tab);
+    }
+
+    </script>
+</body>
+</html>
