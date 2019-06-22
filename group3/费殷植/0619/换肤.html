@@ -63,8 +63,7 @@
         btnList[i].addEventListener("click",changeImg)
     }
     function changeImg(){
-        let k=btnList[this.index].innerHTML
-        box.style.backgroundImage='url(./img/'+k+'.jpg)'
+        box.style.backgroundImage='url(./img/'+(this.index+1)+'.jpg)'
     }
 </script>
 </html>

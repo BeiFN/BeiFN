@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        li{list-style: none;font-size: 16px;height: 25px;line-height: 25px;}
+        #content{height: 350px;width: 200px;background: #696;margin: 20px auto;padding:20px 25px 0 25px ;}
+        .odd{background: #ff5522;}
+        .even{background: #2255ff;}
+    </style>
+</head>
+<body>
+    <ul id="content">
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+        <li>这里的字应该很多</li>
+
+    </ul>
+    <script>
+        var ele_lis = document.getElementById("content").children;      //将li组成伪数组
+        for(var index in ele_lis){                                      //利用下标奇数偶数分离，添加不同的类名，实现隔行变色
+            if(index%2){
+                ele_lis[index].className = "odd"
+            }else{
+                ele_lis[index].className = "even"
+            }
+
+        }
+    </script>
+</body>
+</html>

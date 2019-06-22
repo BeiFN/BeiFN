@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+</head>
+<body>
+        <button id="btn">生成列表</button>
+        <input id="row" type="text">
+        <input id="col" type="text">
+
+        <script>
+            btn.onclick= makeTable;
+
+            function makeTable(){
+
+            var tab = document.createElement("table");
+            var rows = document.getElementById("row").value;
+            var cols = document.getElementById("col").value;
+            for(var i= 0;i<rows;i++){
+
+                var tr = document.createElement("tr");
+
+                for(var j= 0;j<cols;j++){
+                    var td = document.createElement("td");
+                    td.innerHTML = Math.round(Math.random()*99);
+                    tr.appendChild(td);
+                }
+                tab.appendChild(tr);
+            }
+            document.body.appendChild(tab);
+        } 
+            
+        </script>
+    
+</body>
+</html>

@@ -22,10 +22,19 @@ onscroll  滚动条发生滚动
 
 Math.random()  生成随机数字 伪随机
 Math.round()   四舍五入
+Math.pow()     次方
+Math.PI ()     π
+Math.min ()    最小值   后面跟的是一组数值
+Math.max ()    最大值
+Math.cos ()    余弦函数
+Math.floor()   向下取整
+
 
 function  函数
 continue  跳出当次循环
 break     跳出循环；在switch中是阻止穿透的；
+
+
 
 instanceof 判断原产地
 object   对象
@@ -67,3 +76,78 @@ toString () 转换为字符串 任意类型都可以  还可以进行进制转�
 * toJSON   把date对象返回成字符串  有一定的格式   YYYY-MM-DDTHH:mm:ss.sssZ   应该是格林威治的时间
 * getTime   返回一个距离1970年到目标时间的差值  但是是毫秒数
 * toString  把日期对象转为字符串   该 toString 方法总是返回一个美式英语日期格式的字符串。
+get方法系列是获得时间戳的 
+getFullyear  获取的是本地时间的年
+getMonth     获取的是本地时间的月份减一  【注】month的数值是从0开始的  和中国的月份差一
+getDate      获取的是本地时间的日
+getDay       获取的是本地时间的周几
+getHours     获取的是本地时间的小时
+getMinutes   获取的是本地时间的分钟
+getSeconds   获取的是本地时间的秒数
+getMilliseconds   获取的是本地时间的毫秒数
+
+getUTCFullYear 获取的是格林威治的年份
+getUTC  系列是获取的格林威治的时间 
+
+set系列方法是更改到目标时间的  获得是1970年到目标时间的毫秒数;返回值，只针对当前的时间对象有效
+
+
+setInterval（） 定时器   后面跟两个参数  第一个是函数，第二个是以毫秒为单位的时间。  每隔多少毫秒浏览器帮忙调用一次函数。
+
+clearInterval  清除定时器
+
+setTimeout  延时器   这个只会执行一次
+
+history  历史记录
+history.back    向后（后退）
+history.forward  向前（前进）
+history.go        任意方向（正数是前进  负数是后退）
+
+
+location  地址栏
+port  端口
+protocol 协议
+href  链接地址
+host  域名
+hash  哈希值 #1 井号表示 
+
+
+confirm  弹出确认取消窗口
+prompt   弹出有输入框的窗口
+alert    警告框
+eval     可以把字符串当做js代码进行解析执行
+
+
+scrollTop 滚动条垂直滚动的高度
+scrollLeft  滚动条水平滚动的长度
+
+
+getElementById  ID选择器
+getElementsByTagName   标签选择器
+getElementsByName    name选择器
+getElementsByClassName   class选择器
+querySelector        选择单个元素
+querySelectorAll     选择多个重复的元素
+
+
+createElement  创建一个元素
+appendChild（） 向后插入
+insertBefore    在前方插入
+
+children 子元素
+parentNode 父级元素
+
+removeChild  删除某个元素  需要先选中这个元素或者父级元素  
+remove 删除
+
+
+innerHTML  获取内容    内容是被解析之后显示的
+innerText             内容是被转义之后显示的  即为标签会保留 不会被解析
+
+
+setAttribute（key，value）  创建属性
+removeAttribute  删除属性 
+getAttribute  获取对应属性的key值
+
+
+offset    获取图片的宽高 offset（）
