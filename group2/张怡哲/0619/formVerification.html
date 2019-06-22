@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="css/formVerification.css">
+<body>
+    <form action="method" id="contanier">
+        <span>注意<i class="signal">*</i> 为必填项</span>
+        <fieldset id="detailedDate">
+            <legend>账户详细资料</legend>
+            <div class="username">
+                <span>用户名称</span>
+                <input type="text" id="username" placeholder="请输入6-15位用户名(不能添加除“_”以外符号)">
+                <i class="signal">*</i>
+            </div>
+            <div class="password">
+                <span>登录密码</span>
+                <input type="password" id="password" placeholder="请输入6-15位密码(不能添加除“_”以外符号，不能以数字开头)">
+                <i class="signal">*</i>
+            </div>
+            <div class="repassword">
+                <span>重复登录密码</span>
+                <input type="password" id="repassword" placeholder="请再次输入密码">
+                <i class="signal">*</i>
+            </div>
+            <div class="passwordpower">
+                <span>密码安全等级</span>
+                <ul id="passwordpower">
+                    <li>
+                        <span>低</span>
+                    </li>
+                    <li>
+                        <span>中</span>
+                    </li>
+                    <li>
+                        <span>高</span>
+                    </li>
+                </ul>
+                <i class="signal">*</i>
+            </div>
+        </fieldset>
+        <fieldset id="personalInformation">
+            <legend>个人信息资料</legend>
+            <div class="e-mail">
+                <span>电子邮箱</span>
+                <input type="text" id="e-mail" placeholder="请输入电子邮箱地址">
+                <i class="signal">*</i>
+            </div>
+            <div class="name">
+                <span>真实姓名</span>
+                <input type="text" id="name" placeholder="请输入真实姓名">
+                <i class="signal">*</i>
+            </div>
+            <div class="phone">
+                <span>中奖通知手机</span>
+                <input type="text" id="phone" placeholder="请留下有效联系方式">
+                <i class="signal">*</i>
+            </div>
+            <div class="yanZheng">
+                <span>验证码</span>
+                <div id="yanZhengMa"></div>
+                <input type="text" id="yanZheng" style="width: 60px;margin-right: 140px;float: right;">
+                <i class="signal">*</i>
+            </div>
+        </fieldset>
+        <button id="btn">注册</button>
+        <input type="checkbox" id="agree">
+        <b>10天内免费注册</b>
+    </form>
+    <script src="js/formVerification.js"></script>
+    <!-- <script>
+        var userName=document.getElementById("username");
+        userName.onfocus=function(){
+        userName.style.backgroundColor="white";
+        }
+    </script> -->
+</body>
+</html>

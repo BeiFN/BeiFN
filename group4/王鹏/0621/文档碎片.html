@@ -7,14 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="box"></div>
     <script>
-        setTimeout(foo, 1000);
-        function foo(){
+
+        // 避免过多的dom操作
+        var box = document.getElementById("box");
+        var fragment = document.createDocumentFragment();
+        // console.log(fragment.nodeName);
+        for(var i = 0; i < 10; i++) {
             var div = document.createElement("div");
-            div.style.cssText = "width:200px; height:200px; border:1px solid #000; margin:0 auto; text-align:center;line-height:200px"
             div.innerHTML = "hello";
-            document.body.appendChild(div);
+            div.style.color = "orange";
+            fragment.appendChild(div);
         }
+        box.appendChild(fragment);
     </script>
 </body>
 </html>
