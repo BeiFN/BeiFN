@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <span id="box" class="box">
+            <strong></strong>
+      </span>
+
+      <script>
+            // DOM  =>  节点;
+            // 节点的分类更细致;
+            // 1. 元素节点;
+            // 2. 文本节点;
+            // 3. 属性节点;
+
+            // 节点三剑客 ;  
+            // nodeType ; 辨别节点类型的;  node节点类型
+            // nodeName ; 辨别元素节点类型的;
+            // nodeValue; 获取节点内值的; 节点值
+
+            var box = document.getElementById("box");
+            console.log(box.childNodes);
+            for(var i = 0 ; i < box.childNodes.length ; i ++){
+                  console.log(box.childNodes[i]);
+                  console.log(box.childNodes[i].nodeType);
+            }
+
+            // nodeType 其实是返回节点类型的代码 
+            // 1 => 元素节点;
+            // 2 属性节点  是元素节点的子集  nodename nodevalue
+            // 3 => 文本节点;
+            // 8 comment  注释节点
+            // 9 document节点
+            // 11 文档碎片 缓存文档
+            // 
+            // ......
+
+            // 属性节点 元素节点才有属性节点
+
+            //页面中，所有能看到的都是节点，这些节点普遍都可以创建，这些节点都是以对象形式存在的。
+
+      
+            function setAttribute(){
+
+            }
+
+      </script>
+</body>
+</html>

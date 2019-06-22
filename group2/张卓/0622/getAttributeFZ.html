@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getAttribute封装</title>
+</head>
+<body>
+    <div id="box">
+        <ul id="list" class="sadf" hello="world">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        function myGetAttribute(ele){
+            var attrList = ele.attributes;
+            // console.log(attrList)
+            var arr = []
+            for(var i = 0 ;i<attrList.length;i++){
+                arr[i] = attrList[i]
+            }
+            // console.log(arr)
+            return arr;
+        }
+        var li_list = document.getElementById("list")
+        var arr = myGetAttribute(li_list)
+        console.log(arr)
+    </script>
+</body>
+</html>

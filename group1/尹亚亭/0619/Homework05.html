@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+    <style>
+        *{
+            margin:0;
+           padding:0;
+        }
+        #box h3{
+            background: #999;
+            text-align: center;
+            height:50px;
+            line-height: 50px;
+            margin: 3px auto;
+        }
+    </style>
+</head>
+<body>
+        <ul id="box">
+            <h3>rows1</h3>
+            <h3>rows2</h3>
+            <h3>rows3</h3>
+            <h3>rows4</h3>
+            <h3>rows5</h3>
+            <h3>rows6</h3>
+            <h3>rows7</h3>
+            <h3>rows8</h3>
+        </ul>
+<script>
+//
+var rows=document.querySelectorAll("h3");
+
+for (var i = 0; i++ < rows.length;) {
+    if(i%2){
+        rows[i-1].style.background="#0ff";
+    }
+    else{
+        rows[i-1].style.background="#ff0";
+    }
+   
+   // 改进点：加入鼠标移入移出事件
+}
+</script>
+</body>
+</html>

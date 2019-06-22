@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="body">
+    <input id="row" type="text">
+    <input id="col" type="text">
+    <button id="btn">确定</button>
+    <script>
+        body.onload = function () {
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                var tab = document.createElement("table");
+                var row = document.getElementById("row").value;
+                var col = document.getElementById("col").value;
+                for (var i = 0; i < row; i++) {
+                    var tr = document.createElement("tr");
+                    for (var j = 0; j < col; j++) {
+                        var td = document.createElement("td");
+                        td.innerHTML = parseInt(Math.random() * 90 + 10);
+                        td.style.backgroundColor = randomRGBAColor();
+                        tr.appendChild(td);
+                    }
+                    tab.appendChild(tr);
+                }
+                document.body.appendChild(tab);
+            }
+        }
+        function randomRGBAColor() {
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            var a = Math.random().toFixed(2);
+            return "rgba(" + r + "," + g + "," + b + " ," + a + ")";
+        }
+    </script>
+</body>
+</html>
