@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #newTable{
+        margin: 0 auto;
+        width:auto;
+        height: auto;
+        border: 2px solid black;
+    }
+    .newTr{
+        border: 1px solid red;
+    }
+    .newTd{
+        min-width: 100px;
+        height: 50px;
+        background: greenyellow;
+        text-align: center;
+    }
+</style>
+<body>
+    <input id="ipt1" type="text" placeholder="——请输入行数——">
+    <input id="ipt2" type="text" placeholder="——请输入列数——">
+    <button id="btn">生成表格</button>
+    <div id="cot"></div>
+</body>
+<script>
+    let row=document.getElementById("ipt1")
+    let col=document.getElementById("ipt2")
+    let btn=document.getElementById("btn")
+    let cot=document.getElementById("cot")
+
+    btn.onclick=function(){
+        cot.innerHTML=""
+        let v1=row.value 
+        let v2=col.value 
+        let newTable=document.createElement("table")
+        newTable.id="newTable"
+        cot.appendChild(newTable)
+        for(let i=0;i<v1;i++){
+            let newTr=document.createElement("tr")
+            newTr.className="newTr"
+            newTable.appendChild(newTr)
+            for(let k=0;k<v2;k++){
+                let newTd=document.createElement("td")
+                newTd.className="newTd"
+                newTr.appendChild(newTd)
+            }
+        }
+    }
+    row.addEventListener("focus",fc)
+    col.addEventListener("focus",fc)
+    row.addEventListener("blur",bl)
+    col.addEventListener("blur",bl)
+    function fc(){
+        this.placeholder=""
+    }
+    function bl(){
+        if(this.id==="ipt1"){
+            this.placeholder="——请输入行数——"
+        }
+        if(this.id==="ipt2"){
+            this.placeholder="——请输入列数——"
+        }
+    }
+</script>
+</html>
