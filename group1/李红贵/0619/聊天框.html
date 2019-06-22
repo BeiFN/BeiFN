@@ -45,7 +45,9 @@
         function onlickUpdown(){
             // var scrollTop = document.view.scrollTop;
             // console.log(scrollTop);
+
             var tes = document.getElementById("textstr").value;
+            var te = document.getElementById("textstr");
             var ps = document.createElement("p");
             ps.innerHTML = tes;
             ps.style.width = "250px";
@@ -58,7 +60,13 @@
                 ps.style.float = "left";              
                 ps.style.backgroundColor = "gray";
             }
+            
             view.appendChild(ps);
+            ps.scrollIntoView();//自动滚动,放在标签添加之后
+           
+            te.select();
+            // te.value= "";
+            // te.onfocus();
         }
 
         
