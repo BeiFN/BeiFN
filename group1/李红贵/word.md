@@ -286,7 +286,7 @@ function foo(a,b,c,d){
 <!-- 拷贝子字符串 包括前值,不包含后值 ，负数为0-->
 
 18.split()
-<!-- 查找字符串中的字符，并返回找到的前 个分割元素（splits） -->
+<!-- 查找字符串中的字符，并返回找到的前 个分割元素（splits） 转数组返回-->
 
 19.toLocaleLowerCase()
 20.toLowerCase()
@@ -377,6 +377,7 @@ console.log(d.getDay());
 27.setSeconds()
 28.setTime()
 <!-- 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。 -->
+
 29.setUTCDate()
 30.setUTCFullYear()
 31.setUTCHours()
@@ -420,6 +421,11 @@ setInterval
 
 clearInterval
 <!-- 清除定时器 -->
+
+setTimeout
+clearTimeout
+
+
 
 
     1 toDateString()    以特定的格式显示周几、月、日、年
@@ -500,11 +506,14 @@ clearInterval
 17.removeAttribut(属性名)
 <!-- 删除属性 -->
 
+18.getComputedStyle  获取元素完整的css列表
+
 
 
 
 ***JS day6  0621 dom节点
 ```javascript
+// 总结 : 其实页面中所有你能看到的东西都是节点,这些节点普遍都可创建; 这些节点都是以对象形式存在的; 
 var box = document.getElementById("box");
     // console.log(box.childNodes);
     for(var i = 0 ; i < box.childNodes.length ; i ++){
@@ -516,13 +525,34 @@ var box = document.getElementById("box");
 1.chileNoes
 <!-- 用伪数组 返回所有子节点，-->
 
+
 2.nodeType
 <!-- 判断节点类型 返回节点类型代码 1元素节点  3文本节点 -->
 
 3.nodeName
-<!-- 辨别元素节点类型 -->
+<!-- 辨别元素节点类型,另外获取属性key值 -->
 
 4.nodeValue
-<!-- 获取节点内值 -->
+<!-- 获取节点内值，属性值 -->
+
+5.box.attributes[0];  获取第0个属性节点
+
+6.createAttribute  创建一个属性节点
+
+7.createTextNode   创建文本节点
+
+8.createComment     创建一个注释
 
 
+
+
+
+***JS day6  0622 事件
+
+1.event
+<!-- 浏览器接收当前事件的全局对象 -->
+
+2.clientX clientY clientWidth clientHeight 在可视窗口的坐标x值和y值，宽 高
+3.screenX screenY screenWidth screenHeight 屏幕坐标 x和y
+4.offsetX offsetY offsetWidth offsetHeight 当前区域位置
+5.pageX pageY pageWidth pageHeight 文档位置（包括滚动区域）
