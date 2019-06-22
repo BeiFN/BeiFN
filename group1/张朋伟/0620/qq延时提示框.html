@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #hua {
+            width: 200px;
+            height: 200px;
+            background: greenyellow;
+            margin: auto;
+            line-height: 200px;
+            text-align: center;
+        }
+
+        #show {
+            width: 200px;
+            height: 200px;
+            background: rgb(255, 47, 168);
+            margin: auto;
+            line-height: 200px;
+            text-align: center;
+            position: relative;
+            left: -200px;
+            top: -200px;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hua" onmouseover="inn()" onmouseout="out()">
+        划过延时效果
+    </div>
+
+    <div id="show">我延时出现了。</div>
+    <script>
+        function inn() {
+            // var ele_hua = document.getElementById("hua");
+            setTimeout(logo, 1000);
+        }
+
+        function logo() {
+            var ele_show = document.getElementById("show");
+
+            ele_show.style.display = "block";
+        }
+
+
+        function out() {
+            // var ele_hua = document.getElementById("hua");
+            setTimeout(logo1, 1000);
+        }
+
+        function logo1() {
+            var ele_show = document.getElementById("show");
+            ele_show.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

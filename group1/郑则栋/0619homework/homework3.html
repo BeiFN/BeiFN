@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>顶部悬浮&回到顶部</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				padding: 0;
+			}
+
+			.ox {
+				height: 200px;
+
+			}
+
+			#box {
+				width: 100%;
+				height: 40px;
+				background: red;
+			}
+
+			#bamg {
+				width: 3px;
+				height: 3000px;
+				position: absolute;
+			}
+
+			#bang {
+				width: 40px;
+				height: 40px;
+				background: black;
+				/* display: none; */
+				position: fixed;
+				right: 40px;
+				top: 400px;
+			}
+
+			.xian {
+				width: 100%;
+				height: 2px;
+				position: absolute;
+				top: 1800px;
+				background: #000000;
+				font-size: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ox">
+
+		</div>
+		<div id="box"></div>
+		<div id="bamg">
+
+		</div>
+		<div id="bang">
+
+		</div>
+		<p class="xian"></p>
+		<script type="text/javascript">
+			var oBox = document.getElementById(("box"));
+			var obang = document.getElementById("bang");
+			document.onscroll = function() {
+
+				var scroll_top = document.body.scrollTop || document.documentElement.scrollTop;
+				if (scroll_top > 200) {
+					oBox.style = "position:fixed;top:0;"
+					obang.style = "display:block;";
+				} else {
+					oBox.style = "position:static;"
+					obang.style = "display:none;"
+				}
+				if (scroll_top > 1400) {
+					// obang.style.top=scroll_top-2000+"px";
+					obang.style = "position:absolute;top:1800px;display:block;";
+				}
+
+			}
+			obang.onclick = function() {
+				// 给scrollTop 赋值为 0;
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+	
+		</script>
+
+	</body>
+</html>

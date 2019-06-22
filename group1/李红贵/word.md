@@ -357,6 +357,7 @@ console.log(d.getDay());
  -->
 13.getUTCDate()
 <!-- 以世界时为标准，返回一个指定的日期对象为一个月中的第几天 -->
+
 14.getUTCDay()
 15.getUTCFullYear()
 16.getUTCHours()
@@ -375,6 +376,7 @@ console.log(d.getDay());
 26.setMonth()
 27.setSeconds()
 28.setTime()
+<!-- 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。 -->
 29.setUTCDate()
 30.setUTCFullYear()
 31.setUTCHours()
@@ -393,12 +395,23 @@ Date.prototype.toISOString()
 Date.prototype.toJSON()
 Date.prototype.toLocaleDateString()
 Date.prototype.toLocaleFormat()
-Date.prototype.toLocaleString()
-Date.prototype.toLocaleTimeString()
+
+.toLocaleString()
+<!-- 已当地时间格式返回日期 -->
+
+toLocaleTimeString()
+<!-- 已当地时间格式返回时分秒 -->
+
 Date.prototype.toSource()
-Date.prototype.toString()
-Date.prototype.toTimeString()
+
+.toString()
+<!--  以字符串格式返回日期对象 方法返回一个字符串，表示该Date对象。-->
+
+.toTimeString()
+<!-- 返回日期对象的时分秒 -->
+
 Date.prototype.toUTCString()
+
 Date.prototype.valueOf()
 Date.prototype[@@toPrimitive]
 
@@ -414,3 +427,102 @@ clearInterval
     3 toLocaleDateString()  以特定的格式显示周几、月、日和年
     4 toUTCString       以特定的格式显示完整的UTC日期
     5 valueof           返回毫秒数，等同于getTime
+
+
+
+
+***JS day6  0619 dom对象
+1.document.getElementById("IDName");  
+<!-- 根据id获取元素，得到单个标签元素 -->
+
+2.document.getElementByClass("className");
+<!-- 根据class名获取元素，得到的是伪数组 -->
+
+3.document.getElementByTagName("div");
+<!-- 根据标签名获取标签，用伪数组返回所有div -->
+
+4.document.getElementsByName("hello")；
+<!-- <div name="hello"></div> 根据name属性值获取标签 -->
+
+5.document.querySelector(".box");
+<!-- 根据class获取单个元素 -->
+
+6.document.querySelectorAll(".box");
+<!-- 获取所有class为box的元素 -->
+
+7.var div = document.createElement("div");
+<!-- 创建一个div -->
+
+8.document.body.appendChild(div);
+<!-- 把创建的div添加到body末尾 
+// * 如果 appendChild 操作的元素是已经存在于页面上的元素，那么appendChild会做两件事.
+// 1. 删除掉页面上的这个元素;
+// 2. 重新对元素进行插入。
+// document.body.appendChild(div);-->
+
+
+9.children  
+<!-- 表示所有子元素 -->
+
+10.document.body.insertBefore( div , document.body.children[0] );
+<!-- insertBefore 插入元素到指定位置，0是最前面 -->
+
+11.removeChild()  
+<!-- 删除子元素dom -->
+
+12.parentNode
+<!-- 找到父级节点 -->
+
+```javascript
+// var box = document.getElementById("box");
+ // console.log(box);
+ // document.body.removeChild(box);
+ // 简化写法;
+ // parentNode => 找到父级节点;
+ // console.log(box.parentNode); 
+ // box.parentNode.removeChild(box);
+ // 语法升级;
+ // box.remove();
+```
+
+13.dom.innerHTML
+<!-- 字符串转标签显示 -->
+
+14.innerText
+<!-- 字符串原样显示 -->
+
+15.setAttribut(属性名，属性值)
+<!-- 设置属性名和值 -->
+
+16.getAttribute(属性名)
+<!-- 获取属性值 -->
+
+17.removeAttribut(属性名)
+<!-- 删除属性 -->
+
+
+
+
+***JS day6  0621 dom节点
+```javascript
+var box = document.getElementById("box");
+    // console.log(box.childNodes);
+    for(var i = 0 ; i < box.childNodes.length ; i ++){
+        // console.log(box.childNodes[i]);
+        console.log(box.childNodes[i].nodeType);
+}
+```
+
+1.chileNoes
+<!-- 用伪数组 返回所有子节点，-->
+
+2.nodeType
+<!-- 判断节点类型 返回节点类型代码 1元素节点  3文本节点 -->
+
+3.nodeName
+<!-- 辨别元素节点类型 -->
+
+4.nodeValue
+<!-- 获取节点内值 -->
+
+
