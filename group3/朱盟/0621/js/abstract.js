@@ -73,11 +73,20 @@ function createElement(object) {
 
 // setAttribute() 2. 封装getAttribute() 
 
-createElement({tagName:"p"})
-console.dir();
 
-var p=createElement({tagName:"p"});
-// p.attr();
-// Object.prototype.attr=function attr(){
-//     console.log("0000");
-// }
+// console.dir(); 原型方法的封装 
+Element.prototype.attr = function attr(key, val) {
+    if (arguments.length > 1) //如果值为2个 则为设置
+    {
+        return this.setAttribute(key, val);
+    } else {
+        return this.getAttribute(key); //如果值为1个 则为获取
+    }
+
+}
+var p = createElement({
+    tagName: "p"
+});
+
+p.attr("id", "d2");
+console.dir(p.attr("id"));
