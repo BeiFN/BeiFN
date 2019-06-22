@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav{
+            height: 80px;
+            line-height: 80px;
+            width: 100%;
+            background:yellowgreen;
+            display: flex;
+            justify-content:space-around;
+        }
+        #list{
+            background:rgba(0,0,0,0.3);
+            width: 25%;
+            display: none;
+            margin-left: 200px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <span>一级菜单</span>
+        <span id="nav_btn">一级菜单</span>
+        <span>一级菜单</span>
+        <span>一级菜单</span>
+    </nav>
+    <ul id="list">
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+    </ul>
+
+    <script>
+        var navBtn = document.getElementById("nav_btn");
+        var list = document.getElementById("list");
+
+        //记录当前开启的延时器;
+        var timer = null;
+       
+        navBtn.onmouseover = function(){
+            //鼠标移入一级菜单,显示二级菜单;
+            list.style.display = "block";
+
+        }
+       
+        navBtn.onmouseout = function(){
+
+             //鼠标移出一级菜单,延时0.5s隐藏二级菜单;
+            clearTimeout(timer)//会清空之前的计时器,保证只有一个计时器
+            timer = setTimeout(function(){
+                list.style.display = "none";
+            },500)
+        }
+        
+        list.onmouseover = function(){
+            //鼠标移入二级菜单时,清空计时器，不让二级菜单隐藏
+            // 二级菜单会一直显示
+            clearTimeout(timer);
+            list.syle.display = "block";
+
+        }
+
+        list.onmouseout = function(){
+            //鼠标移出二级菜单时,立即关闭二级菜单
+            list.style.display = "none";
+
+        }
+
+        
+        
+    </script>
+
+
+
+</body>
+</html>

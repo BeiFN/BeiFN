@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box_outer{
+                  width: 200px;
+                  height: 200px;
+                  background: #ddd;
+            }
+            #box_inner{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+            }
+      
+      </style>
+</head>
+<body>
+      <div id="box_outer">
+            <div id="box_inner">
+
+            </div>
+      </div>
+
+      <script>
+            var outer = document.getElementById("box_outer");
+            var inner = document.getElementById("box_inner");
+
+            outer.onmouseover = function(){
+                  console.log("over事件执行");
+            }
+            outer.onmouseenter = function(){
+                  console.log("enter事件执行");
+            }
+      
+      </script>
+</body>
+</html>
