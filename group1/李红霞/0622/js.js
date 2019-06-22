@@ -16,15 +16,19 @@ function handlerEnter(evt){
     }
 }
 
-
-function handlerletter(keyEnter){
-    //已知用户输入的是字母，创建一个炮弹div
+function createbullet(){
     var bullet = document.createElement("div");
     bullet.className = "bullet";
     bullet.style.top = 600+"px"
     bullet.style.left = 50+"%";
     bullet.style.marginLeft = "-15px"; 
     document.body.appendChild(bullet)
+    return bullet;
+}
+
+function handlerletter(keyEnter){
+    //已知用户输入的是字母，创建一个炮弹div
+    var bullet = createbullet();
     //循环遍历用户输入的字母是否为数组fishArr中含有的字母
     var flag = false;
     for(var i = 0, fishItem; fishItem = fishArr[i++];){
@@ -62,22 +66,7 @@ function handlerletter(keyEnter){
 
 //设置定时器，每间隔一秒从屏幕上水平随机位置出现鱼
 var timer = setInterval(createfish, 1000);
-function createfish(){
-    //创建鱼的div
-    var div = document.createElement("div");
-    var clientWidth = document.documentElement.offsetWidth || document.body.offsetWidth;
-    var left1 = Math.round ((clientWidth - 100) * Math.random());
-    div.className = "fish";        // *** //
-    div.style.top = 0;
-    div.style.left = left1 + "px"; 
-
-    //每个鱼上出现随机字母
-    var randomLetterCode = 65 + Math.round(Math.random()*25);
-    var randomLetter = String.fromCharCode(randomLetterCode);
-    div.innerHTML = randomLetter;    
-    document.body.appendChild(div);
-
-    //实现鱼的自由下落
+function fishmove(div){
     var count = 0;
     var timerdown = setInterval(function(){
         div.style.top = count*5+"px";
@@ -99,6 +88,26 @@ function createfish(){
             , 1000);
         }
     }, 50);
+    return timerdown;
+
+}
+function createfish(){
+    //创建鱼的div
+    var div = document.createElement("div");
+    var clientWidth = document.documentElement.offsetWidth || document.body.offsetWidth;
+    var left1 = Math.round ((clientWidth - 100) * Math.random());
+    div.className = "fish";        // *** //
+    div.style.top = 0;
+    div.style.left = left1 + "px"; 
+
+    //每个鱼上出现随机字母
+    var randomLetterCode = 65 + Math.round(Math.random()*25);
+    var randomLetter = String.fromCharCode(randomLetterCode);
+    div.innerHTML = randomLetter;    
+    document.body.appendChild(div);
+
+    //实现鱼的自由下落
+    var timerdown = fishmove(div);
 
     //将每个div的timedown，left， letter，保存在一个数组中
     var obj = {
