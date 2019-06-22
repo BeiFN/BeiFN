@@ -116,16 +116,16 @@
     <!-- <button id="btn">开始游戏</button>
      <div id="container"></div> -->
 
-     <!-- <div id="container">倒计时：
-        <span id="days_box"></span>
+     <div id="container">
+        倒计时： <span id="days_box"></span>
         <span id="hour_box"></span>:
         <span id="minute_box"></span>:
         <span id="second_box"></span>
-    </div> -->
+    </div>
      
-    <div id="progress_bar">
+    <!-- <div id="progress_bar">
         <div id="progress"></div>
-  </div>
+  </div> -->
   
     <!-- <button id="box1">1</button>
     <img src="https://img14.360buyimg.com/mobilecms/s280x280_jfs/t1/48795/9/1731/82817/5cf784b4Ec2864e1d/3280cc1fdccaf51a.jpg!q90.webp" alt="">
@@ -284,33 +284,33 @@
     // console.log(_temp);
     
     //进度条
-    var progress_width = 0;
-    var progress_interval = null;
-    var target = 600;
-    progress_interval = setInterval(progressing,30)
-    function progressing(prop){
-        if(prop !== undefined && typeof prop === "number"){
-                        progress_width = target * prop / 100;
-                  }else{
-                        progress_width += 5 ;     
-                  }
-                  progress.style.width = progress_width + "px";
-                  if(progress_width === target){
-                        clearInterval(progress_interval);
-                        // history.back(1)
-                        history.go(-1);
-                  }
-            }
-            progressing(30);
+    // var progress_width = 0;
+    // var progress_interval = null;
+    // var target = 600;
+    // progress_interval = setInterval(progressing,30)
+    // function progressing(prop){
+    //     if(prop !== undefined && typeof prop === "number"){
+    //                     progress_width = target * prop / 100;
+    //               }else{
+    //                     progress_width += 5 ;     
+    //               }
+    //               progress.style.width = progress_width + "px";
+    //               if(progress_width === target){
+    //                     clearInterval(progress_interval);
+    //                     // history.back(1)
+    //                     history.go(-1);
+    //               }
+    //         }
+    //         progressing(30);
         
-            document.onclick = function(){
-                  progressing(0);
-    }
+    //         document.onclick = function(){
+    //               progressing(0);
+    // }
 
      //倒计时
     //  setInterval(countDown, 1000 );
     //  function countDown(){
-    //      var countArray = getCountDown(2019,08,19);
+    //      var countArray = getCountDown(2019,8,19);
     //      days_box.innerHTML = countArray[3];
     //      hour_box.innerHTML = countArray[0];
     //      minute_box.innerHTML = countArray[1];
@@ -334,7 +334,7 @@
     //     }
     //     targetDate.setHours(hour);
     //     targetDate.setMinutes(minute);
-    //     var targetTime = targetDate.setDate.setSeconds(second);
+    //     var targetTime = targetDate.setSeconds(second);
        
     //     var reduce = targetTime - Date.now();
 
@@ -351,6 +351,7 @@
     //         days
     //     ];
     // }
+  
     
     //定时器
     // var interval_id = null;
