@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="box">
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+            <strong>world</strong>
+            <strong>world</strong>
+            <strong>world</strong>
+            <strong>world</strong>
+            <span>hello</span>
+        </div>
+
+        <script>
+            // 给所有hello染色
+            // 选出所有span
+            // 方案一
+            // var box = document.getElementById("box");
+            // var span_list = box.getElementsByTagName("span");
+            // console.log(span_list);
+            // for(var i = 0; i < span_list.length; i++) {
+            //     span_list[i].style.color = "#f00";
+            // }
+
+            // 方案二
+            // var box = document.getElementById("box");
+            // var span_list = box.children;
+            // for(var i = 0; i < span_list.length; i++) {
+            //     if(span_list[i].nodeName.toLocaleLowerCase() === "span"){
+            //         span_list[i].style.color = "green";
+            //     }
+            // }
+
+            // 工作实际用方案一即可
+        </script>
+</body>
+</html>

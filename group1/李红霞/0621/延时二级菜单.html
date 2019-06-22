@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        nav{
+                height: 80px;
+                line-height: 80px;
+                width: 100%;
+                background: #cccccc;
+                display: flex;
+                justify-content: space-around;
+        }
+        #list{
+                background: #ccddee;
+                width: 15%;
+                text-align: left;
+                padding-left: 10%;
+                display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <span id="nav_btn">一级菜单</span>
+        <span >一级菜单</span>
+    
+        <span>一级菜单</span>
+        <span>一级菜单</span>
+    </nav>
+    <ul id="list">
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+        <li>二级菜单</li>
+    </ul>
+    <script>
+    //延时二级菜单实现 1.当鼠标划入1级菜单时，出现二级菜单，当鼠标划出一级菜单时，隐藏二级菜单
+                   //2.当鼠标划入二级菜单时，二级菜单显示，当鼠标划出二级菜单时，二级菜单消失
+                   //3.设置定时器，当鼠标从一级菜单划出时，延迟消失
+                   //4.清除定时器，保证整个页面上只有一个定时器
+        var nav = document.getElementById("nav_btn");
+        var ul = document.getElementById("list");
+        nav.onmouseover = function (){
+            ul.style.display = "block";
+        }
+        var timer = null;
+        nav.onmouseout = function(){
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                ul.style.display = "none"
+            }, 500);
+        }
+        ul.onmouseover = function (){
+            clearTimeout(timer)
+            ul.style.display = "block";
+        }
+        ul.onmouseout = function(){
+            ul.style.display = "none";
+        }
+        
+    </script>
+</body>
+</html>

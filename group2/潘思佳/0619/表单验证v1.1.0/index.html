@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="public.css">
+    <link rel="stylesheet" href="index_style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form_box">
+        <span id="title">注意 <span class="red_point">*</span> 为必须填</span>
+        <p id="hidden_box" style="display: none"></p>
+        <div class="base_message">
+            <p>账户详细资料</p>
+            <div class="base_box" id="first_base_box">
+                <span>用户名称</span>
+                <span class="red_point">*</span>
+                <input type="text" id="username" class="input_box must_done" placeholder="jiabaili@#¥@#¥">
+            </div>
+            <div class="base_box">
+                <span>登录密码</span>
+                <span class="red_point">*</span>
+                <input type="password" id="passwordF" class="input_box must_done" placeholder="··········">
+            </div>
+            <div class="base_box">
+                <span>重复登录密码</span>
+                <span class="red_point">*</span>
+                <input type="password" id="passwordS" class="input_box must_done" placeholder="··········">
+            </div>
+            <div class="base_box">
+                <span>密码安全级别</span>
+                <span class="red_point">*</span>
+                <ul id="pwd_level">
+                    <li>低</li>
+                    <li>中</li>
+                    <li>高</li>
+                </ul>
+            </div>
+        </div>
+        <div class="base_message">
+            <p>个人信息资料</p>
+            <div class="base_box">
+                <span>电子邮件</span>
+                <span class="red_point">*</span>
+                <input type="email" id="email_box" class="input_box must_done" placeholder="请输入您的电子邮箱">
+            </div>
+            <div class="base_box">
+                <span>真实姓名</span>
+                <span class="red_point">*</span>
+                <input type="text" id="true_name" class="input_box must_done">
+            </div>
+            <div class="base_box">
+                <span>中奖通知手机</span>
+                <span class="red_point">*</span>
+                <input type="tel" id="phone_number" class="input_box must_done">
+            </div>
+            <div class="base_box">
+                <span>验证码</span>
+                <span class="red_point" id="second_base_box">*</span>
+                <input type="text" id="verify_code" class="input_box must_done">
+                <input type="text" id="random_verify_code">
+            </div>
+        </div>
+        <button id="login">注册</button>
+        <div class="login_free">
+            <input type="radio" id="login_free_button">10天内免登陆
+        </div>
+    </div>
+    <script src="form_text.js"></script>
+</body>
+
+</html>

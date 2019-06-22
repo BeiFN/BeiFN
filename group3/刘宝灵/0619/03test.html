@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态表格创建</title>
+</head>
+<body>
+    <button id="btn" >创建</button>
+    <input id="row" type="text" placeholder="请输入行数"/>
+    <input id="col" type="text" placeholder="请输入列数"/>
+    <table id="table"></table>
+    <script>
+        onload = function(){
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var tab = document.createElement("table");
+            var rows = document.getElementById("row").value;
+            var cols = document.getElementById("col").value;
+            for(var i=0; i<rows; i++) { 
+                var tr = document.createElement("tr");
+                (function(){
+                    for(var i=0; i<cols; i++) { 
+                        var td = document.createElement("td");
+                        td.innerHTML = Math.round( Math.random()*90+10 ); 
+                        td.style.background = randomColor();
+                        tr.appendChild(td);
+                    }
+                })();
+                tab.appendChild(tr);
+            }
+            function randomColor(){
+                var r = Math.round(Math.random() * 255);
+                var g = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+                var randomColor = "rgb("+ r +","+ g +","+ b +")";
+                return randomColor;
+                console.log(randomColor);
+            }
+            document.body.appendChild(tab);
+        }
+    }
+    </script>
+</body>
+</html>

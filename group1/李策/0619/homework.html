@@ -102,7 +102,7 @@
 
 
         <h3>个人信息资料</h3>
-        <label for="username">电子邮件  *</label><input type="text" placeholder="请输入邮箱地址" id="2">
+        <label for="username">电子邮件  *</label><input type="text" placeholder="请输入邮箱地址" id="email">
         <label for="username">真实姓名  *</label><input type="text" placeholder="请输入姓名" id="1">
         <label for="username">绑定手机  *</label><input type="text" placeholder="请输入手机号" id="1">
         <label for="username">填验证码  *</label><input type="text"  id="yz">
@@ -187,7 +187,7 @@
                     break;
             }
         }
-        pwd2.onkeyup = function () {
+        pwd2.onblur = function () {
             var a = pwd1.value;
             var b = pwd2.value;
             if (a === b) {
@@ -195,6 +195,7 @@
             }
             else {
                 pwd2.style.borderColor = "red";
+                alert("请确认两次密码输入一致！")
             }
         }
 
@@ -213,6 +214,16 @@
             }
         }
         yzm1.value = (yzm);
+        }
+
+        email.onblur = function(){
+            var e_mail = email.value
+            if( e_mail.includes("@")){
+                email.style.borderColor = "green";
+            }else{
+                email.style.borderColor = "red";
+                alert("请输入正确的电子邮件！")
+            }
         }
     </script>
 </body>
@@ -275,58 +286,6 @@
 </html>-->
 
 
-
-
-
-<!-- 隔行换色
-    
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <input type="text" id = "row">
-    <input type="text" id = "col">
-    <button id = "btn"></button>
-    <script>
-        onload = function () {
-            var btn = document.getElementById("btn");
-            btn.onclick = function () {
-                var tab = document.createElement("table");
-                var rows = document.getElementById("row").value;
-                var cols = document.getElementById("col").value;
-                for (var i = 0; i < rows; i++) { 
-                    var tr = document.createElement("tr");
-                    (function () {
-                        for (var i = 0; i < cols; i++) { 
-                            var td = document.createElement("td");
-                            td.innerHTML = Math.round(Math.random() * 90 + 10);
-                            tr.style.background = "#" + randomColor();
-                            tr.appendChild(td);//将td放入tr
-                        }
-                    })();
-                    tab.appendChild(tr);
-                }
-                document.body.appendChild(tab);
-            }
-        }
-        function randomColor(){
-            var r = Math.round(Math.random()*255).toString(16)
-            var g = Math.round(Math.random()*255).toString(16)
-            var b = Math.round(Math.random()*255).toString(16)
-            var res = "" + r + g + b;
-            return res
-        } 
-    </script>
-</body>
-
-</html> -->
 
 
 
@@ -512,4 +471,77 @@
         }
 
      </script>
+</html> -->
+
+
+
+
+<!-- 隔行换色
+    
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id = "row">
+    <input type="text" id = "col">
+    <button id = "btn"></button>
+    <script>
+        onload = function () {
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                var tab = document.createElement("table");
+                var rows = document.getElementById("row").value;
+                var cols = document.getElementById("col").value;
+                for (var i = 0; i < rows; i++) { 
+                    var tr = document.createElement("tr");
+                    (function () {
+                        for (var i = 0; i < cols; i++) { 
+                            var td = document.createElement("td");
+                            td.innerHTML = Math.round(Math.random() * 90 + 10);
+                            tr.style.background = "#" + randomColor();
+                            tr.appendChild(td);//将td放入tr
+                        }
+                    })();
+                    tab.appendChild(tr);
+                }
+                document.body.appendChild(tab);
+            }
+        }
+        function randomColor(){
+            var r = Math.round(Math.random()*255).toString(16)
+            var g = Math.round(Math.random()*255).toString(16)
+            var b = Math.round(Math.random()*255).toString(16)
+            var res = "" + r + g + b;
+            return res
+        } 
+    </script>
+</body>
+
+</html> -->
+
+
+
+<!-- 延迟提示框
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        a
+    </script>
+</body>
 </html> -->

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易日历+进度条+换肤</title>
+    <link id="links" rel="stylesheet" href="css/skin1.css">
+
+</head>
+<body>
+
+    <div class="skin">
+        <button id="btn1"> 皮肤1 </button>
+        <button id="btn2"> 皮肤2 </button>
+    </div>
+    <div id="pro_bar">
+            <div id="progress">
+    
+            </div>
+    </div>
+    <div id="dateList">
+        <ul id="box">
+            <li  class="active"><h2>1</h2><p>JAN</p></li>
+            <li><h2>2</h2><p>FER</p></li>
+            <li><h2>3</h2><p>MAR</p></li>
+            <li><h2>4</h2><p>APR</p></li>
+            <li><h2>5</h2><p>MAY</p></li>
+            <li><h2>6</h2><p>JUN</p></li>
+            <li><h2>7</h2><p>JUL</p></li>
+            <li><h2>8</h2><p>AUG</p></li>
+            <li><h2>9</h2><p>SEP</p></li>
+            <li><h2>10</h2><p>OCT</p></li>
+            <li><h2>11</h2><p>NOV</p></li>
+            <li><h2>12</h2><p>DEC</p></li>         
+        </ul>
+        <p id="doList">活动事项</p>
+    </div>
+
+    <script>
+
+        //简易日历--------------------------
+        var monthList = [
+            "等过年","过年","过完年","清明节","劳动节","端午节","建军节","建党节","中秋节","国庆节","感恩节","圣诞节"
+        ];
+        var dolist = document.getElementById("doList");
+        var monList = document.getElementById("box").children;
+        for(var i =0 ,ele_li; ele_li= monList[i++];){
+            ele_li.index = i-1;
+            //console.log(ele_li);
+            ele_li.onclick = function(){
+                for(var i in monList){
+                    monList[i].className = "";
+                }
+                this.className = "active"
+                dolist.innerHTML = this.index +1 + "月活动：" + monthList[this.index]; 
+            }
+        }
+        
+        //进度条---------------------------
+        var inter_p = setInterval(progressing,50);
+        var w = 0;
+        function progressing(){
+            w++;
+            if(w === 100){
+                clearInterval(inter_p);
+            }
+            progress.style.width = w +"%";
+        }
+
+        //按钮换肤------------------------------
+        var ls = document.getElementById("links");
+        btn1.onclick = function(){
+            ls.setAttribute("href","css/skin1.css");
+        }
+        btn2.onclick = function(){
+            ls.setAttribute("href","css/skin2.css");
+        }
+        
+    </script>
+</body>
+</html>
