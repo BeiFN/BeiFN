@@ -431,7 +431,7 @@ clearInterval
 
 
 
-***JS day6  0618 dom对象
+***JS day6  0619 dom对象
 1.document.getElementById("IDName");  
 <!-- 根据id获取元素，得到单个标签元素 -->
 
@@ -450,5 +450,79 @@ clearInterval
 6.document.querySelectorAll(".box");
 <!-- 获取所有class为box的元素 -->
 
-7.document.createElement("div");
-<!-- 添加 -->
+7.var div = document.createElement("div");
+<!-- 创建一个div -->
+
+8.document.body.appendChild(div);
+<!-- 把创建的div添加到body末尾 
+// * 如果 appendChild 操作的元素是已经存在于页面上的元素，那么appendChild会做两件事.
+// 1. 删除掉页面上的这个元素;
+// 2. 重新对元素进行插入。
+// document.body.appendChild(div);-->
+
+
+9.children  
+<!-- 表示所有子元素 -->
+
+10.document.body.insertBefore( div , document.body.children[0] );
+<!-- insertBefore 插入元素到指定位置，0是最前面 -->
+
+11.removeChild()  
+<!-- 删除子元素dom -->
+
+12.parentNode
+<!-- 找到父级节点 -->
+
+```javascript
+// var box = document.getElementById("box");
+ // console.log(box);
+ // document.body.removeChild(box);
+ // 简化写法;
+ // parentNode => 找到父级节点;
+ // console.log(box.parentNode); 
+ // box.parentNode.removeChild(box);
+ // 语法升级;
+ // box.remove();
+```
+
+13.dom.innerHTML
+<!-- 字符串转标签显示 -->
+
+14.innerText
+<!-- 字符串原样显示 -->
+
+15.setAttribut(属性名，属性值)
+<!-- 设置属性名和值 -->
+
+16.getAttribute(属性名)
+<!-- 获取属性值 -->
+
+17.removeAttribut(属性名)
+<!-- 删除属性 -->
+
+
+
+
+***JS day6  0621 dom节点
+```javascript
+var box = document.getElementById("box");
+    // console.log(box.childNodes);
+    for(var i = 0 ; i < box.childNodes.length ; i ++){
+        // console.log(box.childNodes[i]);
+        console.log(box.childNodes[i].nodeType);
+}
+```
+
+1.chileNoes
+<!-- 用伪数组 返回所有子节点，-->
+
+2.nodeType
+<!-- 判断节点类型 返回节点类型代码 1元素节点  3文本节点 -->
+
+3.nodeName
+<!-- 辨别元素节点类型,获取属性key值 -->
+
+4.nodeValue
+<!-- 获取节点内值，属性值 -->
+
+
