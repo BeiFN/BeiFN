@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 900px;
+        height: 500px;
+        margin: 0 auto ;
+    }
+
+    #box1{
+        width:400px;
+        height: 500px;
+        background: pink;
+        float: left;
+        margin-right: 20px;
+    }
+    .content_list{
+        width: 100%;
+        height: 450px;
+        background: #ccc;
+        overflow: auto;
+
+    }
+    textarea{
+        width: 350px;
+        height: 40px;
+        resize: none;
+        float: left;
+    }
+    button{
+        width: 40px;
+        height: 45px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        float: left;
+    }
+    .comment{
+        width: 150px;
+        min-height: 30px;
+        line-height: 30px;
+        margin-top:10px;
+        margin-left: 10px;
+        background: darkkhaki;
+        border-radius: 3px;
+        position: relative;
+        
+    }
+    .comment2{
+        margin-left: 230px;
+        background:greenyellow; 
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="box1">
+            <div class="content_list"></div>
+            <div id="text_input">
+                <textarea name="" id="txt"></textarea>
+                <button id="btn1">发送</button>
+            </div>
+        </div>
+        <div id="box1">
+                <div class="content_list"></div>
+                <div id="text_input">
+                    <textarea name="" id="txt2"></textarea>
+                    <button id="btn2">发送</button>
+                </div>
+            </div>
+    </div>
+    
+    <script>
+        btn1.onclick = function(){
+            var content = document.getElementById("txt").value;
+            var divhtml = '<div class="comment">'+content+'</div>';
+            var list = document.querySelectorAll(".content_list");
+            for(var i = 0 ; i < list.length; i++){
+                list[i].innerHTML += divhtml; 
+            }
+        }
+        btn2.onclick = function(){
+            var content = document.getElementById("txt2").value;
+            var divhtml = '<div class="comment comment2">'+content+'</div>';
+            var list = document.querySelectorAll(".content_list");
+            for(var i = 0 ; i < list.length; i++){
+                list[i].innerHTML += divhtml; 
+            }
+        }
+        btn1.onblur = function(){
+            txt.select();
+        }
+        btn2.onblur = function(){
+            txt2.select();
+        }
+        
+    
+    </script>
+</body>
+</html>

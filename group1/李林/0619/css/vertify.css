@@ -1,0 +1,35 @@
+body, p, td, th, fieldset, legend, option, textarea, button, hr, input, h1, h3, h4, h5, h6, h2, ol, ul, dd, dl {
+    margin: 0;
+    padding: 0;
+
+}
+h1,h2,h3,h4,h5{font-weight: normal;}
+input{outline: none;}
+#content{
+     background-color: #333;
+     height: 565px;
+     width: 695px;
+     margin: 50px auto;
+     border-radius: 5px;
+     box-shadow: 0 5px 5px #333;
+     }
+     p {
+         color: #a97b20;
+         margin-left: 22px;
+         padding-top: 10px;
+         }
+    span{color: red;}
+    #verify {
+        width: 250px;
+        height: 20px;
+        background-color: #fdfdd1;
+        color: black;
+        margin-left: 275px;
+        border-radius: 4px;
+        }
+    h3 {
+            color: #1776a0;
+            margin-top: 10px;
+            font-size: 18px;
+            margin-left: 22px;
+    }

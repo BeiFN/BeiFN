@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+</head>
+<body>
+        <input type="text" id="num">
+
+        <button id="btn">生成</button>
+    <script>
+        window.onload = function(){
+            
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                var nums = document.getElementById("num").value;
+                
+                if(isNaN(nums)){
+                    alert("请输入数字");
+                    return false;
+                }
+                console.log("xxxx");
+                var ulsup = document.createElement("ul");
+                document.body.appendChild(ulsup);
+                console.log(nums);
+                var color = "";
+                for(var i=0; i++ < Number(nums);) {
+                    console.log(i);
+                    var lis = document.createElement("li");
+                    lis.style.height = "20px";
+                    if(i%2 === 0){
+                        lis.style.backgroundColor = "gray";
+                    }else{
+                        lis.style.backgroundColor = "blue";
+                    }
+                    lis.innerHTML = "第"+ (i-1) +"行";
+                    ulsup.appendChild(lis);
+
+                    lis.onmouseover = function(){
+                        color = this.style.backgroundColor;
+                        this.style.backgroundColor = "#000";
+
+                        // color = lis.style.backgroundColor;
+                        // lis.style.backgroundColor = "#000";
+                    }
+                    lis.onmouseout = function(){
+                        this.style.backgroundColor = color;
+                        color = "";
+                    }
+                }
+                
+            }
+        }    
+    </script>
+    
+</body>
+</html>

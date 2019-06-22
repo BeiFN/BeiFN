@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box{
+            width: 600px;
+            height: 600px;
+            border: 1px solid #000;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #txt{
+            width: 580px;
+            height: 380px;
+            background: #ccc;
+            margin: 10px 10px 0 10px;
+        }
+        #inputtext{
+            width: 580px;
+            height: 200px;
+            background: #ddd;
+            margin: 0 10px;
+        }
+        #inputtext textarea {
+            width: 560px;
+            height: 150px;
+            background: #fff;
+            margin: 0 10px;
+            overflow-y: auto;
+        }
+        #inputtext button{
+            float: right;
+        }
+        .boys{
+            background: rgb(65, 161, 65);
+            float: left;
+            font-size: 16px;
+            color: bisque;
+            border-radius: 5px;
+        }
+        b{
+            font-weight: normal;
+        }
+        .girls{
+            background: rgb(228, 123, 123);
+            float: right;
+            font-size: 16px;
+            color: yellowgreen;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="txt">
+            
+        </div>
+        <div id="inputtext">
+            <select name="" id="someone">
+                <option value="boy">boy</option>
+                <option value="girl">girl</option>
+            </select>
+            <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+            <button id="bnt">发送</button>
+        </div>
+    </div>
+
+    <script>
+        bnt.onclick = handerlOnclick;
+        var textarea = document.getElementById("textarea");
+        var div  = document.getElementById("txt");
+        var option = document.getElementById("someone");
+        function handerlOnclick(){
+            var textvalue = textarea.value;
+            var divinner = div.innerHTML;
+            var span = document.createElement("span");
+            var b = document.createElement("b");
+            var br = document.createElement("br");
+            span.className = "boys";
+            b.className = "girls";
+            if(option.value == "boy"){
+                div.appendChild(span);
+                span.innerHTML = textvalue;
+                div.appendChild(br);
+            }else{
+                div.appendChild(b);
+                b.innerHTML = textvalue;
+                div.appendChild(br);
+            }
+            textarea.value  = "";
+        }
+    
+    
+    </script>
+</body>
+</html>

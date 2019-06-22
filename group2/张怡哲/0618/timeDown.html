@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        display: inline-block;
+    }
+    </style>
+</head>
+<body>
+    <div id="day_down"></div>:
+    <div id="hour_down"></div>:
+    <div id="minute_down"></div>:
+    <div id="second_down"></div>
+    <script>  
+        setInterval(timeDown,1000);
+        //构造函数调用计算函数，实现倒计时功能
+        function timeDown(){
+            var arr=getTimeDown(2019,6,19);
+            day_down.innerHTML =arr[0];
+            hour_down.innerHTML =arr[1];
+            minute_down.innerHTML =arr[2];
+            second_down.innerHTML =arr[3];
+        }
+        //运行功能函数；
+        timeDown();
+
+        //创建函数计算当前时间距离事件时间的时长;
+        function getTimeDown(){
+            var 
+                hour=0;
+                minute=0;
+                second=0;
+            var targetDate=new Date();
+            targetDate.setFullYear(arguments[0]);
+            targetDate.setMonth(arguments[1]-1);
+            targetDate.setDate(arguments[2]);
+            if(arguments.length>3){
+                hour=arguments[3];
+                minute=arguments[4];
+                second=arguments[5];
+            }
+
+            targetDate.setHours(hour);
+            targetDate.setMinutes(minute);
+            var targetTime=targetDate.setSeconds(second);
+            //计算具体的时间差    毫秒；
+            var reduce=targetTime-Date.now();
+
+            //得到具体的 小时 分钟 秒;
+            var hour_down=parseInt(reduce/1000/3600);
+            var minute_down=parseInt(reduce/1000/60%60);
+            var second_down=reduce/1000%60;
+            var day_down = hour_down>24 ? parseInt(hour_down/24) : 0;
+            hour_down = hour_down>24 ? hour_down%24 : hour;
+
+            return  [
+                        day_down < 10 ? "0"+day_down : " "+day_down,
+                        hour_down < 10 ? "0"+hour_down : " "+hour_down,
+                        minute_down < 10 ? "0"+minute_down : " "+minute_down,
+                        second_down < 10 ? "0"+second_down : " "+second_down
+                    ];
+        }
+    </script>
+</body>
+</html>

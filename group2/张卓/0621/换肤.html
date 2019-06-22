@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤</title>
+    <link rel="stylesheet" id="yangshi" type="text/css" href="css1.css">
+</head>
+
+<body>
+    <div class="box">
+        <input type="button" id="pifu1" value="皮肤1">
+        <input type="button" id="pifu2" value="皮肤2">
+
+        <ul>
+            <li>用户名：</li>
+            <input type="text" id="username" placeholder="输入用户名">
+        </ul>
+        <ul>
+            <li>密码</li>
+            <input type="text" id="password" placeholder="输入密码">
+        </ul>
+    </div>
+    <script>
+        var cssstyle = document.getElementById("yangshi")
+        // console.log(cssstyle)
+        var but1 = document.getElementById("pifu1")
+        var but2 = document.getElementById("pifu2")
+        but1.onclick=function(){
+            cssstyle.href="css1.css"
+        }
+        but2.onclick=function(){
+            cssstyle.href="css2.css"
+        }
+    </script>
+
+</body>
+
+</html>
