@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //封装 setAttribute()
+         function mySetAttribute(type,attr,value){
+             
+               var ele = document.createElement(type);
+               ele[attr] = attr;
+               return ele;
+         }
+        
+        //封装getAttribute()
+        function myGetAttribute(selector){
+      var ele = null;
+      return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele ;
+ }
+    </script>
+</body>
+</html>
