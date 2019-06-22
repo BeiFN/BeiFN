@@ -65,6 +65,16 @@
             cursor: pointer;
             background: linear-gradient(to bottom, #fee, #f40);
         } */
+
+        .point {
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 
@@ -155,7 +165,9 @@
 
     <!-- <input type="text" placeholder="请输入用户名" id="username"> -->
 
-    <div id="container"></div>
+    <!-- <input type="text" id="ipt"> -->
+
+    <!-- <div id="container"></div> -->
 
     <!-- <input type="text" id="searchinput" value="请输入你要查询的内容"> -->
     <script>
@@ -239,6 +251,26 @@
         // }
 
         // 密码强度
+        // ipt.onblur = function () {
+        //     var iptValue = ipt.value;
+        //     var race = {
+        //         num: false,
+        //         letter: false
+        //     }
+        //     for (var i = 0, letter; letter = iptValue[i++];) {
+        //         if (letter >= 0 && letter <= 9 && !race.num) {
+        //             race.num = true;
+        //         }
+        //         if (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90 && !race.letter) {
+        //             race.letter = true;
+        //         }
+        //     }
+        //     var count = 0;
+        //     for (var attr in race) {
+        //         race[attr] ? count++ : "";
+        //     }
+        //     console.log(count);
+        // }
 
         // 验证码的生成
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            height: 300px;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="row">
+    <input type="text" id="col">
+    <button id="btn">生成</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var tab = document.createElement("table");
+            var rows = document.getElementById("row").value;
+            var cols = document.getElementById("col").value;
+            for (var i = 0; i < rows; i++) {
+                var tr = document.createElement("tr");
+                for (var j = 0; j < cols; j++) {
+                    var td = document.createElement("td");
+                    td.innerHTML = Math.floor(Math.random() * 100);
+                    td.style.background = "#" + Math.floor(Math.random() * Math.pow(2, 24)).toString(16);
+                    tr.appendChild(td);
+                }
+                tab.appendChild(tr);
+            }
+            document.body.appendChild(tab);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /**{
+                  margin: 0;
+                  padding: 0;
+            }
+            #jingubang{
+                  height: 3000px;
+                  width: 1px;
+                  position: absolute;
+                  left:0;
+                  top: 0;
+                  z-index: -1;
+            }
+            #nav{
+                  width: 100%;
+                  height: 40px;
+                  background: #ddd;
+                  text-align: center;
+                  line-height: 40px;
+            }
+            #nav span{
+                  padding: 20px;
+            }
+            header{
+                  height: 400px;
+                  background: yellowgreen;
+                  width: 100%;
+                  text-align: center;
+                  line-height: 400px;
+                  font-size: 50px;
+                  color: #fff;
+            }
+            #go_top{
+                height: 50px;
+                width: 50px;
+                background: pink;
+                position: absolute;
+                top: 500px;
+                right: 50px;
+                border-radius: 5px;
+            }
+            #go_top a{
+                height: 50px;
+                width: 50px;
+                display: block;
+            }*/
+        /* * { padding: 0; margin: 0; }
+        li { list-style: none; }
+        body { background: #f6f9fc; font-family: arial; }
+
+        .calendar { width: 210px; margin: 0 auto; padding: 10px 10px 20px 20px; background: #eae9e9; }
+        .calendar ul { width: 210px; overflow: hidden; padding-bottom: 10px; }
+        .calendar li { float: left; width: 58px; height: 54px; margin: 10px 10px 0 0; border: 1px solid #fff; background: #424242; color: #fff; text-align: center; cursor: pointer; }
+        .calendar li h2 { font-size: 20px; padding-top: 5px; }
+        .calendar li p { font-size: 14px; }
+
+        .calendar .active { border: 1px solid #424242; background: #fff; color: #e84a7e; }
+        .calendar .active p { font-weight: bold; }
+
+        .calendar .text { width: 178px; padding: 0 10px 10px; border: 1px solid #fff; padding-top: 10px; background: #f1f1f1; color: #555; }
+        .calendar .text h2 {font-size: 14px; margin-bottom: 10px; }
+        .calendar .text p { font-size: 12px; line-height: 18px; } 
+        #div_ul li{height: 40px;width: 400px;list-style: none;margin-bottom: 20px;}
+        #border_box{height: 20px;width: 600px;box-shadow: 0 0 10px red;border-radius: 5px;
+        margin: 200px auto;}
+        .content_box{height: 20px;width:5px;background:linear-gradient(to right ,#fff,green);}*/
+        .action{height: 150px;width: 150px;text-align: center;margin: 30px;}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- <div id="dabox">
+        <ul id="div_ul">
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+            <li>应朝鲜劳动党委员长、朝鲜民主主义人民共和国国务委员会委员长金正恩邀请</li>
+        </ul>
+    </div> -->
+        <!--<div id="progress_bar">
+            <div id="progress_child"></div>
+        </div>-->
+        <!-- <div id="tab" class="calendar">
+        <ul id="box">
+            <li  class="active"><h2>1</h2><p>JAN</p></li>
+            <li  ><h2>2</h2><p>FER</p></li>
+            <li  ><h2>3</h2><p>MAR</p></li>
+            <li  ><h2>4</h2><p>APR</p></li>
+            <li  ><h2>5</h2><p>MAY</p></li>
+            <li ><h2>6</h2><p>JUN</p></li>
+            <li ><h2>7</h2><p>JUL</p></li>
+            <li><h2>8</h2><p>AUG</p></li>
+            <li><h2>9</h2><p>SEP</p></li>
+            <li><h2>10</h2><p>OCT</p></li>
+            <li><h2>11</h2><p>NOV</p></li>
+            <li><h2>12</h2><p>DEC</p></li>
+        </ul>        
+        <div class="text" id="txt">
+            <h2>1月活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧～</p>
+        </div> -->
+        <!--<div id="jingubang"></div>  
+            <header>
+                我是头
+            </header>
+        
+            <nav id="nav">
+                <span>首页</span>
+                <span>第二页</span>
+                <span>第三页</span>
+            </nav>
+            <div id="go_top">
+                <a href="#"></a>
+            </div>-->
+        <!-- <button class="btn">皮肤按钮一</button>
+        <button class="btn">皮肤按钮二</button>
+        <link id="link" rel="stylesheet" href="css1.css">  -->
+        <input type="text" id="row" placeholder="请输入行数">
+        <input type="text" id="col" placeholder="请输入列数">
+        <button id="btn">开始表格</button>
+        <button id="btu1">清空表格</button>
+
+
+        <script>     
+        //简单日历
+        // var ele_list = document.getElementById("box").children;
+        // var ele_h2 = document.getElementById("txt").children[0];
+        // var ele_p = document.getElementById("txt").children[1];
+        // var month_list = [
+        // "等着过年",
+		// "过年",
+		// "过完年缓缓",
+		// "了解千锋",
+		// "来到千锋",
+		// "学习JS",
+		// "学习JS",
+		// "学习nodejs",
+		// "学习框架",
+		// "学习框架",
+		// "找到工作",
+		// "拿到第一个月工资"]
+        // for(var i = 0 ,item ; item = ele_list[i++] ; )
+        // {
+        //     item.index = i-1 ;
+        //     item.onclick = handleClick;
+        // }
+        // function handleClick()
+        // {
+        //     for(var i = 0 ;i < ele_list.length ; i ++)
+        //     {
+        //         ele_list[i].className = "";
+        //     }
+        //     this.className = "active";
+        //     ele_h2.innerHTML = this.index + 1 +"月活动";
+        //     ele_p.innerText = month_list[this.index]; 
+        // }
+
+        //顶部悬浮+回到顶部
+        // window.onscroll = function(){
+        //     var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;//防止浏览器兼容问题
+        //     if(scrollTop >= 400)
+        //     {
+        //         nav.style.position = "fixed";
+        //         nav.style.top = "0";
+        //         go_top.style.display = "block";
+        //         go_top.style.position = "fixed";
+                
+
+        //     }
+        //     else
+        //     {
+        //         go_top.style.display = "none";
+        //         nav.style.position = "static";
+        //     }
+        // }
+
+        //换肤
+        // var ele_button = document.getElementsByClassName("btn");
+        // //console.log(ele_button);
+        // var ele_link = document.getElementById("link");
+        // //console.log(ele_link);
+        // var list = ["css1.css" , "css2.css"];
+        // for(var i = 0 , item ; item = ele_button[i++] ; )
+        // {
+        //     item.index = i-1 ;
+        //     item.onclick = function()
+        //     {
+        //         ele_link.href = list[this.index];
+        //     }
+        // }
+
+
+        //按钮背景颜色改变
+        // btn1.onclick = backgroundColor_change;
+            // btn2.onclick = backgroundColor_change;
+            // btn3.onclick = backgroundColor_change;
+
+            // function backgroundColor_change()
+            // {
+            //       this.style.backgroundColor = "#" + Math.round(Math.random() * 16777215).toString(16).padStart(6,0);
+            // }
+        
+
+        //动态表格
+        // var btn = document.getElementById("btn");
+        // var btn1 = document.getElementById("btn1");
+        // btn.onclick = handlerOnclick;
+        // function handlerOnclick(){
+        //     var table = document.createElement("table");
+        //     table.className = "action";
+        //     table.cellSpacing = 0;
+        //     document.body.appendChild(table);
+        //     var row = document.getElementById("row").value;
+        //     var col = document.getElementById("col").value;
+        //     if(row == 0 || row =="" || col == 0 || col =="" )
+        //     {
+        //         alert("不能为空或0");
+        //     }
+        //     for(var i = 0 ; i < row ; i++)
+        //     {
+        //         var tr = document.createElement("tr");
+        //         table.appendChild(tr);
+        //         for(var j = 0 ; j < col ; j++)
+        //         {
+        //             var td = document.createElement("td");
+        //             tr.appendChild(td);
+        //             td.innerHTML = Math.round(Math.random() * 100);
+        //             td.style.background = "#"+Math.round(Math.random() *16777215).toString(16).padStart(6,0);
+        //         }
+        //     }
+        //     btu1.onclick = function(){
+        //         table.remove();
+        //     }
+        // }
+        
+        //进度条
+        // var neibu_div = document.getElementById("border_box").children;
+        // var  neibu_div_width = 0;
+        // var pressing = setInterval(handerOnclick , 10)
+        // function handerOnclick(){          
+        //     neibu_div[0].setAttribute("class" , "content_box");
+        //     neibu_div_width += 1;
+        //     neibu_div[0].style.width = neibu_div_width+"px";
+        //     if(neibu_div_width == 600)
+        //     {
+        //         clearInterval(pressing);
+        //     }
+        // }
+
+        //隔行换色
+        // var ele_li = document.getElementById("div_ul").children;
+        // console.log(ele_li);
+        // for(var i = 0 ,item;item = ele_li[i++] ; )
+        // {
+        //     if(i % 2==0)
+        //     {
+        //         item.className = "active";//setAttribute的简易写法
+        //     }
+        //     else
+        //     {
+        //         item.className = "active_1";
+        //     }
+        // }
+
+        
+
+    </script>
+</body>
+</html>

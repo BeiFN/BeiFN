@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td{width:30px;height: 20px;border: 1px solid #000;}
+        table{border-collapse: collapse;}
+    </style>
+</head>
+<body>
+        <!-- 动态表格创建，单元格内填写10~100随机数字 -->
+        <input type="text" placeholder="请输入行数" id="rowSet">
+        <input type="text" placeholder="请输入列数" id="colSet">
+        <input type="button" value="生成" id="btn">
+
+        <script>
+            /*
+                1.获取文本框内数据
+                2.创建表格 
+                 列怎么加  行怎么加？
+            */
+                 btn.onclick = tableLoad;
+                function tableLoad(){
+                var row = document.getElementById("rowSet").value;
+                console.log(row);
+                var col = document.getElementById("colSet").value;
+                var btn = document.getElementById("btn");
+                var tab = document.createElement("table");                                  //table 创建
+                for(var i = 0;i < row ;i++){
+                    var tr =  document.createElement("tr");                                 //在table 内创建输入数量的row
+                    for(var k = 0 ;k < col ; k++){                                          //在每一行内插入输入数量的td
+                        var td =document.createElement("td");
+                        var txt = Math.round(Math.random()*90)+10;
+                        td.innerHTML = txt;
+                        tr.appendChild(td);
+                    }
+                    tab.appendChild(tr);
+                }
+                document.body.appendChild(tab)
+            }
+        
+        </script>
+</body>
+</html>
