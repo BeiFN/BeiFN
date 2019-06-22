@@ -1,26 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
+    <input type="text" id="ele_input">
+    <ul id="ele_todoList">
+        
+    </ul>
+    <button id="btn">开始</button>
     <script>
-        function createElement(domJson){
-            if(typeof domJson==="undefined") domJson={type:"div",html:"",children:[]};// 参数判断
-            var ele=document.createElement(domJson.type);// 创建
-            for(var attr in domJson.attr){// 插入属性节点
-                ele.setAttribute(attr,domJson.attr[attr]);
+        btn.onclick = addTodoItem;
+        function addTodoItem() {
+            var iptValue = ele_input.value;
+            var li = createElement({
+                type: "li",
+                children: [
+                    {
+                        type: "input",
+                        attr: {
+                            type: "checkbox"
+                        }
+                    },
+                    {
+                        type: "p",
+                        html: iptValue
+                    },
+                    {
+                        type: "a",
+                        html: "-"
+                    }
+                ]
+            })
+            ele_todoList.insertBefore(li, ele_todoList.childNodes[0]);// 将li插入列表第一个
+        }
+        function createElement(domJson) {
+            if (typeof domJson === "undefined") domJson = {};// 参数判断
+            var ele = document.createElement(domJson.type?domJson.type:"div");// 创建
+            for (var attr in domJson.attr) {// 插入属性节点
+                ele.setAttribute(attr, domJson.attr[attr]);
             }
-            ele.innerHTML=domJson.html;// 插入文本
-            for(var i=0,childEle;childEle=domJson.children[i++];){// 插入子元素
-                childEle.nodeType === 1 ? ele.appendChild(childEle) : ele.appendChild( createElement(childEle) );
+            ele.innerHTML = domJson.html?domJson.html:"";// 插入文本
+            for (var i = 0, childEle; domJson.children&&(childEle = domJson.children[i++]);) {// 插入子元素
+                ele.appendChild(createElement(childEle));
             }
-
-
+            return ele;
         }
     </script>
 </body>
+
 </html>
