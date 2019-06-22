@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装setAttribute()</title>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+var box =document.getElementById("box");
+    //元素 属性 值
+function setAttribute(ele,attr,val){
+    var myAttr = document.createAttribute(attr);
+    myAttr.value = val;
+    ele.setAttributeNode(myAttr);
+}
+setAttribute( box ,"class" ,"hah");
+</script>
+</body>
+</html>
