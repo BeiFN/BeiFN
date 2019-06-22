@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <ul id="box">
+            <li>我是行</li>
+            <li>我是行</li>
+            <li>我是行</li>
+            <li>我是行</li>
+            <li>我是行</li>
+      </ul>
+      <script>
+		var lis = document.getElementById("box").children;
+		console.log(lis)
+		for(var i=0; i<lis.length;i++) {
+			if(i%2==0){
+				lis[i].style.background = "#0f0";
+			} else {
+				lis[i].style.background = "#f00";
+
+			}
+			lis[i].index = i;//.index是对象的属性,如obj.a
+			//lis[i].setAttribute("index",i); .setAttribute是直接加到元素行内的属性
+			
+			//这两条语句有啥区别？？
+			lis[i].onmouseover = function() {
+				this.style.background = "black";
+			}
+			lis[i].onmouseout = function() {
+				console.log(this.index)
+				this.style.background = this.index%2 ? "#0f0" : "#f00";
+				
+			}
+		}
+		
+      </script>
+</body>
+</html>
