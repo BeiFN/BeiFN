@@ -12,19 +12,22 @@
 
     <p id="d1"></p>
     <script>
-        var dd = document.getElementById("d1");
-        // dd.setAttribute("id","dd2");
-        // console.dir(document.body);
+       
+       Element.prototype.attr = function attr(key, val) {
+            if (arguments.length > 1) //????2? ????
+            {
+                return this.setAttribute(key, val);
+            } else {
+                return this.getAttribute(key); //????1? ????
+            }
 
-        // HTMLElement.prototype.attr=function(key,val){
-        //     if(arguments.length>1){
-        //         this.setAttribute(key,val);
-        //     }else{
-        //         this.getAttribute(key)
-        //     }
-        // }
-         console.dir(HTMLElement);
-        console.log(dd.getAttribute("id"));
+        }
+        var p = createElement({
+            tagName: "p"
+        });
+
+        p.attr("id", "d2");
+        console.dir(p.attr("id"));
     </script>
 </body>
 
