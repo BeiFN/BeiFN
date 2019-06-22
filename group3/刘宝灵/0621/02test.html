@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        #box{
+            width:200px;
+            height: 200px;
+            background: yellow;
+            position: absolute;
+            top: 100px; }
+        #wrap{
+            width: 100%;
+            top: 180px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div id="wrap">
+            <div id="box"></div>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        console.log(box.offsetTop);
+
+        function getPosition(ele){
+            var res = ele.offsetTop;
+            while(ele.offsetParent !== document.body){
+                ele = ele.offsetParent;
+                res+= ele.offsetTop;
+            }
+            return res;
+        }
+        console.log(getPosition(box));
+    </script>
+</body>
+</html>
