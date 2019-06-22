@@ -43,47 +43,63 @@
         #inputtext button{
             float: right;
         }
-        .boy{
+        .boys{
             background: rgb(65, 161, 65);
             float: left;
+            font-size: 16px;
+            color: bisque;
+            border-radius: 5px;
         }
-        .girl{
+        b{
+            font-weight: normal;
+        }
+        .girls{
             background: rgb(228, 123, 123);
             float: right;
+            font-size: 16px;
+            color: yellowgreen;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div id="box">
         <div id="txt">
-            <span></span>
+            
         </div>
         <div id="inputtext">
             <select name="" id="someone">
-                <option>boy</option>
-                <option>girl</option>
+                <option value="boy">boy</option>
+                <option value="girl">girl</option>
             </select>
-            <textarea name="" id="ipt" cols="30" rows="10"></textarea>
+            <textarea name="" id="textarea" cols="30" rows="10"></textarea>
             <button id="bnt">发送</button>
         </div>
     </div>
 
     <script>
         bnt.onclick = handerlOnclick;
+        var textarea = document.getElementById("textarea");
+        var div  = document.getElementById("txt");
+        var option = document.getElementById("someone");
         function handerlOnclick(){
-            var option_value = document.getElementById("inputtext").children[0].value;
-            var textarea_value = document.getElementById("ipt").value;
-            var ele_span = document.getElementById("txt").children[0];
-            var span_value = ele_span.innerHTML
-            if(option_value = "boy"){
-                ele_span.className = "boy";
-                ele_span.innerHTML = span_value + textarea_value +"</br>";
+            var textvalue = textarea.value;
+            var divinner = div.innerHTML;
+            var span = document.createElement("span");
+            var b = document.createElement("b");
+            var br = document.createElement("br");
+            span.className = "boys";
+            b.className = "girls";
+            if(option.value == "boy"){
+                div.appendChild(span);
+                span.innerHTML = textvalue;
+                div.appendChild(br);
+            }else{
+                div.appendChild(b);
+                b.innerHTML = textvalue;
+                div.appendChild(br);
             }
-            if(option_value = "girl"){
-                ele_span.className ="";
-                ele_span.className = "girl";
-                ele_span.innerHTML = span_value + textarea_value +"</br>";
-            }
+            textarea.value  = "";
         }
     
     

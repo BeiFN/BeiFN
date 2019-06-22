@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" class="haha" data-xiao="guangruixiao" wa="niubi">
+
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        // 封装 setAttribute()
+        // function setAttribute(dom, nodeName, nodeValue) {
+        //     var myAttr = document.createAttribute(nodeName);
+        //     myAttr.nodeValue = nodeValue;
+        //     console.log(myAttr)
+        //     return dom.setAttributeNode(myAttr);
+        // }
+        // setAttribute(box, "id", "666")
+        // setAttribute(box, "class", "box")
+        // setAttribute(box,"hello","hello world")
+
+
+
+        // 封装 getAttribute()
+        // function getAttribute(dom, nodeName) {
+        //     var attr = dom.attributes;
+        //     for (var i = 0, a; a = attr[i++];) {
+        //         if (a.nodeName === nodeName) {
+        //             console.log(a)
+        //             return a.nodeValue;
+        //         }
+        //     }
+        // }
+        // console.log(getAttribute(box, "class"));
+        // console.log(getAttribute(box, "data-xiao"));
+        // console.log(getAttribute(box, "wa"));
+
+    </script>
+</body>
+
+</html>

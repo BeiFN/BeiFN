@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        var box = document.getElementById("box");
+
+        function setAttribute(dom,nodeName,nodeValue){
+            var attributes = dom.attributes;
+            for(var i = 0;i < attributes.length;i++){
+                if(attributes[i].nodeName === nodeName){
+                    attributes[i].nodeValue = nodeValue;
+                }else{
+                    return "没有该属性";
+                }
+            }
+        }
+        // box.setAttribute("hello","world");
+        setAttribute(box,"id","world");
+
+
+        function getAttribute(item,attr){
+            var attributes = item.attributes;
+            console.log(attributes);
+            for(var i = 0; i < attributes.length; i++){
+                if(attributes[i].nodeName === attr){
+                    return attributes[i].nodeValue;
+                }
+            }
+        }
+        console.log(getAttribute(box,"id"));
+    </script>
+</body>
+</html>
