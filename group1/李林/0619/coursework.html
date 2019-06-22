@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #content{
+        height: 3000px;
+        width: 1px;
+        position: absolute;
+        left:0;
+        top: 0;
+        z-index: -1;
+        }
+    #nav{
+                  width: 100%;
+                  height: 40px;
+                  background: #ddd;
+                  text-align: center;
+                  line-height: 40px;
+            }
+    #nav span{
+                  padding: 20px;
+            }
+    header{
+                  height: 400px;
+                  background: yellowgreen;
+                  width: 100%;
+                  text-align: center;
+                  line-height: 400px;
+                  font-size: 50px;
+                  color: #fff;
+            }
+    #goTop{
+                  width: 50px;
+                  position: fixed;
+                  right: 10%;
+                  top:600px;
+                  z-index: 10;
+                  display: none;
+            }
+    #goTop a{
+                  display: inline-block;
+                  vertical-align: middle;
+                  zoom: 1;
+                  width: 50px;
+                  height: 50px;
+                  margin-bottom: 6px;
+                  border-radius: 4px;
+                  -webkit-border-radius: 4px;
+                  background-color: #ddd;
+                  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAJCAYAAADtj3ZXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNDRCMDUzQUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZGNDRCMDU0QUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY0NEIwNTFBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY0NEIwNTJBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PJl6MAAAAmUlEQVR42mL4//8/Aw6sBsQHoTRWNbg06gPxi/8QAKINiNVsBcTvoRrfQun3UHG8mt2B+CtUwyog5oHS/6Hi7rg0hwDxT6jC2UDMDBUH0XOg4iD5UHTNyUD8B6qgG4gZ0VwE4vdA5f9A1YM1FwPxP6hENZ7QZ4DK/4eqLwYJdADxXyDOIqARhrOg6jtgTjIjUiMMg9QzAgQYANxouJaSk05sAAAAAElFTkSuQmCC);
+                  background-repeat: no-repeat;
+                  background-position: center;
+            }
+    #line{
+                  width: 100%;
+                  height: 2px;
+                  background: #000;
+                  position: absolute;
+                  top: 2000px;
+            }
+    div{
+        width: 50px;
+        height: 50px;
+        border: 1px solid #eee;
+    }
+    span{
+        width: 100px;
+        height: 20px;
+        border: 1px solid #eee;
+    }
+    #img{
+                  padding: 20px;
+                  border: 10px solid #ddd;
+            }
+li { list-style: none; }
+body { background: #f6f9fc; font-family: arial; }
+
+.calendar { width: 210px; margin: 0 auto; padding: 10px 10px 20px 20px; background: #eae9e9; }
+.calendar ul { width: 210px; overflow: hidden; padding-bottom: 10px; }
+.calendar li { float: left; width: 58px; height: 54px; margin: 10px 10px 0 0; border: 1px solid #fff; background: #424242; color: #fff; text-align: center; cursor: pointer; }
+.calendar li h2 { font-size: 20px; padding-top: 5px; }
+.calendar li p { font-size: 14px; }
+
+.calendar .active { border: 1px solid #424242; background: #fff; color: #e84a7e; }
+.calendar .active p { font-weight: bold; }
+
+.calendar .text { width: 178px; padding: 0 10px 10px; border: 1px solid #fff; padding-top: 10px; background: #f1f1f1; color: #555; }
+.calendar .text h2 {font-size: 14px; margin-bottom: 10px; }
+.calendar .text p { font-size: 12px; line-height: 18px; }
+    </style>
+    <link id="link" rel="stylesheet" href="css/css2.css">
+</head>
+<body>
+    <!-- <input type="text" id="ipt"> -->
+    <!-- <textarea  id="codeText" cols="30" rows="10"></textarea>
+    <button id="run">run</button> -->
+    <!--  <button id="btn1">按钮1</button> -->
+    <!-- <button id="btn">按钮2</button> -->
+    <!-- <button id="btn3">按钮3</button> -->
+    <!-- <div id="content"></div>
+    <header>头部</header>
+    <nav id="nav">
+        <span>首页</span>
+        <span>第二页</span>
+        <span>第三页</span>
+
+    </nav>
+    <div id="goTop">
+        <a href="#javascript"></a>
+    </div>
+
+    <div id="line">
+
+    </div>  -->
+    <!-- <div class="box" id="box"> <h1>i'm box</h1> </div>
+    <img id="img" src="" alt=""> -->
+    <!-- <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <form action="">
+        <input type="text" name="usename">
+        <input type="text" name="password">
+  </form>
+    <span></span> -->
+    <!-- <div id="tab" class="calendar">
+    <ul id="box">
+        <li  class="active"><h2>1</h2><p>JAN</p></li>
+        <li><h2>2</h2><p>FER</p></li>
+        <li><h2>3</h2><p>MAR</p></li>
+        <li><h2>4</h2><p>APR</p></li>
+        <li><h2>5</h2><p>MAY</p></li>
+        <li><h2>6</h2><p>JUN</p></li>
+        <li><h2>7</h2><p>JUL</p></li>
+        <li><h2>8</h2><p>AUG</p></li>
+        <li><h2>9</h2><p>SEP</p></li>
+        <li><h2>10</h2><p>OCT</p></li>
+        <li><h2>11</h2><p>NOV</p></li>
+        <li><h2>12</h2><p>DEC</p></li>
+      </ul>
+        
+        <div class="text" id="txt">
+            <h2>1月活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧～</p>
+        </div>
+    
+    </div> -->
+    <button class="btn">律师函皮肤</button>
+      <button class="btn">短头发皮肤</button>
+    <script>
+        //密码强度
+    // ipt.onchange = function(){
+    //     var iptValue = ipt.value;
+    //     var race = {
+    //         num : false,
+    //         letter : false
+    //     }
+    //     for(var i = 0,leter;leter = iptValue[i ++];){
+    //       if(leter >= 0 && leter <= 9 && !race.num){
+    //           race.num = true;
+    //       }
+    //       if(leter.charCodeAt(0) >= 65 && leter.charCodeAt(0) <=90 && !race.letter){
+    //           race.letter = true;
+    //       }
+    //     }
+    //     var count = 0;
+    //     for( var attr in race){
+    //         race[attr] ? count ++ : "";
+
+    //     }
+    //     console.log(count);
+    // }
+
+    //弹出框
+    // var bool = confirm("欢迎充值，是否充值？");
+    // if(bool){
+    //     var res = prompt("亲，您在哪充值的？");
+    //     switch(res){
+    //         case "腾讯" : alert("腾讯：父亲大人");break;
+    //         case "网易" : alert("网易：儿子");break;
+    //         case "西山居" : alert("西山居 ：主子");break;
+    //     }
+    // }else{
+    //     alert("请充值");
+    // }
+
+    //eval返回值
+    // var json = `{"code":0,"msg":"success","data":{"contents":[{"id":6405777,"objectType":3,"objectTypeStr":"作品","title":"假如我在某某某","cover":"https://img.zcool.cn/community/03174885a533575a80120c2b0593631.jpg","cover1x":"https://img.zcool.cn/community/03174885a533575a80120c2b0593631.jpg@260w_195h_1c_1e_1o_100sh.jpg","cover2x":"https://img.zcool.cn/community/03174885a533575a80120c2b0593631.jpg@520w_390h_1c_1e_1o_100sh.jpg","pageUrl":"https://www.zcool.com.cn/work/ZMjU2MjMxMDg\u003d.html","type":1,"typeStr":"原创","cateStr":"插画","subCateStr":"儿童插画","publishTime":"Jan 8, 2018 4:42:59 PM","publishTimeDiffStr":"1年前","timeTitleStr":"审核通过时间：2018-01-08 16:42:59；创建时间：2018-01-08 16:34:44","designTime":"Jan 8, 2018 4:34:44 PM","recommend":2,"recommendTime":"Jan 8, 2018 5:10:16 PM","status":1,"viewCount":3117,"commentCount":8,"favoriteCount":0,"recommendCount":121,"contentCount":0,"contentCountStr":"0","viewCountStr":"3117","commentCountStr":"8","favoriteCountStr":"0","recommendCountStr":"121","favoriteStatus":0,"creator":13569798,"creatorObj":{"id":13569798,"status":1,"username":"烧麦先生","pageUrl":"https://shaomai.zcool.com.cn","avatar":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg","avatar1x":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg@80w_80h_1c_1e_1o_100sh.jpg","avatar2x":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg@160w_160h_1c_1e_1o_100sh.jpg","memberType":0},"eventId":0,"cate":1,"subCate":684,"createTime":"Jan 8, 2018 4:34:44 PM","trackCode":"2","personCount":0},{"id":7023772,"objectType":3,"objectTypeStr":"作品","title":"【梦镜创作——《幻象》】 ","cover":"https://img.zcool.cn/community/0148725b0e7175a8012181b07eee3e.jpeg","cover1x":"https://img.zcool.cn/community/0148725b0e7175a8012181b07eee3e.jpeg@260w_195h_1c_1e_1o_100sh.jpg","cover2x":"https://img.zcool.cn/community/0148725b0e7175a8012181b07eee3e.jpeg@520w_390h_1c_1e_1o_100sh.jpg","pageUrl":"https://www.zcool.com.cn/work/ZMjgwOTUwODg\u003d.html","type":1,"typeStr":"原创","cateStr":"纯艺术","subCateStr":"其他艺创","publishTime":"May 30, 2018 10:46:53 AM","publishTimeDiffStr":"1年前","timeTitleStr":"审核通过时间：2018-05-30 10:46:53；创建时间：2018-05-30 10:12:23","designTime":"May 30, 2018 10:19:16 AM","recommend":2,"recommendTime":"May 30, 2018 5:41:41 PM","status":1,"viewCount":1496,"commentCount":8,"favoriteCount":0,"recommendCount":24,"contentCount":0,"contentCountStr":"0","viewCountStr":"1496","commentCountStr":"8","favoriteCountStr":"0","recommendCountStr":"24","favoriteStatus":0,"creator":2621451,"creatorObj":{"id":2621451,"status":1,"username":"徐石梦竹","pageUrl":"https://www.zcool.com.cn/u/2621451","avatar":"https://img.zcool.cn/community/04d5d4560a4eb400000111314e7f27.jpg","avatar1x":"https://img.zcool.cn/community/04d5d4560a4eb400000111314e7f27.jpg@80w_80h_1c_1e_1o_100sh.jpg","avatar2x":"https://img.zcool.cn/community/04d5d4560a4eb400000111314e7f27.jpg@160w_160h_1c_1e_1o_100sh.jpg","memberType":0},"eventId":0,"cate":612,"subCate":669,"createTime":"May 30, 2018 10:12:23 AM","trackCode":"2","personCount":0},{"id":8551197,"objectType":3,"objectTypeStr":"作品","title":"无                   题","cover":"https://img.zcool.cn/community/03129175c87b7b5a801208f8b2e12f7.jpg","cover1x":"https://img.zcool.cn/community/03129175c87b7b5a801208f8b2e12f7.jpg@260w_195h_1c_1e_1o_100sh.jpg","cover2x":"https://img.zcool.cn/community/03129175c87b7b5a801208f8b2e12f7.jpg@520w_390h_1c_1e_1o_100sh.jpg","pageUrl":"https://www.zcool.com.cn/work/ZMzQyMDQ3ODg\u003d.html","type":1,"typeStr":"原创","cateStr":"摄影","subCateStr":"人像","publishTime":"Mar 12, 2019 10:41:55 PM","publishTimeDiffStr":"98天前","timeTitleStr":"审核通过时间：2019-03-12 22:41:55；创建时间：2019-03-12 21:44:22","designTime":"Mar 12, 2019 8:00:00 AM","recommend":0,"status":1,"viewCount":33113,"commentCount":119,"favoriteCount":0,"recommendCount":769,"contentCount":0,"contentCountStr":"0","viewCountStr":"3.3万","commentCountStr":"119","favoriteCountStr":"0","recommendCountStr":"769","favoriteStatus":0,"creator":204453,"creatorObj":{"id":204453,"status":1,"username":"rodman66","pageUrl":"https://www.zcool.com.cn/u/204453","avatar":"https://img.zcool.cn/community/031a6335b309844a80121b9941c3e01.jpg","avatar1x":"https://img.zcool.cn/community/031a6335b309844a80121b9941c3e01.jpg@80w_80h_1c_1e_1o_100sh.jpg","avatar2x":"https://img.zcool.cn/community/031a6335b309844a80121b9941c3e01.jpg@160w_160h_1c_1e_1o_100sh.jpg","memberType":0},"eventId":0,"cate":33,"subCate":34,"createTime":"Mar 12, 2019 9:44:22 PM","trackCode":"2","personCount":0},{"id":6769515,"objectType":3,"objectTypeStr":"作品","title":"21幅宣纸水墨插画猫头鹰","cover":"https://img.zcool.cn/community/018df35ac9e00aa8012062e34b2f06.jpeg","cover1x":"https://img.zcool.cn/community/018df35ac9e00aa8012062e34b2f06.jpeg@260w_195h_1c_1e_1o_100sh.jpg","cover2x":"https://img.zcool.cn/community/018df35ac9e00aa8012062e34b2f06.jpeg@520w_390h_1c_1e_1o_100sh.jpg","pageUrl":"https://www.zcool.com.cn/work/ZMjcwNzgwNjA\u003d.html","type":1,"typeStr":"原创","cateStr":"纯艺术","subCateStr":"国画","publishTime":"Apr 8, 2018 5:27:36 PM","publishTimeDiffStr":"1年前","timeTitleStr":"审核通过时间：2018-04-08 17:27:36；创建时间：2018-04-08 17:24:39","designTime":"Apr 8, 2018 5:26:05 PM","recommend":2,"recommendTime":"Apr 8, 2018 5:30:31 PM","status":1,"viewCount":2298,"commentCount":7,"favoriteCount":0,"recommendCount":32,"contentCount":0,"contentCountStr":"0","viewCountStr":"2298","commentCountStr":"7","favoriteCountStr":"0","recommendCountStr":"32","favoriteStatus":0,"creator":423173,"creatorObj":{"id":423173,"status":1,"username":"画儿晴天","pageUrl":"https://huitu.zcool.com.cn","avatar":"https://img.zcool.cn/community/0407ea553faab600000140270214ea.jpg","avatar1x":"https://img.zcool.cn/community/0407ea553faab600000140270214ea.jpg@80w_80h_1c_1e_1o_100sh.jpg","avatar2x":"https://img.zcool.cn/community/0407ea553faab600000140270214ea.jpg@160w_160h_1c_1e_1o_100sh.jpg","memberType":0},"eventId":0,"cate":612,"subCate":660,"createTime":"Apr 8, 2018 5:24:39 PM","trackCode":"2","personCount":0},{"id":6891719,"objectType":3,"objectTypeStr":"作品","title":"我来冒个泡泡","cover":"https://img.zcool.cn/community/01246b5aea86f0a801207fa140ef84.jpeg","cover1x":"https://img.zcool.cn/community/01246b5aea86f0a801207fa140ef84.jpeg@260w_195h_1c_1e_1o_100sh.jpg","cover2x":"https://img.zcool.cn/community/01246b5aea86f0a801207fa140ef84.jpeg@520w_390h_1c_1e_1o_100sh.jpg","pageUrl":"https://www.zcool.com.cn/work/ZMjc1NjY4NzY\u003d.html","type":1,"typeStr":"原创","cateStr":"插画","subCateStr":"儿童插画","publishTime":"May 3, 2018 11:52:29 AM","publishTimeDiffStr":"1年前","timeTitleStr":"审核通过时间：2018-05-03 11:52:29；创建时间：2018-05-03 11:49:12","designTime":"May 3, 2018 11:50:48 AM","recommend":1,"recommendTime":"May 3, 2018 11:52:36 AM","status":1,"viewCount":544,"commentCount":0,"favoriteCount":0,"recommendCount":15,"contentCount":0,"contentCountStr":"0","viewCountStr":"544","commentCountStr":"0","favoriteCountStr":"0","recommendCountStr":"15","favoriteStatus":0,"creator":13569798,"creatorObj":{"id":13569798,"status":1,"username":"烧麦先生","pageUrl":"https://shaomai.zcool.com.cn","avatar":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg","avatar1x":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg@80w_80h_1c_1e_1o_100sh.jpg","avatar2x":"https://img.zcool.cn/community/01ecfc5bcc6b76a8012099c8b71dbf.jpg@160w_160h_1c_1e_1o_100sh.jpg","memberType":0},"eventId":0,"cate":1,"subCate":684,"createTime":"May 3, 2018 11:49:12 AM","trackCode":"2","personCount":0}],"day":"2019-06-19"}}`;
+    // console.log(json = "("+ json +")" );//这里俩层的双引号都不可更改成单引号，否则看不到json内容
+    // // console.log(eval(json));
+
+    //eval-demo
+    // run.onclick = function(){
+    //  var code = codeText.value;
+    //  eval(code);
+    // }//只能调用函数
+
+    //通过this改变背景颜色
+    // btn1.onclick = handlerClick;
+    //         btn2.onclick = handlerClick;
+    //         btn3.onclick = handlerClick;
+
+    //         function handlerClick(){
+              
+    //               this.style.backgroundColor = "#" + Math.round(Math.random() * 16777215).toString(16).padStart(6,0);
+    //         }  
+
+    //顶部悬浮
+    // window.onscroll = function(){
+    //     var scrollTop = document.body.scrollTOp ||document.documentElement.scrollTop;
+    //     if(scrollTop >= 400){
+    //         nav.style.position = "fixed";
+    //         nav.style.top = "0";
+    //     }else{
+    //         nav.style.position = "static";
+    //         
+    //     }
+    // }
+
+    //回到顶部
+//     window.onscroll = function(){
+//         var scrollTop = document.body.scrollTOp ||document.documentElement.scrollTop;
+//         if(scrollTop >= 400){
+//             nav.style.position = "fixed";
+//             nav.style.top = "0";
+//         }else{
+//             nav.style.position = "static";
+//             goTop.style.display = "none";
+//         }
+  
+//     if(scrollTop >= 1400){
+//         goTop.style.position = "absolute";
+//         goTop.style.top = "2000px";
+//         goTop.style.display = "block";
+//     }else if(scrollTop < 1400 && scrollTop >= 400){
+//         goTop.style.cssText = "display:block;position:fixed;top:600px"
+//     }
+//     goTop.onclick = function(){
+//         document.body.scrollTop = 0;
+//         document.documentElement.scrollTop = 0;
+//     }
+// }
+        
+     //dom 增删查改
+     //查
+    //  console.log(document.getElementsByClassName("box"));//(ById,ByTagName)
+//    console.log(document.querySelector(".box"));
+//    console.log(document.querySelectorAll(".box"));
+
+     //增
+    //  var div = document.createElement("div");
+    //  div.innerHTML = "hello";
+    // document.write(div);
+    // document.body.appendChild(div);
+    // document.body.insertBefore(div,document.body.children[0]);
+
+    //删
+    // var box = document.getElementById("box");
+    // box.remove();
+
+    //改
+    //改内容
+    // var box = document.getElementById("box");
+    // box.innerHTML = "<h1>i'm apple</h1>";
+    // box.innerText = "<h1>i'm apple</h1>";
+    // console.log(box.innerHTML);
+    // console.log(box.innerText);
+    //改属性
+    // box.setAttribute("id","world");
+    // console.log(box.getAttribute("class"));
+    // box.removeAttribute("id");
+    // box.id = "ipad";
+    // box.className = "ig";
+    // box.title = "nb";
+    // var img = document.getElementById("img");
+    // img.src = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2016606636,3280884896&fm=11&gp=0.jpg";
+
+    //offset
+    // var imgWidth;
+    // img.onload = function(){
+    //     imgWidth = img.offsetWidth - 60;
+    // }
+    // document.onclick = function(){
+    //     imgWidth  += 10;
+    //     img.style.width = imgWidth +"px"; 
+    // }
+    
+     //简易日历
+    // var ele_lis = document.getElementById("box").children;
+    // var ele_h2 = document.getElementById("txt").children[0];
+    // var ele_p = document.getElementById("txt").children[1];
+    // var list = [
+    //     "等着过年",
+    //     "过年",
+	// 	"过完年缓缓",
+	// 	"了解千锋",
+	// 	"来到千锋",
+	// 	"学习JS",
+	// 	"学习JS",
+	// 	"学习nodejs",
+	// 	"学习框架",
+	// 	"学习框架",
+	// 	"找到工作",
+	// 	"拿到第一个月工资"
+    // ];
+
+    // for(var i = 0,li;li = ele_lis[i ++];){
+    //             li.index = i - 1;
+    //             li.onclick = handlerLiClick;
+    // }
+    // function handlerLiClick(){
+    //     for(var i = 0;i <ele_lis.length; i ++){
+    //         ele_lis[i].className = "";
+    //     }
+    //     this.className = "active";
+    //     var monthActive = this.index + 1 + "月活动";
+    //     ele_h2.innerHTML = monthActive;
+    //     ele_p.innerHTML = list[this.index];
+    // }
+
+    //网页换肤
+    var list = [
+        "css/css1.css",
+        "css/css2.css"
+    ]
+
+    var ele_btns =document.querySelectorAll(".btn");
+    var ele_link = document.getElementById("link");
+
+    for(var i = 0,btn;btn = ele_btns[i ++];){
+            btn.index = i - 1;
+            btn.onclick = function(){
+                ele_link.href = list[this.index];
+            }
+    }
+
+
+
+
+
+
+   
+  
+
+
+    </script>
+</body>
+</html>
