@@ -1,0 +1,164 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body,
+html {
+    width: 100%;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 2px;
+    height: 1px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+
+li {
+    list-style: none;
+}
+
+textarea {
+    display: inline-block;
+    border: 0px;
+    padding: 0.8em 1em;
+    font-size: 18px;
+    width: 100%;
+    max-height: 90px;
+    line-height: 18px;
+    resize: vertical;
+    _height: 60px;
+    min-height: 60px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    outline: none;
+}
+
+.box {
+    width: 700px;
+    height: 500px;
+    margin: 80px auto;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    /* background: #ddd; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.boxl {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background: #eef;
+}
+
+
+
+.boxl ul {
+    float: left;
+    width: 200px;
+}
+
+.boxl li {
+    height: 40px;
+    width: 200px;
+    float: left;
+
+}
+
+.boxr {
+    position: relative;
+    width: 500px;
+    float: right;
+    height: 100%;
+    /* background: #ddd; */
+    /* background-color:rgba(0, 0, 0, 0.2); */
+
+}
+
+.boxr .msin {
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 150px;
+    border-top: 1px solid #ddd;
+}
+
+.boxr ul {
+    box-sizing: border-box;
+    padding-left: 20px;
+    border-color: transparent;
+    float: left;
+    width: 100%;
+}
+
+.boxr ul.t {
+
+
+    border-bottom: 1px solid #ddd;
+}
+
+.boxr ul li {
+    height: 24px;
+    float: left;
+    font-size: 16px;
+    color: darkblue;
+    line-height: 24px;
+    padding: 0px 8px;
+    margin: 10px 8px;
+    border: 1px solid darkblue;
+    cursor: pointer;
+}
+
+.boxr ul li.ico {
+    border: 0;
+}
+
+.boxr .mslist {
+    clear: both;
+    overflow: auto;
+    height: 280px;
+}
+
+.l {
+    clear: both;
+    float: left;
+    text-align:start;
+}
+
+.r {
+    clear: both;
+    float: right;
+    text-align: end;
+}
+.mslist .msitem{
+    border: #999 1px solid;
+    border-radius:2px;
+    margin: 15px;
+    padding: 2px 18px;
+    min-width: 80px;
+    min-height: 24px;
+}
