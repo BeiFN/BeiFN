@@ -232,7 +232,7 @@ function foo(a,b,c,d){
 3.sort  数组系统排序方法arr.sort(function(a,b)){return a-b;}
 
 
-***JS day5  0617 字符串系统方法
+***JS day6  0617 字符串系统方法
 
 1.fromCharCode() 
 <!-- 返回传入ascii码对应的字符并组成字符串返回，该方法不能单独获取在高代码点位上的字符 -->
@@ -311,7 +311,7 @@ function foo(a,b,c,d){
 
 
 
-***JS day6  0618 
+***JS day7  0618 
 
 **Math对象
 
@@ -418,7 +418,7 @@ clearTimeout
 
 
 
-***JS day6  0619 dom对象
+***JS day8  0619 dom对象
 1.document.getElementById("IDName");  
 <!-- 根据id获取元素，得到单个标签元素 -->
 
@@ -490,7 +490,7 @@ clearTimeout
 
 
 
-***JS day6  0621 dom节点
+***JS day9  0621 dom节点
 ```javascript
 // 总结 : 其实页面中所有你能看到的东西都是节点,这些节点普遍都可创建; 这些节点都是以对象形式存在的; 
 var box = document.getElementById("box");
@@ -526,7 +526,7 @@ var box = document.getElementById("box");
 
 
 
-***JS day6  0622 事件
+***JS day10  0622 事件
 
 1.event
 <!-- 浏览器接收当前事件的全局对象 -->

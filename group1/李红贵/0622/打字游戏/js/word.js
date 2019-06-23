@@ -56,6 +56,7 @@ function showDate(){
     if(allTime <= 0){//倒计时结束，关闭倒计时和产鱼定时器
         clearInterval(timestart);
         clearInterval(starTimer);
+        // letterArray.length = 0;
     }
 }
 
