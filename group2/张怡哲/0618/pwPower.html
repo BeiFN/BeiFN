@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0; padding: 0;
+    }
+    input{
+        outline: 0;
+    }
+    #pwd_level {
+        list-style: none; margin: 10px; border-radius: 15px;
+        width: 174px; border: solid 1px gainsboro; height: 16px;
+    }
+    #pwd_level li{
+        background: silver;  float: left;
+        width: 50px; margin: 4px; height: 8px;
+    }
+    #pwd_level_tip {
+        margin: 10px; width: 174px; height: 16px;
+    }
+    #pwd_level_tip div{
+        float: left; width: 58px; height: 16px;
+        text-align: center; line-height: 16px;
+        visibility: hidden;
+    }</style>
+</head>
+<body>
+        <input type="text" name="pwd" id="pwd" value="" size="30"/>
+        <ul id="pwd_level">
+            <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;"></li>
+            <li></li>
+            <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;"></li>
+        </ul>
+        <div id="pwd_level_tip">
+            <div id="">弱</div>
+            <div id="">中</div>
+            <div id="">强</div>
+        </div>
+        <script>
+                //输入框失去焦点触发密码格式确认函数
+                pwd.onblur = verificationPassword;
+                //密码格式函数
+                function verificationPassword(){
+                    var password=pwd.value;
+                    //密码长度
+                    if(password.length<6||password.length>20){
+                        pwd.style.borderColor="red";
+                        alert("密码长度不正确！");
+                        return false;
+                    }else{
+                        pwd.style.borderColor = "green";
+                    }
+                    //密码开头是否为数字
+                    if(isNaN(password[0])){
+                        pwd.style.borderColor = "green";
+                    }else{
+                        pwd.style.borderColor = "red";
+                        alert("密码不能以字母开头");
+                        return false;
+                    }
+                    //密码内容是否正确
+                    for(var i =0,letter; letter = password[i++];){
+                        var asc=letter.charCodeAt(0);
+                        if(asc >= 48 && asc <= 57 ||  asc>=65 && 
+                        asc<=90 || asc >=97 && asc <= 122 || asc === 95)
+                        {
+                            pwd.style.borderColor="green";
+                        }else{
+                            pwd.style.borderColor="red";
+                            alert("密码只能含有数字、字符、下划线");
+                            return false;
+                        }
+                    }
+                }
+                //按键抬起触发判断密码强度函数
+                pwd.onkeyup=passwordPower;
+                //判断密码强度函数
+                function passwordPower(){
+                    //数字密码强度标签
+                    var pwdPower_num=0;
+                    //字符密码强度标签
+                    var pwdPower_word=0;
+                    //标记密码强度标签
+                    var pwdPower_signal=0;
+                    var password=pwd.value;
+                    for(var i=0,letter;letter=password[i++];){
+                        console.log(letter);
+                        var asc=letter.charCodeAt(0);
+                        //密码中还有数字即增强数字密码标签；
+                        if(asc>=48&&asc<=57){
+                            pwdPower_num++;
+                        }
+                        //密码中还有字符即增强数字密码标签；
+                        if(asc>=65&&asc<=90||asc >=97 && asc <= 122){
+                            pwdPower_word++;
+                        }
+                        //密码中还有符号即增强数字密码标签；
+                        if(asc===95){
+                            pwdPower_signal++;
+                        }
+                    }
+                    console.log(asc);
+                    console.log(pwdPower_num,pwdPower_word,pwdPower_signal);
+                    //任意标签强度不为0密码强度即为   弱
+                    if((pwdPower_num)!==0||pwdPower_word!==0||pwdPower_signal!==0){
+                        pwd_level.children[0].style.backgroundColor="red";
+                        pwd_level.children[1].style.backgroundColor="white";
+                        pwd_level.children[2].style.backgroundColor="white";
+                        pwd_level_tip.children[0].style.visibility="visible";
+                        pwd_level_tip.children[1].style.visibility="hidden";
+                        pwd_level_tip.children[2].style.visibility="hidden";
+                    }
+                    //字母标签不为0且任意标签强度不为0则密码强度为   中
+                    if(pwdPower_word!==0&&(pwdPower_num!==0||pwdPower_signal!==0)){
+                        pwd_level.children[0].style.backgroundColor="red";
+                        pwd_level.children[1].style.backgroundColor="green";
+                        pwd_level.children[2].style.backgroundColor="white";
+                        pwd_level_tip.children[0].style.visibility="hidden";
+                        pwd_level_tip.children[1].style.visibility="visible";
+                        pwd_level_tip.children[2].style.visibility="hidden";
+                    }
+                    //所有标签强度不为0则密码强度为   强
+                    if(pwdPower_num!==0&&pwdPower_word!==0&&pwdPower_signal!==0){
+                        pwd_level.children[0].style.backgroundColor="red";
+                        pwd_level.children[1].style.backgroundColor="green";
+                        pwd_level.children[2].style.backgroundColor="blue";
+                        pwd_level_tip.children[0].style.visibility="hidden";
+                        pwd_level_tip.children[1].style.visibility="hidden";
+                        pwd_level_tip.children[2].style.visibility="visible";
+                    }
+                }
+        </script>
+</body>
+</html>
