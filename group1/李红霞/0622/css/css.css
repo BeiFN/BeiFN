@@ -83,4 +83,16 @@
     color: black;
     text-align: center;
     line-height: 80px;
+    z-index: 3;
+}
+.time{
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    z-index: 3;
 }

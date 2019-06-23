@@ -232,7 +232,7 @@ function foo(a,b,c,d){
 3.sort  数组系统排序方法arr.sort(function(a,b)){return a-b;}
 
 
-***JS day5  0617 字符串系统方法
+***JS day6  0617 字符串系统方法
 
 1.fromCharCode() 
 <!-- 返回传入ascii码对应的字符并组成字符串返回，该方法不能单独获取在高代码点位上的字符 -->
@@ -265,7 +265,7 @@ function foo(a,b,c,d){
 <!-- 字符首次出现位置 -->
 
 11.lastIndexOf()
-<!-- 字符最后出现位置,加2表示右边第二次出现的位置 -->
+<!-- 字符最后出现位置,加2表示从下标2开始往前找 -->
 
 12.localeCompare()
 <!-- 字符判断大小 -->
@@ -311,52 +311,40 @@ function foo(a,b,c,d){
 
 
 
-***JS day6  0618 
+***JS day7  0618 
+
+**Math对象
+
 
 **Date日期
-1.Date.UTC(96, 1, 2, 3, 4, 5)
-<!-- 到目标UTC时间的毫秒数 世界原子时 -->
-2.Date.now()
-<!-- Date.now() 方法返回自1970年1月1日 00:00:00 UTC到当前时间的毫秒数。 -->
-3.Date.parse()
-<!-- 解析一个表示某个日期的字符串，并返回从1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的UTC时间）的毫秒数，日期格式不合法返回NaN -->
+1.Date.UTC(96, 1, 2, 3, 4, 5)<!-- 到目标UTC时间的毫秒数 世界原子时 -->
+2.Date.now()<!-- Date.now() 方法返回自1970年1月1日 00:00:00 UTC到当前时间的毫秒数。 -->
+3.Date.parse()<!-- 解析一个表示某个日期的字符串，并返回从1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的UTC时间）的毫秒数，日期格式不合法返回NaN -->
 
 ```javascript
 var d = new Date();//日期对象默认时间是系统时间
 console.log(d.getDate());
 console.log(d.getDay());
 ```
-4.getDate()
-<!-- 根据本地时间对象，返回一个指定的日期对象为一个月中的哪一日（从1--31）。 -->
+4.getDate()<!-- 根据本地时间对象，返回一个指定的日期对象为一个月中的哪一日（从1--31）。 -->
 
-5.getDay()
-<!-- 根据本地时间对象，获取星期几 -->
+5.getDay()<!-- 根据本地时间对象，获取星期几 -->
 
-6.getFullYear()
-<!-- 获取年份 -->
+6.getFullYear()<!-- 获取年份 -->
 
-7.getHours()
-<!-- 获取小时 -->
+7.getHours()<!-- 获取小时 -->
 
-8.getMilliseconds()
-<!-- 获取毫秒数 -->
+8.getMilliseconds()<!-- 获取毫秒数 -->
 
-9.getMinutes()
-<!-- 获取分钟 -->
+9.getMinutes()<!-- 获取分钟 -->
 
-10.getSeconds()
-<!-- 获取秒 -->
+10.getSeconds()<!-- 获取秒 -->
 
-11.getTime()
-<!-- 获取一个时间到格林威志时间毫秒数 -->
+11.getTime()<!-- 获取一个时间到格林威志时间毫秒数 -->
 
 
-12.getTimezoneOffset()
-<!-- getTimezoneOffset() 方法返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟。
-
- -->
-13.getUTCDate()
-<!-- 以世界时为标准，返回一个指定的日期对象为一个月中的第几天 -->
+12.getTimezoneOffset()<!-- getTimezoneOffset() 方法返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟。-->
+13.getUTCDate()<!-- 以世界时为标准，返回一个指定的日期对象为一个月中的第几天 -->
 
 14.getUTCDay()
 15.getUTCFullYear()
@@ -367,16 +355,15 @@ console.log(d.getDay());
 20.getUTCSeconds()
 21.getYear()
 
-22.setDate()
-<!-- 根据本地时间来指定一个日期对象的天数。 -->
+22.setDate()<!-- 根据本地时间来指定一个日期对象的天数。 -->
+
 22.setFullYear()
 23.setHours()
 24.setMilliseconds()
 25.setMinutes()
 26.setMonth()
 27.setSeconds()
-28.setTime()
-<!-- 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。 -->
+28.setTime()<!-- 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。 -->
 
 29.setUTCDate()
 30.setUTCFullYear()
@@ -385,31 +372,25 @@ console.log(d.getDay());
 33.setUTCMinutes()
 34.setUTCMonth()
 35.setUTCSeconds()
-36.setYear()
-<!-- 和setFullYear()一样，已废弃 -->
+36.setYear()<!-- 和setFullYear()一样，已废弃 -->
 
 
-37.toDateString()
-<!-- 以特定的格式显示周几、月、日、年 -->
+37.toDateString()<!-- 以特定的格式显示周几、月、日、年 -->
 Date.prototype.toGMTString()
 Date.prototype.toISOString()
 Date.prototype.toJSON()
 Date.prototype.toLocaleDateString()
 Date.prototype.toLocaleFormat()
 
-.toLocaleString()
-<!-- 已当地时间格式返回日期 -->
+.toLocaleString()<!-- 已当地时间格式返回日期 -->
 
-toLocaleTimeString()
-<!-- 已当地时间格式返回时分秒 -->
+toLocaleTimeString()<!-- 已当地时间格式返回时分秒 -->
 
 Date.prototype.toSource()
 
-.toString()
-<!--  以字符串格式返回日期对象 方法返回一个字符串，表示该Date对象。-->
+.toString()<!--  以字符串格式返回日期对象 方法返回一个字符串，表示该Date对象。-->
 
-.toTimeString()
-<!-- 返回日期对象的时分秒 -->
+.toTimeString()<!-- 返回日期对象的时分秒 -->
 
 Date.prototype.toUTCString()
 
@@ -437,7 +418,7 @@ clearTimeout
 
 
 
-***JS day6  0619 dom对象
+***JS day8  0619 dom对象
 1.document.getElementById("IDName");  
 <!-- 根据id获取元素，得到单个标签元素 -->
 
@@ -450,11 +431,9 @@ clearTimeout
 4.document.getElementsByName("hello")；
 <!-- <div name="hello"></div> 根据name属性值获取标签 -->
 
-5.document.querySelector(".box");
-<!-- 根据class获取单个元素 -->
+5.document.querySelector(".box");<!-- 根据class获取单个元素 -->
 
-6.document.querySelectorAll(".box");
-<!-- 获取所有class为box的元素 -->
+6.document.querySelectorAll(".box");<!-- 获取所有class为box的元素 -->
 
 7.var div = document.createElement("div");
 <!-- 创建一个div -->
@@ -511,7 +490,7 @@ clearTimeout
 
 
 
-***JS day6  0621 dom节点
+***JS day9  0621 dom节点
 ```javascript
 // 总结 : 其实页面中所有你能看到的东西都是节点,这些节点普遍都可创建; 这些节点都是以对象形式存在的; 
 var box = document.getElementById("box");
@@ -547,7 +526,7 @@ var box = document.getElementById("box");
 
 
 
-***JS day6  0622 事件
+***JS day10  0622 事件
 
 1.event
 <!-- 浏览器接收当前事件的全局对象 -->
