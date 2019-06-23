@@ -217,8 +217,87 @@
 
         //     }
         // }
+        
+         //聊天窗口
+            // var message = document.getElementById("msg_input");
+            // var sendbtn = document.getElementById("sendbtn");
+            // var content = document.getElementById("content");
+            // sendbtn.onclick = handleOnclick;
+            // function handleOnclick(){
+            //     var message_value = message.value;
+            //     //console.log(message_value);
+            //     var div = document.createElement("div");
+            //     div.style.clear = "both";
+            //     var li = document.createElement("li");
+            //     li.className = "msgContent right";
+            //     li.innerHTML = message_value; 
+            //     content.appendChild(div);
+            //     div.appendChild(li);
+            //     li.scrollIntoView();
+            //     message.value= "";
+            //     message.focus();
+            // }
 
 
+            //新密码强度
+            var ele_li = document.getElementById("pwd_level").children;
+            var ele_div = document.getElementById("pwd_level_tip").children;
+            pwd.oninput = function(){
+                  var iptValue = pwd.value;
+                  var race = {
+                        num : false,
+                        letter : false,
+                        Letter : false,
+                        specital :false
+                  }//用来判断字符串中的字符种类数
+                  // 只用1个for循环执行;
+                  for(var i= 0,letter; letter=iptValue[i++]; ){//每一个字符
+                        // console.log(letter);
+                        if(letter >= 0 && letter <= 9 && !race.num){
+                              race.num = true;
+
+                        }
+                        if(letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90 && !race.letter){//转成ascii码值
+                              race.letter = true;
+                        }
+                        if(letter.charCodeAt(0) >=97 && letter.charCodeAt(0)<= 122 && !race.Letter)
+                        {
+                              race.Letter = true;
+                        }
+                        if(letter.charCodeAt(0) >=33 && letter.charCodeAt(0) <=47 || letter.charCodeAt(0)>=58 &&letter.charCodeAt(0) <=64 &&!race.specital)
+                        {
+                              race.specital =true;
+                        }
+                        
+                  }
+                  var count = 0;
+                  for(var attr in race){//遍历race对象
+                        race[attr] ? count ++  : "";//对象中的属性值为true时，count++,否的话为空
+                  }
+                  switch(count)
+                  {
+                        case 1 : 
+                        ele_li[0].style.backgroundColor = "green";
+                        ele_div[0].style.display = "block";
+                        break;
+                        case 2 :
+                        ele_li[0].style.backgroundColor = "green";
+                        ele_li[1].style.backgroundColor = "yellow";
+                        ele_div[1].style.display = "block";
+                        break;
+                        case 3 :
+                        ele_li[0].style.backgroundColor = "green";
+                        ele_li[1].style.backgroundColor = "yellow";
+                        ele_li[2].style.backgroundColor = "red";
+                        ele_div[2].style.display = "block";
+                        case 4 :
+                        ele_li[0].style.backgroundColor = "green";
+                        ele_li[1].style.backgroundColor = "yellow";
+                        ele_li[2].style.backgroundColor = "red";
+                        ele_div[2].style.display = "block";
+
+                  }
+            }
         </script>
 </body>
 </html>
