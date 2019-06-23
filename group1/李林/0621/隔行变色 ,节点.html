@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- <ul id="box">
+                <li>我是行</li>
+                <li>我是行</li>
+                <li>我是行</li>
+                <li>我是行</li>
+                <li>我是行</li>
+          </ul> -->
+          <span id="box">
+            <strong></strong>
+          </span>
+          <script>
+          var li_list = document.getElementsByTagName("li");
+        //   方案一
+        //   for(var i = 0,li;li = li_list[i ++];){
+        //       li.index = i;
+        //       if(i % 2){
+        //           li.style.background = "#ddd";
+        //       }
+        //       li.onmousemove = function(){
+        //           this.style.background = "#000";
+        //       }
+        //       li.onmouseout = function(){
+        //           this.style.background = this.index % 2 ? "#ddd":"";
+        //       }
+        //   }
+        // 方案二
+        var color = "";
+        for(var i = 0,li;li = li_list[i ++];){
+            li.index = i;
+            if(i % 2){
+                li.style.background = "#ddd";
+            }
+            li.onmousemove = function(){
+                  color = this.style.background;
+                  this.style.background = "#000";
+              }
+              li.onmouseout = function(){
+                  this.style.background = color;
+                  color = "";
+              }
+        }
+
+        //节点获取
+        var box = document.getElementById("box");
+        for(var i = 0; i <box.childNodes.length; i ++){
+            // console.log(box.childNodes[i]);
+            console/log(box.childNodes[i].nodeType);
+        }
+
+          </script>
+</body>
+</html>

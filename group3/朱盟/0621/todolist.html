@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>ToDoList—最简单的待办事项列表</title>
+	<meta name="description" content="ToDoList无须注册即可使用，数据存储在用户浏览器的html5本地数据库里，是最简单最安全的待办事项列表应用！" />
+	<link rel="stylesheet" href="./style/todo.css">
+</head>
+
+<body>
+	<header>
+		<section>
+			<label for="title">ToDoList</label>
+			<input type="text" id="title" name="title" placeholder="添加ToDo" required="required" autocomplete="off" />
+		</section>
+	</header>
+	<section>
+		<h2>正在进行 <span id="todocount">0</span></h2>
+		<ol id="todolist" class="demo-box">
+		</ol>
+		<h2>已经完成 <span id="donecount">0</span></h2>
+		<ul id="donelist">
+		</ul>
+	</section>
+	<script src="js/abstract.js"></script>
+	<script>
+		var ele_ipt = $("#title"); // 输入域 input
+		var ele_todolist = $("#todolist"); // 待完成类列表
+		var ele_donelist = $("#donelist"); // 已经完成类列表
+		var ele_todocount = $("#todocount"); // 要完成数量
+		var ele_donecount = $("#donecount"); // 已完成数量
+
+
+
+		// ----------------功能区
+		/**
+		 * 1. 获取值 
+		 * 2. 创建元素并把值放进去把元素放在列表
+		 * 3. 给添加元素绑定选中事件 
+		 * 4. 使他在 完成 移动到完成列表
+		 * 5. 在删除时候移除元素
+		 * 6. 作为未完成的时候回到未完成列表
+		 * 
+		 */
+
+		//绑定 enter 键事件 进行添加TODO item
+		ele_ipt.onkeydown = function (ev) {
+			var e = ev || window.event;
+			if (e.keyCode === 13) {
+				addToDoItem(); //添加待办事项
+				// console.log(ele_ipt.value);
+				ele_ipt.select(); //选中输入的值
+			}
+		}
+
+
+		// 添加TODO item
+		function addToDoItem() {
+			var ipt_val = ele_ipt.value;
+
+			var li = createElement({
+				tagName: "li",
+				children: [{
+						tagName: "input",
+						attr: {
+							type: "checkbox"
+						}
+					},
+					{
+						tagName: "p",
+						html: ipt_val
+					},
+					{
+						tagName: "a",
+						html: "-"
+					}
+				]
+			});
+			//创建一个元素 
+			ele_todolist.insertBefore(li, ele_todolist.childNodes[0]);
+			changeCount();
+			//绑定事件 
+			li.children[0].onchange = changeChildNode;
+			li.children[2].onclick = removeParentNode;
+			// console.log(li);
+		}
+
+
+
+		//移除父节点
+		function removeParentNode() {
+			this.parentNode.remove();
+			changeCount();
+		}
+
+		//节点互换
+		function changeChildNode(parentNode) {
+			if (this.checked) {
+				ele_donelist.insertBefore(this.parentNode, ele_donelist.childNodes[0]);
+			} else {
+				ele_todolist.insertBefore(this.parentNode, ele_todolist.childNodes[0]);
+			}
+			changeCount();
+		}
+
+		// 改变列表数
+		function changeCount() {
+			ele_todocount.innerHTML = ele_todolist.children.length;
+			ele_donecount.innerHTML = ele_donelist.children.length;
+		}
+	</script>
+
+</body>
+
+</html>

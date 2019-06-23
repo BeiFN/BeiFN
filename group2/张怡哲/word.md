@@ -1,0 +1,17 @@
+onclick         单机
+ondblclick      双击
+onfocus         获得焦点
+onblur          失去焦点
+oninput         正在输入
+onchange        已经改变
+onmouseover     鼠标划入
+onmouseout      鼠标划出
+onmousemove     鼠标移动
+onload          页面加载完成
+onresize        窗口尺寸改变
+onscroll        滚动条发生滚动
+onkeydown       键盘按下
+onkeyup         键盘松开
+onkeypress      键盘按下并松开
+onsubmit        表单提交事件
+

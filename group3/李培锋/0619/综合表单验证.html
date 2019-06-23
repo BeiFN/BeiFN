@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login">
+        <form action="">
+            <fieldset>
+                <legend>账户详细资料</legend>
+                用户名称<input type="text" id="userName" value="" placeholder="请输入账户名称"><br/>
+                登陆密码<input type="password" id="loginPassword"><br/>
+                重复登陆密码<input type="password" id="rePassword"><br/>
+                密码安全级别<span>低</span><span>中</span><span>高</span><br/>
+            </fieldset>
+            <fieldset>
+                <legend>个人信息资料</legend>
+                电子邮件<input type="text" id="email" placeholder="请输入您的电子邮箱"><br/>
+                真实姓名<input type="text" id="realName"><br/>
+                中将通知手机 <input type="text" name="" id="phoneNumber"><br/>
+                验证码 <input type="text" id="insertVarify"> <input type="text" name="" id="varify"><br/>
+                <input type="button" value="注册"> <input type="radio">天内免登录
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        function formVerify(){
+            //用户名6~20位 只包含 数字 字母 下划线，不能以字母开头
+            /*密码：低：有数字 字母 特殊字符  低
+                    中：其中两者
+                    高：其中三者
+                电子邮件：末尾 .com  中间@
+                号码： 11位
+                验证码：随机四个数，组成字符串；
+                    
+                    
+                    
+                    */
+            var ele_userName = document.getElementById(userName)
+            
+        }
+    </script>
+</body>
+</html>

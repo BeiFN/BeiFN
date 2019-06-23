@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跳跳龙</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: url("./images/恐龙.png") no-repeat center center;
+            background-size: 150%;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50px;
+            transition: all 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        var div = document.getElementsByTagName("div")[0]
+        // console.log(div);
+        document.onclick = function (evt) {
+            //兼容性写法
+            var e = evt || window.event;
+            var bodyHeight = document.documentElement.clientHeight;
+            div.style.bottom = bodyHeight - e.clientY - 100 + "px"
+            div.style.left = div.offsetLeft- 30 + "px";
+            div.style.transform = "rotate(0deg)";
+
+            setTimeout(function () {
+                div.style.left = div.offsetLeft- 30 + "px";
+                div.style.transform = "rotate(360deg)"
+                div.style.bottom = "10px";
+            }, 1000)
+
+        }
+    </script>
+</body>
+
+</html>

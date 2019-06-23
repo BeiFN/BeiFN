@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(http://a.hiphotos.baidu.com/image/pic/item/838ba61ea8d3fd1fc9c7b6853a4e251f94ca5f46.jpg);
+        }
+    
+    </style>
+</head>
+<body id="body">
+<button class="btn">皮肤一</button>
+<button class="btn">皮肤二</button>
+<button class="btn">皮肤三</button>
+<script>
+    var list = ["http://a.hiphotos.baidu.com/image/pic/item/838ba61ea8d3fd1fc9c7b6853a4e251f94ca5f46.jpg",
+                "http://b.hiphotos.baidu.com/image/pic/item/908fa0ec08fa513db777cf78376d55fbb3fbd9b3.jpg",
+                "http://f.hiphotos.baidu.com/image/pic/item/0e2442a7d933c8956c0e8eeadb1373f08202002a.jpg",
+                
+]
+    var ele_button = document.querySelectorAll(".btn");
+    var ele_body   =document.getElementById("body");
+    for ( var i = 0 ; i < ele_button.length ; i ++ ){
+        var butt = ele_button[i];
+        butt.index = i ;
+        butt.onclick = function(){
+            ele_body.style.backgroundImage = "url(" + list[this.index] + ")";
+            console.log(this.index);
+        }  
+    }
+
+</script>
+</body>
+</html>

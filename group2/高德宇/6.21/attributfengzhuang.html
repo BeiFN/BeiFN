@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装setAttribute和getAttribute</title>
+</head>
+<body>
+    <div id="attr" class="hhyh"></div>
+    <script>
+        var xx= document.getElementById("attr");
+        // xx.setAttribute("data-id","f");
+        // console.log(xx);
+        function setAttribute(name,value)
+        {
+            var myAttr = document.createAttribute(name);
+            myAttr.nodeValue =value;
+            this.setAttributeNode(myAttr);
+        }
+        function gettAttribute(name)
+        {
+
+            for(var i = 0 ,element; element=this.attributes[i++];){
+            
+                        if(element.nodeName==name)
+                        {
+                            return element.nodeValue;
+                        }
+                      }                      
+    };
+         console.log(xx.getAttribute("class"));
+    </script>
+</body>
+</html>

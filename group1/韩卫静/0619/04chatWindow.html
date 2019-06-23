@@ -11,7 +11,7 @@
         #messageBox{height: 450px;width: 100%; overflow-y: auto; }
         #inputBox{height: 150px;background-color: #fff;}
         .rightMes,.leftMes{min-height: 60px; width: 100%; padding: 10px 0;display: inline-block;}
-        .rightMes p,.leftMes p{ min-height: 50px;width: 250px; background-color: #788FE5; border-radius: 4px;padding: 5px; float: right; font-size: 14px; white-space: pre-wrap}
+        .rightMes p,.leftMes p{ min-height: 25px;min-width: 50px; max-width: 250px; background-color: #788FE5; border-radius: 4px;padding: 5px; float: right; font-size: 14px; white-space: pre-wrap}
         .leftMes p{float: left;}
         .rightMes img{width: 40px; height: 40px; border-radius: 50%;float: right; margin: 0 5px; }
         .leftMes img{width: 40px; height: 40px; border-radius: 50%;float: left; margin: 0 5px;}
@@ -50,6 +50,9 @@
         // 聊天窗口
         sentMes.onclick= function(){
             var message = textMex.value;
+            if(message.length === 0){
+                return 0;
+            }
             var newDiv = document.createElement("div");
             var rightImg = document.createElement("img");
             rightImg.src = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2409562546,278052349&fm=27&gp=0.jpg";
@@ -59,17 +62,33 @@
             newDiv.appendChild(rightImg);
             newDiv.appendChild(pEle);
             mesBox.appendChild(newDiv);
+            newDiv.scrollIntoView();
             textMex.value = "";
         }
 
         //延迟提示框
+        var timer = null;
         leftImg.onmouseover = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);
+            timer = setTimeout(function(){
                 personInfo.style.display = "block";
             },500);
         }
         leftImg.onmouseout = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
+                personInfo.style.display = "none";
+            },500);
+        }
+        personInfo.onmouseover = function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
+                personInfo.style.display = "block";
+            },500);
+        }
+        personInfo.onmouseout = function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
                 personInfo.style.display = "none";
             },500);
         }
