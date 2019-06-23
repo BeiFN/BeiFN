@@ -3,8 +3,8 @@
  *    @var ele_input          输入框元素
  *    @var ele_todoList       todo列表
  *    @var ele_doneList       done列表
- * 
- * 
+ *    @var ele_todocount      todo计数
+ *    @var ele_donecount      done计数
  */
 
 var ele_input = $("#title");
@@ -25,6 +25,7 @@ function $(selector) {
 
 function addtoItem() {
       var str = ele_input.value;
+      
       var li = creatElement({
             type: "li",
             children: [{
@@ -81,7 +82,6 @@ function countLi() {
       var donecount = ele_doneList.children.length;
       ele_todocount.innerHTML = todocount;
       ele_donecount.innerHTML = donecount;
-
 }
 
 
@@ -89,7 +89,7 @@ function countLi() {
  * 
  * @param { domjson结构 } domJson 
  *  
- * 结构示例 : 
+ * 结构示例 : 可选参数
  * {
       type : "p",
       attr : {

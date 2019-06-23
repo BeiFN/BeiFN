@@ -1,16 +1,28 @@
-//todolist功能实现 
-//获得所有要用的标签  input span ol span ul
-var ipt = $("title");
-var span1 = $("todocount");
-var ol = $("todolist");
-console.log(ol)
-var span2 = $("donecount");
-var ul = $("donelist");
+// //todolist功能实现 
+// //获得所有要用的标签  input span ol span ul
+// var ipt = $("title");
+// var span1 = $("todocount");
+// var ol = $("todolist");
+// var span2 = $("donecount");
+// var ul = $("donelist");
 
-//封装获取标签的方法
-function $(id){
-    return document.getElementById(id);
+// //封装获取标签的方法
+// function $(id){
+//     return document.getElementById(id);
+// }
+
+// 封装获取标签的方法
+function $(selector){
+    var ele = null;
+    return (ele = document.querySelectorAll(selector)).length>1 ? ele: ele[0];
 }
+var ipt = $("#title");
+var span1 = $("#todocount");
+var ol = $("#todolist");
+var span2 = $("#donecount");
+var ul = $("#donelist");
+// console.log(ipt, span1,span2,ol,ul)
+
 
 //当点击回车键的时候触发事件，ol中添加一个新的li，
 //li包含一个input标签，p标签 a标签，分别创建并添加到li中
@@ -100,3 +112,4 @@ function createElement(obj){
     }
     return ele;
 }
+
