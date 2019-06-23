@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="m"></div>
+    <script>
+        var m = document.getElementById("m");
+
+
+
+        var div1 = document.createElement("div");
+        // console.log(div1);
+        div1.style.width ="100px";
+        div1.style.height ="100px";
+        div1.style.background = "#d00";
+        div1.innerHTML = "JJJJJJJJJJJJJJJJ";
+        //  document.body.append(div1)
+
+        var p1 = document.createElement("p");
+        p1.style.background = "#0f0";
+        p1.style.width = "500px";
+        p1.style.height = "10px";
+
+        m.appendChild(p1);
+        m.appendChild(div1);
+        console.log(m);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function foo(o){
+    //     // 1. 先声明提升  var o;
+    //     // 2. o 形参被 实参赋值 ;
+    //     // o ==> 实参;
+    //     console.log(o)
+    //     o.a++;
+    //     var o = {a : 20} // 对象②
+    //     o.a ++;
+    // }
+    // var obj = {a : 10}; // obj 存的是地址; 对象①
+    // foo(obj);
+    // console.log(obj);
+
+    // function foo(a,b,c,d){
+    //         console.log(a);
+    //         console.log(d);
+    //   }
+    //   foo(2,3,4)  
+    
+    // function foo(){
+    //     return 10;
+    // }
+    // var foo = 20;
+    // console.log(foo());
+
+    // obj = new Object({a:10});
+    // console.log(obj);
+
+    function foo(a){
+            return function(b){
+                  return function(c){
+                        return function(d){
+                              console.log(a + b + c + d);
+                        }
+                  }
+            }
+      }
+      foo(1)(2)(3)(4)
+    </script>
+</body>
+</html>

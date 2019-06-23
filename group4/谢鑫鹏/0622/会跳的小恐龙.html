@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会跳的小恐龙</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-image: url("./images/恐龙.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            border: 1px solid #000;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transition: all .5s;
+        }
+  </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById("box");
+        var boxHeight = box.offsetHeight;
+        var timer = null;
+        document.onclick = function(evt){
+            clearTimeout(timer);
+            var e = evt || window.event;
+            var clientX = e.clientX;
+            var clientY = e.clientY;
+            var clientHeight = document.documentElement.clientHeight;
+            box.style.bottom = clientHeight - clientY - boxHeight / 2 + "px";
+            box.style.left = clientX - boxHeight / 2 + "px";
+            box.style.transform = "rotate(0deg)";
+            timer = setTimeout(function(){
+                box.style.transform = "rotate(360deg)";
+                box.style.bottom = 0;
+            },500)
+        }
+    </script>
+</body>
+</html>
