@@ -1,84 +1,46 @@
-var ele_input = document.getElementById("title");
 var ele_todolist = document.getElementById("todolist");
 var ele_donelist = document.getElementById("donelist");
 var ele_todoCount = document.getElementById("todocount");
 var ele_doneCount = document.getElementById("donecount")
-
-
+var ele_input = document.getElementById("title");
 
 
 
 function addTodoItem() {
-    //获取input的内容
-    iptValue = ele_input.value;
-    // 将值插入到togo列表中
-    // 1 创建列表
-
-    // var li = createElement({
-    //     type: "li",
-    //     children: [{
-    //             type: "input",
-    //             attr: {
-    //                 type: "checkbox"
-    //             }
-    //         },
-
-    //         {
-    //             type: "p",
-    //             html: iptValue
-    //         },
-    //         {
-    //             type: "a",
-    //             html: "-"
-    //         }
-    //     ]
-
-    // })
-    var li = createElement({
-        type: "li",
-        children: [{
-                type: "input",
-                attr: {
-                    type: "checkbox"
-                }
-            },
-            {
-                type: "p",
-                html: iptValue
-            },
-            {
-                type: "a",
-                html: "-"
-            }
-        ]
-    })
+    // console.log(ele_input);
+    // console.log(iptValue);
+    //创建元素
+    var  iptValue = ele_input.value;
 
 
+        var li = document.createElement("li");
+        var ipt = document.createElement("input");
+        ipt.type = "checkbox";
+        var p = document.createElement("P");
+        p.innerHTML = iptValue;
+        var a = document.createElement("a");
+        a.innerHTML = "-";
+        li.appendChild(ipt);
+        li.appendChild(p);
+        li.appendChild(a);
 
-    //插入内容
-    function createElement(domJson) {
-        typeof domJson === "undefined" ? domJson : "";
-        var ele = document.createElement(domJson.type ? document.type : "div");
-        for (var attr in domJson.attr) {
-            ele.setAttribute(attr, domJson.attr[attr]);
-        }
-        ele.innerHTML = domJson.html ? domJson.html : "";
+        // console.log(li);
 
-        //添加元素
-        for (var i = 0, childEle; domJson.children && (childEle = domJson.children[i++]);) {
-            // console.log(ele);
-            childEle.nodeType === 1 ? ele.appendChild(childEle) : ele.appendChild(createElement(childEle));
-        }
-        return ele;
-    }
-    li.children[0].onchange = handlerTodoToDone;
-    li.children[1].onclick = removeItem;
-    ele_todolist.insertBefore(li, ele_todolist.childNodes[0]);
-    countLi();
+
+        ele_todolist.insertBefore(li, ele_todolist.childNodes[0]);
+        // ele_todolist.appendChild(li);
+
+        li.children[0].onchange = handlerTodoToDone;
+        li.children[2].onclick = removeItem;
+        countLi();
+    
+
+
 
 }
 
 function handlerTodoToDone() {
+    console.log(1111111111)
     if (this.checked) {
         ele_donelist.insertBefore(this.parentNode, ele_donelist.childNodes[0]);
     } else {
@@ -86,6 +48,7 @@ function handlerTodoToDone() {
     };
     countLi();
 }
+
 
 function removeItem() {
     this.parentNode.remove();
@@ -103,17 +66,9 @@ function countLi() {
 
 
 ele_input.onkeydown = function (evt) {
-    var e = evt || window.event;
+    var e = evt || event;
     if (e.keyCode === 13) {
         addTodoItem();
         ele_input.select();
     }
 }
-
-// ele_input.onkeydown = function (evt) {
-//     var e = evt || event;
-//     if (e.keyCode === 13) {
-//         addTodoItem();
-//         ele_input.select();
-//     }
-// }
