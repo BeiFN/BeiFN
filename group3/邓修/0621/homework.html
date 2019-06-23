@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="box"></div>
     <script>
         // 封装 setAttribute()
         function mySetAttribute(dom,name,value){
@@ -17,9 +18,15 @@
         // 封装getAttribute()
         function myGetAttribute(dom,name){
             for(var i in dom.attributes){
-                if(dom.attributes[i]==name) return dom.attributes[i].nodeValue;
+                if(dom.attributes[i].nodeName==name) return dom.attributes[i].nodeValue;
             }
         }
+
+        // var div=document.getElementById("box");
+        // mySetAttribute(div,"data-id","hello");
+        // console.log(div.attributes);
+
+        // console.log(myGetAttribute(div,"id"));
     </script>
 </body>
 </html>
