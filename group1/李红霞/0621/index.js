@@ -1,28 +1,28 @@
-// //todolist功能实现 
-// //获得所有要用的标签  input span ol span ul
-// var ipt = $("title");
-// var span1 = $("todocount");
-// var ol = $("todolist");
-// var span2 = $("donecount");
-// var ul = $("donelist");
+//todolist功能实现 
 
-// //封装获取标签的方法
-// function $(id){
-//     return document.getElementById(id);
-// }
+/**
+ *  @var    ipt    输入框元素
+ *  @var    span1  记录todo列表的个数
+ *  @var    ol     todo列表
+ *  @var    span2  记录done列表的个数
+ *  @var    ul     done列表
+ */
 
-// 封装获取标签的方法
-function $(selector){
-    var ele = null;
-    return (ele = document.querySelectorAll(selector)).length>1 ? ele: ele[0];
-}
 var ipt = $("#title");
 var span1 = $("#todocount");
 var ol = $("#todolist");
 var span2 = $("#donecount");
 var ul = $("#donelist");
-// console.log(ipt, span1,span2,ol,ul)
 
+/**
+ * @param {选择器：string} selector 
+ * 返回一个dom或者为数组，承载一组dom，dom是获得的元素的变量
+ */
+// 封装获取标签的方法  querySelectorAll(selector)
+function $(selector){
+    var ele = null;
+    return (ele = document.querySelectorAll(selector)).length>1 ? ele: ele[0];
+}
 
 //当点击回车键的时候触发事件，ol中添加一个新的li，
 //li包含一个input标签，p标签 a标签，分别创建并添加到li中
@@ -65,6 +65,8 @@ window.onkeypress = function(evt){
 }
 function click(){
         this.parentNode.remove();
+        span1.innerHTML = ol.children.length;
+        span2.innerHTML = ul.children.length;    
 }
 function change(){
     //当li中的input被选中的时候，将该li移动到to中
