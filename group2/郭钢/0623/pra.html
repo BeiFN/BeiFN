@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #shuxing{
+            width: 100px;
+            height: 200px;
+        }
+        #erzi1{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shuxing">
+        <div id="erzi1">
+            <div id="sunzi">
+
+            </div>
+        </div>
+        <div id="erzi2"></div>
+    </div>
+</body>
+<script>
+    
+    
+    
+    var jiedian = document.getElementById("shuxing");
+    var erzi1 = document.getElementById("erzi1")
+    var erzi2 = document.getElementById("erzi2")
+    var sunzi = document.getElementById("sunzi")
+    var attr = document.createAttribute("class");
+    attr.nodeValue = "haha";
+    jiedian.setAttributeNode(attr);
+    console.log(sunzi.offsetParent);
+
+    jiedian.setAttribute("class","haha")
+    var textNode = document.createTextNode("hello world   ");
+    // console.log(textNode);
+
+    // var ele1 = document.createElement("div");
+    // ele1.innerHTML = "haha";
+    // document.body.appendChild(ele1);
+    // var ele2 = document.createElement("div");
+    // ele2.innerHTML = "hehe";
+    // document.body.insertBefore(ele2,ele1);
+    // ele2.innerHTML = "ooo";
+    // document.body.insertBefore(ele2,ele1);
+
+
+    // var shuxing = document.getElementById("shuxing");
+    // shuxing.setAttribute("hello","wuwu");
+    // console.log(shuxing);
+    // console.log(shuxing.getAttribute("hello"));
+    // console.log(shuxing);
+    // console.log(shuxing.getElementsByClassName("hello"));
+
+
+
+    
+</script>
+
+</html>

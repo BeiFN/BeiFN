@@ -1,15 +1,27 @@
 //todolist功能实现 
-//获得所有要用的标签  input span ol span ul
-var ipt = $("title");
-var span1 = $("todocount");
-var ol = $("todolist");
-console.log(ol)
-var span2 = $("donecount");
-var ul = $("donelist");
 
-//封装获取标签的方法
-function $(id){
-    return document.getElementById(id);
+/**
+ *  @var    ipt    输入框元素
+ *  @var    span1  记录todo列表的个数
+ *  @var    ol     todo列表
+ *  @var    span2  记录done列表的个数
+ *  @var    ul     done列表
+ */
+
+var ipt = $("#title");
+var span1 = $("#todocount");
+var ol = $("#todolist");
+var span2 = $("#donecount");
+var ul = $("#donelist");
+
+/**
+ * @param {选择器：string} selector 
+ * 返回一个dom或者为数组，承载一组dom，dom是获得的元素的变量
+ */
+// 封装获取标签的方法  querySelectorAll(selector)
+function $(selector){
+    var ele = null;
+    return (ele = document.querySelectorAll(selector)).length>1 ? ele: ele[0];
 }
 
 //当点击回车键的时候触发事件，ol中添加一个新的li，
@@ -53,6 +65,8 @@ window.onkeypress = function(evt){
 }
 function click(){
         this.parentNode.remove();
+        span1.innerHTML = ol.children.length;
+        span2.innerHTML = ul.children.length;    
 }
 function change(){
     //当li中的input被选中的时候，将该li移动到to中
@@ -100,3 +114,4 @@ function createElement(obj){
     }
     return ele;
 }
+

@@ -14,35 +14,48 @@
                 <li>我是行</li>
                 <li>我是行</li>
           </ul> -->
+          <span id="box">
+            <strong></strong>
+          </span>
           <script>
-        //   var li_list = document.getElementsByTagName("li");
-
+          var li_list = document.getElementsByTagName("li");
+        //   方案一
         //   for(var i = 0,li;li = li_list[i ++];){
         //       li.index = i;
         //       if(i % 2){
-        //           li
+        //           li.style.background = "#ddd";
+        //       }
+        //       li.onmousemove = function(){
+        //           this.style.background = "#000";
+        //       }
+        //       li.onmouseout = function(){
+        //           this.style.background = this.index % 2 ? "#ddd":"";
         //       }
         //   }
-        // test();
-var a = 99;
-function test(){
-a = 10;
+        // 方案二
+        var color = "";
+        for(var i = 0,li;li = li_list[i ++];){
+            li.index = i;
+            if(i % 2){
+                li.style.background = "#ddd";
+            }
+            li.onmousemove = function(){
+                  color = this.style.background;
+                  this.style.background = "#000";
+              }
+              li.onmouseout = function(){
+                  this.style.background = color;
+                  color = "";
+              }
+        }
 
-}
-test();
-alert(a);//10
+        //节点获取
+        var box = document.getElementById("box");
+        for(var i = 0; i <box.childNodes.length; i ++){
+            // console.log(box.childNodes[i]);
+            console/log(box.childNodes[i].nodeType);
+        }
 
-        var a = 100;
-         function m1(){
-         var a = 200;
-        //  function m2(){
-        //          console.log(a);//200（在function m1()中找）
-        //  }
-        //  m2();
-        //  console.log(a);//200（在function m1()中找）
-}
-m1();
-console.log(a);
           </script>
 </body>
 </html>

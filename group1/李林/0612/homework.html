@@ -70,6 +70,7 @@
         var num = parseInt(Math.random() * 9000) + 1000;
         return num;
     }
+
     function checkcode(){
         var num = 0;
         while(num < 1000){
@@ -116,8 +117,8 @@
     //比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
     function odd(num1,num2){
         for(var i = num1; i <= num2; i++){
-            for(var k = num1; k <=num2; k++){
-                var temp = (""+i+k);
+            for(var k = num1; k <= num2; k ++){
+                var temp = ("" + i + k);
                 if(temp % 2){
                     console.log(temp);
                 }
@@ -171,7 +172,7 @@
             return 1;
         }else{
             for(var temp = 1,i = 1;i++<n;){
-                temp*=i;
+                temp *= i;
             }
          return temp;
     }
@@ -192,7 +193,7 @@
            }
        }
       //创建一个对象，表示一个学生的信息
-     const student = {id:"333",name:"白骨精",grade:"6",class:"2",school:"six"};
+     const student = {"id":"333","name":"白骨精","grade":"6","class":"2","school":"six"};
       const stu = new Object(); 
       stu1 = new Object();
       stu1.name="孙福";
