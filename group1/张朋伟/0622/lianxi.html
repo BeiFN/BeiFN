@@ -9,31 +9,28 @@
 </head>
 
 <body>
+    <div id="m"></div>
     <script>
- var div1 = document.createElement("div");
- div1.setAttribute("width", "100px");
- div1.setAttribute("height","100px");
- div1.setAttribute("background","#f00");
-//  document.body.append(div1)
-
- var p1 = document.createElement("p");
- p1.setAttribute("background","#f0f");
-
- div1.insertBefore(p1,div1.children[0]);
-//  div1.insertBefore(p1,div1.childNodes[0]);
-//  div1.insertBefore(p1,div1.childNodes[0]);
-//  div1.append(p1);
-//  div1.append(p1);
-//  document.body.append(div1);
- console.log(div1);
+        var m = document.getElementById("m");
 
 
-// var parent = document.createElement("div");
-// var p = document.createElement("p");
-// parent.append(p);
 
-// console.log(parent.childNodes); // NodeList [ <p> ]
+        var div1 = document.createElement("div");
+        // console.log(div1);
+        div1.style.width ="100px";
+        div1.style.height ="100px";
+        div1.style.background = "#d00";
+        div1.innerHTML = "JJJJJJJJJJJJJJJJ";
+        //  document.body.append(div1)
 
+        var p1 = document.createElement("p");
+        p1.style.background = "#0f0";
+        p1.style.width = "500px";
+        p1.style.height = "10px";
+
+        m.appendChild(p1);
+        m.appendChild(div1);
+        console.log(m);
 
     </script>
 </body>
