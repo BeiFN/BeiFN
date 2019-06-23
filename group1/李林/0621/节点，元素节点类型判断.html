@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- <span id="box">
+                <strong></strong>
+              </span> -->
+              <div id="box">
+                    <span>hello</span>
+                    <span>hello</span>
+                    <span>hello</span>
+                    <span>hello</span>
+                    <strong>world</strong>
+                    <strong>world</strong>
+                    <strong>world</strong>
+                    <strong>world</strong>
+                    <span>hello</span>
+              </div>
+    <script>
+     //节点获取
+    //  var box = document.getElementById("box");
+    //  var childNodes = box.childNodes;
+    //     // for(var i = 0; i <box.childNodes.length; i ++){
+    //     //     // console.log(box.childNodes[i]);
+    //     //     console/log(box.childNodes[i].nodeType);
+    //     // }
+    //     for(var i = 0;i < childNodes.length; i++){
+    //         if(childNodes[i].nodeType === 1){
+    //             childNodes[i].innerHTML = "赋值";
+    //             console.log(childNodes[i].innerHTML);
+    //         }else{
+    //             childNodes[i].nodeValue = "赋值";
+    //             console.log(childNodes[i].nodeValue);
+    //         }
+            
+    //     }
+    
+    //属性节点
+    // var myAttr = document.createAttribute("data-1");
+    // // myAttr.nodeValue = "hello";//赋值
+    // // console.log(myAttr);
+    // box.setAttributeNode(myAttr);
+    // var textNode = document.createTextNode("hello ");
+    // console.log(textNode);
+
+    //元素节点判断(给hello染色)
+    // var box = document.getElementById("box");
+    // var span_list = box.getElementsByTagName("span");
+    // for(var i = 0;i < span_list.length;i ++){
+    //     span_list[i].style.color = "#00f";
+    // }
+
+      //通过遍历所有子节点找到span 
+      var box = document.getElementById("box");
+      var span_list = box.children;
+      for(var i = 0;i < span_list.length; i ++){
+          if(span_list[i].nodeName.toLocaleLowerCase() ==="span"){
+              span_list[i].style.color = "#9F0";
+          }
+      }
+
+
+    </script>
+</body>
+</html>
