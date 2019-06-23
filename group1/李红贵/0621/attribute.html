@@ -7,12 +7,49 @@
     <title>Document</title>
 </head>
 <body>
+        <div id="box0" data-id="hello">
+                <span>hello world</span>
+               
+                <!-- i'm comment  -->
+        </div>
     <script>
+
+        var box = document.getElementById("box0");
+
+        // var test = box.createAttribute("test");
+        // test.nodeValue = "testValue1";
+        // console.log(box);
+        /*
+        attribute.html:19 Uncaught TypeError: box.createAttribute is not a function
+        at attribute.html:19
+        */
+
         function setAttribute(key,value){
 			var myAttr = this.createAttribute(key);
 			myAttr.nodeValue = value;
+
+
+            // var test1 = document.createAttribute(key);
+		    // test1.nodeValue = value1;
+		    // this.setAttributeNode(test1);
+		    // console.log(box);
 		}
-        box.setAttribute("lhg","lulizhong");
+        box.setAttribute("test1","lulizhong1");
+        // box.setAttribute("test2","lulizhong2");
+        console.log(box);
+
+
+
+        function getAttribute(key){
+            for(var i=0,attr; attr = this.attributes[i++];){
+                if(attr.nodeName === key){
+                    return attr.nodeValue;
+                }
+            }
+            return null;
+        }
+        console.log(box.getAttribute("data-idm"));
+
         
     </script>
 </body>
