@@ -22,7 +22,7 @@
     //    }
     //    console.log(arr);
     //    for(var i = 0; i < arr.length; i ++){
-	// 			for(var j = 0; j <= i; j++){
+	// 			for(var j = 0; j <= i; j ++){
 	// 				document.write(arr[i][j] + "   ");
 	// 			}
 	// 			document.write("<br>");
@@ -39,7 +39,7 @@
     //       if(i % 5 !== 0){
     //           average += list[i - 1];
     //       }else{
-    //           newArr.push(average/5);
+    //           newArr.push(average / 5);
     //           average = 0;
     //       }
     //   }
@@ -74,9 +74,9 @@
 
         // var list = ['1','2','3','4','5','6','7','8','9','0','a','b','c'];
         // function join(arr,str){
-		// 		var res="";
+		// 		var res = "";
 		// 		for(var i of arr){
-		// 			res+=i+str;
+		// 			res += i + str;
 		// 		}
 		// 		console.log(res.substring(0,res.length-1));
 		// 	}
@@ -108,33 +108,50 @@
 
     //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
 
-    function has(arr,num){
-				for(var i of arr){
-					if(i==num){
-						console.log("数组中有 "+num+" 这个元素");
-						return true;
-					}
-				}
-				console.log("数组中没有 "+num+" 这个元素");
-				return false;
-			}
-			has( [10, 12, 15, 180],60 );	
+    // function has(arr,num){
+	// 			for(var i of arr){
+	// 				if(arr[i] == num){
+	// 					console.log("数组中有 "+num+" 这个元素");
+	// 					return true;
+	// 				}
+    //                 else{
+	// 			console.log("数组中没有 "+num+" 这个元素");
+	// 			return false;
+    //         }
+	// 			}
+	// 		}
+	// 		has( [10, 12, 15, 180],60 );	
 
     // 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
-    var list = [13, 14, 15, 13, 15, 20 ,80];
+    // var list = [13, 14, 15, 13, 15, 20 ,80];
+    //  function has(list, num){
+    //      for(var i = 0;i < list.length; i ++){
+    //          if(list[i] == num){
+    //              return true;
+    //          }  
+    //      }
+    //      return false;
+    //  }
+    //  function norepeat(list){
+    //      var arr = [];
+    //      for(var i = 0; i < list.length; i ++){
+    //          if(!has(arr,list[i])){
+    //              arr.push(list[i]);
+    //          }
+    //      }
+    //      return arr;
+    //  }
+   var arr =  [80,13, 14, 15 , 20, 20 ,13 ,15, 13, 15, 20 ,80];
     function norepeat(arr){
-			
-            for(var i=0;i<arr.length;i++){
-                for(var j=i+1;j<arr.length;j++){
-                    if(arr[i]==arr[j])
-                        arr.splice(j,1);
+            for(var i = arr.length -1;i > -1;i --){
+                for(var j = i - 1;j > -1;j --){
+                    if(arr[i] === arr[j])
+                        arr.splice(j , 1);
                 }	
             }
-            
-            console.log(arr);
-            
         }	
-        norepeat( [13, 14, 15 , 20, 20 ,13 ,15, 13, 15, 20 ,80]);
+       norepeat(arr);
+       console.log(arr);
 
     </script>
     

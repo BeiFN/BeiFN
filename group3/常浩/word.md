@@ -150,4 +150,25 @@ removeAttribute  删除属性
 getAttribute  获取对应属性的key值
 
 
-offset    获取图片的宽高 offset（）
+offsetWidth    获取图片的宽高 offset（）
+offsetTop      测量的是当前元素距离祖先集中的带有position属性的元素的高度  没有的话 就是距离body的距离
+scrollIntoview   自动滚动到底部
+
+
+节点
+nodeType  辨别节点类型
+nodeName  辨别元素节点类型
+nodeValue 获取节点内的值
+
+childNodes   子节点
+
+fragment  文档碎片   createDocumentFragment 的创建
+
+client  鼠标到可视窗口的距离
+offset  鼠标到当前区域的距离
+screen  到屏幕的距离
+page    到文档的距离
+event  事件
+target  || srcElement   事件源
+
+ 

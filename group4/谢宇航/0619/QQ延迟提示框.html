@@ -48,12 +48,14 @@
 
         function mouseOverHandler() {
             clearTimeout(time);
-            time = setTimeout(visibily, 1000);
+            // time = setTimeout(visibily, 500);
+            visibily();
         }
+        
 
         function mouseOutHandler() {
-            clearTimeout(time);
-            time = setTimeout(hidden, 1000);
+            // clearTimeout(time);
+            time = setTimeout(hidden, 500);
         }
 
         function visibily() {
