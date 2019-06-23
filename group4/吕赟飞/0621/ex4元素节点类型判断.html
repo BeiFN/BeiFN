@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+
+<body>
+      <div id="box">
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+            <strong>world</strong>
+            <strong>world</strong>
+            <strong>world</strong>
+            <strong>world</strong>
+            <span>hello</span>
+      </div>
+      <script>
+            // 想给所有的hello 染色 ? 
+            // 1. 通过选择器选中所有span;
+
+            // var box = document.getElementById("box");
+            // var span_list = box.getElementsByTagName("span");
+            // for (var i = 0; i < span_list.length; i++) {
+            //       span_list[i].style.color = "red";
+            // }
+
+            // 2. 通过遍历所有子节点找到span;
+            var box = document.getElementById("box");
+            var span_list = box.children;
+            // console.log(span_list)
+            for (var i = 0; i < span_list.length; i++) {
+                  if (span_list[i].nodeName === "SPAN") {
+                        span_list[i].style.color = "red"
+                  }
+            }
+      </script>
+</body>
+
+</html>
