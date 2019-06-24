@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="battery">
+        <span></span>
+    </div>
+
+    <div class="line"></div>
+
+    <div id="count_down">
+        <input type="text" id="hourBox" placeholder="小时">
+        <input type="text" id="minuteBox" placeholder="分钟">
+        <input type="text" id="secondBox" placeholder="秒">
+        <button id="startButton">start</button>
+        <div id="container">
+            <span id="hour_box">00</span> ：
+            <span id="minute_box">00</span>：
+            <span id="second_box">00</span>
+        </div>
+    </div>
+
+    <div id="scoreboard">
+        <span>得分：</span>
+        <span id="score">0</span>
+    </div>
+
+    <div id="restart">重新开始</div>
+
+    <script src="beginGame.js"></script>
+</body>
+
+</html>

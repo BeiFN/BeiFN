@@ -21,6 +21,7 @@ function handlerEnterLetter(evt){
 }
 
 
+
 function createRandomLetter(){
 	
 	var randomLetter=String.fromCharCode(65+Math.round(Math.random()*25));
@@ -61,11 +62,10 @@ function createBullet(evt){
 	document.body.appendChild(ele);
 	
 	for (var i=0,rec; rec=letterArray[i++];) {
-		//
+		// 总数
 		count++;
-		console.log(count);
 		if(rec.letter === key){	
-			//
+			// 正确的数
 			count1++; 
 			rightValue.setAttribute("value",count1);
 			scoresValue.setAttribute("value",count1);
@@ -85,7 +85,7 @@ function createBullet(evt){
 
 			break;	
 		}
-		else{
+		else{	// 错失的个数
 			wrongValue.setAttribute("value",count-count1);
 		}
 		
@@ -137,6 +137,67 @@ document.onkeydown=function(evt){
 	handlerEnterLetter(evt);
 	createBullet(evt);
 }
-setInterval(createRandomLetter,1000);
 
+var timerLetter=null;
+timerLetter=setInterval(createRandomLetter,1000);
+
+// 重新开始
+restart.onclick=function(){
+	location.reload(true);
+}
+
+//  倒计时:3分钟
+countdown.onclick=handlerCountDown;
+function handlerCountDown(){
+	var now=new Date().getTime();
+	var target=now+3*60*1000;
+	
+	timercount=setInterval(function (){getCount(target)},1000);
+	
+}
+var timercount=null;
+function getCount(target){
+	var now=new Date().getTime();
+	var difference=target-now;
+	
+	var minute= Math.floor(difference/1000/60%60);
+	var second= Math.floor(difference/1000%60);
+	var timeStr="00:"+(minute<10?"0"+minute:+""+minute)+":"+(second<10?"0"+second:+""+second);
+	
+	// 倒计时完毕，终止游戏
+	if(timeStr==="00:00:00"){
+		clearInterval(timerLetter);
+		timerLetter=null;
+		timeStr="00:00:00";
+		clearInterval(timercount);
+		timercount=null;
+	} 
+	
+	var timeoutValue=document.getElementById("timecount");
+	timeoutValue.value=timeStr;
+}
+
+stopplay.onclick=function(){
+	clearInterval(timerLetter);
+}
+
+// 难度级别选择
+var radios = document.getElementsByName("level");
+for ( var i = 0; i < radios.length; i++) {
+	radios[i].onchange = function(){
+		if(easy.checked){
+			clearInterval(timerLetter);
+			timerLetter=setInterval(createRandomLetter,2000);
+		}
+		if(middle.checked){
+			clearInterval(timerLetter);
+			timerLetter=setInterval(createRandomLetter,1500);
+		}
+		if(hard.checked){
+			clearInterval(timerLetter);
+			timerLetter=setInterval(createRandomLetter,800);
+		}	
+	}
+
+}
 
