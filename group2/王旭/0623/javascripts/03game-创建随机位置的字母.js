@@ -27,27 +27,6 @@
       // 边界;
       ele.style.left = Math.round( Math.random() * (clientWidth - 100)) + "px";
       document.body.appendChild(ele);
-
-      eleMove(ele);
- }
-
- function eleMove(ele){
-      var numTop = 0;
-      var timer = null;
-      timer = setInterval( function (){
-            numTop += 5;
-            ele.style.top = numTop + "px";
-            if(numTop >= 500){
-                  clearInterval(timer);
-                  // 清空变量，让变量内的数据被垃圾回收机制回收;
-                  timer = null;
-                  ele.className += " die";
-                  // 动画运行结束删除元素;
-                  setTimeout( function (){
-                        ele.remove();
-                  } ,1000)
-            }
-      },50)
  }
 
  // 炮台的文字输入功能;
@@ -64,10 +43,8 @@
       console.log(keyCode);
  }
 
- document.onkeydown = function(evt){
-      handlerEnterLetter(evt)
- };
-//  setInterval( createRandomLetter , 1000);
+ document.onkeydown = handlerEnterLetter;
+ setInterval( createRandomLetter , 1000);
 
  // 屏幕尺寸发生改变的时候,重新计算屏幕的宽度;
  window.onresize = function(){
