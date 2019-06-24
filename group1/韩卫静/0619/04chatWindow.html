@@ -67,23 +67,28 @@
         }
 
         //延迟提示框
+        var timer = null;
         leftImg.onmouseover = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);
+            timer = setTimeout(function(){
                 personInfo.style.display = "block";
             },500);
         }
         leftImg.onmouseout = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
                 personInfo.style.display = "none";
             },500);
         }
         personInfo.onmouseover = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
                 personInfo.style.display = "block";
             },500);
         }
         personInfo.onmouseout = function(){
-            var timer = setTimeout(function(){
+            clearInterval(timer);            
+            timer = setTimeout(function(){
                 personInfo.style.display = "none";
             },500);
         }

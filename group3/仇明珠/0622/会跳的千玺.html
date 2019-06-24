@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:100px;
+            height:100px;
+            background:url("./img/1.jpg") no-repeat;
+            background-size: 100%;
+            position:absolute;
+            bottom:0;
+            left:50%;
+            transition: all 1s;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box=document.querySelector(".box");
+        var clientHeight = document.documentElement.clientHeight;
+        var timer=null;
+        document.onclick=function(evt){
+            var e=evt||window.event;
+            var ntop=e.clientY;
+            var nleft=e.clientX;
+            box.style.bottom=clientHeight-ntop+"px";
+            box.style.left=nleft+"px";
+            box.style.transform="rotate(0deg)";
+            clearInterval(timer);
+            timer=setTimeout(function(){
+                box.style.transform="rotate(360deg)";
+                box.style.bottom=0;
+            },1000)
+        }
+    </script>
+</body>
+</html>

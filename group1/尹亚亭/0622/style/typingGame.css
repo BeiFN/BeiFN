@@ -67,10 +67,10 @@
 
 #improve{
 	width:500px;
-	height: 100px;
+	height: 135px;
 	background: lightsalmon;
 	position: absolute;
-	bottom: 30px;
+	bottom: 5px;
 	left:80px;
 }
 #improve ul li{
@@ -84,7 +84,10 @@
 }
 #improve p{
 	clear: both;
-	
+}
+#improve button{
+	margin:5px 5px 5px 10px;
+	padding:0 5px;
 }
 #improve p span{
 	background: #999;
