@@ -1,32 +1,32 @@
-* {
+*{
 
       margin: 0;
       padding: 0;
 }
 
-#pao {
+#pao{
       width: 50px;
       height: 120px;
       position: absolute;
       bottom: 10px;
       left: 50%;
       margin-left: -25px;
-      background: url(https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background: url(../images/炮.jpg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
       text-align: center;
       line-height: 120px;
       font-size: 20px;
-      color: red;
+      color:red;
       text-shadow: 0 0 5px #fff;
       font-weight: 1000;
+      z-index:3 ;
 }
-
-.fish {
+.fish{
       width: 100px;
       height: 100px;
-      background: url(https://upload-images.jianshu.io/upload_images/16960494-f28413581f447db2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background: url(../images/鱼.jpg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
@@ -34,23 +34,21 @@
       font-weight: 1000;
       text-shadow: 0 0 5px #fff;
       text-align: center;
-      color: yellowgreen;
+      color:yellowgreen;
       font-size: 50px;
       position: absolute;
       left: 0;
       top: 0;
       transform: rotate(0deg);
 }
-
-.fish.die {
+.fish.die{
       transition: all 1s;
       transform: rotate(180deg);
 }
-
-.bullet {
+.bullet{
       width: 30px;
       height: 30px;
-      background: url(https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background: url(../images/炮弹.jpg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
@@ -58,26 +56,51 @@
       transition: all .5s;
 }
 
-.line {
+.line{
       height: 3px;
       background: #ddd;
       position: absolute;
-      top: 450px;
+      top: 700px;
       width: 100%;
       z-index: 1;
 }
 
-
-#box {
-      color: green;
+#btn{
+      width: 120px;
+      height: 50px;
+      background-color: yellowgreen;
+      color: aquamarine;
+      text-align: center;
+      line-height: 50px;
+      font-size: 16px;
+      border:  none;
       position: absolute;
-      left: 33px;
-      bottom: 50px;
+      bottom: 10%;
+      right: 10%;
 }
 
-#score {
-      color: red;
+.count{
+      width: 300px;
+      height: 100px;
+      background-color: yellowgreen;
       position: absolute;
-      right: 333px;
-      bottom: 50px;
+      bottom: 5%;
+      left: 5%;
+      font-size: 25px;
+      color: aqua;
+      text-align: center;
+      line-height: 100px;
+}
+.span{
+      position: relative;
+      top: 100px;
+      /* left: 50%;
+      margin-left: -15px; */
+      font-size: 20px ;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: yellowgreen;
+      z-index: 5;
 }
