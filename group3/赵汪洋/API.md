@@ -145,3 +145,21 @@ getElementById()
 	语法:eval(string)
 	参数:string:表示JavaScript表达式，语句或一系列语句的字符串。表达式可以包含变量以及已存在对象的属性。
 	返回值:执行指定代码之后的返回值。如果返回值为空，返回undefined
+
+#### scrollIntoView
+
+#### focus
+
+#### blur
+
+#### setInterval
+
+#### clearInterval
+
+#### setTimeOut
+
+#### clearTimeOut
+
+#### time()
+
+#### timeEnd()
