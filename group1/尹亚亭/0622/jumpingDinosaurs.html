@@ -28,7 +28,6 @@
 			var box=document.getElementById("box");
 			var boxHeight=box.offsetHeight;
 			
-			// 根据鼠标事件对象的X,Y来确定小恐龙的跳跃坐标
 			document.onclick=function(evt){
 				var e=evt || event;
 				
@@ -37,17 +36,14 @@
 				var clientHeight=document.documentElement.clientHeight;
 				
 				box.style.bottom=clientHeight-clientY-boxHeight +"px";
-				box.style.left=clientX + "px";	// 别忘记加上单位"px"
-				// 以上可以实现小恐龙位置到鼠标的连线平移
+				box.style.left=clientX + "px";	
 				
 				box.style.transform="rotate(0deg)";
 				
-				// 小恐龙跳上去之后,要落下来,这就要用到定时器		
-				// tips:不能使用延时器,二者效果还是有差别的,延时器会出现卡顿,跳不起来的现象
+				
 				setTimeout(function(){
 					//小优化:恐龙旋转之后再下来  transform属性  rotate()旋转
-					box.style.transform="rotate(360deg)";  //要配以初始值才可以实现
-					//落下来
+					box.style.transform="rotate(360deg)";  
 					box.style.bottom=0;
 				},1000)
 				
