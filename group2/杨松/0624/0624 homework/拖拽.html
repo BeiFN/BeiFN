@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding: 0;}
+        #box{width: 300px;height: 200px;background: yellow;color: #fff;box-shadow: 0 0 5px yellow;border-radius: 10px;overflow: hidden;position: absolute;text-align: center;}
+        #top-bar{width: 300px;height: 40px;text-align: center;line-height: 40px;background: rgba(0,0,0,.3);}
+        /*#goBack{padding: 3px 5px ;background: #fff;box-shadow: 0 0 5px #30f;border: none;}*/
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="top-bar">
+        拖拽条
+    </div>
+    <!--<button id="goBack">回放</button>-->
+</div>
+<script>
+    // 1. 鼠标按下;   拖拽开始;
+    // 2. 鼠标移动;   拖拽进行中;
+    // 3. 鼠标抬起;   拖拽结束;
+    // 有一个事件是待绑定的? 鼠标移动事件待绑定;
+
+    var box = document.getElementById("box");
+    var topBar = document.getElementById("top-bar");
+
+    topBar.addEventListener("mouseup" , handlerDragEnd );
+    topBar.addEventListener("mousedown" , handlerDragStart);
+
+    var timer = null;
+    var recordArray = [];
+    var _tempDragMove = null;
+        function handlerDragStart(e){
+            var e = e || event;
+            document.removeEventListener("mousemove",_tempDragMove);
+            document.addEventListener("mousemove",_tempDragMove = handlerDragMove.bind(false,{offsetX : e.offsetX,offsetY :e.offsetY}));
+        }
+    function handlerDragMove(_offset,e){
+        var e = e || event;
+        var numLeft = e.clientX - _offset.offsetX;
+        var numTop = e.clientY - _offset.offsetY;
+        box.style.left = numLeft  + "px";
+        box.style.top = numTop + "px";
+        recordArray.push({
+            left : numLeft,
+            top : numTop
+        })
+    }
+    function handlerDragEnd(){
+        document.removeEventListener("mousemove" ,  _tempDragMove);
+    }
+ 
+</script>
+</body>
+</html>
