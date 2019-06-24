@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-image: url(./打字游戏/images/恐龙.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 150%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+
+            transition:  all .5s;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var boxs = document.getElementById("box");
+        var boxHei = boxs.offsetHeight;
+        document.onclick = function(evt){
+            var e = evt || window.event;
+
+            var boxClientX = boxs.offsetLeft;
+
+            console.log((boxClientX+"px"));
+
+            var clientX= e.clientX;
+            console.log(clientX,e.clientWidth);
+
+            var clientY = e.clientY;
+            var clientHeight = document.documentElement.clientHeight;
+            boxs.style.left = clientX+"px";
+
+            var s = clientX - boxClientX;
+            console.log(s);
+            boxs.style.bottom = clientHeight - boxHei -clientY +"px";
+
+            boxs.style.transform = "rotate(0deg)";
+
+            setTimeout (function(){
+                boxs.style.transform = "rotate(360deg)";
+                boxs.style.left = boxs.offsetLeft+s+"px";
+                console.log(boxs.style.left);
+                boxs.style.bottom = 0;
+                // boxs.style.transform = "rotate(0deg)";
+
+            },500);
+            boxs.style.transform = "rotate(-0deg)";
+        }
+    </script>
+</body>
+</html>

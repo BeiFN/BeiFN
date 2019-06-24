@@ -1,0 +1,234 @@
+Date: Sun, 23 Jun 2019 20:57:42 +0800
+Message-ID: <000120a0$d8b36180$59859843$YinXiangBiJi>
+MIME-Version: 1.0
+Content-Type: text/html; 
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Evernote® v6.18.8.718
+
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face=3D"=E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91" size=3D"2" />
+  <meta http-equiv=3D"Content-Type" =
+content=3D"text/html;charset=3Dutf-8" />
+  <meta name=3D"exporter-version" content=3D"YXBJ Windows/600718 (zh-CN, =
+DDL); Windows/10.0.0 (Win64);"/>
+  <style>
+    body, td {
+      font-family: =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name=3D"622"/>
+
+<div>=0A<span><div><div><div>js=E6=98=AF=E4=B8=80=E7=A7=8D=E9=9D=A2=E5=90=
+=91=E5=AF=B9=E8=B1=A1=E7=9A=84=E8=B7=A8=E5=B9=B3=E5=8F=B0=E8=84=9A=E6=9C=AC=
+=E8=AF=AD=E8=A8=80</div><div><br/></div><div>=E5=8F=98=E9=87=8F=E5=A3=B0=E6=
+=98=8E=EF=BC=9A=E4=BB=A5=E5=AD=97=E6=AF=8D$_=E5=BC=80=E5=A4=B4</div><div>=
+<br/></div><div>=E5=86=85=E5=AD=98=E7=9A=84=E5=AD=98=E6=94=BE=E5=88=86=E4=
+=B8=BA=E6=A0=88=E5=92=8C=E5=A0=86</div><div><br/></div><div>pareseInt=EF=BC=
+=88num=EF=BC=8C=E8=BF=9B=E5=88=B6=EF=BC=89=E4=BB=BB=E6=84=8F=E8=BF=9B=E5=88=
+=B6=E8=BD=AC=E5=8D=81=E8=BF=9B=E5=88=B6</div><div>toString=EF=BC=88=EF=BC=
+=89=C2=A0 =
+=E5=8D=81=E8=BF=9B=E5=88=B6=E8=BD=AC=E4=BB=BB=E6=84=8F=E8=BF=9B=E5=88=B6<=
+/div><div>.tofixed=EF=BC=88num=EF=BC=89=C2=A0 =
+=E8=BD=AC=E4=B8=BAnum=E4=BD=8D=E5=B0=8F=E6=95=B0</div><div>1e+n=C2=A0 =
+1=E5=90=8E=E9=9D=A2=E8=B7=9F=E7=9D=80=E5=A4=9A=E5=B0=91=E4=BD=8D=E5=B0=8F=
+=E6=95=B0</div><div><br/></div><div><br/></div><div>=E4=B8=89=E5=A4=A7=E7=
+=BB=93=E6=9E=84=EF=BC=9A=E9=A1=BA=E5=BA=8F=E7=BB=93=E6=9E=84 =
+=EF=BC=9A=E9=BB=98=E8=AE=A4=E7=BB=93=E6=9E=84=EF=BC=8C=E8=87=AA=E4=B8=8A=E8=
+=80=8C=E4=B8=8B=EF=BC=8C=E4=BB=8E=E5=B7=A6=E5=88=B0=E5=8F=B3=E8=AF=BB=E5=8F=
+=96</div><div>=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =
+=C2=A0=C2=A0 =C2=A0 =C2=A0=E5=BE=AA=E7=8E=AF=E7=BB=93=E6=9E=84 =EF=BC=9A =
+for=C2=A0 forin while=C2=A0 dowhile</div><div>=C2=A0=C2=A0 =
+=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0 =C2=A0 =
+=C2=A0=E5=88=A4=E6=96=AD=E7=BB=93=E6=9E=84=C2=A0 :=C2=A0 =C2=A0if =
+ifelse=C2=A0 =
+switch</div><div><br/></div><div><br/></div><div>=E5=87=BD=E6=95=B0 1 =
+=E5=8C=BF=E5=90=8D=E5=87=BD=E6=95=B0 =
+=E7=9B=B4=E6=8E=A5=E5=BC=95=E7=94=A8=E6=88=96=E7=BB=99=E5=8C=BF=E5=90=8D=E5=
+=87=BD=E6=95=B0=E8=B5=8B=E5=80=BC</div><div>=C2=A0=C2=A0 =C2=A0=C2=A0 =
+=C2=A0 2 =E5=85=B7=E5=90=8D=E5=87=BD=E6=95=B0 =
+=E7=9B=B4=E6=8E=A5=E5=BC=95=E7=94=A8=E5=8F=98=E9=87=8F=E5=90=8D</div><div=
+><br/></div><div>=E7=BB=99=E5=85=B7=E5=90=8D=E5=87=BD=E6=95=B0=E8=B5=8B=E5=
+=80=BC=C2=A0 =
+=E5=8F=98=E9=87=8F=E6=AD=A3=E5=B8=B8=E4=BD=BF=E7=94=A8=EF=BC=8C=E5=87=BD=E6=
+=95=B0=E5=90=8D=E5=8F=AA=E8=83=BD=E5=86=8D=E5=86=85=E9=83=A8=E8=AE=BF=E9=97=
+=AE</div><div><br/></div><div><br/></div><div>location.reload =
+=E9=87=8D=E6=96=B0=E5=8A=A0=E8=BD=BD =
+location.href=E7=BD=91=E5=9D=80</div><div><br/></div><div><br/></div><div=
+>=E5=BD=A2=E5=8F=82=E5=87=BD=E6=95=B0=E6=8E=A5=E6=94=B6=E5=80=BC</div><di=
+v>=E5=AE=9E=E5=8F=82=E8=B0=83=E7=94=A8=E5=87=BD=E6=95=B0=E6=97=B6=E4=BC=A0=
+=E5=85=A5=E5=80=BC</div><div><br/></div><div>=E4=BD=9C=E7=94=A8=E5=9F=9F=C2=
+=A0 =
+=E4=BD=9C=E7=94=A8=E5=9F=9F=E9=93=BE=E7=9A=84=E6=A6=82=E5=BF=B5</div><div=
+>=E4=BD=9C=E7=94=A8=E5=9F=9F=E6=98=AF=E6=8C=87=E5=9C=A8=E4=B8=80=E4=B8=AA=
+=E5=87=BD=E6=95=B0=E5=86=85=E7=94=A8var=E5=A3=B0=E6=98=8E=E7=9A=84=E5=8F=98=
+=E9=87=8F=E5=8F=AA=E5=9C=A8=E5=87=BD=E6=95=B0=E5=86=85=E9=83=A8=E6=9C=89=E6=
+=95=88</div><div>=E4=BD=9C=E7=94=A8=E5=9F=9F=E9=93=BE=C2=A0 =
+=E5=A6=82=E6=9E=9C=E8=B0=83=E7=94=A8=E7=9A=84=E5=AF=B9=E8=B1=A1=E5=9C=A8=E4=
+=BD=9C=E7=94=A8=E5=9F=9F=E5=86=85=E9=83=A8=E6=B2=A1=E6=9C=89=E6=89=BE=E5=88=
+=B0=EF=BC=8C=E5=88=99=E9=80=90=E5=B1=82=E5=90=91=E5=A4=96=E6=9F=A5=E6=89=BE=
+=EF=BC=8C=E7=9B=B4=E5=88=B0=E5=85=A8=E5=B1=80=E4=BD=9C=E7=94=A8=E5=9F=9F<=
+/div><div><br/></div><div>=E9=97=AD=E5=8C=85=C2=A0 =
+=E5=A4=96=E9=83=A8=E5=87=BD=E6=95=B0=E7=9A=84=E5=8F=98=E9=87=8F=EF=BC=8C=E5=
+=9C=A8=E5=86=85=E9=83=A8=E5=87=BD=E6=95=B0=E8=A2=AB=E8=AE=BF=E9=97=AE=E5=B9=
+=B6=E8=BF=94=E5=9B=9E=EF=BC=8C=E5=A4=96=E9=83=A8=E5=87=BD=E6=95=B0=E8=BF=94=
+=E5=9B=9E=E5=86=85=E9=83=A8=E5=87=BD=E6=95=B0=EF=BC=8C=E5=BB=B6=E9=95=BF=E5=
+=8F=98=E9=87=8F=E7=94=9F=E5=91=BD=E5=91=A8=E6=9C=9F=EF=BC=8C=E6=80=8E=E5=8A=
+=A0=E4=BA=86=E9=9A=90=E7=A7=81=E6=80=A7=EF=BC=88=E5=BB=B6=E9=95=BFAO=EF=BC=
+=89</div><div><br/></div><div>=E5=87=BD=E6=95=B0=E8=B0=83=E7=94=A8--&gt;=E6=
+=89=A7=E8=A1=8C=E7=8E=AF=E5=A2=83--&gt;=E5=88=9B=E5=BB=BA=E6=B4=BB=E5=8A=A8=
+=E5=AF=B9=E8=B1=A1=EF=BC=88AO=EF=BC=89=E5=BD=93=E5=87=BD=E6=95=B0=E8=B0=83=
+=E7=94=A8=E7=BB=93=E6=9D=9F=E5=90=8E=EF=BC=8C=E6=89=A7=E8=A1=8C=E7=8E=AF=E5=
+=A2=83=E4=B8=8E=E6=B4=BB=E5=8A=A8=E5=AF=B9=E8=B1=A1=E8=A2=AB=E5=88=A0=E9=99=
+=A4</div><div><br/></div><div><br/></div><div>=E6=95=B0=E6=8D=AE=E7=B1=BB=
+=E5=9E=8B=E5=88=86=E4=B8=BA=E5=9F=BA=E6=9C=AC=E4=B9=A6=E8=AE=B0=E7=B1=BB=E5=
+=9E=8B=E5=92=8C=E5=BC=95=E7=94=A8=E7=B1=BB=E5=9E=8B=C2=A0 =
+=E5=9F=BA=E6=9C=AC=E6=95=B0=E6=8D=AE=E7=B1=BB=E5=9E=8B=E6=97=B6=E5=80=BC=E6=
+=AF=94=E5=AF=B9=EF=BC=8C=E5=BC=95=E7=94=A8=E7=B1=BB=E5=9E=8B=E6=98=AF=E5=9C=
+=B0=E5=9D=80</div><div><br/></div><div><br/></div><div>=E6=95=B0=E7=BB=84=
+API=C2=A0</div><ol><li><div>push=C2=A0 =
+=E5=9C=A8=E6=9C=AB=E5=B0=BE=E6=B7=BB=E5=8A=A0 =
+=E8=BF=94=E5=9B=9E=E6=95=B0=E7=BB=84=E9=95=BF=E5=BA=A6</div></li><li><div=
+>pop=C2=A0 =
+=E5=88=A0=E9=99=A4=E6=9C=80=E5=90=8E=E4=B8=80=E9=A1=B9=EF=BC=8C=E8=BF=94=E5=
+=9B=9E=E5=88=A0=E9=99=A4=E5=80=BC</div></li><li><div>slice=EF=BC=88=EF=BC=
+=89 =
+=E8=BF=94=E5=9B=9E=E5=A4=A7=E4=BA=8E=E7=AD=89=E4=BA=8E=E7=AC=AC=E4=B8=80=E4=
+=B8=AA=E4=B8=8B=E6=A0=87=EF=BC=8C=E5=B0=8F=E4=BA=8E=E7=AC=AC=E4=BA=8C=E4=B8=
+=AA=E4=B8=8B=E6=A0=87=E7=9A=84=E6=95=B0=E7=BB=84</div></li><li><div>index=
+Of lastIndexOf=C2=A0 =
+=E6=9F=A5=E6=89=BE=E5=9C=A8=E6=95=B0=E7=BB=84=E4=B8=AD=E7=AC=AC=E5=87=A0=E4=
+=B8=AA</div></li><li><div>splice=C2=A0 =
+=E5=88=A0=E9=99=A4=E4=B8=8B=E6=A0=87=E4=B8=BA=E7=AC=AC=E4=B8=80=E4=B8=AA=EF=
+=BC=8C=E4=B8=80=E5=85=B1num2=E4=B8=AA=E5=85=83=E7=B4=A0=EF=BC=8C=E5=B9=B6=
+=E8=BF=94=E5=9B=9E=E8=A2=AB=E5=88=A0=E9=99=A4=E7=9A=84=E5=80=BC=EF=BC=9B<=
+/div></li><li><div>concat=C2=A0 =
+=E8=BF=9E=E6=8E=A5</div></li><li><div>join=C2=A0 toString =
+=E8=BF=9E=E6=8E=A5=E6=88=90=E4=B8=BA=E6=95=B0=E7=BB=84</div></li><li><div=
+>shift =E5=88=A0=E9=99=A4=E7=AC=AC=E4=B8=80=E4=B8=AA unshift =
+=E5=9C=A8=E7=AC=AC=E4=B8=80=E4=B8=AA=E6=B7=BB=E5=8A=A0</div></li></ol><di=
+v><br/></div><div><br/></div><div>=E6=95=B0=E7=BB=84=E5=88=9B=E5=BB=BA=C2=
+=A0 var a =3D[]=C2=A0 =C2=A0var b=3Dnew =
+Array();</div><div><br/></div><div>=E5=AD=97=E7=AC=A6=E4=B8=B2API<br/></d=
+iv><ol><li><div>String.fromCharAt()=C2=A0 =
+ascii=E7=A0=81=E8=BD=AC=E6=8D=A2=E4=B8=BA=E5=80=BC</div></li><li><div>=E5=
+=AD=97=E7=AC=A6=E4=B8=B2.charCodeAt=EF=BC=88=EF=BC=89=E8=BF=94=E5=9B=9E=E5=
+=AD=97=E7=AC=A6=E4=B8=B2=E7=9A=84=E7=AC=AC=E5=87=A0=E4=BD=8Dascii=E7=A0=81=
+=E5=80=BC</div></li><li><div>toString=EF=BC=88=EF=BC=89=E6=8F=90=E5=8F=96=
+=E6=88=90=E4=B8=BA=E5=AD=97=E7=AC=A6=E4=B8=B2=C2=A0 =
+=E5=A6=82=E6=9E=9C=E4=B8=BA=E8=B4=9F=E5=80=BC=E5=88=99=E4=BB=8E0=E5=BC=80=
+=E5=A7=8B</div></li><li><div>slice=EF=BC=88=EF=BC=89=E6=8F=90=E5=8F=96=E6=
+=88=90=E4=B8=BA=E5=AD=97=E7=AC=A6=E4=B8=B2=C2=A0 =
+=E5=A6=82=E6=9E=9C=E4=B8=BA=E8=B4=9F=E5=80=BC=E5=88=99=E4=BB=8E=E5=8F=B3=E8=
+=BE=B9=E5=BC=80=E5=A7=8B</div></li><li><div><span style=3D"color: =
+rgb(134, 0, 164);">RegExp =
+=E6=9E=84=E9=80=A0=E5=87=BD=E6=95=B0=E5=88=9B=E5=BB=BA=E4=BA=86=E4=B8=80=E4=
+=B8=AA=E6=AD=A3=E5=88=99=E8=A1=A8=E8=BE=BE=E5=BC=8F=E5=AF=B9=E8=B1=A1=EF=BC=
+=8C=E7=94=A8=E4=BA=8E=E5=B0=86=E6=96=87=E6=9C=AC=E4=B8=8E=E4=B8=80=E4=B8=AA=
+=E6=A8=A1=E5=BC=8F=E5=8C=B9=E9=85=8D</span></div></li><li><div><span =
+style=3D"color: rgb(134, 0, 164);">String.fromCharCode =
+=E4=BB=8Eutf-16=E8=BF=94=E5=9B=9E=E5=AF=B9=E5=BA=94=E7=9A=84=E5=AD=97=E7=AC=
+=A6=E4=B8=B2</span></div></li><li><div><span style=3D"color: rgb(134, 0, =
+164);">charCodeAt =
+=E8=BF=94=E5=9B=9Eutf-16=E7=BC=96=E7=A0=81</span></div></li><li><div><spa=
+n style=3D"color: rgb(134, 0, =
+164);">charAt=EF=BC=88num=EF=BC=89=E5=AD=97=E7=AC=A6=E4=B8=B2=E4=B8=AD=E8=
+=BF=94=E5=9B=9E=E7=AC=ACnum=E5=AD=97=E7=AC=A6</span></div></li><li><div><=
+span style=3D"color: rgb(50, 135, 18);">endsWith =EF=BC=88string =
+=E3=80=90=EF=BC=8Cnum=E3=80=91=EF=BC=89=E6=98=AF=E5=90=A6=E4=BB=A5string=E4=
+=B8=BA=E7=BB=93=E5=B0=BE=C2=A0 =
+=E5=86=8D=E7=AC=ACnum=E4=BD=8D=E7=BD=AE=E6=98=AF=E5=90=A6=E4=BB=A5string=E7=
+=BB=93=E5=B0=BE</span></div></li><li><div><span style=3D"color: rgb(50, =
+135, 18);">startWith</span></div></li><li><div><span style=3D"color: =
+rgb(134, 0, 164);">indexOf=C2=A0 =
+=E6=98=AF=E5=90=A6=E5=AD=98=E5=9C=A8=C2=A0 =
+=E8=BF=94=E5=9B=9E=E7=AC=AC=E4=B8=80=E4=B8=AA=E4=BD=8D=E7=BD=AE</span></d=
+iv></li><li><div><span style=3D"color: rgb(167, 69, =
+0);">padEnd(</span><span style=3D"color: rgb(167, 69, =
+0);">length</span><span style=3D"color: rgb(167, 69, 0);">,</span><span =
+style=3D"color: rgb(167, 69, 0);">string</span><span style=3D"color: =
+rgb(167, 69, 0);">)=C2=A0 =
+=E5=9C=A8=E5=B0=BE=E9=83=A8=E5=A1=AB=E5=85=85=E5=88=B0=E6=8C=87=E5=AE=9A=E7=
+=9A=84length=E9=95=BF=E5=BA=A6=EF=BC=8C=E5=A6=82=E6=9E=9C=E6=9C=89string=E5=
+=88=99=E7=94=A8string=E5=A1=AB=E5=85=85=EF=BC=8C=E8=8B=A5=E8=B6=85=E5=87=BA=
+=E5=88=99=E5=A1=AB=E5=85=85=E9=83=A8=E5=88=86</span></div></li><li><div><=
+span style=3D"color: rgb(167, 69, =
+0);">padStart=E5=A1=AB=E5=85=85=E5=88=B0=E5=A4=B4=E9=83=A8</span></div></=
+li><li><div>repeat(num) =
+=E9=87=8D=E5=A4=8Dnum=E6=AC=A1</div></li><li><div>replace(str1,str2)=E7=94=
+=A8str2=E6=9B=BF=E6=8D=A2str1</div></li><li><div><span style=3D"color: =
+rgb(134, 0, 164);">substring(num1,num2) =
+=E6=96=B9=E6=B3=95=E8=BF=94=E5=9B=9E=E4=B8=80=E4=B8=AA=E5=AD=97=E7=AC=A6=E4=
+=B8=B2=E5=9C=A8=E5=BC=80=E5=A7=8B=E7=B4=A2=E5=BC=95=E5=88=B0=E7=BB=93=E6=9D=
+=9F=E7=B4=A2=E5=BC=95=E4=B9=8B=E9=97=B4=E7=9A=84=E4=B8=80=E4=B8=AA=E5=AD=90=
+=E9=9B=86, =
+=E6=88=96=E4=BB=8E=E5=BC=80=E5=A7=8B=E7=B4=A2=E5=BC=95=E7=9B=B4=E5=88=B0=E5=
+=AD=97=E7=AC=A6=E4=B8=B2=E7=9A=84=E6=9C=AB=E5=B0=BE=E7=9A=84=E4=B8=80=E4=B8=
+=AA=E5=AD=90=E9=9B=86=E3=80=82</span></div></li><li><div><span =
+style=3D"color: rgb(134, 0, 164);">trim =
+=E6=B8=85=E9=99=A4=E5=B7=A6=E5=8F=B3=E7=A9=BA=E6=A0=BC</span></div></li><=
+li><div><span style=3D"color: rgb(20, 113, 145); font-style: =
+italic;">toLocaleUpperCase/woLocaLelowerCase =
+=E5=A4=A7=E5=86=99=E5=B0=8F=E5=86=99</span></div></li><li><div><span =
+style=3D"color: rgb(20, 113, 145); font-style: =
+italic;">toLowerCase/to</span><span style=3D"color: rgb(20, 113, 145); =
+font-style: italic; text-decoration: underline;">Upper</span><span =
+style=3D"color: rgb(20, 113, 145); font-style: italic;">Case=C2=A0 =
+=C2=A0=E8=AE=B8=E5=A4=9A=E5=B0=8F=E8=AF=AD=E7=A7=8D=E4=B9=8B=E9=97=B4=E4=BC=
+=9A=E6=9C=89=E5=B7=AE=E5=88=AB</span></div></li></ol><div><br/></div><div=
+>=E4=B8=89=E4=B8=AA=E8=AD=A6=E5=91=8A=EF=BC=9Aalert=C2=A0 confirm=C2=A0 =
+prompt</div></div><div><br/></div><div><br/></div><div>this =
+=E6=8C=87=E5=90=91=E8=B0=83=E7=94=A8=E8=80=85=C2=A0 =
+=E4=BA=8B=E4=BB=B6=E5=8F=91=E7=94=9F=E6=97=B6=E6=8C=87=E5=90=91=E4=BA=8B=E4=
+=BB=B6=E8=A7=A6=E5=8F=91=E7=9A=84=E5=AF=B9=E8=B1=A1</div><div><br/></div>=
+<div><br/></div><div>=E5=B1=9E=E6=80=A7=E6=93=8D=E4=BD=9C=C2=A0 =
+setAttribute=C2=A0 getAttribute=C2=A0 removeAttribute=C2=A0 =
+attributes</div><div><br/></div><div><br/></div><div>=E8=8A=82=E7=82=B9</=
+div><ol><li><div>nodeType=C2=A0 =
+=E8=8A=82=E7=82=B9=E7=B1=BB=E5=9E=8B</div></li><li><div>nodeName=C2=A0 =
+=E8=8A=82=E7=82=B9=E5=90=8D=E7=A7=B0</div></li><li><div>nodeValue=C2=A0 =
+=E8=8A=82=E7=82=B9=E5=80=BC</div></li></ol><div>nodeType</div><ul><li><di=
+v>1=E5=85=83=E7=B4=A0=E8=8A=82=E7=82=B9</div></li><li><div>2=E5=B1=9E=E6=80=
+=A7=E8=8A=82=E7=82=B9</div></li><li><div>3=E6=96=87=E5=AD=97=E8=8A=82=E7=82=
+=B9</div></li><li><div>8=E6=B3=A8=E9=87=8A=E8=8A=82=E7=82=B9</div></li><l=
+i><div>9document=E8=8A=82=E7=82=B9</div></li><li><div>11=E6=96=87=E6=A1=A3=
+=E8=8A=82=E7=82=B9</div></li></ul><div><br/></div><div><br/></div><div>=E9=
+=A1=B5=E9=9D=A2=E4=B8=AD=E6=89=80=E6=9C=89=E7=9C=8B=E5=BE=97=E5=88=B0=E7=9A=
+=84=E9=83=BD=E6=98=AF=E8=8A=82=E7=82=B9=EF=BC=8C=E6=89=80=E6=9C=89=E8=8A=82=
+=E7=82=B9=E9=83=BD=E6=98=AF=E5=AF=B9=E8=B1=A1=EF=BC=8Cjs=E9=83=BD=E6=98=AF=
+=E5=AD=97=E7=AC=A6=E4=B8=B2=EF=BC=8C=E5=AD=97=E7=AC=A6=E4=B8=B2=E9=83=BD=E6=
+=98=AF=E5=AF=B9=E8=B1=A1=C2=A0</div><div><font color=3D"#AD0000" =
+style=3D"font-size: =
+48pt;">=E6=89=80=E6=9C=89=E7=9A=84=E4=B8=80=E5=88=87=E9=83=BD=E6=98=AF=E5=
+=AF=B9=E8=B1=A1</font></div><div><font color=3D"#AD0000" =
+style=3D"font-size: =
+48pt;"><br/></font></div><div>=E4=BA=8B=E4=BB=B6=E5=AF=B9=E8=B1=A1=EF=BC=9A=
+=E5=AD=98=E5=82=A8=E6=97=B6=E9=97=B4=E5=8F=91=E7=94=9F=E6=97=B6=E6=89=80=E6=
+=9C=89=E4=BF=A1=E6=81=AF</div><div>=E4=BA=8C=E8=80=85=E9=80=89=E5=85=B6=E4=
+=B8=80=E6=97=B6=E7=94=A8||=E8=BF=90=E7=AE=97</div><div =
+style=3D"box-sizing: border-box; padding: 8px; font-family: Monaco, =
+Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; =
+color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, =
+250, 248); border: 1px solid rgba(0, 0, 0, =
+0.15);-en-codeblock:true;"><div>document.onclick=3Dfunction(eve){</div><d=
+iv>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+var =
+e=3Deve||event;</div><div>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0var =
+keycode=3De.keyCode||e.which;</div><div>}</div></div><div><br/></div><div=
+><span style=3D"font-size: 9pt; color: rgb(51, 51, 51); font-family: =
+Monaco;">scrool =E6=BB=9A=E5=8A=A8=E6=9D=A1</span></div><div>client =
+=E5=8F=AF=E8=A7=86=E5=8C=BA=E5=9F=9F</div><div>offset =
+=E5=BD=93=E5=89=8D=E5=85=83=E7=B4=A0</div><div><span style=3D"font-size: =
+9pt; color: rgb(51, 51, 51); font-family: Monaco;">screen =
+=E5=88=B0=E5=B1=8F=E5=B9=95</span></div><div><span style=3D"font-size: =
+9pt; color: rgb(51, 51, 51); font-family: Monaco;">page =
+=E6=96=87=E6=A1=A3 =
+scroll+client</span></div><div><br/></div><div><br/></div></div></span>=0A=
+</div></body></html>
+ 
