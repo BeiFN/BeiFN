@@ -5,7 +5,7 @@
 #pao{
     width:60px;
     height:150px;
-    background: url("../img/炮.jpg") no-repeat;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
     background-position: center;
     background-size: 100%;
     position:absolute;
@@ -20,7 +20,7 @@
 .fish{
     width:80px;
     height:120px;
-    background: url("../img/鱼.jpg") no-repeat;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-f28413581f447db2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
     background-position: center;
     background-size: 100%;
     position:absolute;
@@ -38,7 +38,7 @@
 .bullet{
     width:50px;
     height:50px;
-    background: url(../img/炮弹.jpg) no-repeat;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
     background-position: center;
     background-size: 100%;
     position:absolute;
