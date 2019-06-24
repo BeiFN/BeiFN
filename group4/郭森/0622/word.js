@@ -4,6 +4,7 @@ function $$(select) {
 }
 var ele_pao = $$("#pao");
 var ele_pao_text = ele_pao.children[0];
+
 class WordGame {
     constructor() { }
     init(pao) {
@@ -58,11 +59,11 @@ class WordGame {
                 ele.className += " die";
                 // 动画运行结束删除元素;
                 setTimeout(function () {
-                    removeRecord(ele)
+                    this.removeRecord(ele)
                     ele.remove();
-                }, 1000)
+                }.bind(this), 1000)
             }
-        }, 50)
+        }.bind(this), 50)
         return timer;
     }
     // 移除
@@ -81,28 +82,23 @@ class WordGame {
         var ele = document.createElement("div");
         ele.className = "bullet";
         ele.style.left = this.clientWidth / 2 - 15 + "px";
-        ele.style.top = ele_pao.offsetTop - 30 + "px";
-
-        document.body.appendChild(ele);
-
+        ele.style.top = this.pao.offsetTop - 30 + "px";
+        this.box.appendChild(ele);
         // 判定是否存在相应的字母; 在letter里面判定;
         for (var i = 0, rec; rec = this.letterArray[i++];) {
             // 如果存在页面中的鱼,代表的字母和当前输入的字母相同;
             if (rec.letter === key) {
-                clearInterval(rec.timer);
-                removeRecord(rec.ele);
+                this.removeRecord(rec.ele);
                 // 给子弹设置一个位置;
                 setTimeout(function () {
                     ele.style.left = rec.left + 35 + "px";
-                    ele.style.top = rec.ele.offsetTop + 50 + "px";
+                    ele.style.top = rec.ele.offsetTop + 90 + "px";
                 }, 5)
-
                 // 删除动画;
                 setTimeout(function () {
                     rec.ele.remove();
                     ele.remove();
-                }, 800)
-
+                }, 550)
                 break;
             }
         }
@@ -117,8 +113,6 @@ class WordGame {
             keyCode = String.fromCharCode(keyCode);
             ele_pao_text.innerHTML = keyCode;
         }
-
-        console.log(keyCode);
     }
 }
 var wordGame = new WordGame();
