@@ -22,7 +22,25 @@
       text-shadow: 0 0 5px #fff;
       font-weight: 1000;
 }
-.fishes{
+      body{
+            height: 100%;
+            width: 100%; 
+            background: rgba(0, 0, 0, .9);            
+      }
+            .box
+            {
+                  height: 150px;
+                  width: 251px; 
+                  margin: 99px auto;   
+            }
+            .box h2
+            {
+                  z-index: 2;
+                  color: pink;
+                  z-index: 111;float: left;  
+
+            }
+.fish{
       width: 100px;
       height: 100px;
       background: url(../images/鱼.jpg);
@@ -40,7 +58,7 @@
       top: 0;
       transform: rotate(0deg);
 }
-.fishes.die{
+.fish.die{
       transition: all 1s;
       transform: rotate(180deg);
 }
@@ -53,8 +71,7 @@
       background-size: 100%;
       position: absolute;
       transition: all .5s;
-      
-}     
+}
 
 .line{
       height: 3px;
@@ -63,26 +80,4 @@
       top: 500px;
       width: 100%;
       z-index: 1;
-}
-#scoreboard {
-      width: 300px;
-      height: 150px;
-      position: absolute;
-      left: 50px;
-      bottom: 40px;
-      border: 1px solid black;
-      padding: 30px 0 0 20px;
-}
-#score {
-      font-size: 20px;
-      margin: 30px 0 0 20px;
-}
-#scoreNum {
-      font-size: 20px;
-      margin: 30px 0 0 20px;
-}
-#scoreboard p {
-      float: left;
-      font-size: 20px;
-      margin: 30px 0 0 20px;
 }
