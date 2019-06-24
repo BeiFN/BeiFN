@@ -93,10 +93,10 @@ function createEle(eleJson){
     }
 
     //添加子元素----------------疑问点:代码能看懂，但是不明白为什么要这样写，为什么要判断childNode的元素类型
-    // for(var i = 0 , childNode ; eleJson.children && (childNode = eleJson.children[i++]);){
-    //  childNode.nodeType === 1 ? ele.appendChild(childNode) : ele.appendChild( createEle(childNode) );
-    // //    childNode.nodeType === 1 ? ele.appendChild(e) :ele.appendChild(createEle(e));;
-    // }
+    for(var i = 0 , childNode ; eleJson.children && (childNode = eleJson.children[i++]);){
+     childNode.nodeType === 1 ? ele.appendChild(childNode) : ele.appendChild( createEle(childNode) );
+    //    childNode.nodeType === 1 ? ele.appendChild(e) :ele.appendChild(createEle(e));;
+    }
 
     //添加子元素----------------
     for(var i in eleJson.childrens ){        

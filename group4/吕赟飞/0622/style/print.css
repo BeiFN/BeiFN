@@ -68,14 +68,14 @@
 }
 
 
-#box{
+#box {
       color: green;
       position: absolute;
       left: 33px;
       bottom: 50px;
 }
 
-#score{
+#score {
       color: red;
       position: absolute;
       right: 333px;
