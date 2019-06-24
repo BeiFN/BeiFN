@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #select{
+            width: 200px;
+            text-align: center;
+            height:20px;
+            line-height: 20px;
+            background: rgba(0,0,0,.3);
+            border: 2px solid #000;
+            box-shadow: 0 0  5px #000;
+            position:relative;
+
+        }
+        #list{
+            width: 190px;
+            padding: 0 5px;
+            position: absolute;
+            top: 20px;
+            background: rgba(0,0,0,.3);
+            display: none;
+        }
+        #list p{
+            line-height: 20px;
+            text-align: center;
+            border-bottom:1px solid #ddd;
+        }
+        #list p:hover{
+            background: #fff;
+            transition: all .5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="select">
+        <p id="pp">请选择游戏</p>
+        <div id="list">
+            <p>英雄联盟</p>
+            <p>绝地求生</p>
+            <p>穿越火线</p>
+            <p>APEX</p>
+            <p>和平传说</p>
+            <p>QQ飞车</p>
+        </div>
+    </div>
+    <script>
+        //点击显示list
+        //选中p标签改变  文字
+        //  点击空白处隐藏list；
+        var select = document.getElementById("select");
+        var list = document.getElementById("list");
+        var pp= document.getElementById("pp");
+        var child_list = list.children;
+        select.onclick =function (evt){
+            var e = evt || event;
+            list.style.display = "block";
+            //e.stopPropagation ();   组织冒泡事件
+            //老版本 IE；IE8;
+
+            typeof e.stopPropagation === "function"? e.stopPropagation():e.cancelBubble= true; 
+        }
+        document.onclick =function (){
+            list.style.display = "none";
+        }
+     
+
+       list.onclick = function(evt){
+            var e= evt || event;
+            var target = e.target || e.srcElement;
+            pp.innerHTML = target.innerHTML;
+           
+        }
+    </script>
+</body>
+</html>
