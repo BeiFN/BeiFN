@@ -2,7 +2,7 @@
 #pao{
     width: 50px;
     height: 120px;
-    background: url("../images/炮.jpg") no-repeat center center;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat center center;
     background-size: 100%;
     position: absolute;
     bottom: 10px;
@@ -18,7 +18,7 @@
 .bullet{
     width: 30px;
     height: 30px;
-    background: url("../images/炮弹.jpg") no-repeat center center;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat center center;
     background-size: 100%;
     position: absolute;
     z-index: 3;
@@ -27,7 +27,7 @@
 .yu{
     width: 100px;
     height: 100px;
-    background: url("../images/鱼.jpg") no-repeat center center;
+    background: url("https://upload-images.jianshu.io/upload_images/16960494-f28413581f447db2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat center center;
     background-size: 100%;
     position: absolute;
     top: 0px;
