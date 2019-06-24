@@ -16,14 +16,18 @@
     color: red;
     font-size: 30px;
 }
-
+hr{
+    height: 2px;
+    background:#000;
+    margin-top:600px;
+}
 #pao span {
     position: relative;
     bottom: -40px;
     left: -2px;
 }
 
-#fish {
+.fish {
     width: 160px;
     height: 160px;
     background: url(../images/鱼.jpg) no-repeat center;
@@ -33,11 +37,21 @@
     color: red;
     font-size: 30px;
     transform: rotate(0deg);
+    /* border:2px solid #f00; */
 }
 
-.die {
+.fish.die {
     transition: all 1s;
     transform: rotate(180deg);
+}
+
+.bullet {
+    background: url(../images/炮弹.jpg) no-repeat center;
+    position: absolute;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    transition: all .5;
 }
 
 #f_span {
