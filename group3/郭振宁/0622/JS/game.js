@@ -15,7 +15,22 @@ var ele_pao_text = ele_pao.children[0];
 var clientWidth = document.documentElement.clientWidth;
 // console.log(ele_pao.offsetTop);
 var fishArr = [];
+var score = 0;
+var scoreNum = $("#scoreNum");
+var date = (new Date()).getTime() + 60000;
+var date2 = new Date(date);
 
+
+function time() {
+    var dateReduce = date2 - Date.now();
+    var seconds = parseInt(dateReduce / 1000);
+    ms.innerHTML = seconds;
+    if(seconds === 0) {
+        alert("时间到，游戏结束");
+    }
+}
+setInterval(time , 1000);
+time();
 
 
 //炮上的字符输入
@@ -99,6 +114,9 @@ function bullet(e) {
 
     for(var i=0, rec; rec = fishArr[i++]; ) {
         if(rec.letter === key) {
+            score++;
+            scoreNum.innerHTML = score;
+            console.log(score);
             clearInterval(rec.timer);
             removeFish(rec.ele);
             
