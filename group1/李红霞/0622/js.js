@@ -1,31 +1,53 @@
-var score = 0;
-var pao = document.getElementById("pao");
-var scorebtn = document.getElementById("score")
+/**
+ *      @var pao    炮台元素
+ *      @var score  成绩元素
+ *      @var time   定时器元素
+ *      @var times  时分秒元素
+ */
+var pao =$("#pao");
+var scorebtn = $("#score");
+var time = $("#time");
+var times = time.children;   
+
+//声明数组，存放屏幕上当前存在的鱼的信息
 var fishArr = [];
 
-//键盘监听函数
+//声明记录分数的变量
+var score = 0;
+
+/**
+ * 
+ * @param {选择器： String} selector 
+ * 返回值为根据选择器选择的元素或元素的伪数组
+ */
+function $(selector){
+    var ele = null;
+    return (ele = document.querySelectorAll(selector)).length > 1 ? ele : ele[0];
+}
+//键盘监听函数 用户点击键盘时触发
 document.onkeypress = handlerEnter;
 function handlerEnter(evt){
     var e = evt || window.event;
+    document.body.focus();
     //获得用户按键输入的字母
-    if((e.keyCode >= 65) && (e.keyCode <= 90)){
-        var keyEnter = String.fromCharCode(e.keyCode);
-        pao.innerHTML = keyEnter; 
-        //处理用户输入的字母
-        handlerletter(keyEnter);
+    if((e.keyCode >= 65) && (e.keyCode <= 90)){ 
+        var keyEnter = String.fromCharCode(e.keyCode); 
+        pao.innerHTML = keyEnter;  
+        //处理用户输入的字母 
+        handlerletter(keyEnter); 
     }
 }
-
+//创建炮弹的函数  用户点击键盘时触发
 function createbullet(){
     var bullet = document.createElement("div");
     bullet.className = "bullet";
     bullet.style.top = 600+"px"
     bullet.style.left = 50+"%";
-    bullet.style.marginLeft = "-15px"; 
+    bullet.style.marginLeft = "-15px";
     document.body.appendChild(bullet)
     return bullet;
 }
-
+//处理用户输入的函数，当用户输入字母后调用该函数
 function handlerletter(keyEnter){
     //已知用户输入的是字母，创建一个炮弹div
     var bullet = createbullet();
@@ -42,7 +64,7 @@ function handlerletter(keyEnter){
             clearInterval(fishItem["timedown"])
             
             fishArr.splice(i-1,1);
-
+ 
             //如果输入的内容在fishArr数组中含有，将该div从该数组中删除，并且删除该元素
             setTimeout(function(){
                 fishItem["div"].remove();
@@ -53,19 +75,14 @@ function handlerletter(keyEnter){
             // bullet.remove();
             break;
         }
-    }         
+    }      
         if(flag == true){
             score++;
         }else{
             score--;
         }
         scorebtn.innerHTML = score;
-
 }
-
-
-//设置定时器，每间隔一秒从屏幕上水平随机位置出现鱼
-var timer = setInterval(createfish, 1000);
 function fishmove(div){
     var count = 0;
     var timerdown = setInterval(function(){
@@ -80,7 +97,6 @@ function fishmove(div){
                     fishArr.splice(i-1,1);
                 }
             }
-
             setTimeout(function(){
                 div.remove();
                 clearInterval(timerdown);
@@ -89,8 +105,9 @@ function fishmove(div){
         }
     }, 50);
     return timerdown;
-
 }
+//设置定时器，每间隔一秒从屏幕上水平随机位置出现鱼
+var timer = setInterval(createfish, 1000);
 function createfish(){
     //创建鱼的div
     var div = document.createElement("div");
@@ -118,6 +135,30 @@ function createfish(){
     }
     fishArr.push(obj);
     // console.log(fishArr)
+}
+countdown(timer)
+
+//倒计时应该从页面加载时就设定屏幕的时间为1分钟，随着时间的增加，时间逐渐减少，当时间为0时推出游戏  退出游戏即停止产生鱼，retuen 0
+function countdown(timer){
+    var allTime = 120;
+    var countdownTime = setInterval(() => {
+        if(allTime < 0){
+            for(var i = 0, fish; fish = fishArr[i++];){
+                fish["div"].remove();
+            }
+            alert("游戏结束，点击重玩重新开始游戏")
+            clearInterval(timer);
+            clearInterval(countdownTime);
+            return false;
+        }
+        var hour = parseInt(allTime/3600);
+        var minite =  parseInt(allTime%3600/60);
+        var second = parseInt(allTime%60);
+        times[0].innerHTML = (parseInt(allTime/3600)>10)?hour:"0"+hour;
+        times[1].innerHTML = (parseInt(allTime%3600/60))>10?minite:"0"+minite;
+        times[2].innerHTML = (parseInt(allTime%60))>10?second:"0"+second;
+        allTime--;
+    }, 100);
 }
 
 //添加重玩按钮并设置点击监听函数
