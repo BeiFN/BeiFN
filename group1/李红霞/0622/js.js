@@ -1,12 +1,25 @@
-//声明记录分数的变量
-var score = 0;
-//获得需要修改属性的元素
+/**
+ *      @var pao    炮台元素
+ *      @var score  成绩元素
+ *      @var time   定时器元素
+ *      @var times  时分秒元素
+ */
 var pao =$("#pao");
 var scorebtn = $("#score");
 var time = $("#time");
-var times = time.children;   //获得所有的span标签
+var times = time.children;   
+
 //声明数组，存放屏幕上当前存在的鱼的信息
 var fishArr = [];
+
+//声明记录分数的变量
+var score = 0;
+
+/**
+ * 
+ * @param {选择器： String} selector 
+ * 返回值为根据选择器选择的元素或元素的伪数组
+ */
 function $(selector){
     var ele = null;
     return (ele = document.querySelectorAll(selector)).length > 1 ? ele : ele[0];
@@ -17,11 +30,11 @@ function handlerEnter(evt){
     var e = evt || window.event;
     document.body.focus();
     //获得用户按键输入的字母
-    if((e.keyCode >= 65) && (e.keyCode <= 90)){
-        var keyEnter = String.fromCharCode(e.keyCode);
-        pao.innerHTML = keyEnter; 
-        //处理用户输入的字母
-        handlerletter(keyEnter);
+    if((e.keyCode >= 65) && (e.keyCode <= 90)){ 
+        var keyEnter = String.fromCharCode(e.keyCode); 
+        pao.innerHTML = keyEnter;  
+        //处理用户输入的字母 
+        handlerletter(keyEnter); 
     }
 }
 //创建炮弹的函数  用户点击键盘时触发
@@ -30,7 +43,7 @@ function createbullet(){
     bullet.className = "bullet";
     bullet.style.top = 600+"px"
     bullet.style.left = 50+"%";
-    bullet.style.marginLeft = "-15px"; 
+    bullet.style.marginLeft = "-15px";
     document.body.appendChild(bullet)
     return bullet;
 }
