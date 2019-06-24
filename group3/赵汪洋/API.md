@@ -145,3 +145,77 @@ getElementById()
 	语法:eval(string)
 	参数:string:表示JavaScript表达式，语句或一系列语句的字符串。表达式可以包含变量以及已存在对象的属性。
 	返回值:执行指定代码之后的返回值。如果返回值为空，返回undefined
+
+#### scrollIntoView
+
+#### focus
+
+#### blur
+
+#### setInterval
+
+#### clearInterval
+
+#### setTimeOut
+
+#### clearTimeOut
+
+#### time()
+
+#### timeEnd()
+
+#### clientHeight
+	获取可视窗口的高度。
+	var clientHeight = document.documentElement.clientHeight;
+	这个属性是只读属性，对于没有定义CSS或者内联布局盒子的元素为0，否则，它是元素内部的高度(单位像素)，包含内边距，但不包括水平滚动条、边框和外边距。
+	clientHeight 可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算.
+	语法:var h = element.clientHeight;
+	返回整数 h，表示 element 的 clientHeight（单位像素）。
+	clientHeight 是只读的.
+
+#### transform
+	CSStransform属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改CSS视觉格式化模型的坐标空间来实现的。
+
+#### transition
+	指定某个元素让他的移动有个具体过程。
+	transition: all 0.5s;
+
+#### fromCharCode()
+	静态 String.fromCharCode() 方法返回由指定的UTF-16代码单元序列创建的字符串。
+
+#### toLocaleLowerCase()
+	toLocaleLowerCase()方法根据任何特定于语言环境的案例映射，返回调用字符串值转换为小写的值。
+	toLocaleLowerCase()方法返回调用该方法的字符串被转换成小写之后的值，转换规则根据任何本地化特定的大小写映射。toLocaleLowerCase()并不会影响字符串自身的值。在大多数情况下，该方法产生的结果和调用toLowerCase()的结果相同，但是在某些本地环境中，比如土耳其语，它的大小写映射并不遵循在Unicode中的默认的大小写映射，因此会有一个不同的结果。
+
+#### offsetTop
+	HTMLElement.offsetTop 为只读属性，它返回当前元素相对于其 offsetParent 元素的顶部的距离。
+
+#### offsetParent
+	HTMLElement.offsetParent 是一个只读属性，返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。offsetParent 很有用，因为 offsetTop 和 offsetLeft 都是相对于其内边距边界的
+
+#### pushState(state, title, url)
+	无刷新的向浏览器 历史最前方 加入一条记录。
+	state(any) 需要保存的数据，这个数据在触发popstate事件时保存在event.state上。
+	title(string)：
+	url(string) 需要更改的url地址。
+	ps：pushState 需要至少两个参数。
+
+#### encodeURI("")
+	通过将特定字符的每个实例替换为一个、两个、三或四转义序列来对统一资源标识符 (URI) 进行编码 (该字符的 UTF-8 编码仅为四转义序列)由两个 "代理" 字符组成)。
+
+#### substring()
+	返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。
+	语法:str.substring(indexStart[, indexEnd])
+	参数:indexStart:需要截取的第一个字符的索引，该字符作为返回的字符串的首字母。
+		indexEnd:可选。一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内。
+	返回值:包含给定字符串的指定部分的新字符串。
+	如果省略 indexEnd，substring 提取字符一直到字符串末尾。
+
+#### Math.min()
+	Math.min() 返回零个或更多个数值的最小值。
+
+#### indexOf()
+	返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
+
+#### push()
+	将一个或多个元素添加到数组的末尾，并返回该数组的新长度。
