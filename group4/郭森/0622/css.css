@@ -3,25 +3,6 @@
       margin: 0;
       padding: 0;
 }
-#grade{
-      width: 150px;
-      height: 50px;
-      line-height: 50px;
-      box-shadow: 0 0 5px yellowgreen;
-}
-#btn{
-      display: block;
-      width: 150px;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      border: 5px solid yellowgreen;
-      border-radius: 5px;
-      display: none;
-      text-decoration: none;
-      color: yellowgreen;
-      
-}
 
 #pao{
       width: 50px;
@@ -66,7 +47,8 @@
 .bullet{
       width: 30px;
       height: 30px;
-      background: url(https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background: url(https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+      );
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
@@ -78,7 +60,7 @@
       height: 3px;
       background: #ddd;
       position: absolute;
-      top: 400px;
+      top: 500px;
       width: 100%;
       z-index: 1;
 }
