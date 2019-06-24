@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 200px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 100px auto;
+            position: relative;
+        }
+        .left {
+            float: left;
+            background: blue;
+            clear: both;
+        }
+        .right {
+            float: right;
+            clear: both;
+            background: yellow;
+        }
+        input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p class="left">我知道</p>
+        <p class="right">就算世界</p>
+        <p class="left">意外</p>
+        <p class="right">和平精英</p>
+        <p class="left">好像</p>
+        <p class="right">落地成盒</p>
+        <p class="left">知道</p>
+        <input id="word" type="text">
+    </div>
+
+    <script>
+        word.onkeyup = sendMessage;
+        function sendMessage(e) {
+            console.log(1);
+            var e = e || event;
+            var str = word.value;
+            console.log(str);
+            if(e.keyCode === 13) {
+                // console.log(e.keycode);
+                box.innerHTML += '<p class="right">' + str + '</p>';
+                // word.value = "";
+            }
+        }
+    </script>
+</body>
+</html>

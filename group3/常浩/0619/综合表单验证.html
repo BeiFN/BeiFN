@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>待完成</title>
+    <style>
+        *{
+
+            padding: 0;
+            margin: 0;
+        }
+        form{
+            width: 550px;
+            height: 550px;
+            background: rgb(61, 60, 60);
+            position:absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            color: #ccc;
+            font-size: 14px;
+        }
+        b,strong,h3{
+            font-weight: normal;
+        }
+        p{
+            color: orange;
+            margin: 8px 0 0 10px;
+        }
+        span{
+
+            color: red;
+            line-height: 30px;
+        }
+        h3{
+            color: rgb(43, 104, 216);
+            padding: 10px 0 20px 0 ;
+            margin-left: 30px;
+        }
+        form>div{
+            margin: 10px 0  0  45px; 
+            position: relative;
+        }
+        .level{
+            overflow: hidden;
+        }
+        .level div{
+            float: left;
+            width: 60px;
+            height: 20px;
+            background: #ccc;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            overflow: hidden;
+        }
+        .level b,.level span{
+            float: left;
+            margin-left: 2px;
+        }
+        .level span{
+            margin-right: 8px;
+        }
+        .middels{
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        div b{
+            display: inline-block;
+            width: 150px;
+        }
+        input{
+            border-radius: 5px;
+            background: rgb(105, 104, 104);
+            border: none;
+            height: 20px;
+            margin-left: 4px;
+        }
+        .codes input{
+            width: 80px;
+        }
+        .codes>div{
+            display: inline-block;
+            text-align: center;
+            line-height: 20px;
+            background: #fff;
+            width: 75px;
+            color: #000;
+        }
+        .sub{
+            margin-left:155px ;
+            width: 90px;
+            height: 25px;
+            background: #09f;
+        }
+        .chcks{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .altres{
+            width: 170px;
+            height: 22px;
+            background: rgb(236, 212, 130);
+            color: #000;
+            font-size: 12px;
+            line-height: 22px;
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            left: 180px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <p>注意<span>*</span>为必填项</p>
+        <h3>账户详细资料</h3>
+        <div>
+            <b>用户名称</b>
+            <span>*</span>
+            <input type="text" name="" id="">
+        </div>
+        <div>
+            <b>登录密码</b>
+            <span>*</span>
+            <input type="password" name="" id="">
+        </div>
+        <div>
+            <b>确认登录密码</b>
+            <span>*</span>
+            <input type="password" name="" id="">
+        </div>
+        <div class="level">
+            <b>密码安全级别</b>
+            <span>*</span>
+            <div>低</div>
+            <div class="middels">中</div>
+            <div>高</div>
+        </div>
+        <h3>个人信息资料</h3>
+        <div>
+            <b>电子邮件</b>
+            <span>*</span>
+            <input type="text" name="" id="">
+        </div>
+        <div>
+            <b>真实姓名</b>
+            <span>*</span>
+            <input type="text" name="" id="">
+        </div>
+        <div>
+            <b>中奖通知手机</b>
+            <span>*</span>
+            <input type="text" name="" id="">
+        </div>
+        <div class="codes">
+            <b>验证码</b>
+            <span>*</span>
+            <input type="text" name="" id="">
+            <div>6472</div>
+        </div>
+        <div>
+            <input class="sub" type="submit" value="注册">
+            <input class ="chcks" type="checkbox" name="" id="">
+            <strong>10天内免登陆</strong>
+        </div>
+        <div class="altres">用户名输入不合法，请重新输入</div>
+    </form>
+</body>
+</html>

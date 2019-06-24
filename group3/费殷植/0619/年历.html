@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        user-select:none;
+    }
+    ul{
+        width: 380px;
+        height: 500px;
+        background: yellowgreen;
+    }
+    li{
+        font-size: 30px;
+        line-height: 100px;
+        text-align: center;
+        margin:20px 0 0 20px;
+        list-style: none;
+        width: 100px;
+        height: 100px;
+        float: left;
+        background: yellow;
+        position: relative;
+        color:green;
+        font-weight: bold;
+        box-shadow: 0 0 5px;
+        border-radius: 50%;
+    }
+    p{
+        position: absolute;
+        width: 100px;
+        height: 25px;
+        bottom:5px;
+        left:0;
+        text-align: center;
+        line-height: 25px;
+        font-size: 18px;
+    }
+    #foot{
+        font-size: 16px;
+        margin:0 auto;
+        width: 380px;
+        height: 100px;
+        background: greenyellow;
+        text-align: center;
+        line-height: 100px;
+    }
+    .white{
+        background: white;
+        color:red;
+        box-shadow: 0 0 5px;
+    }
+    #cont{
+        height: 600px;
+        width: 380px;
+        margin:0 auto;
+        border:10px solid green;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        position: relative;
+    }
+    span{
+        position: absolute;
+        bottom:70px;
+        left:10px;
+        
+    }
+</style>
+<body>
+    <div id="cont">
+        <ul>
+            <li>
+                1
+                <p>Jan</p>
+            </li>
+            <li>
+                2
+                <p>Feb</p>
+            </li>
+            <li>
+                3
+                <p>Mar</p>
+            </li>
+            <li>
+                4
+                <p>Apr</p>
+            </li>
+            <li>
+                5
+                <p>May</p>
+            </li>
+            <li>
+                6
+                <p>Jun</p>
+            </li>
+            <li>
+                7
+                <p>Jul</p>
+            </li>
+            <li>
+                8
+                <p>Aug</p>
+            </li>
+            <li>
+                9
+                <p>Sep</p>
+            </li>
+            <li>
+                10
+                <p>Oct</p>
+            </li>
+            <li>
+                11
+                <p>Nov</p>
+            </li>
+            <li>
+                12
+                <p>Dec</p>
+            </li>
+        </ul>
+        <span id="sp">几月活动?</span>
+        <div id="foot">
+            一年到头没啥事
+        </div>
+    </div>
+</body>
+<script>
+
+    let liList=document.querySelectorAll("li")
+    let sp=document.getElementById("sp")
+    for(let i=0;i<liList.length;i++){
+        liList[i].index=i
+        liList[i].addEventListener("click",changeColor)
+        liList[i].addEventListener("click",changeText)
+    }
+
+    function changeColor(){
+        for(let i=0;i<liList.length;i++){
+            liList[i].className=""
+        }
+        this.className="white"
+    }
+
+    let arr=["一月睡觉","二月花天酒地","三月打游戏","四月打游戏","五月打游戏","六月打游戏","七月打游戏","八月打游戏","九月打游戏","十月打游戏","十一月了，快过年了","过年了",]
+    let foot=document.getElementById("foot")
+    
+    function changeText(){
+        foot.innerHTML=arr[this.index]
+        sp.innerHTML=this.index+1+"月活动"
+    }
+
+    
+</script>
+</html>
