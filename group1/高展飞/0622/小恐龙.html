@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background-image: url("字母游戏/img/恐龙.png");
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: 150%;
+                  position: absolute;
+                  bottom: 0;
+                  left: 50%;
+
+                  transition: all .5s;
+            }
+      </style>
+</head>
+<body>
+        <div id="box">
+
+        </div>
+    <script>
+        var box = document.getElementById("box");
+        var boxHeight = box.offsetHeight;
+        document.onclick = function(evt){
+            var e =  evt || event;
+            var clientY = e.clientY;
+            var clientX = e.clientX;
+
+            var clientHeight =document.documentElement.clientHeight;
+            box.style.bottom = clientHeight - clientY - boxHeight+"px";
+            box.style.left = clientX +"px";
+            box.style.transform = "rotate(0deg)";
+            setTimeout(function(){
+                box.style.transform = "rotate(360deg)";
+                box.style.bottom = 0;
+            },1000)
+        }
+    </script>
+</body>
+</html>
