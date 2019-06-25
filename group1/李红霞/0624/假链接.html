@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击下载</button>
+    <script>
+        //假链接的实现  当点击button按钮时首先会弹出一个广告链接，第二次点击才会出现真正的链接 
+        //button绑定click事件，设定一个flag，当第一次点击链接时flag的值设为1，第二次点击判断是否flag为1，如果为1就删除第一个事件
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", jump);
+        btn.addEventListener("click", download);
+        var flag = 0;
+        //绑定的两个事件当点击时会同时执行，需要先执行第一个，之后再执行第二个
+        function jump(){
+            if(flag == 0){           
+                open("http://www.baidu.com");
+                removeEventListener("click", jump);
+            }        
+        }
+        function download(){
+            if(flag == 1){
+                location.href = "download.html";
+                flag = 0;
+            }
+            flag = 1;  //存在执行的顺序问题，只有当前一个判断语句执行之后才进行赋值操作
+        }
+    </script>
+</body>
+</html>

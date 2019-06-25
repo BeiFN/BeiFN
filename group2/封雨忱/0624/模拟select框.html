@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟select框</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #select{
+            width:200px;
+            height:25px;
+            background: rgba(0,0,0,0.3);
+            text-align: center;
+            border: 2px solid #000;
+        }
+        #list{
+            display:none;
+        }
+        #list p{
+            width: 200px;
+            height: 25px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #ffffff;
+            text-align: center;
+        }
+        #list p:hover{
+            background: #ffffff;
+            transition: all 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <p id="select">选择下列游戏</p>
+    <div id="list">
+        <p>英雄联盟</p>
+        <p>Battlefield 1</p>
+        <p>Overwatch</p>
+        <p>刺客信条</p>
+        <p>极品飞车</p>
+    </div>
+    <script>
+        var select=document.getElementById('select');
+        var list=document.getElementById('list');
+        function similarSelect(evt){
+            var e=evt||window.event;
+            list.style.display='block';
+            document.addEventListener('click',recovery);
+            e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        }
+        function recovery(){
+            list.style.display='none';
+        }
+        select.addEventListener('click',similarSelect);
+    </script>
+</body>
+</html>
