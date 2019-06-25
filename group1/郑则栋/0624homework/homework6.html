@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>右键菜单</title>
+
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			ul {
+				float: left;
+				margin: 10px;
+			}
+
+			ul>li {
+				padding: 10px;
+			}
+
+			.color_red {
+				background: red;
+			}
+
+			.optionsMenu {
+				position: absolute;
+				background: red;
+				display: none;
+
+			}
+		</style>
+	</head>
+	<body>
+
+		<ul id="ul1">
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+		</ul>
+		<ul id="ul2">
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+			<li>菜单二</li>
+		</ul>
+		<ul class="optionsMenu">
+			<li>复制</li>
+			<li>粘贴</li>
+			<li>剪切</li>
+			<li>删除</li>
+		</ul>
+
+		<script type="text/javascript">
+			var something = null;
+			var menu = document.querySelector(".optionsMenu");
+			var ul1 = document.getElementById("ul1");
+			var ul2 = document.getElementById("ul2");
+			var myTarget = null;
+			document.oncontextmenu = function(eve) {
+				var e = eve || event;
+				typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+				menu.style.display = "block";
+				menu.style.left = e.clientX + "px";
+				menu.style.top = e.clientY + "px";
+				myTarget = e.target || e.srcElement;
+			}
+			document.onclick = function() {
+				menu.style.display = "none";
+			}
+			menu.addEventListener("click", dianji);
+
+			function dianji(eve) {
+				var e = eve || event;
+				var target=e.target||e.srcElement;
+				console.log(1);
+				switch (target.innerHTML) {
+					case "复制":
+						something = myTarget.cloneNode(true);
+						break;
+					case "粘贴":
+						myTarget.appendChild(something);
+						break;
+					case "剪切":
+						something = myTarget;
+						break;
+					case "删除":
+						myTarget.remove();
+						break;
+
+				}
+			}
+		</script>
+
+	</body>
+</html>
