@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击下载</button>
+    <script>
+        var dl = document.getElementById("btn");
+        var time = 0;
+        dl.addEventListener("click",moveToAd);
+        dl.addEventListener("click",getDownload);
+
+        function moveToAd(){
+            open("http://www.baidu.com");
+            //删除事件处理函数
+
+            dl.removeEventListener("click",moveToAd);
+        }
+        function getDownload(){
+            if(time==0){return time++}
+            // location.href = "download.html";
+            open("test.html");
+        }
+        
+        
+        
+    </script>
+    
+</body>
+</html>
