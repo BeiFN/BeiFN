@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #kuang {
+            width: 120px;
+            height: 20px;
+            border: 1px solid gray;
+            box-shadow: 0 0 5px #3333ff;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #box{
+            display: none;
+            background: rgba(0, 0, 0, .3);
+            width: 120px;
+            border: 1px solid grey;
+        }
+        li {
+            width: 120px;
+            height: 20px;
+            list-style: none;
+            text-align: center;
+            line-height: 20px;
+            border-bottom: 1px solid gray;
+            cursor: default;
+        }
+        li:hover{
+            background: rgb(231, 230, 230);
+            box-shadow: 0 0 2px white;
+            color: rgb(100, 100,100);
+            transition: all .5s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="kuang">请选择</div>
+    <ul id="box">
+        <li>腾讯</li>
+        <li>百度</li>
+        <li>阿里</li>
+        <li>搜狐</li>
+        <li>新浪</li>
+    </ul>
+    <script>
+        var kuang = document.getElementById("kuang");
+        var box = document.getElementById("box");
+        kuang.onclick = function (evt){
+            var e = evt||event;
+            box.style.display = "block";
+            //因为事件冒泡的原因 这里让box显示之后在document层又会让box隐藏 所以下面设置一个阻止冒泡
+            e.stopPropagation();
+        }
+        //给父元素添加事件  下面就可以声明多个其他的事件  通过事件源的方式就可以作用于其他的事件
+        box.onclick = function(evt){
+            var e = evt||event;
+            //兼容性写法
+            var target = e.target||e.srcElement;
+            kuang.innerHTML = target.innerHTML  
+            box.style.display = "none";
+            // console.log(target)
+        }
+        document.onclick = function(){
+            box.style.display = "none"
+        }
+    </script>
+</body>
+
+</html>
