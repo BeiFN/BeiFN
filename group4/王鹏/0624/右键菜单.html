@@ -16,7 +16,7 @@
             .optionsMenu{
                   width: 200px;
                   height: 200px;
-                  background: rgba(0,0,0,1);
+                  background: rgba(0,0,0,0.3);
                   display: none;
                   position: absolute;
             }
@@ -106,11 +106,11 @@
 
             document.oncontextmenu = function(evt){
                   var e = evt || event;
-			
                   typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
-                  // return false; 约等于 e.returnValue = false;
+                  // return false;
                   // 三目运算之中，不允许存在return;
-                  
+                  // true ? return 1 : return  2;
+                  // alert(1);
                   ele_menu.style.display = "block";
                   ele_menu.style.left = e.clientX + "px";
                   ele_menu.style.top = e.clientY + "px";

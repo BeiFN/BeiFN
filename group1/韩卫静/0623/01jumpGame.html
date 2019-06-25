@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #rabbit{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-image: url("https://upload-images.jianshu.io/upload_images/18462345-237e64ce5a895417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+            background-size: 100%;
+            bottom: 0;
+            left: 50%;
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="rabbit">
+
+    </div>
+
+    <script>
+        var clienty = document.documentElement.clientHeight;
+        console.log(clienty);
+        var box = document.getElementById("rabbit");
+        document.onclick = function(evt){
+            var e = evt || event;
+            var height = e.clientY;
+            var left = e.clientX;
+            console.log(height);
+            box.style.bottom = clienty- height- 50 + "px";
+            box.style.left = left + "px";
+            box.style.transform = "rotate(0deg)";
+
+            setTimeout(function() {
+                box.style.transform = "rotate(360deg)";                
+                box.style.bottom = 0; 
+            }, 500);
+            
+        }
+    </script>
+</body>
+</html>
