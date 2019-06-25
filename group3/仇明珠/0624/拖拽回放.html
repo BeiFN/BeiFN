@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:100px;
+            height:100px;
+            background: url("https://upload-images.jianshu.io/upload_images/18442274-ef56fcb5f6b2e95a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
+            background-size: 100px 100px;
+            position:absolute;
+        }
+        .btn{
+            position: absolute;
+            top:0;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="btn">回放</button>
+    <script>
+        var box=document.querySelector(".box");
+        var btn=document.querySelector(".btn");
+        var GLOBAL={};
+        var positionArr=[];
+        function dragStart(evt){
+            var e =evt||window.event;
+            GLOBAL.offsetX=e.offsetX;
+            GLOBAL.offsetY=e.offsetY;
+            document.addEventListener("mousemove",dragMove);
+        }
+        function dragMove(evt){
+            var e=evt||window.event;
+            var nleft=e.clientX;
+            var ntop=e.clientY;
+            nleft-=GLOBAL.offsetX;
+            ntop-=GLOBAL.offsetY;
+            box.style.left=nleft+"px";
+            box.style.top=ntop+"px";
+            positionArr.push({left:nleft,top:ntop});
+            console.log(positionArr);
+        }
+        function dragEnd(){
+            document.removeEventListener("mousemove",dragMove);
+        }
+        function goBack(){
+            console.log(positionArr);
+            var count=positionArr.length-1;
+            var timer=setInterval(function(){
+                box.style.left=positionArr[count].left+"px";
+                box.style.top=positionArr[count].top+"px";
+                count--;
+                if(count<0){
+                    clearInterval(timer);
+                    positionArr.length=0;
+                }
+            },50)
+        }
+        box.addEventListener("mousedown",dragStart);
+        box.addEventListener("mouseup",dragEnd);
+        btn.addEventListener("click",goBack);
+    </script>
+</body>
+</html>
