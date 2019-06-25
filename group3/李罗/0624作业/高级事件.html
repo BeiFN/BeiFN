@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高级事件</title>
+    <style>
+        body,html{width:100%;height: 100%;}
+        div{padding:38px;border: 10px solid #eaeaea;border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <div id="box5" style="background:firebrick">5
+        <div id="box4" style="background:yellow">4
+            <div id="box3"  style="background:green">3
+                <div id="box2 " style="background:blue">2
+                    <div id="box1" style="background: fuchsia">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var box1=document.getElementById("box1");
+        var box5=document.getElementById("box5");
+        box1.addEventListener("click",randonmBoxColor);
+        box1.addEventListener("click",alertTip);
+        function randonmBoxColor(){
+            this.style.background="#"+Math.round(Math.random()*parseInt("ffffff",16)).toString(16).padstart(6,0);
+        }
+
+        function alertTip(){
+            var mask=document.createElement("div");
+            var content=document.createElement("div");
+
+            mask.style.cssText="width:100%;height:100%;background:rgba(0,0,f,0.3);position:absolute;left:0;top:0";
+            content.innerHTML="hahahha ";
+
+            content.style.cssText="width:30%;height:30%;line-height:30%;text-align:center;positon:absolute;left:0;top:0;bottom:0;right:0;margin:auto;background:#0f0;";
+
+            document.body.appendChild(mask);
+            mask.appendChild(content);
+
+            mask.addEventListener("click",function(){
+                this.remove();
+            })
+        }
+    </script>
+</body>
+</html>
