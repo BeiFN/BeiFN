@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #caidan {
+            width: 100px;
+            text-align: center;
+            background: rgba(155, 155, 155, .3);
+            display: none;
+            position: absolute;
+        }
+
+        #caidan li {
+            list-style: none;
+            line-height: 30px;
+            border-bottom: 1px solid #666;
+        }
+
+        #caidan li:hover {
+            transition: all 1s;
+            background: #faa;
+            color: white;
+            box-shadow: 0 0 10px #666;
+        }
+
+        #list1 {
+            float: left;
+            margin-right: 20px;
+        }
+        #list2{
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="caidan">
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>剪贴</li>
+        <li>重新加载</li>
+        <li>删除</li>
+    </ul>
+    <ul id="list1">
+        <h2>列表1</h2>
+        <li>haha</li>
+        <li>haha</li>
+        <li>haha</li>
+        <li>haha</li>
+        <li>haha</li>
+    </ul>
+    <ul id="list2">
+        <h2>列表2</h2>
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+        <li>哈哈</li>
+    </ul>
+</body>
+<script>
+    var caidan = document.getElementById("caidan");
+    var target = null;
+    document.addEventListener("contextmenu", caidanDisplay);
+    document.addEventListener("click", caidanHidden);
+    function caidanDisplay(evt) {
+        var e = evt || event;
+        typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+        caidan.style.display = "block";
+        caidan.style.left = e.clientX + "px";
+        caidan.style.top = e.clientY + "px";
+        target = e.target || e.srcElement;
+        target.style.background = "green";
+    }
+    function caidanHidden(){
+        caidan.style.display = "none"
+    }
+</script>
+
+</html>

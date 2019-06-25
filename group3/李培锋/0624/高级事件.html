@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{width: 100%;height: 100%;}
+        div{
+                padding: 50px;
+                border: 10px solid #ddd;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box5" style="background:deepskyblue">
+        5
+        <div style="background: deeppink">
+            4
+            <div style="background: yellowgreen"> 
+                3
+                <div style="background: peru">
+                    2
+                    <div id="box1" style="background: pink">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /**
+        *给同一个事件添加两个事件处理函数；
+        *addEventListener("事件"，事件处理函数)
+        *需求，变色，弹框，弹框消失
+        *写css，业务代码，完善功能函数   点击box5，创建mask蒙版，创建弹出的内容框（内容框消失方式）
+        *******/
+        var box1= document.getElementById("box1");
+        var box5 = document.getElementById("box5");
+        box1.addEventListener("click",randomBoxColor);
+        box1.addEventListener("click",alertTip);
+        function randomBoxColor(){
+            this.style.background = "#"+Math.round(Math.random()*parseInt("ffffff",16)).toString(16).padStart(6,"0");
+
+        }
+        function alertTip(){
+            var mask = document.createElement("div");
+            var content = document.createElement("div");
+            mask.style.cssText = "width:100%;height:100%;background:rgba(0,0,0,.3);position:absolute;z-index:999;left:0;top:0";
+            content.innerHTML="hello world!";
+            content.style.cssText="width:20%;height:20%;text-align:center;position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;background: #555666;";
+            document.body.appendChild(mask);
+            mask.appendChild(content);
+            mask.addEventListener("click",function(){
+                this.remove();
+            })
+        }
+    </script>
+</body>
+</html>
