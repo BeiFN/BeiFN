@@ -1,0 +1,47 @@
+#bar {
+    box-sizing: border-box;
+    border: 5px solid #ccff99;
+    width: 100%;
+    height: 80px;
+    background-color: #cccccc;
+    margin-top: 20px;
+    position: relative;
+}
+
+#horn {
+    width: 40px;
+    height: 40px;
+    background-image: url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+    background-size: 100%;
+    background-position: center;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#progress {
+    width: 1130px;
+    height: 10px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -565px;
+    top: 30px;
+    border-radius: 2px;
+}
+
+#progress_bar {
+    width: 10px;
+    height: 10px;
+    background: #b6b6b6;
+}
+
+#progress_point {
+    width: 30px;
+    height: 30px;
+    background: #ccffff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: -10px;
+    box-shadow: 0 0 5px #ddd;
+}
