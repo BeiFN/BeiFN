@@ -37,7 +37,7 @@ unshift();
 删除最后一个，返回删除元素
 pop();
 添加都最后  返回
-push();
+push();新数组长度
 splice(开始位置，数量，"用什么截取");
 array.splice(start,删除个数,在删除位置添加的元素)
 array.slice(start[,end])可以只有开头
