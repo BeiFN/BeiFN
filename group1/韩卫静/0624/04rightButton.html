@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>右键菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #rightMenu{
+            width: 150px;
+            border: 2px solid  #88F;
+            border-radius: 4px;
+            box-shadow: 0 0 5px #ddd;
+            position: absolute;
+            display: none;
+        }
+        li{list-style: none;}
+        #rightBtn li{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px dashed #333;
+            transition: all 0.3s;
+        }
+        #rightBtn li:hover {
+            background-color: #88f;
+            box-shadow: 0 0 5px #ccc;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="rightMenu">
+        <ul id="rightBtn">
+            <li>复制</li>
+            <li>粘贴</li>
+            <li>剪切</li>
+            <li>删除</li>
+        </ul>
+    </div>
+
+
+    <script>
+        var rightMenu = document.getElementById("rightMenu");
+        var rightBtn = document.getElementById("rightBtn");
+
+        document.oncontextmenu = function(evt){
+            var e = evt || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            rightMenu.style.left = e.clientX + "px";
+            rightMenu.style.top = e.clientY + "px";
+            rightMenu.style.display = "block";
+        }
+
+        document.onclick = function(){
+            rightMenu.style.display = "none";
+        }
+    </script>
+</body>
+</html>

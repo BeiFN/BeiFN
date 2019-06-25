@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export2.dtd">
+<en-export export-date="20190625T001607Z" application="Evernote/Windows" version="6.x">
+<note><title>6.24 事件</title><content><![CDATA[<!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'><en-note><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">事件触发分三步 ;</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">捕获</li>
+<li style="line-height: 160%; box-sizing: content-box;">目标阶段;</li>
+<li style="line-height: 160%; box-sizing: content-box;">冒泡阶段;<br/>
+两套关注流程;<br/>
+IE: 冒泡; 目标阶段 =&gt; 冒泡阶段；<br/>
+NetSpace : 捕获; 捕获阶段 =&gt; 目标阶段</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">&lt;div&gt;outpt 3
+    &lt;div&gt;outpu 2
+        &lt;div&gt;outpt 1&lt;/div&gt;
+    &lt;/div&gt;
+ &lt;/div&gt;
+冒泡 1 2 3
+阻止 1    1
+</code></pre>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">浏览器 默认冒泡 事件<br/>
+函数式编程;<br/>
+代码以区块的形式进行划分;<br/>
+高级 绑定 -监听<br/>
+dom node addEventListener("事件名",函数,默认 false)<br/>
+默认 ： 冒泡<br/>
+监听  可多个处理函数<br/>
+removeEventListener()     两个形参</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">var dl = document.getElementById("download");
+var time = 0;
+dl.addEventListener( "click" , moveToAdve );
+dl.addEventListener( "click" , getDownloadMsg );
+function moveToAdve(){
+open("http://www.baidu.com");
+// 删除事件处理函数
+dl.removeEventListener("click",moveToAdve);
+}
+function getDownloadMsg(){
+if(time === 0) { return time ++}
+location.href = "download.html";
+}
+removeEventListener 接受的参数必须是两个;
+1.事件名 , 2. 事件处理函数的地址;
+事件处理函数地址出问题，导致事件无法正常删除;
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">阻止 事件冒泡
+1. e.stopPropagation?e.stopPropagation : e.cancalBubble = true;
+2typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+3.if(e.stopPropagation)
+{
+e.stopPropagation();
+}
+else{e.cancalBubble = true;
+}
+
+typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+
+
+
+</code></pre>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">拖拽</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+1. 鼠标按下; 拖拽开始;
+2. 鼠标移动; 拖拽进行中;
+3. 鼠标抬起; 拖拽结束;
+
+
+</code></pre>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">call 在调用阶段改变函数的this指向 参数区分在第二个参数之后的所有实参和形参一一对应<br/>
+apply 在调用阶段改变函数的指向 在第二个参数和arguments 逐个赋值</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">bind  在声明阶段固定函数的this指向 创建阶段 复制一个
+</code></pre>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">bind : 用来在定义函数时改变函数内部的this指向用的。<br/>
+一旦函数被bind了, 意味着所有函数的this指向规则对其都失效。 this指向<br/>
+永远被锁定为当初建立时设定的this指向。</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">bind 除了改变this指向之外,固定参数的功能;<br/>
+function foo(a,b,c,d,e,f){<br/>
+console.log(a,b,c , d , e , f)<br/>
+}<br/>
+var bindFoo = foo.bind({name : "吴彦祖"} , 1 ,2 ,3);<br/>
+bindFoo(4,5,6);//12345 6<br/>
+// bind 方法除了可以去更改this指向之外,还可以固定具体一个形参的值;<br/>
+// 把正常的参数顺序后延;</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">柯里化 , 函数内套函数调用 !;<br/>
+// bind =&gt; 可以返回一个新函数;<br/>
+// bind =&gt; 新函数的this指向永远不变;</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">console.log(this,"i'm foo");
+}
+function myBind( fn , _this ){
+return function(){
+console.log("新函数");
+fn.call(_this);
+// fn.apply(_this)
+// fn.bind(_this) 
+bind 一开始就 给定了 this  用 apply 等 一直是   t这个this
+// _this.fn;
+}
+}
+// console.log( myBind() );
+foo = myBind(foo , {name : "吴彦祖"});
+foo();
+</code></pre>
+</div><center style='display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden'>%0A%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E5%88%86%E4%B8%89%E6%AD%A5%20%3B%0A%201.%20%E6%8D%95%E8%8E%B7%0A%202.%20%E7%9B%AE%E6%A0%87%E9%98%B6%E6%AE%B5%3B%0A%203.%20%E5%86%92%E6%B3%A1%E9%98%B6%E6%AE%B5%3B%0A%20%E4%B8%A4%E5%A5%97%E5%85%B3%E6%B3%A8%E6%B5%81%E7%A8%8B%3B%0A%20IE%3A%20%E5%86%92%E6%B3%A1%3B%20%E7%9B%AE%E6%A0%87%E9%98%B6%E6%AE%B5%20%3D%3E%20%E5%86%92%E6%B3%A1%E9%98%B6%E6%AE%B5%EF%BC%9B%0A%20NetSpace%20%3A%20%E6%8D%95%E8%8E%B7%3B%20%E6%8D%95%E8%8E%B7%E9%98%B6%E6%AE%B5%20%3D%3E%20%E7%9B%AE%E6%A0%87%E9%98%B6%E6%AE%B5%0A%60%60%60%0A%3Cdiv%3Eoutpt%203%0A%20%20%20%20%3Cdiv%3Eoutpu%202%0A%20%20%20%20%20%20%20%20%3Cdiv%3Eoutpt%201%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%3C%2Fdiv%3E%0A%E5%86%92%E6%B3%A1%201%202%203%0A%E9%98%BB%E6%AD%A2%201%20%20%20%201%0A%60%60%60%0A%20%E6%B5%8F%E8%A7%88%E5%99%A8%20%E9%BB%98%E8%AE%A4%E5%86%92%E6%B3%A1%20%E4%BA%8B%E4%BB%B6%0A%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%3B%0A%E4%BB%A3%E7%A0%81%E4%BB%A5%E5%8C%BA%E5%9D%97%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%88%92%E5%88%86%3B%0A%20%20%E9%AB%98%E7%BA%A7%20%E7%BB%91%E5%AE%9A%20-%E7%9B%91%E5%90%AC%0A%20%20dom%20node%20addEventListener(%22%E4%BA%8B%E4%BB%B6%E5%90%8D%22%2C%E5%87%BD%E6%95%B0%2C%E9%BB%98%E8%AE%A4%20false)%20%0A%20%20%E9%BB%98%E8%AE%A4%20%EF%BC%9A%20%E5%86%92%E6%B3%A1%20%20%20%0A%20%20%E7%9B%91%E5%90%AC%20%20%E5%8F%AF%E5%A4%9A%E4%B8%AA%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%0A%20%20removeEventListener()%20%20%20%20%20%E4%B8%A4%E4%B8%AA%E5%BD%A2%E5%8F%82%0A%20%20%0A%20%60%60%60%20%20%0Avar%20dl%20%3D%20document.getElementById(%22download%22)%3B%0Avar%20time%20%3D%200%3B%0Adl.addEventListener(%20%22click%22%20%2C%20moveToAdve%20)%3B%0Adl.addEventListener(%20%22click%22%20%2C%20getDownloadMsg%20)%3B%0Afunction%20moveToAdve()%7B%0Aopen(%22http%3A%2F%2Fwww.baidu.com%22)%3B%0A%2F%2F%20%E5%88%A0%E9%99%A4%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%0Adl.removeEventListener(%22click%22%2CmoveToAdve)%3B%0A%7D%0Afunction%20getDownloadMsg()%7B%0Aif(time%20%3D%3D%3D%200)%20%7B%20return%20time%20%2B%2B%7D%0Alocation.href%20%3D%20%22download.html%22%3B%0A%7D%0AremoveEventListener%20%E6%8E%A5%E5%8F%97%E7%9A%84%E5%8F%82%E6%95%B0%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%A4%E4%B8%AA%3B%0A1.%E4%BA%8B%E4%BB%B6%E5%90%8D%20%2C%202.%20%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%9C%B0%E5%9D%80%3B%0A%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80%E5%87%BA%E9%97%AE%E9%A2%98%EF%BC%8C%E5%AF%BC%E8%87%B4%E4%BA%8B%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%88%A0%E9%99%A4%3B%0A%60%60%60%0A%60%60%60%0A%E9%98%BB%E6%AD%A2%20%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%0A1.%20e.stopPropagation%3Fe.stopPropagation%20%3A%20e.cancalBubble%20%3D%20true%3B%0A2typeof%20e.stopPropagation%20%3D%3D%3D%20%22function%22%20%3F%20e.stopPropagation()%20%3A%20e.cancelBubble%20%3D%20true%3B%0A3.if(e.stopPropagation)%0A%7B%0Ae.stopPropagation()%3B%0A%7D%0Aelse%7Be.cancalBubble%20%3D%20true%3B%0A%7D%0A%0Atypeof%20e.preventDefault%20%3D%3D%3D%20%22function%22%20%3F%20e.preventDefault()%20%3A%20e.returnValue%20%3D%20false%3B%0A%0A%0A%0A%60%60%60%0A%E6%8B%96%E6%8B%BD%20%0A%60%60%60%0A%0A1.%20%E9%BC%A0%E6%A0%87%E6%8C%89%E4%B8%8B%3B%20%E6%8B%96%E6%8B%BD%E5%BC%80%E5%A7%8B%3B%0A2.%20%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%3B%20%E6%8B%96%E6%8B%BD%E8%BF%9B%E8%A1%8C%E4%B8%AD%3B%0A3.%20%E9%BC%A0%E6%A0%87%E6%8A%AC%E8%B5%B7%3B%20%E6%8B%96%E6%8B%BD%E7%BB%93%E6%9D%9F%3B%0A%0A%0A%60%60%60%0Acall%20%E5%9C%A8%E8%B0%83%E7%94%A8%E9%98%B6%E6%AE%B5%E6%94%B9%E5%8F%98%E5%87%BD%E6%95%B0%E7%9A%84this%E6%8C%87%E5%90%91%20%E5%8F%82%E6%95%B0%E5%8C%BA%E5%88%86%E5%9C%A8%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0%E4%B9%8B%E5%90%8E%E7%9A%84%E6%89%80%E6%9C%89%E5%AE%9E%E5%8F%82%E5%92%8C%E5%BD%A2%E5%8F%82%E4%B8%80%E4%B8%80%E5%AF%B9%E5%BA%94%0Aapply%20%E5%9C%A8%E8%B0%83%E7%94%A8%E9%98%B6%E6%AE%B5%E6%94%B9%E5%8F%98%E5%87%BD%E6%95%B0%E7%9A%84%E6%8C%87%E5%90%91%20%E5%9C%A8%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0%E5%92%8Carguments%20%E9%80%90%E4%B8%AA%E8%B5%8B%E5%80%BC%0A%0A%20%20%20%20bind%20%20%E5%9C%A8%E5%A3%B0%E6%98%8E%E9%98%B6%E6%AE%B5%E5%9B%BA%E5%AE%9A%E5%87%BD%E6%95%B0%E7%9A%84this%E6%8C%87%E5%90%91%20%E5%88%9B%E5%BB%BA%E9%98%B6%E6%AE%B5%20%E5%A4%8D%E5%88%B6%E4%B8%80%E4%B8%AA%0A%0Abind%20%3A%20%E7%94%A8%E6%9D%A5%E5%9C%A8%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E6%97%B6%E6%94%B9%E5%8F%98%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E6%8C%87%E5%90%91%E7%94%A8%E7%9A%84%E3%80%82%0A%E4%B8%80%E6%97%A6%E5%87%BD%E6%95%B0%E8%A2%ABbind%E4%BA%86%2C%20%E6%84%8F%E5%91%B3%E7%9D%80%E6%89%80%E6%9C%89%E5%87%BD%E6%95%B0%E7%9A%84this%E6%8C%87%E5%90%91%E8%A7%84%E5%88%99%E5%AF%B9%E5%85%B6%E9%83%BD%E5%A4%B1%E6%95%88%E3%80%82%20this%E6%8C%87%E5%90%91%0A%E6%B0%B8%E8%BF%9C%E8%A2%AB%E9%94%81%E5%AE%9A%E4%B8%BA%E5%BD%93%E5%88%9D%E5%BB%BA%E7%AB%8B%E6%97%B6%E8%AE%BE%E5%AE%9A%E7%9A%84this%E6%8C%87%E5%90%91%E3%80%82%0A%0A%0Abind%20%E9%99%A4%E4%BA%86%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91%E4%B9%8B%E5%A4%96%2C%E5%9B%BA%E5%AE%9A%E5%8F%82%E6%95%B0%E7%9A%84%E5%8A%9F%E8%83%BD%3B%0Afunction%20foo(a%2Cb%2Cc%2Cd%2Ce%2Cf)%7B%0Aconsole.log(a%2Cb%2Cc%20%2C%20d%20%2C%20e%20%2C%20f)%0A%7D%0Avar%20bindFoo%20%3D%20foo.bind(%7Bname%20%3A%20%22%E5%90%B4%E5%BD%A6%E7%A5%96%22%7D%20%2C%201%20%2C2%20%2C3)%3B%0AbindFoo(4%2C5%2C6)%3B%2F%2F12345%206%0A%2F%2F%20bind%20%E6%96%B9%E6%B3%95%E9%99%A4%E4%BA%86%E5%8F%AF%E4%BB%A5%E5%8E%BB%E6%9B%B4%E6%94%B9this%E6%8C%87%E5%90%91%E4%B9%8B%E5%A4%96%2C%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%9B%BA%E5%AE%9A%E5%85%B7%E4%BD%93%E4%B8%80%E4%B8%AA%E5%BD%A2%E5%8F%82%E7%9A%84%E5%80%BC%3B%0A%2F%2F%20%E6%8A%8A%E6%AD%A3%E5%B8%B8%E7%9A%84%E5%8F%82%E6%95%B0%E9%A1%BA%E5%BA%8F%E5%90%8E%E5%BB%B6%3B%0A%0A%0A%20%20%20%20%0A%20%20%0A%E6%9F%AF%E9%87%8C%E5%8C%96%20%2C%20%E5%87%BD%E6%95%B0%E5%86%85%E5%A5%97%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%20!%3B%0A%2F%2F%20bind%20%3D%3E%20%E5%8F%AF%E4%BB%A5%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E6%96%B0%E5%87%BD%E6%95%B0%3B%0A%2F%2F%20bind%20%3D%3E%20%E6%96%B0%E5%87%BD%E6%95%B0%E7%9A%84this%E6%8C%87%E5%90%91%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%8F%98%3B%0A%0A%60%60%60function%20foo()%7B%0Aconsole.log(this%2C%22i'm%20foo%22)%3B%0A%7D%0Afunction%20myBind(%20fn%20%2C%20_this%20)%7B%0Areturn%20function()%7B%0Aconsole.log(%22%E6%96%B0%E5%87%BD%E6%95%B0%22)%3B%0Afn.call(_this)%3B%0A%2F%2F%20fn.apply(_this)%0A%2F%2F%20fn.bind(_this)%20%0Abind%20%E4%B8%80%E5%BC%80%E5%A7%8B%E5%B0%B1%20%E7%BB%99%E5%AE%9A%E4%BA%86%20this%20%20%E7%94%A8%20apply%20%E7%AD%89%20%E4%B8%80%E7%9B%B4%E6%98%AF%20%20%20t%E8%BF%99%E4%B8%AAthis%0A%2F%2F%20_this.fn%3B%0A%7D%0A%7D%0A%2F%2F%20console.log(%20myBind()%20)%3B%0Afoo%20%3D%20myBind(foo%20%2C%20%7Bname%20%3A%20%22%E5%90%B4%E5%BD%A6%E7%A5%96%22%7D)%3B%0Afoo()%3B%0A%20%20%20%60%60%60%0A%0A%0A%0A</center></en-note>]]></content><created>20190624T025811Z</created><updated>20190624T130440Z</updated><note-attributes><author>2205524875@qq.com</author><source>desktop.win</source><source-application>yinxiang.win32</source-application><content-class>yinxiang.markdown</content-class></note-attributes></note></en-export>
