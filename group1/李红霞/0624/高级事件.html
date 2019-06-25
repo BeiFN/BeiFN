@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        #box1{
+            width: 800px;
+            height: 200px;
+            padding: 100px;
+            background: #dddddd;
+            margin: 0 auto;
+        }
+        #box2{
+            width: 600px;
+            height: 200px;
+            background: #838383;
+            margin: 0 auto
+        }
+        .maskk{
+            width: 1000px;
+            height: 400px;
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 300px;
+            text-align: center;
+        }
+        .tipss{
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            position: absolute;
+            z-index: 10;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    <script>
+    //高级事件绑定程序：浏览器对事件的处理分为两种，第一种是捕获事件，第二种是事件冒泡 事件是从window document html body 各个元素
+    //设定两个div，当点击最内层的div时外部的元素也会响应事件，内部元素和外部元素都绑定click事件
+    //设定事件的拦截，当点击内部div时外部的div不会作出响应
+    //点击遮罩并弹出提示框，再次点击消失
+    // var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    // box1.addEventListener("click", box1handlerClick, false);
+    // box2.addEventListener("click", box2handlerClick, false);
+    // function box1handlerClick(){
+    //     alert("shallowgray")
+    // }
+    // function box2handlerClick(evt){
+    //     alert("deepgray");
+    //     //阻止事件冒泡
+    //     var e = evt||event;
+    //     e.stopPropagation();
+    // }
+
+    //点击内层div时，绑定两个事件  1.产生随机颜色 2.出现一个遮罩并且出现提示框
+    box2.addEventListener("click", changeColor);
+    box2.addEventListener("click", mask);
+    
+    function changeColor(){
+        var color = parseInt(Math.random()*parseInt("ffffff", 16)).toString(16).padStart(6,"0");
+        this.style.backgroundColor = "#"+color;
+    }
+    function mask(){
+        var div = document.createElement("div");
+        var tips = document.createElement("div");
+        
+        div.className = "maskk";
+        tips.className = "tipss";
+        tips.innerHTML = "hello";
+        div.appendChild(tips);
+        document.body.appendChild(div);
+        div.addEventListener("click", hidden);
+        function hidden(){
+            this.remove()
+        }
+    }
+    </script>
+</body>
+</html>
