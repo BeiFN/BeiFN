@@ -22,7 +22,14 @@
    事件处理过程中，不阻击事件冒泡，但阻击默认行为（它只执行所有弹框，却没有执行超链接跳转）
 
 
-4、call、apply、bind的作用是改变函数运行时this的指向
+4、open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。
+ 
+   语法
+   
+    window.open(URL,name,features,replace)
+
+
+5、call、apply、bind的作用是改变函数运行时this的指向
 
 
    call
