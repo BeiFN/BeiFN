@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>拖拽***</title>
+		<!-- 1难点：给数组赋值，记录回去的逐个位置
+			 2addEventListeer注意给谁加-->
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			#box1 {
+				width: 200px;
+				height: 200px;
+				background: green;
+				position: absolute;
+			}
+
+			#box1>p {
+				background: rgba(0, 0, 0, 0.3);
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<div id="box1">
+			<p id="pTrag">trag me</p>
+		</div>
+
+		<script type="text/javascript">
+			var obox1 = document.getElementById("box1");
+			var p_trag = document.getElementById("pTrag");
+			var block_position = {};
+			var return_position = [];
+			p_trag.addEventListener('mousedown', haddlerTragStart);
+			p_trag.addEventListener('mouseup', haddlerTragEnd);
+
+			function haddlerTragStart(eve) {
+				var e = eve || window.event;
+				block_position.x = e.offsetX;
+				block_position.y = e.offsetY;
+				document.addEventListener('mousemove', haddlerTragMoving);
+
+			}
+
+			function haddlerTragMoving(eve) {
+				var e = eve || event;
+				return_position.push({
+					rx: e.clientX - block_position.x,
+					ry: e.clientY - block_position.y
+				})
+				var rx = e.clientX - block_position.x;
+				var ry = e.clientY - block_position.y;
+				obox1.style.left = rx + "px";
+				obox1.style.top = ry + "px";
+
+			}
+
+			function haddlerTragEnd() {
+				document.removeEventListener("mousemove", haddlerTragMoving);
+				block_position.length = 0;
+				var i = return_position.length;
+				var timer=null;
+				timer=setInterval(function() {
+					if (i-- > 0) {
+						obox1.style.left = return_position[i].rx + "px";
+						obox1.style.top = return_position[i].ry + "px";
+					}
+					else{
+						clearInterval(timer);
+						return_position.length=0;
+
+					}
+				}, 100);
+
+
+			}
+		</script>
+
+
+	</body>
+</html>
