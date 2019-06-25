@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件触发</title>
+</head>
+<body>
+      <!-- 事件触发分三步：
+
+       1.捕获
+       2.目标阶段
+       3.冒泡阶段 -->
+    
+
+
+       <script>
+       
+    //    普通的add函数
+       function add(x,y){
+               return x + y;
+       }
+
+
+       
+    //    柯里化函数
+      
+      function curryingAdd(x){
+          return function(y){
+               return x + y;
+          }
+      }
+        // add(1,3);
+        // console.log(add(1,3));
+
+        curryingAdd(1,3);
+        console.log(curryingAdd(1)(3));
+
+
+        //柯里化思路
+        // 实际上就是把add函数的x,y两个参数变成了先用一个函数接收x，
+        // 然后返回一个函数去处理y参数。就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数
+
+       </script>
+
+</body>
+</html>
