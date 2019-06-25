@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            height: 20px;
+            width: 200px;
+            text-align: center;
+            line-height: 20px;
+            border: 1px dashed yellowgreen;
+        }
+        ul{
+            width: 500px;
+            height: 600px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li class="haha"><span>你是我心内的一首歌</span></li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li class="haha">你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+        <li>你是我心内的一首歌</li>
+    </ul>
+    <script>
+            var ul = document.getElementById("list");
+            ul.addEventListener("click",delegation(handlerClick,".haha"))
+
+            function delegation(callBack,selector){
+                return function(evt){
+                    var eleList = this.querySelectorAll(selector);
+                    var e = evt || event;
+                    var target = e.target || e.srcElement;
+                    var _tempTarget = target;
+                    var touchArray = [];
+                    while(true){
+                        if(_tempTarget === this) break;
+                        touchArray.push(_tempTarget);
+                        _tempTarget = _tempTarget.parentNode;
+                    }
+
+                    for(var i = 0 , ele ;ele = eleList[i++];){
+                        if((touchArray.length === 1) ? ele == target : !(touchArray.indexOf(ele) == -1)){
+                        handlerClick.call(ele,e)
+                        }
+                      
+                    }
+                   
+                }
+            }
+
+            function handlerClick(e){
+                this.style.background = "green";
+            }
+    </script>
+</body>
+</html>
