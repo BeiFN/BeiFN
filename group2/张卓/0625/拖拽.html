@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            background: yellowgreen;
+            box-shadow:  0 0 5px green;
+            text-align: center;
+            overflow: hidden;
+            position: absolute;
+        }
+        #drag{
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            background: rgba(0, 0, 0, .3);
+            line-height: 30px;
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="drag">
+            请拖拽
+        </div>
+        <input type="button" value="回放" id="replay">
+    </div>
+    <script src="./js/dragUp.js">
+    </script>
+</body>
+
+</html>
