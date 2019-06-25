@@ -1,0 +1,28 @@
+/*重置样式*/
+p,h1,h2,h3,h4,h5,h6,ol,ul,dl,td,th,dd,hr,input,body,fieldset,legend,option,textarea,button{margin:0; padding: 0;}
+li{list-style: none;}
+a{text-decoration: none; color: #333;}
+body{font-size: 12px; font-family: "微软雅黑";}
+img{display: block; border:none;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight: normal;}
+em,i{font-style: normal;}
+input{outline: none;}/*去掉INPUT在部分浏览器里点击里的外边线*/
+table{border: 1px solid #333;border-collapse: collapse;/* 调整相邻单元格间距 */}
+td,th{border: 1px solid #333;}
+
+.clear:after{
+	content: " ";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;/*或overflow:hidden;*/
+}
+
+.fl{float:left;}
+.fr{float:right;}
+.border0{border:none;}
+
+/*
+ * 哪些元素自带边框
+ * input img textarea select fieldset
+ */

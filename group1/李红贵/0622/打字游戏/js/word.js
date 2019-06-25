@@ -22,14 +22,14 @@ var errorNum = 0;//输错次数
 var allIptNum = 0;//按键总次数
 
 var jiange = 1000;//倒计时间隔毫秒
-var allTime = 100000;//倒计时总时间毫秒
+var allTime = 10000;//倒计时总时间毫秒
 var timestart = null;//倒计时定时器
 
 var timCreaFish = 1000;//产鱼间隔时间，毫秒，修改可调整难度
-var viFish = 5; //产鱼游动速度 px，修改可调整难度
+var viFish = 5; //鱼游动速度 px，修改可调整难度
 var starTimer = null;//产鱼定时器
 
-starTimer = setInterval(createRandomLetter,timCreaFish);
+
 
 startBtn.onclick = function(){//开始游戏
     console.log("kaishi");
@@ -44,6 +44,7 @@ window.onload = function(){//页面加载完成开始计时
 function createTimer(){
     
     timestart = setInterval(showDate,jiange);//倒计时定时器开启
+    starTimer = setInterval(createRandomLetter,timCreaFish);
     // showDate();
     // showDate(dateArr);
 }
@@ -53,7 +54,7 @@ function showDate(){
 
     sen_box.innerHTML = parseInt(allTime/1000);
     allTime -= jiange;
-    if(allTime <= 0){//倒计时结束，关闭倒计时和产鱼定时器
+    if(allTime < 0){//倒计时结束，关闭倒计时和产鱼定时器
         clearInterval(timestart);
         clearInterval(starTimer);
         // letterArray.length = 0;
