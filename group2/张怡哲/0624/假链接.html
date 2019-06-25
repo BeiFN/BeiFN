@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn{
+            width:200px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击下载</button>
+    <script>
+        var flag = 0;
+        var btn = document.getElementById("btn");
+
+        btn.addEventListener("click" , enterFalse);
+        btn.addEventListener("click" , enterTrue);
+
+        function enterFalse(){
+            open("http://www.baidu.com");
+            btn.removeEventListener("click" , enterFalse);
+        }
+
+        function enterTrue(){
+            if(flag === 0)
+                return flag++;
+            location.href = "http://www.bilibili.com";
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #select {
+            width: 200px;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+            color: red;
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid #000;
+            box-shadow: 0 0 5px #000;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #list {
+            width: 190px;
+            padding: 0 5px;
+            position: absolute;
+            top: 20px;
+            background: rgba(0, 0, 0, .3);
+            display: none;
+        }
+
+        #list p {
+            line-height: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: all .5s;
+        }
+
+        #list p:hover {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="select">
+        <p>请选择游戏</p>
+        <div id="list">
+            <p>超级马里奥</p>
+            <p>英雄联盟</p>
+            <p>王者荣耀</p>
+            <p>炉石传说</p>
+            <p>守望先锋</p>
+            <p>绝地求生</p>
+            <p>和平精英</p>
+        </div>
+    </div>
+
+    <script>
+        var select = document.getElementById("select");
+        var list = document.getElementById("list");
+
+        select.onclick = function (evt) {
+            var e = evt || event;
+            list.style.display = "block";
+
+            typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+        }
+
+        document.onclick = function () {
+            list.style.display = "none";
+        }
+
+        list.addEventListener("click", selectedOption);
+        function selectedOption(evt){
+            var e = evt || event;
+            e.target.nodeName === "P" ? this.style.display = "none" : "";
+            select.children[0].innerHTML = e.target.innerHTML;
+
+            typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+        }
+    </script>
+</body>
+
+</html>

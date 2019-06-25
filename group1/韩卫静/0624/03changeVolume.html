@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音量调节练习</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .box{width: 100%; height: 100px; background-color: #ddd; box-shadow: 0 0 5px #88f; 
+            border-radius: 5px; margin-top: 10px; position: relative; overflow: hidden;}
+        #pic{width: 40px; height: 40px; margin: 30px 200px; 
+         background-image: url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+         background-repeat: no-repeat;background-position: center; background-size: 100%;}
+        #progressBar{width: 1000px; height: 5px; background-color: #ccc; position: absolute; left: 50%;
+        margin-left: -500px; top:50px;}
+        #progress{width: 0%; height: 100%; background-color: #88d; }
+        #point{width: 20px;height: 20px; background-color: #555; border-radius: 50%; position: absolute;
+        top: -7px; left: -10px; box-shadow: 0 0 2px #ddd; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="pic"></div>
+        <div id="progressBar">
+            <div id="progress"></div>
+            <div id="point"></div>
+        </div>
+    </div>
+
+    <script>
+        var point = document.getElementById("point");
+        var pic  = document.getElementById("pic");
+        var progress = document.getElementById("progress");
+        var progressBar = document.getElementById("progressBar");
+        var minLeft = progressBar.offsetLeft;
+        console.log(minLeft);
+        var offsetLeft = 0;
+
+        function pointDown(evt){
+            var e = evt || event;
+            offsetLeft = e.offsetX;
+
+            document.removeEventListener("mousemove" , pointMove);
+            document.addEventListener("mousemove" , pointMove);
+        }
+
+        function pointMove(evt){
+            var e = evt || event;
+            var leftWid = e.clientX - minLeft - offsetLeft ;
+            leftWid > 990 ? leftWid = 990 : leftWid;
+            leftWid < -10 ? leftWid = -10 : leftWid;          
+            point.style.left = leftWid + "px";
+
+            var percent = parseInt((leftWid + 10) / 10) ;
+
+            if(percent < 33){
+                pic.style.backgroundImage = "url(https://upload-images.jianshu.io/upload_images/16960494-86ea623e30ad4c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)";
+            }else if(percent < 66 ){
+                pic.style.backgroundImage = "url(https://upload-images.jianshu.io/upload_images/16960494-ecacc6b836a0661e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)";
+            }else if(percent === 0){
+                pic.style.backgroundImage = "url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)";
+            }else{
+                pic.style.backgroundImage = "url(https://upload-images.jianshu.io/upload_images/16960494-0192f12b7372e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)";
+
+            }
+
+            progress.style.width = percent + "%";
+            progressBar.title =  percent + "%";
+            // console.log(percent);
+        }
+
+        function pointStop(evt){
+            var e = evt || window.event;
+            document.removeEventListener("mousemove" , pointMove);
+            console.log("stop");
+        }
+
+        point.addEventListener("mousedown" , pointDown);
+        document.addEventListener("mouseup",pointStop);
+    </script>
+</body>
+</html>

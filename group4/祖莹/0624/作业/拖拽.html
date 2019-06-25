@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      
+            *{
+                  margin:0;
+                  padding: 0;
+            }
+            #box{
+                  width: 300px;
+                  height: 200px;
+                  background: yellowgreen;
+                  color: #fff;
+                  box-shadow: 0 0 5px yellowgreen;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  position: absolute;
+                  text-align: center;
+            }
+            #top-bar{
+                  width: 300px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  background: rgba(0,0,0,.3);
+            }
+            #goBack{
+                  padding: 3px 5px ;
+                  background: #fff;
+                  box-shadow: 0 0 5px #30f;
+                  border: none;
+            }
+      </style>
+</head>
+<body>
+        <div id="box">
+                <div id="top-bar">
+                      拖拽条 
+                </div>
+                <button id="goBack">回放</button>
+          </div>
+    
+          <script src="./js/drag.js"></script>
+    
+</body>
+</html>
