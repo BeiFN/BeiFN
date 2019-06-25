@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #select{
+                  width: 200px;
+                  text-align: center;
+                  height: 20px;
+                  line-height: 20px;
+                  background:rgba(0,0,0,.3);
+                  border: 2px solid #000;
+                  box-shadow: 0 0 5px #000;
+                  position: relative;
+                  cursor:pointer;
+            }
+            #list{
+                  width: 190px;
+                  padding: 0 5px;
+                  position: absolute;
+                  top: 20px;
+                  background: rgba(0,0,0,.3);
+                  display: none;
+            }
+            #list p{
+                  line-height: 20px;
+                  text-align: center;
+                  border-bottom: 1px solid #ddd;
+            }
+            #list p:hover{
+                  background: #fff;
+                  transition: all .5s;
+            }
+      </style>
+</head>
+<body>
+
+      <div id="select">
+            <p id="selectBox">请选择游戏</p>
+            <div id="list">
+                  <p>英雄联盟</p>
+                  <p>炉石传说</p>
+                  <p>基3</p>
+                  <p>屁股先锋</p>
+                  <p>恰鸡</p>
+            </div>
+      </div>
+
+      <script>
+            // 1. 点击显示 list;
+            // 2. 选中p标签改变 文字;
+            // 3. 点击空白处隐藏list;
+            var select = document.getElementById("select");
+            var list = document.getElementById("list");
+            var selectBox = document.getElementById("selectBox");
+            
+            function handlerListShow(evt){
+                var e = evt || event;
+                list.style.display = "block";
+
+                typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+            }
+
+            function handlerListHidden(){
+                list.style.display = "none";
+            }
+
+            // console.log(list);
+            var list = document.querySelector("#list");
+            console.log(list);
+            select.addEventListener("click" , handlerListShow);
+            document.addEventListener("click" , handlerListHidden);
+            list.onclick = function(evt){
+                var e = evt || event;
+                var target = e.target || e.srcElement;
+                selectBox.innerHTML = target.innerHTML;
+                list.style.display = "none";
+                typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+            }
+            
+      </script>
+</body>
+</html>
