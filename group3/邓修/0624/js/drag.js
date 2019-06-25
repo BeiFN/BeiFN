@@ -12,6 +12,7 @@ function handlerDragStart(evt) {
     var e = evt || event;
     offsetX = e.offsetX;
     offsetY = e.offsetY;
+    // recordArray.push({ left: 0, top: 0 });
     document.removeEventListener("mousemove", handlerDragMove);
     document.addEventListener("mousemove", handlerDragMove);
 }
@@ -28,6 +29,7 @@ function handlerDragEnd() {
 }
 function handlerGoBack() {
     var len = recordArray.length;
+    // console.log(recordArray);
     timer = setInterval(function () {
         len--;
         box.style.left = recordArray[len].left + "px";
