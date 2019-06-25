@@ -4,25 +4,20 @@ var goBack = document.getElementById("goBack")
 var timer = null;
 var recordArray = [];
 
-var _tempDragMove = null;//定义全局变量接收，柯里化函数
+var _tempDragMove = null;
 function handlerDragStart(evt){
       var e = evt || event;
       
-      document.removeEventListener("mousemove" , _tempDragMove);//解决鼠标移出body放开后，拖拽框不停止的bug
-
-
-    //   使用bind柯里化，固定鼠标首次点击位置参数
-      document.addEventListener("mousemove" , 
-      _tempDragMove = handlerDragMove.bind( false , {offsetX : e.offsetX , offsetY : e.offsetY}));
+      document.removeEventListener("mousemove" , _tempDragMove);
+      document.addEventListener("mousemove" , _tempDragMove = handlerDragMove.bind( false , {offsetX : e.offsetX , offsetY : e.offsetY}));
 }
-function handlerDragMove(_offset, evt){
+function handlerDragMove(_offset,evt){
       var e = evt || event;
       var numLeft = e.clientX - _offset.offsetX;
       var numTop = e.clientY - _offset.offsetY
       box.style.left = numLeft  + "px";
       box.style.top = numTop + "px";
 
-    //   移动位置记录在全局变量中，
       recordArray.push({
             left : numLeft,
             top : numTop
@@ -32,9 +27,13 @@ function handlerDragEnd(){
       document.removeEventListener("mousemove" ,  _tempDragMove);
 }
 function handlerReplay(){
+      // for(var i = recordArray.length - 1 ; i >= 0 ; i--){
+            // console.log(recordArray[i]);
+            // box.style.left = recordArray[i].left + "px";
+            // box.style.top = recordArray[i].top + "px";
+      // }
 
       var start = recordArray.length;
-      if(start === 0) return;//避免多次点击回放bug
       timer = setInterval( function (){
             start --;
             

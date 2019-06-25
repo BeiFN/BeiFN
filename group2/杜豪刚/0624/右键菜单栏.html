@@ -4,19 +4,19 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Document</title>
+      <title>右键菜单栏</title>
       <style>
             *{
-                  margin: 0;
-                  padding: 0;
+                margin: 0;
+                padding: 0;
             }
             li{
-                  list-style-type: none;
+                list-style-type: none;
             }
             .optionsMenu{
                   width: 200px;
-                  height: 200px;
-                  background: rgba(0,0,0,1);
+                  height: 208px;
+                  background: pink;
                   display: none;
                   position: absolute;
             }
@@ -24,13 +24,12 @@
                   height: 50px;
                   line-height: 50px;
                   text-align: center;
-                  border-bottom: 1px solid #ddd;
+                  border-bottom: 2px solid #999;
             }
             .optionsMenu li:hover{
-                  transition: all .5s;
-                  background: #ddd;
+                  transition: all .3s;
+                  background: yellowgreen;
                   color: #fff;
-                  box-shadow: 0 0 5px #000;
             }
             .list{
                   float: left;
@@ -39,7 +38,6 @@
       </style>
 </head>
 <body>
-
       <ul class="list">
             <h1>列表1</h1>
             <li>我是列表1之中的li</li>
@@ -63,7 +61,6 @@
             <li>我是列表1之中的li</li>
             <li>我是列表1之中的li</li>
       </ul>
-
       <ul class="list">
             <h1>列表2</h1>
             <li>我是列表2之中的字符串</li>
@@ -86,66 +83,27 @@
             <li>我是列表2之中的字符串</li>
             <li>我是列表2之中的字符串</li>
             <li>我是列表2之中的字符串</li>
-      </ul>
-
-
-      
+      </ul>  
       <ul class="optionsMenu">
             <li>复制</li>
             <li>粘贴</li>
             <li>剪切</li>
             <li>删除</li>
       </ul>
-
       <script>
-            var ele_menu = document.querySelector(".optionsMenu");
-            // 被选中的元素;
-            var selectTarget = null;
-            // 阻止系统的右键菜单弹出;
-            var cloneEle = null;
-
-            document.oncontextmenu = function(evt){
-                  var e = evt || event;
-			
-                  typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
-                  // return false; 约等于 e.returnValue = false;
-                  // 三目运算之中，不允许存在return;
-                  
-                  ele_menu.style.display = "block";
-                  ele_menu.style.left = e.clientX + "px";
-                  ele_menu.style.top = e.clientY + "px";
-                  // 选中元素;
-                  var target = e.target||e.srcElement;
-                  selectTarget ? selectTarget.style.background = "" : "";
-                  selectTarget = target;
-                  selectTarget.style.background = "yellowgreen";
-
-            }     
-            document.onclick = function(evt){
-                  var e = evt || window.event;
-                  ele_menu.style.display = "none";
-            }
-
-            ele_menu.onclick = function(evt){
-                  var e = evt || event;
-                  var target = e.target || e.srcElement;
-                  
-                  switch(target.innerHTML){
-                        case "复制" : 
-                              cloneEle = selectTarget.cloneNode(true);
-                              cloneEle.style.cssText = "display:block";
-                              break;
-                        case "粘贴" : 
-                              selectTarget.appendChild(cloneEle);
-                              break;
-                        case "剪切":
-                              cloneEle = selectTarget;
-                              break;
-                        case "删除" :
-                              selectTarget.remove();
-                              break;
-                  }           
-            }
+          var optionsMenu = document.querySelector(".optionsMenu");
+          //阻止默认事件的发生
+          document.oncontextmenu = function(evt){
+                var e = evt || event;
+                typeof e.preventDefault === "function" ? e.preventDefault():e.returnValue = false;
+                optionsMenu.style.display="block";
+                optionsMenu.style.left=e.clientX+"px";
+                optionsMenu.style.top=e.clientY+"px";
+          }
+          document.onclick = function (evt){
+                var e = evt || event;
+                optionsMenu.style.display = "none";
+          }
       </script>
 </body>
 </html>
