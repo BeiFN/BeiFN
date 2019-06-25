@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟select框</title>
+    <style>
+        *{
+              margin: 0;
+              padding: 0;
+        }
+        #select{
+              width: 200px;
+              text-align: center;
+              height: 35px;
+              line-height: 35px;
+              background:#00000033;
+              border: 2px solid purple;
+              position: relative;
+              border-radius:5px;
+              margin: 100px auto;
+        }
+        #list{
+              width: 200px;
+              position: absolute;
+              top: 35px;
+              background: rgba(0,0,0,.3);
+              border-radius:5px;
+              display: none;
+        }
+        #list p{
+              line-height: 35px;
+              text-align: center;
+              border-bottom: 1px solid #ddd;
+              border-radius:5px;
+        }
+        #list p:hover{
+              background: #fff;
+              transition: all 0.3s;
+        }
+  </style>
+</head>
+<body>
+    <div id="select">
+            <p id="show">请选择游戏</p>
+            <div id="list">
+                <p title="英雄联盟">英雄联盟</p>
+                <p title="地下城">地下城</p>
+                <p title="绝地求生">绝地求生</p>
+                <p title="守望先锋">守望先锋</p>
+                <p title="穿越火线">穿越火线</p>
+                <p title="球球大作战">球球大作战</p>
+            </div>
+    </div>
+    <script>
+        var select=document.getElementById("select");
+        var list=document.getElementById("list");
+        var show=document.getElementById("show");      
+        var list_p=document.getElementById("list").children;         //获取list下的p标签
+        function handlerClick(evt){
+            var e = evt || event;
+            //阻止事件冒泡
+            e.stopPropagation();
+            list.style.display="block";
+        }
+        document.onclick=function(){
+            list.style.display="none";
+        }
+        // console.log(list_p)         //6个
+        //给每一个list_p加一个data-id属性
+        for(var n=0;n<list_p.length;n++){
+            list_p[n].setAttribute("data-id",n);
+        }
+        //循环遍历所有的p标签
+        for(var i=0;i<list_p.length;i++){
+            list_p[i].onclick=function(){
+                //获取每一个属性值
+                var dataid=this.getAttribute("data-id");
+                //显示到当前选择的游戏中
+                show.innerHTML=list_p[dataid].innerHTML;
+                //并且隐藏下拉菜单
+                list.style.display="none";
+                // console.log(list);
+                // console.log(list_p[dataid]);
+                // list_p[dataid].style.display="none";
+            }
+        }
+        select.addEventListener("click",handlerClick);
+    </script>
+</body>
+</html>
