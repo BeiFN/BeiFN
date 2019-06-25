@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+      
+            *{
+                  margin:0;
+                  padding: 0;
+            }
+            #box{
+                  width: 300px;
+                  height: 200px;
+                  background: yellowgreen;
+                  color: #fff;
+                  box-shadow: 0 0 5px yellowgreen;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  position: absolute;
+                  text-align: center;
+            }
+            #top-bar{
+                  width: 300px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  background: rgba(0,0,0,.3);
+            }
+            #goBack{
+                  padding: 3px 5px ;
+                  background: #fff;
+                  box-shadow: 0 0 5px #30f;
+                  border: none;
+            }
+      </style>
+</head>
+<body>
+      <div id="box">
+            <div id="top-bar">
+                  拖拽条 
+            </div>
+            <button id="goBack">回放</button>
+      </div>
+
+      <script src="./javascripts/tuozhai全局变量.js"></script>
+      <script>
+            // 1. 鼠标按下;   拖拽开始;
+            // 2. 鼠标移动;   拖拽进行中;
+            // 3. 鼠标抬起;   拖拽结束;
+
+
+            // 基础事件逻辑 ;
+
+            // 有一个事件是待绑定的? 鼠标移动事件待绑定;
+
+            // addEventListener;
+            // var box = document.getElementById("box");
+            // var topBar = document.getElementById("top-bar");
+
+            // //点击拖拽条,才可以实现拖拽运动。
+            // topBar.addEventListener("mousedown" , handlerDragStart);
+            // function handlerDragStart(){
+            //       console.log("拖拽开始");
+            //       topBar.addEventListener("mousemove" ,  handlerDragMove);
+            // }
+            // function handlerDragMove(){
+            //       console.log("拖拽进行中");
+            // }
+            // topBar.addEventListener("mouseup" , handlerDragEnd );
+            // function handlerDragEnd(){
+            //       console.log("拖拽结束");
+            //       topBar.removeEventListener("mousemove" ,  handlerDragMove);
+            // }
+
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义菜单文件</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .ul{
+            float: left;
+            margin-left: 10px;
+        }
+        .ul li{
+            list-style: none;
+        }
+        .list{
+            height:200px;
+            width: 200px;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            display: none;
+        }
+        .list li{
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .list li:hover{
+            background: #ddd
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <h1>列表1</h1>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+        <li>这是列表1的li</li>
+    </ul>
+    <ul class="ul">
+        <h1>列表2</h1>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+        <li>这是列表2的li</li>
+    </ul>
+    
+    <ul class="list">
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>剪切</li>
+        <li>删除</li>
+    </ul>
+
+    <script>
+        var list=document.querySelector('.list');
+        var selectTarget=null;
+        var cloneEle=null;
+        document.oncontextmenu=function(evt){
+            var e=evt||window.event;
+            typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+            list.style.display='block';
+            list.style.left=e.clientX+'px';
+            list.style.top=e.clientY+'px';
+
+            var target=e.target||e.srcElement;
+            selectTarget ? selectTarget.style.background = "" : "";
+            selectTarget = target;
+            selectTarget.style.background='red';
+        }
+        document.onclick=function(evt){
+            var e=evt||window.event;
+            list.style.display='none';
+        }
+        list.onclick=function(evt){
+            var e=evt||event;
+            var target=e.target||srcElement;
+            switch(target.innerHTML){
+                case "复制" : 
+                              cloneEle = selectTarget.cloneNode(true);
+                              cloneEle.style.cssText = "display:block";
+                              break;
+                        case "粘贴" : 
+                              selectTarget.appendChild(cloneEle);
+                              break;
+                        case "剪切":
+                              cloneEle = selectTarget;
+                              break;
+                        case "删除" :
+                              selectTarget.remove();
+                              break;
+            }
+        }
+    </script>
+</body>
+</html>
