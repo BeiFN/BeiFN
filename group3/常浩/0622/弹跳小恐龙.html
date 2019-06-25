@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            bottom:10px;
+            left: 50%;
+            margin-left: -50px;
+            background: url(https://upload-images.jianshu.io/upload_images/18448040-625ee674e966c0e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center;
+            background-size: 150%;
+            transition  : all 0.5s;  /*开启平移效果*/
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var height = document.documentElement.clientHeight;  //获取可视窗口的高度
+        var box = document.getElementById("box");
+        document.onclick = function(evt){
+            var e = evt || event ;
+            var left = e.clientX +"px";
+            var bottom = height -e.clientY - 100+ "px";  //距离底部的高度是可视窗口的高度减去鼠标点击y值再减去盒子的高度
+            box.style.bottom = bottom;
+            box.style.transform = "rotate(0deg)"; 
+            box.style.left = left;
+            setTimeout(function(){
+            box.style.transform = "rotate(360deg)";  //旋转属性的设置
+                box.style.bottom = 10 + "px";
+            },1000)
+        }
+    </script>
+</body>
+</html>

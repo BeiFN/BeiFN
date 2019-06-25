@@ -1,0 +1,85 @@
+*{
+
+      margin: 0;
+      padding: 0;
+}
+body{background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561218729597&di=cbc789c99f05c333585a8b4cab263ab9&imgtype=0&src=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F21_img%2F2012_19%2F17504_927546_523010.jpg);}
+#pao{
+      width: 50px;
+      height: 120px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      margin-left: -25px;
+      background: url(../images/炮.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      text-align: center;
+      line-height: 120px;
+      font-size: 20px;
+      color:green;
+      text-shadow: 0 0 5px #fff;
+      font-weight: 1000;
+}
+.fish{
+      width: 100px;
+      height: 100px;
+      background: url(../images/鱼.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      line-height: 100px;
+      font-weight: 1000;
+      text-shadow: 0 0 5px #fff;
+      text-align: center;
+      color:yellow;
+      font-size: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: rotate(0deg);
+}
+.fish.die{
+      transition: all 1s;
+      transform: rotate(180deg);
+}
+.bullet{
+      width: 30px;
+      height: 30px;
+      background: url(../images/炮弹.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      position: absolute;
+      transition: all .5s;
+}
+
+.line{
+      height: 3px;
+      background: #ddd;
+      position: absolute;
+      top: 500px;
+      width: 100%;
+      z-index: 1;
+}
+.times{
+      height: 40px;
+      width: 70px;
+      position: absolute;
+      top:550px;
+      z-index: 2;
+      border: none;
+      color:#fff;
+}
+#replay{
+      height: 50px;
+      width: 80px;
+      border:none;
+      position: absolute;
+      left: 47%;
+      top:50%;
+      z-index: 3;
+      display: none;
+      background:skyblue;
+}

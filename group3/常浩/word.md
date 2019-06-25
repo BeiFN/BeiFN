@@ -162,5 +162,13 @@ nodeValue 获取节点内的值
 
 childNodes   子节点
 
-fragment  文档碎片   createDocumentFragment
+fragment  文档碎片   createDocumentFragment 的创建
+
+client  鼠标到可视窗口的距离
+offset  鼠标到当前区域的距离
+screen  到屏幕的距离
+page    到文档的距离
+event  事件
+target  || srcElement   事件源
+
  

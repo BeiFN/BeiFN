@@ -17,7 +17,8 @@
             position:absolute;
             bottom: 0px;
             left: 50%;
-            transform: rotate(0deg);
+            transition: all 1s;
+            transform: 360deg;
         }
     </style>
 </head>
@@ -31,21 +32,23 @@
     //点击窗口设置监听事件        
      
     document.onclick = handler;
+    var documentHeight = document.documentElement.clientHeight || document.body.clientHeight;    
     function handler(evt){
         //获得点击的位置的x值和y值，因为是在可视窗口点击，可以使用clientX
         var e = evt || window.event;                    //获取事件对象
-        var top1 = e.clientY;                       
-        var left1 = e.clientX;
+        var top1 = documentHeight -  e.clientY;                       
+        var left1 =e.clientX;
         var box = document.getElementById("box");   
-        box.style.top = top1 + "px";
+        box.style.transform = "rotate(0deg)";
+        box.style.bottom = top1 + "px";
         box.style.left = left1 + "px";
         var timer = setTimeout(back, 1000)
     }
     function back(){
             box.style.transform = "rotate(360deg)";
-            box.style.transition = "all 1s"
-            box.style.left = 50+"%";
-            box.style.top = 600+"px";
+            box.style.transition = "all 1s"   //表示过渡的事件，即在旋转的过程中经过的时间
+            // box.style.left = 50+"%";
+            box.style.bottom = 0;
         }
 
     </script>
