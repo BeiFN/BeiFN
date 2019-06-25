@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+      
+            *{
+                  margin:0;
+                  padding: 0;
+            }
+            #box{
+                  width: 300px;
+                  height: 200px;
+                  background: yellowgreen;
+                  color: #fff;
+                  box-shadow: 0 0 5px yellowgreen;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  position: absolute;
+                  text-align: center;
+            }
+            #topBar{
+                  width: 300px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  background: rgba(0,0,0,.3);
+            }
+            #goBack{
+                  padding: 3px 5px ;
+                  background: #fff;
+                  box-shadow: 0 0 5px #30f;
+                  border: none;
+            }
+      </style>
+</head>
+<body>
+        <div id="box">
+                <div id="topBar">
+                      拖拽条 
+                </div>
+                <button id="goBack">回放</button>
+          </div>
+
+
+          <script>
+          
+          var oBox = $("#box");
+          var oTopBar = $("#topBar");
+          var oGoBack = $("#goBack");
+          var _tempDragMove = null;
+          var time =null;
+          var recordArray = [];
+
+          function $(selector){
+              var res = null;
+              return (res = document.querySelectorAll(selector)).length===1?res[0]:res;
+          }
+          //拖拽开始
+          function handlerDragStart(evt){
+              var e=evt||event; 
+              document.removeEventListener("mousemove",_tempDragMove);
+              document.addEventListener("mousemove" , _tempDragMove = handlerDragMove.bind( false , {offsetX : e.offsetX , offsetY : e.offsetY}));
+             
+          }
+
+        //   正在拖拽
+
+        function handlerDragMove(_offset,evt){
+            var e = evt||event;
+            var numLeft = e.clientX - _offset.offsetX;
+            var numTop = e.clientY - _offset.offsetY;
+            oBox.style.left = numLeft + "px";
+            oBox.style.top = numTop + "px";
+
+
+            // 将拖拽轨迹存入recordArray数组中
+
+            recordArray.push({
+                left:numLeft,
+                top:numTop
+
+            })
+        }
+        //   拖拽结束   
+        function handlerDragEnd(){
+            document.removeEventListener("mousemove",_tempDragMove);
+        }
+
+        // 拖拽轨迹回放
+
+        function handlerDragGoBack(){
+            var start = recordArray.length;
+            timer = setInterval(function(){
+                start--;
+                // 获取记录拖拽回放轨迹数组的下标
+                oBox.style.left = recordArray[start].left + "px";
+                oBox.style.top = recordArray[start].top + "px";
+            
+
+                if(start === 0 ){
+                    clearInterval(timer);
+                    recordArray.length=0;
+                }
+            },50)
+        }
+          
+        oTopBar.addEventListener("mouseup",handlerDragEnd);
+        oTopBar.addEventListener("mousedown",handlerDragStart);
+        oGoBack.addEventListener("click",handlerDragGoBack);
+     
+          </script>
+</body>
+</html>

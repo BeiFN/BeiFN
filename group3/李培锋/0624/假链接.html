@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="download">点击下载</button>
+    <script>
+        /***
+        *需求：第一次点击下载：跳出广告页，之后点击，获取下载页面
+        *跳转到广告页只有一次，运行后删除此事件处理函数，
+        *在第一次点击下载时，不跳转至加载页面，通过计数得得方式，来判断是否跳转
+        ****/
+        var dl = document.getElementById("download");
+        var time=0;
+        dl.addEventListener("click",moveToAdve);
+        dl.addEventListener("click",getDowmLoadMsg);
+        function moveToAdve(){
+            open("http://www.sina.com");
+            dl.removeEventListener("click",moveToAdve);
+        }
+        function getDowmloadMsg(){
+            if(time === 0){return time++};
+            location.href = "download.html";
+        }
+    </script>
+</body>
+</html>

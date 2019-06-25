@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+</head>
+<body>
+    <button id="btn">点我试试</button>
+    <script>
+        var btn = document.getElementById("btn");
+        console.dir(btn);
+        btn.onclick = handlerClick;
+        function handlerClick(){
+            alert("hello");
+        }
+
+        // 事件触发顺序  事件流
+        // 事件触发分为三步
+        // 1.捕获  2.目标阶段  3.冒泡阶段  
+        // 13是两套流程
+        // IE 冒泡  目标->冒泡
+        // netSpace 捕获 捕获->目标
+
+        // 高级事件绑定模式  监听
+        // 监听  复杂
+        // domNode 元素节点 addEventListener(事件名（不带on），事件处理函数，false（默认冒泡模式触发）);
+
+        btn.addEventListener ("click",handlerClick);
+        // 基本使用
+        // 监听可以同时存在多个事件处理函数
+        // btn.addEventListener("click", randomBoxColor);
+        // removeEventListener  接收参数一定是两个。 事件名和事件处理函数  事件处理函数地址问题导致无法删除
+
+        //不要给一个事件监听太多的事件处理函数，20个以下，2-3个就行
+
+        // 移除监听事件  
+        btn.removeEventListener("click", handlerClick);
+
+
+         // 阻止事件冒泡;
+         btn.onclick  = function(evt){
+             var e = evt || window.event;
+            typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+         }
+
+    //    判断 引用类型  都是true
+
+
+// ![low.png](https://upload-images.jianshu.io/upload_images/16960494-86ea623e30ad4c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+// ![hight.png](https://upload-images.jianshu.io/upload_images/16960494-0192f12b7372e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+// ![middle.png](https://upload-images.jianshu.io/upload_images/16960494-ecacc6b836a0661e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+// ![mute.png](https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    
+    
+        //  事件封装
+        // function on(dom, eventType,callback){
+        //     // 底层是否优雅，和兼容性是否良好
+        //     // addEventListener低版本IE存在兼容性问题 //IE6
+        //     // 去  vue2.5+版本， vue3.0不兼容ie
+        //     // attachEvent;IE  极低版本智能用onCkick
+        //     if(dom.addEventListener){
+        //         dom.addEventListener(eventType,callback,false);
+        //     }else if(dom.attachEvent){
+        //         dom.attachEvent("on" +eventType,callback);
+        //     }else{
+        //         dom["on" + eventType] = callback;
+        //     }
+
+
+        // }
+        // on(dom,eventType,callback);
+    
+    
+    </script>
+</body>
+</html>

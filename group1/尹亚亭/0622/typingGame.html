@@ -9,23 +9,31 @@
 	<body>
 		<div id="pao"><span></span></div>
 		<div class="line"></div>
-		
 		<div id="improve">
+			<p>自由练习模式：</p>
 			<ul>
-				<li>正确：<input type="text" id="right" ></li>
-				<li>错误：<input type="text" id="wrong"></li>
-				<li>得分：<input type="text" id="scores"></li>
+				<li>正确：<input type="text" id="right" onfocus="this.blur()"></li>
+				<li>错误：<input type="text" id="wrong" onfocus="this.blur()"></li>
+				<li>得分：<input type="text" id="scores" onfocus="this.blur()"></li>
 			</ul>
-			
-			<p><span>游戏时间：3分钟</span> &nbsp; 
-				<button id="countdown">倒计时开始：</button>
-				<input type="text" id="timecount" />
-				<button id="restart">重新开始</button>
+			<p>游戏挑战模式：
+				<input type="radio" name="level" id="easy" value="" />容易&nbsp;&nbsp;
+				<input type="radio" name="level" id="middle" value="" />中等&nbsp;&nbsp;
+				<input type="radio" name="level" id="hard" value="" />困难&nbsp;&nbsp;
 			</p>
-			
+			<p>
+				<button id="countdown">倒计时开始：</button>
+				<input type="text" id="timecount" disabled="disabled"/>
+				<span>游戏时间：3分钟</span> &nbsp;
+			</p>
+			<p>设置按钮：
+				<button id="restart">重新开始</button>
+				<button id="stopplay">终止游戏</button>	
+				<!--暂停包括随机字母的暂停，鱼的暂停，计时器的暂停，还要和继续能相呼应-->
+				<!-- <button id="goonplay">继续</button> -->
+			</p>
 		</div>
 	  
-		<!-- // 目前首次出现外部引用方式 -->
 		<script type="text/javascript"	src="javascripts/typingGameChange01.js">
 		</script>
 	</body>

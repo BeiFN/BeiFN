@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+      
+            *{
+                  margin:0;
+                  padding: 0;
+            }
+            #box{
+                  width: 300px;
+                  height: 200px;
+                  background: yellowgreen;
+                  color: #fff;
+                  box-shadow: 0 0 5px yellowgreen;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  position: absolute;
+                  text-align: center;
+            }
+            #top-bar{
+                  width: 300px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  background: rgba(0,0,0,.3);
+            }
+            #goBack{
+                  padding: 3px 5px ;
+                  background: #fff;
+                  box-shadow: 0 0 5px #30f;
+                  border: none;
+            }
+      </style>
+</head>
+<body>
+      <div id="box">
+            <div id="top-bar">
+                  拖拽条 
+            </div>
+            <button id="goBack">回放</button>
+      </div>
+
+      <script>
+            // 1. 鼠标按下;   拖拽开始;
+            // 2. 鼠标移动;   拖拽进行中;
+            // 3. 鼠标抬起;   拖拽结束;
+
+
+        var box = document.getElementById("box");
+        var top_bar = document.getElementById("top-bar");
+        var goBack = document.getElementById("goBack")
+        var t_dragmoving = null;
+        var record = [];
+        var timer = null;
+
+
+        function dragstart(evt){
+            var e = evt || window.event;
+            document.removeEventListener("mousemoving",t_dragmoving)
+            document.addEventListener("mousemove" ,t_dragmoving  = dragmoving.bind( false , { X : e.offsetX , Y :e.offsetY }))
+        }
+
+        function dragmoving(_offset , evt){
+            var e = evt || window.event ;
+            var Pleft = e.clientX - _offset.X;
+            var Ptop = e.clientY - _offset.Y;
+
+            box.style.left = Pleft + "px" ;
+            box.style.top  = Ptop  + "px" ;
+
+            record.push({
+                left : Pleft ,
+                top  : Ptop  
+            })
+        }
+
+        function dragend(evt){
+            document.removeEventListener("mousemove",t_dragmoving)
+        }
+
+        function replay(){
+            var flag = record.length - 1 ;
+            timer = setInterval(function(){
+                box.style.left = record[flag--].left + "px" ;
+                box.style.top  = record[flag--].top  + "px" ;
+
+                if( flag === 0){
+                    clearInterval(timer);
+                    record.length = 0 ;
+                }
+            },30)
+        }
+
+
+
+        top_bar.addEventListener( "mousedown" , dragstart);
+        top_bar.addEventListener( "mouseup" , dragend);
+        goBack.addEventListener( "click" , replay);
+
+      </script>
+</body>
+</html>
