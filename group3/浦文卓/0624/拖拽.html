@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        *{
+              margin:0;
+              padding: 0;
+        }
+        #box{
+              width: 300px;
+              height: 200px;
+              background: yellowgreen;
+              color: #fff;
+              box-shadow: 0 0 5px yellowgreen;
+              border-radius: 10px;
+              overflow: hidden;
+              position: absolute;
+              text-align: center;
+        }
+        #top-bar{
+              width: 300px;
+              height: 40px;
+              text-align: center;
+              line-height: 40px;
+              background: rgba(0,0,0,.3);
+        }
+        #goBack{
+              padding: 3px 5px ;
+              background: #fff;
+              box-shadow: 0 0 5px #30f;
+              border: none;
+        }
+  </style>
+</head>
+<body>
+    <div id="box">
+        <div id="top-bar">
+              拖拽条 
+        </div>
+        <button id="goBack">回放</button>
+    </div>
+
+
+    <script>
+        var timer = null;
+        var goBack = document.getElementById("goBack");
+        var box = document.getElementById("box");
+        var topbar = document.getElementById("top-bar");
+        var list = [];
+        topbar.addEventListener("mousedown" , handlerStart);
+        function handlerStart(evt){
+            var e = evt || event;
+            list.x = e.offsetX;
+            list.y = e.offsetY;
+            document.addEventListener("mousemove" , handlerMove);  
+        }
+        document.addEventListener("mousemove" , handlerMove);
+        function handlerMove(evt){
+            var e = evt || event;
+            var numLeft = e.clientX - list.x;
+            var numTop = e.clientY - list.y;
+            box.style.left = numLeft + "px";
+            box.style.top = numTop + "px";
+            // console.log(list);
+            list.push({
+                left:numLeft,
+                top:numTop
+            });
+ 
+        }
+        topbar.addEventListener("mouseup" , handlerEnd)
+        function handlerEnd(){
+            document.removeEventListener("mousemove",handlerMove);
+        }
+        goBack.addEventListener("click", handlerMoveBack)
+        function handlerMoveBack(){
+            // var e = evt || event;
+            // box.style.left = 0;
+            // box.style.top = 0;
+            var start = list.length;
+            timer = setInterval(function(){
+                start --;
+                // console.log(1);
+                box.style.left = list[start].left + "px";
+                box.style.top = list[start].top + "px";
+                if(start === 0){
+                    clearInterval(timer);
+                    list.length = 0;
+                }
+            },10)
+            // console.log(2);
+            // console.log(3);
+            // console.log(4);
+            
+        }
+    </script>
+    
+</body>
+</html>

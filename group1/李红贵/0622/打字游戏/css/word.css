@@ -5,7 +5,9 @@
     bottom: 10px;
     left: 50%;
     margin-left: -25px;
-    background: url(../images/炮.jpg) no-repeat center;
+    /* background: url(../images/炮.jpg) no-repeat center; */
+    background: url(https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center;
+
     background-size: 100%;
     text-align:  center;
     line-height: 120px;
@@ -42,6 +44,7 @@
     width: 30px;
     height: 30px;
     background: url(../images/炮弹.jpg) no-repeat center;
+    /* https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 */
     background-size: 100%;
     position: absolute;
     transition: all .5s;
@@ -58,7 +61,7 @@
 
 }
 
-#score{
+/* #score{
     
 }
             
@@ -72,4 +75,4 @@
 
 #reStart{
     
-}
+} */

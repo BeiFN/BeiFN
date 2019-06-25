@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+            *{
+                    margin: 0;
+                    padding: 0;
+            }
+            #bar{
+                    width: 100%;
+                    height: 80px;
+                    position: absolute;
+                    border: 5px solid #000;
+                    bottom:0;
+                    box-sizing: border-box;
+                    border-image: linear-gradient(yellow,green) 30 30;
+                    background: rgba(0,0,0,0.9);
+            }
+            
+            .horn{
+                    width: 40px;
+                    height: 40px;
+                    background-image: url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+                    background-size: 100%;
+                    background-position: center;
+                    margin-top: 15px;
+                    margin-left: 20px;
+            }
+            
+            .progress{
+                    width: 1130px;
+                    height: 10px;
+                    background: #fff;
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -565px;   
+                    top: 30px;
+                    border-radius: 2px;
+            }
+            .progress-bar{
+                    width: 10px;
+                    height: 10px;
+                    background: #b6b6b6;
+            }
+            
+            .progress-point{
+                    width: 30px;
+                    height: 30px;
+                    background: yellowgreen;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 0;
+                    top: -10px;
+                    box-shadow: 0 0 5px #ddd;
+            }
+        </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <div id="bar" draggable="false">
+            <div class="horn"  draggable="false"></div>
+            <div class="progress" title="10"  draggable="false">
+                  <div class="progress-bar"  draggable="false"></div>
+                  <div class="progress-point"  draggable="false"></div>
+            </div>
+      </div>
+      <script>
+            function $(selector){
+                var ele = null;
+                return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
+            }
+
+            var bar = $("#bar");
+            var horn = $(".horn");
+            var progress = $(".progress");
+            var progressBar = $(".progress-bar");
+            var progressPoint = $(".progress-point");
+            var fun = null;
+            var volume = {
+                "low" : "https://upload-images.jianshu.io/upload_images/16960494-86ea623e30ad4c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                "hight": "https://upload-images.jianshu.io/upload_images/16960494-0192f12b7372e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+                "mute": "https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+                "middle": "https://upload-images.jianshu.io/upload_images/16960494-ecacc6b836a0661e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+            }
+
+            function handlerPointDragStart(evt){
+                var e = evt ||event;
+                
+                document.removeEventListener("mousemove" , fun);
+                document.addEventListener("mousemove" , fun = handlerPointDragMove.bind(false,e.offsetX));
+            }
+            
+            function handlerPointDragMove(offsetX,evt){
+                var e=evt || event;
+                var numLeft = e.clientX-progress.offsetLeft-offsetX; 
+                
+                numLeft = numLeft < -15 ? -15 : numLeft;
+                numLeft = numLeft >= progress.offsetWidth - 15 ? progress.offsetWidth-15 : numLeft;
+                
+                progressPoint.style.left = numLeft + "px";
+                
+                // console.log(typeof numLeft);
+
+                var prop = progressChangeBar(numLeft);
+
+                changeHornIcon(prop);
+                // console.log(prop);
+            }
+
+            function changeHornIcon(prop){
+                if(prop === 0){
+                    horn.style.backgroundImage = "url("+volume.mute+")"
+                }else if(prop>0 && prop<33){
+                    horn.style.backgroundImage = "url("+volume.low+")"
+                }else if(prop>=33 && prop<66){
+                    horn.style.backgroundImage = "url("+volume.middle+")"
+                }else{
+                    horn.style.backgroundImage = "url("+volume.hight+")"
+                }
+            }
+
+            function progressChangeBar(numLeft){
+                progressBar.style.width = numLeft + 15 + "px";
+                // console.log ((numLeft + 15)/progress.offsetWidth);
+                return parseInt((numLeft + 15)/progress.offsetWidth * 100);
+            }
+
+            function handlerPointDragEnd(){
+                document.removeEventListener("mousemove" , fun);
+            }
+
+            progressPoint.addEventListener("mousedown" , handlerPointDragStart);
+            document.addEventListener("mouseup" , handlerPointDragEnd);
+
+            progress.onmousedown  = function (evt){
+                var e = evt || window.event;
+                e.preventDefault();
+            }
+      </script>
+</body>
+</html>
