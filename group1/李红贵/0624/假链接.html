@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广告链接</title>
+</head>
+<body>
+    <button id="btn">点击下载</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click",falseView,false);
+        btn.addEventListener("click",trueView,false);
+        var times = 0;
+
+        // btn.onclick = function(){
+            
+        //     console.log(times);
+        //     if(times < 3){
+        //         console.log("假链接");
+        //         open("http:www.baidu.com");
+        //     }else{
+        //         times = 0;
+        //         console.log("真链接");
+        //         location.href = "./随堂.html";
+        //     }
+        //     times ++;
+        // }
+
+        function falseView(){
+            console.log("假链接");
+           
+            open("http:www.baidu.com");
+            
+            btn.removeEventListener("click",falseView);
+            
+        }
+        function trueView(){
+            if(times === 0)return times ++;
+            console.log("真链接");
+            location.href = "./随堂.html";
+        }
+    </script>
+</body>
+</html>
