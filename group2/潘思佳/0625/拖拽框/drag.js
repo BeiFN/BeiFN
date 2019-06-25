@@ -6,7 +6,10 @@ var _dragMove = null;
 var lock = false;
 var timer = null;
 
-var moveList = [];
+var moveList = [{
+    Bleft: 0,
+    Btop: 0
+}];
 
 function $(selector) {
     var ele = null;
