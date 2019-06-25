@@ -1,31 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-#pao{
+#cannon {
     width: 50px;
     height: 120px;
     position: absolute;
     bottom: 10px;
     left: 50%;
     margin-left: -25px;
-    background: url(https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+    background: url(../images/炮.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
     text-align: center;
     line-height: 120px;
     font-size: 20px;
-    color:red;
+    color: red;
     text-shadow: 0 0 5px #fff;
     font-weight: 1000;
-    z-index: 10;
 }
-.fish{
+
+.fish {
     width: 100px;
     height: 100px;
-    background: url(https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+    background: url(../images/鱼.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -33,21 +33,23 @@
     font-weight: 1000;
     text-shadow: 0 0 5px #fff;
     text-align: center;
-    color:yellowgreen;
+    color: yellowgreen;
     font-size: 50px;
     position: absolute;
     left: 0;
     top: 0;
     transform: rotate(0deg);
 }
-.fish.die{
+
+.fish.die {
     transition: all 1s;
     transform: rotate(180deg);
 }
-.bullet{
+
+.bullet {
     width: 30px;
     height: 30px;
-    background: url(https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+    background: url(../images/炮弹.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -55,7 +57,7 @@
     transition: all .5s;
 }
 
-.line{
+.line {
     height: 3px;
     background: #ddd;
     position: absolute;
@@ -64,33 +66,32 @@
     z-index: 1;
 }
 
-#score{
-    width:150px;
-    height: 50px;
+#count-num {
+    width: 100px;
+    height: 100px;
     position: absolute;
-    bottom:0;
-    left: 0;
-    background: green;
-    line-height: 50px;
+    right: 50px;
+    top: 50px;
+    background: skyblue;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
     text-align: center;
-    font-size: 30px;
+    line-height: 100px;
 }
-.end{
-    width:300px;
+
+#restart {
+    background: #ddd;
+    width: 600px;
     height: 300px;
-    position: absolute;
-    left:0;
-    right: 0;
-    top:0;
-    bottom: 0;
     margin: auto;
-    border: 2px solid red;
-    display: none;
-}
-.end div{
-    width:300px;
-    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 48px;
     text-align: center;
-    font-size: 30px;
     line-height: 150px;
+    display: none;
 }
