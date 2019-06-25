@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 重点: 关闭事件监听 -->
+		<title>假事件</title>
+	</head>
+	<body>
+		<button type="button" id="btn">button</button>
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			var count = 0;
+			btn.addEventListener("click", openads);
+			btn.addEventListener("click", opentrue);
+
+			function openads() {
+				open("http://www.baidu.com");
+				removeEventListener("click", btn);
+			}
+
+			function opentrue() {
+				if (count >= 1) {
+					location.href = "http://www.goole.com";
+				}
+				count++;
+			}
+		</script>
+	</body>
+</html>
