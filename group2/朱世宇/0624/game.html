@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #select{
+                  width: 200px;
+                  text-align: center;
+                  height: 40px;
+                  line-height: 40px;
+                  background:rgba(0,0,0,.3);
+                  border: 2px solid #000;
+                  box-shadow: 0 0 5px #000;
+                  position: relative;
+            }
+            #list{
+                  width: 190px;
+                  padding: 0 7px;
+                  position: absolute;
+                  top: 44px;
+                  background: rgba(0,0,0,.3);
+                  display: none;
+            }
+            #list p{
+                  line-height: 30px;
+                  text-align: center;
+                  border-bottom: 1px solid #ddd;
+            }
+            #list p:hover{
+                  background: #fff;
+                  transition: all .5s;
+            }
+    </style>
+</head>
+<body>
+    <div id="select">
+        <h2>请选择游戏</h2></div>
+        <div id="list">
+                <p>文明</p>
+                <p>怪物猎人</p>
+                <p>LOL</p>
+                <p>巫师</p>
+                <p>黑暗之魂</p>
+                <p>堡垒之夜</p>
+        </div>
+    
+    <script src="./javascripts/game.js"></script>
+</body>
+</html>
