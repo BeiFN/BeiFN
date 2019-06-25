@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>addEventListener</title>
+		<!-- 时间顺序  捕获  目标  冒泡
+		 如果给addEventListener第三个属性添加了true  则这个事件在捕获中被调用但不影响其他事件的发生顺序
+		 -->
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			div {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+			}
+
+			#box4 {
+				width: 400px;
+				height: 400px;
+				background: red;
+			}
+
+			#box3 {
+				width: 300px;
+				height: 300px;
+				background: blue;
+			}
+
+			#box2 {
+				width: 200px;
+				height: 200px;
+				background: yellow;
+			}
+
+			#box1 {
+				width: 100px;
+				height: 100px;
+				background: forestgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box4">4
+			<div id="box3">3
+				<div id="box2">2
+					<div id="box1">1</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var box1 = document.getElementById("box1");
+			var box2 = document.getElementById("box2");
+			var box3 = document.getElementById("box3");
+			var box4 = document.getElementById("box4");
+			box1.addEventListener("click", obox1_funcrion);
+			box2.addEventListener("click", obox2_funcrion);
+			box3.addEventListener("click", obox3_funcrion);
+			box4.addEventListener("click", obox4_funcrion, true);
+
+			function obox1_funcrion() {
+				alert("this is 1")
+			}
+
+			function obox2_funcrion() {
+				alert("this is 2")
+			}
+
+			function obox3_funcrion() {
+				alert("this is 3")
+			}
+
+			function obox4_funcrion() {
+				alert("this is four");
+			}
+		</script>
+
+
+	</body>
+</html>

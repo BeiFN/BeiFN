@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">高速下载通道</button>
+    <script>
+        var button = document.getElementById("button");
+
+        function moveToAdv(){
+            open("http://www.baidu.com");
+            button.removeEventListener("click",moveToAdv);
+        }
+        function downloading(){
+            open("拖拽.html")
+        }
+        button.addEventListener("click",moveToAdv);
+        button.addEventListener("click",downloading);
+    </script>
+</body>
+
+</html>
