@@ -56,4 +56,4 @@ function changePic(prop){
 
 
 point.addEventListener('mousedown',pointdown);
-point.addEventListener('mouseup',pointUp);
+document.addEventListener('mouseup',pointUp);
