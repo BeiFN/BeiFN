@@ -34,12 +34,18 @@
         <div id="dragBar">
             拖拽栏
         </div>
+        <button id="replayBtn">
+            回放
+        </button>
     </div>
 
     <script>
         var box = document.getElementById("box");
         var dragBar = document.getElementById("dragBar");
+        var replayBtn = document.getElementById("replayBtn");
         var global = {};
+        var dragPosition = [];
+        var timer = null;
 
         function dargBarDown(evt){
             var e  = evt || window.event;
@@ -56,14 +62,35 @@
             box.style.left = e.clientX - global.offsetLeft + "px";
             box.style.top = e.clientY - global.offsettop + "px";
             // console.log("move" , e.clientX - global.offsetLeft, e.clientY - global.offsettop)
+            dragPosition.push({left: e.clientX - global.offsetLeft,top:e.clientY - global.offsettop});
         }
 
         function dargBarUp(){
             document.removeEventListener("mousemove" , dragBarMove );
         }
 
+        function dargReplayBtn(){
+            
+            var start = dragPosition.length;
+            timer = setInterval(function(){
+
+                if(start === 0){
+                    clearInterval(timer);
+                    dragPosition.length = 0;
+                }
+
+                start --;
+                box.style.left = dragPosition[start].left + "px";
+                box.style.top = dragPosition[start].top + "px";
+
+            },50);
+            
+        }
+
         dragBar.addEventListener("mousedown" , dargBarDown);
         dragBar.addEventListener("mouseup" , dargBarUp);
+        replayBtn.addEventListener("click", dargReplayBtn);
+        // replayBtn.onclick = re
         
     </script>
 </body>

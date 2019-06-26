@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #select {
+            margin: 100px auto;
+            width: 200px;
+            height: px;
+
+
+        }
+
+        #list {
+            display: none;
+        }
+
+        p {
+            width: 200px;
+            height: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            background: #f0f;
+            line-height: 20px;
+        }
+        #list p:hover{
+            background: #f00;
+            transition: all 0.5
+        }
+    </style>
+</head>
+
+<body>
+    <div id="select">
+        <p>英雄联盟</p>
+        <div id="list">
+
+            <p>王者</p>
+            <p>大师</p>
+            <p>钻石</p>
+            <p>黄金</p>
+            <p>白银</p>
+        </div>
+    </div>
+    <script>
+        var select = document.getElementById("select");
+        var list = document.getElementById("list");
+
+        select.addEventListener("click", xuanze);
+
+        function xuanze(evt) {
+            var e = evt || event;
+            list.style.display = "block";
+            typeof e.stopPropagation === "function"? e.stopPropagation():e.concelBubble = true;
+
+        }
+        document.onclick = function () {
+            list.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

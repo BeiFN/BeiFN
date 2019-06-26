@@ -10,7 +10,7 @@
     bottom: 10px;
     left: 50%;
     margin-left: -25px;
-    background: url(../image/炮.jpg) no-repeat center;
+    background: url(https://upload-images.jianshu.io/upload_images/16960494-82a525c8dbc33297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center;
     background-size: 100%;
     text-align: center;
     line-height: 120px;
@@ -23,7 +23,7 @@
 .fish{
     width: 100px;
     height: 100px;
-    background: url(../image/鱼.jpg) no-repeat center;
+    background: url(https://upload-images.jianshu.io/upload_images/16960494-f28413581f447db2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center;
     background-size: 100%;
     line-height: 120px;
     font-weight: 1000;
@@ -45,7 +45,7 @@
 .bullet{
     width: 30px;
     height: 30px;
-    background: url(../image/炮弹.jpg) no-repeat center;
+    background: url(https://upload-images.jianshu.io/upload_images/16960494-c1fb4782eaea40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center;
     background-size: 100%;
     position: absolute;
     transition: all 0.5s;

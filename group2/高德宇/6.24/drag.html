@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drag</title>
+    <style>
+    .box{
+        height: 200px;
+        width: 100px
+        ;position: absolute;
+        background: yellowgreen;
+        box-shadow: 0 0 5px yellowgreen;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+
+    }
+    .m-box
+    {
+        height: 30px;
+        width: 100%;
+        text-align: center;
+        line-height: 30px;
+        background: rgba(0,222 , 0, .3);
+    }
+    .butt
+    {
+        height: 30px;
+        width: 50px;
+        background: rgb(0, 0, 0)
+    }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="m-box" id="dBar">
+        </div>
+        <button class="butt"><span style="color: white">回访</span></button>
+    </div>
+    <script>
+        var box = $(".box");
+        var dBar = $(".m-box");
+        console.log(dBar)
+        function $(selector) {
+            var ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
+        }
+        //1
+        // dBar.addEventListener('mouseup',stopDrag);
+        // dBar.addEventListener('mousedown',startDrag);
+        // var global = {};
+        // function startDrag(evt){
+        //     var e =evt ||window.event;
+        //     global.offsetX = e.offsetX;
+        //     global.offsetY = e.offsetY;
+        //     dBar.addEventListener('mousemove',dragging);
+        // }
+        // function dragging (evt){
+        //     var e = event ||window.event;
+        //     box.style.top = e.clientY - global.offsetY + "px" ;
+        //     box.style.left = e.clientX - global.offsetX + "px" ;
+        // }
+        // function stopDrag()
+        // {
+        //     dBar.removeEventListener('mousemove',dragging);
+        // }
+        //2
+        // var temp_drag_move = null ;
+        // dBar.addEventListener('mouseup',stopDrag);
+        // dBar.addEventListener('mousedown',startDrag);
+        //  function startDrag(evt)
+        //  {
+        //     var e = evt ||window.event;
+        //     dBar.addEventListener("mousemove",temp_drag_move= dragging.bind(false,{offsetY:e.offsetY,offsetX:e.offsetX}));}
+        //  function dragging(offset,evt){
+        //     var e = event||evt;
+        //     box.style.left = e.clientX -offset.offsetX +"px"
+        //     ;box.style.top = e.clientY -offset.offsetY + "px";
+        //  }
+        //  function stopDrag(){
+        //     dBar.removeEventListener('mousemove',temp_drag_move);
+        //  }
+        //3
+
+    //     var temp_drag = null ;
+    //     function startDrag(evt)
+    //     {
+    //         var e=event||evt ;
+    //         document.removeEventListener("mousemove" , temp_drag);
+    //         document.addEventListener("mousemove", temp_drag = dragging.bind(false,{offsetY : e.offsetY,offsetX : e.offsetX}));
+    //     }
+    // function dragging(offset,evt)
+    // {
+    //     var e =evt ||event;
+    //     box.style.left=e.clientX - offset.offsetX + "px";
+    //     box.style.top=e.clientY -offset.offsetY + "px" ;
+
+    // }
+    // function stopDrag(){
+    //     document.removeEventListener('mousemove',temp_drag)
+    // }
+    // dBar.addEventListener('mouseup',stopDrag);
+    // dBar.addEventListener('mousedown',startDrag);
+    </script>
+</body>
+</html>
