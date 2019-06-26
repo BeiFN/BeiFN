@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // var obj = {a : 1};
+    // Object.defineProperty(obj,"a",{
+    //     configurable : true,
+    //     enumerable : true,
+    //     value : "hello",
+    //     writable : true,
+    // })
+    
+    var obj = {
+        _data : {},
+    }
+    Object.defineProperty(obj,"a",{
+        get : function(){
+            this._data.a = this._data.a + 2;
+            return this._data.a;
+        },
+        set : function(value){
+            return this._data.a = value;
+        }
+    })
+    obj.a = 1;
+    console.log(obj.a === 3 && obj.a === 5 && obj.a ===7);
+    </script>
+</body>
+</html>
