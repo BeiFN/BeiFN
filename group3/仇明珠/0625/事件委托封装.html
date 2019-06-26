@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+        margin:0;
+        padding:0;
+    }
+    li{
+        list-style: none;
+    }
+    li{
+        height:30px;
+        width:100px;
+        background: #333;
+        border-top: 1px solid #fff;
+        line-height: 30px;
+        text-align: center;
+        color:#fff;
+    }
+    </style>
+</head>
+<body>
+        <ul class="list1">
+            <li>这是li</li>
+            <li class="li"><span>这是li</span></li>
+            <li class="li">这是li</li>
+            <li>这是li</li>
+            <li>这是li</li>
+        </ul>
+        <script>
+            var list=document.querySelector(".list1");
+            list.addEventListener("click",delegate(handelClick,".li"));
+            function delegate(callback,selector){
+                return function(evt){
+                    var e=evt||window.event;
+                    var target=e.target||e.srcElement;
+                    var eleList=document.querySelectorAll(selector);
+                    var targetFamily=[];
+                    var _temp=target;
+                    while(_temp!==this){
+                        targetFamily.push(_temp);
+                        _temp=_temp.parentNode;
+                    }
+                    for(var i=0,ele;ele=eleList[i++];){
+                        if(targetFamily.length===1?ele===target:targetFamily.indexOf(ele)!=-1){
+                            callback.call(ele);
+                        }
+                    }
+
+                }
+            }
+            function handelClick(){
+                this.style.background="#ddd";
+            }
+        </script>
+</body>
+</html>
