@@ -18,8 +18,9 @@
         // 封装getAttribute()
         function myGetAttribute(dom,name){
             for(var i in dom.attributes){
-                if(dom.attributes[i].nodeName==name) return dom.attributes[i].nodeValue;
+                if(dom.attributes[i].nodeName===name) return dom.attributes[i].nodeValue;
             }
+            return null;
         }
 
         // var div=document.getElementById("box");
