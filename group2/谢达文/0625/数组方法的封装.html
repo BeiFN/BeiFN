@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+       
+            /**
+             * map封装
+             * 
+            */
+            //  function myMap(arr,fn){
+            //       var 
+            //             res = [];
+            //       for(var i = 0;i < arr.length ; i++){
+            //             res.push(fn(arr[i],i,arr));
+            //       }
+
+            //       return res;
+            //  }
+            //  var newArr = myMap(arr,function(item,index,arr){
+            //       return item * 1.3;
+            //  })   
+            //  console.log(newArr);
+
+
+
+            //  var newArray = arr.filter( function(item , index){
+            //       return item >= 10000;
+            // } )
+             /**
+              * filter封装
+              * 
+             */
+                  
+
+            //  function myFilter(arr,fn){
+            //        var res = [];
+            //       for(var i = 0;i < arr.length;i++){
+            //             if(fn(arr[i],i,arr)){
+            //                   res.push(arr[i]);
+            //             }
+                       
+            //       }
+            //       return res;
+            //  }
+            //  var newArr = myFilter(arr,function(item,index,arr){
+            //       return  item >= 10000; 
+            //  });
+            //  console.log(newArr);
+
+
+             /**
+              * every封装
+              * 
+              * 
+              * 
+             */
+             var arr = [15000,20000,21000,26000,3000,2000,8000];
+            // var boolean = arr.every(function( item , index , arr){
+            //       console.log(1);
+            //       return item % 2 === 0
+            // })
+            // console.log(boolean);
+
+
+
+
+      //       function myEvery(arr,fn){
+      //             var flag = true;
+      //             for(var i = 0;i < arr.length;i++){
+      //                   if(!fn(arr[i],i,arr)){
+      //                         flag = false;
+      //                       break;
+      //                   }
+      //             }
+      //             return flag;
+      //       }
+
+      //      var bool =  myEvery(arr,function(item,index,arr){
+      //             return item % 2 ===0;
+      //       })
+      //       console.log(bool);
+
+
+            // var boolean = arr.some( function (item , index , arr){
+            //        console.log(item);
+            //        return item === 3000
+            //  })
+
+
+
+
+            /**
+             * 
+             * some方法封装
+             * 
+            */
+            //  function mySome(arr,fn){
+            //       var flag = false;
+            //       for(var i = 0 ;i < arr.length ; i++){
+            //             if(fn(arr[i],i,arr)){
+            //                   flag = true;
+            //             }
+            //       }
+            //       return flag;
+            //  }
+
+            //  var bool = mySome(arr,function(item,index,arr){
+            //       return item === 3001 ;
+            //  })
+            //  console.log(bool);
+
+
+
+        
+            /**
+             * 
+             * 扁平化 flat 封装
+             * 
+            */
+            
+        //     var arr = [
+        //           [1,2,3,4,5,6,7,8],
+        //           [6,5,4,3,2,1]
+        //     ];
+        //     function myFlat(arr){
+        //           if(!myFlat.res){
+        //                 myFlat.res = [];
+        //           }
+        //           for(var i = 0 ; i < arr.length ; i++){
+        //                 if(!(arr[i] instanceof Array)){
+        //                       myFlat.res.push(arr[i]);
+        //                 }
+        //                 else{
+        //                       myFlat(arr[i]);
+        //                 }
+        //           }
+        //           return myFlat.res;
+        //     }      
+        //    console.log( myFlat(arr));  
+           
+
+
+
+        /**
+         * 
+         * reduce封装
+         * 
+        */
+        // var res = arr.reduce(function(pre , now , index , arr){
+              
+        //       return pre + now;
+        // },10000)
+        // console.log(res);
+        
+        // function myReduce(arr,fn){
+        //     var res = null;
+        //     for(var i = 1;i < arr.length ; i ++){
+        //         res = fn(res,arr[i],i,arr);
+        //     }
+        //     return res;
+        // }
+        // var sum = myReduce(arr,function(pre,now,index,arr){
+        //     return pre + now;
+        // })
+        // console.log(sum);
+
+    </script>
+</body>
+</html>
