@@ -48,22 +48,26 @@
 		clearInterval(time);
 	}
 
-
-	//side-bar
-	sideToTop();
-	function sideToTop() {
+	sideBar();
+	function sideBar() {
 		var side = document.querySelector(".side-bar");
+		var footer = document.querySelector(".footer");
+		var bottom = footer.offsetTop;
 		window.addEventListener("scroll", scrollHandler);
-		function scrollHandler(e) {
-			var scroll = document.documentElement.scrollTop;
-			if(scroll > 400) side.style.display = 'block';
-			else if(scroll <= 400) side.style.display = 'none';
-			if(document.body.clientHeight - scroll - document.documentElement.clientHeight<= 290)
-				side.style.bottom = 290 - (document.body.clientHeight - scroll - document.documentElement.clientHeight) + "px";
-			else
-				side.style.bottom = "50px";
+		function scrollHandler() {
+			var scroll = document.documentElement.scrollTop || document.body.scrollTop;
+			if(scroll > 400) side.style.display = "block";
+			else if(scroll <= 400) side.style.display = "none";
+			if(scroll > 3130){
+				side.style.position = "absolute";
+				side.style.top = 3700 + "px";
+			}
+			else{
+				side.style.position = "fixed";
+				side.style.top = 550 + "px";
+			}
 		}
 		side.addEventListener("click", function () {
-			document.documentElement.scrollTop = 0;
-		})
+					document.documentElement.scrollTop = 0;
+				})
 	}
