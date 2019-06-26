@@ -68,7 +68,8 @@ function changeProgressBarWidth(_left){
 
 
 progressPoint.addEventListener("mousedown",handlerVolumeChangeStart);
-document.addEventListener("mouseup",handlerVolumeChangeEnd)
+document.addEventListener("mouseup",handlerVolumeChangeEnd);
+
 
 //阻止区域中无用的默认事件
 progress.mousedown=function(evt){
