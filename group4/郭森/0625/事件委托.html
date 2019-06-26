@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var obj={a:1};
+        for (var i = 0; i++ < 100;) {
+            var li = document.createElement("li");
+            li.innerHTML = "哈哈哈哈哈哈";
+            box.append(li);
+        }
+        box.addEventListener("click", delegation(showRed, "li",obj))
+        function delegation(callback, selector) {
+            return function (evt) {
+                var e = evt || event;
+                var target = e.target || e.srcTarget;
+                var eleList = document.querySelectorAll(selector);
+                var path = [];
+                var _target = target;
+                while (_target !== this) {
+                    path.push(_target);
+                    _target = _target.parentNode;
+                }
+                for (var i = 0, ele; ele = eleList[i++];) {
+                    if (path.length === 1 ? (ele === target) : (path.indexOf(ele) !== -1)) {
+                        callback.call(ele,evt);
+                    }
+                }
+            }
+        }
+        function showRed(evt) {
+            this.style.background="#f00";
+        }
+
+
+    </script>
+</body>
+
+</html>
