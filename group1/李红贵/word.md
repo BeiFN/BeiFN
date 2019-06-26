@@ -535,3 +535,43 @@ var box = document.getElementById("box");
 3.screenX screenY screenWidth screenHeight 屏幕坐标 x和y
 4.offsetX offsetY offsetWidth offsetHeight 当前区域位置
 5.pageX pageY pageWidth pageHeight 文档位置（包括滚动区域）
+
+
+***JS day11  0624 高级事件
+1.addEventListener  添加监听
+2.removeEventListener 移除监听事件
+3.stopPropagetion 阻止冒泡
+4.dom.cloneNode(true) 复制节点方法,返回一个新的dom对象
+5.e.preventDefault 阻止默认事件 
+6.var cloneEle = null; 阻止右键弹出框 
+
+
+***JS day12  0625 es5新增
+1."use strict"  严格模式
+2.forEach 遍历数组，参数为函数
+3.map 返回一个新数组，新数组之中装的是参数函数的返回值;
+4.filter返回新数组.会根据参数函数的返回值判定是否该讲具体的项加入新数组;返回原数组满足条件的值
+5.some 判断是否有满足条件的值
+6.every 判断是否都满足
+7.reduce 累计方法
+8.flat es6方法，数组扁平化
+
+9.Object.definePropertie()  扩展部分对象里的方法
+10.configurable:true,  	不可删除 
+11.enumerable: true,  不可枚举 
+12.value:  设置值
+13.writable: true  可写入
+14.get  获取属性的时候添加方法
+15.set 设置属性的时候添加方法;
+
+
+
+
+
+
+
+
+
+
+
+

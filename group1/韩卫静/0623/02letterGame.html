@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打字游戏</title>
+    <link rel="stylesheet" href="css/letter.css">
+</head>
+<body>
+    <div id="bow">
+        <span></span>
+    </div>
+
+    <div id="level">
+        <input type="radio" name="level" value="1" checked>简单  
+        <input type="radio" name="level" value="2">中级
+        <input type="radio" name="level" value="3">困难
+        <p>
+            <button id="restart">重新开始</button>
+            <button id="stopgame">停止游戏</button>
+        </p>
+    </div>
+
+    <div class="record">
+        <p>正确数量：<span id="right_count"></span></p>
+        <p>漏击数量：<span id="miss_count"></span></p>      
+    </div>
+
+    <div class="arrowmove"> </div>
+
+    <div class="line"></div>
+
+    <script src="letter.js">
+    </script>
+</body>
+</html>
