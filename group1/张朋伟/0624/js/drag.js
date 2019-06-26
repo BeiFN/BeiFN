@@ -6,6 +6,9 @@ var progressPoint = $(".progress-point");
 var progressBar = $(".progress-bar");
 var progress = $(".progress");
 var horn = $(".horn");
+// var handlerVolumeChangeMove = null;
+// document.removeEventListener("mousemove", handlerVolumeChangeMove);
+
 var GLOBAL = {
     proOffsetLeft: progress.offsetLeft,
     proWidth: progress.offsetWidth,
@@ -23,8 +26,7 @@ function handlerVolumeChangeStart(evt) {
     var e = evt || event;
     // var left = e.clientX;
     GLOBAL.X = e.offsetX;
-    console.log(GLOBAL.X);
-    document.removeEventListener("mousemove", handlerVolumeChangeMove);
+    // console.log(GLOBAL.X);
     document.addEventListener("mousemove", handlerVolumeChangeMove)
 }
 
@@ -32,14 +34,34 @@ function handlerVolumeChangeMove(evt) {
     var e = evt || event;
     var left = e.clientX - GLOBAL.X - GLOBAL.proOffsetLeft;
     left = left < -15 ? -15 : left;
-    left = left >= GLOBAL.proWidth -15? GLOBAL.proOffsetLeft : left;
+    // left = left >= GLOBAL.proWidth -15 ? GLOBAL.proOffsetLeft : left;
+    left = left >= GLOBAL.proWidth - 15 ? GLOBAL.proWidth - 15 : left ;
+    console.log(left);
 
     progressPoint.style.left = left + "px";
-    progressBar.style.width = left+ "px";
+    progressBar.style.width = left + "px";
+    var prop = parseInt(left / GLOBAL.proWidth * 100);
+    // console.log(pro);
+    if (prop === 0) {
+        // 静音图标
+        horn.style.backgroundImage = "url(" + GLOBAL.volume.mute + ")"
+    } else if (prop > 0 && prop < 33) {
+        horn.style.backgroundImage = "url(" + GLOBAL.volume.low + ")"
+    } else if (prop >= 33 && prop < 66) {
+        horn.style.backgroundImage = "url(" + GLOBAL.volume.middle + ")"
+    } else {
+        horn.style.backgroundImage = "url(" + GLOBAL.volume.hight + ")"
+    }
 
 }
 document.addEventListener("mouseup", handlerVolumeChangeEnd);
 
-function handlerVolumeChangeEnd(evt) {
+function handlerVolumeChangeEnd() {
     document.removeEventListener("mousemove", handlerVolumeChangeMove);
+}
+// 优化用户体验 阻止区域中无用的默认事件;
+progress.onmousedown = function(evt){     
+    var e = evt || window.event;
+
+    e.preventDefault(); 
 }
