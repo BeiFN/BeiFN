@@ -224,3 +224,173 @@ header nav{
     border-bottom: 2px solid #000000;
     color: #282828;
 }
+/*内容*/
+.content{
+    width: 100%;
+    height: 2644px;
+    background: #eee;
+}
+.content>div{
+    height: 100%;
+    width: 1150px;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.content_div{
+    width: 210px;
+    height: 308px;
+    margin: 0 20px 20px 0;
+    float: left;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+}
+.content_pic{
+    width: 100%;
+    height: 158px;
+}
+.content_pic>a{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.content_pic>a:hover{
+    opacity: .8;
+}
+.content_pic img{
+    width: 100%;
+    height: 100%
+}
+.content_info{
+    border-bottom: 1px solid #eee;
+    padding: 11px 16px 13px;
+    height: 75px;
+    position: relative;
+}
+.content_info_tltie{
+    margin-bottom: 1px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.content_info_tltie>a{
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+.content_info_item{
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 17px;
+    height: 18px;
+}
+.text_view::before{
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 5px;
+    background: url('https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1') 0 4px no-repeat;
+    background-size: 16px auto;
+}
+.text_comment::before{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 5px;
+    margin-left: 5px;
+    background: url('https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1') 0 2px no-repeat;
+    background-size: 16px auto;
+}
+.text_comment::after{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: url('https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1') 0 2px no-repeat;
+    background-size: 16px auto;
+}
+.content_item{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 16px;
+    font-size: 12px;
+    position: relative;
+}
+.content_item span{
+    float: left;
+    display: inline-block;
+    color: #bbb;
+}
+.content_item_span1{
+    width: 120px;
+    overflow: hidden;
+}
+.content_item_span1 a{
+    text-decoration: none;
+    color: #333;
+}
+/* 分页器*/
+.paginator{
+    width: 100%;
+    height: 40px;
+    background: #eee;
+}
+.paginator>div{
+    height: 100%;
+    width: 548px;
+    margin: 0 auto;
+}
+.paginator span ,.paginator a{
+    display: inline-block;
+    width: 38px;
+    height: 40px;    
+    text-align: center;
+    line-height: 40px;
+    background: #fff;
+    color: #bbb;
+    border:  1px solid #e9e9e9;
+    border-radius: 4px;
+    margin: 0 3px;
+}
+.paginator a{
+    text-decoration: none;
+}
+.paginator a:hover{
+    background:#ffe300;
+    border:  1px solid #ffe300;
+    color: #282828;
+}
+.advertisement{
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+    background: #eee;
+}
+.advertisement>div{
+    height: 100%;
+    width: 1130px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.advertisement a{
+    width: 1130px;
+    height: 100px;
+    display: inline-block;
+}
+.advertisement img{
+    width: 100%;
+    height: 100%;
+}
+.like{
+    width: 100%;
+    height: 250px;
+}
