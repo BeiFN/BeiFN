@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+                /* *{
+            margin: 0;
+            padding: 0;
+    }
+    #select{
+            width: 200px;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+            background:rgba(0,0,0,.3);
+            border: 2px solid #000;
+            box-shadow: 0 0 5px #000;
+            position: relative;
+    }
+    #list{
+            width: 190px;
+            padding: 0 5px;
+            position: absolute;
+            top: 20px;
+            background: rgba(0,0,0,.3);
+            display: none;
+    }
+    #list p{
+            line-height: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+    }
+    #list p:hover{
+            background: #fff;
+            transition: all .5s;
+    } */
+                /* body,html{
+                width: 100%;
+                height: 100%;
+            }
+    div{
+        padding: 50px;
+        border: 10px solid #ddd;
+    } */
+                /* *{
+        margin:0;
+        padding: 0;
+        }
+        #box{
+                width: 300px;
+                height: 200px;
+                background: yellowgreen;
+                color: #fff;
+                box-shadow: 0 0 5px yellowgreen;
+                border-radius: 10px;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+        }
+        #top-bar{
+                width: 300px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                background: rgba(0,0,0,.3);
+        }
+        #goBack{
+                padding: 3px 5px ;
+                background: #fff;
+                box-shadow: 0 0 5px #30f;
+                border: none;
+        } */
+
+                * {
+                        margin: 0;
+                        padding: 0;
+                }
+
+                li {
+                        list-style-type: none;
+                }
+
+                .optionsMenu {
+                        width: 200px;
+                        height: 200px;
+                        background: rgba(0, 0, 0, 0.3);
+                        display: none;
+                        position: absolute;
+                }
+
+                .optionsMenu li {
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        border-bottom: 1px solid #ddd;
+                }
+
+                .optionsMenu li:hover {
+                        transition: all .5s;
+                        background: #ddd;
+                        color: #fff;
+                        box-shadow: 0 0 5px #000;
+                }
+
+                .list {
+                        float: left;
+                        margin-left: 10px;
+                }
+        </style>
+</head>
+
+<body>
+        <!-- <ul class="list">
+                <h1>列表1</h1>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+                <li>我是列表1之中的li</li>
+        </ul>
+
+        <ul class="list">
+                <h1>列表2</h1>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+                <li>我是列表2之中的字符串</li>
+        </ul>
+
+        <ul class="optionsMenu">
+                <li>复制</li>
+                <li>粘贴</li>
+                <li>剪切</li>
+                <li>删除</li>
+        </ul> -->
+
+        <!-- <div id="select">
+        <p>请选择游戏</p>
+        <div id="list">
+                <p>英雄联盟</p>
+                <p>炉石传说</p>
+                <p>基3</p>
+                <p>屁股先锋</p>
+                <p>恰鸡</p>
+        </div>
+    </div> -->
+        <!-- <div style="background:#0f0" id="box5">
+            5
+            <div style="background:#3A3">
+                  4
+                  <div style="background:#696">
+                        3
+                        <div id="box2"style="background:#A6A">
+                              2
+                              <div id="box1" style="background:#F3F"> 1 </div>
+                        </div>
+                  </div>
+            </div>
+    </div> -->
+        <!-- <button id="download">点击下载</button> -->
+        <!-- <div id="box">
+            <div id="top-bar">
+                  拖拽条 
+            </div>
+            <button id="goBack">回放</button>
+      </div> -->
+        <script>
+                //模拟select选择框
+                // var game_select = $("#select");
+                // var game_list   = $("#list");
+                // var game_list_child = game_list.children;
+                // var game_selectValue = game_select.children[0];
+                // function $(select){
+                //     var ele = null;
+                //     return  (ele = document.querySelectorAll(select)).length === 1 ? ele[0] : ele ;
+                // }
+                // game_select.onclick = function(evt){
+                //     var e = evt || window.event;
+                //     game_list.style.display = "block";
+                //     for(var i = 0 ,item; item = game_list_child[i++] ; )
+                //     {
+                //         item.onclick = function(){  
+                //             game_selectValue.innerHTML = this.innerHTML; 
+                //             game_list.style.display = "none";   
+                //         }
+                //     }
+                //     typeof e.stopPropagation() === "function" ? e.stopPropagation() : e.cancelBubble = true ;
+                // }
+                // document.onclick = function(){
+                //     game_list.style.display = "none";
+                // }
+
+
+                //高级事件(目标阶段>冒泡，逐层向上给出回应)
+                // var box_1 = document.getElementById("box1");
+                // var box_2 = document.getElementById("box2");
+                // var box_3 = document.getElementById("box3");
+                // var box_4 = document.getElementById("box4");
+                // var box_5 = document.getElementById("box5");
+                // box_1.addEventListener("click" , BgColorChange_1 , false);//默认情况下为冒泡
+                // function BgColorChange_1(){
+                //     box_1.style.backgroundColor = "red";
+                // }
+                // box_2.addEventListener("click" , BgColorChange_2 , false)//box_1 到 box_2
+                // function BgColorChange_2(){
+                //     box_2.style.backgroundColor = "blue";
+                //     //alert(" i'm blue ");
+                // }
+                //监听可以同时存在多个处理函数
+                // var box_1 = document.getElementById("box1");
+                // box_1.addEventListener("click" , RandomBgColor , false);
+                // box_1.addEventListener("click" , alertTip , false);
+                // function RandomBgColor(){
+                //     this.style.background = "#" + 
+                //     Math.round( Math.random() * parseInt("ffffff",16)).toString(16).padStart(6,0);
+                // }
+                // function alertTip(){
+                //     var div_1 = document.createElement("div");
+                //     var div_2 = document.createElement("div");
+                //     div_1.style.cssText = "width:100%; height : 100%;background:rgba(0,0,0,0.1);position:absolute;top:0;border:none;"
+                //     div_2.style.cssText = "height:20% ; width:20% ; background:white; position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;text-align:center;"
+                //     div_2.innerHTML = "hello world";
+                //     div_1.addEventListener("click" , function(){
+                //         this.remove();//移除this指向的元素
+                //     })
+                //     document.body.appendChild(div_1);
+                //     div_1.appendChild(div_2);
+                // }
+
+                //假链接
+                // var btn = document.getElementById("download");
+                // var time = 0;
+                // btn.addEventListener("click" , moveToAd);
+                // btn.addEventListener("click" , moveToDownload);
+                // function moveToAd(){
+                //     open("http://www.baidu.com");//用location.href的会被下一个location.href顶掉；用openAPI才可以同时打开
+                //     btn.removeEventListener("click" , moveToAd);
+                // }
+                // function moveToDownload(){
+                //     if(time===0) {
+                //         return time++;
+                //     }
+                //     location.href = "download.html";
+                // }
+
+                //拖拽
+                //点击拖拽条才可以进行拖拽
+                // 1. 鼠标按下;   拖拽开始;
+                // 2. 鼠标移动;   拖拽进行中;
+                // 3. 鼠标抬起;   拖拽结束;
+
+                //使用全局变量，进行函数之间的交互(耦合较高)
+                // var box     = document.getElementById("box");
+                // var topBar  = document.getElementById("top-bar");
+                // var goBack  = document.getElementById("goBack") 
+                // var allDistance = {};
+                // var coordinates = [];
+                // topBar.addEventListener("mousedown" , BeginMove );//鼠标按下
+                // function BeginMove(evt){
+                //     var e = evt || window.event;
+                //     allDistance.X = e.offsetX;
+                //     allDistance.Y = e.offsetY;
+                //     coordinates.push({
+                //         left : 0,
+                //         top  : 0
+                //     })
+                //     document.removeEventListener("mousemove" , Moving);
+                //     document.addEventListener("mousemove" , Moving);
+                // }
+                // function Moving(evt){
+                //     var e = evt || window.event ;
+                //     var numleft = e.clientX - allDistance.X;
+                //     var numtop  = e.clientY - allDistance.Y; 
+
+                //     box.style.top  = numtop + "px";
+                //     box.style.left = numleft +"px";
+                //     coordinates.push({
+                //         left : numleft,
+                //         top  : numtop
+                //     })
+                // }
+                // topBar.addEventListener("mouseup" , EndMove);
+                // function EndMove(){
+                //     document.removeEventListener("mousemove" , Moving);
+                // }
+                // goBack.addEventListener("click" , BoxGoBack);
+                // function BoxGoBack(){
+                //     var allNumber = coordinates.length;
+                //     var time = setInterval(function(){
+                //         allNumber --;
+                //         box.style.top  = coordinates[allNumber].top +  "px";
+                //         box.style.left = coordinates[allNumber].left + "px";
+                //         if(allNumber == 0)
+                //         {
+                //             clearInterval(time);
+                //             coordinates.length=0;
+                //         }
+                //     },80)
+                // }
+
+                //自定义右键菜单
+                // var optionMenu = document.querySelector(".optionsMenu");
+                // var cloneEle = null;
+                // var selectTarget = null;
+                // document.oncontextmenu = function (evt) {
+                //         var e = evt || window.event;
+                //         typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+                //         optionMenu.style.display = "block";
+                //         optionMenu.style.left = e.clientX + "px";
+                //         optionMenu.style.top = e.clientY + "px";
+                //         var target = e.target || e.srcElement ;
+                //         selectTarget ? selectTarget.style.background = "" : " ";
+                //         selectTarget = target;
+                //         selectTarget.style.background = "yellowgreen";
+
+                // }
+                // document.onclick = function (evt) {
+                //         var e = evt || window.event;
+                //         optionMenu.style.display = "none";
+                // }
+                // optionMenu.onclick = function (evt) {
+                //         var e = evt || window.event;
+                //         var target = e.target || e.srcElement;
+                //         switch (target.innerHTML) {
+                //                 case "复制":
+                //                         cloneEle = target.cloneNode(true);
+                //                         cloneEle.style.cssText = "display:block";
+                //                         break;
+                //                 case "粘贴":
+                //                         selectTarget.appendChild(cloneEle);
+                //                         break;
+                //                 case "剪切":
+                //                         cloneEle = selectTarget;
+                //                         break;
+                //                 case "删除":
+                //                         selectTarget.remove();
+                //                         break;
+                //         }
+                // }
+        </script>
+</body>
+
+</html>
