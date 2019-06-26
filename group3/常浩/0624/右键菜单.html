@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+                  margin: 0;
+                  padding: 0;
+            }
+            li{
+                  list-style-type: none;
+            }
+            .optionsMenu{
+                  width: 200px;
+                  height: 200px;
+                  background: rgba(0,0,0,0.3);
+                  display: none;
+                  position: absolute;
+            }
+            .optionsMenu li{
+                  height: 50px;
+                  line-height: 50px;
+                  text-align: center;
+                  border-bottom: 1px solid #ddd;
+            }
+            .optionsMenu li:hover{
+                  transition: all .5s;
+                  background: #ddd;
+                  color: #fff;
+                  box-shadow: 0 0 5px #000;
+            }
+            .list{
+                  float: left;
+                  margin-left: 10px;
+            }
+    
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <h1>列表1</h1>
+        <li>我是列表1之中的li1</li>
+        <li>我是列表1之中的li2</li>
+        <li>我是列表1之中的li3</li>
+        <li>我是列表1之中的li4</li>
+        <li>我是列表1之中的li5</li>
+        <li>我是列表1之中的li6</li>
+        <li>我是列表1之中的li7</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+        <li>我是列表1之中的li</li>
+  </ul>
+
+  <ul class="list">
+        <h1>列表2</h1>
+        <li>我是列表2之中的字符串1</li>
+        <li>我是列表2之中的字符串2</li>
+        <li>我是列表2之中的字符串3</li>
+        <li>我是列表2之中的字符串4</li>
+        <li>我是列表2之中的字符串5</li>
+        <li>我是列表2之中的字符串6</li>
+        <li>我是列表2之中的字符串7</li>
+        <li>我是列表2之中的字符串8</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+        <li>我是列表2之中的字符串</li>
+  </ul>
+
+
+  
+  <ul class="optionsMenu">
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>剪切</li>
+        <li>删除</li>
+  </ul>
+
+
+  <script>
+      var ele_menu = document.querySelector(".optionsMenu");
+      var selectTarget = null ;
+      var cloneEle     = null ;
+      var targets = null ;
+      //阻止右键菜单
+        document.oncontextmenu = function(evt){
+            var e = evt || event ;
+            var left = e.clientX;
+            var tops = e.clientY;
+            typeof (e.preventDefault) === "function" ? e.preventDefault() : e.returnValue = false;
+            //显示自己设置的右键菜单
+            ele_menu.style.display = "block";
+            ele_menu.style.left    = left + "px";
+            ele_menu.style.top    = tops + "px";
+            var target = e.target || e.srcElement;
+                targets = target;
+            selectTarget ? selectTarget.style.background = "" : "";
+            selectTarget = target;
+            selectTarget.style.background = "#00d";
+            
+        }
+        document.onclick = function(){
+            ele_menu.style.display = "none";
+        }
+        //当我们点击菜单选项的时候需要作出对应的功能
+        ele_menu.addEventListener("click",implementMenu)
+        function implementMenu(evt){
+            var e = evt || event ;
+            ele_menu.style.display = "none";    
+            var target = e.target || e.srcElement;
+            selectTarget.style.background = "#00f";
+            switch ( target.innerHTML){
+                case "复制" :
+                    cloneEle = selectTarget.cloneNode(true);
+                    cloneEle.style.background = "#fff";
+                    console.log(cloneEle);
+                    break;
+                case "粘贴" :   //粘贴需要做的是 把复制的目标之下再插入一个选中的子集
+                    selectTarget.appendChild(cloneEle);  
+                    break;
+                case "剪切" : //剪切只需要把selectTarget 选中就可以了
+                    cloneEle = selectTarget;
+                    break;
+                case "删除" : //把selectTarget  移出；
+                    selectTarget.remove();
+                    break;
+            }
+        }
+  </script>
+</body>
+</html>
