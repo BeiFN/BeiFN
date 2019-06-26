@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p class="hi"><span>haha</span></p>
+        <p><span>haha</span></p>
+        <p><span>haha</span></p>
+        <p class="hi"><span>haha</span></p>
+        <p><span>haha</span></p>
+        <p><span>haha</span></p>
+        <p><span>haha</span></p>
+    </div>
+
+    <script>
+       var box = document.getElementById("box");
+       box.addEventListener("click" , delegation(eventCallback , ".hi"));
+
+       function delegation(callback , selector) {
+           return function(evt) {
+                var e = evt || event;
+                var target = e.target || e.srcElement;
+                // console.log(target);
+                var targetParent = [];
+
+                var _temp = target;
+
+                while(true) {
+                    if(_temp === this) {
+                        break;
+                    }
+                    targetParent.push(_temp);
+                    _temp = _temp.parentNode;
+                }
+                // console.log(targetParent);
+
+                var eleList = this.querySelectorAll(selector);
+                console.log(eleList);
+
+                for(var i=0, ele; ele = eleList[i++];) {
+                    if(targetParent.length === 1 ? (target === ele) : targetParent.indexOf(ele) !== -1) {
+                        callback.call(ele , e)
+                    }
+                } 
+           }
+       }
+       function eventCallback() {
+            this.style.backgroundColor = "blue";
+       }
+    </script>
+</body>
+</html>

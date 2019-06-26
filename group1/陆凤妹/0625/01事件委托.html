@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+</head>
+<body>
+    <div id="box">
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+        <p>祖国的花朵儿</p>
+    </div>
+    <script>
+    
+    var oDiv = document.getElementById("box");
+    oDiv.addEventListener("click",handkerClick);
+    function handkerClick(evt){
+        var e = evt || window.event;
+        var target = e.target || e.srcElement;
+        if(target.nodeName === "P"){
+            target.style.background = "yellowgreen";
+         }
+
+    }
+    
+    </script>
+</body>
+</html>

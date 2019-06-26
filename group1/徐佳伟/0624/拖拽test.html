@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽练习</title>
+</head>
+<style>
+      
+        *{
+              margin:0;
+              padding: 0;
+        }
+        #box{
+              width: 300px;
+              height: 200px;
+              background: yellowgreen;
+              color: #fff;
+              box-shadow: 0 0 5px yellowgreen;
+              border-radius: 10px;
+              overflow: hidden;
+              position: absolute;
+              text-align: center;
+        }
+        #top-bar{
+              width: 300px;
+              height: 40px;
+              text-align: center;
+              line-height: 40px;
+              background: rgba(0,0,0,.3);
+        }
+        #goBack{
+              padding: 3px 5px ;
+              background: #fff;
+              box-shadow: 0 0 5px #30f;
+              border: none;
+        }
+  </style>
+<body>
+        <div id="box">
+                <div id="top-bar">
+                      拖拽条 
+                </div>
+                <button id="goBack">回放</button>
+        </div>
+           
+        <script src="./拖拽练习.js">
+            // 1. 鼠标按下;   拖拽开始;
+            // 2. 鼠标移动;   拖拽进行中;
+            // 3. 鼠标抬起;   拖拽结束;
+            // function $(selector){
+            //     var res = null;
+            //     return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res ;
+            // }
+            // var 
+            //     ele_topBar  = $("#top-bar"),
+            //     ele_goBack  = $("#goBack"),
+            //     ele_Box     = $("#box"),
+            //     recordArray = [];
+
+            // function handlerMouseStart(evt){
+            //     var e = evt || window.event;
+            //     recordArray.offsetX = e.offsetX;
+            //     recordArray.offsetY = e.offsetY;
+            //     ele_topBar.removeEventListener("mousemove",handlerMouseDoing);
+            //     ele_topBar.addEventListener("mousemove",handlerMouseDoing,false);
+            // }
+            // function handlerMouseDoing(evt){
+            //     var e = evt || window.event;             
+            //     var left = e.clientX - recordArray.offsetX;
+            //     var top  = e.clientY - recordArray.offsetY;
+                 
+            //     ele_Box.style.left = left +"px";
+            //     ele_Box.style.top  = top  +"px";
+
+            //     recordArray.push({
+            //         left : left,
+            //         top : top
+            //     });
+            // }
+            // function handlerMouseEnd(evt){
+            //     var e = evt || window.event;
+            //     ele_topBar.removeEventListener("mousemove",handlerMouseDoing);
+            // }
+            // ele_goBack.onclick = function(){
+            //     var start = recordArray.length;
+            //     var timer = setInterval(function(){
+            //         //     for(var i = recordArray.length - 1; i >=0 ; i --){
+            //         //         ele_Box.style.left = recordArray[i].left;
+            //         //         ele_Box.style.top  = recordArray[i].top;
+            //         // }
+            //         start -- ;
+            //         ele_Box.style.left = recordArray[start].left + "px";
+            //         ele_Box.style.top  = recordArray[start].top +"px";
+            //         if(start === 0){
+            //             clearInterval(timer);
+            //             recordArray.length = 0;
+            //             start = null;
+            //         }
+            //     },50)
+            // }
+            // ele_topBar.addEventListener("mouseup",handlerMouseEnd,false);
+            // ele_topBar.addEventListener("mousedown",handlerMouseStart,false);       
+
+        </script>
+</body>
+</html>

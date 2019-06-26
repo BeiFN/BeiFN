@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style> 
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            height: 200px;
+            background: yellowgreen;
+            color: #fff;
+            box-shadow: 0 0 5px yellowgreen;
+            border-radius: 10px;
+            overflow: hidden;
+            position: absolute;
+            text-align: center;
+        }
+        #top-bar{
+            width: 300px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background: rgba(0,0,0,.3);
+        }
+        #goBack{
+            width: 80px;
+            height: 36px;
+            border-radius:5px;
+            padding: 3px 5px ;
+            background: #fff;
+            box-shadow: 0 0 5px #30f;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="top-bar">拖拽条</div>
+        <button id="goBack">回放</button>
+    </div>
+    <script>
+        var box     =   document.getElementById("box");
+        var top_bar =   document.getElementById("top-bar");
+        var goBack  =   document.getElementById("goBack");
+        var tempObject = {}     //临时对象存储offset值
+        var tempArray = [];     //临时数组记录拖拽的位置
+        //开始拖拽
+        function handlerStart(evt){
+            var e = evt || event;
+            tempObject.x=e.offsetX;         //获取临时偏移量x
+            tempObject.y=e.offsetY;         //获取临时偏移量y
+            document.addEventListener("mousemove",handlerMove);
+        }
+        //拖拽进行中
+        function handlerMove(evt){
+            var e = evt || event;
+            var numLeft = e.clientX - tempObject.x;
+            var numTop = e.clientY - tempObject.y;
+            box.style.left =numLeft +"px";
+            box.style.top = numTop +"px";
+            tempArray.push({                //在移动时，记录移动的位置
+                left : numLeft,
+                top : numTop
+            });   
+        }
+        //拖拽结束
+        function handlerEnd(){
+            document.removeEventListener("mousemove",handlerMove);
+        }
+        //回放按钮 
+        function handlerReplay(){
+            var start=tempArray.length;
+            var timer=setInterval(function(){
+                start--;
+                box.style.left = tempArray [start].left + "px";
+                box.style.top = tempArray [start].top +"px";
+                if(start ===0 ){                //如果回到原点，清空定时器
+                    clearInterval(timer);
+                    tempArray.length = 0;
+                }
+            },30);
+        }
+        top_bar.addEventListener("mousedown",handlerStart);
+        top_bar.addEventListener("mouseup",handlerEnd);
+        goBack.addEventListener("click",handlerReplay)
+    </script>
+</body>
+</html>
