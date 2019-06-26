@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        #selectList {
+            width: 150px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        #resList {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #333;
+            background: rgba(0, 0, 0, .3);
+            box-shadow: 0 0 10px #000;
+            line-height: 30px;
+        }
+
+        #chooseList {
+            width: 100%;
+            background: rgba(0, 0, 0, .3);
+            display: none;
+        }
+
+        #chooseList li {
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #666;
+        }
+
+        #chooseList li:hover {
+            background: white;
+            color: bisque;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="selectList">
+        <div id="resList">请选择游戏</div>
+        <ul id="chooseList">
+            <li>DNF</li>
+            <li>PPKDC</li>
+            <li>LOL</li>
+            <li>NBA2K</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var selectList = document.getElementById("selectList");
+    var resList = document.getElementById("resList");
+    var chooseList = document.getElementById("chooseList");
+
+    selectList.addEventListener("click", handleSelect);
+    function handleSelect(evt) {
+        var e = evt || event;
+        chooseList.style.display = "block";
+        typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+        if (e.target.nodeName === "LI") {
+            resList.innerHTML = e.target.innerHTML;
+            chooseList.style.display = "none";
+
+        }
+    }
+    document.onclick = function () {
+        chooseList.style.display = "none";
+    }
+</script>
+
+</html>
