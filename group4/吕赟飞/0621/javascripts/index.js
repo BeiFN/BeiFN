@@ -49,19 +49,10 @@ function addtoItem() {
 
       li.children[0].onchange = movetoDoDone;
       li.children[2].onclick = deleteItem;
-      li.children[1].onclick = editText;
-      li.children[1].onblur = editDone;
 
       countLi();
 }
 
-function editText(){
-      this.setAttribute("contenteditable","true");
-}
-
-function editDone(){
-      this.setAttribute("contenteditable","false");
-}
 
 function movetoDoDone() {
       if (this.checked) {
@@ -125,4 +116,27 @@ ele_input.onkeydown = function (evt) {
             addtoItem();
             ele_input.value = "";
       }
+}
+
+
+on(ele_todoList , "click" , handlerChangeText , "p");
+on(ele_todoList , "change" , handlerWriteText , "input");
+
+function handlerChangeText(){
+      if(this.children.length >= 1){
+            return false;
+      }
+      var input = createElement({
+            type : "input",
+            attr : {
+                  value : this.innerHTML,
+            }
+      })
+      this.innerHTML = "";
+      this.appendChild(input);
+      input.select();
+}
+
+function handlerWriteText(){
+      this.outerText = this.value;
 }
