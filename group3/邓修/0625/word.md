@@ -12,3 +12,12 @@
 9. every() : 判定数组中的值是否全部符合某个条件,一旦找到不符合条件的值就返回false,并终止循环;
 10. reduce() : 根据参数函数返回的运算规则进行归结;
 11. flat() : 将数组扁平化，即将多维数组转换为一维数组;
+12. Object.defineProperty() 给对象定义一个属性
+    > 属性拦截器形态
+    > 设置属性的各个特性
+13. configurable 属性,为true不可删除;
+14. enumerable 属性,为true不可枚举;
+15. value 设置值;
+16. writable 属性,为true不可写入;
+17. set 设置属性值;
+18. get 获取属性值.
