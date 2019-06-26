@@ -85,33 +85,46 @@ function change_between_todoAndDone() {
 }
 
 // 移除一件事
-function removeItem(){
+function removeItem() {
     this.parentNode.remove();
     countItem();
 }
 
 // 对列表中的事件计数
-function countItem(){
-    todoCount.innerHTML=ele_todoList.children.length;
-    doneCount.innerHTML=ele_doneList.children.length;
+function countItem() {
+    todoCount.innerHTML = ele_todoList.children.length;
+    doneCount.innerHTML = ele_doneList.children.length;
 }
 //选中项目文字进行更改
-function handlerChangeText(){
-    if(this.children.length>=1) return false;   //如果当前p元素的子元素个数大于等于1，停止执行函数
-    var input=createElement({                   //创建一个内容为p元素内容的输入框 
-        type:"input",
-        attr:{
-            type:"text",
-            value:this.innerHTML
+function handlerChangeText() {
+    if (this.children.length >= 1) return false;   //如果当前p元素的子元素个数大于等于1，停止执行函数
+    var input = createElement({                   //创建一个内容为p元素内容的输入框 
+        type: "input",
+        attr: {
+            type: "text",
+            value: this.innerHTML,
+            title: this.innerHTML
         }
     });
-    this.innerHTML="";
+    this.innerHTML = "";
+    input.onblur = handlerOnblur;
     this.appendChild(input);
     input.select();
 }
 //完成内容修改，点击输入框以外的区域设置内容
-function handlerWriteText(){
-    this.outerHTML=this.value;
+function handlerWriteText() {
+    if (this.value.length === 0) {
+        alert("内容不能为空");
+        this.outerHTML = this.title;
+    }
+    else {
+        this.outerHTML = this.value;
+        this.title = this.value;
+    }
+}
+//内容未修改，失去焦点还原
+function handlerOnblur() {
+    this.outerHTML = this.value;
 }
 
 // 输入完成后按下确认键添加未完成事件
@@ -124,7 +137,7 @@ ele_input.onkeydown = function (evt) {
     }
 };
 //选中项目可更改内容
-on(ele_todoList,"click",handlerChangeText,"p");
-on(ele_todoList,"change",handlerWriteText,"input");
-on(ele_doneList,"click",handlerChangeText,"p");
-on(ele_doneList,"change",handlerWriteText,"input");
+on(ele_todoList, "click", handlerChangeText, "p");
+on(ele_todoList, "change", handlerWriteText, "input");
+on(ele_doneList, "click", handlerChangeText, "p");
+on(ele_doneList, "change", handlerWriteText, "input");
