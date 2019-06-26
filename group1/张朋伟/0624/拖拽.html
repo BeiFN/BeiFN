@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 250px;
+            background: olivedrab;
+            border-radius: 10px;
+            overflow: hidden;
+            /* margin: 50px auto; */
+            position: absolute;
+        }
+
+        #bar {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: orange;
+        }
+
+        #back {
+            width: 50px;
+            height: 50px;
+            margin: auto;
+            background: #f0f;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="bar">拖拽我啊啊啊啊啊啊</div>
+        <div id="back">返回</div>
+    </div>
+    <script>
+        var bar = document.getElementById("bar");
+        var box = document.getElementById("box");
+        var back = document.getElementById("back");
+        var backArray = [];
+        var _moving = null; //解决不按 能拖拽问题
+        // var global = {};
+        var timer = null;
+
+        bar.addEventListener("mousedown", beganMove);
+
+        function beganMove(evt) {
+            var e = evt || event;
+            //每次移动前都删除以前的事件
+            document.removeEventListener("mousemove", _moving);
+            document.addEventListener("mousemove", _moving = moving.bind(false, {
+                x1: e.offsetX,
+                y1: e.offsetY
+            }));
+
+            // global.x1 = e.offsetX,
+            // global.y1 = e.offsetY
+        }
+
+        function moving(_offset, evt) {
+            var e = evt || event;
+            //获取鼠标位置
+            var x = e.clientX;
+            var y = e.clientY;
+            var num_left = x - _offset.x1
+            var num_top = y - _offset.y1
+            backArray.push({
+                left: num_left,
+                top: num_top
+            });
+            // console.log(x, y);
+            box.style.left = num_left + "px";
+            box.style.top = num_top + "px";
+
+
+
+        }
+
+        bar.addEventListener("mouseup", moveEnd);
+
+        function moveEnd() {
+            document.removeEventListener("mousemove", _moving);
+        }
+
+        back.addEventListener("click", goBack);
+        //返回
+        function goBack() {
+            // for (var i = backArray.length - 1; i > 0; i--) {
+            //     box.style.left = backArray[i].left + "px";
+            //     box.style.top = backArray[i].top + "px";
+            // }
+
+            var start = backArray.length;
+            timer = setInterval(function () {
+                start--;
+                box.style.left = backArray[start].left + "px";
+                box.style.top = backArray[start].top + "px";
+                if (start === 0) {
+                    clearInterval(timer);
+                    backArray.length = 0;
+
+                }
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #select{
+                    width: 200px;
+                    text-align: center;
+                    height: 20px;
+                    line-height: 20px;background: rgba(222,222,222,0.2);
+                    border: 2px solid #000;
+                    box-shadow:  0 0 5px #000;
+                    position: relative;
+                  
+        }
+        #list{
+                width: 190px;
+                padding: 0 5px;
+                position: absolute;
+                top: 20px;
+                background: rgba(222,222,222,0.2);
+                display: none;
+        }
+        #list p{
+                    line-height: 20px;
+                    text-align: center;
+                    border-bottom: 1px solid #ddd;
+        }
+        #list p:hover{
+                        background:rgb(66, 66,66 );
+                        transition: all .5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="select">
+        <p>请选择游戏</p>
+        <div id="list">
+            <p>qq飞车</p>
+            <p>NBA2Konline</p>
+            <p>LOL</p>
+            <p>CF</p>
+            <p>QQ炫舞</p>
+            <p>QQ堂</p>
+        </div>
+    </div>
+    <script>
+        /***
+        *点击输入框select游戏列表显示
+        *stopPropagation  ie9及以上  cancelBubble快费用了，只有一些浏览器支持
+        *列表显示，点击select，改变其display属性，消失，随意点击document
+        *要阻止点击select时的冒泡；
+        ******/
+        var select = document.getElementById("select");
+        var list   = document.getElementById("list");
+        select.onclick = function(evt){
+            var e = evt||event;
+            list.style.display = "block";
+            typeof e.stopPropagation === "function"? e.stopPropagation() : e.cancelBubble = true;
+                 }
+        document.onclick =function(){
+                     list.style.display = "none";
+        }
+    </script>
+</body>
+</html>
