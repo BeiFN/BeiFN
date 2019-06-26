@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <button id="download">点击下载</button>
+      <script>
+            var dl = document.getElementById("download");
+            var time = 0;
+
+            dl.addEventListener( "click" , moveToAdve );
+            dl.addEventListener( "click" , getDownloadMsg );
+
+            function moveToAdve(){
+                  open("http://www.baidu.com");
+                  // 删除事件处理函数
+                  dl.removeEventListener("click",moveToAdve);
+            }
+
+            function getDownloadMsg(){
+                  if(time === 0) { return time ++}
+                  location.href = "download.html";
+            }
+
+            // removeEventListener 接受的参数必须是两个;
+            // 1.事件名 , 2. 事件处理函数的地址;
+
+            // 事件处理函数地址出问题，导致事件无法正常删除;
+      </script>
+</body>
+</html>

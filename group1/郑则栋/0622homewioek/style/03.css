@@ -1,0 +1,90 @@
+*{
+
+      margin: 0;
+      padding: 0;
+}
+
+#pao{
+      width: 50px;
+      height: 120px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      margin-left: -25px;
+      background: url(../images/炮.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      text-align: center;
+      line-height: 120px;
+      font-size: 20px;
+      color:red;
+      text-shadow: 0 0 5px #fff;
+      font-weight: 1000;
+}
+.fish{
+      width: 100px;
+      height: 100px;
+      background: url(../images/鱼.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      line-height: 100px;
+      font-weight: 1000;
+      text-shadow: 0 0 5px #fff;
+      text-align: center;
+      color:yellowgreen;
+      font-size: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: rotate(0deg);
+}
+.fish.die{
+      transition: all 1s;
+      transform: rotate(180deg);
+}
+.bullet{
+      width: 30px;
+      height: 30px;
+      background: url(../images/炮弹.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      position: absolute;
+      transition: all .5s;
+}
+
+.line{
+      height: 3px;
+      background: #ddd;
+      position: absolute;
+      top: 500px;
+      width: 100%;
+      z-index: 1;
+}
+#grade{
+	width:200px;
+	height:50px;
+	boeder:5px solid green;
+	color:red;
+	font-size: 30px;
+	text_aligh:center;
+	position:absolute;
+	right:30px;
+	top:20px;
+	z-index: 1;
+}
+#count_down{
+	width:200px;
+	height:50px;
+	boeder:5px solid green;
+	color:red;
+	font-size: 30px;
+	text_aligh:center;
+	position:absolute;
+	right:30px;
+	top:80px;
+	z-index: 1;
+
+}
