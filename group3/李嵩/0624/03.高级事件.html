@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{
+            width:100%;
+            height:100%;
+        }
+        div{
+            padding:50px;
+            border:10px solid  #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div style="background:#0f0" id="box5">
+    5
+    <div style="background:rgb(0, 26, 255)" >
+            4
+            <div style="background:rgb(136, 255, 0)">
+                    3
+                    <div style="background:rgb(255, 0, 21)" >
+                            2
+                            <div style="background:rgb(0, 204, 255)" id="box1">
+                                    1
+                            </div>
+                    </div>
+            </div>
+    </div>
+    </div>
+    <script>
+        // box1.addEventListener("click",handlerBox1Click);
+        // function handlerBox1Click(){
+        //     alert("i'm 紫色");
+        // }
+        // box5.addEventListener("click",handlerBox2Click);
+        // function handlerBox2Click(){
+        //     alert("i'm 绿色");
+        // }
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box5");
+
+        box1.addEventListener("click",randomBoxColor);
+        box1.addEventListener("click",alertTip)
+        function randomBoxColor(){
+            this.style.background="#" + Math.round(Math.random()*parseInt("ffffff",16)).toString(16).padStart(6,"0");
+        }
+        function alertTip(){
+            var mask =document.createElement("div");
+            var content =document.createElement("div");
+            mask.style.cssText="width:100%;height:100%;background:rgba(0,0,0,.3);position:absolute;z-index:999;left:0;top:0";
+            content.innerHTML="hello world";
+
+            content.style.cssText="width:20%;height:20%;line-height:20%;text-align:center;position:absolute;left:0;top:0;bottom:0;right:0;margin:auto;background:#fff;0";
+
+            document.body.appendChild(mask);
+            mask.appendChild(content);
+
+            mask.addEventListener("click",function(){
+                this.remove();
+            })
+        }
+    </script>
+    
+</body>
+</html>
