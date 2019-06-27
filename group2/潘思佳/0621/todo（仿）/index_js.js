@@ -42,25 +42,24 @@ function addTodoItem() {
 
     ele_todoList.insertBefore(li, ele_todoList.childNodes[0]);
 
-    li.setAttribute("draggable", "true");
-
     countLi();
-
-    li.addEventListener("dragstart", function(e) {
-        targetLi = this;
-    });
 
     li.children[0].addEventListener("change", handlerToDoToDone);
     li.children[2].addEventListener("click", removeHandler);
     li.children[1].addEventListener("click", changeText);
+    li.addEventListener("dragstart", function(e) {
+        targetLi = this; //dragstart事件，将当前拖拽的li的this赋值给全局变量targetLi
+    });
+
+    li.setAttribute("draggable", "true"); //为li添加拖拽属性
 
 }
 
 ele_todoList.addEventListener("drop", tempFunc);
 
 function tempFunc(e) {
-    this.removeChild(targetLi);
-    this.insertBefore(targetLi, e.target.parentNode);
+    console.log(e.target.nodeName);
+    this.insertBefore(targetLi, e.target.nodeName === "OL" ? targetLi : e.target.parentNode); //将拖动的li插入e.target的父级li之前，如果没能拖到正确的位置，就不进行insertBefore操作
 }
 
 document.addEventListener("dragover", function(e) {
