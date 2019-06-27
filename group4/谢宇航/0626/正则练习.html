@@ -38,7 +38,7 @@
         var arr = ['adam', 'LISA', 'barT', 'bob', 'tom', 'john'];
         var str = arr.join(" ");
         str = str.replace(
-            /([a-z])([a-z]+)/ig,
+            /([a-z])([a-z]+)(a-z)/ig,
             function (match, $1, $2) {
                 return $1.toUpperCase() + $2.toLowerCase();
             })
@@ -85,7 +85,11 @@
         url.exec('http://google.com/');
         // ["http://google.com/", "google.com", "/"]
 
-        
+        var str = "faaafaaaaafaaaat";
+        var reg = /fa+/g;
+        var reg1 = /fa+?/g;
+        console.log(str.match(reg));
+        console.log(str.match(reg1));
     </script>
 </body>
 

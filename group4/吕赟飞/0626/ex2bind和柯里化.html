@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() {
+            console.log("i'm foo", this);
+        }
+
+        // foo.bind({})()
+
+        // console.log(foo.bind({}))
+
+
+        // function bind(fn , _this){
+        //     return function(){
+        //         fn.call(_this);
+        //     }
+        // }
+
+        // var poo = bind(foo , {})
+
+        // poo();
+
+
+        // 柯里化参数处理
+
+        // function bind(fn, _this) {
+        //     var args = [].slice.call(arguments).slice(2);
+        //     return function () {
+        //         var newArgs = [].slice.call(arguments);
+        //         fn.apply(_this, args.concat(newArgs));
+        //     }
+        // }
+
+
+
+        function myEvent(fn) {
+            return function (evt) {
+                var e = evt || event;
+
+                fn({
+                    clientX: e.clientX,
+                    clientY: e.clientY
+                });
+            }
+        }
+        
+        document.addEventListener("click", myEvent(handlerClick))
+
+        function handlerClick(e) {
+            console.log(e);
+        }
+    </script>
+</body>
+
+</html>
