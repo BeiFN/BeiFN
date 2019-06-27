@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea rows="30" cols="50" id="preText">
+			
+		</textarea>
+		<button type="button" id="replaceBtn">替换</button>
+		<textarea rows="30" cols="50" id="afterText">
+			
+		</textarea>
+
+		<script type="text/javascript">
+			var btn = document.getElementById("replaceBtn");
+			var reg = /<[^<>]+>/ig;
+			btn.addEventListener("click", replaceText);
+			function replaceText(){
+				var str = preText.value;
+				// var res = str.match(reg);
+				var res = str.replace(reg," ")
+				afterText.value = res;
+				console.log(res)
+			}
+			
+		</script>
+	</body>
+</html>

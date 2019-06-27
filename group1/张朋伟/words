@@ -95,7 +95,7 @@ getMonth()
 getDate()
 setYear()
 setMonth()
-setDate()
+setDate() 
 获取星期几
 getDay()  0-6
 获取时分秒
