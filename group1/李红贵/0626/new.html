@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前期问题总结</title>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        // var a = {n:1};
+        // var b = a;
+        // a = {n :2};
+        // console.log(a.n,b.n);
+
+
+        // window
+        // location
+        // href  整条地址栏替换
+        // hostname  替换域名
+        // hash  更改获取hash值
+        // protocol 协议  只能获取
+        // port  获取端口号
+        // pathname  获取更改路径名
+
+        // 方法类
+        // location.reload();//页面刷新
+        // location.reload(true);//底层刷新
+        // location.replace("hhhh.html");//无法返回
+        // location.assign("hhhh.html");//可返回
+
+        // history  go(正数往前走，负数往后走) 
+
+        // 什么是节点，dom对象的细化    dom对象就是document对象下所有子集
+        // 划分更细致的dom对象，本质对象。  
+
+        // 属性节点
+        // setAttribute getAttribute removeAttribute
+
+        // 属性节点完整
+        // createAttribute
+        // var box = document.getElementById("box");
+        // var boxAttr = box.attributes;
+        // console.log(boxAttr);
+        // for(var i = 0,attr; attr = boxAttr[i++];){
+
+        // }
+
+
+
+        // bind 和柯里化
+        // 改变函数this执行   
+        // bind(es5方法兼容性不好)  函数创建时，固定this指向 
+        // 返回新函数，新函数this指向固定,还可以固定参数，实参从固定参数开始进入arguments
+        // function foo(){
+        //     console.log(this);
+        // }
+        // var poo = foo.bind({});
+
+        // 柯里化  包括this绑定  参数处理，拿出多余参数进行参数拼接，最后apply传入参数
+
+
+
+        // call   调用时改变this指向 参数和形参对应
+        // apply   调用时改变this指向 参数和arguments对应
+        // 利用柯里化封装bind
+
+        // bind是调用目标参数函数
+
+        // 在函数内部返回一个函数，这个函数可以帮你调用参数函数
+
+        // function foo(){
+        //     console.log(this);
+        // }
+        // foo();
+        // function bind(fn,_this){
+        //     return function(){
+        //         fn.call(_this);
+        //     }
+        // }
+
+        // var poo = bind(foo);
+        // poo();
+
+        // 作用： 预处理，自定义处理   柯里化：函数之中调用目标函数，并进行预处理就是柯里化
+        // 自定义事件对象
+
+        function foo(){
+            console.log(this);
+        }
+        foo();
+        function bind(fn,_this){
+            return function(){
+                fn.call(_this);
+            }
+        }
+
+        var poo = bind(foo);
+        poo(1,2,3);
+        
+
+
+    </script>
+</body>
+</html>

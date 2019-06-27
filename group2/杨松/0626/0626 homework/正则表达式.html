@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+<script>
+/*    var str = "a123asd1245s46s4d56dsdsvd";
+
+    var reg1 = /\d/g;
+    console.log(str.match(reg1));
+
+    var reg2 =/\d+/g;
+    console.log(str.match(reg2));*/
+
+var namelist = "杨松杨勇杨雪杨广杨会杨霞杨云杨美杨刚杨鹏杨丽";
+var reg= /./g;
+console.log(namelist.match(reg));
+console.log(reg.exec(namelist));
+    var reg1= /杨[^广雪勇]/g;
+console.log(namelist.match(reg1));//扎到除了 "广雪勇" 之外的名字
+var reg2 = /杨[美云会勇]/;
+console.log(namelist .match(reg2)); //没有g找到最后一个
+
+</script>
+</body>
+</html>

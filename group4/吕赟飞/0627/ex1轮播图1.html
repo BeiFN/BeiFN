@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var imgArr = [
+            "https://n1-q.mafengwo.net/s14/M00/1A/74/wKgE2l0TTxSAZl-WAAahz3EBCKU476.jpg?imageMogr2%2Finterlace%2F1",
+            "https://p2-q.mafengwo.net/s14/M00/BF/16/wKgE2l0Mhi-AZtGzAAjG8zBl5aM939.jpg?imageMogr2%2Finterlace%2F1",
+            "https://b3-q.mafengwo.net/s14/M00/BF/7E/wKgE2l0MhmeAQTPOAAVq0Icc7pk531.jpg?imageMogr2%2Finterlace%2F1",
+            "https://p1-q.mafengwo.net/s14/M00/59/E1/wKgE2l0Rg3WAaVICAARbapB4btc744.jpg?imageMogr2%2Finterlace%2F1",
+            "https://b2-q.mafengwo.net/s14/M00/2F/C8/wKgE2l0QokeAWc0DAAYJ1_tlB5c456.jpg?imageMogr2%2Finterlace%2F1"
+        ]
+
+        var iconArr = [
+            "https://p3-q.mafengwo.net/s14/M00/1A/34/wKgE2l0TTvSABiZfAAMAtEYHv7k591.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90",
+            "https://p2-q.mafengwo.net/s14/M00/BF/06/wKgE2l0MhimAG13_AAPREGoOM9E353.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90",
+            "https://n3-q.mafengwo.net/s14/M00/BF/64/wKgE2l0MhluADNfOAANGVJbKlZQ571.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90",
+            "https://b4-q.mafengwo.net/s14/M00/59/CF/wKgE2l0Rg22AVLlOAANrgvjc6So487.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90",
+            "https://n2-q.mafengwo.net/s14/M00/2F/AE/wKgE2l0Qoj6AY-ULAAMWWz7tYV4378.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+        ]
+        var pre;
+
+        init()
+
+        function init() {
+            document.body.style.margin = 0;
+            var div = createBg(document.body);
+            createIcon(div);
+        }
+
+        function createBg(parent) {
+            var div = document.createElement("div");
+            Object.assign(div.style, {
+                width: document.documentElement.offsetWidth + "px",
+                height: document.documentElement.offsetWidth / 3 + "px",
+                backgroundImage: "url(" + imgArr[0] + ")",
+                backgroundSize: "100% 100%",
+                transition: "all 1s"
+            })
+            parent.appendChild(div);
+            return div;
+        }
+
+        function createIcon(parent) {
+            var margin = 40;
+            var padding = 10;
+            var height = (parent.offsetHeight - margin * 2 - padding * 4) / iconArr.length;
+            for (var i = 0; i < iconArr.length; i++) {
+                var img = new Image();
+                if (i === 0) pre = img;
+                img.src = iconArr[i];
+                Object.assign(img.style, {
+                    position: "absolute",
+                    display: "block",
+                    border: "2px solid" + (i === 0 ? "#ff9d00" : "rgba(0,0,0,0)"),
+                    height: (height - 4) + "px",
+                    right: "50px",
+                    top: margin + (height + (i === 0 ? 0 : padding)) * i + "px"
+                })
+                parent.appendChild(img);
+
+                img.addEventListener("click", clickHandler)
+            }
+        }
+
+        function clickHandler() {
+            var arr = Array.from(this.parentElement.children);
+            var index = arr.indexOf(this);
+            this.parentElement.style.backgroundImage = "url(" + imgArr[index] + ")";
+
+            pre.style.border = "2px solid rgba(0, 0, 0, 0)";
+            pre = this;
+            pre.style.border = "2px solid #ff9d00";
+
+        }
+    </script>
+</body>
+
+</html>

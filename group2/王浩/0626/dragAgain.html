@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background: black;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="../libs/commen.js"></script>
+    <script>
+        var box=$("#box");
+        console.log(box[0]);
+        var _handlerDragMove=handlerDragMove;
+
+        box[0].addEventListener("mousedown" , handlerDragStart);
+        document.addEventListener("mouseup",handlerDragStop);
+
+        function handlerDragStart(evt){
+                var e = evt || window.event;
+                document.addEventListener("mousemove" , _handlerDragMove = handlerDragMove.bind(false,{
+                    offsetX : e.offsetX,
+                    offsetY : e.offsetY
+                }));
+        }
+        function handlerDragMove(offset,evt){
+            var e=evt||window.event;
+            box[0].style.left=e.clientX-offset.offsetX+"px";
+            box[0].style.top=e.clientY-offset.offsetY+"px";
+        }
+        function handlerDragStop(){
+            document.removeEventListener("mousemove",_handlerDragMove);
+        }
+
+
+        
+
+    </script>
+</body>
+</html>
