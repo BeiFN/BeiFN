@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{list-style: none;
+        padding: 3px 5px;
+        border-bottom: 2px solid #ddd;
+        text-align: center;
+        margin: 5px auto;
+        width: 80%;
+        background: #fff;}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            background: #ddd;
+        }
+    </style>
+    
+</head>
+<body>
+        <ul>
+            <li>这<span>是</span>一个li</li>
+            <li class="lilili">这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li class="lilili">这是一个li</li>
+            <li class="lilili">这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li class="lilili">这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+            <li>这是一个li</li>
+        </ul>
+    <script>
+        //常规方法(给每个元素添加了事件，代码冗余高，性能低下)
+        // var li = document.querySelectorAll("li");
+        // for(var i = 0, item ; item = li[i++] ; )
+        // {
+        //     item.addEventListener("click" , function(){
+        //         this.style.background = "yellowgreen";
+        //     })
+        // }
+
+        //事件的委托若有多个子元素需要添加事件，可以给这些子元素的父级元素添加监听
+        // var ul = document.querySelector("ul");
+        // ul.addEventListener("click" , function(evt){
+        //     var e = evt || window.event;
+        //     var target = e.target || e.srcElement ;
+        //     if(target.nodeName === "LI")
+        //     {
+        //         BgColorChange.call(target);
+        //     }
+        // });
+        // function BgColorChange(evt){
+        //     this.style.background = "yellowgreen";  
+        // }
+
+        //当target不为li标签时，点击后无法改变li的背景颜色。如何解决？？？？
+        //上述代码可以分为两个部分 ： 1、判断  2、事件处理函数的调用
+        //匿名函数的作用是用来  判断  是否调用事件处理函数  也就是   BgColorChange
+        
+        // var ul = document.querySelector("ul");
+        // ul.addEventListener("click" , delegation(BgColorChange , "LI"));//大写  切记
+        // function delegation(BgColorChange , select){
+        //         return function(evt){
+        //             var e = evt || window.event;
+        //             var target = e.target || e.srcElement ;
+        //             if(target.nodeName === select)
+        //             {
+        //                 BgColorChange.call(target , e);
+        //             }
+        //         }
+        // }
+        // function BgColorChange(evt){
+        //     this.style.background = "yellowgreen";
+        // }
+        
+        //优化 封装
+        // var ul = document.querySelector("ul");
+        // ul.addEventListener("click" , delegation (BgColorChange , ".lilili"));
+        // function delegation(BgColorChange , selecter){
+        //     return function(evt){
+        //         var e = evt || window.event;
+        //         var target = e.element || e.srcElement ;
+        //         var target_list = this.querySelectorAll(selecter);//ul下名为select的所有元素
+        //         var target_arr = [];
+        //         var _temp = target;
+        //         var count = 0;
+        //         while(true && count++ <100){
+        //                 if( _temp === this )//是否为ul   从目标源 由内到外 到绑定事件的元素 才算是结束。
+        //             {
+        //                 break;
+        //             }
+        //             target_arr.push(_temp);
+        //             _temp = _temp.parentNode;//一直想外寻找自身的父级节点
+        //         }
+        //         for(var  i = 0 , item ; item = target_list[i++] ;)
+        //         {
+        //             if(target_arr.length === 1 ? target === item : (! target_arr.indexOf(item) === -1))
+        //             {
+        //                 BgColorChange.call(item );
+        //             }
+        //         }
+        //     }
+        // }
+        // function BgColorChange()
+        // {
+        //     this.style.background = "yellowgreen";
+        // }
+    </script>
+</body>
+</html>
