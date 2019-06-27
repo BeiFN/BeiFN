@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+            var str = "123ddes45d2e5we6sde456";
+            var arr = [];
+            var temp = "";
+            // for(var i = 0; i <= str.length; i++) {
+            //     if(str[i] <= 9 && str[i] >= 0){
+            //         temp += str[i];
+            //     } else {
+            //         if(temp){
+            //             arr.push(temp);
+            //             temp = "";
+            //         }
+            //     }
+            // }
+            // console.log(arr);
+
+            // 正则   (match数组的方法)
+            // console.log(str.match(/\d+/g));
+
+
+            // exec  g   正则方法
+            var reg = /\d+/g;
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            // console.log(reg.exec(str));
+            
+            var res = "";
+            while(res = reg.exec(str)){
+                console.log(res);
+            }
+            
+        </script>
+    </body>
+</html>
