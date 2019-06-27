@@ -4,6 +4,8 @@ var ele_doneList = $("#donelist");
 var ele_todoCount = $("#todocount");
 var ele_doneCount = $("#donecount");
 
+var targetLi = null;
+
 function $(selector) {
     var ele = null;
     return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
@@ -40,11 +42,30 @@ function addTodoItem() {
 
     ele_todoList.insertBefore(li, ele_todoList.childNodes[0]);
 
+    li.setAttribute("draggable", "true");
+
     countLi();
+
+    li.addEventListener("dragstart", function(e) {
+        targetLi = this;
+    });
 
     li.children[0].addEventListener("change", handlerToDoToDone);
     li.children[2].addEventListener("click", removeHandler);
+    li.children[1].addEventListener("click", changeText);
+
 }
+
+ele_todoList.addEventListener("drop", tempFunc);
+
+function tempFunc(e) {
+    this.removeChild(targetLi);
+    this.insertBefore(targetLi, e.target.parentNode);
+}
+
+document.addEventListener("dragover", function(e) {
+    e.preventDefault();
+})
 
 function createElement(domJson) {
     typeof domJson === "undefined" ? domJson = {} : "";
@@ -73,6 +94,24 @@ function removeHandler() {
 function countLi() {
     ele_todoCount.innerHTML = ele_todoList.children.length;
     ele_doneCount.innerHTML = ele_doneList.children.length;
+}
+
+function changeText() {
+    if (this.children.length >= 1) return;
+    var input = createElement({
+        type: "input",
+        attr: {
+            value: this.innerHTML,
+        }
+    })
+    this.innerHTML = "";
+    this.appendChild(input);
+    input.select();
+    input.addEventListener("change", finishChange);
+}
+
+function finishChange() {
+    this.outerHTML = this.value;
 }
 
 ele_input.addEventListener("keydown", keydownHandler);
