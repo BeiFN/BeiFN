@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>日期对象_倒计时</title>
+	</head>
+	<style type="text/css">
+		#description{
+			width: 458px;
+			background: #90EE90;
+		}
+		#container{
+			width:75px;
+			background: #FFA07A;
+			margin: 0 60px;
+		}
+	</style>
+	<body>
+		<div id="description"></div>
+		<div id="container">
+			<span id="hour_box">00</span> 
+			<span id="minute_box">00</span>
+			<span id="second_box">00</span>
+		</div>
+
+		<script type="text/javascript">
+			var now = new Date();
+			var target = new Date("2025-10-30 01:06:08");
+			var targetTime = target.getFullYear() + "/" + (target.getMonth() + 1) + "/" + target.getDate() + "(这天是星期" + target.getDay() +
+				")的 01:06:08 ";
+			var reduce = target - now;
+			var minute = parseInt(reduce / 1000 / 60 % 60);
+			var second = parseInt(reduce / 1000 % 60);
+			var hour = reduce / 1000 / 60 / 60;
+			var date = parseInt(hour / 24);
+			hour = parseInt(hour % 24);
+			var year = parseInt(date / 365);
+			var month = parseInt(date / 30.417);
+			var date2 = parseInt(date % 30.417);
+			var day = parseInt(date / 7);
+			var date3 = parseInt(date % 7);
+			date1 = parseInt(date % 365);
+
+			setInterval(dynamicDailyCountdown, 1000)
+			var span1=document.getElementById("hour_box");
+			var span2=document.getElementById("minute_box");
+			var span3=document.getElementById("second_box");
+			function dynamicDailyCountdown() {
+				var now = new Date();
+				var target = new Date("2025-10-30 01:06:08");
+				var reduce = target - now;
+				hour = parseInt(hour % 24);
+				minute = parseInt(reduce / 1000 / 60 % 60);
+				second = parseInt(reduce / 1000 % 60);
+				
+				span1.innerHTML=(hour < 10 ? "0" + hour : "" + hour )+ ":";
+				span2.innerHTML=(minute < 10 ? "0" + minute : "" + minute) + ":";
+				span3.innerHTML=second < 10 ? "0" + second : "" + second;
+			}
+			
+			var descrip=document.getElementById("description");
+			descrip.innerHTML="距离" + targetTime + "<br/>还有" + date + "天&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;" +
+				year + "年零" + date1 + "天&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;" +
+				month + "月零" + date2 + "天&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;" +
+				day + "周零" + date3 + "天&nbsp;&nbsp;&nbsp;<br>外加上&nbsp;&nbsp;&nbsp;"
+			
+			
+		</script>
+	</body>
+</html>

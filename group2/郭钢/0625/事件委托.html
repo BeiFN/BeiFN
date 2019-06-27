@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #weituo{
+            width: auto;
+            height: 300px;
+            list-style: none;
+            text-align: center;
+        }
+        #weituo li{
+            margin: 20px auto;
+            border-bottom: 2px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="weituo">
+        <li>哈哈哈哈哈</li>
+        <li>哈哈哈哈哈</li>
+        <li>哈哈哈哈哈</li>
+        <li>哈哈哈哈哈</li>
+        <li>哈哈哈哈哈</li>
+        <li>哈哈哈哈哈</li>
+    </ul>
+</body>
+<script>
+    var  weituo = document.getElementById("weituo");
+    weituo.addEventListener("click",childChange);
+    function childChange(evt){
+        var e = evt || event;
+        var target = e.target || e.srcElement;
+        if(target.nodeName === "LI")
+        target.style.background = "red";
+    }
+</script>
+
+</html>
