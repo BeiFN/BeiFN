@@ -8,77 +8,77 @@
 </head>
 <body>
     <script>
-    // ;(function(){
-    //       "use strict"
-    //       function foo(a,b){
-    //             // 形参被赋值不会影响到arguments里面的参数;
-    //             a = 10;
-    //             b = 20;
-    //             console.log(a,b,arguments[0],arguments[1])
-    //       }
-    //       foo(1,2)
-    // })();
+        // ;(function(){
+        //       "use strict"
+        //       function foo(a,b){
+        //             // 形参被赋值不会影响到arguments里面的参数;
+        //             a = 10;
+        //             b = 20;
+        //             console.log(a,b,arguments[0],arguments[1])
+        //       }
+        //       foo(1,2)
+        // })();
 
-    // ;(function(){
+        // ;(function(){
 
-    //       function foo(a,b){
-    //             a = 10;
-    //             b = 20;
-    //             console.log(a,b,arguments[0],arguments[1])
-    //       }
-    //       foo(1,2)
+        //       function foo(a,b){
+        //             a = 10;
+        //             b = 20;
+        //             console.log(a,b,arguments[0],arguments[1])
+        //       }
+        //       foo(1,2)
 
-    // })();
-    
-    // // 但凡是 this 指向了window，那么距离报错就不远了;
-    // ;(function(){
-    //       "use strict"
-    //       function foo(){
-    //             console.log(this);
-    //       }
-    //       foo()
-    // })();
+        // })();
+        
+        // // 但凡是 this 指向了window，那么距离报错就不远了;
+        // ;(function(){
+        //       "use strict"
+        //       function foo(){
+        //             console.log(this);
+        //       }
+        //       foo()
+        // })();
 
-    // ;(function(){
+        // ;(function(){
 
-    //       function foo(){
-    //             console.log(this);
-    //       }
-    //       foo()
-    // })();
-    
-    // //不允许使用arguments.callee
-    // ;(function(){
-    //       "use strict"
-    //       function foo(){
-    //            arguments.callee
-    //       }
-    //       foo()
-    // })();
+        //       function foo(){
+        //             console.log(this);
+        //       }
+        //       foo()
+        // })();
+        
+        // //不允许使用arguments.callee
+        // ;(function(){
+        //       "use strict"
+        //       function foo(){
+        //            arguments.callee
+        //       }
+        //       foo()
+        // })();
 
-    // ;(function(){
+        // ;(function(){
 
-    //       function foo(){
-    //            arguments.callee
-    //       }
-    //       foo()
-    // })();
+        //       function foo(){
+        //            arguments.callee
+        //       }
+        //       foo()
+        // })();
 
-    // ;(function(){
-    //       "use strict"
-    //       function foo(a,a,b){
-    //             console.log(a,b);
-    //       }
-    //       foo(1,2,3)
-    // })();
+        // ;(function(){
+        //       "use strict"
+        //       function foo(a,a,b){
+        //             console.log(a,b);
+        //       }
+        //       foo(1,2,3)
+        // })();
 
-    ;(function(){
+        ;(function(){
 
-            function foo(a,a,b){
-                console.log(a,b);
-            }
-            foo(1,2,3)
-    })();
+                function foo(a,a,b){
+                    console.log(a,b);
+                }
+                foo(1,2,3)
+        })();
     </script>
 </body>
 </html>
