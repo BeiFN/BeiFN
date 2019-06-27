@@ -826,6 +826,7 @@
     // 吸顶导航
     scroll();
 
+
     function scroll() {
         var header = document.querySelector("#navs");
         window.addEventListener("scroll", scrollHandler);
@@ -835,12 +836,16 @@
             start = document.documentElement.scrollTop;
             if (start > 607) {
                 header.style.position = "fixed";
+                header.style.zIndex = "999"
                 header.style.top = 0;
             } else {
                 header.style.position = "static";
             }
         }
+
     }
+
+
 
     // 显示""按钮
     disTop();
@@ -848,16 +853,17 @@
     function disTop() {
         var btnTop = document.querySelector("#backTop");
         window.addEventListener("scroll", scrollHandler);
+        var start = 0;
 
         function scrollHandler(e) {
-            var start = document.documentElement.scrollTop;
+            start = document.documentElement.scrollTop;
             if (start >= 1400) {
                 btnTop.style.position = "absolute";
                 btnTop.style.top = "1850px";
                 btnTop.style.display = "block";
             } else if (start < 1400 && start > 607) {
                 btnTop.style.cssText = "display:block;position:fixed;top:500px";
-            } else{
+            } else {
                 btnTop.style.display = "none";
             }
         }
@@ -865,23 +871,24 @@
 
     // 返回顶部
     backTop();
+    var bool = false;
 
     function backTop() {
         var btn = document.querySelector("#backTop");
-        btn.addEventListener("click", clickHandler);
-        var bool = false;
+        btn.addEventListener("click", topClickHandler);
+        setInterval(animation, 16);
+    }
 
-        function clickHandler(e) {
-            bool = !bool;
-            var time = setInterval(function () {
-                if (!bool) return;
-                if (document.documentElement.scrollTop <= 0) {
-                    clearInterval(time);
-                    return;
-                }
-                document.documentElement.scrollTop -= 150;
-            }, 16);
+    function animation() {
+        if (!bool) return;
+        document.documentElement.scrollTop -= 150;
+        if (document.documentElement.scrollTop <= 0) {
+            bool = false;
         }
+    }
+
+    function topClickHandler() {
+        bool = true;
     }
 </script>
 
