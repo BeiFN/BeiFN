@@ -44,8 +44,9 @@
         var wrap = document.getElementById("wrap");
         var bar  = document.getElementById("bar");
         var replay = document.getElementById("replay");
-        var startX = 0, startY = 0;
+        // var startX = 0, startY = 0;
         var track = [];
+        var _tempMove = null;
 
         bar.addEventListener("mousedown", handlerClick);
         bar.addEventListener("mouseup", moveEnd);
@@ -54,24 +55,24 @@
             var e = evt || window.event;
             startX = e.offsetX;
             startY = e.offsetY;
-            wrap.addEventListener("mousemove", move);
+            wrap.addEventListener("mousemove", _tempMove = move.bind(false, {startX:startX, startY:startY}));
         }
-        function move(evt){
+        function move(_client, evt){
             var e = evt||window.event;
             var leftX = e.clientX;
             var topY = e.clientY;
             // console.log(leftX, topY);
-            this.style.left = leftX - startX + "px";
-            this.style.top = topY - startY + "px";
+            wrap.style.left = leftX -  _client.startX + "px";
+            wrap.style.top = topY - _client.startY + "px";
             track.push({
-                x:(leftX - startX),
-                y:(topY - startY)
+                x:(leftX - _client.startX),
+                y:(topY - _client.startY)
             });
         }
         //绑定鼠标抬起函数，当鼠标从bar抬起时解除和bar的绑定，则不再执行bar监听函数中的事件
         function moveEnd(){
             // this.removeEventListener("mousedown",handlerClick);
-            wrap.removeEventListener("mousemove", move); //当鼠标从bar上抬起的时候解除移动
+            wrap.removeEventListener("mousemove", _tempMove); //当鼠标从bar上抬起的时候解除移动
         }
         //实现拖拽条按原路返回应该将原来的鼠标移动触发的位置的改变存放在一个数组中，然后实现数组的倒序遍历输出
         function back(){
@@ -87,7 +88,7 @@
                }
             }, 50);
         }
-        }
+        
     </script>
 </body>
 </html>

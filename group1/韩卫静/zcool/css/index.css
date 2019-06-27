@@ -265,11 +265,7 @@
     background-color: #fff;
     overflow: hidden;
 }
-<<<<<<< HEAD
-.list_body li>img{
-=======
 #list_body li>img{
->>>>>>> 09edf89d90f31e8b91bff981ca42a8b33fc07fd3
     width: 210px;
     height: 158px;
 }

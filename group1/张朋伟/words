@@ -37,8 +37,22 @@ unshift();
 删除最后一个，返回删除元素
 pop();
 添加都最后  返回
-push();
-splice(开始位置，数量，"用什么截取");
+push();新数组长度
+splice       返回新数组
+
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at index 1
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
+months.splice(4, 1, 'May');
+// replaces 1 element at index 4
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+
+
+
 array.splice(start,删除个数,在删除位置添加的元素)
 array.slice(start[,end])可以只有开头
 slice();负数倒序，返回新数组
