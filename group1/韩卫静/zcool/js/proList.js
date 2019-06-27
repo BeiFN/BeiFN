@@ -94,7 +94,7 @@ var json = {
             "cardComment":"45",
             "cardAgree":"899",
             "headimgUrl":"https://img.zcool.cn/community/04d4d6553fbedf00000140278edaec.jpg@80w_80h_1c_1e_1o_100sh.jpg",
-            "cardName" :"speed_designer",
+            "cardName" : "speeddesigner",
             "cardTime":"一天前"
         },
 
@@ -180,44 +180,201 @@ var json = {
             "cardComment":"45",
             "cardAgree":"899",
             "headimgUrl":"https://img.zcool.cn/community/04d4d6553fbedf00000140278edaec.jpg@80w_80h_1c_1e_1o_100sh.jpg",
-            "cardName" :"speed_designer",
+            "cardName" :"speeddesigner",
             "cardTime":"一天前"
         }
     ]
-
 }
-var str = "";
+
 
 var listBody = document.getElementById("list_body");
 
 for(var i = 0 ,item; item = json.workList[i++];){
-	var li = document.createElement("li");
-	var img = document.createElement("img");
-	img.setAttribute("src" , item.imaUrl);
+	var hidJson = {
+		hiddenDiv : {
+			type : "div",
+			attr : { id : "hiddenCard" },
+			children : [
+				{
+					type : "a",
+					attr : {href : "#" , "class" : "hc_pic" },
+					children : [
+						{type : "img", attr : { src : item.headimgUrl, alt : "" } }
+					]
+				},
+				{
+					type : "div",
+					attr : {"class" : "hc_name"},
+					children : [
+						{type : "a", html : item.cardName }
+					]
+				},
+				{
+					type : "div",
+					attr : {"class" : "hc_place"},
+					children : [
+						{type : "span", html : "北京 | 设计爱好者" }
+					]
+					
+				}
+			]
+		}
+	}
+	var hiddendiv = createEle(hidJson.hiddenDiv);
 	
-	var cardInfo = document.createElement("div");
-	li.appendChild(img);
-	
-   //  str += "<li>   <!--一排一列 -->"+
-   //  '<img src=" '+item.imaUrl+' " alt="" > '+
-   //  '<div class="card_info">'+
-   //      '<p class="card_info_title"><a href="#">'+ item.infoTitle +'</a></p>'+
-   //      '<p class="card_info_type">'+item.infoType+'</p>'+
-   //      '<p class="card_info_com">'+
-   //          '<span class="card_see">'+item.cardSee+'</span>'+
-   //          '<span class="card_comment">'+item.cardComment+'</span>'+
-   //          '<span class="card_agree">'+item.cardAgree+'</span> '+                           
-   //      '</p>'+
-   //  '</div>'+
-   //  '<div class="card_uper">'+
-   //      '<span class="card_uper_name"> '+            
-   //          '<a href="#"><img src="'+item.imaUrl+'" alt="">'+item.cardName+'</a>'+
-   //      '</span>'+
-   //      '<span class="card_uper_time">'+item.cardTime+'</span>'+
-   //  '</div>'+
-   // '</li> ';
+	var liJson = {
+		li : {
+			type : "li",
+			children : [
+				{
+					type : "img",
+					attr : {
+						src : item.imaUrl,
+						alt : ""
+					}
+				},
+				{
+					type : "div",
+					attr : {"class" : "card_info"},
+					children : [
+						{
+							type : "p",
+							attr : {"class" : "card_info_title"},
+							children : [
+								{
+									type : "a",
+									attr : {href : "#"},
+									html : item.infoTitle
+								}
+							]
+						},
+						{
+							type : "p",
+							attr : {"class" : "card_info_type"},
+							html : item.infoType
+						},
+						{
+							type : "p",
+							attr : {"class" : "card_info_com"},
+							children : [
+								{
+									type : "span",
+									attr : {"class" : "card_see"},			
+									html :item.cardSee 
+								},
+								{
+									type : "span",
+									attr : {"class" : "card_comment"},		
+									html :item.cardComment 
+								},
+								{
+									type : "span",
+									attr : {"class" : "card_agree"},
+									html :item.cardAgree 
+								}
+							]
+						}
+					]
+				},
+				{
+					type : "div",
+					attr : { "class" : "card_uper" },
+					children : [
+						{
+							type : "span",
+							attr : { "class" : "card_uper_name" },
+							children : [
+								{
+									type : "a",
+									attr : { href : "#" },
+									children : [
+										{
+										type : "img" ,
+										attr : { src : item.headimgUrl }
+										},
+										{
+											type : "i",
+											html : item.cardName
+										}
+									]
+								},
+								hiddendiv
+							]
+						},
+						{
+							type : "span",
+							attr : { "class" : "card_uper_time" },
+							html : item.cardTime
+						}
+					]
+				}
+			]
+		}
+	}
+	var li = createEle(liJson.li);
    listBody.appendChild(li);
+   
 }
 
-// list_body.innerHTML = str;
+function createEle(json){
+	typeof json === "undefined" ? json = {} :"";
+	var ele = document.createElement(json.type ? json.type : "div");
+	for(a in json.attr){
+		ele.setAttribute(a,json.attr[a]);
+	}
+	
+	for(var i =0, childEle ; json.children && (childEle = json.children[i++]);){
+		childEle.nodeType === 1? ele.appendChild(childEle):ele.appendChild(createEle(childEle));
+	}
+	
+	json.html ? ele.innerText = json.html:"" ;
+	
+	return ele;
+}
+// 
+// listBody.addEventListener("mouseover",delegation(handlerClick,".card_uper_name"))
+// function delegation(handlerClick , selector ){
+// 	  return function(evt){
+// 			var eleList = this.querySelectorAll(selector);
+// 			var e = evt || window.event;
+// 			var target = e.target || e.srcElement;
+// 			var targetFamily = [];
+// 
+// 			var _temp = target;
+// 			var count = 0;
+// 			while(true && count++ < 100){
+// 				  if(_temp === this){
+// 						break;
+// 				  }
+// 				  targetFamily.push(_temp)
+// 				  _temp = _temp.parentNode
+// 			}
+// 			for(var i = 0 , ele ; ele = eleList[i++]; ){
+// 				  if( targetFamily.length === 1 ? (target === ele) : (targetFamily.indexOf(ele) !== -1) ){
+// 						handlerClick.call(ele,e);
+// 						break;
+// 				  }
+// 			}
+// 	  }
+// }
+
+
+// <div id="hiddenCard">
+// 	<a href="#" class="hc_pic"></a>
+// 	<div class="hc_name">
+// 		<a href="#">feirenzai</a>
+// 	</div>
+// 	<div class="hc_place">
+// 		<span>beij | hasjhuusy</span>
+// 	</div>
+// 	<div class="hc_follow">
+// 		<span class="hc_work">作品 <a href="#">111</a></span>
+// 		<span class="hc_fans">粉丝 <a href="#">62156</a></span>
+// 	</div>
+// 	<div class="btn">
+// 		<button type="button" id="hc_gofollow">关注</button>
+// 		<button type="button" id="hc_gochat">私信</button>
+// 
+// 	</div>
+// </div>
 
