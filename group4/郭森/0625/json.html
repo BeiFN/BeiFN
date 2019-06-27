@@ -8,13 +8,10 @@
 </head>
 <body>
     <script>
-        function some(arr,callback){
-            for(var i in arr){
-                if(callback(arr[i],i,arr)) return true;
-            }
-            return false;
-        }
-        
+        var jsonStr='{"a":"1","2":"2"}';
+        console.log(jsonStr);
+        console.log(JSON.parse(jsonStr));
+        console.log(JSON.stringify(JSON.parse(jsonStr)));
     </script>
 </body>
 </html>
