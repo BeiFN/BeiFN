@@ -65,10 +65,6 @@ ul {
     list-style: none;
 }
 
-li {
-    transition: 0.2s;
-}
-
 li input {
     position: absolute;
     top: 2px;
@@ -76,12 +72,6 @@ li input {
     width: 22px;
     height: 22px;
     cursor: pointer;
-}
-
-#newbox {
-    width: 400px;
-    left: 50px;
-    font-size: 16px;
 }
 
 p {
