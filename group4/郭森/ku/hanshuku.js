@@ -34,7 +34,8 @@ let gs = getComputedStyle;
 
 // query选择器
 function $$(ele) {
-    return arguments > 1 ? document.querySelectorAll(ele) : document.querySelector(ele);
+    var res=document.querySelectorAll(ele);
+    return res.length === 1 ? res[0] : res;
 }
 // 运动函数框架     运动元素，属性对象{属性：终点值}，回调函数
 function move(eleNode, data, callback = () => { }, ) {
