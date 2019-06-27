@@ -71,21 +71,39 @@ function attrToendPoint(eleNode, attr, endPoint, spd = 6) {
     return iNow === endPoint;//到达终点返回true
 }
 //事件委托          功能函数，事件对象，父节点
-function delegate(callback, selector, parentNode) {
+// function delegate(callback, selector, parentNode) {
+//     return function (evt) {
+//         var e = evt || window.event;
+//         var target = e.target || e.srcElement;
+//         if (target.nodeName.toLowerCase() === selector) {
+//             callback();
+//         }//toLowerCase()小写
+//         else {
+//             for (var i = 0; i < e.path.length; i++) {
+//                 if (e.path[i].nodeName.toLowerCase() === selector) {
+//                     callback(); break;
+//                 }
+//                 if (target === (parentNode ? parentNode : document.body)) {
+//                     break;
+//                 }
+//             }
+//         }
+//     }
+// }
+function delegate(callback, selector) {
     return function (evt) {
-        var e = evt || window.event;
-        var target = e.target || e.srcElement;
-        if (target.nodeName.toLowerCase() === selector) {
-            callback();
-        }//toLowerCase()小写
-        else {
-            for (var i = 0; i < e.path.length; i++) {
-                if (e.path[i].nodeName.toLowerCase() === selector) {
-                    callback(); break;
-                }
-                if (target === (parentNode ? parentNode : document.body)) {
-                    break;
-                }
+        var e = evt || event;
+        var target = e.target || e.srcTarget;
+        var eleList = document.querySelectorAll(selector);
+        var path = [];
+        var _target = target;
+        while (_target !== this) {
+            path.push(_target);
+            _target = _target.parentNode;
+        }
+        for (var i = 0, ele; ele = eleList[i++];) {
+            if (path.length === 1 ? (ele === target) : (path.indexOf(ele) !== -1)) {
+                callback.call(ele,evt);
             }
         }
     }
