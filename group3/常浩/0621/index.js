@@ -94,8 +94,33 @@ function addTodolist(){
     // ele_todolist.appendChild(li);
     li.children[0].onchange = handleRmover;
     li.children[2].onclick  = handlerDel;
+    //本次任务是给生成的内容实现实时编辑功能
+    //当鼠标点击的时候 需要生成一个input输入框 
+    //事件类型应该为内容发生改变时添加，因为p标签没有blur
+    li.children[1].onclick = handlerChangText;
+    li.children[1].onchange = handlerWriteText ;
     count();
 }
+function handlerChangText(){
+    //创建元素input
+    if(this.children.length >= 1){
+        return false;
+    }
+    var input = createElement({
+        type : "input",
+        attr : {
+            html : this.innerHTML,
+        }
+    })
+    this.innerHTML = "";
+    this.appendChild(input);
+    input.select();
+}
+function handlerWriteText(){
+    this.outHTML = this.value;
+}
+
+
 //下一步给创建的元素绑定事件
 //当checkbox被选中时
 function handleRmover(){
