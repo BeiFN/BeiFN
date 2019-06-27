@@ -206,7 +206,7 @@ for(var i = 0 ,item; item = json.workList[i++];){
 					type : "div",
 					attr : {"class" : "hc_name"},
 					children : [
-						{type : "a", html : item.cardName }
+						{type : "a",attr: {href : "#"}, html : item.cardName }
 					]
 				},
 				{
@@ -214,8 +214,45 @@ for(var i = 0 ,item; item = json.workList[i++];){
 					attr : {"class" : "hc_place"},
 					children : [
 						{type : "span", html : "北京 | 设计爱好者" }
+					]					
+				},
+				{
+					type : "div",
+					attr : {"class" : "hc_follow"},
+					children : [
+						{
+							type : "span",
+							attr : {"class" : "hc_work"},
+							children :[
+								{type : "i",html : "作品"},
+								{type : "a",attr: {href : "#"}, html : "111"}				
+							]
+						},
+						{
+							type : "span",
+							attr : {"class" : "hc_fans"},
+							children :[
+								{type : "i",html : "粉丝"},
+								{type : "a",attr: {href : "#"}, html : "2233"}				
+							]
+						}
+					]					
+				},
+				{
+					type : "div",
+					attr : {"class" : "btn"},
+					children:[
+						{
+							type : "button",
+							attr : { id : "hc_gofollow"},
+							html : "关注"
+						},
+						{
+							type : "button",
+							attr : { id : "hc_gochat"},
+							html : "私信"
+						}
 					]
-					
 				}
 			]
 		}
@@ -328,7 +365,6 @@ function createEle(json){
 	}
 	
 	json.html ? ele.innerText = json.html:"" ;
-	
 	return ele;
 }
 // 
@@ -357,7 +393,10 @@ function createEle(json){
 // 			}
 // 	  }
 // }
-
+// function handlerClick(e){
+// 	var hid = this.children;
+// 	console.log(hid);
+// }
 
 // <div id="hiddenCard">
 // 	<a href="#" class="hc_pic"></a>
