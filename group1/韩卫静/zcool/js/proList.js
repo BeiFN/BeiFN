@@ -184,47 +184,40 @@ var json = {
             "cardTime":"一天前"
         }
     ]
+
 }
 var str = "";
-var item;
-for(var i = 0 ; item = json.workList[i++];){
-    str += "<li>   <!--一排一列 -->"+
-    '<img src=" '+item.imaUrl+' " alt="" > '+
-    '<div class="card_info">'+
-        '<p class="card_info_title"><a href="#">'+ item.infoTitle +'</a></p>'+
-        '<p class="card_info_type">'+item.infoType+'</p>'+
-        '<p class="card_info_com">'+
-            '<span class="card_see">'+item.cardSee+'</span>'+
-            '<span class="card_comment">'+item.cardComment+'</span>'+
-            '<span class="card_agree">'+item.cardAgree+'</span> '+                           
-        '</p>'+
-    '</div>'+
-    '<div class="card_uper">'+
-        '<span class="card_uper_name"> '+            
-            '<a href="#"><img src="'+item.imaUrl+'" alt="">'+item.cardName+'</a>'+
-        '</span>'+
-        '<span class="card_uper_time">'+item.cardTime+'</span>'+
-    '</div>'+
-   '</li> ';
+
+var listBody = document.getElementById("list_body");
+
+for(var i = 0 ,item; item = json.workList[i++];){
+	var li = document.createElement("li");
+	var img = document.createElement("img");
+	img.setAttribute("src" , item.imaUrl);
+	
+	var cardInfo = document.createElement("div");
+	li.appendChild(img);
+	
+   //  str += "<li>   <!--一排一列 -->"+
+   //  '<img src=" '+item.imaUrl+' " alt="" > '+
+   //  '<div class="card_info">'+
+   //      '<p class="card_info_title"><a href="#">'+ item.infoTitle +'</a></p>'+
+   //      '<p class="card_info_type">'+item.infoType+'</p>'+
+   //      '<p class="card_info_com">'+
+   //          '<span class="card_see">'+item.cardSee+'</span>'+
+   //          '<span class="card_comment">'+item.cardComment+'</span>'+
+   //          '<span class="card_agree">'+item.cardAgree+'</span> '+                           
+   //      '</p>'+
+   //  '</div>'+
+   //  '<div class="card_uper">'+
+   //      '<span class="card_uper_name"> '+            
+   //          '<a href="#"><img src="'+item.imaUrl+'" alt="">'+item.cardName+'</a>'+
+   //      '</span>'+
+   //      '<span class="card_uper_time">'+item.cardTime+'</span>'+
+   //  '</div>'+
+   // '</li> ';
+   listBody.appendChild(li);
 }
 
-list_body.innerHTML = str;
+// list_body.innerHTML = str;
 
-{/*  <li> <!--一排三列 -->
-                    <img src="https://img.zcool.cn/community/01ee755d031c23a801213ec2d70c2c.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt="">
-                    <div class="card_info">
-                        <p class="card_info_title"><a href="#">少女阿初</a></p>
-                        <p class="card_info_type">插画-商业插画</p>
-                        <p class="card_info_com">
-                            <span class="card_see">6783</span>
-                            <span class="card_comment">45</span>
-                            <span class="card_agree">899</span>                            
-                        </p>
-                    </div>
-                    <div class="card_uper">
-                        <span class="card_uper_name">             
-                            <a href="#"><img src="https://img.zcool.cn/community/00b8ba599befa5a801201794eaa991.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">养猫画画的随随</a>
-                        </span>
-                        <span class="card_uper_time">一天前</span>
-                    </div>
-                </li> */}
