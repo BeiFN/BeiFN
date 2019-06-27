@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册框</title>
+    <link rel="stylesheet" href="../register/CSS/public.css">
+    <link rel="stylesheet" href="../register/CSS/regis.css">
+    <style>
+        #supview{
+            position: absolute;
+            width: 300px;
+            height: 500px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            box-shadow:  0 0 5px #ddd;
+            border-radius: 5px;
+            text-align:  center;
+        }
+        .logo{
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            margin-top: 68px;
+            margin-bottom: 32px;
+            
+            border-radius: 10px;
+        }
+        .lab{
+            margin: 0;
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            text-align: right;
+            
+        }
+        .ipt{
+            width: 190px;
+            height: 20px;
+            line-height: 20px;
+            /* border: 0; */
+
+        }
+        #txyz{
+            width: 115px;
+        }
+        .lastLine{
+            display: inline-block;
+            margin-top: 20px;
+            line-height: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+        #register{
+            width: 200px;
+            margin-top: 30px;
+            height: 40px;
+            line-height: 40px;
+            border: 0;
+            font-size: 26px;
+            font-weight: 300;
+            border-radius: 10px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div id="supview">
+        <img class="logo" src="" alt="">
+        
+        <!-- label for="inputID"的效果和将input放入label中的效果一样，能让点击label使input获得焦点 -->
+        <label class="lab" for="txt">手机号码：</label>
+        <input class="ipt" id="txt" type="text" name="user" placeholder="请输入正确手机号"/><br/>
+        
+        <label class="lab" for="pass">输入密码：</label>
+        <input class="ipt" id="pass" type="password" name="pas"/><br/>
+        <label class="lab" for="repass">确认密码：</label>
+        <input class="ipt" id="repass" type="password" name="pas"/><br/>
+        <label class="lab" for="txyz">验证码：</label>
+        <input class="ipt" id="txyz" type="text" name="user" placeholder=""/>
+        <button id="getYZ">获取验证码</button><br/>
+
+        <input class="lastLine" type="checkbox" name=""/>
+        <span class="lastLine">我已阅读并同意</span>
+        <a class="delegate lastLine" href="#">注册协议</a>
+        <br/>
+
+        
+        <button id="register">注册</button>
+      
+    </div>
+    <script>
+
+// NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+// NSString *phoneRegex = @"^1[3|4|5|6|7|8|9]\\d{9}$";
+    </script>
+
+    <script src="../register/JS/common.js"></script>
+    <script src="../register/JS/regis.js"></script>
+</body>
+</html>
