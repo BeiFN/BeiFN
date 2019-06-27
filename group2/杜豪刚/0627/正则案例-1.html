@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>与正则表达式的初次邂逅</title>
+    <style>
+        *{margin:0;padding:0;}
+        textarea{
+            width: 700px;
+            height: 600px;
+            margin:30px 10px;
+            resize: none;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="intput" cols="30" rows="10" placeholder="请输入带有标签的内容，按回车键(Enter)即可转换"></textarea>
+    <!-- <button id="btn">转化为纯文本</button> -->
+    <textarea id="output" cols="30" rows="10"></textarea>
+    <script>
+        var intput = document.getElementById("intput");
+        var output = document.getElementById("output");
+        var btn    = document.getElementById("btn");
+        // btn.addEventListener("click",deleteEle);
+        document.addEventListener("keydown",deleteEle);
+        function deleteEle(evt){
+            var e = evt ||window.event;
+            if(e.keyCode === 13){
+                var intValue = intput.value;
+                var reg      = /<(.*?)>/g;                  //正则语句，不匹配 < > 标签
+                // console.log(intValue.match(reg));
+                var regValue = intValue.replace(reg,"");    //replace 将reg 替换为空
+                output.value = regValue;
+            }
+        }
+        // function deleteEle(){
+        //     var intValue = intput.value;
+        //     var reg      = /<(.*)>/g;
+        //     console.log(intValue.match(reg));
+        // }  
+    </script>
+</body>
+</html>

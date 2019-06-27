@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn"><strong>这是一个按钮</strong> ,只有这些按钮可以实现增加元素的功能</button>
+    <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+    <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+    <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <script>
+        document.addEventListener("click", delegation(clickHandler, ".btn"))
+
+        function delegation(eventCallBack, selector) {
+            return function (evt) {
+                var e = evt || window.event;
+                var target = e.target || e.srcElement;
+                var targetFamily = [];
+                var _temp = target;
+
+                while (1) {
+                    if (_temp === this) break;
+                    targetFamily.push(_temp);
+                    _temp = _temp.parentNode;
+                }
+
+                var ele_list = this.querySelectorAll(selector);
+
+                for (var i = 0, ele; ele = ele_list[i++];) {
+                    if (targetFamily.length === 1 ? target === ele : targetFamily.indexOf(ele) !== -1) {
+                        eventCallBack(ele, e)
+                    }
+                }
+
+            }
+        }
+
+        function clickHandler(e) {
+            var ele = document.createElement("button");
+            ele.innerHTML = "new btn";
+            document.body.appendChild(ele);
+        }
+    </script>
+</body>
+
+</html>

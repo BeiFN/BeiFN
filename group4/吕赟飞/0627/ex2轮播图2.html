@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100%;
+            height: 455px;
+            background-image: url(https://n1-q.mafengwo.net/s14/M00/1A/74/wKgE2l0TTxSAZl-WAAahz3EBCKU476.jpg?imageMogr2%2Finterlace%2F1);
+            background-size: 100% 100%;
+            transition: all 1s;
+        }
+
+        img {
+            position: absolute;
+            display: block;
+            right: 50px;
+            top: 40px;
+            border: 2px solid rgba(0, 0, 0, 0);
+        }
+
+        img:nth-child(1) {
+            border: 2px solid #ff9d00;
+        }
+
+        img:nth-child(2) {
+            top: 121px;
+        }
+
+        img:nth-child(3) {
+            top: 202px;
+        }
+
+        img:nth-child(4) {
+            top: 283px;
+        }
+
+        img:nth-child(5) {
+            top: 364px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="https://p3-q.mafengwo.net/s14/M00/1A/34/wKgE2l0TTvSABiZfAAMAtEYHv7k591.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+            alt="">
+        <img src="https://p2-q.mafengwo.net/s14/M00/BF/06/wKgE2l0MhimAG13_AAPREGoOM9E353.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+            alt="">
+        <img src="https://n3-q.mafengwo.net/s14/M00/BF/64/wKgE2l0MhluADNfOAANGVJbKlZQ571.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+            alt="">
+        <img src="https://b4-q.mafengwo.net/s14/M00/59/CF/wKgE2l0Rg22AVLlOAANrgvjc6So487.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+            alt="">
+        <img src="https://n2-q.mafengwo.net/s14/M00/2F/AE/wKgE2l0Qoj6AY-ULAAMWWz7tYV4378.jpg?imageMogr2%2Fthumbnail%2F%21108x67r%2Fgravity%2FCenter%2Fcrop%2F%21108x67%2Fquality%2F90"
+            alt="">
+    </div>
+    <script>
+        var imgArr = [
+            "https://n1-q.mafengwo.net/s14/M00/1A/74/wKgE2l0TTxSAZl-WAAahz3EBCKU476.jpg?imageMogr2%2Finterlace%2F1",
+            "https://p2-q.mafengwo.net/s14/M00/BF/16/wKgE2l0Mhi-AZtGzAAjG8zBl5aM939.jpg?imageMogr2%2Finterlace%2F1",
+            "https://b3-q.mafengwo.net/s14/M00/BF/7E/wKgE2l0MhmeAQTPOAAVq0Icc7pk531.jpg?imageMogr2%2Finterlace%2F1",
+            "https://p1-q.mafengwo.net/s14/M00/59/E1/wKgE2l0Rg3WAaVICAARbapB4btc744.jpg?imageMogr2%2Finterlace%2F1",
+            "https://b2-q.mafengwo.net/s14/M00/2F/C8/wKgE2l0QokeAWc0DAAYJ1_tlB5c456.jpg?imageMogr2%2Finterlace%2F1"
+        ]
+        var pre;
+
+        init();
+
+        function init() {
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].addEventListener("click", clickHandler);
+            }
+            pre = imgs[0];
+        }
+
+        function clickHandler(evt) {
+            var arr = Array.from(this.parentElement.children);
+            var index = arr.indexOf(this);
+            var div = document.querySelector("div");
+            div.style.backgroundImage = "url(" + imgArr[index] + ")";
+
+            pre.style.border = "2px solid rgba(0, 0, 0, 0)";
+            pre = this;
+            pre.style.border = "2px solid #ff9d00";
+        }
+    </script>
+</body>
+
+</html>
