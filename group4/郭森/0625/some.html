@@ -10,11 +10,9 @@
     <script>
         function some(arr,callback){
             for(var i in arr){
-                if(callback(arr[i],i,arr)){
-                    return true;
-                }
-                return false;
+                if(callback(arr[i],i,arr)) return true;
             }
+            return false;
         }
         
     </script>

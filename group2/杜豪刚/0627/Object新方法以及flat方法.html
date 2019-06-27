@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object新方法以及flat方法</title>
+</head>
+<body>
+    <script>
+        //数组的扁平化
+        var arr = [
+            [1,2,3,5,6,7],
+            [9,8,6,3,10]
+        ]
+        console.log(arr.flat())
+        function flat(arr){
+            if(!flat.str){
+                flat.str=[];                    //判断是否存在flat.str数组
+            }
+            for(var i=0;i<arr.length;i++){
+                if(arr[i] instanceof Array){
+                    flat(arr[i]);               //如果是数组的话，返回flat
+                }else{
+                    flat.str.push(arr[i]);      //如果不是数组，可以添加到flat.str
+                }
+            }
+            return flat.str;
+        }
+        console.log(flat(arr));
+        //ES5新增的Object方法 --> 扩展了对象的属性
+        // var obj={a:1};
+        // Object.defineProperty(obj,"name",{
+        //     //是否可删除
+        //     configurable:false,
+        //     //是否可枚举
+        //     enumerable:false,
+        //     //是否有初始值
+        //     value:true,
+        //     //是否可写入
+        //     writable:true,
+        // });
+
+        // var obj = {
+        //     a:"hahah",
+        //     $data:{         //一个空的$data对象
+
+        //     }
+        // };
+        // Object.defineProperty(obj,"name",{
+        //     set:function(value){
+        //         //在obj里给name属性设置值时，set会起作用
+        //         // console.log("已经设置值");
+        //         //给当前的$data.name设置值
+        //         return this.$data.name = value;
+        //     },
+        //     get:function(){
+        //         //在obj里获取name的值时，get会起作用
+        //         // console.log("已经获取值");
+        //         //并给当前的$data.name取值
+        //         return this.$data.name;
+        //     }
+        // })
+        // console.log(obj)
+        var arr={
+            $data:{
+
+            }
+        };
+        Object.defineProperty(arr,"a",{
+            get:function(){
+                //每获取一次，a就会自增 1 
+                return this.$data.a++;
+            },
+            set:function(value){
+                return this.$data.a = value;
+            }
+        });
+        arr.a=1;
+        console.log(arr.a === 1 && arr.a === 2 && arr.a === 3 && arr.a === 4 && arr.a === 5)//(true)
+    </script>
+</body>
+</html>

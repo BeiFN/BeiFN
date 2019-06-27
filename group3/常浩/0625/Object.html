@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object.defineProperty()
+        // var obj = {b:1};
+        // Object.defineProperty(obj , "a" , {
+        //     configurable : false, //默认是false; 表示是否可以被删除 false是不可被删除，true是可以被删除
+        //     enumerable   : false, //默认是false；表示是否可以枚举   false 是不可被枚举，true是可以被遍历枚举；
+        //     value        : "hello",
+        //     writable     : true , //表示是否可以被赋值，为true的时候才能被重新赋值。
+        // })
+        // delete(obj.a);
+        // console.log(obj);
+        // for (var attr in obj){
+        //     console.log(attr);
+        // }
+
+        // Object.defineProperty(obj , "a" , {
+        //     get :function(){ //这个是获取a值得时候触发get get后面是函数 我们可以做一些操作再次
+
+
+        //     },
+        //     set : function(val){ //当创建a的值得时候回触发这个方法
+        //         //val 是我们设置的参数    
+        //     }
+        // })
+
+        // //如何让set、get变成一个正常的对象方法 
+        // var obj = {
+        //     $data : {}
+        // }
+        // Object.defineProperty(obj , "a" , {
+        //     get :function(){ 
+        //         return this.$data.a;
+        //     },
+        //     set : function(val){ 
+        //         return this.$data.a = val;
+        //     }
+        // })
+        // console.log(obj);
+        // obj.a = 30;
+        // console.log(obj.a);
+    
+    </script>
+</body>
+</html>

@@ -789,43 +789,57 @@
 
 <script>
     // 轮播图
-    var leftBtn, rightBtn, images;
+    var leftBtn, rightBtn, images, timer;
     var position = 0;
 
     init();
 
     function init() {
+        banner = document.getElementById("banner");
         leftBtn = document.getElementById("leftBtn");
         rightBtn = document.getElementById("rightBtn");
         images = document.getElementById("images");
+        
         leftBtn.addEventListener("click", clickHandler);
         rightBtn.addEventListener("click", clickHandler);
-        imagesMove();
+        banner.addEventListener("mouseenter", clearTimer);
+        banner.addEventListener("mouseleave", openTimer);
+
+        timer = setInterval(imagesMoveAuto, 2000);
+    }
+
+    function clearTimer() {
+        clearInterval(timer);
+    }
+
+    function openTimer() {
+        timer = setInterval(imagesMoveAuto, 2000);
+    }
+
+    function imagesMoveAuto() {
+        images.style.left = -1130 * position + "px";
+        if (position === 4) position = -1;
+        position++;
     }
 
     function clickHandler(e) {
         if (this === leftBtn) {
             position--;
-            if (position < 0) {
-                position = 5;
-            }
-            imagesMove();
-            return;
-        }
-        position++;
-        if (position > 5) {
-            position = 0;
+            if (position < 0) position = 5;
+        } else {
+            position++;
+            if (position > 5) position = 0;
         }
         imagesMove();
     }
 
     function imagesMove() {
         images.style.left = -1130 * position + "px";
+
     }
 
     // 吸顶导航
     scroll();
-
 
     function scroll() {
         var header = document.querySelector("#navs");
@@ -847,7 +861,7 @@
 
 
 
-    // 显示""按钮
+    // 显示按钮
     disTop();
 
     function disTop() {

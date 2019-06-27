@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //bind 函数的作用  在函数创建的时候固定函数的this指向，其次固定参数，调用时再次传的参数顺延其后  bind 返回的是一个新的函数
+        //先创建一个可以返回一个新函数的函数帮你调用目标函数如下 其参数应该为 fn
+        // function myBind(fn){
+        //     return function(){
+        //         fn();
+        //     }
+        // }  
+        // 在创建的时候固定好this的指向  其可以做到这个效果的目前已知的call/apply
+        // function myBind(fn,_this){
+        //     return function(){
+        //         fn.apply(_this);
+        //     }
+        // } 
+
+        //指向固定好之后 我们需要固定参数
+        function myBind(fn,_this){  //在这个小括号里传的参数是我们需要固定的参数。因为是不固定的参数所以我们需要把arguments转换为真数组使用.
+            var arg = [].slice.call(arguments).slice(2);
+            return function(){   //我们在poo调用的时候还是会传入参数的  这个参数的接受者是匿名函数 其参数是在mybind之后顺延的所以我们需要获取到这个参数再做一个拼接。
+                var arg2 = [].slice.call(arguments);
+                fn.apply(_this,arg.concat(arg2)); //之所以选apply的原因是因为其参数是数组 和arguments项对应的
+            }
+        } 
+
+
+        function foo (){
+            console.log(this,arguments);
+        }
+        var poo = myBind(foo,{name:"吴彦祖"},1,2,3);
+        poo(7,8,9);
+
+
+
+        //柯里化，  就是函数嵌套函数，内部函数调用目标函数  在调用之前可以做一些预处理。  柯里化的应用bind的封装、拖拽。
+    </script>
+</body>
+</html>
