@@ -18,5 +18,34 @@
 </head>
 <body>
     <div id="box"></div>
+    <script src="../libs/commen.js"></script>
+    <script>
+        var box=$("#box");
+        console.log(box[0]);
+        var _handlerDragMove=handlerDragMove;
+
+        box[0].addEventListener("mousedown" , handlerDragStart);
+        document.addEventListener("mouseup",handlerDragStop);
+
+        function handlerDragStart(evt){
+                var e = evt || window.event;
+                document.addEventListener("mousemove" , _handlerDragMove = handlerDragMove.bind(false,{
+                    offsetX : e.offsetX,
+                    offsetY : e.offsetY
+                }));
+        }
+        function handlerDragMove(offset,evt){
+            var e=evt||window.event;
+            box[0].style.left=e.clientX-offset.offsetX+"px";
+            box[0].style.top=e.clientY-offset.offsetY+"px";
+        }
+        function handlerDragStop(){
+            document.removeEventListener("mousemove",_handlerDragMove);
+        }
+
+
+        
+
+    </script>
 </body>
 </html>
