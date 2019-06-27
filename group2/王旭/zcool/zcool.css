@@ -1,0 +1,786 @@
+.head{
+    width: 100%;
+    height: 56px;
+    background-color: #ffe300;
+}
+.nav{
+    height:56px;
+    margin: 0 70px;
+    position: relative;
+}
+.nav .logo{
+    position: absolute;
+    top: 18px;
+    left: 0;
+}
+.nav_center{
+    height: 56px;
+    margin: 0 auto;
+    text-align: center;
+}
+.nav_men{
+    height: 56px;
+    margin: 0 auto;
+    display: inline-block;
+ 
+    /* float: left; */
+}
+.nav_men #nav_list{
+    position: relative;
+}
+#nav_caidan{
+    display: none;
+    overflow: hidden;
+    width:664px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+#nav_caidan ul li{
+    background-color: #fff;
+   
+}
+#nav_caidan ul li span{
+    width:1px;
+    height:15px;
+    background-color: #ddd;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 7px;
+
+}
+#nav_caidan ul li a{
+    font-weight: 500;
+    color: #333;
+   
+}
+#nav_caidan ul{
+    padding-left:20px;
+    overflow: hidden;
+    padding-bottom:20px;
+}
+#nav_caidan ul li{
+    float: left;
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    margin-top: 4px;
+    text-align: center;
+}
+#nav_caidan ul li a{
+    padding: 0 5px;
+}
+#caidan_bottom{
+    width:100%;
+    overflow: hidden;
+    
+    border-top:1px solid #999;
+}
+#caidan_bottom ul li{
+    margin-right:30px;
+}
+#caidan_bottom ul li i{
+    display: block;
+    position: absolute;
+    top:5px;
+    right:0;
+}
+#nav_caidan #caidan_bottom ul{
+    padding-bottom:5px;
+}
+#caidan_bottom ul li{
+    padding : 5px 0;
+}
+.nav_men  li{
+    float: left;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+}
+.nav_men li:hover{
+    background-color: #000;
+    
+}
+#position{
+    position: relative;
+}
+#nav_position{
+    display:none;
+    width:132px;
+   
+    overflow: hidden;
+    background:#fff;
+    
+}
+#nav_position ul li{
+    height: 44px;
+    line-height: 44px;
+    margin-left:0;
+}
+#nav_position ul li a{
+    font-weight: 300;
+    color: #333;
+    width:100%;
+    text-align: left;
+}
+#activity{
+    position: relative;
+}
+#nav_activity{
+    display: none;
+    width:132px;
+    overflow: hidden;
+    background:#fff;
+}
+#nav_activity ul li{
+    height: 44px;
+    line-height: 44px;
+    margin-left:0;
+}
+#nav_activity ul li a{
+    font-weight: 300;
+    color: #333;
+    width:100%;
+    text-align: left;
+}
+#icon{
+    position: relative;
+}
+#nav_material{
+    display:none;
+    width:132px;
+    overflow: hidden;
+    background:#fff;
+}
+#nav_material ul li{
+    height: 44px;
+    line-height: 44px;
+    margin-left:0;
+}
+#nav_material ul li a{
+    font-weight: 300;
+    color: #333;
+    width:100%;
+    text-align: left;
+}
+#_class{
+    position: relative;
+}
+#nav_class{
+    display: none;
+    width:132px;
+    overflow: hidden;
+    background:#fff;
+}
+
+#nav_class ul li{
+    height: 44px;
+    line-height: 44px;
+    margin-left:0;
+}
+#nav_class ul li a{
+    font-weight: 300;
+    color: #333;
+    width:100%;
+    text-align: left;
+}
+.nav_men li:hover a {
+    color: #ffe300;
+}
+.nav_men li:hover em{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-more-hover.svg);
+    width: 20px;
+    height: 56px;
+}
+.nav_men li a{
+    font-weight: 600;
+    padding: 0 24px;
+    display: inline-block;
+}
+
+.nav_men li a em{
+    
+    width: 20px;
+    height: 56px;
+    display: block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-more.svg) no-repeat left center;
+}
+.nav_men .nav_icon{
+    position: relative;
+    width: 116px;
+}
+.nav_men .icon{
+    position: absolute;
+    top: 10px;
+    left: 86px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 3px;
+    font-size: 12px;
+    color: #fff;
+    background: #ea4335;
+}
+.nav_men sup{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4a3b;
+    margin: 0 0 2px 12px;
+    position: absolute;
+    top: 20px;
+}
+.icon:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    border-top: 5px solid transparent;
+    border-right: none;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #ea4335;
+}
+
+.nav_center .nav_ser{
+    width: 60px;
+    height: 56px;
+    position: absolute;
+    top: 0;
+    right: 192px;
+    text-align: center;
+    line-height: 56px;
+}
+.nav_ser em{
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1);
+    width: 20px;
+    height: 20px;
+    margin-top: 18px;
+}
+.nav_ser:hover{
+    background-color: #000;
+}
+.nav_ser:hover em{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/nav-search-hover.svg?v=1);
+    width:20px;
+    height: 20px; 
+}
+.right_center{
+   width:192px;
+   height: 56px;
+   position: absolute;
+   top:0;
+   right:0;
+   box-sizing: border-box; 
+}
+.nav_upload{
+   float: left;
+   position: relative;
+   padding-top: 18px;
+   width: 60px;
+   height: 56px;
+   box-sizing: border-box; 
+ 
+}
+.nav_upload em{
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg);
+    width: 23px;
+    height: 20px;
+}
+.nav_upload:hover{
+    background-color: #000;
+}
+.nav_upload:hover em{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-upload-hover.svg);
+}
+.nav_logn{
+    float: left;
+    height: 36px;
+    padding-top: 20px;
+}
+.nav_logn li{
+    font-size: 14px;
+    text-align: center;
+    width: 60px;
+    height: 15px;
+    line-height: 15px;
+    float: left;
+   
+}
+.nav_logn .login{
+    border-right: 1px solid #000;
+}
+
+.banner{
+    width: 100%;
+    height: 286px;
+    margin-top: 20px;
+}
+.bcenter{
+    width: 84%;
+    height: 286px;
+    margin: 0 auto;
+    position: relative;
+}
+.bcenter img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.b1{
+    width: 52px;
+    height: 52px;
+    background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+    position: absolute;
+    left: 20px;
+    top: 125px;
+}
+.b2{
+    width: 52px;
+    height: 52px;
+    background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+    position: absolute;
+    right: 20px;
+    top: 125px;
+}
+.advtop{
+    width: 100%;
+    height: 170px;
+    padding-top:20px; 
+}
+.acenter{
+    width: 84%;
+    height: 170px;
+    margin: 0 auto;
+}
+.acenter ul{
+    width: 100%;
+    height: 100%;
+}
+.acenter ul li{
+    float: left;
+    margin-right: 28px;
+    height: 100%;
+    width: 18%;
+}
+.acenter ul li img{
+    width: 100%;
+    height: 100%;
+    border-radius:4px;
+}
+.acenter .last{
+    float: right;
+    margin-right: 0;
+}
+.mid_nav{
+    width: 100%;
+    height: 56px;
+    margin-top: 50px;
+    position: sticky;
+    top:0;
+    z-index:10000;
+    background-color: #fff;
+}
+.mid_center{
+    width: 84%;
+    height: 56px;
+    margin: 0 auto;
+}
+.mid_center ul li a{
+    font-size: 16px;
+    color:#999;
+}
+.mid_center ul{
+    width: 372px;
+    height: 100%;
+    margin: 0 auto;
+}
+.mid_center ul li{
+    text-align: center;
+    line-height: 56px;
+    width: 124px;
+    height: 100%;
+    float: left;
+    box-sizing:border-box;
+    padding: 0 30px;
+}
+.mid_center ul li a{
+    height: 56px;
+    display: block;
+}
+.mid_center ul li:hover a{
+    border-bottom: 2px solid #000;
+}
+.subnav{
+    width: 100%;
+    overflow: hidden;
+    background-color: #eee;
+    padding-top: 20px;
+}
+.sub_center{
+    width: 84%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.s1{
+    float: left;
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    margin: 0 16px 20px 0;
+    width: 210px;
+}
+.s11{
+    width: 210px;
+    height:158px;
+    
+}
+.s11 img{
+    width: 100%;
+    height:100%;
+    border-radius: 4px;
+}
+.s11 img:hover{
+    opacity: .8;
+}
+.s12{
+    border-bottom: 1px solid #eee;
+    padding: 11px 16px 13px;
+    height: 75px;
+    position: relative;
+}
+.s121{
+    margin-bottom: 1px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.s121 a{
+    font-size: 14px;
+    color: #333;
+}
+.s122{
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 17px;
+    height: 18px;
+} 
+.s123{
+    font-size: 12px;
+    color: #bbb;
+    position: absolute;
+    bottom: 14px;
+}
+.s123 span{
+    margin-right: 10px;
+    cursor: default;
+}
+.s12 span::before{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    vertical-align: top;
+    margin-right: 5px;
+}
+.s1231::before{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-liulan.svg?v=1) no-repeat 0 4px;
+    background-size: 16px auto;
+}
+.s1232::before{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-pinglun.svg?v=1) no-repeat 0 3px;
+    background-size: 16px auto;
+}
+.s1233::before{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/card-zan.svg?v=1) no-repeat 0 1px;
+    background-size: 16px auto;
+}
+.s13{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 16px;
+    font-size: 12px;
+    position: relative;
+}
+.s13 .s131{
+    width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.s131 a img{
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    float: left;
+    margin-top: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.s132{
+    float: right;
+}
+.page_turn{
+    width: 100%;
+    height: 40px;
+    background-color: #eee;
+    padding-top: 20px;
+}
+.page_center{
+    width: 84%;
+    height: 100%;
+    margin: 0 auto
+}
+.page_center ul{
+    height: 100%;
+    margin-left: 310px;
+}
+.page_center ul li{
+    font-weight: 400;
+    color: #333;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    margin: 0 3px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.page_center li:hover{
+    background-color: #ffe300;
+    border: 1px solid #ffe300;
+}
+.nav_under{
+    width: 100%;
+    height:100px;
+    background-color: #eee;
+    padding-top: 30px;
+}
+.under_center{
+    width: 84%;
+    height: 100%;
+    margin: 0 auto;
+}
+.under_center a img{
+    height: 100%;
+    width: 100%;
+    border-radius:4px;
+}
+.list{
+    width: 100%;
+    overflow: hidden;
+    background-color: #eee;
+}
+.lcenter{
+    width: 84%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.list .l1{
+    min-height: 14px;
+    line-height: 14px;
+    margin: 20px 0;
+    color: #666;
+    position: relative;
+}
+.l1 span{
+    color: #d36f16;
+    float: right;
+}
+.l2{
+    width: 100%;
+    overflow: hidden;
+}
+.l21{
+    width: 210px;
+    float: left;
+    position: relative;
+    background: #fff;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.l211{
+    width: 210px;
+    height: 158px;
+}
+.l211 img{
+    width: 100%;
+    height: 100%; 
+}
+.l212{
+    padding: 12px 16px;
+    background-color: #fff;
+    align-items: center;
+    position: relative;
+}
+.l212 a{
+    width: 164px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+.l212 span{
+    width: 14px;
+    height: 16px;
+    position: absolute;
+    top:16px;
+    left:180px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/bianjijingxuan.svg?v=1);
+}
+.lcenter .l22{
+    margin: 0 0 20px 0; 
+}
+.cover{
+    width: 210px;
+    height: 158px;
+    background-color: rgba(255,255,255,0.5);
+    position: absolute;
+    top:0;
+    display: none;
+}
+.l211:hover .cover{
+    display: block;
+}
+.foot{
+    width: 100%;
+    height: 229px;
+    background: #282828;
+    color: #666;
+}
+.foot_center{
+    width: 84%;
+    height:100%;
+    margin: 0 auto;
+}
+.f1{
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #333;
+}
+.f1 .f11{
+    float: left;
+    height: 100%;
+    
+}
+.f11 li{
+    float: left;
+    margin-right: 38px;
+    padding: 50px 0;
+    line-height: 50px;
+    position: relative;
+}
+.f11 li span{
+    width: 14px;
+    height: 23px;
+    display: inline-block;
+    position: absolute;
+    top: 55px;
+}
+.f11 li span img{
+    width: 14px;
+    height: 23px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.f11 li em{
+    display: inline-block;
+    margin-left: 23px;
+}
+.f12{
+    float: left;
+    height:65px;
+    margin-top: 65px;
+    padding-left:100px; 
+}
+.f12 .weixin{
+    width: 25px;
+    height: 21px;
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1) no-repeat;
+    
+}
+.f12 .weibo{
+    width: 26px;
+    height: 21px;
+    display: inline-block;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1) no-repeat;
+    margin-left: 50px;
+}
+.f2{
+    width: 100%;
+    height: 12px;
+    margin-top: 20px;
+}
+.f2 ul li{
+    float: left;
+    padding: 0 25px;
+    margin: 10px 0;
+    border-right: 1px solid #666;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.f2 ul li a{
+    font-size: 12px;
+}
+.f2 .f21,.f2 .f22{
+    padding-left: 0;
+}
+.f2 .f23,.f2 .f24,.f2 .f25{
+    border:none;
+}
+.f2 .f25{
+    float: right;
+}
+.f2 ul li span{
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    background: url(https://static.zcool.cn/git_z/build/images/icon-police.png) no-repeat;
+}
+.f11 ul li a:hover{
+    color:#fff;
+}
+#goTop{
+    width: 50px;
+    right: 4%;
+    z-index: 10;
+    display: none;
+}
+#goTop a{
+
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background-color: #ddd;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAJCAYAAADtj3ZXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNDRCMDUzQUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZGNDRCMDU0QUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY0NEIwNTFBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY0NEIwNTJBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PJl6MAAAAmUlEQVR42mL4//8/Aw6sBsQHoTRWNbg06gPxi/8QAKINiNVsBcTvoRrfQun3UHG8mt2B+CtUwyog5oHS/6Hi7rg0hwDxT6jC2UDMDBUH0XOg4iD5UHTNyUD8B6qgG4gZ0VwE4vdA5f9A1YM1FwPxP6hENZ7QZ4DK/4eqLwYJdADxXyDOIqARhrOg6jtgTjIjUiMMg9QzAgQYANxouJaSk05sAAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
