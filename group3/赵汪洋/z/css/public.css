@@ -11,6 +11,7 @@ body{font-family:"微软雅黑"; font-size:14px; color:#666;}
 table{border-collapse:collapse;}
 .l{float: left;}
 .r{float: right;}
+.clear {clear: both;}
 .clearfix::after{content: "";display: block;clear: both;visibility: hidden;height: 0;}
 .clearfix{zoom: 1;}
 /*a:hover{text-decoration:underline;}*/
