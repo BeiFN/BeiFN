@@ -1,0 +1,102 @@
+.text{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+p{
+    color: #666;
+    font-size: 20px;
+    line-height: 30px;
+}
+header{
+    width: 100%;
+    background-color: #fff;
+}
+
+.head{
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.logo{
+    height: 80px;
+    font-size: 32px;
+    float: left;
+}
+
+.logo a{
+    display: block;
+    height: 100%;
+    line-height: 100px;
+    font-weight: bold;
+}
+
+.logo  span:first-child {
+    color: #ffc001;
+}
+
+.logo span:last-child {
+    color: #ccc;
+}
+
+.nav{
+    margin-top: 30px;
+    float: right;
+}
+
+.nav li{
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    color: #333;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 10px;
+    border-radius: 40px;
+}
+
+.nav li:first-child{
+    background-color: #FFC001;
+    color: #fff;
+}
+
+.nav li:hover{
+    background-color: #FFC001;
+    color: #fff;
+}
+
+.nav a{
+    display: block;
+    height: 100%;
+}
+
+.list{
+    height: 50px;
+    margin: 80px 50px 20px 70px;
+}
+
+.date{
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.date span{
+    font-size: 20px;
+    color: #222222;
+    margin-right: 10px;
+}
+
+.date a{
+    margin-right: 12px;
+}
+
+.copy{
+    color: #999;
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
