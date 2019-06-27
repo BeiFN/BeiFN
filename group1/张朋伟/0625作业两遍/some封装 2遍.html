@@ -13,7 +13,6 @@
         // some 判定数组中是否存在某个符合条件的; 
         //一旦函数返回true那么some就会终止循环，并且返回true ;
         // arr = [23, 4355, 6567, 32, 666]
-
         // function mySome(arr, fn) {
         //     flag = false;
         //     for (var i = 0; i < arr.length; i++) {
@@ -30,26 +29,44 @@
 
 
         // console.log(mySome(arr, fn));
-// filter 封装
-        var arr = [300, 400, 500, 600];
 
-        function myFilter(arr, fn) {
-            res = [];
+
+        arr = [23, 4355, 6567, 32, 666];
+
+        function mySome(arr, fn) {
+            // flag = false;
             for (var i = 0; i < arr.length; i++) {
-                if(fn(arr[i],500))
-                res.push(fn(arr[i],500));
+                if (fn(arr[i], i, arr))
+                    return true;
             }
-            return res
+            return false;
         }
 
-        function fn(item, x) {
-            if (item > x)
-                return item;
-                else
-                return null;
+        function fn(item, index, arr) {
+            return (item > 600);
         }
+        console.log(mySome(arr, fn));
 
-        console.log(myFilter(arr, fn))
+        // filter 封装
+        // var arr = [300, 400, 500, 600];
+
+        // function myFilter(arr, fn) {
+        //     res = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if(fn(arr[i],500))
+        //         res.push(fn(arr[i],500));
+        //     }
+        //     return res
+        // }
+
+        // function fn(item, x) {
+        //     if (item > x)
+        //         return item;
+        //         else
+        //         return null;
+        // }
+
+        // console.log(myFilter(arr, fn))
     </script>
 </body>
 

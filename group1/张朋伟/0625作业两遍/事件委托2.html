@@ -63,12 +63,11 @@
             var e = evt || event;
             var target = e.target || e.srcElement;
 
+            for (var i = 0, eli; eli = li_ele[i++];) {
+                eli.style.background = "#fff";
+            }
             if (target.nodeName === "LI") {
                 // console.log(111111111)
-                for (var i = 0, eli; eli = ul_ele[i++];){
-                     eli.style.background = "#ddd";
-                }
-                   
 
                 target.style.background = "#f00";
             }
