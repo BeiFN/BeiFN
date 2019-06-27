@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var json = {
+            type : "li",
+            attr : {
+                class : "box",
+                name : "hezi"
+            },
+            children : [
+                {
+                    type : "p",
+                    attr : {
+                        class : "count"
+                    }
+                }
+            ]
+        };
+
+
+
+        // 将对象/JavaScript值转为 JSON字符串
+        var jsonJ = JSON.stringify(json);
+        console.log(jsonJ);
+
+        // 将JSON字符串转 JSON对象
+        var jsonO = JSON.parse(jsonJ);
+        console.log(jsonO);
+
+        console.log(json);
+
+        // 将JSON字符串转JSON对象 兼容性较好的方法
+        var jsonE = eval("(" + jsonJ + ")");
+        console.log(jsonE);
+
+    </script>
+</body>
+</html>
