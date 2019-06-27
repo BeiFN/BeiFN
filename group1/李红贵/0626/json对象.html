@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var json = '{"a":"b", "c":"d"}';
+        // console.log(eval(json));//报错
+        console.log("("+json+")");
+        console.log(JSON.parse(json));
+        // var json1 = "{'a':'ff'}";
+        // console.log(JSON.parse(json1));//报错  
+        // JSON.parse解析字符串时，如果遇到了不符合json规范的字符串，这个时候json.parse就会报错
+
+        // JSON.stringify();
+        var obj = {
+            a:10,
+            "b":[],
+            "c":{},
+        }
+        console.log(JSON.stringify(obj));
+
+        // obj  新增方法
+
+        var obj1 = {
+            a:1,
+            b:2,
+            c:3
+        }
+        //返回对象keys
+        console.log(Object.keys(obj1));
+        var keys = Object.keys(json);
+        var index = keys.indexOf();
+    </script>
+</body>
+</html>
