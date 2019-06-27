@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <script>
+
+        // exec => 正则的方法 => 在字符串之中找到一个符合规则的内容;
+            // 如果有修饰符g 那么下一次匹配的时候会在上一次匹配终止处继续。
+
+        var namelist = "小陆,小呆瓜,小九九,小扣扣,大陆" ;
+         var reg = /小九九/;
+
+        console.log(namelist.match(reg));
+   
+            // \d =元字符> [0123456789]
+            //            [0-9]
+            // 第一个符号 - =>  用来告知数字和字母的范围;
+            // 第二个符号 ^ =>  用来除了元字符之中的字符; 
+    
+    </script>
+</body>
+</html>
