@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邮箱正则表达式</title>
+    <style>
+       #text{
+           width: 250px;
+           height: 30px;
+           background: #eeeeee;
+       }
+       #remind{
+           display: block;
+           width: 250px;
+           height: 50px;
+           line-height: 50px;
+           color: yellowgreen;
+           text-align: center;
+           margin: 20px 0;
+           border: 1px solid #eeeeee;
+       }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="text">
+
+    <span id="remind"></span>
+
+
+    <script>
+    
+       var oInput = document.getElementById("text");
+       var oSpan = document.getElementById("remind");
+       var reg = /^\w{6,18}@(((163|126|qq)\.com)|yeah\.net)$/;
+
+
+    //    简写
+
+    // \d   数字               
+    // \D   非数字
+    // \w   数字字母下划线
+    // \W非数字字母下划线
+
+    // .  除了   \n  \r  
+    // [\s\S]    可以匹配所有字符
+
+
+       oInput.onblur = function(){
+           var value = this.value;
+        //    console.log(reg.test(value));
+        if(reg.test(value)){
+            oSpan.innerHTML = "欧耶耶，邮箱可以注册！"
+        }else{
+            oSpan.innerHTML = "嗷嗷嗷，请输入正确的邮箱格式！"
+        }
+       }
+    
+    </script>
+</body>
+</html>

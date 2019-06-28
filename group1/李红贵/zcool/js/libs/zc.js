@@ -102,17 +102,25 @@ function changeImage(page){
 
 // 获取屏幕高
     var hbody = window.innerHeight || document.body.offsetHeight
+
+    var clientHeight = document.documentElement.clientHeight;
+    window.onresize = function(){
+        clientHeight = document.documentElement.clientHeight;
+    }
     console.log(hbody);
 
-    if(scrollTop > 920){
+
+    // 1445;
+    if(scrollTop > 845){
         console.log("定");
         
         goTop.style.position = "absolute";
         goTop.style.right= "60px";
         goTop.style.top = "1395px";
-    }else if(scrollTop >= 200 && scrollTop <= 920){
+    }else if(scrollTop >= 200 && scrollTop <= 845){
         // 
-        goTop.style.cssText = "display:block; position:fixed; right:60px; bottom:50px";
+        // var sTop =  hbody - 50;
+        goTop.style.cssText = "display:block; position:fixed; right:60px; top: 550px";
 
         // goTop.style.display = "block";
         // goTop.style.position = "fixed";

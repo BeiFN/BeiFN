@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+    
+        .nav {
+            height: 80px;
+            line-height: 80px;
+            width: 100%;
+            background: yellowgreen;
+            display: flex;
+            justify-content: space-around;
+        }
+    
+        .list {
+            background: rgba(0, 0, 0, .3);
+            width: 300%;
+            display: none;
+            margin-left: -70px;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <span>一级菜单
+            <ul class="list">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </span>
+        <span>一级菜单
+            <ul class="list">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </span>
+        <span>一级菜单
+            <ul class="list">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </span>
+        <span>一级菜单
+            <ul class="list">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </span>
+    </ul>
+    <script>
+        // var nav = document.querySelector(".nav");
+        // var list_child = nav.children;
+        // var timer = null;
+        // for(var i = 0 , child; child = list_child[i++]; ){
+        //     child.addEventListener("mouseover" , showListTwo);
+        //     child.addEventListener("mouseout" ,hiddenListTwo);
+        // }
+
+
+        // function showListTwo(){
+        //     clearTimeout(timer);
+        //     var list = this.querySelector(".list");
+        //     list.style.display = "block"; 
+        //     list.addEventListener("mouseover", hoverListTwo);
+        // }
+        // function hiddenListTwo(){
+        //     var list = this.querySelector(".list");
+        //     timer = setTimeout(function(){
+        //         list.style.display = "none"; 
+        //     },1000);
+        // }
+        // function hoverListTwo(){
+        //     this.style.display = "block";
+        // }
+
+
+        var nav = document.querySelector(".nav");
+        var timer = null;
+        nav.addEventListener("mouseover", delegation(showListTwo,"span"));
+        nav.addEventListener("mouseout",delegation(hiddenListTwo,"span"));   
+        function showListTwo(){
+            clearTimeout(timer);
+            var list = this.querySelector(".list");
+            list.style.display = "block"; 
+        }
+        function hiddenListTwo(){
+            var list = this.querySelector(".list");
+            timer = setTimeout(function(){
+                list.style.display = "none";
+            },1000);
+            
+        }
+        
+        
+        function delegation(eventCallBack,selector){
+            return function(evt){
+                var e = evt || event;
+                var target = e.target ||e.srcElememt;
+                if(target.nodeName.toLowerCase() === selector){
+                  eventCallBack.call(target);  
+                }
+            }
+        }
+    </script>
+</body>
+</html>

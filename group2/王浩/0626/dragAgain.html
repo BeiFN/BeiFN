@@ -21,10 +21,10 @@
     <script src="../libs/commen.js"></script>
     <script>
         var box=$("#box");
-        console.log(box[0]);
+        console.log(box);
         var _handlerDragMove=handlerDragMove;
 
-        box[0].addEventListener("mousedown" , handlerDragStart);
+        box.addEventListener("mousedown" , handlerDragStart);
         document.addEventListener("mouseup",handlerDragStop);
 
         function handlerDragStart(evt){
@@ -36,8 +36,8 @@
         }
         function handlerDragMove(offset,evt){
             var e=evt||window.event;
-            box[0].style.left=e.clientX-offset.offsetX+"px";
-            box[0].style.top=e.clientY-offset.offsetY+"px";
+            box.style.left=e.clientX-offset.offsetX+"px";
+            box.style.top=e.clientY-offset.offsetY+"px";
         }
         function handlerDragStop(){
             document.removeEventListener("mousemove",_handlerDragMove);
