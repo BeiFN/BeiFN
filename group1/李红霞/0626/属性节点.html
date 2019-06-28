@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div">
+        
+    </div>
+    <script>
+        //属性节点知识点
+        var div = document.getElementById("div");
+        //属性节点的完整获取 
+        var arrs = div.attributes;
+        console.log(arrs)
+        //属性节点的遍历 一般使用for in遍历比较方便
+        //创建属性节点的方法
+        var ele = document.createAttribute("class");
+        ele.nodeValue = "hello";
+        div.setAttributeNode(ele);
+        // for(arr in arrs){
+        //     console.log(arrs[arr], arrs[arr].nodeName, arrs[arr].nodeValue);
+        // }   
+        //使用for…in…遍历对象会遍历出对象的所有可枚举的属性
+        for(var i = 0, arr; arr = arrs[i++];){
+            console.log(arr, arr.nodeName, arr.nodeValue)
+        }
+        console.log(div)
+        //设置属性节点的方法 
+    </script>
+</body>
+</html>

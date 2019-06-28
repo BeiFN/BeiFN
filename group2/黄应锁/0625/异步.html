@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 浏览器 : 
+            // 多进程 : 
+            // 1. 页面渲染进程
+            // 2. 数据加载进程;
+            // 3. JS解析进程;
+
+            // JS解析器 : 
+            // 单线程 : 
+            //  耗时相当长的操作 ? 
+            // 1. 事件;
+            // 2. 定时器 ，延时器 ;
+            // 3. ajax; 加载请求; => 事件; 
+            // 4. promise ES6; 
+            
+            //  异步;
+
+            for(var i = 0 ; i < 10 ; i ++){
+                  setTimeout(function(){
+                        console.log(i)
+                  },0)
+            }    
+        // 打印10次 10
+    </script>
+</body>
+</html>
