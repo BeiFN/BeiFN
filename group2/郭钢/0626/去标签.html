@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea type="text" id="orignalTxt"></textarea>
+    <button id="changeTxt">转换</button>
+    <textarea type="text" id="newTxt"></textarea>
+</body>
+<script>
+    var orignalTxt = document.getElementById("orignalTxt");
+    var changeTxt = document.getElementById("changeTxt");
+    var newTxt = document.getElementById("newTxt");
+
+    changeTxt.onclick = function () {
+        var orignalContent = orignalTxt.value;
+        var reg = /<[^><]+>|[&nbsp;]/g;
+        var newContent = orignalContent.replace(reg, "");
+        newTxt.value = newContent;
+    }
+</script>
+</html>

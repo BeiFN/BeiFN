@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <button class="btn"><strong>这是一个按钮</strong> ,只有这些按钮可以实现增加元素的功能</button>
+        <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+        <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+        <button class="btn">这是一个按钮,只有这些按钮可以实现增加元素的功能</button>
+        <button>这是一个按钮</button>
+        <button>这是一个按钮</button>
+        <button>这是一个按钮</button>
+        <button>这是一个按钮</button>
+        <button>这是一个按钮</button>
+        <button>这是一个按钮</button>
+        <script>
+            // document.body.addEventListener("click", createButton)
+
+            // function createButton(evt)
+            // {///判断
+            //     var e = evt || event;
+            //     var target = e.target || e.srcElement
+            //     ////业务
+            //     if(target.nodeName === "BUTTON")
+            //     {
+            //         var btn = document.createElement("button")
+            //         btn.innerHTML = "新按钮";
+            //         document.body.appendChild(btn);
+            //     }
+            // }
+            document.body.addEventListener("click", delegation(createButton,"button"))
+
+                function delegation(eventCallBack,seletor)
+                {
+                    return function(evt)
+                    {
+                        var e = evt || event;
+                        var target = e.target || e.srcElement;
+                        var targetFamliy = [];
+                        var _tempTarget = target;
+
+                        while(true){
+                           if(_tempTarget === this){
+                                        break;
+                                    }
+                             targetFamily.push(_tempTarget);
+                            _tempTarget = _tempTarget.parentNode;
+                              }
+
+
+
+                        var eleList = this.querySelectorAll(seletor)
+
+                        for(var i = 0 , ele ; ele = eleList[i ++] ;){
+                         if( targetFamily.length === 1 ? (ele === target) : (targetFamily.indexOf(ele) !== -1 )){
+                              eventCallback.call( ele , e);
+                             }
+                           }
+                        }
+                    }
+
+                }
+                function createButton(evt)
+                {
+                    var btn = document.createElement("button")
+                     btn.innerHTML = "新按钮";
+                     document.body.appendChild(btn);
+                     console.log(this)
+                }
+        </script>
+</body>
+</html>

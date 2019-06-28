@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>严格模式</title>
+</head>
+<body>
+    <script>
+        //变量的严格
+        //1.变量必须先声明再赋值
+        //  a = 20;
+        //  console.log(a);  //=>20
+        //  "use strict"  
+        //  a = 20;
+        //  console.log(a);  //=>严格模式.html:15 Uncaught ReferenceError: a is not defined
+        
+        //参数严格
+        //1.形参被赋值不会影响到arguments里面的参数；
+        // (function(){
+        //     function foo(a,b){
+        //         console.log(a,b,arguments[0],arguments[1])//=> 10 20 10 20
+        //         a=20;
+        //         b = 40;
+        //         console.log(a,b,arguments[0],arguments[1]) //=> 20 40 20 40
+        //     }
+        //     foo(10,20)   
+        // })();
+        // (function(){
+        //     "use strict"
+        //     function foo(a,b){
+        //         console.log(a,b,arguments[0],arguments[1])//=> 10 20 10 20
+        //         a=20;
+        //         b = 40;
+        //         console.log(a,b,arguments[0],arguments[1]) //=> 20 40 10 20
+        //     }
+        //     foo(10,20)   
+        // })();
+        //2.形参不允许一样
+        //非严格，一样的话，被后写的覆盖
+        // ;(function(){
+
+        //     function foo(a,a,b){
+        //         console.log(a,b); //=> 2,3
+        //     }
+        //     foo(1,2,3)
+        //     })();
+        // ;(function(){
+        //     "use strict"
+        //     function foo(a,a,b){
+        //         console.log(a,b);//=>Duplicate parameter name not allowed in this context
+        //     }
+        //     foo(1,2,3)
+        //     })();
+        //函数的严格
+        //1.。this指向了window，离报错不远了
+        // (function(){
+        //     function foo(){
+        //         console.log(this)  // =>window
+        //     }
+        //     foo(); 
+        // })();
+
+        // (function(){
+        //     "use strict"
+        //     function foo(){
+
+        //         console.log(this)  // =>undefined
+        //     }
+        //     foo(); 
+        // })();
+        //2.不允许使用arguments.callee
+
+            //  ;(function(){
+
+            //       function foo(){
+            //            arguments.callee;
+            //            console.log( arguments.callee) //=>foo
+            //       }
+            //       foo()
+            // })();
+            // ;(function(){
+            //       "use strict"
+            //       function foo(){
+            //            arguments.callee  //=>Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+            //       }
+            //       foo()
+            // })();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <textarea name="" id="txt1" cols="30" rows="10"></textarea>
+        <button id="btn">去标签</button>
+        <textarea name="" id="txt2" cols="30" rows="10"></textarea>
+        <script>
+            // 去掉标签并删除
+            var reg = /<.+?>/g;
+            var input = document.getElementById("txt1");
+            var output = document.getElementById("txt2");
+            var btn = document.getElementById("btn");
+            btn.addEventListener("click", deleteTag);
+            function deleteTag(){
+                var inputValue = input.value;
+                console.log(inputValue.match(reg));
+                output.value = inputValue.replace(reg, "");
+            }
+
+
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+        // <p>123</p>
+
+        </script>
+    </body>
+</html>

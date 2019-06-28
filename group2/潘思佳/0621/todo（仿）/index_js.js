@@ -4,6 +4,8 @@ var ele_doneList = $("#donelist");
 var ele_todoCount = $("#todocount");
 var ele_doneCount = $("#donecount");
 
+var targetLi = null;
+
 function $(selector) {
     var ele = null;
     return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
@@ -44,7 +46,25 @@ function addTodoItem() {
 
     li.children[0].addEventListener("change", handlerToDoToDone);
     li.children[2].addEventListener("click", removeHandler);
+    li.children[1].addEventListener("click", changeText);
+    li.addEventListener("dragstart", function(e) {
+        targetLi = this; //dragstart事件，将当前拖拽的li的this赋值给全局变量targetLi
+    });
+
+    li.setAttribute("draggable", "true"); //为li添加拖拽属性
+
 }
+
+ele_todoList.addEventListener("drop", tempFunc);
+
+function tempFunc(e) {
+    console.log(e.target.nodeName);
+    this.insertBefore(targetLi, e.target.nodeName === "OL" ? targetLi : e.target.parentNode); //将拖动的li插入e.target的父级li之前，如果没能拖到正确的位置，就不进行insertBefore操作
+}
+
+document.addEventListener("dragover", function(e) {
+    e.preventDefault();
+})
 
 function createElement(domJson) {
     typeof domJson === "undefined" ? domJson = {} : "";
@@ -73,6 +93,24 @@ function removeHandler() {
 function countLi() {
     ele_todoCount.innerHTML = ele_todoList.children.length;
     ele_doneCount.innerHTML = ele_doneList.children.length;
+}
+
+function changeText() {
+    if (this.children.length >= 1) return;
+    var input = createElement({
+        type: "input",
+        attr: {
+            value: this.innerHTML,
+        }
+    })
+    this.innerHTML = "";
+    this.appendChild(input);
+    input.select();
+    input.addEventListener("change", finishChange);
+}
+
+function finishChange() {
+    this.outerHTML = this.value;
 }
 
 ele_input.addEventListener("keydown", keydownHandler);
