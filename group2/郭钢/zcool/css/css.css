@@ -579,6 +579,7 @@
 .kind {
     width: 100%;
     height: 56px;
+    background: white;
 }
 
 .kind_txt {
@@ -652,7 +653,9 @@
     width: 210px;
     height: 158px;
 }
-
+.imgBox>a>img:hover{
+    opacity: 0.8;
+}
 .txtBox {
     width: 178px;
     height: 75px;
@@ -976,13 +979,18 @@
     width: 210px;
     height: 158px;
 }
-
+.posterimg>a>img:hover{
+    opacity: 0.8;
+}
 .posterTxt {
     padding: 12px 16px;
 }
 
 .posterTxt>a {
     color: #282828;
+}
+.posterTxt>a:hover{
+    color: #EA4335;
 }
 
 .fire {
@@ -1147,4 +1155,32 @@
     vertical-align: middle;
     display: inline-block;
     margin: 0 19px;
+}
+
+/* 回到顶部部分 */
+.goToTop{
+    width: 50px;
+    position: fixed;
+    left: 50%;
+    bottom: 34px;
+    z-index: 10;
+    margin-left: 575px;
+    display: none;
+}
+
+.toTop{
+    background-image: url(../img/dingbu.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 6px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+.toTop:hover{
+    background-image: url(../img/dingbu-hover.png);
 }

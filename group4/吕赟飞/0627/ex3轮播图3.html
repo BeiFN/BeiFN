@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #banner {
+            width: 1280px;
+            height: 426px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #images {
+            width: 6400px;
+            height: 426px;
+            font-size: 0;
+            position: absolute;
+            transition: .5s all ease-in-out;
+        }
+
+        #images img {
+            width: 1280px;
+            height: 426px;
+        }
+
+        #leftBtn {
+            position: absolute;
+            left: 10px;
+            top: 183px;
+        }
+
+        #rightBtn {
+            position: absolute;
+            right: 10px;
+            top: 183px;
+        }
+
+        ul {
+            list-style: none;
+            position: absolute;
+            left: 555px;
+            bottom: 50px;
+        }
+
+        li {
+            float: left;
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+
+        li:nth-child(1) {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="banner">
+        <div id="images">
+            <img
+                src="https://n1-q.mafengwo.net/s14/M00/1A/74/wKgE2l0TTxSAZl-WAAahz3EBCKU476.jpg?imageMogr2%2Finterlace%2F1">
+            <img
+                src="https://p2-q.mafengwo.net/s14/M00/BF/16/wKgE2l0Mhi-AZtGzAAjG8zBl5aM939.jpg?imageMogr2%2Finterlace%2F1">
+            <img
+                src="https://b3-q.mafengwo.net/s14/M00/BF/7E/wKgE2l0MhmeAQTPOAAVq0Icc7pk531.jpg?imageMogr2%2Finterlace%2F1">
+            <img
+                src="https://p1-q.mafengwo.net/s14/M00/59/E1/wKgE2l0Rg3WAaVICAARbapB4btc744.jpg?imageMogr2%2Finterlace%2F1">
+            <img
+                src="https://b2-q.mafengwo.net/s14/M00/2F/C8/wKgE2l0QokeAWc0DAAYJ1_tlB5c456.jpg?imageMogr2%2Finterlace%2F1">
+        </div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <img id="leftBtn" src="https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2">
+        <img id="rightBtn" src="https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2">
+    </div>
+
+    <script>
+        var leftBtn, rightBtn, images, liList, preLi, timer;
+        var position = 0;
+
+        init();
+
+        function init() {
+            leftBtn = document.getElementById("leftBtn");
+            rightBtn = document.getElementById("rightBtn");
+            images = document.getElementById("images");
+            liList = Array.from(document.getElementsByTagName("li"));
+
+            leftBtn.addEventListener("click", clickHandler);
+            rightBtn.addEventListener("click", clickHandler);
+            for (var i = 0; i < liList.length; i++) {
+                liList[i].addEventListener("click", liClickHandler);
+            }
+            preLi = liList[0];
+
+            timer = setInterval(imagesMoveAuto, 2000);
+
+        }
+
+        function imagesMoveAuto(){
+            images.style.left = -1280 * position + "px";
+            if (preLi) {
+                preLi.style.backgroundColor = "rgba(255,0,0,0.1)";
+            }
+            preLi = liList[position];
+            preLi.style.backgroundColor = "rgba(255,0,0,0.5)";
+            if(position === 4 ) position = -1;
+            position++;
+            
+
+        }
+
+        function clickHandler(e) {
+            clearInterval(timer);
+            if (this === leftBtn) {
+                position--;
+                if (position < 0) position = 4;
+            } else {
+                position++;
+                if (position > 4) position = 0;
+            }
+            imagesMove();
+        }
+
+        function liClickHandler(e) {
+            clearInterval(timer);
+            position = liList.indexOf(this);
+            imagesMove();
+        }
+
+        function imagesMove() {
+            images.style.left = -1280 * position + "px";
+
+            if (preLi) {
+                preLi.style.backgroundColor = "rgba(255,0,0,0.1)";
+            }
+            preLi = liList[position];
+            preLi.style.backgroundColor = "rgba(255,0,0,0.5)";
+
+        }
+    </script>
+</body>
+
+</html>

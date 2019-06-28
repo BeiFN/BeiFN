@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+            <ul id="lists">
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+                <li>这是一个li</li>
+            </ul>
+
+
+        <script>
+            function delegation(handlerClick , selector ){
+                return function(evt){
+                    var eleList = this.querySelectorAll(selector);
+                    // console.log(eleList);
+                    var e = evt || window.event;
+                    var target = e.target || e.srcElement;
+                    var targetFamily = [];
+
+                    var _temp = target;
+                    var count = 0;
+                    while(true && count++ < 100){
+                            if(_temp === this){
+                                break;
+                            }
+                            targetFamily.push(_temp)
+                            _temp = _temp.parentNode
+                    }
+
+                    // console.log(targetFamily ,target) ;
+                    // 判定target是不是在这个数组之中;
+                    for(var i = 0 , ele ; ele = eleList[i++]; ){
+                            if( targetFamily.length === 1 ? (target === ele) : (targetFamily.indexOf(ele) !== -1) ){
+                                handlerClick.call(ele,e);
+                                break;
+                            }
+                    }
+                }
+            }
+
+
+
+
+            // 事件、事件源选择器、
+            // function delegation(handlerClick, selector){
+            //     var res = document.querySelectorAll(selector);
+            //     var ele = res.length === 1 ? res[0] : res;
+
+            // }
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则去标签</title>
+</head>
+<body>
+<textarea name="" id="input" cols="30" rows="10" >
+    <p>第一种：var reg = new RegExp("google", "gi");</p>
+        <p>/google/gi.test(str)</p>
+        <div id="div"><
+            name = "div"> //测试单括号
+            < = "div"     //测试单括号
+
+            <div>
+        <p>reg  代表了一种规则</p>
+        <p>reg.test("xxxx")    代表了使用该规则对字符串进行校验第一种：</p>
+        <p>var reg = new RegExp("google", "gi");</p>
+        <p>第二种： /google/gi.test(str)</p>
+        <p>reg  代表了一种规则</p>
+        <p>reg.test("xxxx")    代表了使用该规则对字符串进行校验</p>[a-zA-Z0-9]    列举所有符合的情况，当情况过多时，使用-表示范围 <br><br>[a-zA-Z0-9]    列举所有符合的情况，当情况过多时，使用-表示范围 <br>
+            <br>[a-zA-Z0-9] 列举所有符合的情况，当情况过多时，使用-表示范围<br>
+            <br>[a-zA-Z0-9] 列举所有符合的情况，当情况过多时，使用-表示范围<br>
+</textarea>
+<button id="btn">去标签</button>
+<textarea name="" id="output" cols="30" rows="10"></textarea>
+
+<script>
+    var btn =document.getElementById("btn");
+    var input =document.getElementById("input");
+    var output =document.getElementById("output");
+     // var reg = /<[^><]+>/g;
+    var reg = /<.>/g;
+    // var reg = /<(.*?)>/g;
+
+     btn.addEventListener("click",delTag);
+     function delTag(){
+         var inputV= input.value;
+         console.log(inputV.replace(reg,""));
+         output.value = inputV .replace(reg,"");
+     }
+</script>
+</body>
+</html>
