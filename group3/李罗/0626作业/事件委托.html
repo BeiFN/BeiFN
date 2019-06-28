@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>委托</title>
+    <style>
+            li{
+                  list-style-type: none;
+            }
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+
+            li{
+                  padding: 3px 5px;
+                  border-bottom: 2px solid #ddd;
+                  text-align: center;
+                  width: 50%;
+                  margin: 5px auto;
+                  background: #fff;
+            }
+            ul{
+                  background: #ddd;
+            }
+      
+      </style>
+</head>
+<body>
+    <ul id="ull">
+       <li><span>点击触发事件</span> </li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+       <li>点击触发事件</li>
+    </ul>
+
+    <script>
+        var ul=document.getElementById ("ull");
+        ul.addEventListener("click",function(evt){
+            //判断一下当前发生事件的事件源，是不是要绑定事件的元素
+            var e=evt||window.event;
+            var target=e.target||e.srcElement;
+            //我们现在要求事件源：LI
+            if(target.nodeName==="LI"||e.target.parentNode.nodeName === 'LI')//在点击的元素往上查找，复合条件语句判断的时候就触发事件。
+            {
+                console.log("我是事件源啊");
+                target.style.background="yellow";
+            }
+        })
+    </script>
+    
+</body>
+</html>
