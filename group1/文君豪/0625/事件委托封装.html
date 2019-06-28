@@ -47,7 +47,7 @@
                            if(_tempTarget === this){
                                         break;
                                     }
-                             targetFamily.push(_tempTarget);
+                                    targetFamliy.push(_tempTarget);
                             _tempTarget = _tempTarget.parentNode;
                               }
 
@@ -56,11 +56,11 @@
                         var eleList = this.querySelectorAll(seletor)
 
                         for(var i = 0 , ele ; ele = eleList[i ++] ;){
-                         if( targetFamily.length === 1 ? (ele === target) : (targetFamily.indexOf(ele) !== -1 )){
-                              eventCallback.call( ele , e);
+                         if( targetFamliy.length === 1 ? (ele === target) : ( targetFamliy.indexOf(ele) !== -1 )){
+                            eventCallBack();
                              }
                            }
-                        }
+                        
                     }
 
                 }
@@ -69,7 +69,7 @@
                     var btn = document.createElement("button")
                      btn.innerHTML = "新按钮";
                      document.body.appendChild(btn);
-                     console.log(this)
+                    // console.log(this)
                 }
         </script>
 </body>
