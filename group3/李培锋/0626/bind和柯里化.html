@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=55, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myBind(fn,_this){
+            var arg1 = [].slice.call(arguments).slice(2);  //使用bind方法时固定bind内的arguement
+            return function(){
+                var arg2 = [].slice.call(arguments);       //函数返回外部后 ，调用时可变的实参
+                fn.apply(_this,arg1.concat(arg2));
+            }
+        }
+    </script>
+</body>
+</html>
