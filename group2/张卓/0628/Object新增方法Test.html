@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object.defineProperty ES5中新增方法
+        //1、是否可以删除和是否可以枚举
+        var obj = {}
+        // Object.defineProperty(obj,"a",{
+        //     //删除  true是可删除
+        //     configurable : true,
+        //     //不可枚举 true是可枚举 
+        //     enumerable : true
+        // })
+        // console.log(obj)
+
+        // var obj = {}
+        //是否可写入
+        // Object.defineProperty(obj,"a",{
+        //     value :"23423",
+        //     writable:true
+        // })
+
+        // obj.a = 20;
+        // console.log(obj)
+
+        //get set
+        // var obj = { $data:{} }
+        // Object.defineProperty(obj,"a",{
+        //     get: function(){
+        //         return obj.$data.a++
+        //     },
+        //     set:function(val){
+        //         return obj.$data.a = val
+        //     }
+        // })
+        // obj.a = 1;
+        // console.log(obj.a === 1 &&obj.a ===2 &&obj.a===3&&obj.a===4)
+
+
+        
+    </script>
+</body>
+</html>
