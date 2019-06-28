@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="box"></div> -->
+        <textarea id="input" cols="30" rows="10"></textarea>
+        <button id="btn">去标签</button>
+        <textarea id="output" cols="30" rows="10"></textarea>
+    <script>
+        // document.addEventListener("click" , handerClick);
+        // function handerClick()
+        // {
+        //     window.location.reload(true);
+        // }
+        
+        //柯里化练习（bind的封装）在函数内部返回一个函数，这个函数帮你调用函数参数
+        //bind：返回一个新数组，固定this指向,传参
+
+        // function foo(){
+        //     console.log(this,arguments);
+        // }      
+        // function bind(fn , _this){
+        //     var arg1 = [].slice.call(arguments).slice(2);//从第三位开始
+        //     //console.log(arg1);
+        //     return function(){
+        //         var arg2 =[].slice.call(arguments);
+        //         //console.log(arg2);
+        //         fn.apply(_this , arg1.concat(arg2));
+        //     }
+        // }
+        // //bind()   无法直接执行，因为bind执行是执行return中的匿名函数，无法直接调用
+        // var poo = bind( foo , {name : "吴彦祖"} ,"bind");  //poo =  return中的匿名函数
+        // poo(1,2,3);
+
+        // document.addEventListener("click" , myEvent(handerClick));
+        // function myEvent(fu){
+        //     return function(evt){
+        //         var e = evt || window.event;
+        //         fu({
+        //             cliteX : e.clientX,
+        //             name : "myEvent"
+        //         })
+        //     }
+        // }
+        // function handerClick(e){
+        //     console.log(e);
+        // }
+        
+        //JSON 
+        // var json = "{'a':'123'}";
+        // var json_1 = "("+json+")";
+        // console.log(JSON.stringify(json));//
+        // console.log(eval(json_1 ));//对象
+
+        //object  object.keys    object.values
+        // var obj = {
+        //     a : "1",
+        //     b : "2",
+        //     c : "3"
+        // }
+        // console.log(Object.keys(obj));//key
+        // console.log(Object.values(obj));//value
+        // var key = Object.keys(obj);
+        // var index = key.indexOf(id);//id为字符串数据类型
+        // console.log(Object.values(obj)[index]);
+        
+        //正则表达式
+        // var str = "123dadfas123ds45fd6afds3af486das1df2as346";
+        // var reg = /\d[0-2]+/g;//数字、0-2之间、任意个数
+        // console.log(str.match(reg));
+        // var reg = /\d+/g;
+        // console.log(str.match(reg));//match是遍历
+        //var namelist = "吴彦祖a彦祖c彦祖刘彦祖张彦祖杨彦祖祖彦祖徐彦祖马彦祖";
+        // var reg = /./g;
+        // var result = ""
+        // console.log(reg.exec(namelist));
+        // console.log(reg.exec(namelist));//exec在上一个终止的地方继续向后寻找
+        // var reg = /[^]彦祖/g;
+        // console.log(namelist.match(reg));
+
+        //正则去标签
+        var btn = document.getElementById("btn");
+        //var input = document.getElementById("input");
+        //var output = document.getElementById("output"); 
+        //var reg = / <[^><]+> /g;   
+        //var reg = /<(.*?)>/g //找到一个<>就停止，然后再全局搜索
+        var reg = / <.+>/g  // . =>不包含换行符的
+        btn.addEventListener("click" , deleteTag);
+        function deleteTag(){
+            var inputValue = input.value;
+            //console.log(inputValue.match(reg));
+            output.value = inputValue.replace(reg, "");
+            console.log(output.value );
+        }
+    </script>
+</body>
+</html>

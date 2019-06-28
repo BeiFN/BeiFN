@@ -86,8 +86,8 @@ getMinutes   获取的是本地时间的分钟
 getSeconds   获取的是本地时间的秒数
 getMilliseconds   获取的是本地时间的毫秒数
 
-getUTCFullYear 获取的是格林威治的年份
-getUTC  系列是获取的格林威治的时间 
+getUTCFullYear 获取的是的年份
+getUTC  系列是获取的的时间 
 
 set系列方法是更改到目标时间的  获得是1970年到目标时间的毫秒数;返回值，只针对当前的时间对象有效
 

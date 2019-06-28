@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <script>
+        // Prel
+        var str = "fwfj1879f7jljfo2099lkjl78gf9";
+
+        var reg = /\d+/g;
+        console.log(str.match(reg));
+        // match 在字符串之中匹配所有符合规则的字符，并以数组形式进行返回
+        // 如果匹配到的结果只有一个；那么他会返回  这个合格匹配内容的下标，匹配字符串 ，组别等信息
+        // 惰性  找到一个就返回   match//惰性
+        // 贪婪  竟可能多的进行匹配
+
+
+        // 正则的直译  规则表达式
+        // 规则
+        // 使用规则
+         var reg = new RegExp("规则","修饰符"); //i不区分大小写 g全部搜索 y
+        //  var reg2 = //;
+        //  规则简写  \d ;数字
+        // \d一位数字 \d\d 2个数字 \d\d\d三个数字
+        // 2.量词  + 最少一个，最多不限制  正则中的+ 会以贪婪形式进行匹配 尽可能多的进行一个结果匹配
+        // (.*?) 惰性原则，一旦匹配到符合规则的字符就停止
+
+        // 3.修饰符  表示正则整体的匹配规则;g 影响match
+
+        //正则之中的[]
+        // 基本正则
+        // /./  任意字符  .不包含换行符
+        // reg.exec()  +g后从上次 正则方法，在字符串中找到一个符合规则的内容；
+        // 如果有修饰符g，那么下一次匹配会在上一次匹配终止处继续。
+
+        // 元字符 是正则之中|或 的简写，元字符中所有字符都可以1和前或者后面的规则匹配 得到一组匹配结果
+        //[0123456789]  === [0-9]; - 用来告知数字和字母的范围
+        // [^123]                  ^ 除元字符之中以外的字符
+        var regy = /[刘张样]彦祖/;
+
+        /*
+        总结：
+        
+        模式匹配符，放在正则表达式的最后，当参数使用。
+            i：ignorCase忽略大小写
+            m：mutiple允许多行匹配
+            g：globle进行全局匹配，指匹配到目标串的结尾
+        
+        */
+
+
+    </script>
+</body>
+</html>
