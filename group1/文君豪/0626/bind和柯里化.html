@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    ////bind///
+//     function foo(){
+//     console.log(this);
+// }
+
+// var poo = foo.bind({});
+
+// poo()
+// function LateBloomer() {
+//     this.petalCount = Math.ceil(Math.random() * 12) + 1;
+//   }
+  
+//   // 在 1 秒钟后声明 bloom
+//   LateBloomer.prototype.bloom = function() {
+//     window.setTimeout(this.declare.bind(this), 1000);
+//   };
+  
+//   LateBloomer.prototype.declare = function() {
+//     console.log('I am a beautiful flower with ' +
+//       this.petalCount + ' petals!');
+//   };
+  
+//   var flower = new LateBloomer();
+//   flower.bloom();  // 一秒钟后, 调用'declare'方法
+
+// function Car(make, model, year) {
+//   this.make = make;
+//   this.model = model;
+//   this.year = year;
+//   console.log(this)
+// }
+
+// var car1 = new Car('Eagle', 'Talon TSi', 1993);
+
+// console.log(car1.make);
+
+// function foo()
+//     {
+//        console.log(this) 
+//     }
+
+
+//     function bind(fn , _this)
+//     {
+//         return function()
+//         {
+//             fn.call(_this);
+//         }
+//     }
+
+    
+// var poo = bind(foo,{name:"爸爸"})
+
+// foo();
+// poo()
+
+
+// var nne = foo.bind({})
+// nne()
+
+
+// function foo()
+// {
+//     console.log("爸爸",this);
+// }
+
+// //foo()
+
+// var poo = bind(foo ,{name:"我是爸爸"});
+
+
+// function bind(fn , _this)
+// {
+//     return function()
+//     {
+//         fn.call(_this)
+//     }
+
+// }
+
+// poo();
+/////////////柯里化参数处理/////////////////////////////////////////////////////////////////////////////////////////
+
+// function foo(a,b,c,d)
+// {
+//     console.log(a,b,c,d,this);
+// }
+
+// //foo()///待处理的函数////////////////
+
+// var poo = bind(foo ,{name:"我是爸爸"},1,2);
+
+// /////////////////////对foo进行处理/////////////////////
+
+// ///////////////////////进行操作的函数//////////////////
+// function bind(fn , _this)
+// {
+//     var args = [].slice.call(arguments).slice(2);
+//     //console.log(args)
+//     return function()
+//     {
+//         var nmargs = [].slice.call(arguments);
+//         fn.apply(_this,args.concat(nmargs))
+        
+//     }
+
+// }
+
+// poo(3,4);
+ /////////////////////////////////////////////////////////自己实现////////////////////////////////////////////////
+
+ //////待处理的函数/////
+ function foo(a,b,c,d)
+ {
+     console.log(a,b,c,d,this)
+ }
+//foo()
+
+var poo = bind (foo,{name:"习大大"},1,2)
+
+function bind(fn,_this)
+{
+    var args = [].slice.call(arguments).slice(2)
+    return function ()
+    {
+        var nmargs = [].slice.call(arguments);
+        fn.apply(_this,args.concat(nmargs))
+    }
+}
+
+poo(3,4)
+
+    </script>
+</body>
+</html>

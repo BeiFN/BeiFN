@@ -10,7 +10,7 @@ input{outline:none;}
 body{ font-size:14px; line-height: 1em;}
 
 table{border-collapse:collapse;}
-a:hover{text-decoration:underline;}
+/* a:hover{text-decoration:underline;} */
 
 /*
 table{width:500px;height:300px;  border:1px solid #333; border-spacing:0; }

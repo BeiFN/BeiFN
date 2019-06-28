@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES5 Object New Method | emb</title>
+</head>
+
+<body>
+
+    <script>
+        var json = {
+            "1130": {
+                name: "这是一个商品",
+                price: 998
+            },
+            "1134": {
+                name: "这是一个商品",
+                price: 991
+            },
+            "1230": {
+                name: "这是一个商品",
+                price: 992
+            },
+            "1140": {
+                name: "这是一个商品",
+                price: 993
+            },
+            "1230": {
+                name: "这是一个商品",
+                price: 9945
+            }
+        }
+
+
+        // 无循环的对象之中数据查找;
+        var keyArray = Object.keys(json);
+        // console.log(keyArray)
+        console.dir(Object.prototype);
+
+        // 对象的值实现
+        Object.prototype.keys = function (index) {
+            return index&&index>+0?Object.keys(this)[index]:Object.keys(this);
+        }
+        Object.prototype.values = function (index) {
+            return index&&index>+0?Object.values(this)[index]:Object.values(this);
+        }
+
+
+        console.log(json.keys());
+        console.log(json.values());
+        console.log(json.keys(1));
+        console.log(json.values(1));
+
+
+
+
+        // var index = keys.indexOf(id);
+        // json[key[index]]
+    </script>
+</body>
+
+</html>

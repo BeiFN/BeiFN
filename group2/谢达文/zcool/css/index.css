@@ -31,16 +31,23 @@
     display: inline-block;
     height: 56px;
 }
-.top .top_content .nav li
+.top .top_content .nav>li a{
+    color: #000;
+}
+.top .top_content .nav>li
 {
     float: left;
     font-size: 14px;
     line-height: 56px;
     width: 80px;
 }
-.top .top_content .nav li:hover
+.top .top_content .nav>li:hover 
 {
-    background: #999999;
+    background:#000;
+
+}
+.top .top_content .nav>li:hover a{
+    color: #fff;
 }
 .top .top_content span
 {
@@ -54,7 +61,7 @@
 }
 .top .top_content span:hover
 {
-    background: #999999;
+    background: #000;
 }
 .top .top_content span i
 {
@@ -90,7 +97,127 @@
     width: 62px;
     margin-top: 20px;
 }
+/* 二级导航 */
+.top .top_content .nav>li:hover .secondNav1
+{
+    display: block;
+    width: 664px;
+    height: 188px;
+}
+.top .top_content .nav .secondNav1
+{
+    overflow: hidden;
+    background:#fff;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+.top .top_content .nav .secondNav1 .find{
+    margin-top: 30px;
+}
+.top .top_content .nav .secondNav1 .find
+{
+    border-bottom: 1px solid #999999;
+}
+.top .top_content .nav .secondNav1 .find li 
+{
+    border-right: 1px solid #999999; 
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 30px;
+  
+}
+.top .top_content .nav .secondNav1 li:hover
+{
+    background: #ffe300;
+}
+.top .top_content .nav ul{
+    width: 664px;
+    height: 94px;
+}
+.top .top_content .nav ul li{
+    float: left;
+    width: 93px;
+}
 
+
+.top .top_content .nav>li:hover .job{
+    display: block;
+
+}
+.top .top_content .nav li .job{
+    width: 150px;
+    height: 168px;
+    background: #fff;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+.top .top_content .nav li .job li:hover{
+background: #ffe300;
+}
+
+/* action */
+.top .top_content .nav>li:hover .action{
+    display: block;
+}
+.top .top_content .nav li .action{
+    width: 150px;
+    height: 280px;
+    background: #fff;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+.top .top_content .nav li .action li:hover{
+    background: #ffe300;
+    }
+/* material */
+.top .top_content .nav>li:hover .material{
+    display: block;
+}
+.top .top_content .nav li .material{
+    width: 150px;
+    height: 220px;
+    background: #fff;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+.top .top_content .nav li .material li:hover{
+    background: #ffe300;
+    }
+
+/* lesson */
+.top .top_content .nav>li:hover .lesson{
+    display: block;
+}
+.top .top_content .nav li .lesson{
+    width: 150px;
+    height: 110px;
+    background: #fff;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+.top .top_content .nav li .lesson li:hover{
+    background: #ffe300;
+    }
+/* self */
+.top .top_content .nav>li:hover .self{
+    display: block;
+}
+.top .top_content .nav li .self{
+    width: 150px;
+    height: 220px;
+    background: #fff;
+    position: relative;
+    z-index: 999;
+    display: none;
+}
+.top .top_content .nav li .self li:hover{
+    background: #ffe300;
+    }
 /* 轮播图制作 */
 .lunbo
 {
@@ -109,16 +236,22 @@
     width: 100%;
     height: 300px;
     position: relative;
+    overflow: hidden;
+    z-index: 99;
 }
 .lunbo .content .lunbo_head ul
 {
-    overflow: hidden;
+    position: absolute;
+    width: 5900px;
     height: 300px;
 }
 .lunbo .content .lunbo_head ul>li
 {
     height: 300px;
-    width: 100%;
+    width: 1180px;
+    float: left;
+    margin: 0;
+ 
 }
 .lunbo .content .lunbo_head #jian1
 {
@@ -156,7 +289,7 @@
 .lunbo .content ul li
 {
     float: left;
-    width: 226px;
+    width: 228px;
     margin-right: 10px;
 }
 
@@ -230,6 +363,9 @@
 {
     background:rgba(96,96,96,0.1);
    height:3900px;
+}
+.work .content .work_box1:nth-child(5){
+    margin-right: 0;
 }
 .work .content .work_box1
 {
