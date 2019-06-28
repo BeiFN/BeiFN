@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 目标: 把obj之中的a属性优化成正常属性可以存取值;
+        var obj={
+            $data:{}
+        };
+        Object.defineProperty(obj,"a",{
+            // configurable:true,
+            // enumerable:true,
+            get:function(){
+                return this.$data.a;
+            },
+            set:function(val){
+                console.log(this);
+                this.$data.a=val;
+                return val;
+            }
+        })
+        console.log(obj.a=10);
+        console.log(obj.a);
+        console.log(obj);
+        
+        
+    </script>
+</body>
+
+</html>
