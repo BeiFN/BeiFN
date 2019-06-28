@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托的封装</title>
+</head>
+<body>
+    
+    <div id="box">
+        <p>祖国的花朵儿</p>
+        <p class="bli"><i>祖国的花朵儿</i></p>
+        <p>祖国的花朵儿</p>
+        <p class="bli"><i>祖国的花朵儿</i></p>
+        <p>祖国的花朵儿</p>
+        <p class="bli"><i>祖国的花朵儿</i></p>
+        <p>祖国的花朵儿</p>
+        <p class="bli"><i>祖国的花朵儿</i></p>
+        <p>祖国的花朵儿</p>
+    </div>
+
+    <script>
+    var oDiv = document.getElementById("box");
+    oDiv.addEventListener("click",delegation(handlerClick,".bli"));
+   function delegation(handlerClick,selector){
+       return function(evt){
+
+           var oPList = this.querySelectorAll(selector);
+
+           var e = evt || window.event;
+           var target = e.target || e.srcElement;
+           var _temp = target;
+           var targetFamily = [];
+           var count = 0;
+          while(true && count++ <100){
+           if(_temp === this){
+               break;
+           }
+           targetFamily.push(_temp);
+           _temp = _temp.parentNode;
+           
+       }
+
+       for(var i = 0, ele; ele = oPList[i++]; ){
+           if(targetFamily.length === 1 ? (target ===ele) : (targetFamily.indexOf(ele) !==-1)){
+               handlerClick.call(ele,e);
+               break;
+           }
+
+       
+       }
+   }
+   }
+
+   function handlerClick(e){
+               this.style.background = "pink";
+           }
+    
+    </script>
+</body>
+</html>

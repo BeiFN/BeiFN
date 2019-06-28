@@ -1,5 +1,0 @@
-logo:https://static.zcool.cn/git_z/z/common/images/svg/logo.svg
-search:https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1
-cloud:https://static.zcool.cn/git_z/build/images/svg/nav-upload.svg
-dot:https://static.zcool.cn/git_z/build/images/svg/nav-more.svg
-banner:https://img.zcool.cn/community/0111655d0002b7a801205e4b674fed.jpg@1380w

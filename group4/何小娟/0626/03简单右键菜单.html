@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #list{
+            background: orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            list-style-type: none;
+            text-align: center;
+            width: 80px;
+            padding: 0;
+          }
+          li{
+            width: 100%;
+            height: 30px;
+            background: wheat;
+            line-height: 30px;
+            text-align: center;
+            border-bottom: 1px solid #000;
+          }
+  </style>
+</head>
+<body>
+  <ul id="list">
+    <li>复制</li>
+    <li>粘贴</li>
+    <li>剪切</li>
+    <li>删除</li>
+  </ul>
+
+  <script>
+    var list = document.getElementById("list")
+
+    document.addEventListener("contextmenu",showList)
+    document.addEventListener("")
+
+    function showList(evt){
+      var e = evt || window.event
+ 
+      list.style.left = e.clientX + "px"
+      list.style.top = e.clientY + "px"
+      e.preventDefault ? e.preventDefault() : e.returnValue = false
+      list.style.display = "block"
+    }
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            border-bottom: 1px solid #666;
+            margin: 20px;
+        }
+
+        #delegation {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="delegation">
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li><span><i>哈哈</i>哈哈哈哈哈哈哈哈哈</span></li>
+        <li><span>哈哈哈哈哈哈哈哈哈哈哈</span></li>
+        <li><span>哈哈<b>哈</b>哈哈哈哈哈哈哈哈</span></li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈哈哈哈</li>
+    </ul>
+</body>
+<script>
+    var seleParent = document.querySelector("#delegation");
+    seleParent.addEventListener("click", delegation(handleClick, "li"));
+
+    function delegation(handleClick, selector) {
+        return function (evt) {
+            var e = evt || event;
+            var target = e.target || e.srcElement;
+            var seleList = document.querySelectorAll(selector);
+            var parentList = [];
+            var _temp = target;
+            while(_temp !== this){
+                parentList.push(_temp);
+                _temp = _temp.parentNode;
+            }
+            for(var i = 0,ele;ele=seleList[i++];){
+                if(parentList.length===1? (target===ele) : (parentList.indexOf(ele) !==-1)){
+                    handleClick.call(ele);
+                    break;
+                }
+            }
+        }
+    }
+    function handleClick() {
+        this.style.background = "red";
+    }
+</script>
+
+</html>
