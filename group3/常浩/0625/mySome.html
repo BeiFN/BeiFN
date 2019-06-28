@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    var arr = [15000,20000,21000,26000,3000,2000,8000];
+    function mySome(arr,fn){
+        for(var i = 0 ;i <arr.length; i++){
+            if(fn(arr[i],i,arr)){
+                return true;
+            }
+        }
+        return false;
+    }
+    console.log(mySome(arr,function(item,index){
+        return item === 4000;
+    }))
+
+    </script>
+</body>
+</html>

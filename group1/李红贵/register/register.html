@@ -5,9 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>注册框</title>
-    <link rel="stylesheet" href="../register/CSS/public.css">
-    <link rel="stylesheet" href="../register/CSS/regis.css">
+    <!-- <link rel="stylesheet" href="../register/CSS/public.css"> -->
+    <!-- <link rel="stylesheet" href="../register/CSS/regis.css"> -->
     <style>
+       /* CSS Document */
+
+/*去掉标签自带的内外边距*/
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{ margin:0; padding:0;}
+
+/*去掉列表默认样式*/
+li{list-style:none;}
+
+/*修改按钮默认颜色*/
+a{text-decoration:none; color:#666; }
+
+/*取消倾斜*/
+i,em{font-style:normal;}
+
+/*取消标题加粗*/
+h1,h2,h4,h3,h5,h6,b,strong{font-weight:normal;}
+
+/*去掉IE浏览器图片默认边框，转块级标签*/
+img{border:none;display:block;}
+
+/*输入框点击光标*/
+input{outline:none;}
+
+/*默认界面字体*/
+body{font-family:"微软雅黑"; font-size:14px; color:#333;}
+
+
+/*合并cell边线，设置cell间距*/
+table{border-collapse:collapse;border-spacing:0; }
+
+.clearboth:after{
+	content:"";
+	display: block;
+	height: 0;
+	clear: both;
+	/* 隐藏内容，占高度位置 */
+	visibility: hidden;
+	/* 隐藏本身，不占位置 */
+	overflow: hidden;
+}
+.clearboth{
+	zoom: 1;
+}
+
+
         #supview{
             position: absolute;
             width: 300px;
@@ -39,18 +84,52 @@
             line-height: 30px;
             display: inline-block;
             text-align: right;
+            margin-left: 20px;
             
         }
         .ipt{
-            width: 190px;
+            width: 180px;
             height: 20px;
             line-height: 20px;
-            /* border: 0; */
+            border: 0;
+            /* background-color: red; */
+            margin-right: 20px;
 
         }
         #txyz{
-            width: 115px;
+            width: 60px;
+            margin-right: 0;
         }
+        
+        .code{
+            display: inline-block;
+            margin: 0 5px;
+            width: 80px;
+            height: 30px;
+            border: 0;
+            /* background-color: #666; */
+            vertical-align: middle;
+        }
+        #codei{
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+        }
+        
+        #getYZ{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        .reshow{
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+        }
+
         .lastLine{
             display: inline-block;
             margin-top: 20px;
@@ -74,21 +153,18 @@
 </head>
 <body>
     <div id="supview">
-        <img class="logo" src="" alt="">
+        <img class="logo" src="https://upload-images.jianshu.io/upload_images/2845301-67fd0bf09febf064.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
         
         <!-- label for="inputID"的效果和将input放入label中的效果一样，能让点击label使input获得焦点 -->
-        <label class="lab" for="txt">手机号码：</label>
-        <input class="ipt" id="txt" type="text" name="user" placeholder="请输入正确手机号"/><br/>
+        <label class="lab" for="txt">手机号码：</label><input class="ipt" id="txt" type="text" name="user" placeholder="请输入正确手机号"/><br/>
         
-        <label class="lab" for="pass">输入密码：</label>
-        <input class="ipt" id="pass" type="password" name="pas"/><br/>
-        <label class="lab" for="repass">确认密码：</label>
-        <input class="ipt" id="repass" type="password" name="pas"/><br/>
-        <label class="lab" for="txyz">验证码：</label>
-        <input class="ipt" id="txyz" type="text" name="user" placeholder=""/>
-        <button id="getYZ">获取验证码</button><br/>
+        <label class="lab" for="pass">输入密码：</label><input class="ipt" id="pass" type="password" name="pas"/><br/>
+        
+        <label class="lab" for="repass">确认密码：</label><input class="ipt" id="repass" type="password" name="pas"/><br/>
+        
+        <label class="lab" for="txyz">验证码：</label><input class="ipt" id="txyz" type="text" name="user" placeholder=""/><span class="code"><img id="codei"></span><button id="getYZ"><img class="reshow" src="https://upload-images.jianshu.io/upload_images/2845301-b5bb768fdb306bcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></button><br/>
 
-        <input class="lastLine" type="checkbox" name=""/>
+        <input class="lastLine" type="checkbox" name="gou"/>
         <span class="lastLine">我已阅读并同意</span>
         <a class="delegate lastLine" href="#">注册协议</a>
         <br/>
@@ -98,12 +174,236 @@
       
     </div>
     <script>
+        //创建验证码对象数组
+        var codeArr = [
+            {
+                "uwv6":"https://upload-images.jianshu.io/upload_images/2845301-9c838a5b4b45190d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            },{
+                "qnmx":"https://upload-images.jianshu.io/upload_images/2845301-078121556fb6966b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            },{
+                "06624":"https://upload-images.jianshu.io/upload_images/2845301-623b6fa0132d4ac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            },{
+                "vwo7":"https://upload-images.jianshu.io/upload_images/2845301-5037bb9594011d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            },{
+                "v9am":"https://upload-images.jianshu.io/upload_images/2845301-7f63524e8f6e97a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            }];
 
-// NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-// NSString *phoneRegex = @"^1[3|4|5|6|7|8|9]\\d{9}$";
+        // 简单动画资源图片数组
+        // var imgArr1 = ["DOVE 1.png","DOVE 2.png","DOVE 3.png","DOVE 4.png","DOVE 5.png","DOVE 6.png",
+        // "DOVE 7.png","DOVE 8.png","DOVE 9.png","DOVE 10.png","DOVE 11.png",
+        // "DOVE 12.png","DOVE 13.png","DOVE 14.png","DOVE 15.png","DOVE 16.png","DOVE 17.png","DOVE 18.png"];
+        var imgArr = [
+        "https://upload-images.jianshu.io/upload_images/2845301-1000dca336fcfb64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-1cd055442785b73b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-2c6023c7f3fdb1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-4d0d47b36629ba6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-ad293c03e2dda920.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-b5f64db11293a37a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-a101c683ea3a69e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-4a203429b6b8399b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-7a3acdeb227be78f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-2bf6bf295da1a8e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-ff2c77bcc25845f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        
+        "https://upload-images.jianshu.io/upload_images/2845301-0e0f98abd88cfb26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-213c6d70e7e1a214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-cb8060b1529419af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-df77cec55904addc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-96fe4cefccb13182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-f1a98607b6cb47c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+
+        "https://upload-images.jianshu.io/upload_images/2845301-a16a083d0ccfb9c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+        ];
+
+        var phone = document.getElementById("txt");//手机号
+        // console.log(phone.value);
+
+        var passw = document.getElementsByClassName("ipt")[1];//密码
+        // console.log(passw,passw.value);
+
+        var repas = document.querySelector("#repass");//确认密码
+        // console.log(repas, repas.value);
+
+        var teyzm = document.querySelectorAll("#txyz")[0];//验证码
+        // console.log(teyzm, teyzm.value);
+
+        var codei = document.getElementById("codei");//验证码图片
+        // console.log( codei, codei.src);
+
+        var getYB = document.getElementById("getYZ");//刷新验证码按钮
+        // console.log(getYB, getYB.innerText);
+
+        var gouSe = document.getElementsByName("gou")[0];//勾选验证码
+        // console.log(gouSe, gouSe.checked);
+
+        var regiB = document.getElementById("register");//注册按钮
+        // console.log(regiB, regiB.innerText);
+
+        var codeTrue = null;//存储验证码对象key值
+
+        var timer = null;  //动画定时器
+        var imgi = 0;   //动画图片数组下标
+        var num = 10;   //初始位置
+        var but = 10;   //初始位置
+        var birmView =  null;  //动画飞鸟视图
+
+        var cliendWidth = document.documentElement.clientWidth;
+        var cliendHeight = document.documentElement.clientHeight;
+        window.onresize = function(){
+            cliendWidth = document.documentElement.clientWidth;
+            cliendHeight = document.documentElement.clientHeight;
+        }
+
+        phone.addEventListener("keyup",inputPhoneNumber);
+
+        function inputPhoneNumber(evt){
+            var e = evt || window.event;
+            console.log(phone.value);
+            if(phone.value.length === 11){
+                
+                if(isLegitimatePhone(phone.value)){
+                    // 自动失焦
+                    phone.blur();
+                  
+                    // 输完手机号自动跳到输入密码
+                    passw.focus();//获取焦点
+                    
+                }else{
+                    alert("手机号不合法");
+                    return false;
+                };
+            }else if(phone.value.length > 11){
+                var str = phone.value;
+                console.log(str, str.substring(0,11));
+                phone.value = str.substring(0,11);
+            }
+        }
+        function isLegitimatePhone(phoneNum){
+            var phoneRegex = /1[3-9]+\d{9}/;
+            return phoneRegex.test(phoneNum);
+        }
+
+        passw.addEventListener("keydown",passEnd);
+        repas.addEventListener("keydown",passEnd);
+        // 回车下一个输入框自动获取焦点
+        function passEnd(evt){
+            var e = evt || window.event;
+            if(e.keyCode === 13){
+                if(this === passw){
+                    repas.focus();
+                }else if(this === repas){
+                    teyzm.focus();
+                }
+            }
+        }
+      
+
+        // 刷新验证码，获取key值
+        getYB.onclick = reshowCodeImage;
+        function reshowCodeImage(){
+            // 随机获取数组中的验证码对象
+            var randmun = parseInt(Math.random()*codeArr.length);
+            var codeImg = codeArr[randmun];
+            console.log(randmun,codeImg);
+            //存验证码key值
+            codeTrue = Object.keys(codeImg)[0];
+
+            //刷新替换图片
+            codei.src = "" + Object.values(codeImg)[0];
+
+            console.log(codeTrue, Object.values(codeImg)[0]);
+
+            teyzm.focus();
+            teyzm.select();
+        };
+        reshowCodeImage();
+        console.log(codeTrue);
+
+
+        regiB.addEventListener("click", judgeValue);
+        function judgeValue(){
+            if(!isLegitimatePhone(phone.value)){
+                alert("手机号不合法");
+                    return false;
+            }
+            if(passw.value.length < 6){
+                alert("密码至少6位");
+                    return false;
+            }
+            if(passw.value !== repas.value){
+                alert("两次密码不一致");
+                    return false;
+            }
+            if(teyzm.value.toLowerCase() !== codeTrue){
+                alert("验证码错误");
+                    return false;
+            }
+            if(!gouSe.checked){
+                alert("请阅读并勾选同意注册协议");
+                    return false;
+            }
+            alert("注册成功");  
+            but = 10;
+            num = 10;         
+            createBirmView();
+        }
+
+
+        function createBirmView(){
+            birmView = document.createElement("img");
+            birmView.style.display = "block";
+            birmView.style.position = "absolute";
+            birmView.style.width = "120px";
+            birmView.style.height = "96px";
+            birmView.style.left = "20px";
+            birmView.style.bottom = "20px";
+            document.body.appendChild(birmView);
+            console.log(birmView);
+            timer = setInterval(showImgView,100);
+        }
+     
+
+        function showImgView(){
+            if(imgi < imgArr.length-1){
+                imgi++
+            }else{
+                imgi = 0;
+            }
+            birmView.src = "" + imgArr[imgi];
+            num += 10;
+            but += 5;
+            birmView.style.left = num + "px";
+            birmView.style.bottom = but + "px";
+            console.log(num, birmView.style.left);
+
+            if(num >= cliendWidth || but>= cliendHeight){
+                console.log(cliendWidth,cliendHeight);
+                clearInterval(timer);
+                birmView.remove();
+            }
+        }
+
+        
+
+        
     </script>
 
-    <script src="../register/JS/common.js"></script>
-    <script src="../register/JS/regis.js"></script>
+    <!-- <script src="../register/JS/common.js"></script>
+    <script src="../register/JS/regis.js"></script> -->
 </body>
 </html>
