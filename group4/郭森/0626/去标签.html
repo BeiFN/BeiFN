@@ -15,7 +15,7 @@
     <script>
         var reg1 = /<(.*?)>/g,
             reg2=/<[^><]+>/g,
-            reg3=/[^@]+@[^\.]+\./;
+            reg3=/(?:[^@]+?)@(?:[^\.]+?)\./;
         btn.addEventListener("click", deleteTag);
         // 删除标签
         function deleteTag() {
@@ -23,7 +23,6 @@
             console.log(inputValue.replace(reg2, ""));
             output.value = inputValue.replace(reg1, "");
             console.log(inputValue.match(reg3));
-            
         }
     </script>
 </body>
