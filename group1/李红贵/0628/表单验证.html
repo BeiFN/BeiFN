@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <style>
+        .success{
+            transition: border-color 1s;
+            border-color: green;
+        }
+        .error{
+            transition:border-color 1s;
+            border-color:red;
+        }
+        .v-strength-low{
+            transition:border-color 1s;
+            border-color: yellow;
+        }
+        .v-strength-middle{
+            transition: border-color 1s;
+            border-color:yellowgreen;
+        }
+        .v-strength-high{
+            transition: border-color 1s;
+            border-color:green;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 可扩展性 -->
+    <!-- <form action="" id="form"> -->
+    <form action="javascript:void(0)" id="form">
+        <p>
+            <span>邮箱：</span>
+            <input v-type="email" type="text">
+        </p>
+
+        <p>
+            <span>用户名：</span>
+            <input v-type="usename" type="text" v-purenumbers="false">
+        </p>
+
+        <p>
+            <span>密码：</span>
+            <input v-type="password" type="text" v-strength="true">
+        </p>
+        <p>
+            <span>链接：</span>
+            <input v-type="url" type="text">
+        </p>
+
+
+        <button id="btn">提交</button>
+
+    </form>
+
+    <script src="./formValidate.js"></script>
+
+    <script>
+        validate("#form",
+                {url: { reg : /http:\/\/[a-z]+\.[a-z]+\.(com|net|cn|xyz)/i}},
+                {"v-purenumbers":/^\d+$/ }  
+        );
+        
+    </script>
+
+</body>
+
+</html>
