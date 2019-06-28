@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            // 我已经有了一个对象了 , 我想要克隆出来一个;
+            // var obj = {
+            //       a : 10,
+            //       b : 20
+            // };
+
+            // var cloneObj = obj;
+            // 引用传递  <= 浅克隆;
+            // 让obj 和cloneObj 一模一样; 
+            // 最简单的深克隆 ; 
+            // * 变量之中的存储的地址不同,内部属性,属性值都是完全一致的这种叫做深克隆。
+            // var cloneObj = {};
+            // // for 克隆 ; 
+            // for(var attr in obj){
+            //       cloneObj[attr] = obj[attr];
+            // }
+            // console.log(cloneObj);
+
+
+            // 复杂形势的克隆;
+            // var obj = {
+            //       a : 10,
+            //       b : [],
+            //       c : {
+            //             d : 1,
+            //             e : {},
+            //             f : []
+            //       }
+            // }
+            // 克隆 内部存在引用类型的对象;
+            // var cloneObj = {};
+
+            // for(var attr in obj){
+            //       cloneObj[attr] = obj[attr];
+            // }
+            // console.log(cloneObj);
+
+            // 一行代码完美深克隆;  推荐使用;
+            
+            // var cloneObj = JSON.stringify(obj);
+            //     cloneObj = JSON.parse(cloneObj);
+            // console.log(cloneObj);
+
+            // 递归 ;
+
+            // var obj = {
+            //       a : 10,
+            //       b : [],
+            //       c : {
+            //             d : 1,
+            //             e : {},
+            //             f : []
+            //       }
+            // }
+
+            // function clone(obj){
+            //       var newo = {};
+            //       for(var attr in obj){
+            //             if(typeof obj[attr] === "object"){
+            //                   // console.log(attr,obj[attr]);
+            //                   // 给新的对象复制 [ 目标对象的属性 ] = 目标对象的这个属性是否为数组 ? 转换成字符串变成新数组 : 重新创建一个对象 ; 
+            //                   newo[attr] = obj[attr] instanceof Array ?  obj[attr].toString().split(",") : clone(obj[attr]);
+            //             }else{
+            //                   newo[attr] = obj[attr];
+            //             }
+            //       }
+            //       return newo;
+            // }
+            // var cloneObj = clone(obj);
+            // console.log(cloneObj);
+
+            // 对象合并方法 => ES6 ; Object.assign;  jQuery => $.extend();
+
+            // 合并目标;
+            // var obj = { a : 1 , c : []};
+            // var obj2 = { b : 2};
+            
+            // 合并结果;
+            // var obj3 = Object.assign( obj , obj2 );
+            // var obj3 = Object.assign( 目标 , 向前合并, 向前合并 ,.... );
+            // console.log(obj3,obj,obj2);
+
+            // 表层不用for循环的深克隆;  => 只能有一层;
+            // var cloneObj = Object.assign( {} , obj);
+            // console.log(cloneObj);
+
+            // 浅克隆 :  克隆地址 | 引用传递;
+            // 深克隆 :  1. 创建全新的引用类型;
+            //           2. 根据源类型进行赋值;
+
+            // 1. var cloneObj = JSON.parse(JSON.stringify(obj))
+            // 2. var cloneObj = 递归(obj);
+            // 3. Object.assign({},对象); 
+
+            //* 函数的拷贝;
+            function foo(){
+                  console.log("hello")
+            }     
+
+            // var cloneFoo = foo;
+            var cloneFoo = eval("(" + foo.toString() + ")");
+            console.log(cloneFoo);
+
+
+
+
+      </script>
+</body>
+</html>

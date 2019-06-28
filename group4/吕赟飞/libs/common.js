@@ -106,6 +106,7 @@ function getCountDown(){
             ];
 }
 
+
 function on(dom,evetType,callback,selector){
       if(dom.addEventListener){
             if(arguments.length === 4 && typeof arguments[3] === "string" ){

@@ -13,10 +13,15 @@
 <body class="body">
     <div class="head">
         <div class="w1209">
-            <ul class="zcool"><a class="logo" href="#"><img
+            <ul class="zcool"><a class="logo" id="logo" href="#"><img
                         src="https://static.zcool.cn/git_z/z/common/images/svg/logo.svg" alt="站酷"></a></ul>
             <ul class="daohangcenter">
-                <ul class="daohang">
+                <div class="searchBox" id="searchBox">
+                    <span id="searchJing"></span>
+                    <input id="searchIpt" type="text">
+                    <span id="searchCancel"></span>
+                </div>
+                <ul class="daohang" id="daohang">
                     <li class="index"><a href="#">首页</a></li>
                     <li class="faxian"><a href="#">发现</a>
                         <ul class="fxxiala">
@@ -86,7 +91,7 @@
                         </ul>
                     </li>
                 </ul>
-                <li class="fangdajing"><a href="#"><span></span></a></li>
+                <li class="fangdajing" id="fangdajing"><a href="#"><span></span></a></li>
                 <ul class="headright">
                     <ul>
                         <li class="shangchuan"><a href="#"><span></span></a></li>
@@ -95,14 +100,14 @@
                         <li><a class="login" href="#">登录<span></span></a><a class="zhuce" href="#">注册</a></li>
                     </ul>
                 </ul>
-                </ul>
+            </ul>
         </div>
     </div>
     <div class="advbox">
         <div class="adv">
             <div class="lunbo">
                 <ul class="lbimglist">
-                    <li class="lbimg"><a href="#"><img
+                    <li class="lbimg"><a href="#"><img id="lunbo"
                                 src="https://img.zcool.cn/community/016c785d01aa27a801205e4b719f4d.png@1380w"
                                 alt=""></a></li>
                 </ul>
@@ -164,7 +169,34 @@
                             <ul class="box-self">
                                 <li><a href="#"><img
                                             src="https://img.zcool.cn/community/012d315c7744b8a801203d22925346.jpg@160w_160h_1c_1e_1o_100sh.jpg"
-                                            alt="">Caty_阿宅</a></li>
+                                            alt="">Caty_阿宅</a>
+                                    <ul class="detailedInfoBox">
+                                        <li class="detailedTou">
+                                            <a><img
+                                                    src="https://img.zcool.cn/community/012d315c7744b8a801203d22925346.jpg@160w_160h_1c_1e_1o_100sh.jpg"></a>
+                                        </li>
+                                        <li class="detailedPerson">
+                                            <a>Caty_阿宅</a>
+                                        </li>
+                                        <li class="detailedPosition">
+                                            <span>北京 &nbsp;|插画师</span>
+                                        </li>
+                                        <ul class="detailedNum">
+                                            <li class="work">
+                                                <p>创作</p>
+                                                <a href="#">19</a>
+                                            </li>
+                                            <li class="fans">
+                                                <p>粉丝</p>
+                                                <a href="#">5354</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="detailButton">
+                                            <li class="focus-btn"><span>关注</span></li>
+                                            <li class="privateMsg">私信</li>
+                                        </ul>
+                                    </ul>
+                                </li>
                             </ul>
                             <span class="shenTime">3小时前</span>
                         </ul>
@@ -758,7 +790,7 @@
         <div class="w1130">
             <ul class="bottom-top">
                 <ul class="bottom-top-left">
-                    <a class="mobile" href="#">移动版</a>
+                    <a class="mobile" href="#">移动版<i class="phoneApp"></i></a>
                     <a href="#">关于我们</a>
                     <a href="#">加入站酷</a>
                     <a href="#">用户协议</a>
@@ -770,7 +802,7 @@
                     <a href="#">English</a>
                 </ul>
                 <ul class="bottom-top-right">
-                    <a class="weixin" href="#"></a>
+                    <a class="weixin" href="#"><i class="weixinCode"></i></a>
                     <a class="weibo" href="#"></a>
                 </ul>
             </ul>
@@ -788,7 +820,8 @@
             </ul>
         </div>
     </div>
-
+    <script src="../JS/common.js"></script>
+    <script src="js/zcool.js"></script>
 </body>
 
 </html>
