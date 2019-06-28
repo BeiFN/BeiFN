@@ -244,12 +244,24 @@ getElementById()
 		prop:要定义或修改的属性的名称。
 		descriptor:将被定义或修改的属性描述符。
 	返回值:被传递给函数的对象。
-	属性:configurable
+	属性描述符:
+		configurable
+			当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。
+			configurable特性表示对象的属性是否可以被删除，以及除value和writable特性外的其他特性是否可以被修改。
 		enumerable
+			当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。
+			enumerable定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
 		value
+			当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。
+			该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。
 		writable
+			当writable属性设置为false时，该属性被称为“不可写”。它不能被重新分配。
 		get
+			一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。
+			默认为 undefined。
 		set
+			一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。
+默认为 undefined。
 
 #### arguments.callee属性
 	包含当前正在执行的函数。
@@ -278,3 +290,6 @@ getElementById()
 
 #### replace()
 	返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。
+
+#### forEach()
+	对数组的每个元素执行一次提供的函数。
