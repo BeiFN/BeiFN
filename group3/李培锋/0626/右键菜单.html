@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list{
+            height: 60px;
+            width: 20px;
+            position: absolute;
+            background: #181;
+            left: 0;
+            top: 0;
+            display: none;
+            }
+    </style>
+</head>
+<body>
+    <div id="list"></div>
+    <script>
+        var list = document.getElementById("list");
+        document.addEventListener("contextmenu",showlist);
+        function showlist(evt){
+            var e = evt||event;
+            e.preventDefault? e.preventDefault():e.returnValue = false;
+            list.style.display = "block";
+            list.style.left = e.clientX + "px";
+            list.style.top = e.clientY + "px";
+           
+        }
+    </script>
+</body>
+</html>
