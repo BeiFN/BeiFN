@@ -1,0 +1,111 @@
+#hiddenCard{
+	width: 210px;
+	height: 229px;
+	box-shadow:2px 6px 15px rgba(0,0,0,.15);
+	border-radius: 4px;
+	background-color: #FFFFFF;
+	position: absolute;
+	bottom: 49px;
+	left: -16px;
+    padding: 30px 0 21px;
+	text-align: center;
+	display: none;
+}
+#hiddenCard:after{
+	content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -10px;
+    left: 19px;
+    box-sizing: border-box;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #fff #fff;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-46deg);
+    transform-origin: 0 0;
+    transform: rotate(-46deg);
+    box-shadow: -3px 2px 2px rgba(255,255,255,.05);
+}
+.hc_pic{
+	display: block;
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+	line-height: 24px;
+	/* background-color: #333333; */
+	/* background: url(https://img.zcool.cn/community/041899585a1dbca801219c77b11bd4.jpg@80w_80h_1c_1e_1o_100sh.jpg) no-repeat center; */
+}
+
+.hc_name a{
+	font-size: 16px;
+	color: #333;
+	text-align: center;
+	font-weight: 600;
+	line-height: 24px;
+}
+.hc_place i{
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	margin: 0 4px;
+	background-color: #bbb;
+}
+#hiddenCard span{
+	font-size: 12px;
+	color: #bbb;
+	line-height: 21px;
+}
+.hc_follow{
+	height: 50px;
+	margin-top: 11px;
+}
+.hc_follow span{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin: 0 30px;
+}
+.hc_follow span a{
+	line-height: 21px;
+	font-weight: 600;
+	color: #333;
+}
+.hc_work{position: relative;}
+.hc_work:after{
+	content: "";
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background: #ddd;
+    position: absolute;
+    top: 5px;
+    right: -30px;
+}
+.btn button{
+	width: 80px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #444;
+	font-size: 14px;
+	margin: 0 2px;
+	cursor: pointer;
+}
+#hc_gofollow{
+	background: #ffe300;
+	border: 1px solid #ffe300;
+	border-radius: 4px;
+}
+#hc_gochat{
+	color: #666;
+    background: 0 0;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+.card_uper_name:hover #hiddenCard{
+	display: block;
+}

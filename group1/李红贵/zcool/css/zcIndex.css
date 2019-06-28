@@ -391,7 +391,6 @@
     width: 150px;
     height: 100%;
     text-align: center;
-    line-height: 286px;
     vertical-align: top;
 }
 
@@ -721,21 +720,161 @@
 }
 
 
-/* 覆盖坦诚框 */
+/* 覆盖弹出框 */
 
 .author_allInfo:hover .author_hidd {
     display: block;
 }
 
 .author_hidd {
+    /* display: block; */
     position: absolute;
     top: -278px;
     left: -16px;
     z-index: 3;
-    background-color: yellow;
+    background-color: #fff;
     width: 210px;
-    height: 278px;
+    height: 229px;
+    padding: 30px 0 21px;
+    box-shadow: 0 0 10px #999;
+    text-align: center;
+    z-index: 6;
 }
+
+.author_hidd::after{
+    content: "";
+    border-top: 8px solid #fff;
+    border-right: 8px solid transparent;
+    border-bottom: none;
+    border-left: 8px solid transparent;
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    /* left: 50%;
+    margin-left: -10px; */
+    display: block;
+}
+
+.headImg_auInfo{
+    margin: 0 auto;
+    /* margin-top: 30px; */
+    width: 80px;
+    height: 80px;
+}
+
+.headimg_aut{
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    
+
+}
+.auth_Name_b{
+    margin-top: 4px;
+    width: 100%;
+    height: 25px;
+    /* background-color: red; */
+}
+.strname{
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align: top;
+}
+.auth_Name_b a{
+    display: inline-block;
+}
+
+.aut_type_info{
+    width: 178px;
+    color: #bbb;
+    font-size: 12px;
+    /* height: auto; */
+    padding: 0 16px;
+    margin-bottom: 10px;
+}
+.stroName_imgtype{
+    
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+
+}
+.workn::after{
+    content: "";
+    /* float: right; */
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color:#eee;
+    width: 1px;
+    height: 42px;
+}
+.info-num{
+    
+    width: 100%;
+    height: 60px;
+}
+.info-num-chi{
+    position: relative;
+    width: 50%;
+    float: left;
+    height: auto;
+}
+.info-num-chi p{
+    color: #bbb;
+    font-size: 12px;
+    line-height: 21px;
+}
+.info-num-chi a{
+    color: #333;
+    line-height: 21px;
+    font-weight: 600;
+
+}
+.info-num-chi a:hover{
+    color: #d36f16;
+}
+
+.attention {
+    float: left;
+}
+.btn-current {
+    margin-left: 12px;
+    width: 80px;
+    height: 32px;
+}
+.btn-default-main {
+    color: #444;
+    background: #ffe300;
+    border: 1px solid #ffe300;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-default-secondary {
+    color: #666;
+    background: 0 0;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* 页码控制 */
@@ -1041,7 +1180,7 @@
 #line{
     width: 100%;
     height: 1px;
-    background-color: black;
+    /* background-color: black; */
     position: absolute;
     top: 1445px;
 }

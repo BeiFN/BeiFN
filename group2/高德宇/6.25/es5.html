@@ -1,0 +1,255 @@
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600587 (zh-CN, DDL); Windows/6.1.1 (Win64);"/>
+  <meta name="content-class" content="yinxiang.markdown"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="623"/>
+
+<div><span><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">ES5 :<br/>
+ES5 是目前公认的我们稳定兼容的版本;<br/>
+IE8 +<br/>
+增加了很多内容;</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">严格模式;</li>
+<li style="line-height: 160%; box-sizing: content-box;">扩展了数组类型的方法;</li>
+<li style="line-height: 160%; box-sizing: content-box;">扩展了部分对象里的方法;</li>
+<li style="line-height: 160%; box-sizing: content-box;">提供了新的对象 JSON ;</li>
+</ol>
+<h6 style="line-height: 160%; box-sizing: content-box; font-size: 13px; color: #333;"><strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">1 .严格模式</strong> &quot;use strict&quot;</h6>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">全局严格</li>
+<li style="line-height: 160%; box-sizing: content-box;">局部严格;<br/>
+提高代码执行效率;</li>
+<li style="line-height: 160%; box-sizing: content-box;">变量的严格;</li>
+<li style="line-height: 160%; box-sizing: content-box;">参数的严格;</li>
+<li style="line-height: 160%; box-sizing: content-box;">函数的严格;<br/>
+4*. 一个语法的注意事项;</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">var a = 10;
+b = 20;
+console.log(a);
+严格模式下变量必须先声明再赋值;
+;(function(){
+&quot;use strict&quot;
+function foo(a,b){
+// 形参被赋值不会影响到arguments里面的参数;
+a = 10;
+b = 20;
+console.log(a,b,arguments[0],arguments[1])
+}
+foo(1,2)
+})();
+;(function(){
+function foo(a,b){
+a = 10;
+b = 20;
+console.log(a,b,arguments[0],arguments[1])
+}
+foo(1,2)
+})();102012
+但凡是 this 指向了window，那么距离报错就不远了;
+;(function(){
+&quot;use strict&quot;
+function foo(){
+console.log(this);
+}underfine
+foo()
+})();
+;(function(){
+function foo(){
+console.log(this);
+}
+foo()
+})();
+不允许使用arguments.callee
+;(function(){
+&quot;use strict&quot;
+function foo(){
+arguments.callee
+}
+foo()
+})();
+;(function(){
+function foo(){
+arguments.callee
+}
+foo()
+})();
+;(function(){
+&quot;use strict&quot;
+function foo(a,a,b){
+console.log(a,b);
+}
+foo(1,2,3)
+})();
+;(function(){
+function foo(a,a,b){
+console.log(a,b);
+}
+foo(1,2,3)
+})();
+</code></pre>
+<h6 style="line-height: 160%; box-sizing: content-box; font-size: 13px; color: #333;">数组方法</h6>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">foreach  |   map    |   filter |    some    |   every   |   flat    
+ foreach
+ foreach arr.foreach(function(ite,index,arr){   
+ })执行 调用数组次 接受一个函数作为参数 
+myForEach( arr , function( item , index , arr){
+// console.log(item , index , arr)
+// } )
+foreach 没有返回值 为underfine
+ map 
+var arr = [15000,20000,21000,26000,3000,2000,8000];
+var res = [];
+arr.forEach( function ( item ){
+res.push( item * 1.3)
+})
+function myMap( arr , fn){
+var res = [];
+for(var i = 0 ; i &lt; arr.length ; i ++){
+res.push( fn( arr[i] , i , arr ) );
+}
+return res;
+}
+ filter 
+返回新数组.会根据参数函数的返回值判定是否该讲具体的项加入新数组
+var arr = [15000,20000,21000,26000,3000,2000,8000];
+var newArray = arr.filter( function(item , index){
+return item &gt;= 10000;
+} )
+console.log(newArray);
+function myFilter(arr , fn){
+var res = [];
+for(var i = 0 ; i &lt; arr.length ; i ++){
+if(fn(arr[i] , i , arr)){
+res.push(arr[i])
+}
+}
+return res;
+}
+ some 
+var arr = [15000,20000,21000,26000,3000,2000,8000];
+var boolean = arr.some( function (item , index , arr){
+console.log(item);
+return item === 3000
+})
+console.log(boolean);
+ every
+var arr = [15000,20000,21000,26000,3000,2000,8000];
+var boolean = arr.every(function( item , index , arr){
+// console.log(1);
+return item % 2 === 0
+})
+console.log(boolean);
+function myEvery( arr , fn){
+for(var i = 0 ; i &lt; arr.length ; i++){
+if(!fn(arr[i],i,arr)){
+return false
+}
+}
+return true;
+}
+ reduce 
+var res = arr.reduce(function(pre , now , index , arr){
+console.log(pre,now ,index);
+return pre + now;
+})
+console.log(res);
+function myReduce( arr , fn ){
+var prev = arr[0];
+for(var i = 1 ; i &lt; arr.length ; i++){
+prev = fn( prev , arr[i] , i , arr);
+}
+return prev;
+}
+console.log(myReduce( arr , function(prev,now , index){
+return prev + now;
+} ))
+  flat  
+function flat(arr){
+var res = [];
+for(var i = 0 ; i &lt; arr.length ; i ++){
+//只要不是数组我就push
+if(!(arr[i] instanceof Array)){
+res.push(arr[i])
+}else{
+flat();
+}
+}
+return res ;
+}
+function flat(arr){
+// 判定是否是第一次执行flat ;
+if(!flat.res){
+flat.res = [];
+}
+for(var i = 0 ; i &lt; arr.length ; i ++){
+//只要不是数组我就push
+if(!(arr[i] instanceof Array)){
+flat.res.push(arr[i])
+}else{
+flat(arr[i]);
+}
+}
+return flat.res ;
+}
+
+</code></pre>
+<h6 style="line-height: 160%; box-sizing: content-box; font-size: 13px; color: #333;">object</h6>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">var obj = {<br/>
+a : 1<br/>
+}<br/>
+数据驱动;<br/>
+obj.a = 2;<br/>
+var obj = {};<br/>
+console.log(obj.a === 1 &amp;&amp; obj.a === 2 &amp;&amp; obj.a === 3 &amp;&amp; obj.a === 4);<br/>
+Object.defineProperty();<br/>
+定义 属性;</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">属性拦截器形态 ;</li>
+<li style="line-height: 160%; box-sizing: content-box;">设置属性的各个特性;<br/>
+var obj = {b:1};<br/>
+Object.defineProperty( obj , &quot;a&quot; , {<br/>
+// 不可删除;<br/>
+configurable : true,<br/>
+不可枚举;<br/>
+enumerable : true,<br/>
+value : &quot;hello world&quot;,<br/>
+writable : true<br/>
+})<br/>
+delete obj.a;<br/>
+for(var attr in obj ){<br/>
+console.log(attr);<br/>
+}<br/>
+var obj = {<br/>
+$data : {}<br/>
+}<br/>
+Object.defineProperty( obj , &quot;a&quot; , {<br/>
+get : function(){<br/>
+// this =&gt; obj 当前对象;</li>
+</ol>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">// console.log(this);<br/>
+return this.$data.a;<br/>
+},<br/>
+set : function(val){<br/>
+// val =&gt; 设置的参数<br/>
+// console.log(&quot;hello&quot;);</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">] 因为在a设置值的时候已经被作为一个拦截器而进行set处理了,那么这<br/>
+时候我们不能给a直接赋值;<br/>
+return this.$data.a = val;<br/>
+}<br/>
+})<br/>
+console.log(obj);<br/>
+obj.a;</p>
+</div><center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">ES5%20%3A%0AES5%20%E6%98%AF%E7%9B%AE%E5%89%8D%E5%85%AC%E8%AE%A4%E7%9A%84%E6%88%91%E4%BB%AC%E7%A8%B3%E5%AE%9A%E5%85%BC%E5%AE%B9%E7%9A%84%E7%89%88%E6%9C%AC%3B%0AIE8%20%2B%0A%E5%A2%9E%E5%8A%A0%E4%BA%86%E5%BE%88%E5%A4%9A%E5%86%85%E5%AE%B9%3B%0A1.%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%3B%0A2.%20%E6%89%A9%E5%B1%95%E4%BA%86%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95%3B%0A3.%20%E6%89%A9%E5%B1%95%E4%BA%86%E9%83%A8%E5%88%86%E5%AF%B9%E8%B1%A1%E9%87%8C%E7%9A%84%E6%96%B9%E6%B3%95%3B%0A4.%20%E6%8F%90%E4%BE%9B%E4%BA%86%E6%96%B0%E7%9A%84%E5%AF%B9%E8%B1%A1%20JSON%20%3B%0A%0A%23%23%23%23%23%23%20**1%20.%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F**%20%22use%20strict%22%0A1.%20%E5%85%A8%E5%B1%80%E4%B8%A5%E6%A0%BC%20%0A2.%20%E5%B1%80%E9%83%A8%E4%B8%A5%E6%A0%BC%3B%0A%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87%3B%0A1.%20%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%A5%E6%A0%BC%3B%0A2.%20%E5%8F%82%E6%95%B0%E7%9A%84%E4%B8%A5%E6%A0%BC%3B%0A3.%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%A5%E6%A0%BC%3B%0A4*.%20%E4%B8%80%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%3B%0A%60%60%60%0Avar%20a%20%3D%2010%3B%0Ab%20%3D%2020%3B%0Aconsole.log(a)%3B%0A%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%8F%98%E9%87%8F%E5%BF%85%E9%A1%BB%E5%85%88%E5%A3%B0%E6%98%8E%E5%86%8D%E8%B5%8B%E5%80%BC%3B%0A%3B(function()%7B%0A%22use%20strict%22%0Afunction%20foo(a%2Cb)%7B%0A%2F%2F%20%E5%BD%A2%E5%8F%82%E8%A2%AB%E8%B5%8B%E5%80%BC%E4%B8%8D%E4%BC%9A%E5%BD%B1%E5%93%8D%E5%88%B0arguments%E9%87%8C%E9%9D%A2%E7%9A%84%E5%8F%82%E6%95%B0%3B%0Aa%20%3D%2010%3B%0Ab%20%3D%2020%3B%0Aconsole.log(a%2Cb%2Carguments%5B0%5D%2Carguments%5B1%5D)%0A%7D%0Afoo(1%2C2)%0A%7D)()%3B%0A%3B(function()%7B%0Afunction%20foo(a%2Cb)%7B%0Aa%20%3D%2010%3B%0Ab%20%3D%2020%3B%0Aconsole.log(a%2Cb%2Carguments%5B0%5D%2Carguments%5B1%5D)%0A%7D%0Afoo(1%2C2)%0A%7D)()%3B102012%0A%E4%BD%86%E5%87%A1%E6%98%AF%20this%20%E6%8C%87%E5%90%91%E4%BA%86window%EF%BC%8C%E9%82%A3%E4%B9%88%E8%B7%9D%E7%A6%BB%E6%8A%A5%E9%94%99%E5%B0%B1%E4%B8%8D%E8%BF%9C%E4%BA%86%3B%0A%3B(function()%7B%0A%22use%20strict%22%0Afunction%20foo()%7B%0Aconsole.log(this)%3B%0A%7Dunderfine%0Afoo()%0A%7D)()%3B%0A%3B(function()%7B%0Afunction%20foo()%7B%0Aconsole.log(this)%3B%0A%7D%0Afoo()%0A%7D)()%3B%0A%E4%B8%8D%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8arguments.callee%0A%3B(function()%7B%0A%22use%20strict%22%0Afunction%20foo()%7B%0Aarguments.callee%0A%7D%0Afoo()%0A%7D)()%3B%0A%3B(function()%7B%0Afunction%20foo()%7B%0Aarguments.callee%0A%7D%0Afoo()%0A%7D)()%3B%0A%3B(function()%7B%0A%22use%20strict%22%0Afunction%20foo(a%2Ca%2Cb)%7B%0Aconsole.log(a%2Cb)%3B%0A%7D%0Afoo(1%2C2%2C3)%0A%7D)()%3B%0A%3B(function()%7B%0Afunction%20foo(a%2Ca%2Cb)%7B%0Aconsole.log(a%2Cb)%3B%0A%7D%0Afoo(1%2C2%2C3)%0A%7D)()%3B%0A%60%60%60%0A%0A%0A%23%23%23%23%23%23%20%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%0A%60%60%60%0Aforeach%20%20%7C%20%20%20map%20%20%20%20%7C%20%20%20filter%20%7C%20%20%20%20some%20%20%20%20%7C%20%20%20every%20%20%20%7C%20%20%20flat%20%20%20%20%0A%20foreach%0A%20foreach%20arr.foreach(function(ite%2Cindex%2Carr)%7B%20%20%20%0A%20%7D)%E6%89%A7%E8%A1%8C%20%E8%B0%83%E7%94%A8%E6%95%B0%E7%BB%84%E6%AC%A1%20%E6%8E%A5%E5%8F%97%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%20%0AmyForEach(%20arr%20%2C%20function(%20item%20%2C%20index%20%2C%20arr)%7B%0A%2F%2F%20console.log(item%20%2C%20index%20%2C%20arr)%0A%2F%2F%20%7D%20)%0Aforeach%20%E6%B2%A1%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%20%E4%B8%BAunderfine%0A%20map%20%0Avar%20arr%20%3D%20%5B15000%2C20000%2C21000%2C26000%2C3000%2C2000%2C8000%5D%3B%0Avar%20res%20%3D%20%5B%5D%3B%0Aarr.forEach(%20function%20(%20item%20)%7B%0Ares.push(%20item%20*%201.3)%0A%7D)%0Afunction%20myMap(%20arr%20%2C%20fn)%7B%0Avar%20res%20%3D%20%5B%5D%3B%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%20arr.length%20%3B%20i%20%2B%2B)%7B%0Ares.push(%20fn(%20arr%5Bi%5D%20%2C%20i%20%2C%20arr%20)%20)%3B%0A%7D%0Areturn%20res%3B%0A%7D%0A%20filter%20%0A%E8%BF%94%E5%9B%9E%E6%96%B0%E6%95%B0%E7%BB%84.%E4%BC%9A%E6%A0%B9%E6%8D%AE%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E8%AF%A5%E8%AE%B2%E5%85%B7%E4%BD%93%E7%9A%84%E9%A1%B9%E5%8A%A0%E5%85%A5%E6%96%B0%E6%95%B0%E7%BB%84%0Avar%20arr%20%3D%20%5B15000%2C20000%2C21000%2C26000%2C3000%2C2000%2C8000%5D%3B%0Avar%20newArray%20%3D%20arr.filter(%20function(item%20%2C%20index)%7B%0Areturn%20item%20%3E%3D%2010000%3B%0A%7D%20)%0Aconsole.log(newArray)%3B%0Afunction%20myFilter(arr%20%2C%20fn)%7B%0Avar%20res%20%3D%20%5B%5D%3B%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%20arr.length%20%3B%20i%20%2B%2B)%7B%0Aif(fn(arr%5Bi%5D%20%2C%20i%20%2C%20arr))%7B%0Ares.push(arr%5Bi%5D)%0A%7D%0A%7D%0Areturn%20res%3B%0A%7D%0A%20some%20%0Avar%20arr%20%3D%20%5B15000%2C20000%2C21000%2C26000%2C3000%2C2000%2C8000%5D%3B%0Avar%20boolean%20%3D%20arr.some(%20function%20(item%20%2C%20index%20%2C%20arr)%7B%0Aconsole.log(item)%3B%0Areturn%20item%20%3D%3D%3D%203000%0A%7D)%0Aconsole.log(boolean)%3B%0A%20every%0Avar%20arr%20%3D%20%5B15000%2C20000%2C21000%2C26000%2C3000%2C2000%2C8000%5D%3B%0Avar%20boolean%20%3D%20arr.every(function(%20item%20%2C%20index%20%2C%20arr)%7B%0A%2F%2F%20console.log(1)%3B%0Areturn%20item%20%25%202%20%3D%3D%3D%200%0A%7D)%0Aconsole.log(boolean)%3B%0Afunction%20myEvery(%20arr%20%2C%20fn)%7B%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%20arr.length%20%3B%20i%2B%2B)%7B%0Aif(!fn(arr%5Bi%5D%2Ci%2Carr))%7B%0Areturn%20false%0A%7D%0A%7D%0Areturn%20true%3B%0A%7D%0A%20reduce%20%0Avar%20res%20%3D%20arr.reduce(function(pre%20%2C%20now%20%2C%20index%20%2C%20arr)%7B%0Aconsole.log(pre%2Cnow%20%2Cindex)%3B%0Areturn%20pre%20%2B%20now%3B%0A%7D)%0Aconsole.log(res)%3B%0Afunction%20myReduce(%20arr%20%2C%20fn%20)%7B%0Avar%20prev%20%3D%20arr%5B0%5D%3B%0Afor(var%20i%20%3D%201%20%3B%20i%20%3C%20arr.length%20%3B%20i%2B%2B)%7B%0Aprev%20%3D%20fn(%20prev%20%2C%20arr%5Bi%5D%20%2C%20i%20%2C%20arr)%3B%0A%7D%0Areturn%20prev%3B%0A%7D%0Aconsole.log(myReduce(%20arr%20%2C%20function(prev%2Cnow%20%2C%20index)%7B%0Areturn%20prev%20%2B%20now%3B%0A%7D%20))%0A%20%20flat%20%20%0Afunction%20flat(arr)%7B%0Avar%20res%20%3D%20%5B%5D%3B%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%20arr.length%20%3B%20i%20%2B%2B)%7B%0A%2F%2F%E5%8F%AA%E8%A6%81%E4%B8%8D%E6%98%AF%E6%95%B0%E7%BB%84%E6%88%91%E5%B0%B1push%0Aif(!(arr%5Bi%5D%20instanceof%20Array))%7B%0Ares.push(arr%5Bi%5D)%0A%7Delse%7B%0Aflat()%3B%0A%7D%0A%7D%0Areturn%20res%20%3B%0A%7D%0Afunction%20flat(arr)%7B%0A%2F%2F%20%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E6%98%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8Cflat%20%3B%0Aif(!flat.res)%7B%0Aflat.res%20%3D%20%5B%5D%3B%0A%7D%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%20arr.length%20%3B%20i%20%2B%2B)%7B%0A%2F%2F%E5%8F%AA%E8%A6%81%E4%B8%8D%E6%98%AF%E6%95%B0%E7%BB%84%E6%88%91%E5%B0%B1push%0Aif(!(arr%5Bi%5D%20instanceof%20Array))%7B%0Aflat.res.push(arr%5Bi%5D)%0A%7Delse%7B%0Aflat(arr%5Bi%5D)%3B%0A%7D%0A%7D%0Areturn%20flat.res%20%3B%0A%7D%0A%0A%60%60%60%0A%23%23%23%23%23%23%20object%0A%0Avar%20obj%20%3D%20%7B%0Aa%20%3A%201%0A%7D%0A%20%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%3B%0Aobj.a%20%3D%202%3B%0Avar%20obj%20%3D%20%7B%7D%3B%0Aconsole.log(obj.a%20%3D%3D%3D%201%20%26%26%20obj.a%20%3D%3D%3D%202%20%26%26%20obj.a%20%3D%3D%3D%203%20%26%26%20obj.a%20%3D%3D%3D%204)%3B%0AObject.defineProperty()%3B%0A%E5%AE%9A%E4%B9%89%20%E5%B1%9E%E6%80%A7%3B%0A1.%20%E5%B1%9E%E6%80%A7%E6%8B%A6%E6%88%AA%E5%99%A8%E5%BD%A2%E6%80%81%20%3B%0A2.%20%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E7%9A%84%E5%90%84%E4%B8%AA%E7%89%B9%E6%80%A7%3B%0Avar%20obj%20%3D%20%7Bb%3A1%7D%3B%0AObject.defineProperty(%20obj%20%2C%20%22a%22%20%2C%20%7B%0A%2F%2F%20%E4%B8%8D%E5%8F%AF%E5%88%A0%E9%99%A4%3B%0Aconfigurable%20%3A%20true%2C%0A%E4%B8%8D%E5%8F%AF%E6%9E%9A%E4%B8%BE%3B%0Aenumerable%20%3A%20true%2C%0Avalue%20%3A%20%22hello%20world%22%2C%0Awritable%20%3A%20true%0A%7D)%0Adelete%20obj.a%3B%0Afor(var%20attr%20in%20obj%20)%7B%0Aconsole.log(attr)%3B%0A%7D%0Avar%20obj%20%3D%20%7B%0A%24data%20%3A%20%7B%7D%0A%7D%0AObject.defineProperty(%20obj%20%2C%20%22a%22%20%2C%20%7B%0Aget%20%3A%20function()%7B%0A%2F%2F%20this%20%3D%3E%20obj%20%E5%BD%93%E5%89%8D%E5%AF%B9%E8%B1%A1%3B%0A%0A%2F%2F%20console.log(this)%3B%0Areturn%20this.%24data.a%3B%0A%7D%2C%0Aset%20%3A%20function(val)%7B%0A%2F%2F%20val%20%3D%3E%20%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%8F%82%E6%95%B0%0A%2F%2F%20console.log(%22hello%22)%3B%0A%0A%5D%20%E5%9B%A0%E4%B8%BA%E5%9C%A8a%E8%AE%BE%E7%BD%AE%E5%80%BC%E7%9A%84%E6%97%B6%E5%80%99%E5%B7%B2%E7%BB%8F%E8%A2%AB%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%8B%A6%E6%88%AA%E5%99%A8%E8%80%8C%E8%BF%9B%E8%A1%8Cset%E5%A4%84%E7%90%86%E4%BA%86%2C%E9%82%A3%E4%B9%88%E8%BF%99%0A%E6%97%B6%E5%80%99%E6%88%91%E4%BB%AC%E4%B8%8D%E8%83%BD%E7%BB%99a%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%3B%0Areturn%20this.%24data.a%20%3D%20val%3B%0A%7D%0A%7D)%0Aconsole.log(obj)%3B%0Aobj.a%3B%0A%0A</center></span>
+</div></body></html> 

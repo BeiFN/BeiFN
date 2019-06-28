@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button class="btn">生成新按钮</button>
+    <button class="btn">生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <script>
+        var body = document.getElementById("body");
+        body.addEventListener("click" , delegation(createButton , ".btn"));
+        function delegation(eventCallBack , selector){
+            return function (evt){
+                var e = evt || event;
+                var target = e.target || e.srcElement;
+                var _target =target;
+                // console.log(target);
+                // console.log(this);
+                var targetFamily = [];
+                var count = 0;
+                while(true && count<100){
+                    if(this === _target){
+                        // console.log(_target);
+                        break;
+                    }
+                    targetFamily.push(_target);
+                    _target = _target.parentNode;
+                }
+
+                targetEle = this.querySelectorAll(selector);
+                console.log(targetEle.length);
+                for(var i=0,ele; ele = targetEle[i++];){
+                    if(targetFamily.length === 1 ? (target === ele) : (targetFamily.indexOf(ele) !== -1)){
+                        eventCallBack.call(ele , e);
+                    }
+                }
+                // console.log(targetEle);
+                
+                
+            }
+
+            
+        }
+        function createButton(element){
+            {
+                var ele = document.createElement("button");
+                ele.innerHTML = "一个新的按钮";
+                body.appendChild(ele);
+            }
+        }
+    </script>
+</body>
+</html>

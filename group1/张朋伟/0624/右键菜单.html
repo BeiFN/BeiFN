@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .list {
+            float: left;
+            margin: 50px;
+            list-style: none;
+        }
+
+        .list li {
+            text-align: center;
+            height: 20px;
+            width: 250px;
+            background: rgb(17, 221, 153);
+            margin-bottom: 5px;
+
+        }
+
+        .optionMenu {
+            list-style: none;
+            position: absolute;
+            left: 800px;
+            text-align: center;
+            display: none;
+
+        }
+
+        .optionMenu li {
+            width: 200px;
+            height: 50px;
+            background: #ff0;
+            line-height: 50px;
+            border-bottom: 1px solid #000;
+        }
+
+        .optionMenu li:hover {
+            transition: all .5;
+            background: #f0f;
+            box-shadow: 5px 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="list">
+        <h2>表单1</h2>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+        <li>这是一个li</li>
+    </ul>
+
+
+    <ul class="list">
+        <h2>表单2</h2>
+        <li>这是一个li222</li>
+        <li>这是一个li222</li>
+        <li>这是一个li222</li>
+        <li>这是一个li22</li>
+        <li>这是一个li2222</li>
+        <li>这是一个li22222</li>
+        <li>这是一个li22222</li>
+        <li>这是一个li22222</li>
+        <li>这是一个li22222</li>
+        <li>这是一个li22222</li>
+    </ul>
+
+    <ul class="optionMenu">
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>剪切</li>
+        <li>删除</li>
+    </ul>
+</body>
+<script>
+    var ele_optionMenu = document.querySelector(".optionMenu");
+    //上一个已经选中的元素
+    var selectTarget = null;
+    var clone = null;
+    document.oncontextmenu = function (evt) {
+        var e = evt || event;
+        typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+        var x = e.clientX;
+        console.log(x)
+        var y = e.clientY;
+        console.log(y)
+        ele_optionMenu.style.display = "block";
+        ele_optionMenu.style.left = x + "px";
+        ele_optionMenu.style.top = y + "px";
+        document.onclick = function () {
+            ele_optionMenu.style.display = "none";
+        }
+        //获取元素
+        var target = e.target || e.srcElement;
+        selectTarget ? selectTarget.style.background = "" : ""; //如果存在设置为空，不存在不操作
+        selectTarget = target;
+        selectTarget.style.background = "yellowgreen";
+
+        ele_optionMenu.onclick = function (evt) {
+            var e = evt || event;
+            var target = e.target || e.srcElement;
+            console.log(target);
+            switch(target.innerHTML){
+                case"复制":
+                clone=selectTarget.cloneNode(true);
+                clone.style.cssText ="block";
+                break;
+                case"粘贴":
+                selectTarget.appendChild(clone);
+                break;
+                case"剪切":
+                clone = selectTarget;
+                break;
+                case"删除":
+                selectTarget.remove();
+                break;
+            }
+
+        }
+    }
+</script>
+
+</html>

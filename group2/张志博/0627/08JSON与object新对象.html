@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                // // var json = {"a" : "b","c":"d"};
+                // var json = "{'a' : '123'} ";
+
+                // console.log( eval("("+json+")"));
+                
+                // // console.log(JSON.parse(json));
+                
+                // JSON.stringify();
+                // var obj = {
+                //     a : 10,
+                //     "b" : {},
+                //     "c" : []
+                // }
+                // console.log(JSON.stringify(obj));
+        var json = {
+            "1130" : {
+                name : "这是一个商品",
+                price : 998
+            },
+            "1134" : {
+                name : "这是一个商品",
+                price : 996
+            },
+             "1120" : {
+                name : "这是一个商品",
+                price : 976
+            },
+             "1144" : {
+                name : "这是一个商品",
+                price : 588
+            }, 
+            "1184" : {
+                name : "这是一个商品",
+                price : 986
+            },
+            
+        }
+        var id = 1144;
+        
+        for(var attr in json){
+            if(attr == id){
+                console.log("匹配",json[attr]);
+                break;
+            }
+        }
+        
+
+    </script>
+</body>
+</html>
