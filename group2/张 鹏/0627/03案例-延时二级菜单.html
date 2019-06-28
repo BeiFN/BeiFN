@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>案例-延时二级菜单</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    li{
+        list-style: none;
+        float: left;
+        width: 200px;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        background: yellowgreen;
+    }
+
+   li a{
+       text-decoration: none;
+       color: #ffffff;
+   }
+   #list{
+       display: none;
+   }
+#list li{
+    width: 198px;
+    height: 48px;
+    border: 1px solid #ffffff;
+}
+    </style>
+</head>
+<body>
+      
+    <ul id="nav">
+        <li class="menu"><a href="#">一级菜单</a>
+          <ul id="list">
+              <li class="menu1"><a href="#">二级菜单</a></li>
+              <li class="menu1"><a href="#">二级菜单</a></li>
+              <li class="menu1"><a href="#">二级菜单</a></li>
+              <li class="menu1"><a href="#">二级菜单</a></li>
+          </ul>
+        </li>
+        <li><a href="#">一级菜单</a></li>
+        <li><a href="#">一级菜单</a></li>
+        <li><a href="#">一级菜单</a></li>
+        <li><a href="#">一级菜单</a></li>
+    </ul>
+
+
+    <script>
+    var oUl = document.getElementById("nav");
+    // var oLi = document.querySelectorAll(".menu");
+     var oUL2 = document.getElementById("list");
+
+         oUl.addEventListener("mouseout",handlerListMenuHide)
+         oUl.addEventListener("mouseover",handlerListMenuShow);
+         oUL2.addEventListener("mouseover",handlerListShow);
+         oUL2.addEventListener("mouseout",handlerListHide);
+
+        //  oUl.addEventListener("mouseover",handlerList1(handlerList2,".menu"));
+        //  oUl.addEventListener("mouseover",handlerList1(handlerList4,".menu"));
+        //  oUL2.addEventListener("mouseout",handlerList1(handlerList3,".list"));
+        //  oUL2.addEventListener("mouseout",handlerList1(handlerList5,".list"));
+        //   function handlerList1(handlerList2,selector){
+        //        return function(evt){
+        //             var e = evt||window.event;
+        //             var target = e.target||e.srcElement; 
+        //             var eleList = this.querySelectorAll(selector);
+        //             console.log(eleList);   //li列表
+        //             var _tempTarget = target;
+        //             // console.log(_tempTarget); //<li>    <a> </a>  </li>
+        //             var targetFamily = [];
+        //             var count = 0;
+        //           while(true && count++<100){
+        //             if(_tempTarget === this){
+        //              break;   
+        //             }
+        //             targetFamily.push(_tempTarget);
+        //             // console.log(targetFamily);//[li.menu]  [a]
+        //             _tempTarget = _tempTarget.parentNode;
+
+        //             // console.log(_tempTarget);//<ul><li><a></a><ul><li><a></a></li></ul></li></ul>
+        //         }
+
+        //         for(var i =0,ele;ele = eleList[i++];){ 
+        //             if(targetFamily.length===1?ele===targetFamily[0]:targetFamily.indexOf(ele) !==-1){
+        //                  handlerList2.call(ele,e);
+        //                  break;
+                       
+        //             }
+        //         }
+        //        }
+        //   }
+                     
+                     var timer = null;
+                     function handlerListMenuShow(){
+                        clearTimeout(timer);
+                         oUL2.style.display = "block";
+                     }
+    
+                    function handlerListMenuHide(){
+                    
+                        //  console.log(this);
+                       
+                        timer = setTimeout(function(){
+                             oUL2.style.display = "none";
+                        },1000)
+                        
+                     
+                    }
+
+                    function handlerListShow(){
+                        console.log(123);
+                             clearTimeout(timer);
+                              oUL2.style.display = "block";
+                      
+                    }
+
+                     function handlerListHide(){
+                         oUL2.style.display = "none";
+                     } 
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>去标签</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100%;
+            height: 100%;
+            padding: 30px 0;
+            text-align: center;
+            background: rgb(114, 148, 243);
+        }
+        textarea{
+            height: 550px;
+            width: 450px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        button{
+            border:1px solid black;
+            height:30px;
+            width: 60px;
+            font-size: 14px;
+            position: relative;
+            top: -255px;
+        }
+        h1{
+            width: 100%;
+            text-align: center;
+            position: relative;
+            top:-15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!-- <h1>霸道总裁爱上我</h1> -->
+        <textarea id="inputText" cols="30" rows="10"></textarea>
+        <button id="change">去标签</button>
+        <textarea id="outputText" cols="30" rows="10"></textarea>
+    </div>
+    <script src="../libs/commen.js"></script>
+    <script>
+        var reg=/<(.*?)>/g;
+        var change=$("#change"),
+            inputText=$("#inputText"),
+            outputText=$("#outputText");
+
+            function deleteTag(){
+                var inputContent=inputText.value;
+                outputText.value=inputContent.replace(reg,"");
+            }
+
+            change.addEventListener("click",deleteTag);
+    </script>
+</body>
+</html>
