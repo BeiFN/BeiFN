@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bind和柯里化</title>
+</head>
+
+<body>
+    <script>
+        // var poo = function bind() {
+        //     return 1;
+        // }
+        // console.log(poo); // ƒ bind() {return 1;}
+        // console.log(bind); // Uncaught ReferenceError: bind is not defined
+        // bind(); //  Uncaught ReferenceError: bind is not defined
+        // poo(); // 正常执行无结果
+        // console.log(poo()); // 1
+        // 总结:定义函数var a = function b() {}时,b已经无任何作用。
+
+        // function bind() {
+        //     return 1;
+        // }
+        // console.log(bind); // ƒ bind() {return 1;}
+        // console.log(bind()); // 1
+        // 总结:function a() {}等价于var a = function b() {},var a就是一个费操作.
+
+        // function poo() {
+        //     return function foo() {
+        //         console.log(1);
+        //     }
+        // }
+        // poo()(); // 1
+
+
+        // var foo = function () {}.bind();
+
+        // function foo() {
+        //     console.log(this);
+        // }
+        // foo(); // window
+        // var poo = foo.bind({});
+        // console.log(foo === poo); // false
+        // console.log(foo == poo); // false
+        // poo(); // {}
+
+        // function bind(fn, _this) {
+        //     function newFn() {
+        //         fn();
+        //     }
+        //     return newFn();
+        // }
+
+        // function foo() {
+        //     console.log("hello world");
+        // }
+
+        // var poo = bind(foo); // hello world
+        // poo(); // 报错:Uncaught TypeError: poo is not a function
+
+
+        // function foo() {
+        //     console.log(1);
+        // }
+
+        // foo.call({}); // 1
+
+
+        // function bind(fn, _this) {
+        //     function newFn() {
+        //         fn.call(_this);
+        //     }
+        //     return newFn;
+        // }
+
+        // function foo() {
+        //     console.log("hello world", this);
+        // }
+
+        // var poo = bind(foo, {name: "吴彦祖"});
+        // poo(); // hello world {name: "吴彦祖"}
+        // foo(); // hello world window
+
+
+        // function bind(fn, _this) {
+        //     var args = [].slice.call(arguments).slice(2); // 理解不了,先死记硬背下来吧
+        //     // console.log([].slice.call(arguments).slice(2)); // []
+        //     // console.log([].slice.call(arguments)); // []
+        //     // console.log([].slice); // ƒ slice() { [native code] }
+        //     // console.log([]); // []
+        //     // console.log([].zwy); // undefined
+        //     return function () {
+        //         var nimingArg = [].slice.call(arguments);
+        //         fn.apply(_this, args.concat(nimingArg));
+        //     }
+        // }
+
+        // function foo(a, b, c, d) {
+        //     console.log(a, b, c, d, this);
+        // }
+
+        // var poo = bind(foo, {name: "吴彦祖"}, 1, 2);
+        // poo(3, 4);
+
+
+        // function bind() {
+        //     return function () {
+
+        //     }
+        // }
+        // var poo = bind();
+        
+        
+        // function foo() {
+        //     console.log(this);
+        // }
+        // foo();
+        // function bind(fn, _this) {
+        //     return function () {
+        //         fn.call(_this);
+        //     }
+        // }
+        // var poo = bind(foo, {name: "吴彦祖"});
+        // poo();
+
+
+        // function foo() {
+        //     console.log(arguments, this); // arguments window
+        // }
+        // foo();
+        // function bind(fn, _this) {
+        //     var arg1 = [].slice.call(arguments).slice(2);
+        //     return function () {
+        //         var arg2 = [].slice.call(arguments);
+        //         console.log(arg2); // [1, 2, 3]
+        //         fn.apply(_this, arg1.concat(arg2));
+        //     }
+        // }
+        // var poo = bind(foo, {name: "吴彦祖"}, "bind");
+        // poo(1, 2, 3); // ["bind", 1, 2, 3] {name: "吴彦祖"}
+
+
+        function myEvent(fn) {
+            return function (evt) {
+                var e = evt || event;
+                fn({
+                    clientX: e.clientX,
+                    name: "myEvent"
+                });
+            }
+        }
+        document.addEventListener("click", myEvent(handlerClick));
+        function handlerClick(e) {
+            console.log(e);
+        }
+    </script>
+</body>
+
+</html>

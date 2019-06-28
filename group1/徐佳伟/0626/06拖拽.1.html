@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+      
+            *{
+                  margin:0;
+                  padding: 0;
+            }
+            #box{
+                  width: 300px;
+                  height: 200px;
+                  background: yellowgreen;
+                  color: #fff;
+                  box-shadow: 0 0 5px yellowgreen;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  position: absolute;
+                  text-align: center;
+            }
+            #top-bar{
+                  width: 300px;
+                  height: 40px;
+                  text-align: center;
+                  line-height: 40px;
+                  background: rgba(0,0,0,.3);
+            }
+            #goBack{
+                  padding: 3px 5px ;
+                  background: #fff;
+                  box-shadow: 0 0 5px #30f;
+                  border: none;
+            }
+      </style>
+</head>
+<body>
+      <div id="box">
+            <div id="top-bar">
+                  拖拽条 
+            </div>
+            <button id="goBack">回放</button>
+      </div>
+
+      
+      <script>
+            // typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+          var box = document.getElementById("box");
+          var topBar = document.getElementById("top-bar");
+          var listArray = [];
+          var goBack = document.getElementById("goBack");
+          var _tempMove = null;
+          topBar.addEventListener("mousedown",handlerMoveStart);
+          function handlerMoveStart(evt){
+                  var e = evt || window.event;
+                  var target = e.target || e.srcElement;
+                  listArray.push({
+                      Left : left = 0  ,
+                      Top : top = 0
+                  });
+                  document.removeEventListener("mousemove",_tempMove);                  
+                  document.addEventListener("mousemove",_tempMove = handlerMoveDoing.bind(false,{offsetX : e.offsetX , offsetY : e.offsetY}));
+          }
+          function handlerMoveDoing(_temp,evt){
+                  var e = evt || window.srcElement;
+                  var target = e.target || e.srcElement;
+
+                  var left = e.clientX - _temp.offsetX ;
+                  var top = e.clientY - _temp.offsetY ;
+                  listArray.push({
+                        Left : left  ,
+                        Top : top
+                  });
+                  console.log(listArray);
+                  box.style.cssText = "left : " + left + "px;top : " + top + "px";
+
+          }
+          document.addEventListener("mouseup",handlerMoveEnd);
+          function handlerMoveEnd(){
+                document.removeEventListener("mousemove",_tempMove);
+          }
+          goBack.addEventListener("click",handlerBackMove);
+          function handlerBackMove(){
+            var start = listArray.length;
+            var timer = setInterval(function(){
+                  start --;
+                  box.style.left = listArray[start].Left + "px";
+                  box.style.top = listArray[start].Top + "px";
+                  // box.style.cssText = "left : " + listArray[start].Left + "px;top : " + listArray[start].Top +"px";
+                  if(start === 0){
+                        clearInterval(timer);
+                        timer = null;
+                        listArray.length = 0;
+                  }
+            },20)
+          }
+      </script>
+</body>
+</html>

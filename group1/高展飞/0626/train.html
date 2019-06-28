@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="input" cols="30" rows="10"></textarea>
+    <textarea id="output" cols="30" rows="10"></textarea>
+    <button id="btn">去标签</button>
+    <script>
+           //JSON 
+           //传入字符串拥有固定格式
+        //    var json = '{"s":2}';
+        //    console.log(JSON.parse(json));
+        //    //对象转字符串
+        //    var obj = {
+        //        a : 3,
+        //        "w" :[],
+        //        "b": "deee"
+        //    }
+        //    console.log(JSON.stringify(obj));
+
+           //Object 俩新方法
+        //    var json = {
+        //         "bb1" :{
+        //             name:"点读机",
+        //             price: 3400
+        //         },
+        //         "bbb" :{
+        //             name:"bububugao点读机",
+        //             price: 4400
+        //         },
+        //         "bbc" :{
+        //             name:"mp4",
+        //             price: 400
+        //         },
+        //    }
+        //    //如果要找到bbb
+        //    //方法有  1遍历
+        //    var id  = "bbb";
+        //    for(var attr in json){
+        //         if(attr == id){
+        //             console.log("匹配",json[attr]);
+        //         }
+        //    }
+        //    //2
+        //   var keys = Object.keys(json);
+        //   var index  = keys.indexOf(id);
+        //   json[key[index]];
+        //   //3
+        //   Object.values(json);
+
+        //   //正则表达式
+        //   //字符串方法match
+        //   var str = "2131jdwjeh4i44jj4oi5ohherh44w434";
+        //   var reg = /\d+/g;
+        //   console.log(str.match(reg));
+        //   //match是有惰性的
+        //   var reg = /\d/;
+        //   //此时返回的只匹配到一个符合的就返回 该符合项的下标，匹配字符串，组别等
+        //   console.log(str.match(reg));
+           //元字符[]
+        //    var list = "吴彦祖黑彦祖白彦祖红彦祖绿彦祖";
+        //    var  reg = /彦/g;
+        //    console.log(reg.exec(list));
+        //    console.log(reg.exec(list));
+        //    console.log(reg.exec(list));
+        //    //在字符串中寻找一个符合规则的内容，
+        //    //如果有g，那么下次匹配的时候会在上一次匹配的终点处继续
+
+        //    var reg = /黑彦祖|白彦祖|绿彦祖/g;
+        //    var reg1 = /[黑白绿]彦祖/g;
+        //    //reg和reg1 输出的结果相同    元字符就是|(或运算)的简写
+        //    var reg1 = /[^黑白绿]彦祖/g;
+        //    //  ^ 表示除了“黑白绿彦祖”意外的
+        //    //     [0123456789]===[0-9]
+        //    //  - 用来告知数字和字母的范围
+        var reg = /<.+>/g;
+        var reg = /<[^><]+>/g;//贪婪
+        var reg = /<(.*?)>/g;//非贪婪
+
+        var btn = document.getElementById("btn");
+        var input = document.getElementById("input");
+        var output = document.getElementById("output");
+        btn.addEventListener("click",deleteTag);
+        function deleteTag(){
+            var inputValue = input.value;
+            console.log(inoutValue.replace(reg,""));
+            output.value = inputValue.replace(reg,"")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var json = {
+            "1": {
+                name: "洗发水",
+                price: 66
+            },
+            "2": {
+                name: "洗发水",
+                price: 67
+            },
+            "3": {
+                name: "洗发水",
+                price: 68
+            },
+            "4": {
+                name: "洗发水",
+                price: 69
+            },
+            "5": {
+                name: "洗发水",
+                price: 65
+            },
+        }
+        var id = 5;
+        //1:
+        // for(var attr in json){
+        //     if(attr==id){
+        //         console.log("匹配",json[attr]);
+        //         break;
+        //     }
+        // }
+        var keys = Object.keys(json);
+        var index = keys.indexOf(id);
+        // json[key[index]]
+        console.log(Object.keys(json)); //结果["1","2","3","4","5"]
+        console.log(Object.values(json));
+        //0: { name: "洗发水", price: 66 }
+        //1: { name: "洗发水", price: 67 }
+        //2: { name: "洗发水", price: 68 }
+        //3: { name: "洗发水", price: 69 }
+        //4: { name: "洗发水", price: 65 }
+
+    </script>
+
+</body>
+
+</html>
