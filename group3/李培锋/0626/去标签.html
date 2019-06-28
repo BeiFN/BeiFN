@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="input" cols="30" rows="10"></textarea>
+    <button id="btn">去标签</button>
+    <textarea name="" id="output" cols="30" rows="10"></textarea>
+    <script>
+        var btn = document.getElementById("btn");
+        var input = document.getElementById("input");
+        var output = document.getElementById("output");
+
+        var reg = /<(.*?)>/g;
+        btn.addEventListener("click",delTag);
+        function delTag(){
+            var inputValue = input.value;
+            output.value = inputValue.replace(reg,"");
+        }
+
+    </script>
+</body>
+
+</html>

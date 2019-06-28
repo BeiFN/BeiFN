@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/速度快慢设置.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aqua;
+        }
+        #man{
+            width: 88px;
+            height: 88px;
+            background: url(./xiaoren.png) no-repeat;
+            background-size: cover;
+            position: absolute;
+        }
+        button{
+            font-size: 20px;
+            border-radius: 3px;
+            box-shadow: 0 0 5px #000;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: brown;
+            line-height: 100%;
+            z-index: 999;
+        }
+        #set{
+            width: 200px;
+            height: 152px;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            display: none;
+        }
+        #set li{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px solid #ddd; 
+            list-style-type: none;
+        }
+        #set li:hover{
+                  transition: all .5s;
+                  background: #ddd;
+                  color: rgb(41, 1, 1);
+                  box-shadow: 0 0 5px #000;
+            }
+    </style>
+</head>
+<body>
+    <div id="man"></div>
+    <button>回放</button>
+    <ul id="set">
+        <li>跑</li>
+        <li>跳</li>
+        <li>打篮球</li>
+    </ul>
+    <div id="bar" draggable="false">
+        <div class="horn"  draggable="false"></div>
+        <div class="progress" title="10"  draggable="false">
+              <div class="progress-bar"  draggable="false"></div>
+              <div class="progress-point"  draggable="false"></div>
+        </div>
+    </div>
+    <script src="./javascripts/拖拽回放.js"></script>
+    <script src="./javascripts/右键操作.js"></script>
+    <script src="./javascripts/速度快慢设置.js"></script>
+</body>
+</html>

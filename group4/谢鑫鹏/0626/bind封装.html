@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function bind(fn, _this){
+        //     function newFn(){
+        //         fn.call(_this);
+        //     }
+        //     return newFn;
+        // }
+        // function foo(){
+        //     console.log("hello",this);
+        // }
+        // var poo = bind(foo,{name : "xxp"});
+        // foo();
+        // poo();
+
+        function bind(fn, _this){
+            var args = [].slice.call(arguments).slice(2); 
+            // 这个参数是调用bind复制函数时传入的参数，是用来固定的参数
+            // console.log(args);
+            function newFn(){
+                var userArgs = [].slice.call(arguments);
+                // 这个参数是用户调用函数时传入的参数
+                // console.log(userArgs);
+                // console.log(args.concat(userArgs));
+                // fn.call(_this, args.concat(userArgs));
+                fn.apply(_this, args.concat(userArgs));
+            }
+            return newFn;
+        }
+        function foo(a,b){
+            console.log("hello",this);
+            console.log(a,b,arguments);
+        }
+        var poo = bind(foo,{name : "xxp"},1111,"222222");
+        // foo();
+        poo(333,444,555);
+
+
+        // function myEvent(fn){
+        //     return function(evt){
+        //         var e = evt || window.event;
+        //         fn({
+        //             clientX : e.clientX,
+        //             name : "xxp"
+        //         })
+        //     }
+        // }
+        // document.addEventListener("click",myEvent(handlerClick));        
+        // function handlerClick(args){
+        //     console.log(args);
+        // }
+    </script>
+</body>
+</html>
