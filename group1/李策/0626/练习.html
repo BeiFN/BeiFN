@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+// 			var json = {
+// 				"1130" : {
+// 					name : "这是一个商品",
+// 					price : 998 
+// 				},
+// 				"1234" : {
+// 					name : "这是一个商品",
+// 					price : 991 
+// 				},
+// 				"1165" : {
+// 					name : "这是一个商品",
+// 					price : 992 
+// 				},
+// 				"1143" : {
+// 					name : "这是一个商品",
+// 					price : 993 
+// 				},
+// 				"1123" : {
+// 					name : "这是一个商品",
+// 					price : 994 
+// 				}
+// 			}
+// 			var id = "1234" ;
+// 			var keys = Object.keys(json);
+// 			var index = keys.indexOf(id);
+// 			console.log(json);
+// 			
+// 			var arr = [1,2,3,4]
+
+// 			var str = "a1s2d34as586789cx4v564564rewsdf123"
+// 			var reg  = /\d+/g
+// 			console.log(str.match(reg))
+// 			
+// 			var list = "吴彦祖a彦祖c彦祖刘彦祖张彦祖杨彦祖祖彦祖徐彦祖马彦祖"
+// 			var reg  = /[^ac]彦祖/g
+// 			console.log(list.match(reg))
+
+
+// 			var arr = [1,2,3,4,5,6,7]
+// 			function mySome(arr){
+// 				for( var i = 0 ,num ; num = arr[i++] ;){
+// 					if( num === 7 ){
+// 						return true;
+// 					}
+// 				}
+// 				return false;
+// 			}
+
+
+
+// 			function myBind( fn , _this){
+// 				var arg1 = [].slice.call(arguments).slice(2);
+// 				console.log(arg1)
+// 				return function(){
+// 					var arg2 = [].slice.call(arguments)
+// 					fn.apply(_this,arg1.concat(arg2))
+// 					console.log(arg1.concat(arg2));
+// 				}
+// 			}
+// 			
+// 			function go(){
+// 				console.log(this);
+// 			}
+// 			var poo = myBind(go,{},1,2)
+// 			poo(1,2,3)
+
+
+// 			var foo = new test();
+// 			function test(){
+// 				console.log(this)
+// 			} 
+
+
+
+		var ul = document.querySelector("ul") ;
+		ul.addEventListener( "click" delegation(handlerClick,"li"))
+		function delegation(fn,selector){
+			return function(evt){
+				var e = evt || window.event ; 
+				var eleList = this.querySelector(selector) ;
+				var target = e.target || e.srcElement ; 
+				var targetFamily = [] ;
+// 				var _temp = target ;
+// 				while(true){
+// 					if( _temp === this){
+// 						break;
+// 					}
+// 					targetFamily.push(_temp) ;
+// 					_temp = _temp.parentNode ;
+// 				}
+// 				for( var i = 0 ,ele ; ele = eleList[i++] ; ){
+// 					if(taigetFamily.length === 1 ? ( target === ele ) : (targetFamily.indexOf(ele) !== -1 ) ){
+// 							fn.call(ele,e) ;
+// 							break ;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		
+// 		function handlerClick(e){
+// 			this.style.background = "yellowgreen"
+// 		}
+
+
+
+66
+144   163
+159
+182
+
+		</script>
+	</body>
+
+</html>
