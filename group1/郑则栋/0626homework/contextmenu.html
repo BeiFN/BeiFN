@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			#list {
+				width: 200px;
+				background: #008000;
+				position: absolute;
+				display: none;
+			}
+
+			li {
+				height: 30px;
+				line-height: 40px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li>fuck</li>
+			<li>shit</li>
+			<li>suprise mother fucker</li>
+		</ul>
+		<ul>
+			<li>t1</li>
+			<li>EZ</li>
+			<li>EZ</li>
+			<li>EZ</li>
+			<li>EZ</li>
+			<li>EZ</li>
+		</ul>
+
+		<script type="text/javascript">
+			var target1 = null;
+			var list = document.getElementById("list")
+			document.addEventListener("contextmenu", contextmenuhaha);
+			document.addEventListener("click", menuDisappear);
+			list.addEventListener("click", change);
+
+			function contextmenuhaha(eve) {
+				var e = eve || window.event;
+				target1 = e.target || e.srcElement;
+
+				e.preventDefault() ? e.preventDefault() : e.returnValue = false;
+				list.style.display = "block";
+				list.style.top = e.clientY + "px";
+				list.style.left = e.clientX + "px";
+			}
+
+			function menuDisappear() {
+				list.style = "dispaly:none"
+			}
+
+			function change(eve) {
+				var e = eve || event;
+				var target = e.target || e.srcElement;
+				target1.innerHTML+=target.innerHTML;
+
+			}
+		</script>
+	</body>
+</html>

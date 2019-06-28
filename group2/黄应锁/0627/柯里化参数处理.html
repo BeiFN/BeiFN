@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myBind(fn , _this){
+            var arg1 = [].slice.call(arguments).slice(2);
+            return function(){
+                var arg2 = [].slice.call(arguments);
+                fn.apply(_this,arg1.concat(arg2));
+            }
+        }    
+        function foo(){
+            console.log(arguments,this);
+        }
+        var poo = myBind(foo,{name:"1号"},3,4)
+        poo(5,6,7,8);
+        
+        
+    </script>
+</body>
+</html>

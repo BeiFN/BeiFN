@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bind</title>
+	</head>
+	<body>
+		<div id="box">
+			222
+		</div>
+		<script type="text/javascript">
+			var obox = document.getElementById("box");
+			document.onclick = foo.bind(obox);
+
+			function foo() {
+				console.log(this);
+			};
+		</script>
+
+	</body>
+</html>
