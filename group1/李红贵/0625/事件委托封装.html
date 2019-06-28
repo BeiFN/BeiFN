@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button><strong>这是一个</strong>按钮</button>
+    <button class="btn">这是一个按钮</button>
+    <button class="btn">这是一个按钮</button>
+    <button class="btn">这是一个按钮</button>
+    <button class="btn">这是一个按钮</button>
+    <button class="btn">这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <button>这是一个按钮</button>
+    <script>
+        // 为啥要封装
+        // 复用  
+        // 1.基本封装
+        // 实现业务  点击按钮会产生一个新按钮；
+        // 1.给每个按钮绑定事件
+        // 2.给新生的按钮绑定事件
+// 1.初步实现
+        // document.body.addEventListener("click", createButton);
+        // function createButton(evt){
+        //     var e = evt || window.event;
+        //     var target = e.target || e.srcElement;
+        //     console.log("XXX");
+        //     if(target.nodeName === "BUTTON"){
+        //         var ele = document.createElement("button");
+        //         ele.innerHTML = "一个新按钮";
+        //         document.body.appendChild(ele);
+        //     }
+        // }
+// 2.参数和业务分离
+        // document.body.addEventListener("click",delegation(createButton,"BUTTON"));
+        // function delegation(foo,selector){
+        //     return function(evt){
+        //         var e = evt || window.event;
+        //         var target = e.target || e.srcElement;
+
+        //         if(target.nodeName === selector){
+        //             foo(target);
+        //         }
+        //     }
+        // }
+        // function createButton(){
+        //     var ele = document.createElement("button");
+        //     ele.innerHTML = "button";
+        //     document.body.appendChild(ele);
+        // }
+
+// 3.触发范围优化
+document.body.addEventListener("click",delegation(createButton,"button"));
+        function delegation(foo,selector){
+            return function(evt){
+                var e = evt || window.event;
+                var target = e.target || e.srcElement;
+
+                var _targ = target;
+                var tagFamily = [];
+                tagFamily.push(_targ);
+                while(_targ !== this){
+                    _targ = _targ.parentNode;
+                    tagFamily.push(_targ);
+                }
+
+                var eleList = this.querySelectorAll(selector);
+
+                for(var i = 0,ele; ele = eleList[i++];){
+                    //优化目标选择
+                    if((tagFamily.length===1)? (target === ele):(tagFamily.indexOf(ele) !== -1)){
+                        foo(ele, e);
+                        break;
+                    }
+                }
+                
+            }
+        }
+        function createButton(){
+            var ele = document.createElement("button");
+            ele.innerHTML = "button";
+            document.body.appendChild(ele);
+        }
+
+    </script>
+</body>
+</html>

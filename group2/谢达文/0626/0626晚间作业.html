@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- <textarea id="input" cols="30" rows="10"></textarea>
+        <button id="btn">去标签</button>
+        <textarea id="output" cols="30" rows="10"></textarea> -->
+   
+                
+   <script>
+
+    //    去标签
+        // var btn = document.getElementById("btn");
+        // var input = document.getElementById("input");
+        // var output = document.getElementById("output");
+        // btn.addEventListener("click",cancelTag);
+
+        // function cancelTag(){
+        //     var story = input.value;
+            
+        //     var reg = /<.+>/g;
+        //     story.match(reg);
+        // }
+
+
+    // Objeect新增方法
+    // Object.defindProperty()      Object.keys()         Object.values()
+
+    // var obj = {
+    //     $Date:{}
+    // };
+    // Object.defineProperty(obj,"a",{
+       
+    //     get:function(){
+    //         return this.$Date.a++;
+    //     },
+    //     set:function(change){
+    //         return this.$Date.a = change;
+    //     }
+    // })
+    // obj.a = 1;
+    //  console.log(obj.a===1&&obj.a ===2);
+
+
+
+    // var json = {
+    //     "11" : {
+    //         "吉他" : "芬达",
+    //         "price" : 16000
+    //     },
+    //     "12" : {
+    //         "吉他" :" 拉维斯",
+    //         "price" : 1300
+    //     },
+    //     "13" : {
+    //         "吉他" : "吉普森",
+    //         "price" : "54000"
+    //     },
+    //     "14" : {
+    //         "吉他" : "ibanz",
+    //         "price" : 20000
+    //     },
+    //     "15" : {
+    //         "吉他" : "ig",
+    //         "price" : 1555
+    //     }
+
+    // }
+    // var id = "15";
+    // var keys = Object.keys(json);
+    // var index = keys.indexOf(id);
+    // var guiter = json[keys[index]];
+    // console.log(guiter);
+
+    // console.log( Object.values(json)[index]);
+
+
+
+/*
+    bind 和柯里化
+*/
+
+// bind的用法
+// function useBind(a,b,c){
+//     console.log(this,a,b,c);
+// }
+// var cloneUseBind = useBind.bind({name:"谢彦祖"},1,2,3);
+// cloneUseBind();
+
+
+/**
+封装bind
+*/
+
+// function myBind(fn,_this){
+//     var arr = ([].slice.call(arguments)).slice(2);
+//     return function(){
+//         var delier = ([].slice.call(arguments));
+//         fn.apply(_this,arr.concat(delier));
+//     }
+// }
+
+// var clone_use_bind = myBind(use_bind,false)
+// function use_bind(){
+//    console.log(arguments);
+// }
+
+
+// function haha(){
+//     var a = 10;
+//     var b =10;
+//     clone_use_bind(a,b);
+// }
+// haha();
+
+   </script>
+</body>
+</html>

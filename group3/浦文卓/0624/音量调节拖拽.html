@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音量调节</title>
+    <style>
+        *{
+      margin: 0;
+      padding: 0;
+}
+#bar{
+      width: 100%;
+      height: 80px;
+      position: absolute;
+      border: 5px solid #000;
+      bottom:0;
+      box-sizing: border-box;
+      border-image: linear-gradient(yellow,green) 30 30;
+      background: rgba(0,0,0,0.9);
+}
+
+.horn{
+      width: 40px;
+      height: 40px;
+      background-image: url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background-size: 100%;
+      background-position: center;
+      margin-top: 15px;
+      margin-left: 20px;
+}
+
+.progress{
+      width: 1130px;
+      height: 10px;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      margin-left: -565px;   
+      top: 30px;
+      border-radius: 2px;
+}
+.progress-bar{
+      width: 10px;
+      height: 10px;
+      background: #b6b6b6;
+}
+
+.progress-point{
+      width: 30px;
+      height: 30px;
+      background: yellowgreen;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: -10px;
+      box-shadow: 0 0 5px #ddd;
+}
+    </style>
+</head>
+<body>
+    <div id="bar" draggable="false">
+        <div class="horn"  draggable="false"></div>
+        <div class="progress" title="10"  draggable="false">
+            <div class="progress-bar"  draggable="false"></div>
+            <div class="progress-point"  draggable="false"></div>
+        </div>
+    </div>
+
+    <script>
+        
+        var progress = $(".progress");
+        var proPoint = $(".progress-point");
+        var horn = $(".horn");
+        var proBar = $(".progress-bar");
+        var list = {
+            proOffsetLeft : progress.offsetLeft,
+            proWidth : progress.offsetWidth,
+            volume : {
+                "low" : "https://upload-images.jianshu.io/upload_images/16960494-86ea623e30ad4c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                "hight": "https://upload-images.jianshu.io/upload_images/16960494-0192f12b7372e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+                "mute": "https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+                "middle": "https://upload-images.jianshu.io/upload_images/16960494-ecacc6b836a0661e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" ,
+            }
+        };
+        function $(selector){
+            var ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1?ele[0]:ele;     
+        }
+        proPoint.addEventListener("mousedown" , handlerPointStart);
+        function handlerPointStart(evt){
+            var e = evt || event;
+            list.left = e.offsetX;
+            proPoint.addEventListener("mousemove" , handlerPointMove);
+
+        }
+        proPoint.addEventListener("mousemove" , handlerPointMove);
+        function handlerPointMove(evt){
+            var e = evt || event;
+            var Left = e.clientX - list.left - list.proOffsetLeft ;
+            Left = Left < -15 ? -15 : Left;
+            Left = Left > list.proWidth -15 ? list.proWidth -15 : Left;
+            proPoint.style.left = Left + "px";
+            console.log(Left,list.proWidth);
+            var pro = handlerChangeBar(Left);
+            handlerHornChange(pro);
+
+        }
+        document.addEventListener("mouseup" , handlerPointEnd);
+        function handlerPointEnd(){
+            proPoint.removeEventListener("mousemove" , handlerPointMove);
+        }
+        document.addEventListener("mouseup" , handlerPointEnd);
+        function handlerChangeBar(a){
+            proBar.style.width = a + "px";
+            var a = parseInt(a / list.proWidth * 100);
+            progress.title = a  + "%";
+            return a;
+        }
+        function handlerHornChange(b){
+            if(b <= 0){
+                horn.style.backgroundImage = "url(" + list.volume.mute + ")";
+            }else if(b > 0 && b <= 33){
+                console.log(b);
+                horn.style.backgroundImage = "url(" + list.volume.low + ")";
+            }else if(b > 33 && b <= 66){
+                horn.style.backgroundImage = "url(" + list.volume.middle + ")";
+            }else if(b > 66 && b <= 100){
+                horn.style.backgroundImage = "url(" + list.volume.hight + ")";
+            }
+        }
+        
+        
+
+
+    </script>
+</body>
+</html>

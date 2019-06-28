@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        li{
+            width: 100%;
+            height: 40px;
+            background: #aaaaaa;
+            border: 2px solid #977b7b;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <ul id = "ul">
+        <li class="lili">这是一个li <span> 这是一个li </span>这是一个li</li>
+        <li class="lili">这是一个li这是一个li这是一个li</li>
+        <li class="lili">这是一个li这是一个li这是一个li</li>
+        <li class="lili">这是一个li这是一个li这是一个li</li>
+        <li class="lili">这是一个li这是一个li这是一个li</li>
+        <li>这是一个li这是一个li这是一个li</li>
+        <li>这是一个li这是一个li这是一个li</li>
+        <li>这是一个li这是一个li这是一个li</li>
+        <li>这是一个li这是一个li这是一个li</li>
+        <li>这是一个li这是一个li这是一个li</li>
+    </ul>
+    <script>
+        //实现事件委托  事件委托是将原来绑定给多个元素的监听绑定给他们的父元素 
+        //1.首先进行布局 2.给ul设置监听，进行事件绑定 给ul绑定事件，当ul被点击的时候触发事件
+        //事件触发的顺序为事件冒泡，从事件源开始进行冒泡设定一个条件
+        var ul = document.getElementById("ul");
+        ul.addEventListener("click", delegation(".lili"));
+        function delegation(selector){
+            return function(evt){
+                var e = evt||window.event;
+                var target = e.target || e.srcElement;
+                var ele = this.querySelectorAll(selector);
+                var targetFamily = [];
+                var _targetTemp = target;
+                while(true){
+                    targetFamily.push(_targetTemp);
+                    _targetTemp = _targetTemp.parentNode;
+                    if(_targetTemp == this){
+                        break;
+                    }
+                }
+                console.log(targetFamily)
+                for(var i = 0; i < ele.length; i++){
+                    if((targetFamily.indexOf(ele[i]))!== -1){
+                        //  ele[i].style.backgroundColor = "#aad";     
+                        // ele[i].style.backgroundColor = "#aad";    
+                        handler(ele, i, e);                        
+                         break;  
+                         console.log(ele[i])                
+                    }
+                    // if(target === ele[i]){
+                    //     ele[i].style.backgroundColor = "#aad";
+                    //     break;
+                    // }
+                }
+            }
+        }
+        function handler(ele, i, e){
+            ele[i].style.backgroundColor = "#aad";     
+        }
+
+    </script>
+</body>
+</html>

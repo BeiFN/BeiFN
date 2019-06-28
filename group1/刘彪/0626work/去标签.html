@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="input" cols="30" rows="10"></textarea>
+    <button id="btn">点击去标签</button>
+    <textarea name="" id="output" cols="30" rows="10"></textarea>
+    <script>
+        //目标:用正则匹配所有的标签,并删除所有标签
+        
+        
+        var reg1= /<.+>/g; 
+        //正则之中的+会以贪婪形式进行匹配,尽可能多的匹配
+       
+        //  .  =>是不包含换行符的;
+
+        var reg2 = /<[^><]+>/g;
+        var reg = /<(.*?)>/g;   //非贪婪
+       
+        var btn = document.getElementById("btn");
+
+        var input = document.getElementById("input");
+
+        var output = document.getElementById("output");
+
+        btn.addEventListener("click",function(){
+            var inputValue = input.value;
+
+            console.log(inputValue.match(reg1));
+
+            // output.value = inputValue.replace(reg1,"");
+
+            
+        })
+        
+        
+    </script>
+    
+</body>
+</html>
+
+<!-- <div class="read-content j_readContent">
+        <p>　　安娜曾经对他说，你不要做杀手，想办法逃出去。</p>
+        <p>　　他问为什么，安娜说，你胆小心软。</p>
+        <p>　　安娜第二年就死了，死在一个光头手上。半个月后，他杀了光头。</p>
+        <p>　　人都死了，只剩下他还活着。</p>
+        <p>　　龙城坐在光甲的肩膀上，看着满地的尸体，手指夹着断了半截的烟，这是从老野身上找到的。他不会抽，也找不到火，学着老野把烟往嘴里塞。他手在抖，嘴唇哆嗦得厉害，塞了几次才塞进去。</p>
+        <p>　　他有点怕。</p>
+        <p>　　他记得安娜说的话，他要逃出去。</p>
+        <p>　　天阴沉沉，风里带着腥味。啪嗒，豆大雨滴落在他脸颊，下雨了？他忽然意识到不对，伸手抹了一把，手指染红。</p>
+        <p>　　他抬起头，鲜红的血点从天空倾盆而下。</p>
+        <p>　　血红的雨幕，轰隆之声在不断接近，一团巨大的阴影在缓缓逼近。</p>
+        <p>　　一架残破的黑色人形光甲穿过红色雨幕，它的左肩到腰部彻底撕裂，露出驾驶舱。驾驶舱也只剩下半截，裸露在空气中。一位脸色苍白的男子坐在上面，头发湿哒哒贴在脸上，鲜血蜿蜒流淌而下，他朝龙城笑。</p>
+        <p>　　龙城瞳孔收缩，教官！</p>
+        <p>　　地面的鲜血漫过光甲脚踝，如同血海。</p>
+        <p>　　龙城没有一丝犹豫，飞快钻进驾驶舱，闪电般戴上脑控仪，关上驾驶舱，启动光甲。</p>
+        <p>　　刚才他明明杀死了教官……</p>
+        <p>　　嘴里还咬着半截烟，嘴唇忽然不哆嗦了，脸色还是苍白，神情变冷，手很稳定。</p>
+        <p>　　他能杀得了一次，就能杀第二次。</p>
+    </div> -->

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    li{
+        list-style-type: none;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    li{
+        padding: 3px 5px;
+        border-bottom: 2px solid #ddd;
+        text-align: center;
+        width: 80%;
+        margin: 5px auto;
+        background: #fff;
+    }
+    ul{
+        background: #ddd;
+    }
+</style>
+<body>
+    <ul>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li><span>我是li</span></li>
+        <li class="tests">我是li一</li>
+        <li class="tests">我是li</li>
+        <li class="tests">我是li</li>
+        <li class="tests">我是li</li>
+        <li class="tests">我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+
+    <script>
+        var ul = document.querySelector("ul");
+        ul.addEventListener("click",handlerChange(handlerClick,".tests"))
+        function handlerChange(handlerClick,selector){
+           return function(evt){
+               var e = evt || window.event ;
+               var target = e.target || e.srcElement;
+               var targetFamily = [];
+               var _temp = target;
+               var eleList = this.querySelectorAll(selector);
+            //    console.log(eleList);
+            //    console.log(this);
+               while(true){
+                   if(_temp === this){
+                       break;
+                   }
+                   targetFamily.push(_temp);
+                   _temp = _temp.parentNode;
+               }
+               
+               for(var i = 0 ,ele; ele = eleList[ i++ ];){
+                   if(targetFamily.length === 1 ? (target === ele) : (targetFamily.indexOf(ele) !== -1)){
+                       handlerClick.call(ele,e);
+                       break;
+                   }
+               }
+            }
+            
+        }
+    
+        function handlerClick(e){
+            // console.log(this,e);
+            this.style.background = "#00f";
+        }
+    </script>
+</body>
+</html>

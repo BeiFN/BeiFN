@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bar {
+            width: 100%;
+            height: 80px;
+            position: absolute;
+            border: 5px solid #000;
+            bottom: 0;
+            box-sizing: border-box;
+            border-image: linear-gradient(yellow, green) 30 30;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .horn {
+            width: 40px;
+            height: 40px;
+            background-image: url(https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+            background-size: 100%;
+            background-position: center;
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+
+        .progress {
+            width: 1130px;
+            height: 10px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            margin-left: -565px;
+            top: 30px;
+            border-radius: 2px;
+        }
+
+        .progress-bar {
+            width: 10px;
+            height: 10px;
+            background: #b6b6b6;
+        }
+
+        .progress-point {
+            width: 30px;
+            height: 30px;
+            background: yellowgreen;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: -10px;
+            box-shadow: 0 0 5px #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar" draggable="false">
+        <div class="horn" draggable="false"></div>
+        <div class="progress" title="10" draggable="false">
+            <div class="progress-bar" draggable="false"></div>
+            <div class="progress-point" draggable="false"></div>
+        </div>
+    </div>
+</body>
+<script>
+    function $(selector) {
+        var res = null;
+        return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
+    }
+
+    var bar = $("#bar");
+    var horn = $(".horn");
+    var progress = $(".progress");
+    var progress_bar = $(".progress-bar");
+    var progress_point = $(".progress-point");
+    var juli = {
+        pointLeft: null,
+        offsetWidth_progress: progress.offsetWidth,
+        offsetLeft_progress: progress.offsetLeft,
+        url: {
+            "mute": "https://upload-images.jianshu.io/upload_images/16960494-e859bac6f34f9188.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            "low": "https://upload-images.jianshu.io/upload_images/16960494-86ea623e30ad4c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            "middle": "https://upload-images.jianshu.io/upload_images/16960494-ecacc6b836a0661e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            "high": "https://upload-images.jianshu.io/upload_images/16960494-0192f12b7372e21e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        },
+    }
+    progress_point.addEventListener("mousedown", pointMoveStart);
+    document.addEventListener("mouseup", pointMoveEnd);
+
+    function pointMoveStart(evt) {
+        var e = evt || event;
+        pointLeft = e.offsetX;
+        document.addEventListener("mousemove", pointMoveIng);
+    }
+    function pointMoveIng(evt) {
+        var e = evt || event;
+        var pointMoveIngLeft = e.clientX - pointLeft - juli.offsetLeft_progress;
+        var resLeft = pointMoveIngLeft < -15 ? -15 : pointMoveIngLeft;
+        resLeft = resLeft > juli.offsetWidth_progress - 15 ? juli.offsetWidth_progress - 15 : resLeft;
+        progress_point.style.left = resLeft + "px";
+        progress_bar.style.width = resLeft + "px";
+        progress_bar.style.background = "green";
+        var percent = Math.round((resLeft + 15) / juli.offsetWidth_progress * 100);
+        progress.title = percent;
+        if (percent === 0) horn.style.backgroundImage = "url(" + juli.url.mute + ")";
+        else if (percent > 0 && percent <= 33) horn.style.backgroundImage = "url(" + juli.url.low + ")";
+        else if (percent > 33 && percent <= 66) horn.style.backgroundImage = "url(" + juli.url.middle + ")";
+        else horn.style.backgroundImage = "url(" + juli.url.high + ")";
+    }
+    function pointMoveEnd() {
+        document.removeEventListener("mousemove", pointMoveIng)
+    }
+
+</script>
+
+</html>
