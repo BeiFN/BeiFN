@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>values && keys</title>
+</head>
+<body>
+<script>
+    var json ={
+        "1111":{
+            name :"这是大炮",
+            price: 999
+        },
+        "2222" :{
+            name :"这是飞机",
+            price :9999
+        },
+        "3333":{
+            name :"这是火箭",
+            price: 99999
+        }
+    }
+    var  keys = Object . keys(json);
+    console.log(keys); //获取对象的属性 1111 2222 3333
+    var values =Object . values(json);
+    console.log(values); //获取对象的值
+    var defines = Object .defineProperty(json ,"name",{});
+    console.log(defines);
+</script>
+</body>
+</html>

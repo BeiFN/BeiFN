@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bind和柯里化</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function myBlind(fn,_this){
+				var arg1=[].slice.call(arguments).splice(2);
+				console.log(arg1,this);
+				return function(){
+					var arg2=[].slice.call(arguments);
+					console.log(arg2,this);
+					fn.apply(_this,arg1.concat(arg2));
+				}
+			}
+			
+			function foo(){
+				console.log("hello",this);
+				console.log(arguments,this);
+			}
+			
+			var poo=myBlind(foo,{name:"world"},"bind","curring");
+			poo(1,"a",2,"b",3,"c");
+			console.log(poo(1,"a",2,"b",3,"c"));
+		</script>
+	</body>
+</html>

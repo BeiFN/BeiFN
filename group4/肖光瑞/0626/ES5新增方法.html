@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        var json = {
+            "1": {
+                name: "寒冰射手",
+                price: 450
+            },
+            "2": {
+                name: "德玛西亚之力",
+                price: 3150
+            },
+            "3": {
+                name: "流浪法师",
+                price: 450
+            },
+            "4": {
+                name: "疾风剑豪",
+                price: 6300
+            },
+            "5": {
+                name: "德玛西亚皇子",
+                price: 4800
+            }
+        }
+        var id = "1" ;
+        var keys = Object.keys(json);
+        var index = keys.indexOf(id);
+        console.log(json[keys[index]]);
+        console.log(Object.values(json))
+    </script>
+</body>
+
+</html>

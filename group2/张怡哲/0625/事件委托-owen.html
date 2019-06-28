@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button class="btn"><strong><i>生</i>成</strong>新按钮</button>
+    <button class="btn">生成新按钮</button>
+    <button class="btn">生成新按钮</button>
+    <button class="btn">生成新按钮</button>
+    <button class="btn">生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <button>生成新按钮</button>
+    <script>
+        var body = document.getElementById("body");
+        body.addEventListener("click" , delegation(createButton , ".btn"));
+        var _target = null;
+
+        function delegation(eventCallBack , selector){
+            return function(evt){
+                var e = evt || event;
+                var target = e.target || e.srcElement;
+                _target = target;
+                var targetFamily = [];
+
+                var count =0 ;
+                while(true && count < 100){
+                    if(this === _target){
+                        break;
+                    }
+                    targetFamily.push(_target);
+                    _target = _target.parentNode;
+                    count++;
+                }
+
+                var eleList = this.querySelectorAll(selector);
+                // console.log(eleList)
+                // console.log();
+                for(var i=0,ele ; ele = eleList[i++];){
+                    if(targetFamily === 1 ? target === this : targetFamily.indexOf(ele)!==-1){
+                        createButton.call(ele.e);
+                    }
+                }
+            }
+        }
+
+        function createButton(){
+            var button = document.createElement("button");
+            body.appendChild(button);
+            button.innerHTML = "这是一个新按钮";
+        }
+    </script>
+</body>
+</html>

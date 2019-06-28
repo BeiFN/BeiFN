@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+    <style>
+        ul{
+            width: 150px;
+            margin: 0 auto;
+            background: #181;
+        }
+
+        li{
+            padding: 3px 20px;
+            border-bottom:  2px solid #666;
+            text-align: center;
+            width: 100px;
+            background: #369;
+            line-height: 20px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+        <li>这是一段文字</li>
+    </ul>
+    <script>
+        var ul = document.querySelector("ul");
+        ul.addEventListener("click",function(evt){
+            var e = evt||event;
+            var target = e.target|| e.srcElement;
+            if(target.nodeName === "LI"){
+                target.style.background = "#100861";
+            }
+        })
+    </script>
+</body>
+</html>

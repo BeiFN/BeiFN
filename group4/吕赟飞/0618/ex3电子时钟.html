@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            height: 140px;
+            position: absolute;
+            left: 135px;
+            transform-origin: center bottom;
+        }
+
+        .outline {
+            width: 300px;
+            height: 300px;
+            background-color: cadetblue;
+            position: relative;
+        }
+
+        .inline {
+            width: 280px;
+            height: 280px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .one {
+            transform: rotate(30deg);
+        }
+
+        .two {
+            transform: rotate(60deg);
+        }
+
+        .three {
+            transform: rotate(90deg);
+        }
+
+        .four {
+            transform: rotate(120deg);
+        }
+
+        .five {
+            transform: rotate(150deg);
+        }
+
+        .six {
+            transform: rotate(180deg);
+        }
+
+        .seven {
+            transform: rotate(210deg);
+        }
+
+        .eight {
+            transform: rotate(240deg);
+        }
+
+        .nine {
+            transform: rotate(270deg);
+        }
+
+        .ten {
+            transform: rotate(300deg);
+        }
+
+        .eleven {
+            transform: rotate(330deg);
+        }
+
+        .twelve {
+            transform: rotate(360deg);
+        }
+
+        #hour {
+            width: 6px;
+            height: 80px;
+            background-color: greenyellow;
+            position: absolute;
+            left: 147px;
+            top: 70px;
+            transform-origin: center bottom;
+        }
+
+        #minute {
+            width: 3px;
+            height: 135px;
+            background-color: red;
+            position: absolute;
+            left: 147px;
+            top: 15px;
+            transform-origin: center bottom;
+        }
+
+        #second {
+            width: 2px;
+            height: 135px;
+            background-color: blue;
+            position: absolute;
+            top: 15px;
+            left: 147px;
+            transform-origin: center bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outline">
+        <ul class="inline">
+            <li class="one">1</li>
+            <li class="two">2</li>
+            <li class="three">3</li>
+            <li class="four">4</li>
+            <li class="five">5</li>
+            <li class="six">6</li>
+            <li class="seven">7</li>
+            <li class="eight">8</li>
+            <li class="nine">9</li>
+            <li class="ten">10</li>
+            <li class="eleven">11</li>
+            <li class="twelve">12</li>
+        </ul>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+        var second = document.getElementById("second");
+        var minute = document.getElementById("minute");
+        var hour = document.getElementById("hour");
+        animation();
+
+        function animation() {
+            requestAnimationFrame(animation); //requestAnimationFrame()方法实现帧动画
+            var date = new Date();
+            seconds = date.getSeconds() * 6 + date.getMilliseconds() * (6 / 1000);
+            second.style.transform = "rotate(" + seconds + "deg)";
+            minutes = date.getMinutes() * 6 + date.getSeconds() * (6 / 60);
+            minute.style.transform = "rotate(" + minutes + "deg)";
+            hours = date.getHours() * 30 + date.getMinutes() * (30 / 60) + date.getSeconds() * (30 / 3600);
+            hour.style.transform = "rotate(" + hours + "deg)";
+        }
+    </script>
+</body>
+
+</html>
