@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高级查找</title>
+    <style>
+      #content{
+          width: 400px;
+          font-size: 12px;
+          text-indent: 2em;
+          height: 200px;
+          border: 10px solid #eeeeee;
+         
+      }
+    span{
+        background: yellowgreen;
+    }
+    </style>
+</head>
+<body>
+<input type="text" name="" id="btn">
+<p id="content">
+   <span> 正则</span>表达式的“鼻祖”或许可一直追溯到科学家对人类神经系统工作原理的早期研究。美国新泽西州的Warren McCulloch和出生在美国底特律的Walter Pitts这两位神经生理方面的科学家，研究出了一种用数学方式来描述神经网络的新方法，他们创造性地将神经系统中的神经元描述成了小而简单的自动控制元，从而作出了一项伟大的工作革新。
+    在1951 年,一位名叫Stephen Kleene的数学科学家，他在Warren McCulloch和Walter Pitts早期工作的基础之上，发表了一篇题目是《神经网事件的表示法》的论文，利用称之为正则集合的数学符号来描述此模型，引入了正则表达式的概念。正则表达式被作为用来描述其称之为“正则集的代数”的一种表达式，因而采用了“正则表达式”这个术语。
+<script>
+    var oBtn = document.getElementById("btn");
+    var oP = document.getElementById("content");
+    oBtn.addEventListener("keydown",handlerSearch);
+    function handlerSearch(evt){
+        var e = evt || event;
+        var keyCode = e.keyCode || e.which;
+        if(keyCode===13){
+            hightLight();
+        }
+    }
+
+    function hightLight(){
+        var value = oBtn.value;
+        var contentText = oP.innerHTML;
+        var nowReg = new RegExp("(" + value + ")","g");
+        oP.innerHTML = contentText.replace(nowReg,"<span></span>");
+        
+
+        
+    }
+  
+</script>
+</body>
+</html>
