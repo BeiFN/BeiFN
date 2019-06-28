@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        //bind封装     创建一个新函数，this绑定，强制定义参数
+        //bind是柯里化底层封装的结果
+        //函数内部调用目标函数，并做预处理，那么它就是柯里化
+        // function foo(){
+        //     console.log(arguments,this);
+        // }
+        // function bind(fn,_this){
+        //     //arg1用来承载bind做传入的参数,
+        //     var arg1 = [].slice.call(arguments).slice(2);
+        //     return function(){
+        //         //arg2用来承载poo()的参数
+        //         //
+        //         var arg2 = [].slice.call(arguments);
+        //         fn.apply(_this,arg1.concat(arg2));
+        //     }
+        // }    
+        // var poo = bind(foo,{name:"吴彦祖"},"bind");
+        // //赋值给poo的是bind的结果，bind返回的结果是匿名函数
+        // //匿名函数调用foo函数，这和foo函数直接执行一样，只是
+        // //this指向不同
+        // poo(1,2,3);
+
+
+
+
+        var box = document.getElementById("box"); 
+        function getAttribute(dom ,attr){
+            // dom :想要获取属性的dom节点
+            //attr:表示dom中要获取的属性的名称
+            var attributes  = dom.attributes;
+            for (var i = 0,attribute;attribute = attributes[i++];){
+                if(attr === attribute.nodeName){
+                    return attribute.nodeValue;
+                }
+            }
+            return null;
+        } 
+        console.log(getAttribute(box , "id"));
+        
+    </script>
+</body>
+</html>

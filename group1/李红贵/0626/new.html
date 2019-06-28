@@ -93,12 +93,14 @@
         }
         foo();
         function bind(fn,_this){
-            return function(){
+            console.log( arguments);
+            return function(/*参数实际传入位置*/){
+                console.log(arguments);
                 fn.call(_this);
             }
         }
 
-        var poo = bind(foo);
+        var poo = bind(foo/*固定参数*/);
         poo(1,2,3);
         
 
