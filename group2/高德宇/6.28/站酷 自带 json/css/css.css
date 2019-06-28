@@ -1,0 +1,458 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #282828;
+}
+.header {
+    width: 100%;
+    height: 55px;
+    background: #ffe300;
+}
+.header>a>img {
+    width: 114px;   
+    height: 20px;
+    margin: 17px 0 0 72px;
+    float: left;
+}
+.header>ul>li {
+    float: left;
+}
+.header>ul>li>a {
+    font-size: 12px;
+    display: block;
+    padding: 22px 24px 21px 24px;
+    line-height: 12px;
+}
+.header>ul>li>a:hover {
+    background: #282828;
+    color: #ffe300;
+}
+.header>ul {
+    float: left;
+    margin-left: 176px;
+}
+.header>.header_search,
+.header_yun{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 18px;
+    margin-left: 38px;
+}
+.header>.header_search p{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/nav-search.svg?v=1) no-repeat 50%;
+}
+.header>.header_search:hover>p{
+    background: url(../img/search.png) no-repeat 50%;
+    background-size: 100%;
+}
+.header>.header_search:hover,
+.header>.header_yun:hover{
+    background: #282828;
+}
+
+.header .header_yun{
+    background-size: 100%;
+}
+.header>.header_yun:hover>p{
+    background: url(../img/yun1.png) no-repeat;
+    background-size: 100%;
+}
+.header_yun p{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/yun.png) no-repeat 50%;
+    background-size: 100%;
+}
+.header_yun {
+    margin: 0;
+}
+.header .log,.header .zhuce{
+    display: inline-block;
+    width: 68px;
+    height: 58px;
+    line-height: 58px;
+    font-size: 14px;
+}
+.header span{
+    display: inline-block;
+    line-height: 14px;
+    height: 14px;
+    text-align: center;
+    width: 68px;
+}
+.header .log span {
+    border-right: 1px solid #282828;
+}
+.bold {
+    font-weight: bold;
+    color: black !important;
+}
+.faxian li{
+    float: left;
+}
+.faxian li a{
+    font-size: 14px;
+}
+.faxian {
+    position: relative;
+}
+.faxian div {
+    position: absolute;
+    width: 644px;
+    height: 144px;
+}
+.faxian_h {
+    height: 87px;
+    border-bottom: 1px solid #d4d4d4;
+    padding-top: 5px;
+}
+.faxian_h li {
+    width: 90px;
+    height: 28px;
+    margin-top: 8px;
+    text-align: center;
+
+}
+.faxian_h li a{
+    width: 56px;
+    height: 28px;
+    text-align: center;
+    display: inline-block;
+    line-height: 28px;
+    border-radius: 5px;
+
+}
+.faxian_h li .big {
+    width: 70px;
+}
+.faxian_h li a:hover{
+    background: #ffe300;
+}
+.faxian_h span{
+    float: right;
+    margin-top: 10px;
+    height: 14px;
+    width: 1px;
+    background: #d4d4d4;
+}
+.faxian_l li{
+    margin:12px 15px 0 29px;
+}
+.xuanfukuang{
+    z-index: 999;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    display: none;
+    background: #fff;
+}
+.faxian_l li a:hover{
+    color: #d36f16;
+}
+.faxian:hover>.xuanfukuang{
+    display: block;
+}
+.zhiwei{
+    z-index: 999;
+    width: 152px;
+    height: auto;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+    background: #fff;
+    padding: 6px 0;
+    position: absolute;
+    display: none;
+}
+.zhiwei a{
+    display: block;
+    padding-left: 20px;
+    width: 132px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+}
+.zhiwei a:hover{
+    background: #ffe300;
+}
+.zhiweid:hover>.zhiwei,
+.huodong:hover>.zhiwei,
+.sucai:hover>.zhiwei,
+.kecheng:hover>.zhiwei,
+.shengluehao:hover>.zhiwei{
+    display: block;
+}
+/* 轮播图 */
+.bigbox{
+    width: 1130px;
+    height: 326px;
+    margin: 0 auto;
+}
+.lunbo{
+    position: relative;
+    width: 1130px;
+    height: 286px;
+    margin-top: 20px; 
+    overflow: hidden;
+}
+.lunbo a{
+    display: block;
+    width: 52px;
+    height: 52px;
+}
+.lunbo .arrow_l{
+    filter:alpha(opacity=80);
+    -moz-opacity:0.6;
+    opacity:0.60;
+    position: absolute;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat center;
+    left: 30px;
+    top: 50%;
+    margin-top: -26px;
+    display: none;
+}
+.lunbo .arrow_r{
+    filter:alpha(opacity=80);
+    -moz-opacity:0.6;
+    opacity:0.60;
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    margin-top: -26px;
+    display: none;
+}
+#lunbo:hover a{
+    display: block;
+}
+.lunbo img{
+    width: 1130px;
+    height: 286px;
+    display: block;
+    float: left;
+    border-radius: 5px; 
+}
+.lunbo div{
+    width: 4520px;
+    position: absolute;
+}
+.nav{
+    text-align: center;
+    width: auto;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    margin-top: 230px;
+    background: #fff;
+    box-shadow: 0px 3px 5px -4px #d4d4d4;
+    z-index: 999;
+}
+.nav a{
+    display: inline-block;
+    color: #a2a2a2;
+    font-size: 16px;
+    width: 129px;
+    height: 56px;
+    line-height: 56px;
+}
+/* 广告 */
+.guanggao {
+    width: 1150px;
+    height: 169px;
+    margin-top: 20px;
+}
+.guanggao ul li{
+    float: left;
+    width: 210px;
+    height: 168px;
+    margin-right: 20px;
+}
+.guanggao ul li img{
+    
+    width: 210px;
+    height: 168px;
+}
+
+.content{
+    background: #f4f4f4;
+}
+#container{
+    width: 1150px;
+    margin: 0 auto;
+}
+.contentbox {
+    width: 210px;
+    height: 308px;
+    margin: 20px 10px;
+    float: left;
+    background: #fff;
+}
+.contentbox img{
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
+#container h5{
+    font-weight: normal;
+    line-height: 14px;
+    font-size: 14px;
+    color:  black;
+    margin: 16px 0 0;
+}
+#container .xiu{
+    font-size: 12px;
+    color: #bbbbbb;
+    line-height: 12px;
+    margin: 9px 0 18px; 
+}
+/* 翻页 */
+.fanye{
+    width: 600px;
+    height: 40px;
+    padding-top: 30px;
+    margin: 0 auto ;
+    clear: both;
+}
+.fanye li{
+    margin: 0 3px;
+    float: left;
+}
+.fanye li a{
+    width: 38px;
+    height: 38px;
+    border: 1px solid #E9E9E9;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 4px;
+    background-color: white;
+}
+#bianhuang,
+.fanye li a:hover{
+    background: #ffe300;
+    color: black;
+}
+#container .contentbox span{
+    font-size: 12px;
+    color: #bbb;
+    margin-right: 10px;
+    cursor: default;
+    background-size: 16px auto;
+}
+#container .contentbox .span1{
+    background: url(../img/eye.png) no-repeat 0 4px;
+}
+#container .contentbox .span2{
+    background: url(../img/pinglun.png) no-repeat 0 4px;
+}
+#container .contentbox .span3{
+    background: url(../img/zan.png) no-repeat 0 4px;
+}
+#container .contentbox span:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 5px;
+}
+.hudong {
+    padding-left: 15px;
+    height: 84px;
+    border-bottom: 1px solid #ddd;
+}
+.xinxi {
+    height: 50px;
+    line-height: 50px;
+    padding-right: 16px;
+    font-size: 12px;
+    position: relative;
+}
+.xin span {
+    display: inline-block;
+    width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background: red;
+    font-size: 12px;
+}
+.xinxi span a{
+    color: black;
+    font-size: 12px;
+}
+.xinxi span a img{
+    width: 24px;
+    height: 24px;
+    border: none;
+    vertical-align: middle;
+    border-radius: 50%;   
+     margin-right: 10px
+}
+.ad {
+    width: 1130px;
+    height: 100px;
+    margin: 40px auto 22px;
+}
+.ad img{
+    width: 100%;
+}
+.tuijian {
+    width: 1150px;
+    height: 236px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #666;
+    line-height: 14px;
+}
+.tuijian .p1{
+    float: left;
+    margin-left: 10px;
+}
+.tuijian .p2{
+    float: right;
+    cursor: pointer;
+    color: #d36f16;
+    margin-right: 10px;
+}
+.tuijianc {
+    margin: 10px;
+    margin-top: 32px;
+    width: 210px;
+    height: 204px;
+    background: white;
+    float: left;
+
+}
+.bottom{
+    margin-top: 50px;
+    height: 229px;
+    background: url(../img/dibu.png) no-repeat;
+    background-size: 100%;
+}
+.tuijianc img{
+    width: 100%;
+}
+.tuijianc a{
+    display: inline-block;
+    width: 50px;
+    padding: 15px 0 0 16px;
+    font-size: 12px;
+}
+.tuijianc span{
+    float: right;
+    margin: 15px 14px 0 0; 
+}
+.tuijianc span img{
+    width: 14px;
+    height: 16px;
+}
