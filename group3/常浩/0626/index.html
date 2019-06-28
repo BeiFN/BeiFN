@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JSON新增属性方法
+        // var json = ' {"a" : "b", "c" : "d"} ';
+        //json数据的处理我们一般是把其转化为对象
+        //eval的处理
+        // console.log( eval("("+json+")") ) ;  
+        //JSON.parse  解析字符串时如果遇到了不符合json规范的字符串，这个时候json。parse机会报出错误；用来提示字符串之中哪里出现了错误;
+        // console.log(JSON.parse(json));
+
+        // JSON.stringify() //是把对象转化为json格式;
+        // var obj = {
+        //     a : 10,
+        //     "b" :{},
+        //     "c" :[]
+        // }
+        // console.log(JSON.stringify(obj));  //{"a":10,"b":{},"c":[]}
+
+        // Object新增方法
+        // var json = {
+        //     "1130" : {
+        //         name : "这是一个商品",
+        //         price : 998
+        //     },
+        //     "1134" : {
+        //         name : "这是一个商品",
+        //         price : 991
+        //     },
+        //     "1230" : {
+        //         name : "这是一个商品",
+        //         price : 992
+        //     },
+        //     "1140" : {
+        //         name : "这是一个商品",
+        //         price : 993
+        //     },
+        //     "1230" : {
+        //         name : "这是一个商品",
+        //         price : 9945
+        //     }
+        // }  
+        //假如我们要找到key名称是1140的商品 我们之前的做法是：循环遍历
+        // var id = "1140";
+        // for(var index in json){
+        //     if(index == id){
+        //         console.log(json[index]);  //{name: "这是一个商品", price: 993}
+        //         break;
+        //     }
+        // }  
+        //下面的是ES5新增方法
+        // var key = Object.keys(json); //这个keys是得到json中所有key的名称，并且返回的是数组。
+        // console.log(key);// ["1130", "1134", "1140", "1230"]
+        // //这样的话 我们可以利用indexOf判断其是否存在这个商品
+        // var index = key.indexOf(id);
+        // console.log(index);
+        // var i =  json[key[index]];
+        //  console.log(i);
+
+        // var value = Object.values(json);
+        // 这个是取出所有的value值 (4) 其返回值也是一个数组
+        // console.log(value);
+
+        //正则表达式
+        // /d代表的是数字
+        // + 是量词，最少一个   最多不限制
+        // 修饰符  ，表示正则整体的匹配规则  g是全局匹配  
+        //  正则表达式的开启  //
+        //正则的创建  
+        // var reg = new RegExp("规则","修饰符")；
+        // var reg = / "规则"/"修饰符";
+        // 元字符 [] 
+        // [0-9] 代表0到9的数字 [a-z]代表的是a到z
+        //  ^ 表示除了这个字符怎么怎么样
+        //  . 点是任意字符，但是不包括换行符
+        // *? 开启非贪婪模式 懒惰模式 一旦匹配成功就立即终止。
+        
+
+
+
+    </script>
+</body>
+</html>

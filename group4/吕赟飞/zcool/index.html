@@ -789,38 +789,53 @@
 
 <script>
     // 轮播图
-    var leftBtn, rightBtn, images;
+    var leftBtn, rightBtn, images, timer;
     var position = 0;
 
     init();
 
     function init() {
+        banner = document.getElementById("banner");
         leftBtn = document.getElementById("leftBtn");
         rightBtn = document.getElementById("rightBtn");
         images = document.getElementById("images");
+        
         leftBtn.addEventListener("click", clickHandler);
         rightBtn.addEventListener("click", clickHandler);
-        imagesMove();
+        banner.addEventListener("mouseenter", clearTimer);
+        banner.addEventListener("mouseleave", openTimer);
+
+        timer = setInterval(imagesMoveAuto, 2000);
+    }
+
+    function clearTimer() {
+        clearInterval(timer);
+    }
+
+    function openTimer() {
+        timer = setInterval(imagesMoveAuto, 2000);
+    }
+
+    function imagesMoveAuto() {
+        images.style.left = -1130 * position + "px";
+        if (position === 4) position = -1;
+        position++;
     }
 
     function clickHandler(e) {
         if (this === leftBtn) {
             position--;
-            if (position < 0) {
-                position = 5;
-            }
-            imagesMove();
-            return;
-        }
-        position++;
-        if (position > 5) {
-            position = 0;
+            if (position < 0) position = 5;
+        } else {
+            position++;
+            if (position > 5) position = 0;
         }
         imagesMove();
     }
 
     function imagesMove() {
         images.style.left = -1130 * position + "px";
+
     }
 
     // 吸顶导航
@@ -835,29 +850,34 @@
             start = document.documentElement.scrollTop;
             if (start > 607) {
                 header.style.position = "fixed";
+                header.style.zIndex = "999"
                 header.style.top = 0;
             } else {
                 header.style.position = "static";
             }
         }
+
     }
 
-    // 显示""按钮
+
+
+    // 显示按钮
     disTop();
 
     function disTop() {
         var btnTop = document.querySelector("#backTop");
         window.addEventListener("scroll", scrollHandler);
+        var start = 0;
 
         function scrollHandler(e) {
-            var start = document.documentElement.scrollTop;
+            start = document.documentElement.scrollTop;
             if (start >= 1400) {
                 btnTop.style.position = "absolute";
                 btnTop.style.top = "1850px";
                 btnTop.style.display = "block";
             } else if (start < 1400 && start > 607) {
                 btnTop.style.cssText = "display:block;position:fixed;top:500px";
-            } else{
+            } else {
                 btnTop.style.display = "none";
             }
         }
@@ -865,23 +885,24 @@
 
     // 返回顶部
     backTop();
+    var bool = false;
 
     function backTop() {
         var btn = document.querySelector("#backTop");
-        btn.addEventListener("click", clickHandler);
-        var bool = false;
+        btn.addEventListener("click", topClickHandler);
+        setInterval(animation, 16);
+    }
 
-        function clickHandler(e) {
-            bool = !bool;
-            var time = setInterval(function () {
-                if (!bool) return;
-                if (document.documentElement.scrollTop <= 0) {
-                    clearInterval(time);
-                    return;
-                }
-                document.documentElement.scrollTop -= 150;
-            }, 16);
+    function animation() {
+        if (!bool) return;
+        document.documentElement.scrollTop -= 150;
+        if (document.documentElement.scrollTop <= 0) {
+            bool = false;
         }
+    }
+
+    function topClickHandler() {
+        bool = true;
     }
 </script>
 
