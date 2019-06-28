@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,5,6,7,8,9];
+            //forEach为遍历数组，item为数组的值，index为数组的下标，arr为数组本身，没有返回值
+            arr.forEach(function(item,index,arr){
+                console.log(item,index,arr);
+            });
+            //map为遍历每一个值，并在参数函数内对新数组进行返回，并返回一个新数组
+            var newArr = arr.map(function(item,index,arr){
+                return item * 20;
+            });
+            console.log(newArr);
+            //filter为过滤的意思，会过滤出来函数参数内item大于某一个的值，并将返回值返回在一个新数组
+            var newArr2 = arr.filter(function(item,index,arr){
+                return item > 5;
+            });
+            console.log(newArr2);
+            //some判定数组中是否存在某个符合条件的，一旦函数返回true，后面的将不会再次执行，如果匹配不到，则返回false
+            var newBoolean = arr.some(function(item,index,arr){
+                return item === 3;
+            });
+            console.log(newBoolean);
+            //every和some差不多，但是要求每个每一项都符合，才返回true，有一项不符合就返回false
+            console.log(newBoolean);
+            var newBoolean2 = arr.every(function(item,index,arr){
+                return item >= 1 ;
+            });
+            console.log(newBoolean2);
+            //reduce一般用来叠加，计算一个数组中所有数字的和
+            var newArr3 = arr.reduce(function(item,index,arr){
+                return item+index
+            })
+            console.log(newArr3);
+    </script>
+</body>
+</html>
