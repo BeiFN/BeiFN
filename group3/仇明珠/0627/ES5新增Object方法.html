@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj={
+            $data:{},
+        };
+        // Object.defineProperty(obj,"a",{
+        //     get:function(){
+        //         alert("get方法触发了");
+        //     },
+        //     set:function(){
+        //         alert("set方法触发了");
+        //     }
+        // })
+            // Object.defineProperty(obj,"a",{
+            //     get:function(){
+            //         return this.$data.a;
+            //     },
+            //     set:function(value){
+            //         this.$data.a=value;
+            //     }
+            // });
+            // obj.a=10;
+            // console.log(obj.a);
+            Object.defineProperties(obj,{
+                "a":{
+                    get:function(){
+                        alert("a的get方法触发了");
+                    },
+                    set:function(){
+                        alert("a的set方法触发了");
+                    }
+                },
+                "b":{
+                    get:function(){
+                        alert("b的get方法触发了");
+                    },
+                    set:function(){
+                        alert("b的set方法触发了");
+                    }
+                }
+            })
+    </script>
+</body>
+</html>
