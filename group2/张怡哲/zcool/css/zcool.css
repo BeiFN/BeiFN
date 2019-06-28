@@ -1,11 +1,16 @@
 @charset "utf-8";
 body{
     font-size: 14px;
+    color: #000;
+}
+a{
+    color: inherit;
 }
 .hidden{
     position: absolute;
     display: none;
     z-index: 2;
+    color: #000;
     /* background:#fff; */
 }
 .header{
@@ -33,7 +38,6 @@ body{
     float: left;
     height:56px;
     line-height:56px;
-    padding:0 20px;
     position: relative;
     cursor: pointer;
 }
@@ -44,14 +48,19 @@ body{
     font-weight:bold;
 }
 .header .nav .nav_list>li a{
-    color: #000;
+    display: block;
+    padding:0 20px;
+    /* width: 100%; */
+    height:100%;
+    color: inherit;
 }
-.header .nav .nav_list>li:hover{
+/* .header .nav .nav_list>li:hover{
     background-color: #000;
-}
-.header .nav .nav_list>li:hover>a{
     color: #ffe300;
 }
+.header .nav .nav_list>li:hover>a{
+    color: inherit;
+} */
 .header .nav .nav_list>li:hover>div{
     display: block
 }
@@ -60,6 +69,7 @@ body{
     background: #fff;
     left: 0;
     top: 56px;
+    color: #000;
 }
 .header .nav .nav_list .discover .discover_box .top{
     border-bottom:1px solid #eaeaea;
@@ -126,6 +136,8 @@ body{
     top: 56px;
     left: 0;
     border-radius: 4px;
+    overflow: hidden;
+    /* padding-bottom: 10px; */
 }
 .box_list ul li{
     height: 44px;
@@ -274,9 +286,11 @@ body{
     overflow: hidden;
     margin: 0 auto;
     height:56px;
+    width: 100%;
     line-height: 56px;
+    background:#fff;
     /* margin-top: 50px; */
-    position: sticky;
+    /* position: sticky; */
 }
 .product_title li{
     display: inline-block;
@@ -307,10 +321,14 @@ body{
     margin-right: 20px;
     float: left;
     border-radius: 5px;
+    overflow:hidden;
 }
 .img_card a>img{
     width: 210px;;
     height: 158px;
+}
+.img_card a>img:hover{
+    opacity: .8;
 }
 .info_card{
     width:178px;
@@ -400,4 +418,232 @@ body{
     color: #000;
     background: #ffe300;
     border-color: #ffe300;
+}
+.footer_notice{
+    height:100px;
+    /* margin-top: 30px; */
+    background: #ddd;
+    padding-top: 30px;
+}
+.footer_notice .safe{
+    /* margin-top: 30px;   */
+    position: relative;
+}
+.footer_notice a img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.goback{
+    width: 50px;
+    height:50px;
+    background: #bbb url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAJCAYAAADtj3ZXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNDRCMDUzQUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZGNDRCMDU0QUZDRTExRTZBM0MxRUE1MDJCQURBMUJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY0NEIwNTFBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY0NEIwNTJBRkNFMTFFNkEzQzFFQTUwMkJBREExQkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PJl6MAAAAmUlEQVR42mL4//8/Aw6sBsQHoTRWNbg06gPxi/8QAKINiNVsBcTvoRrfQun3UHG8mt2B+CtUwyog5oHS/6Hi7rg0hwDxT6jC2UDMDBUH0XOg4iD5UHTNyUD8B6qgG4gZ0VwE4vdA5f9A1YM1FwPxP6hENZ7QZ4DK/4eqLwYJdADxXyDOIqARhrOg6jtgTjIjUiMMg9QzAgQYANxouJaSk05sAAAAAElFTkSuQmCC)
+    no-repeat 17px 20px;
+    position: fixed;
+    right:130px;
+    bottom: 50px;
+    border-radius: 5px;
+    display: none;
+}
+.blank{
+    width: 100%;
+    height:500px;
+}
+.function_bar{
+    height:54px;
+    background: #ddd;
+    /* margin-top: 30px; */
+}
+.function_bar .safe{
+    padding: 20px 0;
+}
+.function_bar .safe div{
+    color: #d36f16;
+    float: right;
+}
+.pulsation_adv{
+    height: 203px;
+    padding-bottom: 30px;
+    background: #ddd;
+}
+.pulsation_adv .adv_box{
+    width: 210px;
+    height:203px;
+    background:#fff;
+    float: left;
+    border-radius: 5px;
+    overflow:hidden;
+    margin-left: 20px;
+}
+.adv_box:first-child{
+    margin: 0px;
+}
+.pulsation_adv .pic_part{
+    height: 158px;
+}
+.pic_part:hover{
+    opacity: .8;
+}
+.pulsation_adv .pic_part a img{
+    width: 100%;
+    height: 100%;
+}
+.text_part{
+    width: 178px;
+    height: 21px;
+    padding: 12px 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.text_part a{
+    color: #000;
+}
+.footer{
+    height: 229px;
+    background: #222;
+}
+.footer_top{
+    height: 129px;
+    border-bottom: 1px solid #333;
+    /* line-height: 129px; */
+}
+.footer_top_left{
+    height: 25px;
+    line-height: 30px;
+    float: left;
+    /* overflow: hidden; */
+    margin-top: 55px;
+}
+.footer_top_left ul li{
+    float: left;
+    padding-right:24px;
+}
+.footer_top_left ul li:first-child{
+    padding-left: 20px;
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-mobile.svg?v=1)
+    no-repeat left;
+    position: relative
+}
+.footer_top_left ul li:hover a{
+    color: #999;
+}
+.footer_top_left ul li:hover .phone_erweima{
+    display: block;
+}
+.phone_erweima{
+    width:122px;
+    height:131px;
+    position: absolute;
+    display: none;
+    left: -50%;
+    margin-left: 15px;
+    top: -135px;
+    background: url(https://static.zcool.cn/git_z/build/images/footer-mobile-code.png)
+    no-repeat;
+}
+.footer_top_right{
+    float: right;
+    margin-top: 55px;
+    height: 21px;
+}
+.footer_top_right li{
+    height: 21px;
+    width: 26px;
+    float: left;
+    margin-left: 40px;
+}
+.footer_top_right li:first-child{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixin.svg?v=1)
+    no-repeat right;
+    position: relative;
+}
+.footer_top_right li:first-child:hover{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weixinhover.svg?v=1);
+}
+.footer_top_right li:first-child:hover .weixin_erweima{
+    display: block;
+}
+.footer_top_right li:last-child{
+    background: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibo.svg?v=1)
+    no-repeat right;
+}
+.footer_top_right li:last-child:hover{
+    background-image: url(https://static.zcool.cn/git_z/build/images/svg/footer-share-weibohover.svg?v=1);
+}
+.weixin_erweima{
+    width:110px;
+    height: 110px;
+    background: url(https://static.zcool.cn/git_z/build/images/footer-weixin-code.jpg)
+    no-repeat;
+    background-size: 110px 110px;
+    position: absolute;
+    top:-120px;
+    left: -50%;
+    margin-left: -30px;
+    display: none;
+}
+.footer_bottom{
+    font-size: 12px;
+}
+.footer_bottom_top{
+    height:21px;
+    margin-top: 20px;
+}
+.footer_bottom_top li{
+    float: left;
+    border-right: 1px solid #666;
+    padding: 0 22px;
+}
+.footer_bottom_top li:first-child{
+    padding-left: 0;
+}
+.footer_bottom_top li:last-child{
+    border: 0;
+}
+.footer_bottom_top ul .police{
+    padding-left: 18px;
+    margin-left: 22px;
+    background: url(https://static.zcool.cn/git_z/build/images/icon-police.png)
+    no-repeat left;
+}
+.footer_bottom_top li:hover a{
+    text-decoration: underline;
+    color: #999;
+}
+.footer_bottom_bottom{
+    margin-top: 10px;
+}
+.footer_bottom_bottom li{
+    float: left;
+    border-right: 1px solid #666;
+    padding: 0 22px;
+    color: #666;
+}
+.footer_bottom_bottom li:first-child{
+    padding-left: 0px;
+}
+.footer_bottom_bottom li:first-child:hover a{
+    text-decoration:underline;
+    color: #999;
+}
+.footer_bottom_bottom li:last-child{
+    border:0;
+}
+.footer_bottom_right{
+    float: right;
+    /* margin-top: 10px; */
+    color: #666;
+    /* font-size: 12px; */
+}
+.zcool{
+    float: right;
+    margin-left: 5px;
+}
+.copyright{
+    float:right;
+}
+.zcool:hover a{
+    color: #999;
+    text-decoration: underline;
 }
