@@ -24,6 +24,9 @@
 ​	在控制台打印出内容。
 ​		ps：document.wirte() 会覆盖页面原有的内容，因此我们平时测试，都会将信息输出到控制台  console.log(xxxxxx);
 
+#### console.dir();
+	在控制台上打印出具体内容。
+
 #### console.error();
 ​	显示红色报错并打印出内容。
 
@@ -122,6 +125,7 @@ getElementById()
 #### slice()
 	提取一个字符串或数组的一部分，并返回一新的字符串或数组。
 	slice(1,4)表示[1,4)
+	slice() 方法返回一个新的数组对象，这一对象是一个由 begin和 end（不包括end）决定的原数组的浅拷贝。原始数组不会被改变。
 
 #### splice()
 	通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
@@ -219,3 +223,73 @@ getElementById()
 
 #### push()
 	将一个或多个元素添加到数组的末尾，并返回该数组的新长度。
+
+#### oncontextmenu
+	获取或设置当前窗口contextmenu事件的事件处理函数。除非默认行为已经阻止了(看下面的例子是如何阻止的)，否则右键菜单会被激活。注意此事件会发生在没有阻止右键事件的情况下而且这不取决于此元素是否拥有了"contextmenu"属性.
+
+#### preventDefault
+	Event 接口的 preventDefault()方法，告诉user agent：如果此事件没有被显式处理，那么它默认的动作也不要做（因为默认是要做的）。此事件还是继续传播，除非碰到事件侦听器调用stopPropagation() 或stopImmediatePropagation()，才停止传播。
+
+#### cloneNode()
+	返回调用该方法的节点的一个副本.
+	语法:var dupNode = node.cloneNode(deep);
+	node:将要被克隆的节点
+	dupNode:克隆生成的副本节点
+	deep(可选):是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.如果省略的话，参数的默认值为 true，也就是说默认是深度克隆。如果想使用浅克隆, 你需要将该参数设置为 false。
+
+#### defineProperty()
+	会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+	语法:Object.defineProperty(obj, prop, descriptor)
+	参数:obj:要在其上定义属性的对象。
+		prop:要定义或修改的属性的名称。
+		descriptor:将被定义或修改的属性描述符。
+	返回值:被传递给函数的对象。
+	属性描述符:
+		configurable
+			当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。
+			configurable特性表示对象的属性是否可以被删除，以及除value和writable特性外的其他特性是否可以被修改。
+		enumerable
+			当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。
+			enumerable定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+		value
+			当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。
+			该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。
+		writable
+			当writable属性设置为false时，该属性被称为“不可写”。它不能被重新分配。
+		get
+			一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。
+			默认为 undefined。
+		set
+			一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。
+默认为 undefined。
+
+#### arguments.callee属性
+	包含当前正在执行的函数。
+	callee 是 arguments 对象的一个属性。它可以用于引用该函数的函数体内当前正在执行的函数。这在函数的名称是未知时很有用，例如在没有名称的函数表达式 (也称为“匿名函数”)内。
+
+#### bind()
+	创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。
+	语法:function.bind(thisArg[, arg1[, arg2[, ...]]])
+	参数:thisArg
+			调用绑定函数时作为this参数传递给目标函数的值。 如果使用new运算符构造绑定函数，则忽略该值。当使用bind在setTimeout中创建一个函数（作为回调提供）时，作为thisArg传递的任何原始值都将转换为object。如果bind函数的参数列表为空，执行作用域的this将被视为新函数的thisArg。
+		arg1, arg2, ...
+			当目标函数被调用时，预先添加到绑定函数的参数列表中的参数。
+	返回值:返回一个原函数的拷贝，并拥有指定的this值和初始参数。
+
+#### JSON.parse()
+	用来解析JSON字符串，构造由字符串描述的JavaScript值或对象。提供可选的reviver函数用以在返回之前对所得到的对象执行变换(操作)。
+
+#### JSON.stringify()
+	将一个JavaScript值(对象或者数组)转换为一个 JSON字符串，如果指定了replacer是一个函数，则可以选择性的替换值，或者如果指定了replacer是一个数组，可选择性的仅包含数组指定的属性。
+
+#### Object.keys()
+	返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for...in 循环遍历该对象时返回的顺序一致 。如果对象的键-值都不可枚举，那么将返回由键组成的数组。
+
+####  match()
+	检索返回一个字符串匹配正则表达式的的结果。
+
+#### replace()
+	返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。
+
+#### forEach()
+	对数组的每个元素执行一次提供的函数。
