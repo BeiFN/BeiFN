@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 200px;
+      height: 100px;
+      background-color: orange;
+      text-align: center;
+    }
+    #box-drag{
+      width: 200px;
+      height: 20px;
+      background-color: yellowgreen;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    button{
+      position: absolute;
+      top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div id="box-drag">拖拽</div>
+   <button>回归</button>
+  </div>
+  <script>
+    // 1.鼠标按下 (数据传递到鼠标移动执行的函数上)
+    // 2.鼠标移动（范围扩大到document上）
+    // 3.鼠标抬起
+
+    var box = document.getElementById("box-drag")
+    var _handleMove = handleMove
+
+    box.addEventListener("mousedown",handleDown)
+
+    function handleDown(evt){
+      var e = evt || window.event
+
+      document.addEventListener("mousemove",_handleMove = handleMove.bind (false,{
+        offsetX:e.offsetX,
+        offsetY:e.offsetY
+      }))
+    }
+
+    function handleMove(offset,evt){
+      var e = evt || event
+      box.style.left = e.clientX - offset.offsetX + "px"
+      box.style.top = e.clientY - offset.offsetY + "px" 
+    }
+
+    document.addEventListener("mouseup",handleOut)
+
+    function handleOut(){
+      box.removeEventListener("mousemove",_handleMove)
+    }
+  </script>
+</body>
+</html>
