@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            background: #f0d;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="dd"></div>
+        <div class="dd"></div>
+        <div class="dd"></div>
+        <div class="dd"></div>
+        <div class="dd"></div>
+        <script>
+            function $(selector) {
+                var res = null;
+                return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
+            };
+            var timer = null;
+            var divList = $(".dd");
+            var target = 600;
+            // console.log(divList);
+            for (var i = 0, ele_div; ele_div = divList[i++];) {
+                ele_div.onmouseover = function move(target, ele_div) {};
+
+                function move(target, ele_div) {
+                    clearInterval(ele_div.timer);
+                    ele_div.timer = setInterval(function () {
+                        var speed = (target - ele_div.offsetWidth) / 8;
+                        if (target === ele_div.offsetWidth) {
+                            clearInterval(ele_div.timer)
+                        } else {
+                            ele_div.style.width = ele_div.offsetWidth + 5 + "px";
+                        }
+
+                    }, 50);
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

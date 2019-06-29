@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #f0f;
+            /* position: relative; */
+        }
+
+        #ball {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(#09f, #f19);
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 999;
+            /* background: #019; */
+
+        }
+
+        /* .progress {
+            width: 20px;
+            height: 100px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 2px 2px 0;
+            overflow: hidden;
+
+        } */
+
+        #progress_bar {
+            height: 100px;
+            width:20px;
+            background: bottom linear-gradient( #f10,yellowgreen);
+            /* overflow: hidden; */
+            position: absolute;
+            z-index: 999;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 2px 2px 0;
+        }
+    </style>
+</head>F
+
+<body>
+    <div id="box">
+        <div id="mask"></div>
+        <div id="ball"></div>
+        <div class="progress">
+            <div id="progress_bar"></div>
+        </div>
+    </div>
+    <script>
+        function $(selector) {
+            var res = null;
+            return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
+        }
+        var box = $("#box");
+        var ball = $("#ball");
+        var progress_bar = $("#progress_bar");
+        // console.log(progress_bar)
+
+        var target = 400
+        var moving = false;
+        var timer = null;
+        box.addEventListener("mousemove", move);
+        document.addEventListener("click", fall);
+        var g = 2.5;
+        var speed = 10;
+
+        function move(evt) {
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            var left = e.offsetX;
+            var top = e.offsetY;
+            var speed_x;
+            // console.log(left, top)
+            if (!moving) {
+                ball.style.left = left - 20 + "px";
+                ball.style.top = top - 20 + "px";
+                fall();
+            }else
+            getBallTurn(e.offsetX);
+        }
+
+        function getBallTurn(x) {
+            if (x < 300) {
+                var pro = (300 - x) / 300 * 100;
+                // console.log(pro);
+                speed_x = -5 * pro;
+                progress_bar.style.height = parseInt(2 * pro)+"px";
+                // console.log(progress_bar.style.height)
+
+            } else {
+                var pro = (x - 300) / 300 * 100;
+                progress_bar.style.height = parseInt(2 * pro)+"px";
+
+                // console.log(pro);
+                speed_x = 0.5 * pro;
+
+
+            }
+
+        }
+
+        function fall() {
+            moving = true;
+            clearInterval(timer);
+            timer = setInterval(ballFall, 50)
+        }
+
+        function ballFall() {
+            speed += g;
+            ball.style.top = ball.offsetTop + speed + "px";
+            ball.style.left = ball.offsetLeft + speed_x + "px";
+
+            if (target - ball.offsetTop - 40 < speed) {
+                ball.style.top = target - 40 + "px";
+                speed = -speed;
+                // console.log(speed);
+                if (speed > -2) {
+                    clearInterval(timer);
+                    ball.style.top = target - 40 + "px";
+
+
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
