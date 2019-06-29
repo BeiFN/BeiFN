@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id">"我是DIV"</div>
+    <script>
+        //nodeType    1   2   3   8   9   11    
+        //元素节点的nodeName返回值是大写，需用toLowCase()处理
+        //document.creataAttribute() 先创建一个属性节点，设置nodeValue，再将元素节点setAttribute给Dom对象
+        //事件触发：捕获 目标 冒泡 默认冒泡阶段执行
+        //事件绑定 事件监听 on off封装  事件委托封装
+        /**阻止事件冒泡
+        *   typeof(e.stopPrapagetion) === function ? e.stopPrapagetion() : e.cancelBubble = true;
+        * 阻止默认事件
+        *   typeof(e.preventDefault) === function ? e.prevent() : e.returnVallue = false;
+        *bind apply call
+        */
+        //柯理化 函数的预处理   回调函数
+        /*es5
+        *   严格模式 变量   参数    函数    一个语法的注意事项
+        *   数组的方法  forEach map filter  some    every   reduce  flat(扁平化)
+        *   对象的方法  Object.definProperty
+        *   函数        
+        *   json    eval    json.parse()  json.stringfy()
+        */
+        //伪数组转换成真数组    [].slice.call(obj)
+
+    </script>
+</body>
+</html>
