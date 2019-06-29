@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input.success{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            input.error{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-low{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-middle{
+                  transition: border-color 1s;
+                  border-color: orange;
+            }
+            input.v-strength-high{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+    </style>
+</head>
+<body>
+    <form action="javascript:void(0)" id="form">
+        <p>
+            <span>邮箱：</span>
+            <input type="text" v-type="email">
+        </p>
+        <p>
+            <span>用户名：</span>
+            <input type="text" v-type="username" v-purenumbers="true">
+        </p>
+        <p>
+            <span>密码：</span>
+            <input type="text" v-type="password" v-strength="true">
+        </p>
+        <p>
+            <span>链接：</span>
+            <input type="text" v-type="url">
+        </p>
+
+    </form>
+    <script src="./index.js"></script>
+    <script>
+    validate('#form',{
+                  "url" : {
+                        reg : /http:\/\/[a-z]+\.[a-z]+\.(com|net)/i
+                  },
+                  "username" : { 
+                        reg : /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/
+                  }
+            });
+    </script>
+    
+</body>
+</html>

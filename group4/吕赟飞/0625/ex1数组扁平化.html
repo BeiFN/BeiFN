@@ -29,37 +29,38 @@
         
         // 方法一
 
-        // function flat(arr){
-        //     if(!flat.res){
-        //         flat.res = []
-        //     }
+        function flat(arr){
+            if(arguments.length === 1){
+                flat.res = []
+            }
 
-        //     for(var i=0;i<arr.length ;i ++){
-        //         if(!(arr[i] instanceof Array)){
-        //             flat.res.push(arr[i]);
-        //         }else{
-        //             flat(arr[i])
-        //         }
-        //     }
-
-        //     return flat.res;
-        // }
-
-        // console.log(flat(arr1))
-
-
-        flatMap(arr1);
-        console.log(arr2);
-
-        function flatMap(arr) {
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i].length) {
-                    flatMap(arr[i]);
-                } else {
-                    arr2 = arr2.concat(arr[i]);
+            for(var i=0;i<arr.length ;i ++){
+                if(!(arr[i] instanceof Array)){
+                    flat.res.push(arr[i]);
+                }else{
+                    flat(arr[i],false)
                 }
             }
+
+            return flat.res;
         }
+        
+
+        console.log(flat(arr1))
+
+
+        // flatMap(arr1);
+        // console.log(arr2);
+
+        // function flatMap(arr) {
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i].length) {
+        //             flatMap(arr[i]);
+        //         } else {
+        //             arr2 = arr2.concat(arr[i]);
+        //         }
+        //     }
+        // }
     </script>
 </body>
 
