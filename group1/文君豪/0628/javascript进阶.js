@@ -2,6 +2,23 @@
 
 +function(window)
 {
+
+    // 策略列表;
+	var strategyList = {
+		"email": {
+			reg: /^[0-9a-z]\w{5,19}@[a-z0-9]{2,10}\.(com|cn|net)$/i
+		},
+		"password": {
+			reg: /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i
+		},
+		// 可能是定制的;
+		"username": {
+			reg: /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/
+		}
+    }
+    
+
+    ////主调用函数
     function validate(selector)
     {
         var parent = $(selector);
@@ -23,7 +40,9 @@
     function validateText(type)
     {
       // console.log(this)
-      console.log(type)
+      //console.log(type)
+      var value = this.value;
+      
     }
 
 
