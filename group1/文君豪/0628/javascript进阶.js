@@ -28,7 +28,7 @@
        for(var i=0, input ; input = inputlist[i++];)
         {
             
-            input.addEventListener("blur" , validateText.bind(input,input.getAttribute("v-type")))
+            input.addEventListener("blur" , validateText.bind(this,input.getAttribute("v-type")))
         
         }
     }
