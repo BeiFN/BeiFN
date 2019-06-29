@@ -1,4 +1,5 @@
 /** 
+ * 
  * @MineClearance (box,callback)  扫雷     
  * 参数：
  *      盒子(高大于宽)
@@ -85,8 +86,8 @@ class MineClearance {
             this.setData();// 双击清除数据
         }
         // 参数定义
-        this.hard = hard;// 难度
-        this.timer = null;// 定时器
+        this.hard = hard;   // 难度
+        this.timer = null   ;// 定时器
         this.pageState = null;// 去抖参数
         this.size = null;// 格子尺寸
         this.num = null;// 剩余格子数量

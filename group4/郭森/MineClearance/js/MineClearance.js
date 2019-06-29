@@ -49,11 +49,11 @@ MineClearance.prototype.creatNum = function () {
         // 右边边界检测     右  右上 右下
         (i + 1) % this.num === 0 ? "" : indexList.push(i + 1, i - this.num + 1, i + this.num + 1);
         for (var i = 0; i < indexList.length; i++) {// 记录周围雷数
-            this.mineList.indexOf(indexList[i]) === -1 ? "" : count++;
             if (indexList[i] >= this.cellList.length || indexList[i] < 0) {
                 indexList.splice(i--, 1);// 去除上下越界坐标
                 continue;
             }
+            this.mineList.indexOf(indexList[i]) === -1 ? "" : count++;
         }
         if (count === 0) {
             item.setAttribute("open", indexList.join(" "));// 标记空格
