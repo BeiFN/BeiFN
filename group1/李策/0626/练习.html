@@ -119,6 +119,35 @@
 159
 182
 
+
+
+	var email = $("#email");
+	var username = $("#username");
+	var password = $("#password");
+	
+	function $(selector){
+		var res = null ;
+		return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res ;
+	}
+	
+	function validateEmail(){
+		var value = this.value ;
+		var reg = /^[0-9a-z]w{5,19}@[a-z0-9]{2,10}\.(com|cn|net)$/i;
+		if(reg.test(value)){
+			this.style.borderColor = "yellowgreen";
+		}else{
+			this.style.borderColor = "red" ;
+		}
+	}
+	
+	function validatePassword(){
+		var value = this.value ;
+		var reg = /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i;
+		if(reg.test(value)){
+			
+		}
+	}
+
 		</script>
 	</body>
 
