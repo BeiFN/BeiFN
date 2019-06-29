@@ -11,6 +11,10 @@
             height: 100px;
             position: absolute;
             display: none;
+            background-color:  #ddd;
+            left: 0;
+            top: 0;
+            display: none;
         }
     </style>
 </head>
@@ -22,6 +26,14 @@
         function showMyList(evt){
             var e = evt ||window.event;
             list.style.display = "block";
+            list.style.left = e.clientX + "px";
+            list.style.top = e.clientY + "px";
+
+            e.preventDefault ? e.preventDefault() :e.returnValue = false;
+
+            document.onclick = function(){
+                list.style.display = "none";
+            }
         }
     </script>
 </body>
