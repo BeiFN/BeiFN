@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+             input.success{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            input.error{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-low{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-middle{
+                  transition: border-color 1s;
+                  border-color: orange;
+            }
+            input.v-strength-high{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            .successSpan{
+                  width: 172px;
+                  height: 20px;
+                  position: absolute;
+                  background: rgba(154,205,50,.5);
+                  top: 2px;
+                  left: 45px;
+                
+            }
+            p{
+                  position: relative;
+            }
+            .errorSpan{
+                  width: 172px;
+                  height: 20px;
+                  position: absolute;
+                  background: rgba(231, 85, 85,.5);
+                  top: 2px;
+                  left: 45px;
+                 
+            }
+      </style>
+</head>
+<body>
+      <form action="javascript:void(0)" id="form">
+      <!-- <form  id="form"> -->
+
+            <p>
+                  <span>邮箱 :</span>
+                  <input type="email" id="email">
+            </p>
+            <p>
+                  <span>用户 :</span>
+                  <input type="text" id="username">
+            </p>
+            <p>
+                  <span></span>
+                  <span>密码 :</span>
+                  <input type="text" id="password" v-strength = "false">
+            </p>
+            <p>
+                  <span></span>
+            </p>
+            <button id="btn">提交</button>
+      </form>
+
+      <script>
+            // var btn = document.getElementById("btn");
+            // var form = document.getElementById("form");
+            // btn.onclick = function(){
+            //       console.log(1);
+            // }
+            // form.onsubmit = function(evt){
+            //       var e = evt || window.event;
+            //       e.preventDefault();
+            // }
+      </script>
+      <script src="./javascripts/表单验证.1.js"></script>
+      <script>
+            validate("#form");
+      </script>
+</body>
+</html>
