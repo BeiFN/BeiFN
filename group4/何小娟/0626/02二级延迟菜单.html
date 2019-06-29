@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      nav{
+            height: 80px;
+            line-height: 80px;
+            width: 100%;
+            background: pink;
+            display: flex;
+            justify-content: space-around;
+      }
+      #list{
+            background: orange;
+            width: 25%;
+            display: none;
+            margin-left: 200px;
+            list-style: none;
+      }
+</style>
+</head>
+<body>
+  
+    <nav>
+        <span>一级菜单</span>
+        <span id="nav_btn">一级菜单
+                    
+        </span>
+       
+
+        <span>一级菜单</span>
+        <span>一级菜单</span>
+  </nav>
+  <ul id="list">
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+  </ul>
+  <script>
+    // 1.进入一级菜单，出现二级菜单，进入二级菜单，二级菜单不隐藏
+
+    var nav = document.getElementById("nav_btn")
+    var list = document.getElementById("list")
+    var timer = null
+
+    nav.addEventListener('mouseover',moveStart)
+    nav.addEventListener('mouseout',moveEnd)
+
+    list.addEventListener("mouseover",listMove)
+    list.addEventListener("mouseout",listLeave)
+
+    function moveStart(){
+      list.style.display = "block"
+    }
+    function moveEnd(){
+      // 定时器在固定的时间只出现一次，计时器在固定的时间间隔都出现
+      clearTimeout(timer)
+      timer = setTimeout(function(){
+        list.style.display = "none"
+      },500)
+    }
+    
+    function listMove(){
+      // 保证每次只有一个cleanTimeout()定时器函数
+      clearTimeout(timer)
+      list.style.display = "block"
+    }
+
+    function listLeave(){
+      list.style.display = "none"
+    }
+  </script>
+</body>
+</html>

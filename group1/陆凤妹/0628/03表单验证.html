@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <style>
+       
+        div{
+            width: 400px;
+            height: 50px;
+
+        }
+      
+   #ptext1,#ptext2,#ptext3{
+       display: inline-block;
+       width: 30px;
+       height: 10px;
+       border-radius: 10px;
+       background:lightgray;
+   }
+    </style>
+</head>
+<body>
+
+    <form action="" id="form">
+    <div>
+        <label for="">邮&nbsp;&nbsp; 箱</label>
+        <input type="text" name="" id="email">
+        <label for="" id="emtext"></label>
+    </div>
+    <div>
+        <label for="">用户名</label>
+        <input type="text" name="" id="username">
+        <label for="" id="ustext"></label>
+    </div>
+    <div>
+        <label for="">密&nbsp;&nbsp; 码</label>
+        <input type="text" name="" id="password">
+       
+    </div>
+    <div>
+        <input type="button" value="提交" id="btn">
+    </div>
+</form>
+    <script>
+       var email = document.getElementById("email");
+       var username = document.getElementById("username");
+       var password = document.getElementById("password");
+       var emtext = document.getElementById("emtext");
+       var ustext = document.getElementById("ustext");
+      
+
+       email.addEventListener("blur",handlerEmail);
+       username.addEventListener("blur",handlerUsername);
+       password.addEventListener("blur",handlerPassword);
+       
+       function handlerEmail(){
+        //    取值、规则、判断 
+           var value = this.value;
+           var reg =/^\w{6,18}@((qq|126|163)\.com|cn|yeah)$/;
+          
+            if(reg.test(value)){
+                this.style.background = "yellowgreen";
+                emtext.innerHTML = "<small>邮箱输入合法</small>";
+            }else{
+                this.style.background = "red";
+                emtext.innerHTML = "<small>你在非法操作</small>"
+            }
+       }
+       function handlerUsername(){
+
+           // 用户名 =>  中文，英文 ， 数字，- , _ 组成的4~20位字符; 
+
+           var value = this.value;
+           var reg = /^[\u4e00-\u9fa5\w\-](4,20)\$/;
+        
+            if(reg.test(value)){
+                this.style.background = "yellowgreen";
+               ustext.innerHTML = "<small>用户名可用</small>";
+            }else{
+                this.style.background = "red";
+                ustext.innerHTML = "<small>dei佬，记住，要优雅</small>";
+            }
+
+       }
+       function handlerPassword(){
+        // 密码  =>  允许  !@#$%^&*() + 数字 + 字母  密码的长度应该在6位之上 ,密码强度;
+
+        var value = this.value;
+        var reg = /^[\!\@\#\$\%\^\&\*\(\)0-9a-zA-Z\_\-](6,20)$/
+        var power = 0;
+        if(/\d/.test(value)){
+             power++;
+        }
+        if(/[a-zA-Z]/.test(value)){
+         power++;
+        }
+        if(/[\!\@\#\$\%\^\&\*\(\)]/.test(value)){
+            power++;
+
+        }
+
+        switch(power){
+            case 1: this.style.background = "yellowgreen";
+                    break;
+            case 2: this.style.background = "orange";
+                    break;
+            case 3: this.style.background = "red";
+                    break;
+            default:this.style.background = "lightgray";
+            
+        }
+       }
+    
+    </script>
+</body>
+</html>
