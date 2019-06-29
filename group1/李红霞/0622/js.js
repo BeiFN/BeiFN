@@ -73,6 +73,7 @@ function handlerletter(keyEnter){
 
             // fishItem["div"].remove();
             // bullet.remove();
+            console.log(fishItem)
             break;
         }
     }      

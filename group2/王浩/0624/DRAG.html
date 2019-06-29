@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .box{
+            height: 150px;
+            width: 200px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid black;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .top-bar{
+            width: 100%;
+            height: 30px;
+            background: rgb(63, 65, 65); 
+            border-bottom: 1px solid black; 
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
+        #goback{
+            width: 50%;
+            height:30px;
+            float: left;
+            border: 1px solid black;
+            border-radius: 5px;
+            line-height: 30px;
+            margin-left: 50px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top-bar">拖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拽</div>
+        <button id="goback">回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;放</button>
+    </div>   
+    <script>
+        var box=$(".box");
+        var bar=$(".top-bar");
+        var goback=$("#goback");
+        var timer=null;
+        var _dragMove=null;
+        var pathArr=[];
+        
+        function $(selector){
+            var ele=null;
+            return (ele=document.querySelectorAll(selector)).length===1?ele[0]:ele;
+        }
+        //拖拽开始
+        function handlerDragStart(evt){
+            var e=evt|| window.event;
+            pathArr.push({left:0,top:0});
+            console.log(e.path);
+            document.removeEventListener("mousemove",_dragMove);
+            document.addEventListener("mousemove",_dragMove=handlerDragMove.bind(false,{offsetX:e.offsetX,offsetY:e.offsetY}));
+        }
+        //拖拽移动
+        function handlerDragMove(_offset,evt){
+            var e=evt|| window.event;
+            var box_left=e.clientX-_offset.offsetX;
+            var box_top=e.clientY-_offset.offsetY;
+            box.style.left=box_left+"px";
+            box.style.top=box_top+"px";
+            pathArr.push({left:box_left,top:box_top});//记录box的坐标
+        }
+        //拖拽结束
+        function handlerDragStop(){
+            document.removeEventListener("mousemove",_dragMove);
+        }
+        //回放
+        function handlerDragReplay(){
+            var flag=pathArr.length;
+            timer=setInterval(function(){
+                flag--;
+                box.style.left=pathArr[flag].left+"px";
+                box.style.top=pathArr[flag].top+"px";
+                if(flag===0){
+                    clearInterval(timer);
+                    pathArr.length=0;
+                }
+            },50);  
+        }
+
+        bar.addEventListener("mousedown",handlerDragStart);
+        bar.addEventListener("mouseup",handlerDragStop);
+        goback.addEventListener("click",handlerDragReplay);
+    </script>
+</body>
+</html>
