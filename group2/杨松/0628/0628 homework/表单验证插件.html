@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证插件</title>
+    <style>
+        form{width:400px;height: 400px;background:rgba(0,0,0,.5);margin: 0 auto;border-radius: 5px;}
+        #btn{border-radius: 10px;width: 80px;height: 30px;text-align: center;margin-left: 100px;background-color: #0099FF}
+        input{border-radius: 5px}
+        input.success{
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+        input.error{
+            transition: border-color 1s;
+            border-color: red;
+        }
+        input.v-strength-low{
+            transition: border-color 1s;
+            border-color: red;
+        }
+        input.v-strength-middle{
+            transition: border-color 1s;
+            border-color: orange;
+        }
+        input.v-strength-high{
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<form action="javascript:void(0)" id="form">
+    <p>
+        <span></span>
+        <input type="text" placeholder="验证是否通过" id="pass" style="margin-left: 70px;">
+    </p>
+    <p>
+        <span>邮&nbsp;&nbsp;箱 :</span>
+        <input type="text" v-type="email">
+        <span></span>
+    </p>
+    <p>
+        <span>用户名 :</span>
+        <input type="text" v-type="username">
+        <span></span>
+    </p>
+    <p>
+        <span>密&nbsp;&nbsp;码 :</span>
+        <input type="text" v-type="password" v-strength="true">
+        <span></span>
+    </p>
+    <button id="btn">提交</button>
+</form>
+</body>
+<script src="js/validate.js"></script>
+<script>
+    validate("#form");
+</script>
+</html>
