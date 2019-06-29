@@ -18,7 +18,7 @@ function handlerSticky(){
     }else{
         nav.style.position = "static"
     }
-
+    // 回到顶部显示
     if(scrollTop >= 3118){
         goTop.style.position = "absolute";
         goTop.style.top = "3670px" ;
@@ -33,8 +33,9 @@ function handlerSticky(){
         goTop.style.display = "none";
      }
 }
+// 点击回到顶部
 goTop.onclick = function(){
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-        }
+}
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input.success{
+            border-color: greenyellow;
+        }
+        form input.error{
+            border-color: red;
+        }
+        input.v-strength-low{
+            transition: border-color 1s;
+            border-color: red;
+        }
+        input.v-strength-middle{
+            transition: border-color 1s;
+            border-color: orange;
+        }
+        input.v-strength-high{
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+        input.nuemers_Red{
+            transition: border-color 1s;
+            border-color: red;
+        }
+        input.nonuemers_green{
+            transition: border-color 1s;
+            border-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="" id="forms">
+        <p>
+            <span>用户名：</span>
+            <input type="text" v-type = "username" v-purenumbers = "false">
+        </p>
+        <p>
+            <span>邮箱：</span>
+            <input type="text" v-type = "email">
+        </p>
+        <p>
+            <span>密码：</span>
+            <input type="password" v-type = "password" v-strength = "true">
+        </p>
+    </form>
+    <script src="validate.js"></script>
+
+    <script>
+        validate("#forms",{
+            "username" : {
+            reg : /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/i
+            }// 自定义验证规则和更多的验证元素  
+        });
+     
+    </script>
+</body>
+</html>
