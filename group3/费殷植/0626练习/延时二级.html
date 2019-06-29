@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    nav{
+          height: 80px;
+          line-height: 80px;
+          width: 100%;
+          background: yellowgreen;
+          display: flex;
+          justify-content: space-around;
+    }
+    #sed{
+          background: rgba(0,0,0,.3);
+          width: 25%;
+          display: none;
+          margin-left: 200px;
+    }
+</style>
+<body>
+    <nav>
+        <span>一级菜单</span>
+        <span id="fst">一级菜单
+                    
+        </span>
+       
+
+        <span>一级菜单</span>
+        <span>一级菜单</span>
+  </nav>
+  <ul id="sed">
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+              <li>二级菜单</li>
+  </ul>
+</body>
+<script>
+    var fst=document.getElementById("fst");
+    var sed=document.getElementById("sed");
+    var timer=null;
+
+    fst.addEventListener("mouseover",showSed)
+    fst.addEventListener("mouseout",hideSed)
+    sed.addEventListener("mouseover",showSelf)
+    sed.addEventListener("mouseout",hideSelf)
+
+    function showSed(){
+        clearTimeout(timer);
+        sed.style.display="block";
+    }
+    function hideSed(){
+        clearTimeout(timer);
+        timer=setTimeout(
+            function(){
+                sed.style.display="none";
+            },400)
+    }
+    function showSelf(){
+        clearTimeout(timer);
+        sed.style.display="block";
+    }
+    function hideSelf(){
+        clearTimeout(timer);
+        timer=setTimeout(
+            function(){
+                sed.style.display="none";
+            },400)
+    }
+</script>
+</html>

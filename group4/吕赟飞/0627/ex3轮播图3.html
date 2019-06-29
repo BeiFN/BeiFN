@@ -75,7 +75,7 @@
     <div id="banner">
         <div id="images">
             <img
-                src="https://n1-q.mafengwo.net/s14/M00/1A/74/wKgE2l0TTxSAZl-WAAahz3EBCKU476.jpg?imageMogr2%2Finterlace%2F1">
+                src="https://p2-q.mafengwo.net/s14/M00/52/82/wKgE2l0UmlGAHepaAAQdGkMbegg579.jpg?imageMogr2%2Finterlace%2F1">
             <img
                 src="https://p2-q.mafengwo.net/s14/M00/BF/16/wKgE2l0Mhi-AZtGzAAjG8zBl5aM939.jpg?imageMogr2%2Finterlace%2F1">
             <img
@@ -106,34 +106,44 @@
             leftBtn = document.getElementById("leftBtn");
             rightBtn = document.getElementById("rightBtn");
             images = document.getElementById("images");
+            banner = document.getElementById("banner")
             liList = Array.from(document.getElementsByTagName("li"));
 
             leftBtn.addEventListener("click", clickHandler);
             rightBtn.addEventListener("click", clickHandler);
+            banner.addEventListener("mouseenter", closeTimer);
+            banner.addEventListener("mouseleave", openTimer);
+
             for (var i = 0; i < liList.length; i++) {
                 liList[i].addEventListener("click", liClickHandler);
             }
             preLi = liList[0];
 
             timer = setInterval(imagesMoveAuto, 2000);
-
         }
 
-        function imagesMoveAuto(){
+        function closeTimer() {
+            clearInterval(timer);
+        }
+
+        function openTimer() {
+            timer = setInterval(imagesMoveAuto, 2000);
+        }
+
+
+        function imagesMoveAuto() {
             images.style.left = -1280 * position + "px";
             if (preLi) {
                 preLi.style.backgroundColor = "rgba(255,0,0,0.1)";
             }
             preLi = liList[position];
             preLi.style.backgroundColor = "rgba(255,0,0,0.5)";
-            if(position === 4 ) position = -1;
+            if (position === 4) position = -1;
             position++;
-            
 
         }
 
         function clickHandler(e) {
-            clearInterval(timer);
             if (this === leftBtn) {
                 position--;
                 if (position < 0) position = 4;
@@ -145,7 +155,6 @@
         }
 
         function liClickHandler(e) {
-            clearInterval(timer);
             position = liList.indexOf(this);
             imagesMove();
         }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟select框</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        li{
+            list-style: none;
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+        }
+        #select{
+            height: 50px;
+            width:150px;
+            line-height: 50px;
+            border:1px solid black;
+            box-shadow: none;
+        }
+        #list{
+            height: 200px;
+            width:148px;
+            position:absolute;
+            border:1px solid black;
+            border-top: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="select">请选择游戏</button>
+    <ul id="list">
+        <li>梦幻西游</li>
+        <li>英雄联盟</li>
+        <li>守望先锋</li>
+        <li>绝地求生</li>
+    </ul>
+    <script>
+        var sel  = document.getElementById("select");
+        var list = document.getElementById("list");
+        var li   = document.querySelectorAll("li");
+        
+        function btnClick(evt){
+            var e = evt || window.event;
+            list.style.display="block";
+        }
+
+        function styleChangeColor(evt){
+            var e = evt || window.event;
+            this.style.color="white";
+            this.style.background="black";   
+        }
+        
+        function styleColorBack(evt){
+            var e = evt || window.event;
+            this.style.color="black";
+            this.style.background="white";  
+        }
+
+        function btnTextChange(evt){
+            var e = evt || window.event;
+            sel.innerHTML=this.innerHTML;
+            list.style.display="none";
+        }
+
+
+        sel.addEventListener("click",btnClick);
+        sel.addEventListener("mouseover",styleChangeColor);
+        sel.addEventListener("mouseleave",styleColorBack);
+        for(var i=0;i<=li.length-1;i++){
+           li[i].addEventListener("mouseover",styleChangeColor);
+           li[i].addEventListener("mouseleave",styleColorBack);
+           li[i].addEventListener("click",btnTextChange);
+        }
+        
+
+
+    </script>
+</body>
+</html>
