@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            input.success{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            input.error{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-low{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-middle{
+                  transition: border-color 1s;
+                  border-color: orange;
+            }
+            input.v-strength-high{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            .createspan{
+                display: inline-block;
+                width: 100px;
+                height: 20px;
+                text-align: center;
+                line-height: 20px;
+                font-size: 10px;
+                background: red;
+            }
+    
+    </style>
+</head>
+<body>
+    <form action="javascript:void(0)" id="form">
+        <p>
+              <span>邮箱 :</span>
+              <input type="text" v-type="email" class="email">
+        </p>
+        <p>
+              <span>用户名 :</span>
+              <input type="text" v-type="username">
+        </p>
+        <p>
+              <span>密码 :</span>
+              <input type="text" v-type="password" v-strength = "true";>
+        </p>
+        <button id="btn">提交</button>
+  </form>
+  <script src="../libs/common.js"></script>
+  <script src="./javascript/表单插件.js"></script>
+  <script>
+      validate("#form");
+  </script>
+</body>
+</html>
