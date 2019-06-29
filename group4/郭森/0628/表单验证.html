@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            input.success{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            input.error{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-low{
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+            input.v-strength-middle{
+                  transition: border-color 1s;
+                  border-color: orange;
+            }
+            input.v-strength-high{
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+            p{
+                  height: 20px;
+                  padding-left:50px; 
+            }
+      
+      </style>
+</head>
+<body>
+      <form action="javascript:void(0)" id="form">
+            <div>
+                  <span>邮箱 :</span>
+                  <input type="text" v-type="email" class="email">
+                  <p type="text" v-tip="email"></p>
+
+            </div>
+            <div>
+                  <span>用户名 :</span>
+                  <input type="text" v-type="username" v-purenumbers="false">
+                  <p type="text" v-tip="username"></p>
+            </div>
+            <div>
+                  <span>密码 :</span>
+                  <input type="text" v-type="password" v-strength="true">
+                  <p type="text" v-tip="password" ></p>
+            </div>
+            <!-- <div>
+                  <span>链接 :</span>
+                  <input type="text" v-type="url">
+                  <p type="text" v-tip="urlTip" class="email"></p>
+            </div> -->
+            <button id="btn">提交</button>
+      </form>
+
+      <script>
+            // var btn = document.getElementById("btn");
+            // var form = document.getElementById("form");
+            // btn.onclick = function(){
+            //       console.log(1);
+            // }
+            // form.onsubmit = function(evt){
+            //       var e = evt || window.event;
+            //       e.preventDefault();
+            // }
+      </script>
+      <script src="./validate.js"></script>
+      <script>
+            // 1. 调用模式 => 插件使用者调用 ; 调用时要告知插件要在哪里进行验证;
+            var validate=new Validate(form);
+      </script>
+</body>
+</html>
