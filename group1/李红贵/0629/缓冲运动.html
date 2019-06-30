@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            #box{
+                width: 100px;
+                height: 100px;
+                background-color:  #ddd;
+                position: absolute;
+                left: 0;;
+                top: 0;
+            }
+            #btn{
+                margin-top: 200px;
+    
+            }
+            #line{
+                position: absolute;
+                left: 400px;
+                width: 1px;
+                height: 200px;
+                background-color:  #aaa;
+    
+            }
+        </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+
+    <button id="btn">开始运动</button>
+
+
+    <script>
+
+        var box = document.getElementById("box");
+        var time =null;
+        var target = 400;
+        var btn = document.getElementById("btn");
+        var timer = null;
+        btn.onclick= function(){
+            move(400);
+        }
+        function move(target){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                //运动核心
+                var speed = (target - box.offsetLeft)/20;
+                console.log(speed);
+                speed = speed>0? Math.ceil(speed):Math.floor(speed);
+              
+                if(box.offsetLeft == target){
+                    clearInterval(timer);
+                }else{
+                    box.style.left = box.offsetLeft + speed +"px";
+                }
+
+            },50);
+        }
+    </script>
+</body>
+</html>
