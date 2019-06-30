@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .span{display: none; font-size: 10px; color: #888;}
+        /* .span2{display: none; font-size: 10px; color: #888;} */
+    </style>
+</head>
+<body>
+    <input type="text" id="emile">
+    <span id="span"></span>
+
+    <script>
+        var spans = {
+            "0": "邮箱输入正确",
+            "1": "邮箱输入错误"
+        }
+        var span = document.getElementById("span");
+        var emile = document.getElementById("emile");
+        document.body.insertBefore(span, emile);
+        emile.addEventListener("blur", validate);
+        function validate(){
+            var value = emile.value;
+            var reg = /^[a-z][0-9a-z]{5,9}$/i;
+            if(reg.test(value)){
+                span.style.display = "block";
+                span.innerHTML = spans[0];
+            }
+            else{
+                span.style.display = "block";
+                span.innerHTML = spans[1];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" id="username">
+        <input type="text" id="pwd">
+        <input type="text" id="email">
+        <script>
+            var username = document.getElementById("username");
+            var pwd = document.getElementById("pwd");
+            // 需求 : 用户名 =>  中文，英文 ， 数字，- , _ 组成的4~20位字符; 
+//        tip : 不能是纯数字;
+//        邮箱  =>   正常邮箱;
+//        密码  =>  允许  !@#$%^&*() + 数字 + 字母  密码的长度应该在6位之上 ,密码强度;
+            username.onblur = function(){
+                var value = this.value;
+
+                var reg = /[a-z0-9_]{6,15}/;
+
+                if(reg.test(value)){
+                    this.style.borderColor = "yellowgreen";
+                }else{
+                    this.style.borderColor = "red"
+                }
+            }
+            pwd.onblur = function(){
+                var value = this.value;
+
+                var reg = /^[\!\@\#\$\%\^\&\*\(\)\_a-z0-9\-]{6,}$/i;
+
+                if(reg.test(value)){
+                    
+                    var count = 0;
+                    if(/\d/.test(value)){
+                        count ++;
+                    console.log(count);
+
+                    }
+                    if(/[a-z]/i.test(value)){
+                        count ++;
+                        console.log(count);
+
+                    }
+                    if(/[\!\@\#\$\%\^\&\*\(\)_\-]/.test(value)){
+                        count ++;
+                    console.log(count);
+
+                    }
+                    console.log(count);
+                    switch(count){
+                        case 1 : 
+                                this.style.borderColor = "red";
+                                break;
+                        case 2 : 
+                                this.style.borderColor = "orange";
+                                break;
+                        case 3 : 
+                                this.style.borderColor = "yellowgreen";
+                                break;
+                        default :
+                                this.style.borderColor = "red";
+                    }
+
+                }else{
+                    this.style.borderColor = "red"
+                }
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            a: 10,
+            b: [],
+            c: {
+                d: 1,
+                e: {},
+                f: []
+            }
+        }
+
+        var cloneObj1 = JSON.parse(JSON.stringify(obj));
+
+        function clone(obj) {
+            var newObj = {};
+            for (var attr in obj) {
+                if (typeof obj[attr] === "function") {
+                    newObj[attr] = obj[attr] instanceof Array ? obj[attr].toString().split(",") : (obj[attr]);
+                } else newObj[attr] = obj[attr];
+            }
+            return newObj;
+        }
+
+        var cloneObj2 = clone(obj);
+
+        var cloneObj3 = Object.assign({}, obj);
+        console.log(cloneObj3);
+    </script>
+</body>
+
+</html>
