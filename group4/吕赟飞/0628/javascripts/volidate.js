@@ -1,6 +1,8 @@
 // 把插件放在匿名函数中，确保各个变量不会影响其他插件
 ; + function (window) {
 
+    var tip = $("#tip");
+
     // 策略列表
     var strategyList = {
         "email": {
@@ -40,8 +42,34 @@
     function validateText(type, value, ele) {
         if (strategyList[type].reg.test(value)) {
             addValidateState("success", ele);
+            if (type === "email") {
+                tip.innerHTML = "邮箱正确";
+                tip.style.visibility = "visible";
+            }
+            if (type === "password") {
+                tip.innerHTML = "密码正确";
+                tip.style.visibility = "visible";
+            }
+            if (type === "username") {
+                tip.innerHTML = "用户名正确";
+                tip.style.visibility = "visible";
+            }
+            // createP("success", ele);
         } else {
             addValidateState("error", ele);
+            if (type === "email") {
+                tip.innerHTML = "邮箱错误";
+                tip.style.visibility = "visible";
+            }
+            if (type === "password") {
+                tip.innerHTML = "密码错误";
+                tip.style.visibility = "visible";
+            }
+            if (type === "username") {
+                tip.innerHTML = "用户名错误";
+                tip.style.visibility = "visible";
+            }
+            // createP("error", ele);
         }
     }
 
@@ -55,18 +83,18 @@
     }
 
     // 创建提示信息
-    function createSpan(type, ele) {
-        var p = document.createElement("p");
-        if (type == "error") {
-            p.innerHTML = "格式错误，请重新输入！";
-        } else {
-            p.innerHTML = "格式正确";
-        }
-        ele.parentElement.insertBefore(p, ele.parentElement.children[0]);
-        // setTimeout(function(){
-        //     p.style.display = "none"
-        // },1000)
-    }
+    // function createP(type, ele) {
+    //     var p = document.createElement("p");
+    //     if (type == "error") {
+    //         p.innerHTML = "格式错误，请重新输入！";
+    //     } else if(type == "success") {
+    //         p.innerHTML = "格式正确";
+    //     }
+    //     ele.parentElement.insertBefore(p, ele.parentElement.children[0]);
+    //     setTimeout(function(){
+    //         p.style.display = "none"
+    //     },1000)
+    // }
     // ====================================================
 
     // 密码强度判断
@@ -79,15 +107,23 @@
         switch (score) {
             case 1:
                 addStrengthState("low", ele);
+                tip.innerHTML = "密码强度低！";
+                tip.style.visibility = "visible";
                 break;
             case 2:
                 addStrengthState("middle", ele);
+                tip.innerHTML = "密码强度中等";
+                tip.style.visibility = "visible";
                 break;
             case 3:
                 addStrengthState("high", ele);
+                tip.innerHTML = "密码强度高！";
+                tip.style.visibility = "visible";
                 break;
             default:
                 addStrengthState("low", ele);
+                tip.innerHTML = "密码强度低！";
+                tip.style.visibility = "visible";
                 break;
         }
     }
@@ -109,10 +145,14 @@
                     addValidateState("success", ele);
                 } else {
                     addValidateState("error", ele);
+                    tip.innerHTML = "不能为纯数字";
+                    tip.style.visibility = "visible";
                 }
             } else {
                 if (/^\d+$/.test(value)) {
                     addValidateState("error", ele);
+                    tip.innerHTML = "不能为纯数字";
+                    tip.style.visibility = "visible";
                 } else {
                     addValidateState("success", ele);
                 }

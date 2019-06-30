@@ -1,0 +1,184 @@
+body{
+    background-color: #f0f3ef;
+}
+.topAd{
+    width:100%;
+    height: 80px;
+    background: #f6f5f4;
+}
+.topAd .adBox{
+    width: 1190px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.topAd a{
+    display: block;
+    width: 1190px;
+    height: 100%;
+}
+.topAd .cancelBtn{
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: rgb(45,45,45);
+    opacity: .3;
+    width: 20px;
+    height: 20px;
+}
+.w1190{
+    width: 1190px;
+    margin: 0 auto;
+}
+
+/* 导航栏 */
+.nav{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+    
+}
+.nav .w1190{
+    position: relative;
+}
+.nav .nav1{
+    float:right;
+}
+.nav .nav1 li{
+    float: left;
+    line-height: 30px;
+    margin-right: 8px;
+    padding: 0 7px;
+}
+.nav .nav1 li a{
+    color: #999;
+    font-size: 12px;
+}
+.nav .nav1 li:nth-child(2n){
+    width: 1px;
+    height: 10px;
+    background: #999;
+    margin-top: 10px;
+    padding: 0;
+}
+.nav .nav1 .creAcc{
+    color: #e33333;
+}
+.nav .nav1 .phone{
+    position: relative;
+}
+.nav .nav1 .phone .maBox{
+    position: absolute;
+    top: 30px;
+    left:0;
+    width: 68px;
+    height: 68px;
+    background: #f6f6f6 url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/mobile_qrcode.png) 50% no-repeat;
+
+}
+.nav .nav1 .phone::after{
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #e4e4e4 #e4e4e4 #f6f6f6;
+}
+.nav  .site{
+    float: left;
+    width: 58px;
+    height: 30px;
+    margin-left: 210px;
+    text-align: center;
+}
+.nav .site:hover{
+    background: white;
+}
+.nav .site span{
+   line-height: 30px;
+   font-size: 12px;
+   color: #999;
+}
+.nav #logoGif{
+    width: 190px;
+    height: 170px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: white;
+    box-shadow: 0 0 3px #888888;
+    background-image: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sprite.head.png)
+}
+.nav #logoGif:hover{
+    background-image: url(https://img1.360buyimg.com/da/jfs/t1/16134/5/11584/77878/5c90a4bdE5ae12937/38714fb6679b8daf.gif?v=0.937178192243689)
+
+}
+
+/* header */
+.header{
+    width: 100%;
+    height: 140px;
+    background: tan;
+}
+.header .w1190{
+    overflow: hidden;
+}
+.header .form{
+    margin-left: 320px;
+    margin-top: 25px;
+    width: 550px;
+    height: 35px;
+    float: left;
+    position: relative;
+}
+.header input{
+    width: 500px;
+    height: 35px;
+    float: left;
+    border: none;
+   
+}
+.header button{
+    width: 50px;
+    height: 35px;
+    float: left;
+    border: none;
+    background: #f10215;
+}
+.header .form .cama{
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 70px;
+    width: 19px;
+    height: 15px;
+    background: url(https://misc.360buyimg.com/product/search/1.0.4/css/i/sprite-photo-search.png)
+}
+.header .shopCar{
+    width: 190px;
+    height: 35px;
+    float: left;
+    background: white;
+    margin-top: 25px;
+    margin-left: 30px;
+}
+.header .shopCar a{
+    display: block;
+    width: 190px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    color: #f10215;
+    text-align: center;
+   
+}
+

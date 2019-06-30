@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="title">
+        <button class="start">初级</button>
+        <button class="start">中级</button>
+        <button class="start">高级</button>
+        <button class="start">自定义</button>
+    </div>
+    <ul id="box" class="box"></ul>
+    <div class="boom" onselectstart="return false"></div>
+    <div class="foot">
+        <span>剩余:</span>
+        <span class="flagBox flagInsertion"></span>
+        <span>×</span>
+        <span id="flagNum">00</span>
+        <span class="blank"></span>
+        <span>时间：</span>
+        <span id="time">00:00</span>
+    </div>
+    <script src="./js/hanshuku.js"></script>
+    <script src="./js/烟花.js"></script>
+    <script src="./js/MineClearance_data.js"></script>
+    <script>
+        function $$(ele) {
+            var res = document.querySelectorAll(ele);
+            return res.length === 1 ? res[0] : res;
+        }
+        // 改变盒子尺寸
+        function changeSize() {
+            if (state) return false;
+            state = true;
+            setTimeout(() => {
+                box.style.cssText = "";
+                box.offsetHeight > box.offsetWidth ? box.style.height = box.offsetWidth + "px" : box.style.width = box.offsetHeight + "px";
+                state = false;
+            }, 200);
+        }
+        // 重新开始游戏
+        function again(evt) {
+            var e = evt || event,
+                code = e.keyCode || e.which;
+            if (code !== 32) return false;
+            window.removeEventListener("keydown", again);
+            boom.innerHTML = "";
+            boom.style.display = "none";
+            if (firework) {
+                firework.end();
+                firework = null;
+            }
+            if (!mineClearance.init(hard) && hard === 3) {
+                diyGame();
+            }
+        }
+        // diy模式界面
+        function diyGame() {
+            box.innerHTML = `<div>
+                                <p>请输入行、列数：<input type="number" id="long" placeholder="请输入5-50之间的整数"></p>
+                                <p>请输入地雷数量：<input type="number" id="mine" placeholder="请输入2-2500之间的整数"></p>
+                                <p><input type="button" value="点击开始游戏" id="diy"></p>
+                            </div>`;
+            if (defaultLong) $$("#long").value = defaultLong;
+            if (defaultMine) $$("#mine").value = defaultMine;
+        }
+        // diy模式开始游戏
+        function diyGameStart() {
+            defaultLong = $$("#long").value;
+            defaultMine = $$("#mine").value;
+            mineClearance.diyGame(defaultLong, defaultMine);
+        }
+        var box = $$("#box"),           // 游戏盒子
+            flagNum = $$("#flagNum"),   // 剩余旗子
+            start = $$(".start"),       // 开始按钮
+            timeBox = $$("#time"),      // 剩余时间
+            boom = $$(".boom"),         // 爆炸层
+            hard = null,                // 难度
+            state = false,              // 节流参数
+            minute = 0,                 // 分钟
+            defaultLong = null,         // 自定义默认行数
+            defaultMine = null,         // 自定义默认雷数
+            firework = null,            // 烟花
+            callbackList = {            // 回调函数列表
+                "cell": (ele, type) => {// 格子样式
+                    ele.style.backgroundImage = "url(./images/" + type + ".jpg)";
+                },
+                "open": (ele, type) => {// 打开格子效果
+                    ele.innerHTML = `<img src="./images/open.gif?${Date.now()}"  style="width:100%;height:100%" >`;
+                    setTimeout(() => { ele.innerHTML = ""; }, 900);
+                },
+                "time": num => {        // 拼接时间
+                    minute = parseInt(num / 60);
+                    num %= 60;
+                    var res = minute > 9 ? minute + ":" : "0" + minute + ":";
+                    res += num > 9 ? num : "0" + num;
+                    timeBox.innerHTML = res;
+                },
+                "flagNum": num => {     // 剩余旗数显示
+                    flagNum.innerHTML = num;
+                },
+                "end": bool => {        // 游戏结束
+                    boom.style.display = "block";
+                    if (bool) {
+                        boom.innerHTML = "<p>YOU WIN<br>请点击空格</p>";
+                        firework = new Firework();
+                        firework.init(boom);
+                    } else {
+                        boom.innerHTML = '<img src="./images/boom.gif?' + Date.now() + '" alt="">';
+                        setTimeout(() => {
+                            boom.innerHTML = `<p>Maybe you'll be lucky next time!<br>请点击空格</p>`;
+                        }, 1500);
+                    }
+                    window.addEventListener("keydown", again);
+                },
+            }
+        var mineClearance = new MineClearance(box, callbackList);
+        // 盒子尺寸设置
+        changeSize();
+        window.addEventListener("resize", changeSize);
+        box.addEventListener("click", delegate(diyGameStart, "#diy"));
+        // 按钮绑定事件
+        start.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                // 按钮点击效果
+                start.forEach(item => {
+                    item.style.cssText = `opacity:.5;`;
+                })
+                item.style.cssText = `opacity:1;`
+                // 开始游戏
+                hard = index;
+                if (!mineClearance.init(hard) && hard === 3) {
+                    diyGame();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
