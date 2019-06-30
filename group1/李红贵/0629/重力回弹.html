@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动</title>
+    <style>
+        body{
+            background-color: #000;
+        }
+        #content{
+            width: 200px;
+            height: 200px;
+            background-color:  #ddd;
+            position: absolute;
+            left: 0;;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10;
+        }
+      
+        #ball{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            background: radial-gradient(#0f0,#fa3);
+            left: 50%;
+            top: 0;
+            /* margin-left: -20px; */
+            /* background-color:  #aaa; */
+            border-radius: 20px;
+        }
+
+        .progress{
+            width: 10px;
+            height: 0;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            
+        }
+
+        .pro-bar{
+            height: 100px;
+            width: 10px;
+            background: bottom linear-gradient(yellowgreen,#f00);
+            border-radius: 0 2px 2px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="mask"></div>
+        <div id="ball"></div>
+
+        <div class="progress">
+            <div class="pro-bar"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+        var timer = null;//定时器
+        var speed = 0;//速度
+        var target = 200;//目标
+        var g = 0.3;//加速度
+
+
+        var progress = document.querySelector(".progress");
+        var pro_bar = document.querySelector(".pro-bar");
+
+        var ball = document.getElementById("ball");//球
+        var content = document.getElementById("content");
+        var dowm = false;
+        var horizontalSpeed = 0;
+
+        // 球随鼠标移动
+        content.addEventListener("mousemove",handermove);
+
+        function handermove(evt){
+            var e = evt || window.event;
+            // console.log (e.offsetX,e.offsetY);
+            if(!dowm){
+                ball.style.left = e.offsetX +"px";
+                // ball.style.top = e.offsetY -20 +"px";
+            }
+            getBallTurn(e.offsetX);
+            
+        }
+        function getBallTurn(x){
+            
+            var heit = x - 100;
+
+            progress.style.height = heit>0? (heit+"px"):(-heit+"px");
+            // console.log(heit);
+            horizontalSpeed = heit/10;
+            // console.log(horizontalSpeed);
+            
+        }
+
+        // 点击后球放下
+        document.addEventListener("click",hanlderClick);
+
+        function hanlderClick(){
+            dowm = true;
+            speed = 0;
+            clearInterval(timer);
+            ball.style.top = "0";
+            ball.style.left = "80px";
+            timer = setInterval(ballMove,10);
+        }
+        function ballMove(){
+            console.log(horizontalSpeed);
+            speed += g;
+            ball.style.top = ball.offsetTop + speed +"px";
+
+        
+            // if(ball.offsetLeft <= 0  || ball.offsetLeft >= 160) {
+            //     horizontalSpeed *= -1;
+            // }
+         
+            console.log(ball.offsetLeft);
+            ball.style.left = ball.offsetLeft+ horizontalSpeed+"px";
+
+            console.log(ball.offsetLeft,horizontalSpeed,ball.style.left);
+            // console.log(ball.offsetTop+ speed);
+            // console.log(speed);
+            if((target - 40 - ball.offsetTop)  <= speed){
+                ball.style.top = target - 40 +"px";
+                speed = -speed;
+            // console.log(speed);
+                
+                // console.log(speed);
+                if(speed>-g){
+                    clearInterval(timer);   
+                    ball.style.top = target-40 + "px";
+                    
+                }
+
+            }
+        }
+
+   
+
+        // 终止条件
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
