@@ -6,9 +6,9 @@
 
 
 
-1. ![图片1](<https://www.xyhthink.com/img/1.png>)
+1. ![图片1](https://www.xyhthink.com/img/1.png)
 
-   ![图片2](<https://www.xyhthink.com/img/2.png>)
+   ![图片2](https://www.xyhthink.com/img/2.png)
 
 **直接让handlerMoving这个函数this指向存储坐标的obj，不用传参也可以直接通过this来获取offsetX，Y，这样做可以吗 ？为什么要避免this指向数据？**
 
@@ -84,3 +84,8 @@ on(input , "blur" , handlerWriteText , "input");
 
    - 后面再说
 
+6. ![Q1](https://www.xyhthink.com/img/0628.png)
+
+   为什么倒数第二行obj1里面c是3
+
+   > assign 第一层为深复制，后面为浅复制。
