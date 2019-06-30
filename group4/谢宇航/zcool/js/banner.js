@@ -1,62 +1,66 @@
 var imgCon, showIndex = 1;
 
 //获取左右两个按钮，并且设置点击监听事件
-	var leftBn = document.querySelector("#pre");
-	var rightBn = document.querySelector("#next");
-	var banner = document.querySelector(".banner");
-	imgCon = document.querySelector(".banner-img");
-	sliders = imgCon.querySelectorAll("li")
+var leftBn = document.querySelector("#pre");
+var rightBn = document.querySelector("#next");
+var banner = document.querySelector(".banner");
+imgCon = document.querySelector(".banner-img");
+sliders = imgCon.querySelectorAll("li")
 
-	banner.addEventListener("mouseenter", clearTime);
-	banner.addEventListener("mouseleave", startTime);
+banner.addEventListener("mouseenter", clearTime);
+banner.addEventListener("mouseleave", startTime);
 
-rightBn.onclick = function(){
-	if(showIndex === sliders.length - 2){
-		  showIndex = 1;
-		  imgCon.style.left = 0;
-	}else{
-		  showIndex ++;
+rightBn.onclick = function () {
+	if (showIndex === sliders.length - 2) {
+		showIndex = 1;
+		imgCon.style.left = 0;
+	} else {
+		showIndex++;
 	}
-	move(-1130 * showIndex , imgCon , "left");
+	move(-1130 * showIndex, imgCon, "left");
 }
 
-leftBn.onclick = function(){
-	if(showIndex === 0){
-		  showIndex = sliders.length - 2;
-		  imgCon.style.left = -1130 * showIndex + "px";
-		  showIndex--;
-	}else{
-		  showIndex --;
+leftBn.onclick = function () {
+	if (showIndex === 0) {
+		showIndex = sliders.length - 2;
+		imgCon.style.left = -1130 * showIndex + "px";
+		showIndex--;
+	} else {
+		showIndex--;
 	}
-	move(-1130 * showIndex , imgCon , "left");
+	move(-1130 * showIndex, imgCon, "left");
 }
 console.log(showIndex)
-function move( target , dom , attr ){
-	clearInterval( dom.timer );
-	dom.timer = setInterval(function(){
-		  // 获取当前元素的位置;
-		  var iNow = attr === "opacity" ? parseInt(getComputedStyle(dom)[attr] * 100) : parseInt(getComputedStyle(dom)[attr]);
-		  // target重新赋值;
-		  target = (attr === "opacity" ? target * 100 : target)
-		  var speed = (target - iNow) / 10;
-		  speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
-		  if(target === iNow){
-				clearInterval(dom.timer)
-		  }else{
-				dom.style[attr] = (attr === "opacity" ? (iNow + speed ) / 100 : iNow + speed + "px")
-		  }
-	},50)
+function move(target, dom, attr) {
+	clearInterval(dom.timer);
+	dom.timer = setInterval(function () {
+		// 获取当前元素的位置;
+		var iNow = attr === "opacity" ? parseInt(getComputedStyle(dom)[attr] * 100) : parseInt(getComputedStyle(dom)[attr]);
+		// target重新赋值;
+		target = (attr === "opacity" ? target * 100 : target)
+		var speed = (target - iNow) / 10;
+		speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+		if (target === iNow) {
+			clearInterval(dom.timer)
+		} else {
+			dom.style[attr] = (attr === "opacity" ? (iNow + speed) / 100 : iNow + speed + "px")
+		}
+	}, 50)
 }
 
 //轮播
 var time = setInterval(move1, 4000);
 function move1() {
-	showIndex++;
-	if (showIndex > sliders.length - 2) showIndex = 0;
-	move(-1130 * showIndex , imgCon , "left");
+	if (showIndex > sliders.length - 1) {
+		showIndex = 1;
+		imgCon.style.left = 0;
+	} else {
+		showIndex++;
+	}
+	move(-1130 * showIndex, imgCon, "left");
 }
 
-function startTime(e) {	
+function startTime(e) {
 	e.stopPropagation();
 	clearInterval(time);
 	time = setInterval(move1, 4000);
