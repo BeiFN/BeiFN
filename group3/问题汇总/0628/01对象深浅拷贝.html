@@ -28,22 +28,22 @@
 
 
             // 复杂形势的克隆;
-            // var obj = {
-            //       a : 10,
-            //       b : [],
-            //       c : {
-            //             d : 1,
-            //             e : {},
-            //             f : []
-            //       }
-            // }
+            var obj = {
+                  a : 10,
+                  b : [],
+                  c : {
+                        d : 1,
+                        e : {},
+                        f : []
+                  }
+            }
             // 克隆 内部存在引用类型的对象;
             // var cloneObj = {};
 
             // for(var attr in obj){
             //       cloneObj[attr] = obj[attr];
             // }
-            // console.log(cloneObj);
+            // console.log(cloneObj); //伪深克隆
 
             // 一行代码完美深克隆;  推荐使用;
             

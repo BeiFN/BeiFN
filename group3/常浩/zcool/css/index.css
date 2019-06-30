@@ -227,9 +227,16 @@
     height: 286px;
     margin-top: 20px;
 }
-.banner ul{
+#wrap{
+    width: 1130px;
     overflow: hidden;
+    position: relative;
     height: 286px;
+}
+.banner ul{
+    width: 7910px;
+    height: 286px;
+    position:absolute;
 }
 .banner ul li{
     float: left;
