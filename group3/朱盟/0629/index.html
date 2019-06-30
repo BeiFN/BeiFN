@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../public/css/normal.css">
+    <link rel="stylesheet" href="style.css">
+    <title>运动,轮播图 、emb|朱盟</title>
+</head>
+<style>
+    #boll {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #222;
+        border-radius: 50%;
+        background: radial-gradient(#ddd, #222);
+        z-index: 99;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="slider bg5">5</div>
+            <div class="slider bg1">1
+            </div>
+            <div class="slider bg2">2</div>
+            <div class="slider bg3">3</div>
+            <div class="slider bg4">4</div>
+            <div class="slider bg5">5</div>
+            <div class="slider bg1">1</div>
+
+
+        </div>
+
+        <div class="button-next"></div>
+        <div class="button-prev"></div>
+
+        <div class="pagination">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h1 style=" position: absolute; top: 10px;text-align: center; color: white;  left:0px; width:100%;">跳，跳，跳！</h1>
+    </div>
+    <div id="boll"></div>
+    <script src="../../public/js/normal.1.js"></script>
+    <script src="move.js"></script>
+    <script>
+        var g = 0.1;
+        var cHeight = document.documentElement.offsetHeight;
+        var cWidth = document.documentElement.offsetWidth;
+        var boll = $("#boll");
+        var isShot = false;
+        var speedX = 0.1;
+        var speedY = 0.1;
+
+        function G(height) {
+            return Math.sqrt(2 * 9.78 * height) * 0.01;
+        }
+
+
+        document.addEventListener("click", function (ev) {
+            var e = ev || window.event;
+            var x = e.clientX;
+            var y = e.clientY;
+            isShot ? isShot = false : isShot = true;
+            if (isShot) {
+                bollMove(boll, x - 15, y - 15);
+            }
+
+
+        });
+        document.addEventListener("mousemove", function (ev) {
+            var e = ev || window.event;
+            var x = e.clientX;
+            var y = e.clientY;
+            if (isShot) {
+
+                var cw_2 = (cWidth - 30) / 2
+                var ch_2 = (cHeight - 30) / 2
+                if (x >= cw_2) {
+                    speedX /=0.99;
+                    // console.log("+",speedX);
+                    boll.text("右");
+                } else {
+                    speedX *=0.8;
+                    // console.log("-",speedX);
+                    boll.text("左");
+                }
+
+                // if (y >= ch_2) {
+                //     speedY += 1;
+                //     // console.log("+",speedX);
+                //     boll.text("上");
+                // } else {
+                //     speedY -= 1;
+                //     // console.log("-",speedX);
+                //     boll.text("下");
+                // }
+                // console.log(x, cWidth/2);
+            } else {
+                var e = ev || window.event;
+                var x = e.clientX;
+                var y = e.clientY;
+                boll.style.left = (x - 15) + "px";
+                boll.style.top = (y - 15) + "px";
+            }
+
+            // console.log();
+        });
+
+        function bollMove(e, x, y) {
+            clearInterval(e.timer);
+            e.timer = setInterval(() => {
+                console.log();
+                var offsetTop = e.offsetTop;
+                var offsetWidth = e.offsetWidth;
+                // offsetTop >= cHeight - 30 ? speedX -= G(cHeight - y) : speedX += G(cHeight - y);
+                speedX += G(cWidth - x);
+                speedY += G(cHeight - y)
+                // offsetTop >= cHeight-60? speedX = -speedX : "";
+                // offsetWidth >= cWidth - 30 ? speedY = -speedY : "";
+                e.style.left = x + speedX + "px";
+                e.style.top = offsetTop + speedY + "px";
+                if (Math.abs(cHeight - 30 - offsetTop) <= speedY) {
+                    e.style.top = cHeight - 30 + "px";
+                    speedY > 0 ? speedY = Math.ceil(speedY) : speedY = Math.floor(speedY);
+                    speedY = -speedY
+                }
+                if (Math.abs(cWidth - 30 - offsetWidth - x) <= speedX) {
+                    e.style.left = cWidth - 30 + "px";
+                    speedX > 0 ? speedX = Math.ceil(speedX) : speedX = Math.floor(speedX);
+                    speedX = -speedX;
+                }
+
+                // e.style.top = offsetTop + speedX + "px";
+                // e.style.left = x + speedY + "px";
+                // var styleTop = e.style.top;
+                // console.log("offsetTop:", offsetTop, "styleTop:", styleTop, "cHeight:", cHeight, "speedY:",
+                // speedY);
+                if (!isShot) {
+                    clearInterval(e.timer);
+                    e.timer = null;
+                }
+            }, 30);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // ------------------------------------------------------- 轮播区   警告
+        var index = 1;
+        var next_btn = $(".button-next");
+        var prev_btn = $(".button-prev");
+        var sliders = $(".slider");
+        var pages = $(".pagination>span");
+        var wrapper = $(".wrapper");
+        var container = $(".container");
+        var sliderNum = sliders.length - 1;
+        var sliderWidth = sliders[0].offsetWidth;
+        wrapper.style.width = (sliders.length * sliderWidth) + "px";
+        console.log(pages);
+        [].slice.call(pages).forEach((element, index) => {
+            element.attr("pg-index", index + 1);
+        });
+        next_btn.onclick = function () {
+            index >= sliderNum ? (wrapper.style.left = -sliderWidth + "px") && (index = 2) : index++;
+        }
+        prev_btn.onclick = function () {
+            index <= 0 ? (index = sliderNum - 2) && (wrapper.style.left = ((index + 1) * -sliderWidth) + "px") :
+                index--;
+        }
+        container.onclick = function (ev) {
+            var e = ev || window.event;
+            var ele = e.target || e.srcElement;
+            var pgIndex = null;
+            e.preventDefault();
+            if (ele === next_btn || ele === prev_btn) {
+                move(wrapper, "left", index * -sliderWidth);
+            }
+            if (ele.tagName === "SPAN" && ele.attr("pg-index")) {
+                // console.log(1);
+                var toIndex = Number(ele.attr("pg-index"));
+                // console.log(index, toIndex);
+                if (!(toIndex === index)) {
+                    wrapper.style.left = (toIndex - 1) * -sliderWidth + "px";
+                    index = toIndex;
+                    move(wrapper, "left", index * -sliderWidth);
+                }
+            }
+        }
+
+
+
+        // next_btn.dispatchEvent(new MouseEvent('click', {
+        //     'bubbles': true
+        // }));
+
+        //    var wrapperTimer= setInterval(function () {
+        //         index >= sliderNum ? (wrapper.style.left = -sliderWidth + "px") && (index = 2) : index++;
+        //         move(wrapper, "left", index * -sliderWidth);
+        //     }, 5000);
+    </script>
+</body>
+
+</html>

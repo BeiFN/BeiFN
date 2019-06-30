@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            background:#ddd;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+
+    <script>
+        var divList = document.querySelectorAll("div");
+        // console.log(divList);
+        var timer = null;
+        for(var i = 0 ,div ; div = divList[i++];){
+            div.addEventListener("mouseover",handlerOver.bind(div,400));
+        }
+        function handlerOver(target){
+            var dom = this;
+            clearInterval(timer);
+            dom.timer = setInterval(function(){
+                var speed = (target - dom.offsetWidth)/10;
+                speed = (speed > 0 ? Math.ceil(speed) : Math.floor(speed));
+                // console.log(this.offsetWidth);
+                if(target === dom.offsetWidth ){
+                    clearInterval(dom.timer);
+                }else{
+                    dom.style.width = dom.offsetWidth + speed + "px";
+                }
+            },50)
+        }
+        
+        
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  position: absolute;
+                  left:900px;
+            }
+            #ruler{
+                  width: 2px;
+                  height: 800px;
+                  position: absolute;
+                  left: 400px;
+                  background: orange;
+            }
+            #start{
+                  margin-top: 300px;
+            }
+      </style>
+</head>
+<body>
+        <div id="box">
+        </div>
+        <div id="ruler">
+        </div>
+        <button id="start">开始运动</button>
+    <script>
+            var 
+            start = document.getElementById("start"),
+            ruler = document.getElementById("ruler"),
+            box = document.getElementById("box"),
+            timer = null,
+            target = 400; //bar距离窗口的距离
+            
+            start.addEventListener("click",startMove); 
+            function startMove(){  
+                move(target);
+            }     
+
+            function move(target){   
+                clearInterval(timer);  
+                timer = setInterval(function(){
+                        var speed = (target - box.offsetLeft) / 6;       //缓冲1-3
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        box.style.left = box.offsetLeft + speed + "px";
+                        if(box.offsetLeft === target){        //终止条件         
+                            clearInterval(timer);
+                        }
+                },50)
+            }
+
+
+    </script>
+    
+</body>
+</html>

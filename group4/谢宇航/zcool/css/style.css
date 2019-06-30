@@ -339,11 +339,10 @@ header{
 }
 
 .banner-img{
-	width: 9040px;
+	width: 11300px;
 	height: 286px;
-	transition: all 1s;
 	position: absolute;
-	left: 0;
+	left: -1130px;
 }
 
 .banner-img ul li{

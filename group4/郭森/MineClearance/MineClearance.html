@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background: #ccc;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .title {
+            width: 100%;
+            height: 10%;
+            vertical-align: middle;
+            background: #ddd;
+        }
+
+        .start {
+            height: 100%;
+            width: 10%;
+            outline: none;
+            border: none;
+            background: #000;
+            border-radius: 5%;
+            color: #fff;
+            opacity: .6;
+        }
+
+        .start:hover {
+            opacity: 1 !important;
+        }
+
+        .flag {
+            background: url(./images/flag.jpg) no-repeat;
+            background-size: 100% 100%;
+            height: 100%;
+            width: 10%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .box {
+            background: #ccc;
+            width: 100%;
+            height: 80%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .box li {
+            float: left;
+            list-style: none;
+            background-size: 100%;
+            background-color: #f7f7f7;
+        }
+
+        .box button {
+            width: 100%;
+            height: 100%;
+            display: block;
+            /* display: none; */
+        }
+
+        .box button:hover {
+            width: 110%;
+            height: 110%;
+            position: relative;
+            left: -5%;
+            top: -5%
+        }
+
+        .foot {
+            height: 10%;
+            width: 100%;
+            vertical-align: middle;
+            position: absolute;
+            bottom: 0;
+            background: #f6f6f6;
+        }
+
+        .box .mine {
+            background-image: url(./images/9.jpg);
+        }
+
+        .flagInsertion {
+            background-image: url(./images/flag.jpg);
+            background-size: 100%;
+        }
+
+        .blank {
+            width: 150px;
+            display: inline-block;
+        }
+
+        .boom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background-color: rgba(0, 0, 0, .6);
+            display: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .boom img {
+            width: 100%;
+            height: 90%;
+            opacity: .5;
+        }
+
+        .boom p {
+            margin-top: 10%;
+            font-size: 80px;
+            color: #faa;
+            text-align: center;
+        }
+
+        .fire_work {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <button class="start" hard="0">初级</button>
+        <button class="start" hard="1">中级</button>
+        <button class="start" hard="2">高级</button>
+    </div>
+    <ul id="box" class="box">
+    </ul>
+    <div class="boom"></div>
+    <div class="foot">
+        <span>剩余:</span>
+        <span class="flag"></span>
+        <span>×</span>
+        <span id="flagNum">00</span>
+        <span class="blank"></span>
+        <span>时间：</span>
+        <span id="time">00:00</span>
+    </div>
+    <script src="./js/hanshuku.js"></script>
+    <script src="./js/烟花.js"></script>
+    <script src="./js/MineClearance.js"></script>
+    <script>
+        var box = document.getElementById("box"),           // 游戏盒子
+            flagNum = document.getElementById("flagNum"),   // 剩余旗子
+            start = document.querySelectorAll(".start"),    // 开始按钮
+            timeBox = document.getElementById("time"),      // 剩余时间
+            boom = document.querySelector(".boom"),            // 爆炸层
+            mineClearance = new MineClearance(),
+            timer = null,   //定时器
+            minute = -1,    //分
+            second = -1;    //秒
+        box.offsetHeight > box.offsetWidth ? box.style.height = box.offsetWidth + "px" : box.style.width = box.offsetHeight + "px";
+        // 按钮绑定事件
+        start.forEach((item, i, start) => {
+            item.addEventListener("click", () => {
+                // 操作开始按钮效果
+                start.forEach(item => {
+                    item.style.cssText = `opacity:.5;`;
+                })
+                item.style.cssText = `opacity:1;`
+                clearInterval(timer);// 清空定时器
+                minute = -1;
+                second = -1;
+                mineClearance.bind1 ? mineClearance.end() : "";// 清空事件监听
+                mineClearance.init(box, i, boom, () => { clearInterval(timer) })// 传入参数,开始游戏
+                setTime();//计时开始
+                timer = setInterval(setTime, 1000);
+            });
+        });
+        // 、
+        // 拼接时间
+        function setTime() {
+            if (++second % 60 === 0) {
+                second %= 60;
+                minute++;
+            }
+            var res = minute > 9 ? minute : "0" + minute + ":";
+            res += second > 9 ? second : "0" + second;
+            timeBox.innerHTML = res;
+        }
+    </script>
+</body>
+
+</html>
