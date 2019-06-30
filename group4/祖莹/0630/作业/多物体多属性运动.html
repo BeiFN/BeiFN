@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  margin: 20px;
+                  float: left;
+                  opacity: 1;
+                  font-size: 30px;
+                  text-align: center;
+                  color:#fff;
+                  line-height: 100px;
+            }
+      </style>
+</head>
+<body>
+        <div class="box">变宽</div>
+        <div class="box">变高</div>
+        <div class="box">变透明</div>
+        <script>
+             var 
+              boxList = document.querySelectorAll(".box"),
+              timer = null,
+              gs = getComputedStyle;
+              //设置该怎么改变
+              boxList[0].addEventListener("mouseenter",function(evt){
+                    var e = evt || event;
+                    var target = e.target || e.srcElement;
+                    move(target,500,"width");
+              })
+              boxList[1].addEventListener("mouseenter",function(evt){
+                    var e = evt || event;
+                    var target = e.target || e.srcElement;
+                    move(target,500,"height");
+              })
+              boxList[2].addEventListener("mouseenter",function(evt){
+                    var e = evt || event;
+                    var target = e.target || e.srcElement;
+                    move(target,30,"opacity");
+              })
+  
+              function move(eleNode,target,attr){
+                    // 1. 开启关闭定时器;
+                    clearInterval(eleNode.timer);
+                    eleNode.timer = setInterval(function(){
+                          // 2. 计算速度并取整
+                          if(attr === "opacity"){
+                              var iNow = gs(eleNode)[attr] * 100
+                          }else{
+                              var iNow = parseInt(gs(eleNode)[attr]);
+                          }
+                          var speed = (target - iNow) / 8;
+                          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                          // 3. 元素运动;
+                          iNow += speed;
+                          if(attr === "opacity"){      //赋值
+                                eleNode.style[attr] = iNow / 100;
+                          }else{
+                                eleNode.style[attr] = iNow + "px";
+                          }
+                          // 4. 终止条件;
+                          if(iNow === target){
+                                clearInterval(eleNode.timer);
+                          }
+                    },50)
+              }
+        </script>
+</body>
+</html>
