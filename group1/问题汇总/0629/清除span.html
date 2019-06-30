@@ -41,12 +41,16 @@
                   var contentText = content.innerHTML;
                   // console.log()
                   var nowReg = new RegExp("("+value+")","g");
-                  // content.innerHTML = contentText.replace(nowReg  , "<span>"+ value +"</span>")
+                  content.innerHTML = contentText.replace(nowReg  , "<span>"+ value +"</span>")
                   // console.log(nowReg);
                   // 在替换时得到匹配的内容(匹配的结果);
+
+                  // 清除span标签
                   var regSpan = /<\/?span>/g
                   content.innerHTML = contentText.replace(regSpan  , "")
-                  content.innerHTML = content.innerHTML.replace(nowReg  , "<span> $1 </span>")
+                  // content.innerHTML = contentText.replace(nowSpan  , "")
+
+                  // content.innerHTML = content.innerHTML.replace(nowReg  , "<span> $1 </span>")
             }
 
 
