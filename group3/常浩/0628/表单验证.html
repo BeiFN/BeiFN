@@ -36,9 +36,9 @@
     </style>
 </head>
 <body>
-    <form action="" id="forms">
+    <form action="javascript:void(0)" id="forms">
         <p>
-            <span>用户名：</span>
+            <span>用户名(必填)：</span>
             <input type="text" v-type = "username" v-purenumbers = "false">
         </p>
         <p>
@@ -46,9 +46,10 @@
             <input type="text" v-type = "email">
         </p>
         <p>
-            <span>密码：</span>
+            <span>密码(必填)：</span>
             <input type="password" v-type = "password" v-strength = "true">
         </p>
+        <button id="btn">提交</button>
     </form>
     <script src="validate.js"></script>
 
@@ -57,7 +58,7 @@
             "username" : {
             reg : /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/i
             }// 自定义验证规则和更多的验证元素  
-        });
+        },["username","password"]);
      
     </script>
 </body>

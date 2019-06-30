@@ -7,18 +7,18 @@
     }
     //我们需要传入参数   selector 
     // 如果是给用户更好的体验需要自定义验证规则的话  我们需要另一个参数options json对象形式的
-    function validate(selector,options){
+    function validate(selector,options,mustList){
         options ? Object.assign(strategyList ,options ) : "";
         var parent = $(selector);  //选中我们的表单。
         var inputList = parent.querySelectorAll("input[v-type]"); // 选中我们的input元素;
         //下一步是给每个元素都绑定事件
         for (var i = 0, input; input = inputList[i++];){
-            input.addEventListener("blur",handlerBlur);
+            input.addEventListener("blur",handlerBlur.bind(input,mustList));
         }
         // console.log(inputList);
     }
     // 下面是事件函数
-    function handlerBlur(){
+    function handlerBlur(mustList){
 
         var value = this.value; //获取到当前元素的值
         // console.log(this);
@@ -26,13 +26,21 @@
         if(value == ""){
             return false;
         }
-        validateText(value,type,this);//我们需要参数   当前元素、值、和属性值
+        validateText(value,type,this,mustList);//我们需要参数   当前元素、值、和属性值
         
         //验证密码强度
         type === "password" && this.getAttribute("v-strength") ? validateStrength(value,this) : "";
 
         // 是否需要开启纯数字 这个不仅可以用到用户名的限制   也是可以用到密码等地方的  所以不用限制使用的范围
         validatePurenumbers(value , this ,this.getAttribute("v-purenumbers") === "true" ? true : false);
+
+        btn.onclick = function(){
+            if(count == mustList.length){
+                alert("提交成功");
+            }else{
+                alert("请您正确填写必填选项！");
+            }
+        }
 
     }
 
@@ -45,19 +53,32 @@
             reg : /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i
         }
     } 
-    function validateText(value,type,ele){
+    function validateText(value,type,ele,mustList){
         //此时我们需要一个正则的列表，来告知我们需要执行的正则；
         if(strategyList[type].reg.test(value)){
         // console.log("true");    为了看可以自定义样式我们需要给元素添加不同的样式
-            addValidateState(ele,"success"); //规定这个验证成功的样式名称为success
+        //规定这个验证成功的样式名称为success
+            validateMustList(type,mustList);
+            addValidateState(ele,"success");
             addCreateElement("success",ele,type);
         }else{
             // console.log("false");  所有我们需要 创建另外一个添加className的函数
             addValidateState(ele,"error");
             addCreateElement("error",ele,type);
+            return false;
         }
     }
-
+    var count = 0;
+    var btn  = $("#btn");
+    function validateMustList(type,mustList){
+        for(var i = 0 ; i < mustList.length ; i ++){
+            if(type == mustList[i]){
+                count ++
+            }
+        }
+    }
+    
+    //验证必填项
     var contentList = {
         "username" : {
             "success" :  "用户名合法" ,
@@ -77,7 +98,6 @@
         var parent_p = ele.parentNode;
         var parent_p_c = parent_p.children[0];
         if(parent_p_c.nodeName == "DIV"){
-            console.log(1);
             parent_p.children[0].innerHTML = contentList[type][content];
         }else{
             var elements = document.createElement("div");
