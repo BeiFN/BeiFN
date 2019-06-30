@@ -15,9 +15,9 @@
         //事件触发：捕获 目标 冒泡 默认冒泡阶段执行
         //事件绑定 事件监听 on off封装  事件委托封装
         /**阻止事件冒泡
-        *   typeof(e.stopPrapagetion) === function ? e.stopPrapagetion() : e.cancelBubble = true;
+        *   typeof e.stopPrapagetion === "function" ? e.stopPrapagetion() : e.cancelBubble = true;
         * 阻止默认事件
-        *   typeof(e.preventDefault) === function ? e.prevent() : e.returnVallue = false;
+        *   typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
         *bind apply call
         */
         //柯理化 函数的预处理   回调函数
