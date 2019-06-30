@@ -35,7 +35,7 @@
             var target = 600;
             // console.log(divList);
             for (var i = 0, ele_div; ele_div = divList[i++];) {
-                ele_div.onmouseover = function move(target, ele_div) {};
+                ele_div.onmouseover =  function(){move(600,this)};
 
                 function move(target, ele_div) {
                     clearInterval(ele_div.timer);

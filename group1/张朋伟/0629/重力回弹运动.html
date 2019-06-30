@@ -53,8 +53,8 @@
 
         #progress_bar {
             height: 100px;
-            width:20px;
-            background: bottom linear-gradient( #f10,yellowgreen);
+            width: 20px;
+            background: bottom linear-gradient(#f10, yellowgreen);
             /* overflow: hidden; */
             position: absolute;
             z-index: 999;
@@ -82,7 +82,7 @@
         var ball = $("#ball");
         var progress_bar = $("#progress_bar");
         // console.log(progress_bar)
-
+        var speed_x = 0;
         var target = 400
         var moving = false;
         var timer = null;
@@ -93,33 +93,33 @@
 
         function move(evt) {
             var e = evt || window.event;
-            var target = e.target || e.srcElement;
+            // var target = e.target || e.srcElement;
             var left = e.offsetX;
             var top = e.offsetY;
-            var speed_x;
             // console.log(left, top)
             if (!moving) {
                 ball.style.left = left - 20 + "px";
                 ball.style.top = top - 20 + "px";
-                fall();
-            }else
-            getBallTurn(e.offsetX);
+                // fall();
+            } else
+                getBallTurn(e.offsetX);
         }
 
         function getBallTurn(x) {
+            
             if (x < 300) {
                 var pro = (300 - x) / 300 * 100;
                 // console.log(pro);
-                speed_x = -5 * pro;
-                progress_bar.style.height = parseInt(2 * pro)+"px";
+                speed_x = -0.05 * pro;
+                progress_bar.style.height = parseInt(2 * pro) + "px";
                 // console.log(progress_bar.style.height)
 
             } else {
                 var pro = (x - 300) / 300 * 100;
-                progress_bar.style.height = parseInt(2 * pro)+"px";
+                progress_bar.style.height = parseInt(2 * pro) + "px";
 
                 // console.log(pro);
-                speed_x = 0.5 * pro;
+                speed_x = 0.05 * pro;
 
 
             }
@@ -133,19 +133,20 @@
         }
 
         function ballFall() {
+            // getBallTurn(e.offsetX);
             speed += g;
             ball.style.top = ball.offsetTop + speed + "px";
             ball.style.left = ball.offsetLeft + speed_x + "px";
 
-            if (target - ball.offsetTop - 40 < speed) {
+            if (target - ball.offsetTop - 40 < Math.abs(speed)) {
                 ball.style.top = target - 40 + "px";
                 speed = -speed;
+                // clearInterval(timer);
+
                 // console.log(speed);
                 if (speed > -2) {
                     clearInterval(timer);
                     ball.style.top = target - 40 + "px";
-
-
                 }
 
             }
