@@ -1,4 +1,4 @@
-var imgCon, showIndex = 0;;
+var imgCon, showIndex = 1;
 
 //获取左右两个按钮，并且设置点击监听事件
 	var leftBn = document.querySelector("#pre");
@@ -10,7 +10,6 @@ var imgCon, showIndex = 0;;
 	banner.addEventListener("mouseenter", clearTime);
 	banner.addEventListener("mouseleave", startTime);
 
-console.log(sliders.length)
 rightBn.onclick = function(){
 	if(showIndex === sliders.length - 2){
 		  showIndex = 1;
@@ -24,13 +23,14 @@ rightBn.onclick = function(){
 leftBn.onclick = function(){
 	if(showIndex === 0){
 		  showIndex = sliders.length - 2;
-		  imgCon.style.left = -1130 * showIndex;
+		  imgCon.style.left = -1130 * showIndex + "px";
+		  showIndex--;
 	}else{
 		  showIndex --;
 	}
 	move(-1130 * showIndex , imgCon , "left");
 }
-
+console.log(showIndex)
 function move( target , dom , attr ){
 	clearInterval( dom.timer );
 	dom.timer = setInterval(function(){
@@ -48,36 +48,6 @@ function move( target , dom , attr ){
 	},50)
 }
 
-
-
-
-
-
-
-
-
-
-
-//点击事件
-// function clickHandler() {
-// 	if (this.id === "pre") {
-// 		position--;
-// 		if (position < 0) position = 7;
-// 	}
-// 	else {
-// 		position++;
-// 		if (position > 7) {
-// 			position = 0;
-// 		}
-// 	}
-// 	imgMove();
-// }
-
-// //banner图位置移动
-// function imgMove() {
-// 	imgCon.style.left = -position * 1130 + "px";
-// }
-
 //轮播
 var time = setInterval(move1, 4000);
 function move1() {
@@ -86,7 +56,8 @@ function move1() {
 	move(-1130 * showIndex , imgCon , "left");
 }
 
-function startTime() {
+function startTime(e) {	
+	e.stopPropagation();
 	clearInterval(time);
 	time = setInterval(move1, 4000);
 }
