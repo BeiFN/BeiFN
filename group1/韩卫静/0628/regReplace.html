@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				width: 300px;
+				border: 2px solid #0099FF;
+			}
+			span{
+				background-color: #CCFF33;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="search">
+		
+		<p id="content">
+			为贯彻落实《中华人民共和国车辆购置税法》，现将继续执行的车辆购置税优惠政策公告如下：
+1.回国服务的在外留学人员用现汇购买1辆个人自用国产小汽车和长期来华定居专家进口1辆自用小汽车免征车辆购置税。防汛部门和森林消防部门用于指挥、检查、调度、报汛（警）、联络的由指定厂家生产的设有固定装置的指定型号的车辆免征车辆购置税。具体操作按照《财政部国家税务总局关于防汛专用等车辆免征车辆购置税的通知》（财税〔2001〕39号）有关规定执行。
+		</p>
+		
+		<script type="text/javascript">
+			var seaText = document.getElementById("search");
+			var con = document.getElementById("content");
+			
+			seaText.onkeydown = function(evt){
+				var e = evt || window.event;
+				if(e.keyCode === 13){
+					console.log(1);
+					var value = seaText.value;
+					var reg = new RegExp(value ,"g")
+					var content = con.innerHTML;
+					con.innerHTML = content.replace(reg , "<span>"+value+"</span>");
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>
