@@ -10,7 +10,6 @@ var slider=$('.slider');
 var next_button=$('.next-button');
 var prev_button=$('.prev-button');
 var span=document.getElementsByTagName('span');
-span[0].style.background='#000'
 var showIndex=0;
 var timer=null;
 //-----添加事件----
@@ -27,7 +26,8 @@ next_button.onclick=function(){
 }
 prev_button.onclick=function(){
     if(showIndex===0){
-        showIndex=slider.length-1
+        showIndex=slider.length-2
+        wrapper.style.left=(slider.length-1)*-500+'px'
     }else{
         showIndex--;
         changPointColorprev(showIndex);
@@ -72,11 +72,18 @@ function indexMove(target,dom,arrt){
 
 
 function changPointColornext(showIndex){
-    span[showIndex].style.background='#000';
-    span[showIndex-1].style.background='#fff';
-    // console.log(showIndex)
+    for(var i=0,col;col=span[i++];){
+        col.className='';
+    }
+    span[showIndex].className='active'
+
+    console.log(showIndex)
 }
 function changPointColorprev(showIndex){
-    span[showIndex].style.background='#000';
-    span[showIndex+1].style.background='#fff';
+    for(var i=0,col;col=span[i++];){
+        col.className='';
+    }
+    span[showIndex].className='active'
+    console.log(showIndex);
+
 }
