@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #box1,
+    #box2,
+    #box3 {
+        width: 100px;
+        height: 100px;
+        border: 10px solid #000;
+        background: #ddd;
+        float: left;
+        margin: 20px;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
+</head>
+
+<body>
+    <div id="box1">变高</div>
+    <div id="box2">变宽</div>
+    <div id="box3">变透明</div>
+
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+        var timer = null;
+        var target = 400;
+        box1.onmousemove = function () {
+            move(400, this, "height")
+        };
+        box2.onmousemove = function () {
+            move(400, this, "width")
+        };
+        box3.onmousemove = function () {
+            move(0.3, this, "opacity")
+        };
+
+        function move(target, dom, attr) {
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function () {
+                    var iNow = parseInt(getComputedStyle(dom)[attr]);
+                    // console.log(iNow)
+                    // var speed = (target - iNow);
+                    if (attr === "opacity") {
+                        var iNow = parseInt(getComputedStyle(dom)[attr] * 100);
+                        // console.log(iNow);
+
+
+
+                    } else {
+                        var iNow = parseInt(getComputedStyle(dom)[attr]);
+                        console.log(iNow);
+                    }
+                    var speed = ((attr === "opacity" ? target * 100 : target) - iNow) / 10
+                    // console.log(speed);
+                    // console.log(attr);
+
+                    if (target === iNow) {
+                        clearInterval(dom.timer);
+                        // console.log(1111111111111);
+
+                    } else {
+                        if (attr === "opacity") {
+                            dom.style.opacity = (iNow + speed) / 100;
+                        } else {
+                            dom.style[attr] = iNow + speed + "px";
+                            // console.log(attr);
+
+                        }
+                    }
+                }
+
+                , 50)
+        }
+    </script>
+</body>
+
+</html>
