@@ -12,10 +12,8 @@ function delegation(eventCallBack,selector){
     return function (evt){
         var e = evt || event;
         var target = e.target || e.srcElement;
-        // console.log(target.nodeName);
         var _target = target;
         var targetFamily = [];
-        // console.log(_target);
         var eleList = this.querySelectorAll(selector);
         
         var count = 0;
@@ -25,11 +23,9 @@ function delegation(eventCallBack,selector){
             _target = _target.parentNode;
             count++;
         }
-        // console.log(targetFamily);
         for(var i = 0,ele ; ele = eleList[i++];){
             if(targetFamily.length===1 ? ele === targetFamily[0] : targetFamily.indexOf(ele)!==-1){
                 eventCallBack.call(ele,e);
-                // console.log(ele);
             }
         }
     }
@@ -38,7 +34,6 @@ function delegation(eventCallBack,selector){
 function changeColor(){
     this.style.backgroundColor = "#000";
     this.style.color = "#ffe300";
-    // console.log(this);
 }
 
 function returnColor(){
@@ -49,8 +44,6 @@ function returnColor(){
 window.onscroll = function(){
     var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
     var line = productTitle.offsetTop;
-    console.log(scrollTop);
-    // console.log(line);
     if(scrollTop>=603){
         productTitle.style.position = "fixed";
         productTitle.style.top = "0px";
@@ -81,4 +74,51 @@ goBack.onclick = function(){
 }
 
 // var arr=navList.querySelectorAll("li");
-// console.log(arr);
+var banner = $("#banner");
+var bannerPic = $("#banner_pic");
+var nextBtn = $("#next_btn");
+var prevBtn = $("#prev_btn");
+var sliders = $(".slider");
+
+var showIndex = 0;
+var timer = null;
+
+banner.onclick = function(evt){
+    var e = evt || event;
+    var target = e.target || e.srcElement;
+    if(target === nextBtn || target === prevBtn){
+        move(-1130 * showIndex , bannerPic , "left");
+        // alert(1);
+    }
+}
+nextBtn.onclick = function(){
+    if(showIndex === sliders.length-1){
+        showIndex = 1;
+        bannerPic.style.left = 0;
+    }else{
+        showIndex++;
+    }
+}
+
+prevBtn.onclick = function(){
+    if(showIndex === 0){
+        showIndex = sliders.length-1;
+        bannerPic.style.left = -1130*6 +"px";
+    }else{
+        showIndex--;
+    }
+}
+
+function move(target , dom , attr){
+    clearInterval(dom.timer);
+    dom.timer = setInterval(function(){
+        var iNow = parseInt(getComputedStyle(dom)[attr]);
+        var speed = (target - iNow)/10;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+        if(target === iNow){
+            clearInterval(dom.timer);
+        }else{
+            dom.style[attr] = iNow + speed +"px";
+        }
+    },50)
+}
