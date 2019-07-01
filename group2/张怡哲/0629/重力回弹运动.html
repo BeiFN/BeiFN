@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: #000;
+        }
+        #contanier {
+            width: 800px;
+            height:500px;
+            margin:100px auto;
+            background: #fff;
+            position: relative;
+        }
+        #ball{
+            width: 30px;
+            height:30px;
+            border-radius: 50px;
+            background: yellowgreen;
+            position: absolute;
+        }
+        .mask{
+            width: 100%;
+            height:100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+        .progress{
+            width: 30px;
+            height:200px;
+            background: yellowgreen;
+            position: absolute;
+            top: 300px;
+            overflow:hidden;
+            border-radius: 5px 5px 0 0;
+        }
+        .progress_bar{
+            width: 100%;
+            background:bottom linear-gradient(yellowgreen,#f10);
+            position:absolute;
+            top:0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contanier">
+        <div class="mask"></div>
+        <div id="ball"></div>
+        <div class="progress">
+            <div class="progress_bar"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var ball = document.getElementById("ball");
+    var contanier = document.getElementById("contanier");
+    var progressBar = document.querySelector(".progress_bar");
+    var timer = null;
+    var speed = 5;
+    var g = 0.5;
+    moving = false;
+    var speedX = 0;
+    var prop = 0;
+    
+    contanier.addEventListener("click" , handlerMove);
+    contanier.addEventListener("mousemove" , handlerMouseMove);
+    
+    
+    function handlerMouseMove(evt){
+        var e = evt || event;
+
+        if(!moving){
+            ball.style.left = e.offsetX - 15 +"px";
+            ball.style.top = e.offsetY - 15 +"px";
+        }
+
+        handlerBallLeft(e.offsetX)
+    }
+
+    function handlerBallLeft(x){
+        if(x<400){
+            prop = (400-x)/400*100;
+            speedX = -5*(prop/100);
+        }else{
+            prop = (x - 400)/400*100;
+            speedX = 5*(prop/100);
+        }
+        console.log(prop)
+        progressBar.style.height = 400-prop*3 + "px";
+    }
+
+    function handlerMove(){
+        moving = true;
+        clearInterval(timer);
+
+        timer = setInterval(function(){
+            speed += g;
+            ball.style.top = ball.offsetTop + speed + "px";
+            ball.style.left = ball.offsetLeft + speedX + "px";
+            // console.log(speed)
+            if(Math.abs(500 - ball.offsetTop-30)<=speed){
+                // ball.style.top = ball.offsetTop+ speed + "px";
+                ball.style.top = "470px";
+
+                speed = -speed;
+                if(speed > -2){
+                    clearInterval(timer);
+                    ball.style.top = "470px";
+                    moving = false;
+                }
+            }
+        },50)
+    }
+</script>
+</html>

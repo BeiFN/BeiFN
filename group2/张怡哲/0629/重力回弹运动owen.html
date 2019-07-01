@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background:#000;
+        }
+        #contanier{
+            width: 800px;
+            height:500px;
+            position: relative;
+            margin: 100px auto;
+            background: #fff;
+        }
+        #ball{
+            width: 40px;
+            height:40px;
+            border-radius: 50%;
+            position: absolute;
+            top:0;
+            left: 0;
+            background: yellowgreen;
+        }
+        #mask{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="contanier">
+        <div id="ball"></div>
+        <div id="mask"></div>
+    </div>
+    <script>
+        var contanier = document.getElementById("contanier");
+        var ball = document.getElementById("ball");
+        var timer = null;
+        var speed = 5;
+        var g = 0.5;
+        var moving = false;
+        var speedX = 0;
+
+        contanier.addEventListener("click" , handlerClick);
+        contanier.addEventListener("mousemove" , handlerMove);
+
+        function handlerMove(evt){
+            var e = evt ||event;
+            ballMoveX(e);
+        }
+
+        function ballMoveX(e){
+            if(!moving){
+                ball.style.left = e.offsetX - 20 + "px";
+                ball.style.top = e.offsetY - 20 + "px";
+            }
+            var x = e.offsetX;
+            changeBallX(x);
+        }
+
+        function changeBallX(x){
+            if(x<400){
+                speedX = -5 * ((400 - x)/400);
+            }else{
+                speedX = 5 * ((x-400)/400);
+            }
+        }
+
+        function handlerClick(){
+            clearInterval(timer);
+            ballMove();
+        }
+        
+        function ballMove(){
+            moving = true;
+            timer = setInterval(function(){
+                speed +=g;
+                ball.style.top = ball.offsetTop + speed +"px";
+                ball.style.left = ball.offsetLeft + speedX + "px";
+                if(Math.abs(460 - ball.offsetTop <= speed)){
+                    ball.style.top = "460px";
+                    // clearInterval(timer);
+                    speed = -speed;
+                    if(speed>-2){
+                        clearInterval(timer);
+                        ball.style.top = "460px";
+                    }
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>
