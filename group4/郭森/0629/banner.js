@@ -4,7 +4,7 @@ var prev_btn = $(".button-prev");
 var sliders = $(".slider");
 var wrapper = $(".wrapper");
 var container = $(".container");
-var pagination=$(".pagination");
+var pagination = $(".pagination").children;
 function $(selector) {
       var ele = null;
       return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
@@ -23,16 +23,17 @@ prev_btn.onclick = function () {
       }
       showIndex--;
 }
-for(let i=0,btn;btn=pagination[i++];){
-      btn.onclick=function(){
-            showIndex=i;
+
+for (let i = 0, btn; btn = pagination[i++];) {
+      btn.onclick = function () {
+            showIndex = i-1;
       }
 }
 
 container.onclick = function (evt) {
       var e = evt || window.event;
       var target = e.target || e.srcElement;
-      if (target === next_btn || target === prev_btn) {
+      if (target === next_btn || target === prev_btn || target.nodeName === "SPAN") {
             move(-300 * showIndex, wrapper, "left");
       }
 }
