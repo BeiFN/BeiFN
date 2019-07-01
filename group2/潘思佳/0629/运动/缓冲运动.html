@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #cccccc;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        #line {
+            width: 1px;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            left: 600px;
+        }
+        
+        #button {
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+    <button id="button">click to start</button>
+    <script>
+        var box = document.getElementById("box");
+        var button = document.getElementById("button");
+        var line = document.getElementById("line");
+        var target = parseInt(getComputedStyle(line).left);
+        var timer = null;
+
+        button.addEventListener("click", clickHandler);
+
+        function clickHandler() {
+            console.log(true);
+            clearInterval(timer);
+            timer = setInterval(function() {
+                var speed = (target - box.offsetLeft) / 20;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (box.offsetLeft === target) clearInterval(timer);
+                else box.style.left = box.offsetLeft + speed + "px";
+            }, 50);
+        }
+    </script>
+</body>
+
+</html>

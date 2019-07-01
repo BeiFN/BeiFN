@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-            *{
+            * {
                   margin: 0;
                   padding: 0;
             }
-            input.success{
+
+            input.success {
                   transition: border-color 1s;
                   border-color: yellowgreen;
             }
-            input.error{
+
+            input.error {
                   transition: border-color 1s;
                   border-color: red;
             }
-            input.v-strength-low{
-                  transition: border-color 1s;
-                  border-color: red;
+
+            p.success {
+                  color: yellowgreen;
             }
-            input.v-strength-middle{
-                  transition: border-color 1s;
-                  border-color: orange;
+
+            p.lower {
+                  color: #f88;
             }
-            input.v-strength-high{
-                  transition: border-color 1s;
-                  border-color: yellowgreen;
+
+            p.middle {
+                  color: orange;
             }
-            p{
+
+            p.high {
+                  color: yellowgreen;
+            }
+
+            p.error {
+                  color: red;
+            }
+
+            p {
                   height: 20px;
-                  padding-left:50px; 
+                  padding-left: 50px;
             }
-      
       </style>
 </head>
+
 <body>
       <form action="javascript:void(0)" id="form">
             <div>
@@ -47,37 +59,39 @@
             </div>
             <div>
                   <span>用户名 :</span>
-                  <input type="text" v-type="username" v-purenumbers="false">
+                  <input type="text" v-type="username">
                   <p type="text" v-tip="username"></p>
             </div>
             <div>
                   <span>密码 :</span>
                   <input type="text" v-type="password" v-strength="true">
-                  <p type="text" v-tip="password" ></p>
+                  <p type="text" v-tip="password"></p>
             </div>
-            <!-- <div>
+            <div>
                   <span>链接 :</span>
                   <input type="text" v-type="url">
-                  <p type="text" v-tip="urlTip" class="email"></p>
-            </div> -->
+                  <p type="text" v-tip="url"></p>
+            </div>
             <button id="btn">提交</button>
       </form>
-
-      <script>
-            // var btn = document.getElementById("btn");
-            // var form = document.getElementById("form");
-            // btn.onclick = function(){
-            //       console.log(1);
-            // }
-            // form.onsubmit = function(evt){
-            //       var e = evt || window.event;
-            //       e.preventDefault();
-            // }
-      </script>
       <script src="./validate.js"></script>
       <script>
-            // 1. 调用模式 => 插件使用者调用 ; 调用时要告知插件要在哪里进行验证;
-            var validate=new Validate(form);
+            var validate = new Validate(form, {
+                  "url": [
+                        {
+                              reg:/^https?:\/\/.+?\.[a-z]{2,6}(\.[a-z]{2,3})?$/,
+                              bool:true,
+                              tip:"请输入正确网址",
+                        }, 
+                        {
+                              // https://lol.qq.com
+                              reg:/^https:\/\/lol\.qq\.com$/,
+                              bool:false,
+                              tip:"请输入健康的网址",
+                        }
+                  ]
+            });
       </script>
 </body>
+
 </html>

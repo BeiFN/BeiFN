@@ -1,4 +1,3 @@
-
 class Validate {
     constructor(selector, options) {
         this.box = selector;
@@ -45,6 +44,11 @@ class Validate {
                     '安全强度适中，可以使用三种以上的组合来提高安全强度',
                     '您的密码很安全',
                 ],
+                "state": [
+                    "lower",
+                    "middle",
+                    "high"
+                ]
             }
         }
         options ? Object.assign(this.defaultData, options) : "";
@@ -55,7 +59,7 @@ class Validate {
     // 事件绑定
     binEvent() {
         this.iptList.forEach(ipt => {
-            ipt.addEventListener("blur", this.init.bind(this, ipt))
+            ipt.addEventListener("input", this.init.bind(this, ipt))
         });
     }
     // 初始化
@@ -63,25 +67,25 @@ class Validate {
         this.ipt = ipt;                                     // 输入框
         this.type = this.ipt.getAttribute("v-type");        // 类型
         this.value = this.ipt.value;                        // 输入的值
-        if (!(this.data = this.defaultData[this.type])) {   // 数据
-            return false;
-        }
+        if (!(this.data = this.defaultData[this.type]))return false;// 数据
+        this.tipBox = null;                                 // 提示框
         this.tipBoxList.forEach(tipBox => {
             if (tipBox.getAttribute("v-tip") === this.type) {
-                this.tipBox = tipBox;                       // 提示框
+                this.tipBox = tipBox;
             }
         })
         this.state = null;                                  // 验证状态
         this.errorTip = null;                               // 错误提示
-        this.valiData();
-        this.addValidateState();
-        if (this.type === "password" && this.ipt.getAttribute("v-strength")) {
-            this.strengthData = this.defaultData.strength;      // 密码强度验证数据
-            this.strength = -1;                                  // 密码强度 
-            this.strengthTip = null;                            // 密码强度提示
-            this.valiStrenth();
-            this.addValidateState();
-            this.tipBox.innerHTML = this.strengthData.tip[this.strength];
+        this.valiData();                                    // 正则验证
+        this.addValidateState(this.ipt, /success|error/);   // 添加输入框状态
+        this.addValidateState(this.tipBox, /success|error/);// 添加提示框状态
+        if (this.type === "password" && this.ipt.getAttribute("v-strength") && this.state === "success") {
+            this.strength = -1;                             // 密码强度 
+            this.data = this.defaultData.strength;          // 强度验证数据
+            this.valiStrenth();                             // 强度验证
+            this.state = this.data.state[this.strength]     // 强度验证状态
+            this.tipBox.innerHTML = this.data.tip[this.strength];// 强度提示
+            this.addValidateState(this.tipBox, /lower|middle|high/);// 添加提示框状态
         }
     }
     // 正则验证
@@ -90,29 +94,26 @@ class Validate {
             var boolean = this.data[i].reg.test(this.value)//正则判断
             if (this.data[i].bool ? !boolean : boolean) {//boll值判断
                 this.state = "error";
-                this.tipBox.innerHTML = this.data[i].tip;
+                if (this.tipBox) this.tipBox.innerHTML = this.data[i].tip;
                 return false;
             }
         }
         this.state = "success";
-        this.tipBox.innerHTML = "";
+        if (this.tipBox) this.tipBox.innerHTML = "";
     }
     // 验证状态的添加;
-    addValidateState() {
-        if (/success|error/.test(this.ipt.className)) {
-            this.ipt.className = this.ipt.className.replace(/success|error/g, this.state)
-        } else {
-            this.ipt.className += " " + this.state
-        }
+    addValidateState(ele, reg) {
+        if(!ele) return false;
+        ele.className = ele.className.replace(new RegExp(reg, "g"), "");
+        ele.className += " " + this.state;
     }
     // 密码强度验证
     valiStrenth() {
-        for (var i = 0; i < this.strengthData.reg.length; i++) {
-            if (this.strengthData.reg[i].test(this.value)) {
+        for (var i = 0,reg; reg=this.data.reg[i++];) {
+            if (reg.test(this.value)) {
                 this.strength++;
             }
         }
     }
-
 }
 
