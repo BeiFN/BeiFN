@@ -48,6 +48,7 @@ var prev = $(".top");
     //运动框架
     function move (target , dom , attr){
         clearInterval(dom.timer);
+        target = attr === "opacity" ? target * 100 : target ;
         dom.timer = setInterval(function (){
             var iNow = (attr === "opacity" ? parseInt( getComputedStyle(dom)[attr] *  100 ) : parseInt(getComputedStyle(dom)[attr]))
             var speed = (target - iNow) / 8;
