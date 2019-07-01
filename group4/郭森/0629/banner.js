@@ -25,15 +25,23 @@ prev_btn.onclick = function () {
 }
 
 for (let i = 0, btn; btn = pagination[i++];) {
-      btn.onclick = function () {
+      btn.onmouseover = function () {
             showIndex = i-1;
       }
 }
-
+container.onmouseover=function(evt){
+      var e = evt || window.event;
+      var target = e.target || e.srcElement;
+      if (target.nodeName === "SPAN") {
+            console.log(showIndex);
+            
+            move(-300 * showIndex, wrapper, "left");
+      }
+}
 container.onclick = function (evt) {
       var e = evt || window.event;
       var target = e.target || e.srcElement;
-      if (target === next_btn || target === prev_btn || target.nodeName === "SPAN") {
+      if (target === next_btn || target === prev_btn) {
             move(-300 * showIndex, wrapper, "left");
       }
 }
