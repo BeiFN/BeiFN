@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function Foo(){
+
+  }
+  // 构造函数的prototype和实例对象的_proto_下面的constructor、_proto_是一模一样的
+  Foo.prototype.a = "hello"
+  var foo = new Foo()
+  console.log(foo)
+
+  // 原型链和作用域链相似
+  console.log(foo.a)
+
+  </script>
+</body>
+</html>

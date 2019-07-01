@@ -21,7 +21,16 @@ window.onload= function(){
     wrapper.style.left = -300 * showIndex +"px"; 
     console.log(showIndex,wrapper.offsetLeft,wrapper.style.left);
     changePageView(showIndex);
+
+
     bannerTimer = setInterval(timerNext,3000);
+
+    //定时器程序中怎么触发事件
+    setInterval(function(){
+        var evto = new Event("click",{say:"hello"});//是否冒泡，是否捕获
+        console.log(evt0);
+        prev_btn.dispatchEvent(evto);
+    },50);
 }
 
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        *{
+              margin: 0;
+              padding: 0;
+              font-size: 30px;
+        }
+        li{
+              list-style-type:none;
+        }
+        #pagination{
+              background: #ddd;
+              width: 300px;
+              height: 400px;
+              margin: 0 auto;
+        }
+        #btn-list{
+              width: 100%;
+              height: 50px;
+              text-align: center;
+              background: #b6b6b6;
+              line-height: 50px;
+        }
+        #btn-list button{
+              padding: 0 20px;
+        }
+        #btn-list button.active{
+              background: yellowgreen;
+        }
+        #content-list li{
+              width: 300px;
+              height: 350px;
+              line-height: 350px;
+              text-align:center;
+              display: none;
+        }
+        #content-list li.active{
+              display: block;
+        }
+  </style>
+</head>
+<body>
+    <div id="pagination">
+        <div id="btn-list">
+              <button>1</button>
+              <button>2</button>
+              <button>3</button>
+        </div>
+        <ul id="content-list">
+              <li class="active">1</li>
+              <li>2</li>
+              <li>3</li>
+        </ul>
+  </div>
+  <script>
+        //基础版
+        // var btns = document.getElementById("btn-list").children;
+        // var contents = document.getElementById("content-list").children;
+        // var index = 0;
+        // for(var i = 0 ,item ; item = btns[i] ; i++){
+        //     item.index = i;
+        //     item.addEventListener("click" , handlerOnclick);
+        // }
+        // function handlerOnclick(){
+        //     contents[index].className = "";
+        //     index = this.index;
+        //     contents[index].className = "active";
+        // }
+
+        //面向对象版
+        function Table(btnSelector,contentSelector){//讲元素的获取放在构造函数内
+            this.btns = document.getElementById(btnSelector).children;
+            this.contents = document.getElementById(contentSelector).children;
+        }//init初始化功能  =>  元素的绑定事件写在其中，事件处理函数另写，降低耦合
+        Table.prototype.init = function(){//把方法写在原型上，最后实例对象进行调用
+            for(var i = 0 , btn ; btn = this.btns[i] ;i++){//为确保this的唯一性，防止特殊情况，
+                //使用bind方法保持永久指向，保证this永久指向实例对象
+                btn.addEventListener("click",this.handerOnclick.bind(this,i));
+                btn.addEventListener("click",this.BtnBgColorChange.bind(this,i));
+            }
+        }
+        Table.prototype.handerOnclick = function(index,evt){
+            for(var i = 0 , content ; content = this.contents[i++] ;){
+                content.className = "";
+            }
+            this.contents[index].className = "active";
+        }
+        Table.prototype.BtnBgColorChange = function(index,evt){
+            this.btns[index].style.background = "#"+ Math.round( Math.random() * 16777215).toString(16).padStart(6,"0");
+            this.contents[index].style.background = "#"+ Math.round( Math.random() * 16777215).toString(16).padStart(6,"0");
+        }
+        var table = new Table("btn-list","content-list");
+        table.init();//实例对象访问原型，执行函数
+  </script>
+</body>
+</html>

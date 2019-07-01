@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #pagination{
+            width: 100px;
+            height: 300px;
+            background: #ddd;
+            margin: 0 auto;
+        }
+        #btn-list{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            background: #333;
+            line-height: 100px;
+        }
+        #btn-list button{
+            width: 30px;
+            height: 30px;
+        }
+        #content-list{
+            width: 100px;
+            height: 200px;
+            line-height: 200px;
+            background: #f00;
+
+        }
+        #content-list li{
+            display: none;
+            text-align: center;
+            background: #0f0;
+
+        }
+        #content-list .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="pagination">
+        <div id="btn-list">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+        <ul id="content-list">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+
+    <script>
+        // var btns = document.getElementById("btn-list").children;
+        // var contents = document.getElementById("content-list").children;
+        // //设计运算中需要参与的值
+        // var index = 0;
+        // // 绑定事件
+        // for(var i=0,btn ; btn = btns[i];i++){
+        //     console.log(i,btn);
+        //     btn.index = i;
+        //     btn.addEventListener("click",hnadleClick);
+
+        // }
+        // // 事件处理函数
+        // function hnadleClick(){
+        //     contents[index].className = "";
+        //     index = this.index;
+        //     contents[index].className = "active";
+        // }
+
+
+        // function Table(btnSelector,contentSelector){
+        //     this.btns  = document.getElementById("btn-list").children;
+        //     this.contents = document.getElementById("content-list").children;
+        //     // 解决耦合关系  this 初始化功能
+        //     // 绑定事件，设置需要计算的变量
+        //     // 设置需要计算的变量
+
+        // }
+        // Table.prototype.init = function(){
+        //     //原型怎么访问实例里面的属性
+        //     // init 原型里方法的this指向，绝大多数会是实例，那么特殊情况不是实例的，我们会转向实例
+        //     // 一个this原则，如果this不指向实例，那么this一定要改向实例，通常使用bind方法改变函数内部的this指向
+        //     // 
+
+        //     for(var i=0,btn; btn = this.btns[i];i++){
+        //         console.log(i,btn);
+        //         btn.addEventListener("click",this.changeContent.bind(this,i));
+        //     }
+
+        // }
+        // Table.prototype.changeContent = function(index,evt){
+        //     var e = evt || window.event;
+        //     var target = e.target ||e.srcElement;
+        //     console.log("changeContent",this,target);
+
+        //     for(var i=0,content; content = this.contents[i++];){
+        //         btn.addEventListener("click",this.changeContent.bind(this,i));
+        //     }
+        // }
+        // var  table = new Table();
+        // console.log(table);
+        // table.init();
+
+// 构造函数创建
+        function Table(btnSe, contSe){
+            //this是指向实例对象，使用Table构造的对象，即table1，
+            // 给实例对象添加btns属性，存放所有目标元素
+            this.btns = document.getElementById(btnSe).children;
+            this.conts = document.getElementById(contSe).children;
+        }
+        // 原型初始化
+        Table.prototype.init = function(){
+            // 从实例对象中获取目标元素添加绑定事件，并让this指向实例对象
+            for(var i=0,btn; btn= this.btns[i];i++){
+                // btn.addEventListener("click",this.handlerContent);//该语句为btn触发事件为实例中的方法属性handlerContent
+                btn.addEventListener("click",this.handlerContent.bind(this,i));
+                // 实例对象中的目标元素，调用原型的属性方法（实例和原型的关系可以看成是实参和形参的关系，实际调用init方法的是实例），并使用bind方法将指向btn的指针this指向实例
+
+                btn.addEventListener("click",this.changeColor.bind(this,i));
+            }
+        }
+        // 给原型对象添加事件处理方法属性
+        Table.prototype.handlerContent = function(index,evt){
+            var e = evt ||window.event;
+            var target = e.target ||e.srcElement;
+            for(var i=0,cont; cont = this.conts[i++];){
+                cont.className = "";
+            }
+            this.conts[index].className = "active";
+
+        }
+
+        Table.prototype.changeColor = function(index,evt){
+            var btn = this.btns[index];
+            btn.style.backgroundColor = "#"+Math.round(parseInt("ffffff",16)*Math.random()).toString(16).padStart(6,"0");
+        }
+
+        //构建函数方法使用
+        // 创建实例table1
+        var table1 = new Table("btn-list", "content-list");
+        table1.init();
+    </script>
+</body>
+</html>
