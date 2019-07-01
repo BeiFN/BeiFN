@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        #container {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #fff;
+        }
+
+        #ball {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(#09f, #f19);
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+
+        .progress {
+            width: 20px;
+            /* height: 100px; */
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .progress-bar {
+            height: 100px;
+            width: 20px;
+            background: top linear-gradient(#f10,yellowgreen);
+            border-radius: 0 2px 2px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="mask"></div>
+        <div id="ball"></div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <script>
+        var timer = null;
+        var box = document.getElementById("container")
+        var ball = document.getElementById("ball")
+        var process = document.querySelector(".progress")
+        var speed = 3;
+        var g = 2
+        var target = 360 //400减去球的高度
+        var moving = false;
+        var zuoyou = 0;
+        
+
+
+        box.addEventListener("click", ballDown);
+        box.addEventListener("mousemove", ballMove)
+        function ballMove(evt) {
+            var e = evt || event;
+            if (!moving) {
+                // 控制边界的操作
+                // console.log(e.offsetX)
+                // if (e.offsetX <= 20||e.offsetX>=580) {
+                //     ball.style.left = 0 + "px";
+                // }
+                // if (e.offsetY <= 20||e.offsetY>=380) {
+                //     ball.style.top = 0 + "px"
+                // }
+                ball.style.top = e.offsetY - 20 + "px";
+                ball.style.left = e.offsetX - 20 + "px";
+            }
+            ballTurn(e);
+        }
+
+        function ballTurn(e) {
+            if ((e.offsetX - 300) > 0) {
+                level = (e.offsetX-300)/300 *100
+                zuoyou = 6*(level/100);
+            } else {
+                level = (300-e.offsetX)/300 *100
+                zuoyou = -6*(level/100);
+            }
+            processChange(level)
+        }
+        //更改进度条
+        function processChange(level){
+            process.style.height = level+"px";
+        }
+
+
+        function ballDown() {
+            moving = true;
+            clearInterval(timer)
+            
+            timer = setInterval(function () {
+                speed += g
+                ball.style.top = ball.offsetTop + speed + "px";
+                ball.style.left = ball.offsetLeft + zuoyou + "px";
+                if(parseInt(ball.style.left)<=0){
+                    ball.style.left = 0+"px";
+                }
+                if(parseInt(ball.style.left)>=560){
+                    ball.style.left = 560+"px";
+                }
+                // console.log(target - parseInt(ball.style.top))
+                //ball.style.top的值是一个有px的值 所以需要parseInt 匹配数字，遇到其他的字符就删除这个字符和后面的字符
+                if (Math.abs(target - parseInt(ball.style.top)) < speed) {
+                    ball.style.top = target + "px";
+                    speed = -speed
+                    // console.log(speed)
+                    //speed最小是1 1以下的没法计算所以大于-2
+                    if (speed > -2) {
+                        ball.style.top = target + "px";
+                        //当球停下来的时候让他重新回到moving为false的状态
+                        moving =  false;
+                        clearInterval(timer)
+                    }
+                }
+            }, 50)
+        }
+
+    </script>
+</body>
+
+</html>
