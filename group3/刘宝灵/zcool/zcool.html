@@ -17,39 +17,82 @@
                 <a href="https://www.zcool.com.cn"><img src="https://static.zcool.cn/git_z/z/common/images/svg/logo.svg" width="120px" height="20px"alt="" /></a>
             </div>
             <div class="menu">
-                <div></div>
-                <div></div>
                 <div class="menu-box">
                     <ul class="menu-list-content">
                         <li class="current"><a class="menu-list-box" href="https://www.zcool.com.cn" z-st="nav_tab_home">首页</a></li>
                         <li class="discover header-menu-withmore">
                             <a class="menu-list-box" href="https://www.zcool.com.cn/discover" z-st="nav_tab_discover">发现</a>
-                            <div></div>
+                            <div class="find">
+                                <ul class="find_top">
+                                        <li><a href="">平面</a></li>
+                                        <li><a href="">UI</a><i></i></li>
+                                        <li><a href="">网页</a><i></i></li>
+                                        <li><a href="">插画</a><i></i></li>
+                                        <li><a href="">动漫</a><i></i></li>
+                                        <li><a href="">摄影</a><i></i></li>
+                                        <li><a href="">空间</a><i></i></li>
+                                        <li><a href="">工业/产品</a></li>
+                                        <li><a href="">三维</a><i></i></li>
+                                        <li><a href="">影视</a><i></i></li>
+                                        <li><a href="">手工艺</a><i></i></li>
+                                        <li><a href="">纯艺术</a><i></i></li>
+                                        <li><a href="">手工</a><i></i></li>
+                                        <li><a href="">其他</a><i></i></li>
+                                </ul>
+                                <ul class="find_bottom">
+                                        <li><a href="">精选作品></a></li>
+                                        <li><a href="">精选文章></a></li>
+                                        <li><a href="">精选收藏></a></li>
+                                </ul>
+                        </div>
                         </li>
                         <li class="one-city"><a class="menu-list-box" href="https://www.zcool.com.cn/one/city/home">同城</a></li>
-                        <li class="header-menu-withmore">
+                        <li class="header-menu-withmore job">
                             <a class="menu-list-box" href="https://www.zcool.com.cn/job/?from=zcoolindex&position=index_nav" z-st="nav_tab_job">职位</a>
-                            <div></div>
+                            <div>
+                                <p class="p1">职位</p>
+                                <p>公司</p>
+                                <p>+发布职位</p>
+                        </div>
                         </li>
                         <li class="special header-menu-withmore">
                             <a class="menu-list-box" href="https://www.zcool.com.cn/event/main.do" z-st="nav_tab_event">活动</a>
-                            <div></div>
+                            <div>
+                                <p class="p1">设计大赛</p>
+                                <p>专题策划</p>
+                                <p>线上活动</p>
+                                <p>线下活动</p>
+                                <p>学习音频</p>
+                            </div>
                         </li>
                         <li class="zhengban hader-menu-withmore">
                             <a class="menu-list-box" href="https://www.hellorf.com/?utm_source=zcool&utm_medium=index&utm_campaign=navigation&utm_content=all" target="_blank" z-st="nav_tab_hellorf">正版素材</a>
-                            <div></div>
                             <div class="sales-icon" style="position:absolute;top:10px;left:748px;">特惠</div>
+                            <div class="zhidden">
+                                <p class="p1">图片</p>
+                                <p>视频</p>
+                                <p>字体</p>
+                                <p>音乐</p>
+                            </div>
                         </li>
-                        <li class="header-menu-withmore">
+                        <li class="header-menu-withmore course">
                             <a class="menu-list-box" href="https://www.gogoup.com/?utm_source=zcool&utm_medium=navigate" target="_blank" z-st="nav_tab_more_gogoup">课程</a>
-                            <div></div>
+                            <div>
+                                <p class="p1">正在热销</p>
+                                <p>口碑好课</p>
+                            </div>
                         </li>
                         <li class="more-menu header-menu-withmore">
                              <span class="menu-tit-box" id="header-more" z-st="nav_tab_more">
                                  <i></i>
                                  <sup class="subnav-dot-sup"></sup>
                              </span>
-                             <div></div>
+                             <div class="gengduo">
+                                <p class="p1">榜单</p>
+                                <p>设计师</p>
+                                <p>站酷APP</p>
+                                <p>站酷字库</p>      
+                             </div>
                         </li>
                     </ul>
                 </div>
@@ -77,9 +120,9 @@
             <div class="slider-adv">
                 <div class="slider">
                     <div class="unslider">
-                        <div class="banner unslider-horizontal" style="position:relative;overflow:hidden;">
-                            <a href="javascript:;" class="unslider-arrow next" style="display: none;" >下一张</a>
-                            <a href="javascript:;" class="unslider-arrow prev" style="display: none;">上一张</a>
+                        <div class="banner unslider-horizontal" style="position:relative;">
+                            <a href="javascript:;" class="unslider-arrow next" >下一张</a>
+                            <a href="javascript:;" class="unslider-arrow prev" >上一张</a>
                         </div>
                     </div>
                 </div>
@@ -100,11 +143,12 @@
                 <div class="top-hull">
                     <div class="subnav-contentbox">
                         <div class="tab-nav-container">
-                            <ul class="subnav-content text-center">
+                            <ul class="subnav-content text-center" id="xuan">
                                 <li id="course-li" class="current"><a href="https://www.zcool.com.cn/" class="title" z-st="home_tab_home">首页推荐</a></li>
                                 <li id="forum-li"><a href="https://www.zcool.com.cn/discover/0!0!0!0!0!!!!-1!0!1" class="title" target="_blank" z-st="home_tab_lastest">最新发布</a></li>
                                 <li id="data-li"><a href="https://www.zcool.com.cn/discover/0!0!0!0!0!!!!-1!100!1" class="title" target="_blank" z-st="home_tab_rise">上升最快</a></li>
                             </ul>
+                            <script src="./javascripts/xuan.js"></script>
                         </div>
                     </div>
                 </div>
@@ -1356,7 +1400,7 @@
             </div>
         </div>
     </main>
-    <div class="back-to-top" style="display: block; bottom: 263px;">
+    <div class="back-to-top" id="goTop">
         <a href="javascript:;" class="totop" z-st="shortcut_totop"></a>
     </div>
     <footer id="footer">

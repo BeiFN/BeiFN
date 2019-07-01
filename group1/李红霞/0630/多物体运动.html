@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        div{
+            width: 200px;
+            height: 70px;
+            margin: 10px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //多个物体的运动要设定多个定时器，每个定时器都是bom的一个属性，循环设定多个定时器
+        var divs = document.querySelectorAll("div");
+        console.log(divs)
+        for(var i = 0, divItem; divItem = divs[i++];){
+            divItem.addEventListener("mouseover", handlerMouseover)
+            divItem.addEventListener("mouseout", handlerMouseout)
+        }
+        function handlerMouseover(){
+            move(400, this);
+        }
+        function handlerMouseout(){
+            move(200, this)
+        }
+        function move(target, dom){
+            clearInterval(dom.timer)
+            dom.timer = setInterval(function(){
+                var speed = Math.abs(target - dom.offsetWidth)/10;
+                speed = (target-dom.offsetWidth) > 0 ? speed : -speed;
+                if(Math.abs(speed) < 1){
+                    speed = speed > 0 ? 1 : -1; 
+                }
+                if(Math.abs(target - dom.offsetWidth) < Math.abs(speed)){
+                    dom.style.width = target + "px";
+                    clearInterval(dom.timer);
+                    dom.timer = null;
+                }else{
+                    dom.style.width = dom.offsetWidth + speed + "px";
+                }
+            }, 50)
+        }
+    </script>
+</body>
+</html>

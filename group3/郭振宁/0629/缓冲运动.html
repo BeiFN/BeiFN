@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+            left: 900px;
+        }
+        #btn {
+            position: absolute;
+            top: 200px;
+        }
+        #shangfangbaojian {
+            width: 1px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="shangfangbaojian"></div>
+    <button id="btn">缓冲运动</button>
+    <script>
+        var btn = document.querySelector("#btn");
+        var box = document.querySelector("#box");
+        var timer = null;
+        var target = 600;
+        btn.addEventListener("click" , function() {
+            moving();
+        })
+
+        function moving() {
+            // console.log(1);
+            //先清除定时器
+            clearInterval(timer);
+            //给个定时器
+            setInterval(function() {
+                //速度与距离正相关，通过距离订速度
+                var speed = (target - box.offsetLeft) / 20;
+                //最后速度会到1以下，但是电脑无法识别1像素，所以不会移动
+                //根据距离差的正负值判断应该往哪边移动
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(box.offsetLeft === target) {
+                    clearInterval(timer);
+                }else {
+                    box.style.left = box.offsetLeft + speed + "px";                
+                }
+            } , 50)
+        }
+    </script>
+</body>
+</html>
