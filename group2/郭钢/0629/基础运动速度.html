@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 900px;
+            top: 0;
+            background: #333;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        #line {
+            position: absolute;
+            left: 800px;
+            width: 1px;
+            height: 500px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button id="btn">开始运动</button>
+    </div>
+    <div id="line">
+
+    </div>
+</body>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var line = document.getElementById("line");
+    var timer = null;
+    btn.onclick = function () {
+        move(800);
+    }
+    function move(target) {
+        clearInterval(timer);
+        console.log(line.offsetLeft);
+        var jl = target - box.offsetLeft;
+        console.log(jl);
+        var speed = jl / 20;
+        timer = setInterval(function () {
+            if (Math.abs(target - box.offsetLeft) <Math.abs(speed)) {
+                clearInterval(timer);
+                box.style.left = target + "px";
+            } else {
+                    box.style.left = box.offsetLeft + speed + "px";
+            }
+        }, 50
+        )
+    }
+</script>
+
+</html>
