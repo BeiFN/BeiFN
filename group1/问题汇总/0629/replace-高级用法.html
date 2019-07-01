@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            var str = "hello world123hello world";
+            var reg = /([a-z])([a-z])/gi
+            // console.log()
+
+            // replace 扩展用法;
+            var count = 0;
+            var resString = str.replace(reg ,function( res , $1 , $2 ){
+                  console.log(arguments);
+                  // res   => 匹配到的字符;
+                  // 如果有组，那么 res 和 index之间 会出现对应组的内容;
+                  // index => 匹配到的字符在字符串之中的下标。
+                  // arguments[arguments.length - 2]
+                  // str   => 整条字符串;
+                  // arguments[arguments.length - 1]
+                  count ++;
+                  // 预处理;
+                  var index = arguments[arguments.length - 2];
+                  return "<span style='color:blue'>"+$1+"</span>"+
+                         "<span style='color:red'>"+$2+"</span>" + count
+                         ;
+            })    
+
+            console.log(resString);
+
+            document.body.innerHTML = resString;
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1, #box2, #box3, #box4 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box1"></div>
+    <div id="box1"></div>
+    <div id="box1"></div>
+    <script>
+        var divlist = document.querySelectorAll("#box1");
+        var target = 300;
+        // console.log(divlist);
+        for(var i=0, ele; ele = divlist[i++];) {
+            ele.addEventListener("mouseover" , attrChange);
+        }
+        function attrChange() {
+            clearInterval(this.timer);
+            var that = this;
+            this.timer = null;
+            this.timer = setInterval(function() {
+                var speed = (target - that.offsetWidth) / 20;
+                speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(that.offsetWidth === target) {
+                    clearInterval(that.timer);
+                }else {
+                    that.style.width = that.offsetWidth + speed + "px";
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>

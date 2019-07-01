@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lianxi</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: yellowgreen;
+        }
+        #line{
+            height: 600px;
+            width: 1px;
+            position: absolute;
+            top: 0;
+            left: 600px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+    <script>
+        var box = document.getElementById("box");
+        var target = 600;
+        var speed = 17;
+        box.addEventListener("click",handlerClick);
+        function handlerClick(evt){
+            var e = evt || window.event;
+            
+            var timer = setInterval(function(){
+                box.style.left = box.offsetLeft + speed +"px";
+                if(Math.abs(target - box.offsetLeft) <= Math.abs(speed)){
+                    clearInterval(timer);
+                    box.style.left = target + "px";
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>
