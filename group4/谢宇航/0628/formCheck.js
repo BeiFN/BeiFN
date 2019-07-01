@@ -106,6 +106,14 @@
 			default :
 			    addStrengthState(0, "low");
         }
+        ele.addEventListener("blur", pwdLowWarning)
+	}
+
+	//密码强度太弱
+	function pwdLowWarning() {
+		if(pwdLevel[0].className === "low") {
+			addValidateState("error", this);
+		}
 	}
 
 	//密码强度实时显示
@@ -118,10 +126,6 @@
 
 	//确认密码验证
 	function checkpwdRep(ele, value) {
-		if(pwdLevel[0].className === "low") {
-			addValidateState("error", $("#pwd"));
-			return false;
-		}
 		if(value == (strategyList["#pwd-rep"].pwd))
 			addValidateState("success",ele);
 		else
@@ -171,7 +175,7 @@
         arr.sort(function () {
             return Math.random()-0.5;
         });
-        arr.length=6;
+        arr.length=4;
         return arr.join("");
     }
 

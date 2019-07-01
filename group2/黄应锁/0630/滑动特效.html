@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 60px;
+            height: 240px;
+            position: absolute;
+            top:50%;
+            left: 0;
+            background: yellowgreen;
+        }
+        #tiao{
+            width: 1px;
+            height: 3000px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id = "box"></div>
+    <div id="tiao"></div>
+    <script>
+        var box = document.getElementById("box");
+            var timer = null;
+            var cHeight = document.documentElement.clientHeight;
+            window.onscroll = function(){
+                  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                  move((cHeight - box.offsetHeight ) / 2 + scrollTop)
+            }
+            function move(target){
+                 target = parseInt(target);
+                 clearInterval(timer); 
+                 timer = setInterval( function(){
+                        var speed = (target - box.offsetTop) / 10;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        if(box.offsetTop === target){
+                              clearInterval(timer);
+                        }else{
+                            box.style.top = box.offsetTop + speed + "px";
+                        }
+                 } , 50)
+            }
+        
+    </script>
+</body>
+</html>

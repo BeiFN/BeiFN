@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        #container{
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            position: relative;
+        }
+        #wrap{
+            width: 1500px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #wrap div{
+            width: 300px;
+            height: 150px;
+            float: left;
+        }
+        #box1{background: #acc}
+        #box2{background: #cac}
+        #box5{background: #f99}
+        #box3{background: #add}
+        #box4{background: #fcc}
+        #leftBtn, #rightBtn{
+            width: 40px;
+            height: 40px;
+            background: #f2f2f2;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #rightBtn{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="wrap">
+            <div id="box1"></div>
+            <div id="box2"></div>
+            <div id="box3"></div>
+            <div id="box4"></div>
+            <div id="box5"></div>
+        </div>
+        <div></div>
+        <div id="leftBtn"></div>
+        <div id="rightBtn"></div>
+    </div>
+    <script>
+        var container = document.getElementById("container");
+        var wrap = document.getElementById("wrap")
+        var leftBtn = document.getElementById("leftBtn");
+        var rightBtn = document.getElementById("rightBtn");
+        var timer = null;
+
+       leftBtn.addEventListener("click", handlerLeftClick);
+       rightBtn.addEventListener("click",handlerRightClick);
+
+       function handlerLeftClick(){
+           var target = wrap.offsetLeft -300
+           move(target, wrap);
+       }
+       function handlerRightClick(){
+           var target = wrap.offsetLeft + 300
+           move(target, wrap);
+       }
+       function move(target, dom){
+           clearInterval(timer);
+           var speed = 0;
+           timer = setInterval(function(){
+                speed = Math.abs(target - dom.offsetLeft) / 5;
+                speed = (target - dom.offsetLeft) > 0 ? speed : -speed;
+                if(Math.abs(speed) < 1){
+                    speed = speed > 0 ? 1 : -1;
+                }
+                if(Math.abs(target - dom.offsetLeft) < Math.abs(speed)){
+                    dom.style.left = target + "px";
+                    clearInterval(timer);
+                }else{
+                    dom.style.left = dom.offsetLeft + speed + "px";
+                }
+           }, 50)
+       }
+    </script>
+</body>
+</html>

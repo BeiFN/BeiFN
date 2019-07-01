@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            * {
+                  margin: 0;
+                  padding: 0;
+            }
+
+            input.success {
+                  transition: border-color 1s;
+                  border-color: yellowgreen;
+            }
+
+            input.error {
+                  transition: border-color 1s;
+                  border-color: red;
+            }
+
+            p.success {
+                  color: yellowgreen;
+            }
+
+            p.lower {
+                  color: #f88;
+            }
+
+            p.middle {
+                  color: orange;
+            }
+
+            p.high {
+                  color: yellowgreen;
+            }
+
+            p.error {
+                  color: red;
+            }
+
+            p {
+                  height: 20px;
+                  padding-left: 50px;
+            }
+      </style>
+</head>
+
+<body>
+      <form action="javascript:void(0)" id="form">
+            <div>
+                  <span>邮箱 :</span>
+                  <input type="text" v-type="email" class="email">
+                  <p type="text" v-tip="email"></p>
+
+            </div>
+            <div>
+                  <span>用户名 :</span>
+                  <input type="text" v-type="username">
+                  <p type="text" v-tip="username"></p>
+            </div>
+            <div>
+                  <span>密码 :</span>
+                  <input type="text" v-type="password" v-strength="true">
+                  <p type="text" v-tip="password"></p>
+            </div>
+            <div>
+                  <span>链接 :</span>
+                  <input type="text" v-type="url">
+                  <p type="text" v-tip="url"></p>
+            </div>
+            <button id="btn">提交</button>
+      </form>
+      <script src="./validate.js"></script>
+      <script>
+            var validate = new Validate(form, {
+                  "url": [
+                        {
+                              reg:/^https?:\/\/.+?\.[a-z]{2,6}(\.[a-z]{2,3})?$/,
+                              bool:true,
+                              tip:"请输入正确网址",
+                        }, 
+                        {
+                              // https://lol.qq.com
+                              reg:/^https:\/\/lol\.qq\.com$/,
+                              bool:false,
+                              tip:"请输入健康的网址",
+                        }
+                  ]
+            });
+      </script>
+</body>
+
+</html>

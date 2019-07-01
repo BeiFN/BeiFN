@@ -110,97 +110,92 @@ var infoArr = [
         "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
         "text3":"刘哲_NewJoy",
         "time":"5小时前",
+    },
+    {
+        "img1":"https://img.zcool.cn/community/016a3d5d144e49a801215529d9c9d4.jpg@260w_195h_1c_1e_1o_100sh.jpg",
+        "text1":"书籍封面设计 | 捌",
+        "text2":"平面-书籍",
+        "data1":"11",
+        "data2":"6",
+        "data3":"2",
+        "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
+        "text3":"刘哲_NewJoy",
+        "time":"5小时前",
+    },
+    {
+        "img1":"https://img.zcool.cn/community/016a3d5d144e49a801215529d9c9d4.jpg@260w_195h_1c_1e_1o_100sh.jpg",
+        "text1":"书籍封面设计 | 捌",
+        "text2":"平面-书籍",
+        "data1":"11",
+        "data2":"6",
+        "data3":"2",
+        "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
+        "text3":"刘哲_NewJoy",
+        "time":"5小时前",
+    },
+    {
+        "img1":"https://img.zcool.cn/community/016a3d5d144e49a801215529d9c9d4.jpg@260w_195h_1c_1e_1o_100sh.jpg",
+        "text1":"书籍封面设计 | 捌",
+        "text2":"平面-书籍",
+        "data1":"11",
+        "data2":"6",
+        "data3":"2",
+        "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
+        "text3":"刘哲_NewJoy",
+        "time":"5小时前",
+    },
+    {
+        "img1":"https://img.zcool.cn/community/016a3d5d144e49a801215529d9c9d4.jpg@260w_195h_1c_1e_1o_100sh.jpg",
+        "text1":"书籍封面设计 | 捌",
+        "text2":"平面-书籍",
+        "data1":"11",
+        "data2":"6",
+        "data3":"2",
+        "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
+        "text3":"刘哲_NewJoy",
+        "time":"5小时前",
+    },
+    {
+        "img1":"https://img.zcool.cn/community/016a3d5d144e49a801215529d9c9d4.jpg@260w_195h_1c_1e_1o_100sh.jpg",
+        "text1":"书籍封面设计 | 捌",
+        "text2":"平面-书籍",
+        "data1":"11",
+        "data2":"6",
+        "data3":"2",
+        "img2":"https://img.zcool.cn/community/01d7b65cad73fea801208f8b7fec4d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
+        "text3":"刘哲_NewJoy",
+        "time":"5小时前",
     }
 ]
-// var json = {
-//     "type":"div",
-//     "attr":{
-//         "class":"body2_1_div",
-//     },
-//     "children":[
-//         {
-//             "type":"img",
-//             "attr":{
-//                 "class":"body2_1_div_img",
-//                 "src":"https://img.zcool.cn/community/01fd555d148249a8012051cd40fae7.jpg@260w_195h_1c_1e_1o_100sh.jpg"
-//             }
-//         },
-//         {
-//             "type":"div",
-//             "attr":{
-//                 "class":"body2_1_div_div",
-//             },
-//             "children":[
-//                 {
-//                     "type":"p",
-//                     "attr":{
-//                         "class":"body2_1_div_div_p1"
-//                     },
-//                     "html":"蛙人部落",
-//                     "children":[
-//                         {
-//                             "type":"a",
-//                             "attr":{
-//                                 "href":"#",
-//                                 "class":"body2_1_div_div_p1_a",
-//                             }
-//                         }
-//                     ]
-//                 },
-//                 {
-//                     "type":"p",
-//                     "attr":{
-//                         "class":"body2_1_div_div_p2",
-//                     },
-//                     "html":"插画-概念设定",
-//                 }
-//             ]
-//         },
-//         {
-//             "type":"div",
-//             "attr":{
-//                 "class":"body2_1_div0",
-//             },
-//             "children":[
-//                 {
-//                     "type":"span",
-//                     "attr":{
-//                         "class":"body2_1_div0_span1",
-//                     },
-//                     "children":[
-//                         {
-//                             "type":"a",
-//                             "attr":{
-//                                 "href":"#",
-//                             },
-//                             "children":[
-//                                 {
-//                                     "type":"img",
-//                                     "attr":{
-//                                         "class":"body2_1_div0_span1_a_img",
-//                                         "src":"https://img.zcool.cn/community/01f2075d1485a2a8012051cd88829d.jpg@80w_80h_1c_1e_1o_100sh.jpg",
-//                                         "alt":""
-//                                     }
-//                                 },
-//                                 {
-//                                     "type":"span",
-//                                     "html":"非人哉漫画",
-//                                 },
-//                                 {
-//                                     "type":"span",
-//                                     "attr":{
-//                                         "class":"body2_1_div0_span1_a_span",
-//                                     },
-//                                     "html":"两小时前"
-//                                 },
-//                             ]
-//                         }
-//                     ]
-//                 }
-//             ]
-//         }
-//     ]
-// }
+
+function delegation ( eventCallback , selector ){
+      return function(evt){
+          var e = evt || window.event;
+          var target = e.target || e.srcElement;
+          var targetFamily = [];
+          var _tempTarget = target;
+          while(true){
+              if(_tempTarget === this){
+                  break;
+                }
+                targetFamily.push(_tempTarget);
+                _tempTarget = _tempTarget.parentNode;
+            }
+            
+            var eleList = this.querySelectorAll(selector );
+            for(var i = 0 , ele ; ele = eleList[i ++] ;){
+                eventCallback.call( ele , e);
+            }
+      }
+}
+
+
+function handlerMouseOver(){
+    this.style.display = "block";
+}
+function handlerMouseOut(){
+    this.style.display = "none";
+}
 
 function createElement(json, body2_1){
     var ele = document.createElement(json.type);
@@ -213,6 +208,13 @@ function createElement(json, body2_1){
             ele.setAttribute(att,json.attr[att]);
         }
     }
+    if(ele.className == "body2_1_div0_span1"){
+        ele.innerHTML += str;
+        ele.addEventListener("mouseover", delegation ( handlerMouseOver , ".body2_1_div0_span1_div" ))
+        ele.addEventListener("mouseout", delegation ( handlerMouseOut , ".body2_1_div0_span1_div" ))
+        // console.log(ele);
+    }
+
     body2_1.appendChild(ele);
     body2_1 = ele
     if(json.children != undefined){
@@ -221,6 +223,34 @@ function createElement(json, body2_1){
         }
     }
 }
+
+    var str = '<div class="body2_1_div0_span1_div">'+
+    '<div class="body2_1_div0_span1_div_1">'+
+        '<a href="#" class="body2_1_div0_span1_div_1_a">'+
+            '<img class="body2_1_div0_span1_div_1_a_img" src="https://img.zcool.cn/community/012f5f5c0f2492a80121ab5dab9af1.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">'+
+        '</a>'+
+    '</div>'+
+    '<div class="body2_1_div0_span1_div_2">'+
+        '<a href="#" class="body2_1_div0_span1_div_2_a">_selions</a>'+
+    '</div>'+
+    '<div class="body2_1_div0_span1_div_3">'+
+        '<span class="body2_1_div0_span1_div_3_span">成都｜摄影师</span>'+
+    '</div>'+
+    '<div class="body2_1_div0_span1_div_4">'+
+        '<div class="body2_1_div0_span1_div_4_div">'+
+            '<p>创作</p>'+
+            '<a href="#" class="body2_1_div0_span1_div_4_div_a">22</a>'+
+        '</div>'+
+        '<div class="body2_1_div0_span1_div_4_div0">'+
+            '<p>粉丝</p>'+
+            '<a href="#" class="body2_1_div0_span1_div_4_div0_a">778</a>'+
+        '</div>'+
+    '</div>'+
+    '<div class="body2_1_div0_span1_div_5">'+
+        '<input type="button" value="关注" class="body2_1_div0_span1_div_5_ipt1">'+
+        '<input type="button" value="私信" class="body2_1_div0_span1_div_5_ipt2">'+
+    '</div>'+
+'</div>'
 
 
 for(var i = 0; i < infoArr.length; i++){
@@ -336,7 +366,7 @@ for(var i = 0; i < infoArr.length; i++){
                                         "html":infoArr[i].time,
                                     },
                                 ]
-                            }
+                            },
                         ]
                     }
                 ]
@@ -345,4 +375,54 @@ for(var i = 0; i < infoArr.length; i++){
     }
     
     createElement(json,body2_1);
+}
+
+var body1_nav = document.getElementById("body1_nav");
+var back = document.getElementById("back");
+window.onscroll = function(){
+    var offSetTop = body1_nav.offsetTop;
+    // console.log(offSetTop)
+    var scrollTop = document.documentElement.scrollTop;
+    if(offSetTop <= scrollTop){
+        body1_nav.style.position = "fixed";
+        body1_nav.style.top = 0;
+        back.style.display = "inline-block"
+    }
+    if(scrollTop <= 595){
+        body1_nav.style.position = "static"; 
+        back.style.display = "none"; 
+    }
+}
+
+// str = '<div class="body2_5_div">'+
+// '<img class="body2_5_div_img" src="https://img.zcool.cn/community/01ca945d107c3ba801213ec264fe6a.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt="">'+
+// '<a href="#" class="body2_5_div_a">【脉动饮料】脉动饮料怎么样 含有什么营养成分</a>'+
+// '</div>'
+
+var json2 = {
+    "type":"div",
+    "attr":{
+        "class":"body2_5_div",
+    },
+    "children":[
+        {
+            "type":"img",
+            "attr":{
+                "class":"body2_5_div_img",
+                "src":"https://img.zcool.cn/community/01ca945d107c3ba801213ec264fe6a.jpg@260w_195h_1c_1e_1o_100sh.jpg"
+            }
+        },
+        {
+            "type":"a",
+            "attr":{
+                "href":"#",
+                "class":"body2_5_div_a",
+            },
+            "html":"【脉动饮料】脉动饮料怎么样 含有什么营养成分",
+        }
+    ]
+}
+var body2_5 = document.getElementById("body2_5");
+for(var i = 0; i < 5; i++){
+    createElement(json2, body2_5);
 }
