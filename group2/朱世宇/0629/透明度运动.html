@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+
+      <style>
+            #box{
+                  width: 200px;
+                  height: 200px;
+                  background : #000;
+                  opacity: 1;
+            }
+      </style>
+</head>
+<body>
+      
+      <div id="box">
+
+      </div>
+      <script>
+
+            var 
+                  box = document.getElementById("box"),
+                  timer = null;
+
+                  box.addEventListener("mouseenter",startMove)
+                  box.addEventListener("mouseleave",endMove)
+                  function startMove(){
+                        move(30);
+                  }
+                  function endMove(){
+                        move(100)
+                  }
+
+                  function move(target){
+                        clearInterval(timer);
+                        timer = setInterval(function(){
+                              var iNow = getStyle(box,"opacity") * 100
+                              var speed = (target - iNow) / 8;
+                              // 我现在想要啥 ???????  当前元素的透明度;
+                              speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                              box.style.opacity = (iNow  + speed ) / 100;
+
+                              if(iNow === target){
+                                    clearInterval(timer);
+                              }
+                        },50)
+                  }
+                  // getCompoutedStyle => 获取元素的css样式;
+
+                  // console.log(getComputedStyle(box).opacity);
+
+                  function getStyle(dom,attr){
+                        return getComputedStyle(dom)[attr];
+                  }
+                  // var gs = getComputedStyle;
+
+
+
+                  console.log(getStyle(box,"opacity"));
+
+                  // move =>
+
+                  // 1. 关闭开启定时器 
+                  //  => 防止开启多个定时器，定时器被抛空 ; 导致定时器无法终止;
+
+                  // 2. 计算速度并取整 ;
+
+                  // 2.1 目标点;
+                  // 2.2 当前值; => iNow 独立计算当前值; 
+
+                  // 2.2.1 获取元素属性的时候; offset 无法满足所有的属性获取，所以需要借用工具 getCompoutedStyle();
+
+                  // 2.2.2 因为工具单词过长，我们会封装工具方便使用;
+
+
+                  // => 按照既定比例计算出运动的速度; 距离 / x  => 每次位移都会移动 距离的 1 / x;
+                  // tip : 因为浏览器不识别小于1的像素; offsetLeft 不变;
+
+                  // => 速度取整   速度 < 0 (最小值是-1) 向下取整数 ： (最小值是 1 )向上取整;
+
+                  // 3. 终止条件 => target === 当前元素位置;
+
+                  // 4. 赋值 => DOM操作  dom.style.xxxx = iNow + speed + "px";
+
+      </script>
+</body>
+</html>

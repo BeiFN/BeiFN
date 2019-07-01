@@ -61,48 +61,99 @@
 }
 
 
-/* 轮播图 */
+
 .banner{
-    height: 498px;
-   
-}
-.w1130{position: relative;}
-.banner .pic{
-    width: 1130px;
     height: 286px;
-    overflow: hidden;
+    margin-top: 20px;
 }
- .banner .ban_left{display: block; 
-    width: 50px;
-    height: 50px;
+#wrap{
+    width: 1130px;
+    overflow: hidden;
+    position: relative;
+    height: 286px;
+}
+.banner ul{
+    width: 7910px;
+    height: 286px;
+    position:absolute;
+}
+.banner ul li{
+    float: left;
+}
+.banner ul img{
+    height: 286px;
+    width: 1130px;
+}
+.banner .w1130{
+    position: relative;
+}
+.control{
+    display: none;
+}
+.banner>.w1130:hover .control{
+    display:block;
+}
+ .bottom, .bottom:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat ;
+    font-size: 0;
+    width: 52px;
+    height: 286px;
     position: absolute;
-
-    z-index: 2;
+    right: 0;
+    top: 0;
+    padding: 0 80px;
+    background-position: 140px  center;
+    display: inline-block;
+}
+ .bottom:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat;
+    width: 52px;
+    height: 286px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 80px;
+    background-position: 140px  center;
+    display: inline-block;
+}
+ .top{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat ;
+    font-size: 0;
+    width: 52px;
+    height: 286px;
+    position: absolute;
     left: 0;
-     background:url(../img/left_arrow.svg);
-    top: 100px;
-    line-height: 50px;
-    text-align: center;}
-.banner .ban_left:hover{background: url(../img/left_arrowhover.svg);} 
-.banner .ban_right{ 
-    width: 50px;
-    height: 50px;
-
+    top: 0;
+    padding: 0 80px;
+    background-position: 20px  center;
+    display: inline-block;
+}
+.top:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat ;
+    width: 52px;
+    height: 286px;
     position: absolute;
-    z-index: 2;
-    right:2px;
-    background:url(../img/right_arrow.svg);
-    top: 100px;
-    text-align: center;
-    line-height: 50px;}
-.banner .ban_right:hover{background: url(../img/right_arrowhover.svg);} 
-    .banner  .ban_left a,.banner .ban_right a{display: block;
-        width: 50px;
-        height: 50px;}
-.banner .ban_pic{float: left;margin-top: 15px;} 
-.banner .ban_pic li {float: left;margin-right: 15px;}
-.banner .ban_pic img{max-width: 210px;}
-
+    left: 0;
+    top: 0;
+    padding: 0 80px;
+    background-position: 20px  center;
+    display: inline-block;
+}
+/* pic */
+.pic{
+    height: 170px;
+    margin-top: 20px;
+    margin-bottom: 55px;
+}
+.pic li{
+    float: left;
+    margin-right: 20px;
+}
+.pic li img{
+    width: 200px;
+    height: 168px;
+    border-radius: 4px;
+}
 
 .subnav{height: 56px;}
 .subnav ul{margin-left:400px;}
@@ -273,7 +324,7 @@
 
 }
 .footer .footer2 .police{
-    background: url(../img/icon-police.png) no-repeat;
+    background: url(https://upload-images.jianshu.io/upload_images/18448057-4dc9c5a855a14729.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat;
     padding-left: 20px;
 }
 .footer .footer2 a{
