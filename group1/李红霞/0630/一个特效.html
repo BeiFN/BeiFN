@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        .jingubang{
+            width: 0;height: 3000px;
+        }
+        #box{
+            width: 100px;
+            height: 200px;
+            background: #aaa;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="jingubang"></div>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        var clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
+        var timer = null;
+        window.onscroll = function(){
+            var boxHeight = box.clientHeight;
+            var scrollTop = document.documentElement.scrollTop;
+            var target = (clientHeight - boxHeight)/2 + scrollTop;
+            var speed = 0;
+            clearInterval(timer);
+            timer = setInterval(function(){
+                speed = (target - box.offsetTop)/10;
+                if(Math.abs(speed) < 1){
+                    speed = speed > 0? 1: -1;
+                }
+                if(Math.abs(target - box.offsetTop) < Math.abs(speed)){
+                    clearInterval(timer)
+                }else{
+                    box.style.top = box.offsetTop + speed + "px";
+                }
+                
+            }, 50);
+        }
+    </script>
+</body>
+</html>

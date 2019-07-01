@@ -24,43 +24,43 @@
         }
         box.addEventListener("click", delegate(showRed, "li"))
 
-        // function delegate(callback, selector) {
-        //     return function (evt) {
-        //         console.time("delegate");
-        //         var e = evt || event;
-        //         var target = e.target || e.srcTarget;
-        //         var eleList = document.querySelectorAll(selector);
-        //         var path = [];
-        //         var _target = target;
-        //         while (_target !== this) {
-        //             path.push(_target);
-        //             _target = _target.parentNode;
-        //         }
-        //         for (var i = 0, ele; ele = eleList[i++];) {
-        //             if (path.length === 1 ? (ele === target) : (path.indexOf(ele) !== -1)) {
-        //                 callback.call(ele, evt);
-        //             }
-        //         }
-        //         console.timeEnd("delegate");
-        //     }
-        // }
         function delegate(callback, selector) {
             return function (evt) {
                 console.time("delegate");
                 var e = evt || event;
                 var target = e.target || e.srcTarget;
-                var eleList = [].slice.call(document.querySelectorAll(selector));
-                var ele = null;
-                while (target !== this) {
-                    if (ele = eleList[eleList.indexOf(target)]) {
+                var eleList = document.querySelectorAll(selector);
+                var path = [];
+                var _target = target;
+                while (_target !== this) {
+                    path.push(_target);
+                    _target = _target.parentNode;
+                }
+                for (var i = 0, ele; ele = eleList[i++];) {
+                    if (path.length === 1 ? (ele === target) : (path.indexOf(ele) !== -1)) {
                         callback.call(ele, evt);
-                        break;
                     }
-                    target = target.parentNode;
                 }
                 console.timeEnd("delegate");
             }
         }
+        // function delegate(callback, selector) {
+        //     return function (evt) {
+        //         console.time("delegate");
+        //         var e = evt || event;
+        //         var target = e.target || e.srcTarget;
+        //         var eleList = [].slice.call(document.querySelectorAll(selector));
+        //         var ele = null;
+        //         while (target !== this) {
+        //             if (ele = eleList[eleList.indexOf(target)]) {
+        //                 callback.call(ele, evt);
+        //                 break;
+        //             }
+        //             target = target.parentNode;
+        //         }
+        //         console.timeEnd("delegate");
+        //     }
+        // }
 
 
         function showRed(evt) {

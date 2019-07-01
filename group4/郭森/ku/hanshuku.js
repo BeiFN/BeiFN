@@ -1,9 +1,9 @@
 /**
- * @$$                   jQuery选择器           元素名 可选：1 or true 类选择器
+ * @$$                   jQuery选择器           元素名 
  * 
  * @move                 缓冲运动框架            运动元素，属性对象 {属性：终点值}，*回调函数   *可选：属性对象 {属性：[终点值，速度 =6(倒数)]}                          
  * 
- * @delegate             事件委托               功能函数，事件对象，父节点
+ * @delegate             事件委托               回调函数，条件
  * 
  * @usernameRule         账号验证               输入框，回调函数(bool，tip), *验证规则[{reg,bool,tip}] 京东
  * @passwordRule         密码验证               输入框，回调函数(bool，tip，密码强度1-3), *验证规则[{reg,bool,tip}]，*密码强度{streng:[],tip:[]}}
@@ -13,7 +13,7 @@
  * 
  * @randomColor          随机颜色               无    *可选：透明度 =随机数（.5~1）
  * 
- * @xhrGet               xhr发送GET请求         xhrGet(url[,data]).then(callback)，路径，对象，回调函数
+ * @xhrGet               xhr发送GET请求         xhrGet(url[,data],callback)，路径，对象，回调函数
  * 
  * @xhrPost              xhr发送Post请求 
  * 
@@ -30,11 +30,11 @@
  * @getSearchValue       百度搜索提示词          搜索框，提示框
 */
 
-let gs = getComputedStyle;
+var gs = getComputedStyle;
 
 // query选择器
 function $$(ele) {
-    var res=document.querySelectorAll(ele);
+    var res = document.querySelectorAll(ele);
     return res.length === 1 ? res[0] : res;
 }
 // 运动函数框架     运动元素，属性对象{属性：终点值}，回调函数
@@ -70,48 +70,26 @@ function attrToendPoint(eleNode, attr, endPoint, spd = 6) {
     eleNode.style[attr] = attr === 'opacity' ? iNow / 100 : iNow + 'px';
     return iNow === endPoint;//到达终点返回true
 }
-//事件委托          功能函数，事件对象，父节点
-// function delegate(callback, selector, parentNode) {
-//     return function (evt) {
-//         var e = evt || window.event;
-//         var target = e.target || e.srcElement;
-//         if (target.nodeName.toLowerCase() === selector) {
-//             callback();
-//         }//toLowerCase()小写
-//         else {
-//             for (var i = 0; i < e.path.length; i++) {
-//                 if (e.path[i].nodeName.toLowerCase() === selector) {
-//                     callback(); break;
-//                 }
-//                 if (target === (parentNode ? parentNode : document.body)) {
-//                     break;
-//                 }
-//             }
-//         }
-//     }
-// }
+//事件委托          功能函数，事件对象
 function delegate(callback, selector) {
     return function (evt) {
-        var e = evt || event;
-        var target = e.target || e.srcTarget;
-        var eleList = document.querySelectorAll(selector);
-        var path = [];
-        var _target = target;
-        while (_target !== this) {
-            path.push(_target);
-            _target = _target.parentNode;
-        }
-        for (var i = 0, ele; ele = eleList[i++];) {
-            if (path.length === 1 ? (ele === target) : (path.indexOf(ele) !== -1)) {
-                callback.call(ele,evt);
+        var e = evt || window.event,
+            target = e.target || e.srcElement,
+            eleList = [].slice.call(document.querySelectorAll(selector)),
+            ele=null;
+        while (target !== this) {
+            if(ele=eleList[eleList.indexOf(target)]){
+                callback.call(ele,e);
+                break;
             }
+            target=target.parentNode;
         }
     }
 }
 // 正则注册验证    （输入框input，回调函数callback，*验证规则regList，*密码强度规则strength）
 // 账号验证函数
 function usernameRule(input, callback, regList) {
-    var res=null;
+    var res = null;
     if (!regList) {
         regList = [
             {
@@ -131,13 +109,13 @@ function usernameRule(input, callback, regList) {
             },
         ]
     }
-    res= valiData(input, callback, regList);
-    res?callback("",):"";
+    res = valiData(input, callback, regList);
+    res ? callback("") : "";
     return res;
 }
 // 密码验证函数
 function passwordRule(input, callback, regList, strengthReg) {
-    var res=null;
+    var res = null;
     if (!regList) {
         regList = [
             {
@@ -167,7 +145,7 @@ function passwordRule(input, callback, regList, strengthReg) {
 }
 // 邮箱验证函数
 function emailRule(input, callback, regList) {
-    var res=null;
+    var res = null;
     if (!regList) {
         regList = [
             {
@@ -178,7 +156,7 @@ function emailRule(input, callback, regList) {
         ]
     }
     res = valiData(input, callback, regList);
-    res?callback(""):"";
+    res ? callback("") : "";
     return res;
 }
 // 验证函数
@@ -236,7 +214,7 @@ function randomColor(opacity = 0) {
     ]
     return `rgba(${r},${g},${b},${a})`;
 }
-// xhr发送GET/POST请求  xhrGet/xhrPOST(url[,data]).then(callback)，路径，对象，回调函数
+// xhr发送GET/POST请求  xhrGet/xhrPOST(url[,data],callback)，路径，对象，回调函数
 function xhrGet(url, data) {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
@@ -274,10 +252,7 @@ function xhrPost(url, data) {
 let lzTimer = null;
 let cHeight = document.documentElement.clientHeight;
 function lazyload(selector) {
-    console.log(imgList);
     let imgList = $$(selector, true);
-
-
     let itemArray = Array.from(imgList).map(item => {
         return {
             img: item,

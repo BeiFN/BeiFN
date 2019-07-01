@@ -42,10 +42,11 @@
     if(strategyList[type].reg.test(value)){
         addValidateState('success',ele)
         var creEle=document.createElement('span');
-        // parent.insertBefore(ele,span);
-        console.log(ele.parentNode)
-        console.log(ele)
-        ele.parentNode.insertBefore(ele,creEle);
+        // // parent.insertBefore(ele,span);
+        // console.log(ele.parentNode)
+        // console.log(ele)
+        creEle.innerHTML='成功';
+        ele.parentNode.insertBefore(creEle,ele);
 
     }else{
         addValidateState('error',ele);

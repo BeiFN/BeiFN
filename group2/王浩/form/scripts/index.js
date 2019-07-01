@@ -7,13 +7,16 @@
     //策略列表
     var strategyList={
         "username":{
-            reg: /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/
+            reg: /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/,
+            tip:"请输入合法的用户名"
         },
         "password":{
-            reg: /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i
+            reg: /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i,
+            tip:"请输入合法的密码"
         },
         "email":{
-            reg: /^[0-9a-z]\w{5,19}@[a-z0-9]{2,10}\.(com|cn|net)$/i
+            reg: /^[0-9a-z]\w{5,19}@[a-z0-9]{2,10}\.(com|cn|net)$/i,
+            tip:"请输入合法的邮箱"
         }
     }
 
@@ -33,15 +36,36 @@
         validateContent(type ,value,this);
         if(strategyList[type].reg.test(value)){
             addCss("success",this);
+            removeElement(this);
         }else{
             addCss("error",this);
+            addElement(type,this);
         }
         //密码强度验证
         type==="password"&&this.getAttribute("v-strength")?validateStrength(value,this):"";
         validatePureNum(value,this,this.getAttribute("v-purenumbers")==="true"?true:false);
-
-
     }
+
+    function addElement(type,ele){
+        var father=ele.parentNode;
+        var lastchild=father.lastChild;
+        console.log(lastchild.nodeName);
+        var tipSpan=document.createElement("span");
+        tipSpan.innerHTML=strategyList[type].tip;
+        lastchild.nodeName==="#text"?father.appendChild(tipSpan):"";
+        //father.appendChild(tipSpan);
+        //arr.length===1?father.appendChild(tipSpan):"";   
+    }
+
+
+    function removeElement(ele){
+        var father=ele.parentNode;
+        var lastchild=father.lastChild;
+        console.log(lastchild.nodeName);
+        lastchild.nodeName==="SPAN"?father.removeChild(lastchild):""; 
+    }
+
+
     function validateContent(type,value,ele){
         if(strategyList[type].reg.test(value)){
             addCss("success",ele);
