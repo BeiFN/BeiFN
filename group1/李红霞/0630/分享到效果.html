@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            position:absolute;
+            left: -100px;
+            bottom: 0;
+        }
+        #span{
+            width: 16px;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 76px;
+            margin-left: 100px;
+            background: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="span">分享到</span>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var span = document.getElementById("span");
+        var timer = null;
+        box.addEventListener("mouseover", handlerMouseOverMove);
+        box.addEventListener("mouseout", handlerMouseOutMove);
+
+        function handlerMouseOverMove(evt){
+            var e = evt||window.event;
+            var target = e.target||e.srcElement;
+            move(0)
+        }
+        function handlerMouseOutMove(evt){
+            var e = evt||window.event;
+            var target = e.target||e.srcElement;
+            move(-100)
+        }
+        function move(target){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed = Math.abs(box.offsetLeft - target)/10;
+                speed = (box.offsetLeft-target)>0?-speed:speed;
+                if(Math.abs(speed)<1){
+                    speed = speed >0? 1:-1;
+                }
+                box.style.left =  box.offsetLeft+speed +"px"; 
+                if(speed > 0?box.offsetLeft >= 0:box.offsetLeft<=-100){
+                    clearInterval(timer);
+                }  
+            },50)
+        }
+        // function handlerMouseover(){
+        //     //如果鼠标划过span标签，box盒子就缓冲移出，终止条件为offsetLeft= 0
+        //     var target = 0; 
+        //     clearInterval(timer);
+        //     timer = setInterval(function(){
+        //         var speed = Math.abs(box.offsetLeft - target)/100;
+        //         if(speed<1){
+        //             speed = 1;
+        //         }
+        //         box.style.left =  box.offsetLeft+speed +"px";
+        //         if(box.offsetLeft >= 0){
+        //             clearInterval(timer);
+        //         }
+        //     }, 50)
+        // }
+        //     function handlerMouseout(){
+        //     //如果鼠标划过span标签，box盒子就缓冲移出，终止条件为offsetLeft= 0
+        //     var target = -100; 
+        //     clearInterval(timer);
+        //     timer = setInterval(function(){
+        //         var speed = Math.abs(box.offsetLeft + target)/100;
+        //         if(speed<1){
+        //             speed = 0;
+        //         }
+        //         box.style.left =  box.offsetLeft-speed +"px";
+        //         if(box.offsetLeft <= -100){
+        //             clearInterval(timer);
+        //         }
+        //     }, 50)
+        // }
+    </script>
+</body>
+</html>

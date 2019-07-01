@@ -23,17 +23,20 @@
         for (var i = 0, input; input = inputList[i++];) {
             input.addEventListener("blur", validateText.bind(input, input.getAttribute("v-type")))
         }
+
+
     }
 
     function validateText(type) {
         var value = this.value;
         if (strategyList[type].reg.test(value)) {
             addValidateState("success", this);
+            // return true;
 
 
         } else {
             addValidateState("error", this);
-
+            // return true;
         }
 
         // console.log(1111111111);
