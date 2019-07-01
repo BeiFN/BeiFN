@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <style>
+        input.success{
+              transition: border-color 1s;
+              border-color: yellowgreen;
+        }
+        input.error{
+              transition: border-color 1s;
+              border-color: red;
+        }
+        input.v-strength-low{
+              transition: border-color 1s;
+              border-color: red;
+        }
+        input.v-strength-middle{
+              transition: border-color 1s;
+              border-color: orange;
+        }
+        input.v-strength-high{
+              transition: border-color 1s;
+              border-color: yellowgreen;
+        }
+      
+    </style>
+</head>
+<body>
+    <form action="" id = "form">
+        <p>用户名：<input type="text" class = "name"  v-type ="username"></p> 
+        <p>邮箱：<input type="text"  v-type ="email"></p> 
+        <p>密码：<input type="text"  v-type ="password" v-strength = "true"><span>密码强度为：<i>0</i> </span></p>
+    </form>
+
+    <script src="javascript/表单验证封装版.js">
+
+        
+
+
+    </script>
+</body>
+</html>

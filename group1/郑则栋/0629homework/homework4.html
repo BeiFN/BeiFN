@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下滑菜单嘤嘤嘤</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box1{
+				width: 100px;
+				height: 300px;
+				background: green;
+				position: absolute;
+			/* 	top: 50%;
+				margin-top:-150px ; */
+				
+				}
+				#changzhang{
+					width: 1px;
+					height: 3000px;
+					position: absolute;
+					
+				}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			
+		</div>
+		<div id="changzhang">
+			
+		</div>
+		<script type="text/javascript">
+			var obox1=$("#box1");
+			var timer=null;
+			var clientHeight=document.documentElement.clientHeight;
+			console.log(clientHeight);
+			document.onscroll=function(){
+				var myscroll=document.documentElement.scrollTop||document.body.scrollTop;
+				moveDiv(myscroll+(clientHeight-obox1.offsetHeight)/2);
+				console.log(clientHeight,obox1.offsetHeight);
+				
+			}
+			function moveDiv(sth){
+				// obox1.style.top=sth+"px";
+				sth=parseInt(sth);
+				var speed;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					speed=(sth-obox1.offsetTop)/10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					console.log(sth,obox1.offsetTop);
+					if(sth===obox1.offsetTop){
+						clearInterval(timer);
+					}
+					else{
+						obox1.style.top=obox1.offsetTop+speed+"px";
+					}
+				},10);
+				// console.log(timer);
+			}
+			
+			
+			
+			
+			
+			
+			
+			function $(selector){
+				var res=null;
+				return (res=document.querySelectorAll(selector)).length===1?res[0]:res;
+			}
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
