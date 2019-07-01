@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分享到2.0</title>
+    <style>
+        div {
+            width: 150px;
+            height: 200px;
+            background: gray;
+            position: absolute;
+            bottom: 0;
+            left: -150px;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            right: -16px;
+            width: 16px;
+            top: 78px;
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shareBox">
+        <span id="shareText">分享到</span>
+    </div>
+    <script>
+        var timer = null;
+        var speed = 0;
+        var box = document.getElementById("shareBox")
+        // var text = document.getElementById("shareText")
+        box.addEventListener("mouseover", function () {
+            shareChange(0)
+        })
+        box.addEventListener("mouseout", function () {
+            shareChange(-150)
+        })
+        function shareChange(target) {
+            speed = 5
+            if (box.offsetLeft > target) {
+                speed = -5
+            }
+            //*记得关闭定时器  要不然会开启多个定时器
+            clearInterval(timer)
+            timer = setInterval(function () {
+                box.style.left = box.offsetLeft + speed + "px";
+                if (parseInt(box.style.left) == target) {
+                    clearInterval(timer)
+                }
+            }, 50)
+
+        }
+
+    </script>
+</body>
+
+</html>

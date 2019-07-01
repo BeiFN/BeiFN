@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+        }
+        #wrap{
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #f2f2f2;
+        }
+        #ball{
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(#844, #aaa);
+            border-radius: 50%;
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+        }
+        #progress{
+            width: 20px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        #progress-bar{
+            width: 20px;
+            height: 100px;
+            background: top linear-gradient(#f00, #0f0);
+            position:absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <div class="mask"></div>
+        <div id="ball"></div>
+        <div id="progress">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+    <script>
+        var wrap = document.getElementById("wrap");
+        var ball = document.getElementById("ball");
+        var progress = document.getElementById("progress");
+        var timer = null
+        var count = 0;
+        wrap.addEventListener("mousemove", handlerMouseMove);
+        function handlerMouseMove(evt){
+            //需求：当鼠标划过的时候，改变progress的高度，改变ball的left值
+            //首先获得鼠标的位置，从中间为分割线，根据到右边和左边的距离
+            //鼠标活动触发事件
+            document.addEventListener("click", handlerDocumentClick);
+            var e = evt||window.event;
+            var clientX = e.clientX - this.offsetLeft;
+            var clientY = e.clientY - this.offsetTop;
+            // console.log(clientX, clientY)
+            var height = Math.round ((clientX - 300) > 0 ? (clientX -300)/300*100 : 100 - (clientX /300 *100));
+            // console.log(height)
+            progress.style.height = height + "px";
+            // console.log(clientX, clientY)
+            if(count == 0){
+                ball.style.left = clientX - 25 + "px";
+                ball.style.top = clientY - 25 + "px";
+            }
+            if(count == 1){
+                clearInterval(timer);
+                var timer = setInterval(() => {
+                    var clientX = e.clientX - this.offsetLeft;
+                    var speed =(clientX - 300) > 0 ?  1 : -1; 
+                    ball.style.left = ball.offsetLeft + speed + "px";  
+                    if(Math.abs(ball.style.left - speed) < -2){
+                        ball.style.left = 0;
+                        
+                    }
+                    // if(ball.offsetLeft > 600 ){
+                    //     ball.style.left = 600 + "px";
+                    //     clearInterval(timer)
+                    // }
+                    // if(ball.offsetLeft < 0){
+                    //     ball.style.left = 0;
+                    //     clearInterval(timer)
+                    // }
+                }, 50);
+            }
+        }
+
+        function handlerDocumentClick(evt){
+            count = 1;
+            var e = evt||window.event;
+            var target = wrap.clientHeight;
+            move(target, 0, ball);
+        }
+        function move(target, speed, dom){
+            clearInterval(timer);
+            timer = setInterval(() => {
+                speed += 2;
+                dom.style.top = dom.offsetTop + speed + "px";
+                if(Math.abs(target  - dom.offsetTop - 50)  <=speed){
+                    speed = -speed;
+                    if(Math.abs(speed) <= 3){
+                        dom.style.top = target - 50 + "px";
+                        clearInterval(timer);
+                        timer = null;
+                    }
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>
