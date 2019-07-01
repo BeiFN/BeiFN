@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图</title>
+		<link rel="stylesheet" type="text/css" href="css/10banner.css"/>
+	</head>
+	<body>
+	 <div class="container">
+	      <div class="wrapper">
+	            <div class="slider" style="background: #F0F">1</div>
+	            <div class="slider" style="background: #0F0">2</div>
+	            <div class="slider" style="background: #0FF">3</div>
+	            <div class="slider" style="background: #FF0">4</div>
+	            <div class="slider" style="background: #00F">5</div>
+	            <div class="slider" style="background: #F0F">1</div>
+	      </div>
+	      <div class="button-next"></div>
+	      <div class="button-prev"></div>
+	      <div class="pagination">
+	            <span>1</span>
+	            <span>2</span>
+	            <span>3</span>
+	            <span>4</span>
+	            <span>5</span>
+	      </div>
+	</div>
+	
+	
+	<script type="text/javascript">
+		var wrapper=document.querySelector(".wrapper");
+		var pre=document.querySelector(".button-prev");
+		var next=document.querySelector(".button-next");
+		var btn=document.querySelector(".pagination");
+		var posi=0;
+		pre.addEventListener("click",goPre);
+		next.addEventListener("click",goNext);
+		btn.addEventListener("click",btnandGo);
+		function goNext(){
+			if(posi<5){
+				posi++;
+				ChangeEasy(wrapper,posi*(-300),"left");
+			}
+			else{
+				posi=1;
+				wrapper.style.left=0;
+				ChangeEasy(wrapper,posi*(-300),"left");
+			}
+		}
+		function goPre(){
+			if(posi<1){
+				posi=4;
+				wrapper.style.left=-1500+"px";
+				ChangeEasy(wrapper,posi*(-300),"left");
+			}
+			else{
+				posi--;
+				ChangeEasy(wrapper,posi*(-300),"left");
+				
+			}
+		}
+		function btnandGo(eve){
+			var e=eve||event;
+			var target=e.target||e.srcElement;
+			// console.log(target.innerHTML);
+			posi=target.innerHTML-1;
+			ChangeEasy(wrapper,posi*(-300),"left");
+		}
+		
+		
+		
+		
+		
+		//转换
+			function ChangeEasy(ele,target,attr){
+				clearInterval(ele.timer);
+			ele.timer=setInterval(function(){
+				var iNode=parseInt(getComputedStyle(ele)[attr]);
+				var speed=(target-iNode)/10;
+				speed>0?speed=Math.ceil(speed):speed=Math.floor(speed);
+				if(target===iNode){
+					clearInterval(ele.timer);
+				}
+				else{
+					ele.style[attr]=iNode+ speed+"px";
+				}
+			},100);
+			
+			
+		}
+	</script>
+	
+	
+	
+	
+	</body>
+</html>
