@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+
+            #container{
+                  width: 1380px;
+                  height: 350px;
+                  margin: 0 auto;
+                  position: relative;
+            }
+            #container ul{
+                  position: absolute;
+                  /* transition: all .5s; */
+            }
+            #container ul li{
+                  list-style-type: none;
+                  float: left;
+                  width: 1380px;
+                  height: 350px;
+            }
+            #container ul li img{
+                  width: 100%;
+                  height: 100%;
+            }
+      </style>
+</head>
+<body>
+      <button id="prev_btn">上一张</button>
+      <button id="next_btn">下一张</button>
+
+      <div id="container">
+            <ul id="banner_container">
+                  <li><img src="https://img.zcool.cn/community/01f1515ca2ca6da801214168c2ae09.jpg@1380w" alt=""></li>
+                  <li><img src="https://img.zcool.cn/community/0138ec5ca44892a801208f8be4c0ea.jpg@1380w" alt=""></li>
+                  <li><img src="https://img.zcool.cn/community/01b73c5ca2ca82a801214168fa83fa.jpg@1380w" alt=""></li>
+                  <li><img src="https://img.zcool.cn/community/01037e5ca2ca93a801208f8b8d457d.jpg@1380w" alt=""></li>
+                  <li><img src="https://img.zcool.cn/community/01da355ca419dfa8012141682afdd2.jpg@1380w" alt=""></li>
+                  <li><img src="https://img.zcool.cn/community/01f1515ca2ca6da801214168c2ae09.jpg@1380w" alt=""></li>
+            </ul>
+      </div>
+
+      <script src="libs/common.js"></script>
+      <script>
+            // 当前显示的页面;
+            // var index = 0;
+            // 上一张显示的页面;
+            // var prev = 0;
+            //将要显示的页面
+            // var next = 0; 
+
+            // toNext()   toPrev();  toIndex();
+            var 
+                  prevBtn = document.getElementById("prev_btn"),
+                  nextBtn = document.getElementById("next_btn"),
+                  bannerContainer = document.getElementById("banner_container"),
+                  bannerList = bannerContainer.children,
+                  index = 0;
+
+            nextBtn.addEventListener("click",toNext);
+            prevBtn.addEventListener("click",toPrev);
+
+            function toNext(){
+                  if(index === bannerList.length - 1){
+                        // 到了最后一张了;
+                        bannerContainer.style.left = 0;
+                        index = 1;
+                  }else{
+                        index ++;
+                  }
+                  animate()
+            }
+            function toPrev(){
+                  if(index === 0){
+                        index = bannerList.length - 1;
+                  }else{
+                        index --;
+                  }
+                  animate()
+            }
+
+            function animate(){
+                  move(bannerContainer,-1380 * index,"left");
+            }
+
+            function init(){
+                  // 复制一份第一张图片;
+
+                  // 让ul的宽度可以容下所有的li;
+                  bannerContainer.style.width = 100 * bannerList.length + "%";
+            }
+            init();
+                  
+      </script>
+</body>
+</html>
