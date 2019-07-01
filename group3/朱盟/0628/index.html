@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证插件 EMB | 朱盟</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        padding: 60px;
+        width: 400px;
+        height: 400px;
+        margin: 60px auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    p {
+        margin: 30px;
+    }
+
+    .erro {
+        border: 1px solid red;
+    }
+    .succeed {
+        border: 1px solid #33f;
+    }
+</style>
+
+<body>
+
+    <form action="" id="eform" e-type="mail" e-s="2">
+        <h1>验证 Demo</h1>
+        <p> <span>用户名：</span>
+            <input class="user" type="text" name="" id="" e-type="name,nonum">
+        </p>
+        <p> <span>邮箱&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="" id="" e-type="mail">
+        </p>
+        <p> <span>账户&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="" id="" e-type="id,num">
+        </p>
+        <p> <span>密码&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="" id="" e-type="pw,notnum" e-strength>
+        </p>
+        <p> <span>手机&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="" id="" e-type="phone">
+        </p>
+        <p> <span>数字&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="" id="" e-type="num">
+        </p>
+    </form>
+
+    <script src="min.js"></script>
+    <script>
+        vailSetter();
+        vailData("#eform",{
+            id:{
+                reg:/^\d*$/
+            }
+        });
+    </script>
+</body>
+
+</html>

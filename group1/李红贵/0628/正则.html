@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <script>
+        // \d  简写正则  []元字符  +？*量词  [^x]除x外 -  .
+
+        // 量词  精确量词：{min,max}
+
+        var reg = /\d{3,5}/;  //3-5个数字
+        var str = "2fkfiout7878jlfjwj8889ljfwl7987";
+        console.log(str.match(reg));
+        // exec
+
+        // +   {1，}，最少1，最多不限
+        // +   {1，}，最少1，最多不限，空为正无穷
+        // ?   {0，1}，最少0，最多1,可有可无
+
+        // 验证手机号/1[3-9]+\d{9}/;
+        var regPhone = /1[3-9]\d{9}/
+
+
+        regPhone = /^1[3-9]\d{9}$/;  //g尽量不要和有^$的正则配合使用，g和test不搭
+        // ^$  ^在元字符为除，在外面为以“”开头  
+        // 如果只加开头，只判断开头是否合法
+        // 如果只加结尾，结尾是否合法，
+        // 都加，表示整条字符串必须完全符合正则规则
+        // 在使用test时，绝大多数情况需要添加开头结尾，对整条字符串进行验证
+
+        var text = document.getElementById("text");
+        text.addEventListener("blur",validatePhoneNum);
+        function validatePhoneNum(){
+            var value = this.value;
+            regPhone.test(value);
+            //test  在字符串中匹配正则规则，符合规则就返回true，一部分对就就全对
+        }
+
+
+        // 邮箱规则,转义符\  如果想要特殊符号.二不是用它表示任意字符的话，我们需要用\去进行转义。
+        // 固定情况下(163|126|yeah)\.
+        //^$  用于验证
+        // g  用于取值
+        var regEmail = /^[a-zA-Z][0-9a-zA-Z]{5,17}@(163|126|yeah)\.(com|net)$/;
+        regEmail.test("a297fwjk@163.com")
+
+
+        // 简写  \w  数字字母下划线  \W 非数字字母下划线
+        // . 除\n \r
+    // [\s\S] 所有字符  \s空格\S非字符
+
+
+    // 正则中的组
+    // 高级查找
+
+    </script>
+</body>
+</html>
