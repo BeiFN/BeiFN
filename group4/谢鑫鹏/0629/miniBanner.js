@@ -18,7 +18,7 @@ function $(selector){
  * 向前一张
  */
 function prevBanner(){
-    if(index === 0){
+    if(index == 0){
         wrapper.style.left = -(bannerList.length - 1) * 300 + "px";
         index = bannerList.length - 2;
         paginationChange(index)
@@ -53,9 +53,7 @@ function nextBanner(){
  */
 function move(target, ele, attr){
     clearInterval(ele.timer);
-    // var count = 0;
     ele.timer = setInterval(function(){
-        // count++;
         var iNow = attr === "opacity" ? parseInt(getComputedStyle(ele)[attr] * 100) : parseInt(getComputedStyle(ele)[attr]);
         target = attr === "opacity" ? target * 100 : target;
         var speed = (target - iNow) / 10;
@@ -65,7 +63,6 @@ function move(target, ele, attr){
         }else{
             ele.style[attr] = attr === "opacity" ? (iNow + speed) / 100 : iNow + speed + "px";
         }
-        // console.log(count);
     },50)
     
 }
@@ -77,9 +74,10 @@ function paginationChange(index){
         ele.className = "";
     }
     if(index === bannerList.length - 1){
-        index = 0;
+        paginationList[0].className = "active";
+    }else{
+        paginationList[index].className = "active";
     }
-    paginationList[index].className = "active";
 }
 /**
  * 手动变换下标
@@ -88,8 +86,10 @@ function paginationHand(evt){
     var e = evt || window.event;
     var target = e.target || e.srcElement;
     var targetIndex = paginationList.indexOf(target);
-    console.log(targetIndex);
-    if(index === targetIndex || index === bannerList.length - 1 && targetIndex === 0){
+    if(targetIndex === -1){
+        return false;
+    }
+    if((index === bannerList.length - 1) && (targetIndex === 0)){
         return false;
     }
     index = paginationList.indexOf(target);
@@ -98,7 +98,7 @@ function paginationHand(evt){
         move(-300 * index, wrapper, "left");
     }
 }
-
-pagination.addEventListener("click", paginationHand);
+setInterval(nextBanner,1000);
+pagination.addEventListener("mouseover", paginationHand);
 prevBtn.addEventListener("click", prevBanner);
 nextBtn.addEventListener("click", nextBanner);
