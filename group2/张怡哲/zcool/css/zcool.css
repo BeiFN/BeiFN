@@ -224,18 +224,28 @@ a{
     margin:0 auto;
 }
 .banner{
+    width: 1130px;
     height:286px;
     position: relative;
     z-index: 0;
     margin-top: 20px;
+    overflow: hidden;
 }
 .banner:hover .banner_arrow{
     display:block;
 }
-.banner>img{
-    width: 100%;
+.banner_pic{
+    width: 7910px;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.banner>.banner_pic>img{
+    width: 1130px;
     height:100%;
     border-radius: 5px;
+    float: left;
 }
 .banner_arrow{
     display:none;
@@ -250,6 +260,7 @@ a{
     no-repeat ;
     top: 120px;
     right:20px;
+    z-index: 999;
 }
 .next:hover{
     background-image: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2);
