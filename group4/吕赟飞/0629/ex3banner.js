@@ -6,6 +6,7 @@ var sliders = $(".slider");
 var wrapper = $(".wrapper");
 var container = $(".container");
 var liList = Array.from($("li"));
+var prevLi = null;
 
 function $(selector) {
     var ele = null;
@@ -16,9 +17,15 @@ for (var i = 0; i < liList.length; i++) {
     liList[i].addEventListener("click", liClickHandler);
 }
 
+prevLi = liList[0];
+
 function liClickHandler() {
     index = liList.indexOf(this) + 1;
     imgMove(-1280 * index, wrapper, "left");
+
+    if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+    prevLi = liList[index - 1];
+    prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 }
 
 next_btn.addEventListener("click", function () {
@@ -28,6 +35,10 @@ next_btn.addEventListener("click", function () {
     } else {
         index++;
     }
+
+    if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+    prevLi = liList[index - 1];
+    prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 });
 
 prev_btn.addEventListener("click", function () {
@@ -37,6 +48,10 @@ prev_btn.addEventListener("click", function () {
     } else {
         index--;
     }
+
+    if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+    prevLi = liList[index - 1];
+    prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 });
 
 
