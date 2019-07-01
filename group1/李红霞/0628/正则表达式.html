@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>用户名：</span>
+        <input type="text" >
+        <span>邮箱：</span>
+        <input type="text" id="email">
+        <span>密码：</span>
+        <input type="text" id="password">
+    </div>
+    <script>
+        var username = document.getElementById("username");
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        //用户名正则表达式 
+        var regUsername = /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/;
+        //邮箱正则表达式 
+        var regEmail = /^[a-zA-z0-9]{6,18}@(((qq|163|126)\.com)|yeah\.net)$/
+        //密码正则表达式
+        var regPassword = /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i;
+    </script>
+</body>
+</html>

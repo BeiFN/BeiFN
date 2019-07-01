@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="javascript:void(0)">
+        <div>
+            <span>邮箱：</span>
+            <input type="text" value="" id="email">
+        </div>
+    </form>
+    <script>
+        function $(selector){
+            var ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
+        }
+        var email = $("#email");
+
+        email.addEventListener("blur" , validateEmail)
+
+        function validateEmail(evt){
+            var e = evt ||event;
+
+            var value = this.value;
+            res = /[0-9a-z]{6,20}@[0-9a-z]{2,10}\.(com|net|cn) /i;
+
+            if(res.test(value)){
+                this.style.borderColor = "yellowgreen";
+            }else{
+                this.style.borderColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>

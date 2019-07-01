@@ -20,7 +20,7 @@
     <button>生成新按钮</button>
     <script>
         var body = document.getElementById("body");
-        body.addEventListener("click" , delegation(createButton , "i"));
+        body.addEventListener("click" , delegation(createButton , ".btn"));
         var _target = null;
 
         function delegation(eventCallBack , selector){
@@ -41,11 +41,11 @@
                 }
 
                 var eleList = this.querySelectorAll(selector);
-                console.log(eleList)
+                // console.log(eleList)
                 // console.log();
                 for(var i=0,ele ; ele = eleList[i++];){
                     if(targetFamily === 1 ? target === this : targetFamily.indexOf(ele)!==-1){
-                        createButton.call(ele.e);
+                        createButton.call(ele,e);
                     }
                 }
             }
