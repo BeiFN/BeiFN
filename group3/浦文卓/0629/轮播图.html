@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+
+    <style>
+        #container{
+            height: 150px;
+            width:300px;
+            margin:50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider{
+            height: 150px;
+            width:300px;
+            float: left;
+            
+        }
+        #wraper{
+            height: 150px;
+            width:1800px;
+            position: absolute;
+            left: 0;
+        }
+        #slider1{
+            background-color: red;
+        }
+        #slider2{
+            background-color: yellow;
+        }
+        #slider3{
+            background-color: yellowgreen;
+        }
+        #slider4{
+            background-color: burlywood;
+        }
+        #slider5{
+            background-color: paleturquoise;
+        }
+        #prev{
+            position: absolute;
+            left: 0;
+            top:50px;
+            width: 50px;
+            height: 50px;
+            background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat left center;
+            background-size : 50px;
+        }
+        #next{
+            position: absolute;
+            right: 0;
+            top:50px;
+            height: 50px;
+            width: 50px;
+            background:url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat right center;
+            background-size : 50px;
+
+        }
+        .page{
+            position: absolute;
+            top:125px;
+            left: 90px;
+        }
+        .page span{
+            border-radius: 50%;
+            background-color:#fff;
+            padding : 0 5px;
+        }
+        .last{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id = "container">
+        <div id = "wraper">
+            <div class = "slider" id = "slider1">1</div>
+            <div class = "slider" id = "slider2">2</div>
+            <div class = "slider" id = "slider3">3</div>
+            <div class = "slider" id = "slider4">4</div>
+            <div class = "slider" id = "slider5">5</div>
+            <div class = "slider" id = "slider1">1</div>
+        </div>
+
+        <div id = "prev"></div>
+        <div id = "next"></div>
+
+        <div class = "page">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span class="last"></span>
+        </div>
+    </div>
+          
+    
+    <script>
+        var timer = null;
+        var showIndex = 0;
+        var prev = $("#prev");
+        var next = $("#next");
+        var sliders = $(".slider");
+        var wraper = $("#wraper")
+        var span = $("span")
+
+        function $(selector){
+            var res = null;
+            return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
+        }
+
+        next.onclick = function(){
+            if(showIndex === sliders.length - 1){
+                showIndex = 1;
+                wraper.style.left = 0;
+            }else{
+                showIndex ++ ;
+            }
+            changePageNext(showIndex);
+        }
+
+        prev.onclick = function(){
+            if(showIndex === 0){
+                showIndex = sliders.length - 2;
+            }else{
+                showIndex -- ;
+            }
+            changePagePrev(showIndex);
+        }
+
+        container.onclick = function(evt){
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            if(target === next || target === prev){
+                move(-300 * showIndex , wraper , "left")
+            }
+        }
+
+        function move(target , ele , attr){
+            clearInterval(ele.timer)
+            ele.timer = setInterval(function(){
+                var speed = (target - ele.offsetLeft) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                console.log(speed , ele.offsetLeft , target);
+                if(target === ele.offsetLeft){
+                    clearInterval(timer);
+                }else{
+                    ele.style[attr] = ele.offsetLeft + speed + "px";
+                }
+            },50)
+        }
+        
+        function changePageNext(showIndex){
+            span[showIndex].style.background = "#ddd";
+            span[showIndex - 1].style.background = "#fff";
+            if(showIndex === (span.length - 1)){
+                span[0].style.background = "#ddd";
+            }
+        }
+        function changePagePrev(showIndex){
+            span[showIndex].style.background = "#ddd";
+            span[showIndex + 1].style.background = "#fff";
+            if(showIndex === (span.length - 2)){
+                span[0].style.background = "#fff";
+            }
+        }
+    </script>
+</body>
+</html>
