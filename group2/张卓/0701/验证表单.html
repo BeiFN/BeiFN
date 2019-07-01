@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        input {
+            border: 1px solid gray
+        }
+
+        #iptEmail,
+        #iptPwd,
+        #iptUsername {
+            transition: border 1s;
+        }
+
+        .tip {
+            width: 100%;
+            display: block;
+            height: 16px;
+            font-size: 14px;
+            color: red;
+        }
+
+        .success {
+            border: 1px solid yellowgreen;
+        }
+
+        .shibai {
+            border: 1px solid red;
+        }
+
+        input.v-strength-low {
+            transition: border-color 1s;
+            border-color: red;
+        }
+
+        input.v-strength-middle {
+            transition: border-color 1s;
+            border-color: orange;
+        }
+
+        input.v-strength-high {
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+        .hong{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="javascript:void(0)" id="form">
+        <p>
+            <!-- <span class="tip">hzang</span> -->
+            <span>邮&nbsp;&nbsp;&nbsp;箱：</span>
+            <input type="text" id="iptEmail" v-type="email">
+            <!-- <span class="tip"></span> -->
+        </p>
+        <p>
+            <span>用户名：</span>
+            <input type="text" id="iptUsername" v-type="username" onlyNum="false">
+            <!-- <span class="hong">*</span> -->
+        </p>
+        <p>
+            <span>密&nbsp;&nbsp;&nbsp;码：</span>
+            <input type="text" id="iptPwd" v-type="password" v-strength="true">
+            <!-- <span class="hong">*</span> -->
+        </p>
+        <p>
+            <span>网&nbsp;&nbsp;&nbsp;址：</span>
+            <input type="text" id="iptUrl" v-type="wangzhi">
+            <!-- <span class="tip"></span> -->
+        </p>
+        <p>
+            <input type="submit" id="iptSubmit" v-submit="true" value="提交">
+        </p>
+    </form>
+    <script src="./js/yanzheng3.0.js">
+    </script>
+    <script>
+        //为了增加扩展性，用户可以自己添加
+        validate("#form", {
+            wangzhi: {
+                reg: /^[0-9a-z]{5,15}$/i
+            }
+        })
+    </script>
+</body>
+
+</html>

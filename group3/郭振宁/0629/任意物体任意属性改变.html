@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1, #box2, #box3 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: left;
+            margin-right: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box1">变高</div>
+    <div id="box2">变宽</div>
+    <div id="box3">变透明</div>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+
+        box1.addEventListener("mouseover" , function() {
+            change(400 , this , "height");
+        });
+        box2.addEventListener("mouseover" , function() {
+            change(400 , this , "width");
+        })
+        box3.addEventListener("mouseover" , function() {
+            change(0.3 , this , "opacity");
+        })
+        function change(target , ele ,  attr) {
+            clearInterval(ele.timer);
+            ele.timer = null;
+            ele.timer = setInterval(function() {
+                if(attr === "opacity") {
+                    var eleAttr = parseInt(getComputedStyle(ele)[attr] * 100);
+                }else {
+                    var eleAttr = parseInt(getComputedStyle(ele)[attr]);
+                }
+                //需要加括号，否则会先算减法；
+                
+                var speed = ((attr === "opacity" ? target * 100 : target) - eleAttr) / 20;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if(eleAttr === target) {
+                    clearInterval(ele.timer);
+                }else {
+                    if(attr === "opacity") {
+                        ele.style[attr] = (eleAttr + speed) / 100;
+                    }else{
+                        ele.style[attr] = eleAttr + speed + "px";
+                    }
+                }
+            },50)
+        }
+        
+    </script>
+</body>
+</html>

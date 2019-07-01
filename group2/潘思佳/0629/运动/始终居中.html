@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #box {
+            width: 100px;
+            height: 200px;
+            background-color: orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        #long_box {
+            height: 2000px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="long_box"></div>
+    <script>
+        var box = document.getElementById("box");
+
+        var timer = null;
+
+        document.addEventListener("scroll", function() {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            scrollHandler(parseInt((document.documentElement.clientHeight - box.offsetHeight) / 2 + scrollTop));
+        })
+
+        function scrollHandler(target) {
+            clearInterval(timer);
+            timer = setInterval(function() {
+                var speed = (target - box.offsetTop) / 10;
+                speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (box.offsetTop === target) clearInterval(timer);
+                else box.style.top = box.offsetTop + speed + "px";
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>
