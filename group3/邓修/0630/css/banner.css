@@ -1,0 +1,81 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+
+.container{
+      width: 1130px;
+      height: 286px;
+      margin: 20px auto;
+      position: relative;
+      background: #ddd;
+      overflow: hidden;
+}
+
+.container:hover .show{
+      display: block;
+}
+
+.wrapper{
+      width: 7910px;
+      height: 100px;
+      background:yellowgreen;
+      position: absolute;
+      left: -1130px;
+}
+.slider{
+      width: 1130px;
+      height: 286px;
+      float: left;
+      text-align: center;
+      line-height: 286px;
+}
+
+.button-next,.button-prev{
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      z-index: 999;
+      cursor: pointer;
+      display: none;
+}
+.button-next{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+      right: 0;
+}
+.button-prev{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+      left: 0;
+}
+.button-next:hover{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+}
+.button-prev:hover{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+}
+
+.pagination{
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+}
+.pagination span{
+      background: #fff;
+      border-radius: 50%;
+      padding: 0 5px;
+      cursor: pointer;
+}
