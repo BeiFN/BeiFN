@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(#faa,#3ff);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -40px;
+            text-align: center;
+            line-height: 80px;
+        }
+        #line{
+            height: 700px;
+            width: 1px;
+            background: radial-gradient(#faa,#3ff);
+            position: absolute;
+            left: 800px;
+        }
+        #go{
+            background: #faa;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button id="go">go</button>
+    </div>
+    <div id="line"></div>
+</body>
+<script>
+    var box = document.getElementById("box");
+    var go = document.getElementById("go");
+    var timer = null;
+    go.addEventListener("click",function(){
+        move(801)
+    });
+    function move(target){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            if(target-box.offsetLeft>0){
+                var speed = Math.ceil((target - box.offsetLeft)/100*5);
+            }else{
+                var speed = Math.floor((target - box.offsetLeft)/100*5);
+            }
+            if(box.offsetLeft === target){
+                clearInterval(timer);  
+            } else{
+                box.style.left = box.offsetLeft + speed + "px";
+            }
+        },50)
+    }
+</script>
+
+</html>

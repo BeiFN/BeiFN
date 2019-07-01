@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         #box1,#box2,#box3{
+            width: 100px;
+            height: 100px;
+            border: 10px solid #000;
+            background: #ddd;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            }
+    </style>
+</head>
+<body>
+        <div id="box1">变高</div>
+        <div id="box2">变宽</div>
+        <div id="box3">变透明</div>
+        <script src="../libs/common.js"></script>
+        <script>
+            var box1 = $("#box1");
+            var box2 = $("#box2");
+            var box3 = $("#box3");
+            box1.addEventListener("mouseover",changeLength);
+            box2.addEventListener("mouseover",changeWidth);
+            box3.addEventListener("mouseover",changeBg);
+            function changeLength(){
+                move(400, this , "height");
+            }
+            function changeWidth(){
+                move(400, this , "width");
+            }
+            function changeBg(){
+                move(0.3, this , "opacity");
+            }
+
+            function move(target,dom,attr){
+                clearInterval(dom.timer);
+                dom.timer = setInterval(function(){
+                    var iNow = attr==="opacity" ? parseInt(getComputedStyle(dom)[attr]*100) : parseInt(getComputedStyle(dom)[attr]); 
+                    var target1 = (attr === "opacity" ? target*100 : target );
+                    var speed = (target1 - iNow)/10;
+                    // var speed = ( (attr === "opacity" ? target * 100 : target)  - iNow) / 10;
+                    speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+                    if(target === iNow){
+                        clearInterval(dom.timer);
+                    }else{
+                        dom.style[attr] =(attr === "opacity" ? (iNow + speed) / 100 : iNow + speed + "px");
+                    }
+                },50);
+            }
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: -webkit-radial-gradient(#faa,#3ff);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+<script>
+    var div = document.getElementsByClassName("box");
+    var timer = null;
+    for(var i = 0, box;box = div[i++];){
+        box.addEventListener("mouseover",function(){
+            move(500,this);
+        });
+    }
+
+    function move(target,ele){
+        clearInterval(ele.timer)
+        ele.timer = setInterval(function(){
+            var speed = Math.ceil((target - ele.offsetWidth)/100*5);
+
+            if(ele.offsetWidth === target){
+                clearInterval(ele.timer);
+            }else{
+                ele.style.width =ele.offsetWidth+ speed + "px";
+            }
+        },50)
+    }
+</script>
+
+</html>

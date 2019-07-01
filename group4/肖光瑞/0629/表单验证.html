@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input.success {
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+
+        input.error {
+            transition: border-color 1s;
+            border-color: red;
+        }
+
+        input.v-strength-low {
+            transition: border-color 1s;
+            border-color: red;
+        }
+
+        input.v-strength-middle {
+            transition: border-color 1s;
+            border-color: orange;
+        }
+
+        input.v-strength-high {
+            transition: border-color 1s;
+            border-color: yellowgreen;
+        }
+
+        .warnT {
+            font-size: 14px;
+            color: red;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="javascript:void(0)" id="form">
+        <p>
+            <span>邮&nbsp;&nbsp;&nbsp;&nbsp;箱 :</span>
+            <input type="text" v-type="email" class="hehe">
+        </p>
+        <p>
+            <span>用户名 :</span>
+            <input type="text" v-type="username" v-purenumbers="false">
+        </p>
+        <p>
+            <span>密&nbsp;&nbsp;&nbsp;&nbsp;码 :</span>
+            <input type="text" v-type="password" v-strength="true">
+        </p>
+        <p>
+            <span>链&nbsp;&nbsp;&nbsp;&nbsp;接 :</span>
+            <input type="text" v-type="url">
+        </p>
+        <button id="btn">提交</button>
+    </form>
+    <script src="./javascript/表单验证.js"></script>
+    <script>
+        validate("#form", {
+            "username": {
+                reg: /^[\u4e00-\u9fa5a-z0-9_\-]{4,20}$/,
+                warns: "支持中文，英文，数字，字母，-，_ 的4~20位字符",
+                noPurenum: "不能为纯数字"
+            },
+            "url": {
+                reg: /http:\/\/[a-z]+\.[a-z]+\.(com|net)/i,
+                warns: "请输入正确的邮箱链接"
+            }
+        }
+        );
+    </script>
+</body>
+
+</html>

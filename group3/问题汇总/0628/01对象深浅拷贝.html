@@ -43,7 +43,7 @@
             // for(var attr in obj){
             //       cloneObj[attr] = obj[attr];
             // }
-            // console.log(cloneObj);
+            // console.log(cloneObj); //伪深克隆
 
             // 一行代码完美深克隆;  推荐使用;
             
@@ -82,7 +82,7 @@
             // 对象合并方法 => ES6 ; Object.assign;  jQuery => $.extend();
 
             // 合并目标;
-            // var obj = { a : 1 , c : []};
+             var obj = { a : 1 , c : []};
             // var obj2 = { b : 2};
             
             // 合并结果;
@@ -91,8 +91,8 @@
             // console.log(obj3,obj,obj2);
 
             // 表层不用for循环的深克隆;  => 只能有一层;
-            // var cloneObj = Object.assign( {} , obj);
-            // console.log(cloneObj);
+            var cloneObj = Object.assign( {} , obj);
+            console.log(cloneObj);
 
             // 浅克隆 :  克隆地址 | 引用传递;
             // 深克隆 :  1. 创建全新的引用类型;

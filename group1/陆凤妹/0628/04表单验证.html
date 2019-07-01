@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>表单验证</title>
+      <title>Document</title>
       <style>
             input.success{
                   transition: border-color 1s;
@@ -26,7 +26,7 @@
                   transition: border-color 1s;
                   border-color: yellowgreen;
             }
-       
+      
       </style>
 </head>
 <body>
@@ -36,7 +36,7 @@
                   <input type="text" v-type="email" class="email">
             </p>
             <p>
-                  <span>用户名 :</span>
+                  <span>用户名:</span>
                   <input type="text" v-type="username" v-purenumbers="false">
             </p>
             <p>
@@ -61,9 +61,9 @@
             //       e.preventDefault();
             // }
       </script>
-      <script src="js/myform.js"></script>
+      <script src="js/04validate.js"></script>
       <script>
-            // 1. 调用模式 => 插件使用者调用 ; 调用时要告知插件要在哪里进行验证;
+            // 1. 调用模式 => 插件使用者调�?; 调用时要告知插件要在哪里进行验证;
             validate("#form" , {
                   "url" : {
                         reg : /http:\/\/[a-z]+\.[a-z]+\.(com|net)/i
@@ -75,9 +75,3 @@
       </script>
 </body>
 </html>
-
-
-
-
-
-
