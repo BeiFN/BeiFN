@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #ff0;
+            position: absolute;
+        }
+        #bar{
+            width: 2px;
+            height: 300px;
+            background: #000;
+            margin-left:700px; 
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="bar"></div>
+    <button id="btn">开始运动</button>
+    <script>
+        var box=document.getElementById("box");
+        var bar=document.getElementById("bar");
+        var btn=document.getElementById("btn");
+        var speed=17;
+        var timer=null;
+        var target=600;
+
+        btn.addEventListener("click",handlerClick);
+        function handlerClick(){
+            clearInterval(timer);
+            timer=setInterval(startMove,50);
+        }
+        function startMove(){
+            box.style.left=box.offsetLeft+speed+"px";
+            if(Math.abs(target-box.offsetLeft)<Math.abs(speed)){
+                clearInterval(timer);
+                box.style.left=target+"px";
+                speed=-speed;
+                target=target===600?0:600;
+            }            
+        }
+
+    
+    </script>
+</body>
+</html>
