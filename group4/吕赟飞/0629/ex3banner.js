@@ -22,37 +22,35 @@ prevLi = liList[0];
 function liClickHandler() {
     index = liList.indexOf(this) + 1;
     imgMove(-1280 * index, wrapper, "left");
+    liBG();
+}
 
+next_btn.addEventListener("click", function () {
+    if (index === sliders.length - 2) {
+        index = 1;
+        wrapper.style.left = 0;
+    } else {
+        index++;
+    }
+    liBG();
+});
+
+prev_btn.addEventListener("click", function () {
+    if (index === 1) {
+        index = sliders.length - 2;
+        wrapper.style.left = "-7680px";
+    } else {
+        index--;
+    }
+    liBG();
+});
+
+
+function liBG() {
     if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
     prevLi = liList[index - 1];
     prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 }
-
-next_btn.addEventListener("click", function () {
-    if (index === sliders.length - 1) {
-        index = 2;
-        wrapper.style.left = "-1280px";
-    } else {
-        index++;
-    }
-
-    if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-    prevLi = liList[index - 1];
-    prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-});
-
-prev_btn.addEventListener("click", function () {
-    if (index === 0) {
-        index = sliders.length - 3;
-        wrapper.style.left = "-6400px";
-    } else {
-        index--;
-    }
-
-    if (prevLi) prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-    prevLi = liList[index - 1];
-    prevLi.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-});
 
 
 container.addEventListener("click", function (evt) {
@@ -66,14 +64,15 @@ container.addEventListener("click", function (evt) {
 
 function imgMove(target, dom, attr) {
     clearInterval(dom.timer);
+    var target = attr === "opacity" ? target * 100 : target;
     dom.timer = setInterval(function () {
-        var iNow = parseInt(getComputedStyle(dom)[attr]);
+        var iNow = attr === "opacity" ? parseInt(getComputedStyle(dom)[attr] * 100) : parseInt(getComputedStyle(dom)[attr]);
         var speed = (target - iNow) / 10;
         speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
         if (target === iNow) {
             clearInterval(dom.timer);
         } else {
-            dom.style[attr] = iNow + speed + "px";
+            dom.style[attr] = attr === "opacity" ? (iNow + speed) / 100 : iNow + speed + "px"
         }
     }, 16);
 }
