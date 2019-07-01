@@ -76,17 +76,42 @@
 .main{width:100%;height: 3702px;;border-bottom: 40px solid #eaeaea;background: #eaeaea}
 /* 首页轮播图 */
 .main1{width:100%;height: 535px;background: #fff;padding:20px 0 0 0px;;}
-.banner{width:100%;height: 479px;padding-bottom: 20px;}
-.banner1{width:1130px;height:286px;margin:0 auto;position: relative;}
-.image li  img{width:1130px;height:286px;}
-.banner1 .a1{display: block; position: absolute;top:0;z-index: 10;width: 173px;height: 100%;}
-.banner1 .a2{display: block; position: absolute;top:0;z-index: 10;width: 173px;height: 100%;right:0;}
-.banner1:hover #prev{left: 0;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat;background-position: 30px center;}
-.banner1:hover #next{right: 0;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat;background-position: 91px center;}
-/* .banner1 .image:hover .a1{display:block;} */
-/* .banner1 .image:hover #next{display: block;} */
-.banner1 #prev:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat;background-position: 30px center;}
-.banner1 #next:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat;background-position: 91px center;}
+.banner{width:100%;height: 286px;padding-bottom: 20px;}
+.banner1{width:4520px;height:286px;margin:0 auto;position: relative;}
+.banner1 .image{width:4520px;height:286px;}
+/* .image li{overflow: hidden;} */
+.image .p1{width:1130px;height:286px;display: inline-block;overflow: hidden;}
+.image .p1 .slider{width:1130px;height:286px;display: inline-block;overflow: hidden;}
+
+/* .button-next,.button-prev{
+    width: 13px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    z-index: 999;
+    display: block;
+}
+
+.banner1:hover .button-next{
+    display: block; position: absolute;top:0;z-index: 10;width: 173px;height: 100%;right:0;z-index: 999; position: absolute;
+    
+}
+.banner1:hover .button-prev{
+    left: 0;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat;background-position: 30px center;
+}
+
+.banner1 .button-prev:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat;background-position: 30px center;}
+.banner1 .button-next:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat;background-position: 91px center;} */
+
+.banner1 .button-prev{display: block; position: absolute;top:0;z-index: 10;width: 173px;height: 100%;z-index: 999; position: absolute;}
+.banner1 .button-next{display: block; position: absolute;top:0;z-index: 10;width: 173px;height: 100%;right:0;z-index: 999; position: absolute;} */
+.banner1:hover .button-prev{left: 0;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat;background-position: 30px center;}
+.banner1:hover .button-next{right: 0;background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat;background-position: 91px center;}
+
+.banner1 .button-prev:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2) no-repeat;background-position: 30px center;}
+.banner1 .button-next:hover{background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2) no-repeat;background-position: 91px center;} 
+
 .adtop{width: 100%;height:170px;height: 170px;}
 .ad{float: left;margin-top:20px;}
 .ad li{float:left;margin: 0 auto;border-right:20px solid #fff;height: 170px;}
