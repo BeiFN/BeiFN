@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #container { width: 1380px; height: 350px; border: none; position: relative;margin: 0 auto;padding-top: 20px;}
+            #list { width: 11040px; height: 350px; position: absolute; z-index: 1;}
+            #list img { float: left;width: 1380px;}
+            #buttons { position: absolute; height: 10px; width: 120px; z-index: 2; bottom: 20px; left: 50%;margin-left: -60px;}
+            #buttons span { cursor: pointer; float: left; border: 1px solid #fff; width: 10px; height: 10px; border-radius: 50%; background: #333; margin-right: 5px;}
+            #buttons .on {  background: orangered;}
+            .arrow { cursor: pointer; display: none;width: 60px; height: 60px;  position: absolute; z-index: 2; top: 160px;}
+            /* .arrow:hover { background-color: RGBA(0,0,0,.7);} */
+            #container:hover .arrow { display: block;}
+            #prev { left: 20px;background: url(img/left_arrow.svg) no-repeat;background-size: cover;}
+            #prev:hover{background: url(img/left_arrowhover.svg) no-repeat;background-size: cover;}
+            #next { right: 20px;background: url(img/right_arrow.svg) no-repeat;background-size: cover;}
+            #next:hover{background: url(img/right_arrowhover.svg) no-repeat;background-size: cover;}
+      </style>
+</head>
+<body>
+      <div id="container">
+            <div id="list" style="left: -1380px;">
+                <img src="img/image6.jpg" alt="1">
+                <img src="img/image1.jpg" alt="1">
+                <img src="img/image2.jpg" alt="2">
+                <img src="img/image3.jpg" alt="3">
+                <img src="img/image4.jpg" alt="4">
+                <img src="img/image5.jpg" alt="5">
+                <img src="img/image6.jpg" alt="6">
+                <img src="img/image1.jpg" alt="6">
+            </div>
+            <div id="buttons">
+                <span index="1" class="on"></span>
+                <span index="2" class=""></span>
+                <span index="3" class=""></span>
+                <span index="4" class=""></span>
+                <span index="5" class=""></span>
+                <span index="6" class=""></span>
+            </div>
+            <a href="javascript:;" id="prev" class="arrow"></a>
+            <a href="javascript:;" id="next" class="arrow"></a>
+        </div>
+
+      <script>
+            // 轮播图
+var container=document.getElementById('container')//获取容器id
+    var list=document.getElementById('list')//获取img容器
+    var buttons=document.getElementById('buttons').getElementsByTagName('span')//获取点
+    var prev=document.getElementById('prev')//左按钮
+    var next=document.getElementById('next')//右按钮
+    var animated=false
+    var index=1;//小圆点
+    var timer;//定时器
+    //小圆点
+    function showButton(index){
+        //对点点循环，去除已经有的on
+        for(var i=0;i<buttons.length;i++){
+            if(buttons[i].className=='on'){
+                buttons[i].className=''
+                break//退出循环
+            }
+        }
+        buttons[index-1].className='on'
+    }
+    function animate(offset){
+//            快速点击时，会出现小圆点和图片不对应的情况，解决方案是当图片处于动画状态时，直接屏蔽掉点击事件
+        animated=true// 快速点击时，会出现小圆点和图片不对应的情况，解决方案是当图片处于动画状态时，直接屏蔽掉点击事件
+        var newLeft=parseInt(list.style.left)+offset
+
+        //焦点图轮播
+        var time=300;//位移总时间
+        var interval=10;//位移间隔时间
+        var speed=offset/(time/interval)//每次位移量
+        function go(){
+            if(speed<0&&parseInt(list.style.left)>newLeft||(speed>0&&parseInt(list.style.left)<newLeft)){
+                list.style.left=parseInt(list.style.left)+speed+'px'
+                setTimeout(go,interval)
+            }else{
+                animated=false;// 快速点击时，会出现小圆点和图片不对应的情况，解决方案是当图片处于动画状态时，直接屏蔽掉点击事件
+                list.style.left=newLeft +'px' //转成数字600
+                //判断是否l滚动到辅助图,图片滚动在-600和-3000之间,解决空白问题
+                if(newLeft>-1380){
+                    list.style.left=-8280+'px'
+                }
+                if(newLeft<-8280){
+                    list.style.left=-1380+'px'
+                }
+            }
+        }
+        go()
+    }
+    //自动切换
+    function play(){
+        timer=setInterval(function(){
+            next.onclick()
+        },3000);
+    }
+    //停止切换
+    function stop(){
+        clearInterval(timer)
+    }
+    //右箭头
+    next.onclick=function(){
+        //判断点点是否是最后一个或者第一个
+/*            if(index==5){
+            index=1;
+        }else{
+            index+=1;
+        }*/
+        index += 1;
+        index = index > 6 ? 1 : index;
+        showButton(index)
+        //+600和-600当做参数传给animate
+//            list.style.left=parseInt(list.style.left)-600 +'px' //把字符串变为整数值，paresInt()只保留字符串中的数字
+        if(!animated){
+            animate(-1380)
+        }
+    }
+    //左箭头
+    prev.onclick=function(){
+        /* if(index==1){
+            index=5;
+        }else{
+            index-=1;
+        }*/
+        index -= 1;
+        index = index < 1 ? 6 : index;
+        showButton(index)
+//            list.style.left=parseInt(list.style.left)+600+'px'
+        if(!animated){
+            animate(1380)
+        }
+    }
+    //小圆点加事件
+    for(var i=0;i<buttons.length;i++){
+        buttons[i].onclick=function(){
+//                if(this.className=='on'){
+//                    return;
+//                }
+            var myIndex=parseInt(this.getAttribute('index'))//获取当前点点的index
+            var offset=-1380*(myIndex-index) //移动的距离：当前的index-之前的index
+            //恢复小圆点位置
+            index=myIndex
+            showButton()
+            if(!animate){
+                animate(offset)
+            }
+        }
+    }
+    //鼠标移上去，触发自动切换事件
+    container.onmouseover=stop;//不要加括号，
+    container.onmouseout=play
+    //自动切换
+    play();
+                  
+      </script>
+</body>
+</html>
