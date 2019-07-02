@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #share{
+                  width: 100px;
+                  height: 150px;
+                  background: #ddd;
+                  position: absolute;
+                  left: -100px;
+                  bottom:0;
+            }
+            #share span{
+                  display: block;
+                  width: 16px;
+                  position: absolute;
+                  right: -16px;
+                  top: 50%;
+                  margin-top: -26px;
+                  background: #ddd;
+            }
+      </style>
+</head>
+<body>
+      <div id="share">
+            <span>
+                  分享到
+            </span>
+      </div>
+      <script>
+            var share = document.querySelector("#share");
+            var target = 0;
+            var timer = null;
+            share.addEventListener("mouseover" , start);
+            share.addEventListener("mouseout" , end);
+            function start() {
+                clearInterval(timer);
+                timer = setInterval(function() {
+                    var speed = 5;
+                    share.style.left = share.offsetLeft + speed + "px";
+                    if(target - share.offsetLeft <= speed) {
+                        console.log(1);
+                        clearInterval(timer);
+                        share.style.left =  target + "px";                        
+                    }
+                },50)
+            }
+            function end() {
+                clearInterval(timer);
+                timer = setInterval(back , 50);
+            }
+            function back() {
+                var speed = -5;
+                share.style.left = share.offsetLeft + speed + "px";
+                if(share.offsetLeft === -100) {
+                    clearInterval(timer);
+                }
+            }
+      </script>
+</body>
+</html>

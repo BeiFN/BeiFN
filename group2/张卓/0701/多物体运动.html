@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        var divs = document.getElementsByTagName("div")
+        var target = 400;
+        for(var i = 0,div;div = divs[i++];){
+            div.addEventListener("mouseover",function(){
+                changeWidth(this)  
+            })
+        }
+        function changeWidth(div){
+            // console.log(div+"----")
+            //这个this指向的是window
+            // console.log(this)
+            clearInterval(div.timer)
+            //每一个div用不同的变量接收
+            div.timer = setInterval(function(){
+                var speed = (target- div.offsetWidth)/20
+                //记得判断  
+                speed>0?Math.ceil(speed):Math.floor(speed)
+                if(div.offsetWidth==target){
+                    clearInterval(div.timer)
+                }else{
+                    div.style.width = div.offsetWidth+speed+"px";
+                }
+            },50)
+        }
+    </script>
+</body>
+
+</html>
