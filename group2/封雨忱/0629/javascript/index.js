@@ -12,28 +12,36 @@ var prev_button=$('.prev-button');
 var span=document.getElementsByTagName('span');
 var showIndex=0;
 var timer=null;
+
 //-----添加事件----
 next_button.onclick=function(){
     if(showIndex===slider.length-1){
         showIndex=1;
-        wrapper.style.left='0';
+        wrapper.style.left=0
     }else{
         showIndex++;
-        changPointColornext(showIndex);
+        console.log(showIndex)
+        // changPointColornext(showIndex);
     }
+    // console.log(showIndex)
     indexMove(-500*showIndex,wrapper);
+    changPointColornext(showIndex)
+
     // console.log(showIndex)
 }
 prev_button.onclick=function(){
     if(showIndex===0){
         showIndex=slider.length-2
         wrapper.style.left=(slider.length-1)*-500+'px'
+        
     }else{
         showIndex--;
-        changPointColorprev(showIndex);
+        // console.log(showIndex)
+        // changPointColorprev(showIndex);
     }
     // console.log(showIndex)
     indexMove(-500*showIndex,wrapper);
+    changPointColorprev(showIndex)
 }
 container.onclick=function(evt){
     var e=evt||window.event;
@@ -56,10 +64,10 @@ function indexMove(target,dom,arrt){
         var speed=(target-dom.offsetLeft)/5;
         speed=speed>0?Math.ceil(speed):Math.floor(speed);
         // console.log(speed)
-        if(showIndex===6){
-            alert()
-            speed=target-dom.offsetLeft;    
-        }
+        // if(showIndex===6){
+        //     // alert()
+        //     speed=target-dom.offsetLeft;    
+        // }
         if(target===dom.offsetLeft){
             clearInterval(dom.timer)
         }else{
@@ -72,18 +80,20 @@ function indexMove(target,dom,arrt){
 
 
 function changPointColornext(showIndex){
-    for(var i=0,col;col=span[i++];){
+    // console.log(showIndex)
+    for(var i=1,col;col=span[i++];){
         col.className='';
+        console.log(i)
     }
     span[showIndex].className='active'
-
-    console.log(showIndex)
+    
 }
 function changPointColorprev(showIndex){
+    // console.log(showIndex);
     for(var i=0,col;col=span[i++];){
         col.className='';
     }
     span[showIndex].className='active'
-    console.log(showIndex);
+    
 
 }
