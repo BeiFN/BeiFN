@@ -20,7 +20,8 @@
     
     <script>
         function Particle(ele){
-            this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);            this.init();
+            this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);
+            this.init();
         }
         Particle.prototype.init = function(){
             this.timer = null;
@@ -32,12 +33,12 @@
         }
         Particle.prototype.mousedown = function(evt){
             var e = evt || window.event;
-            this.offsetX = e.offsetX;
+            this.offsetX = e.offsetX;//提取参数
             this.offsetY = e.offsetY;
             this.timer = setInterval(function(){
                 var ball = this.createBall();
-                setTimeout(function(){
-                              this.ballMove(ball,e.offsetY);
+                setTimeout(function(){//下一帧渲染，给球一动的效果
+                    this.moveBall(ball,e.offsetY);
                 }.bind(this),100);
             }.bind(this),50)
         }
@@ -50,19 +51,17 @@
             var ele = document.createElement("div");
             ele.className = "ball";
             ele.style.left = this.offsetX + "px";
-            ele.style.tophis.offsetY + "px";
+            ele.style.top = this.offsetY + "px";
             ele.style.transition = "all 1s";
-            document.body.appendChild(ball_ele);
-            return ball_ele;
+            document.body.appendChild(ele);
+            return ele;
         }
-        Particle.prototype.moveBall = function(){
+        Particle.prototype.moveBall = function(ball,minTop){
                 var randomL = Math.round(Math.random() * this.cWidth);
                 var randomT = minTop + Math.round(Math.random() * (this.cHeight - minTop));
-
                 ball.style.left = randomL + "px";
                 ball.style.top  = randomT + "px";
                 ball.style.opacity  = 0.1;
-
                 setTimeout(function(){
                     ball.remove();
                 },1000)
