@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础运动</title>
+    <style>
+    #box{
+       
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: yellowgreen;
+    }
+#line{
+    width: 2px;
+    height: 300px;
+    background: #666666;
+    position: absolute;
+    left: 800px;
+
+}
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <div id="line"></div>
+
+    <script>
+
+
+    var oDiv = document.getElementById("box");
+    var speed = 10;
+    var target = 800;
+    var timer = null;
+        oDiv.addEventListener("click",handlerMove);
+        function handlerMove(){
+         timer = setInterval(function(){
+            // console.log(1434);
+                oDiv.style.left = oDiv.offsetLeft +speed+ "px";
+                if(Math.abs(target-oDiv.offsetLeft<=Math.abs(speed))){   //s = vt t是单位时间，为 1，即为  s=t 当 s<=v时，即到达目的地
+                    clearInterval(timer);
+                    oDiv.style.left = target + "px";              }
+            },50)
+      
+    
+       }
+    
+    </script>
+</body>
+</html>

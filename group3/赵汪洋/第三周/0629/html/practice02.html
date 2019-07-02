@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础运动-终止条件</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: aqua;
+            position: absolute;
+            left: 1200px;
+            top: 0;
+        }
+
+        #line {
+            position: absolute;
+            left: 600px;
+            width: 1px;
+            height: 500px;
+            background: fuchsia;
+        }
+
+        #btn {
+            position: absolute;
+            top: 200px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+    <button id="btn">开始运动</button>
+    <script>
+        var box = document.getElementById("box");
+        var line = document.getElementById("line");
+        var btn = document.getElementById("btn");
+        var speed = 17;
+        var timer = null;
+        if (line.offsetLeft - box.offsetLeft < 0) {
+            speed = -speed;
+        }
+        btn.addEventListener("click", handlerclick);
+
+        function handlerclick() {
+            timer = setInterval(boxMove, 50);
+        }
+
+        function boxMove() { // 也可以判断如果距离小于速度的话，让速度等于差值，然后最后一次正好加到总距离，再判断距离等于总距离结束。
+            // box.style.left = box.offsetLeft + speed + "px";
+            // if (line.offsetLeft - box.offsetLeft < speed) { // 如果初始是在线的右边会直接并过去
+            //     clearInterval(timer);
+            //     box.style.left = line.offsetLeft + "px"; // 如果帧数小可以先判断，为false再运动。这也是一个bug，如果初始值的差就很小，进来一加超过了线后又并回来。所以运动加法还是写在判断语句else里比较合适。
+            // }
+
+            // box.style.left = box.offsetLeft + speed + "px";
+            // if (Math.abs(line.offsetLeft - box.offsetLeft) < speed) { // 如果初始是在线的右边会继续一直走
+            //     clearInterval(timer);
+            //     box.style.left = line.offsetLeft + "px";
+            // }
+
+            if (Math.abs(line.offsetLeft - box.offsetLeft) < Math.abs(speed)) { // 完美输出~
+                clearInterval(timer);
+                box.style.left = line.offsetLeft + "px";
+            } else {
+                box.style.left = box.offsetLeft + speed + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>
