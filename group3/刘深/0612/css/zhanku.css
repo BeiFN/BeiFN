@@ -63,6 +63,7 @@ bady{color: #282828; font-size: 14px;}
 .nav .nav-left .l2 ul li span a:hover{background: #ffe300;}
 
 
+
 .nav .nav-left .l4 {position: relative;}
 .nav .nav-left .l4 ul{position: absolute;left: 0;top: 57px;width: 152px;display: none;}
 .nav .nav-left .l4:hover ul{display: block;}
@@ -100,4 +101,10 @@ bady{color: #282828; font-size: 14px;}
 .nav .nav-left .l8 ul li:hover{background: #ffe300;}
 
 .photo{width: 1130px; height:286px; margin: 0 auto;margin-top: 20px; }
-.photo img{width: 1130px; height: 286px;margin: 0 auto;}
+.photo img{width: 1130px; height: 286px;margin: 0 auto;border-radius: 4px;}
+.l2 .one div span a{display: inline-block; width:42px; height: 28px; line-height: 28px;}
+.l2 .two div span a{display: inline-block; width:42px; height: 28px; line-height: 28px;}
+.photo-bot{width:1130px; height: 168px; margin: 0 auto;margin-top:20px; }
+.photo-bot div{float: left;width: 210px; height: 168px; margin-right:20px;}
+.photo-bot .div-5{margin-right:0px; }
+.photo-bot div img{float: left;width: 210px; height: 168px; border-radius: 4px;}
