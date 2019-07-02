@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #999;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        move(box,{
+            "width" : 800,
+            "height": 400,
+            "opacity":20
+        },function(){
+            box.style.background = "yellowgreen";
+        })
+        function move(dom , opations, callback){
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                for(var attr in opations){
+                    if(attr === "opacity"){
+                        var iNow = parseInt(getComputedStyle(dom)[attr] *100)
+                    }else{
+                        var iNow = parseInt(getComputedStyle(dom)[attr])
+                    }
+                    var speed = (opations[attr] - iNow) /10;
+                    speed  = speed > 0? Math.ceil(speed) : Math.floor(speed);
+                    if(opations[attr] === iNow){
+                        delete opations[attr];
+                        if(Object.keys(opations).length === 0){
+                            clearInterval(dom.timer);
+                            typeof callback === "function" ? callback() : "";
+                        }
+                    }else{
+                        if(attr === "opacity"){
+                            dom.style[attr] = (iNow + speed) / 100;
+                        }else{
+                            dom.style[attr] = iNow + speed + "px";
+                        }
+                    }
+                }
+            } , 50)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 600px;
+            margin: 40px auto;
+            background: #000;
+            border: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .firework {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <script src="./运动框架封装.js"></script>
+    <script>
+        function Firework(selector) {
+            this.main = document.querySelector(selector);
+            this.init();
+        }
+        Firework.prototype.init = function () {
+            this.main.addEventListener("click", this.hanlderFireClick.bind(this));
+            this.autoPlay(3000);
+        }
+        Firework.prototype.hanlderFireClick = function (evt) {
+            var e = evt || window.event;
+            var offsetX = e.offsetX;
+            var offsetY = e.offsetY;
+            var fire = this.fireworkInit(offsetX);
+            this.fireworkMove(fire, offsetY, this.fireworkBoom.bind(this, offsetX, offsetY))
+        }
+
+        //创造烟花
+        Firework.prototype.createFirework = function () {
+            var fire = document.createElement("div");
+            fire.className = "firework";
+            fire.style.background = randomColor();
+            return fire;
+        }
+        //初始化烟花
+        Firework.prototype.fireworkInit = function (offsetX) {
+            var fire = this.createFirework();
+            fire.style.left = offsetX + "px";
+            fire.style.bottom = 0;
+            this.main.appendChild(fire)
+            return fire;
+        }
+        //烟花移动
+        Firework.prototype.fireworkMove = function (fire, offsetY, callback) {
+            move(fire, {
+                top: offsetY
+            }, function () {
+                fire.remove()
+                callback()
+            })
+        }
+        //烟花爆炸
+        Firework.prototype.fireworkBoom = function (offsetX, offsetY) {
+            var count = 40,
+                r = 5 + Math.round(Math.random() * 5),
+                angle = 0;
+            for (var i = 0; i++ < count;) {
+                angle = Math.round(360 / count * i);
+                var x = Math.round(r * (16 * Math.pow(Math.sin(angle), 3)) + offsetX),
+                    y = Math.round(-r * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) + offsetY);
+                var fire_boom = this.createFirework();
+                fire_boom.style.left = offsetX + "px";
+                fire_boom.style.top = offsetY + "px";
+                this.main.appendChild(fire_boom);
+                move(fire_boom, {
+                    left: x,
+                    top: y,
+                    opacity: 0
+                }, function (fire_boom) {
+                    fire_boom.remove();
+                }.bind(null, fire_boom))
+            }
+        }
+        //随机颜色
+        function randomColor() {
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+            return `rgb(${r},${g},${b})`
+        }
+
+        //自动播放
+        Firework.prototype.autoPlay = function (delay) {
+            this.delay = delay ? delay : 2000;
+            var position = {
+                offsetX: Math.round(Math.random() * 800),
+                offsetY: Math.round(Math.random() * 600)
+            }
+            var fire = this.fireworkInit(position.offsetX);
+            this.fireworkMove(fire, position.offsetY, this.fireworkBoom.bind(this, position.offsetX, position.offsetY))
+            setTimeout(this.autoPlay.bind(this), this.delay)
+        }
+
+        new Firework("#container")
+    </script>
+</body>
+
+</html>
