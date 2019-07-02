@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意物体属性运动</title>
+    <style>
+        #gaodu,#kuan,#touming{
+            height: 100px;
+            width: 100px;
+            border: 10px solid black;
+            background: #ddd;
+            margin: 20px;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gaodu">高度</div>
+    <div id="kuan">宽度</div>
+    <div id="touming">透明</div>
+    <script>
+        var box1 = document.getElementById("gaodu");
+        var box2 = document.getElementById("kuan");
+        var box3 = document.getElementById("touming");
+        var timer = null;
+        box1.addEventListener("mousemove",function(){
+            BoxChange(300,this,"width");
+        })
+        box2.addEventListener("mousemove",function(){
+            BoxChange(300,this,"height");
+        })
+        box3.addEventListener("mousemove",function(){
+            BoxChange(0.3,this,"opacity");
+        })
+        box1.addEventListener("mouseout",function(){
+            BoxChange(100,this,"width");
+        })
+        box2.addEventListener("mouseout",function(){
+            BoxChange(100,this,"height");
+        })
+        box3.addEventListener("mouseout",function(){
+            BoxChange(1,this,"opacity");
+        })
+        function BoxChange(target,ele,attr){
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function(){
+                if(attr == "opacity"){//判断是否为透明属性
+                    var wanted = parseInt(getComputedStyle(ele)[attr] * 100);//是 => 获取该属性的属性值 乘100转为numbe类型
+                }
+                else{
+                    var wanted = parseInt(getComputedStyle(ele)[attr]);//不是 => 取宽高属性的属性值，转完number类型
+                }
+                var speed = ((attr =="opacity" ? target *100 :target) - wanted) /10;
+                speed > 0 ? speed =Math.ceil(speed) : speed = Math.floor(speed);
+                if(target === wanted){
+                    clearInterval(ele.timer);
+                }
+                else{
+                    if(attr === "opacity"){
+                        ele.style.opacity = (wanted + speed) /100;
+                    }
+                    else{
+                        ele.style[attr] = wanted + speed +"px";//取属性.之后加不了变量
+                    }
+                }
+            },50);
+        }
+    </script>
+</body>
+</html>

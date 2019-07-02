@@ -22,17 +22,17 @@
 
     .firework {
         width: 2px;
-        height: 10px;
-        border-radius: 4px;
+        height: 8px;
+        border-radius: 6px;
         position: absolute;
     }
 
     .firboom {
         /* transform: rotate(60deg); */
-        width: 18px;
+        width: 16px;
         height: 1px;
         /* border: 1px solid #fff; */
-        border-radius: 4px;
+        border-radius: 10px;
         position: absolute;
     }
 </style>
@@ -67,18 +67,23 @@
             var firework = this.fireworkCreater(offsetX, 0); //制作烟花,我要求你给我送到（优化性能 ，创建元素就位置在哪里）
             this.fireworkMover(firework, offsetY, this.fireBoom.bind(this, offsetX, offsetY));
         }
-        Firework.prototype.fireworkCreater = function (x, y) { //制作者
+        Firework.prototype.fireworkCreater = function (x, y, edg) { //制作者
             var dir = "bottom: ";
             var css = "firework";
+            var edge = edg;
             // console.log(css);
-            arguments.length > 2 ? (dir = "top:") && (css = "firboom") : "";
+            arguments.length > 2 ? (dir = "top:") && (css = "firboom") && (edge = ";transform:rotate(" +
+                edge + "deg)") : edge = ";";
             var fireWorkE = createElement({
                 tagName: "div",
                 class: css,
                 attr: {
-                    style: "left:" + x + "px;" + dir + y + "px;background-color:" + randomRgb()
+                    style: "left:" + x + "px;" + dir + y + "px;background:linear-gradient(to bottom," +
+                        randomRgb() + "," + randomRgb() + ")" + edge
                 }
             });
+            // console.log("left:" + x + "px;" + dir + y + "px;background:linear-gradient(to right," +
+            //     randomRgb() + "," + randomRgb() + ")" + +edge);
             this.place.appendChild(fireWorkE);
             return fireWorkE;
         }
@@ -93,7 +98,7 @@
         Firework.prototype.fireBoom = function (x, y) {
             var edg = Math.PI / 180;
             var boomCount = randomNumber(15, 20);
-            var range = randomNumber(52.1, 233);
+            var range = randomNumber(131.4, 233);
             var angleOff = Math.round(360 / boomCount);
             var angle = 0;
             var edge = 0;
@@ -101,9 +106,9 @@
 
                 var fireX = Math.round(Math.cos(angle) * range + x)
                 var firey = Math.round(Math.sin(angle) * range + y)
-                var boom_fire = this.fireworkCreater(x, y, 1);
-                console.log(angle);
-                boom_fire.style.transform = "rotate(" + edge + "deg)";
+                var boom_fire = this.fireworkCreater(x, y, edge);
+                // console.log(edge);
+                // boom_fire.style.transform = "rotate(" + edge + "deg)";
                 moves(boom_fire, {
                     left: fireX,
                     top: firey,
