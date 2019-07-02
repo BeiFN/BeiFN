@@ -5,7 +5,7 @@
     background: #000;
     position: relative;
 }
-#firework{
+.firework{
     width:10px;
     height:10px;
     position: absolute;
