@@ -16,8 +16,8 @@ Firework.prototype.handerClick = function (evt) {   //处理点击事件
     var offsetX = e.offsetX;
     var offsetY = e.offsetY;
     var fire = this.createFirework();               //创建随机颜色的烟花
-    fire.style.width="1px";
-    fire.style.height="20px";
+    fire.style.width="5px";
+    fire.style.height="40px";
     fire = this.setFireworkPosition(fire, offsetX);    //为烟花设置初始位置
     var moveArray = this.fireworkBoom(offsetX, offsetY);   //获取烟花爆炸后移动目标点数组
     var fireworkArray = [];                               //创建烟花爆炸后溅射物的数组
@@ -30,7 +30,7 @@ Firework.prototype.handerClick = function (evt) {   //处理点击事件
         this.container.appendChild(moveFire);
         fireworkArray.push(moveFire);
     }
-    console.log(moveArray, fireworkArray);
+    // console.log(moveArray, fireworkArray);
     this.fireworkMove(fire, offsetY, this.fireworkBoomMove.bind(this, moveArray, fireworkArray));   //烟花移动并爆炸
 }
 
@@ -105,7 +105,7 @@ function move(dom, options, callback) {     //移动框架
             } else {
                 var iNow = parseInt(getComputedStyle(dom)[attr])
             }
-            var speed = (options[attr] - iNow) / 5;
+            var speed = (options[attr] - iNow) / 3;
             speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 
             if (options[attr] === iNow) {
@@ -126,4 +126,11 @@ function move(dom, options, callback) {     //移动框架
     }, 50)
 }
 
-new Firework("#container");
+var fire=new Firework("#container");
+setInterval(function(){
+    var evt=new Event("click");
+    evt.offsetX=Math.round(Math.random()*1536);
+    evt.offsetY=Math.round(Math.random()*440);
+    // console.log(evt);
+    fire.container.dispatchEvent(evt);
+},2000);
