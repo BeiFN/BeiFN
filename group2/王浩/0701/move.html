@@ -27,15 +27,8 @@
         clearInterval(dom.timer);
         dom.timer=setInterval(function(){
             for(var attr in options){
-                if(attr==="opacity"){
-                    var now=parseInt(getComputedStyle(dom)[attr]*100);
-                }else{
-                    var now=parseInt(getComputedStyle(dom)[attr]);
-                }
-
-                var speed = (options[attr]-now)/10;
-                speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
-                
+                var now = attr==="opacity"?parseInt(getComputedStyle(dom)[attr]*100):parseInt(getComputedStyle(dom)[attr]);
+                var speed = (options[attr]-now)/10 > 0 ? Math.ceil((options[attr]-now)/10):Math.floor((options[attr]-now)/10);
                 if(options[attr]===now){
                     delete options[attr];
                     if(Object.keys(options).length===0){
@@ -43,11 +36,7 @@
                         typeof callback === "function" ? callback() : "" ;
                     }
                 }else{
-                    if(attr==="opacity"){
-                        dom.style[attr]=(now+speed)/100;
-                    }else{
-                        dom.style[attr]=now+speed+"px";
-                    }
+                    dom.style[attr]= attr==="opacity" ? (now+speed)/100:now+speed+"px";
                 }
             }
         },100)
