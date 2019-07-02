@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Foo是构造函数
+    function Foo(){
+      console.log(this)
+    }
+    
+    // new出来的foo是实例,this指向当前实例
+    var foo = new Foo()
+    var foo1 = new Foo()
+    // 每个实例都是不一样的，每次new都会创建新对象
+    console.log(foo === foo1)
+    // console.log(foo)
+  </script>
+</body>
+</html>
