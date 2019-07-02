@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  margin: 20px;
+                  float: left;
+                  opacity: 1;
+            }
+      
+      </style>
+</head>
+<body>
+
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <script>
+            // 1. 鼠标移入每一个box的时候,让box的宽度运动到 500px;
+
+            var 
+                  boxList = document.querySelectorAll(".box"),
+                  timer = null,
+                  gs = getComputedStyle;
+
+            for(var i = 0 , ele ; ele = boxList[i++];){
+                  ele.addEventListener("mouseenter",startMove)                        
+            }
+            function startMove(evt){
+                  var e = evt || event;
+                  var target = e.target || e.srcElement;
+
+                  move(target,0);
+            }
+
+            function move(eleNode,target){
+                  // 1. 开启关闭定时器;
+                  clearInterval(eleNode.timer);
+                  eleNode.timer = setInterval(function(){
+                        // 2. 计算速度并取整
+                        var iNow = gs(eleNode)["opacity"] * 100;
+                        var speed = (target - iNow) / 8;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        // 3. 元素运动;
+                        iNow += speed;
+                        eleNode.style.opacity = iNow / 100;
+                        // 4. 终止条件;
+                        if(iNow === target){
+                              clearInterval(eleNode.timer);
+                        }
+                  },50)
+            }
+
+      </script>
+</body>
+</html>

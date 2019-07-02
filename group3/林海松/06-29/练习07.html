@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多物体运动</title>
+    <style>
+        div{
+            height: 100px;
+            width: 300px;
+            margin: 30px 30px;
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        var box = document.getElementsByTagName("div");
+        var timer = 0 ;
+        //console.log(box);
+        for(var i = 0 , item ; item =box[i++] ; ){
+            item.addEventListener("mouseover",function(){
+                div_change(600,this);
+            });
+            item.addEventListener("mouseout",function(){
+                div_change(300,this);
+            })
+        }
+        function div_change(target,ele){
+            clearInterval(ele.timer);//每一个div设立一个独立的timer
+            var speed = (target - ele.offsetWidth) / 10 ;//变速
+            speed > 0 ? speed = Math.ceil(speed) : speed = Math.floor(speed);
+            ele.timer = setInterval(function(){
+                if(Math.abs(target-ele.offsetWidth) < Math.abs(speed)){
+                    clearInterval(ele.timer);
+                    ele.offsetWidth = target + "px";
+                }
+                else{
+                    ele.style.width = ele.offsetWidth + speed +"px";
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意物体</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            border: 10px solid #000;
+            background-color:yellow;
+            float: left;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id = "hight">变高</div>
+    <div id = "kuan">变宽</div>
+    <div id = "transparency">变透明</div>
+
+    <script>
+        var timer = null;
+        var hight = document.getElementById("hight");
+        var kuan = document.getElementById("kuan");
+        var transparency = document.getElementById("transparency");
+
+        hight.addEventListener("mousemove" , function(){
+            move(400 , this , "height");
+        })
+        kuan.addEventListener("mousemove" , function(){
+            move(400 , this , "width");
+        })
+        transparency.addEventListener("mousemove" , function(){
+            move(.2 , this , "opacity");
+        })
+
+        function move(target , ele , attr){
+            // console.log(1);
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function(){
+                if(attr === "opacity"){
+
+                    //为什么放里边不行呢？？？？？？？？？？？
+                    var iNow = parseInt(getComputedStyle(ele)[attr] * 100);
+                    // var speed = (iNow - target * 100) / 10;
+                }else{
+                    var iNow = parseInt(getComputedStyle(ele)[attr]);
+                    // var speed = (target - iNow) / 10;
+                }
+
+                var speed = ( (attr === "opacity" ? target * 100 : target)  - iNow) / 10;
+
+
+                if(iNow === target){
+                    clearInterval(ele.timer);
+                }else{
+                    if(attr === "opacity"){
+                        ele.style[attr] = (iNow + speed) / 100;
+                    }else{
+                        ele.style[attr] = iNow + speed +"px";
+                    }
+                }
+
+            },50)
+        }
+
+    </script>
+
+</body>
+</html>

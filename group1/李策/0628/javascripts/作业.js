@@ -69,7 +69,7 @@
             switch (score) {
                   case 0:
                         addStrengthState("low", ele);
-                        addSpan("low", ele);
+                        addSpan("失败", ele);
                         break;
                   case 1:
                         addStrengthState("low", ele);
@@ -85,7 +85,7 @@
                         break;
                   default:
                         addStrengthState("low", ele);
-                        addSpan("low", ele);
+                        addSpan("错误", ele);
                         break;
             }
       }
