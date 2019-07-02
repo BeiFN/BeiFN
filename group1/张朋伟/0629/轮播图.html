@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wheel1,
+        .wheel2,
+        .wheel3,
+        .wheel4,
+        .wheel5,
+        #container {
+            width: 300px;
+            height: 200px;
+            /* background: #000; */
+            margin: auto;
+            /* overflow: hidden; */
+            text-align: center;
+            /* font-size: 50px; */
+            position: relative;
+
+        }
+
+        .wheel1 {
+            background: #f00;
+            float: left;
+        }
+
+        .wheel2 {
+            float: left;
+            background: #ff0;
+        }
+
+        .wheel3 {
+            float: left;
+            background: #f0f;
+        }
+
+        .wheel4 {
+            float: left;
+            background: #fdd;
+        }
+
+        .wheel5 {
+            float: left;
+            background: #0ff;
+        }
+
+        #box {
+            width: 1800px;
+            height: 200px;
+            /* background: #000 */
+            line-height: 200px;
+            position: absolute;
+
+        }
+
+        #pagination {
+            width: 100%;
+            height: 15%;
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            /* background: #000 */
+        }
+
+        #pagination span {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 10px;
+            background: #0d0;
+            padding: 0 5px;
+            /* position: absolute; */
+            font-size: 20px;
+            line-height: 30px
+        }
+
+        #btn_left,
+        #btn_right {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 999;
+            top: 50%;
+            margin-top: -20px;
+            /* background: #0d0; */
+            background-size: 100%;
+        }
+
+        #btn_left {
+            /* background-size:100%; */
+            left: 10px;
+            background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+        }
+
+        #btn_right {
+            right: 10px;
+            background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="box">
+            <div class="wheel1">1</div>
+            <div class="wheel2">2</div>
+            <div class="wheel3">3</div>
+            <div class="wheel4">4</div>
+            <div class="wheel5">5</div>
+            <div class="wheel1">1</div>
+        </div>
+
+        <div id="pagination">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <div id="btn_left"></div>
+        <div id="btn_right"></div>
+
+    </div>
+    <script>
+        function $(selector) {
+            var res = null;
+            return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
+        }
+        var index = 0;
+        var btn_left = $("#btn_left");
+        var btn_right = $("#btn_right");
+        var wheels = $("#box div");
+        var box = $("#box");
+        var container = $("#container");
+        var pagination = $("#pagination").children;
+        // console.log(pagination);
+
+        // var timer = null;
+        timer = setInterval(btn_left.onclick, 1000);
+
+        //点击事件，获取index
+        btn_left.onclick = function () {
+
+            if (index === 0) {
+                index = wheels.length - 2;
+                box.style.left = -(wheels.length - 1) * 300 + "px";
+
+            } else
+                index--;
+            // console.log(index);
+
+
+
+        }
+        btn_right.onclick = function () {
+            // // index++;
+            // index = (index + 5) % 5;
+            // index++;
+            if (index === wheels.length - 1) {
+                box.style.left = 0 + "px";
+
+                index = 1;
+                // box.style.left = -index * 300 + "px";
+
+            } else
+                index++;
+            // console.log(index);
+            // box.style.left = -index * 300 + "px";
+
+        }
+        //获取left位置
+        container.onclick = function (evt) {
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            if (target === btn_left || target === btn_right) {
+                move(-300 * index, box, "left");
+            }
+        }
+        //鼠标放到小圆点轮播图移动移动
+        for (var i = 0, btn; btn = pagination[i++];) {
+            index = i - 1;
+            btn.addEventListener("mouseover", makeBannerMove.bind(this, index));
+        }
+        //移动
+        function makeBannerMove(index) {
+            // console.log(this, index);
+            move(-300 * index, box, "left");
+        }
+
+        //自动移动
+        setInterval(function () {
+            var evt = new Event("click");
+            // console.log(evt);
+            btn_left.dispatchEvent(evt);
+            // console.log(btn_right.dispatchEvent(evt));
+
+
+        }, 1000)
+
+
+        //移动框架
+        function move(target, dom, attr) {
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function () {
+                // 获取当前元素的位置;
+                var iNow = attr === "opacity" ? parseInt(getComputedStyle(dom)[attr] * 100) : parseInt(
+                    getComputedStyle(dom)[attr]);
+                // target重新赋值;
+                target = (attr === "opacity" ? target * 100 : target)
+                var speed = (target - iNow) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (target === iNow) {
+                    clearInterval(dom.timer)
+                } else {
+                    dom.style[attr] = (attr === "opacity" ? (iNow + speed) / 100 : iNow + speed + "px")
+                }
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>
