@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: black;
+        }
+        #box {
+            width: 600px;
+            height: 400px;
+            background: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #ball {
+            width: 40px;
+            height: 40px;
+            background: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 350px;
+        }
+        #cover {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+        #progress-bar {
+            width: 20px;
+            /* height: 20px; */
+            background: red;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="ball"></div>
+        <div id="cover"></div>
+        <div id="progress-bar"></div>
+    </div>
+    <script>
+        var box = document.querySelector("#box");
+        var ball = document.querySelector("#ball");
+        var progress_bar = document.querySelector("#progress-bar"); 
+        var speed = 10;
+        var g = 0.5;
+        var target = 400;
+        var timer = null;
+        var moving = false;
+        var speedx = 0;
+        box.addEventListener("click" , handerClick);
+        box.addEventListener("mousemove" , ballmove);
+        function ballmove(evt) {
+            var e = evt || event;
+            var x = e.offsetX;
+            var y = e.offsetY;
+            var ballx = ball.offsetWidth;
+            var bally = ball.offsetHeight;
+            if(!moving) {
+                ball.style.left = x - ballx / 2 + "px";
+                ball.style.top = y - bally / 2 +  "px";
+                // console.log(e.offsetX , e.offsetY,ball.offsetLeft , ball.offsetTop);
+            }
+            moveleft(x);
+        }
+
+        function moveleft(x) {
+            if(x < 300) {
+                var prop = (300 - x) / 300 * 100;
+                speedx = -5 * (prop / 100);
+            }else {
+                var prop = (x - 300) /300 * 100;
+                speedx = 5 * (prop / 100);
+            }
+            progress_bar.style.height = prop + "px";
+        }
+        function handerClick() {
+            moving = true;
+            clearInterval(timer);
+            timer = setInterval(move , 50);
+        }
+        
+        function move() {
+            speed += g;
+            ball.style.top = ball.offsetTop + speed + "px";
+            ball.style.left = ball.offsetLeft + speedx + "px";
+            if(ball.offsetLeft <= 0 || ball.offsetLeft >= 560) {
+                speedx = -speedx;
+            }
+            if(target - 40 - ball.offsetTop <= speed) {
+                ball.style.top = target - 40 + "px";
+                speed = -speed;
+                console.log(speed);
+                if(speed > -2) {
+                    clearInterval(timer);
+                    ball.style.top = target - 40 + "px";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

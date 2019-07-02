@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0}
+        #container{
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #sliper{
+            width: 1800px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #sliper div{
+            width: 300px;
+            height: 150px;
+            float: left;
+        }
+        #box1{background: #acc}
+        #box2{background: #cac}
+        #box5{background: #f99}
+        #box3{background: #add}
+        #box4{background: #fcc}
+        #leftBtn, #rightBtn{
+            width: 40px;
+            height: 40px;
+            background: #f2f2f2;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #rightBtn{
+            right: 0;
+        }
+        #pagination{
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        #pagination a{
+            text-decoration: none;
+            background: #f2f2f2;
+            border-radius: 50%;
+            padding:0 6px;
+        }
+    </style>    
+</head>
+<body>
+    <div id="container">
+        <div id="sliper">
+            <div id="box1">1</div>
+            <div id="box2">2</div>
+            <div id="box3">3</div>
+            <div id="box4">4</div>
+            <div id="box5">5</div>
+            <div id="box1">6</div>
+        </div>
+        <div id="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+        </div>
+        <div></div>
+        <div id="leftBtn"></div>
+        <div id="rightBtn"></div>
+    </div>
+    <script>
+        //轮播图重点为控制当前的页面 showIndex 
+        var showIndex = 0; //设置showIndex的初始值为0；
+        var sliper = document.getElementById("sliper");
+        var divs = sliper.children;
+        var leftBtn = document.getElementById("leftBtn");
+        var rightBtn = document.getElementById("rightBtn");
+        var pagination = document.getElementById("pagination");
+        var as = pagination.children;
+
+        //循环为a绑定事件
+        for(var i = 0, aItem; aItem = as[i++];){
+            aItem.addEventListener("mouseover", handlerMouseover.bind(false, i));
+        }
+        function handlerMouseover(index){
+            showIndex = index-1;
+            move(-300*showIndex, sliper, "left")
+        }
+        
+        //为左右按钮设置监听事件
+        leftBtn.addEventListener("click", handlerLeftClick);
+        rightBtn.addEventListener("click", handlerRightClick);
+
+        //轮播图的自动播放效果，在程序之中自动触发事件
+        setInterval( function(){
+                  var evt = new Event("click");
+                  leftBtn.dispatchEvent(evt);
+            } , 3000)
+
+
+        function handlerLeftClick(){
+            showIndex++;
+            if(showIndex == 6){
+                showIndex = 1;
+                sliper.style.left = 0;
+            }
+            move(-300*showIndex, sliper, "left")
+        }
+        function handlerRightClick(){
+            showIndex--;
+            if(showIndex == -1){
+                showIndex = 4;
+                sliper.style.left = -300*(showIndex+1) + "px";
+            }
+            move(-300*showIndex, sliper, "left");
+        }
+        function move(target , dom , attr){
+                  // 1. 开关定时器;
+                  clearInterval(dom.timer)
+                  dom.timer = setInterval(function(){
+                        // 2. 计算速度 => 缓冲运动;
+                        if(attr === "opacity"){
+                              var iNow = parseInt(getComputedStyle(dom)[attr] * 100);
+                        }else{
+                              var iNow =  parseInt(getComputedStyle(dom)[attr]);
+                        }
+                        
+                        var speed = ( (attr === "opacity" ? target * 100 : target)  - iNow) / 10;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+
+                        // 3. 终止条件;
+                        if(target === iNow){
+                              clearInterval(dom.timer)
+                        }else{
+                              // 4. 元素运动;
+                              if(attr === "opacity"){
+                                    dom.style.opacity = (iNow + speed) / 100; 
+                              }else{
+                                    dom.style[attr] = iNow + speed + "px";
+                              }
+                        }
+                  },50)
+            }
+
+    </script>
+</body>
+</html>
