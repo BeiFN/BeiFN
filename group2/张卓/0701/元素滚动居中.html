@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .chengqilai {
+            width: 0px;
+            height: 3000px;
+        }
+
+        #box {
+            width: 100px;
+            height: 250px;
+            background: yellowgreen;
+            position: absolute;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chengqilai"></div>
+    <div id="box"></div>
+
+    <script>
+        var timer = null;
+        var box = document.getElementById("box")
+        var cHeight = document.documentElement.clientHeight;
+        window.onscroll = function () {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //target必须取整  如果不取整的话他会来回移动 
+            var target =  parseInt(scrollTop+((cHeight-box.offsetHeight)/2));
+
+            console.log((cHeight-box.offsetHeight)/2)
+            move(target)
+        }
+
+        function move(target){
+            //防止多次开启定时器
+            clearInterval(timer)
+            //定时器运行
+            timer = setInterval(function(){
+                //距离和速度成正比
+                var speed = (target-box.offsetTop)/20
+                //如果速度大于0 向上取整，如果小于0向下取整
+                speed = speed>0?Math.ceil(speed):Math.floor(speed)
+                //
+                box.style.top = box.offsetTop+speed+"px";
+                if(box.offsetTop==target){
+                    clearInterval(timer)
+                }
+            },50)
+
+        }
+    </script>
+</body>
+
+</html>

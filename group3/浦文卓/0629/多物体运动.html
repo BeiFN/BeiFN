@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多物体运动</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color: yellow;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id = "slider"></div>
+    <div id = "slider"></div>
+    <div id = "slider"></div>
+    <div id = "slider"></div>
+    <div id = "slider"></div>
+
+    <script>
+        var timer = null;
+        var divs = document.getElementsByTagName("div");
+        // var sliders = document.getElementById("slider");
+
+        //这里四为啥？？？？？？
+
+        for(var i = 0,div;div = divs[i++];){
+            div.addEventListener("mouseover" , function(){
+                boxMove(600 , this);
+            })
+        }
+
+        
+
+        function boxMove(target , ele){
+            clearInterval(ele.timer)
+            timer = setInterval(function(){
+                var speed = (target - ele.offsetWidth)  / 10;
+                if(ele.offsetWidth === target){
+                    clearInterval(ele.timer);
+                }else{
+                    ele.style.width = ele.offsetWidth + speed + "px";
+                }
+            },50)
+        }
+
+    </script>
+
+</body>
+</html>

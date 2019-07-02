@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+          #container{
+                  width: 600px;
+                  height: 400px;
+                  background: #000;
+                  border: 2px solid #f10;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+            }      
+            
+            .firework{
+                  width: 7px;
+                  height: 7px;
+                  border-radius: 50%;
+                  background: #fff;
+                  position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        //创建随机颜色的div
+        //div上升到鼠标点
+        //创建小点产生爆炸效果
+        //用来获取元素
+        function Firework(selector){
+            this.main = document.querySelector(selector);
+            if( this.man === null){return false;}
+            this.init();
+        }
+        //绑定核心处理事件，
+        Firework.prototype.init = function (){
+            this.main.addEventListener("click",this.handlerFireClick.bind(this));
+        }
+        //核心处理事件
+        Firework.prototype.handlerFireClick = function(evt){
+            var e = evt || event ;
+            var offsetX = e.offsetX ;
+            var offsetY = e.offsetY ;
+            //创建烟花并插入到container中
+            var fire = this.fireInit(offsetX);
+            //
+            this.fireworkMove(fire,offsetY,this.fireworkBoom.bind(this,offsetX,offsetY));
+            
+        }
+        Firework.prototype.fireworkBoom = function(offsetX ,offsetY){
+            
+            var randomFireCount = 15 + Math.round(Math.random()*10);
+           
+            var blank = Math.round(360/randomFireCount);
+            var r = 100+ Math.round(Math.random()*100);
+            var angle = 0 ;
+            //var fragment = document.createDocumentFragment().bind;
+            for(var i = 0 ; i < randomFireCount ; i++){
+                angle += blank ;
+                var fire_targetX = Math.round(Math.cos(Math.PI / 180 * angle ) * r +offsetX);
+                
+                var fire_targetY = Math.round(Math.sin(Math.PI / 180 * angle ) * r +offsetY);
+                // console.log(fire_targetX,fire_targetY)
+                var fire_boom = this.createFirework();
+                fire_boom.style.left = offsetX + "px";
+                fire_boom.style.top = offsetY + "px";
+                
+                this.main.appendChild(fire_boom);
+                    
+                move(fire_boom , {
+                        left : fire_targetX ,
+                        top : fire_targetY ,
+                        // opacity : 0
+                    },function(fire_boom){
+                        fire_boom.remove();
+                    }.bind(false,fire_boom))
+            }
+        }
+       
+        Firework.prototype.fireworkMove = function(fire, offsetY ,boomCallback){
+            move(fire,{
+                top : offsetY
+            },function(){
+                fire.remove();
+                boomCallback();
+            });
+        }
+        //让烟花出现在鼠标横向坐标处
+        Firework.prototype.fireInit = function(offsetX){
+            var fire = this.createFirework();
+            fire.style.left = offsetX +"px";
+            fire.style.bottom = 0;
+            this.main.appendChild(fire);
+            return fire;
+        }
+        //创建烟花div
+        Firework.prototype.createFirework = function(){
+            //创建元素
+            var fire = document.createElement("div");
+            fire.className = "firework";
+            fire.style.background = getRandomColor();
+            return fire ;
+        }
+
+        new Firework("#container");
+
+
+
+
+        //随机颜色
+        function getRandomColor (){
+            var r = Math.round(Math.random()*255);
+            var g = Math.round(Math.random()*255);
+            var b = Math.round(Math.random()*255);
+            return "rgb("+r+","+g+","+b+")";
+        }
+        //运动框架
+        function move(dom,options,callback){
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                for(var attr in options){
+                    if(attr === "opacity"){
+                        var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                    }else{
+                        var iNow = parseInt(getComputedStyle(dom)[attr]);
+                    }
+                    var speed = (options[attr] - iNow) /10;
+                    speed = speed > 0? Math.ceil(speed) :   Math.floor(speed);
+                    if(options[attr] === iNow){
+                        delete options[attr];
+                        if(Object.keys(options).length === 0){
+                            clearInterval(dom.timer);
+                            typeof callback === "function" ?    callback() : "";
+                        }
+                    }else{
+                        if(attr === "opacity"){
+                            dom.style[attr] = (iNow +speed)/ 100;
+                        }else{
+                            dom.style[attr] = iNow + speed + "px";
+                        }
+                    }
+                }
+                
+            },50)
+        }
+
+
+    </script>
+</body>
+</html>

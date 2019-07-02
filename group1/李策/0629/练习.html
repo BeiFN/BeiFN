@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #p1 {
+            width: 100px;
+            height: 300px;
+            position: absolute;
+            top:450px;
+            left: 0;
+            background-image: url(./0.gif);
+            transition: left .1s;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="p1"></div>
+    <div id="p2"></div>
+    <script>
+        var p1 = document.getElementById("p1");
+        var p2 = document.getElementById("p2");
+        var timer = null;
+        var speed = 10;
+        var speed2 = 30;
+        var jumpFlag = 0;
+        document.addEventListener("keydown", ctrl())
+        function ctrl() {
+            return function (evt) {
+                var e = evt || window.event;
+                var keyCode = e.keyCode;
+                switch (keyCode) {
+                    case 65: moveLeft(0, this); break;
+                    case 68: moveLeft(1, this); break;
+                    case 87: moveTop(200, this); break;
+                    case 83: ; break;
+                }
+            }
+        }
+        function moveTop(target, dom) {
+            clearInterval(dom.timer)
+            if (!jumpFlag)
+                jumpFlag = 1;
+            dom.timer = setInterval(function () {
+                if (p1.offsetTop - target <= speed) {
+                    speed = -speed;
+                } else {
+                    p1.style.top = p1.offsetTop - speed + "px";
+                    if (p1.offsetTop >= 450) {
+                        jumpFlag = 0;
+                        speed = - speed ;
+                        clearInterval(dom.timer);
+                    }
+                }
+            }, 12)
+        }
+        function moveLeft(bool,dom){
+            if(bool)
+            p1.style.left = p1.offsetLeft + speed2 + "px";
+            else
+            p1.style.left = p1.offsetLeft - speed2 + "px";
+        }
+    </script>
+</body>
+
+</html>

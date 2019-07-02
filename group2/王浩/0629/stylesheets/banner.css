@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 600px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner{
+    width: 3600px;
+    height: 200px;
+    position: absolute;
+    left: 0;
+}
+
+.banner>div{
+    width: 600px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    float: left;
+}
+
+#box1{ background: pink;}
+#box2{ background: yellow;}
+#box3{ background: orange;}
+#box4{ background: greenyellow;}
+#box5{ background: blue;}
+#box6{ background: pink;}
+
+#btn-prev{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.5;
+    background-image: url('https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2');
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    z-index: 999;
+}
+
+#btn-next{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.5;
+    background-image: url('https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2');
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    z-index: 999;
+}
+.bannerIndex{
+    height: 20px;
+    margin-top: -40px;
+    text-align: center;
+}
+.bannerIndex>span{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    
+}
+.bannerIndex>span:hover{
+    background: white;
+    color: black;  
+}
+/* .bannerIndex .active{
+    background: white;
+    color: black;
+} */
