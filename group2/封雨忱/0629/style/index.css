@@ -57,6 +57,11 @@
 .pagination span{
     display: inline-block;
     width: 20px;
-    background: #ffffff;
     border-radius: 50%;
+}
+span{
+    background: #ffffff;
+}
+.active{
+    background: #000000
 }
