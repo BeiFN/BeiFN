@@ -68,25 +68,40 @@
         </ul>
     </div>
     <script>
-        function Table() {
+        function Table(btn, content) {
             //获取元素
-            var btn = document.getElementById("btn-list").children;
-            var contents = document.getElementById("contents-list").children;
-
+            var buttons = document.getElementById(btn).children;
+            console.log(buttons);
+            var contents = document.getElementById(content).children;
+            console.log(contents);
 
         }
         //初始化
         Table.prototype.init = function () {
-            for (var i = 0, bt; bt = btn[i++]; i++) {
-                bt.addEventListener("click",choice);
-                bt.addEventListener("click",change);
+            // for (var i = 0, btn; btn = this.buttons[i]; i++) {
+            //     this.btn.addEventListener("click", this.cont_change.bind(this, i));
+            // }
 
+            for( var i = 0 , btn ; btn = this.buttons[i] ; i++){
+                        btn.addEventListener( "click" , this.cont_change.bind(this , i) );
+                        // btn.addEventListener( "click" , this.addBtnColor.bind(this , i) );
+                  }
+        }
+
+        //选项卡改变
+        Table.prototype.cont_change = function (index, evt) {
+            var e = window.event || evt;
+            var target = e.target || e.srcElement;
+            for (var i = 0, content; content = contents[i]; i++) {
+                content.className = "";
             }
+            this.contents[index].className = "active";
+
 
 
         }
-        table = new Table();
-        table.init;
+        var table = new Table("btn-list", "content-list");
+        table.init();
     </script>
 </body>
 
