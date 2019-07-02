@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象整合方法</title>
+</head>
+
+<body>
+    <script>
+        // function getRandomInt(int) {
+        //     var randomInt = int;
+        //     return randomInt;
+        // }
+
+        // var obj = {
+        //     getRandomInt: getRandomInt
+        // }
+        // console.log(obj.getRandomInt(5)); // 5
+
+        // function Foo(name) {
+        //     this.name = name;
+        //     this.getRandomInt = function (int) {
+        //         var randomInt = int;
+        //         return randomInt;
+        //     }
+        // }
+
+        // var foo1 = new Foo("彭于晏1");
+        // var foo2 = new Foo("彭于晏2");
+        // var foo3 = new Foo("彭于晏3");
+        // var foo4 = new Foo("彭于晏4");
+        // var foo5 = new Foo("彭于晏5");
+        // console.log(foo1, foo2, foo3, foo4, foo5); // Foo {name: "彭于晏1", getRandomInt: ƒ}getRandomInt: ƒ (int)arguments: nullcaller: nulllength: 1name: ""prototype: {constructor: ƒ}constructor: ƒ (int)__proto__: Object__proto__: ƒ ()apply: ƒ apply()arguments: (...)bind: ƒ bind()call: ƒ call()caller: (...)constructor: ƒ Function()length: 0name: ""toString: ƒ toString()Symbol(Symbol.hasInstance): ƒ [Symbol.hasInstance]()get arguments: ƒ ()set arguments: ƒ ()get caller: ƒ ()set caller: ƒ ()__proto__: Object[[FunctionLocation]]: <unknown>[[Scopes]]: Scopes[0][[FunctionLocation]]: practice06.html:25[[Scopes]]: Scopes[1]0: Global {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}name: "彭于晏1"__proto__: constructor: ƒ Foo(name)arguments: nullcaller: nulllength: 1name: "Foo"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: practice06.html:23[[Scopes]]: Scopes[1]__proto__: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()get __proto__: ƒ __proto__()set __proto__: ƒ __proto__() Foo {name: "彭于晏2", getRandomInt: ƒ} Foo {name: "彭于晏3", getRandomInt: ƒ} Foo {name: "彭于晏4", getRandomInt: ƒ} Foo {name: "彭于晏5", getRandomInt: ƒ}
+
+        function Foo() {
+            this.fn = function () {
+                console.log(1);
+            }
+        }
+
+        Foo.prototype.fn = function () {
+            console.log(2);
+        }
+
+        var foo1 = new Foo();
+        var foo2 = new Foo();
+        console.log(foo1 === foo2); // false
+        console.log(foo1.fn === foo2.fn); // false
+        foo1.fn();
+        foo2.fn();
+
+    </script>
+</body>
+
+</html>

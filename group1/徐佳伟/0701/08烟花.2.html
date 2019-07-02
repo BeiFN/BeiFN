@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+      <style>
+            *{
+                  margin: 0;padding: 0;
+            }
+            #container{
+                  width: 800px;
+                  height: 600px;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  margin: auto;
+                  background: #ddd;
+            }
+            .firework{
+                  width: 12px;
+                  height: 12px;
+                  border-radius: 50%;
+                  box-shadow:0,0,5px, yellowgreen;
+                  position: absolute;
+                  /* background: yellowgreen; */
+            }
+      </style>
+<body>
+      <div id="container"></div>
+      <script>
+           function Firework(selector){
+                  this.container = document.querySelector(selector);
+                  if(this.container === null){
+                        return false;
+                  }
+                  //初始化
+                  this.init();
+           }
+           //添加绑定事件
+           Firework.prototype.init = function(){
+                  this.container.addEventListener("click",this.handlerClickFire.bind(this));
+           }
+           //点击执行
+           Firework.prototype.handlerClickFire = function(evt){
+                  var e = evt || window.event;
+                  var offsetX = e.offsetX;
+                  var offsetY = e.offsetY;
+                  //注意保持this指向实例化对象
+                  // console.log(this)
+                  var fire = this.locationFirework(offsetX);
+                  this.fireworkMove(fire,offsetY,this.fireworkBlast.bind(this,offsetX,offsetY));
+           }
+           //烟花爆炸
+           Firework.prototype.fireworkBlast = function(offsetX,offsetY){
+                  var randomFire = 15 + Math.round(Math.random()*10);
+                  var randomR = 100 + Math.round(Math.random()*150);
+                  var angle = 0;
+                  var blank = Math.round(360 / randomFire);
+
+                  for(var i = 0 ; i++ <randomFire;){
+                        angle += blank;
+                        //爆炸边缘点
+                        var target_x = Math.round(Math.cos(Math.PI/180 * angle) * randomR + offsetX);
+                        var target_y = Math.round(Math.sin(Math.PI/180 * angle) * randomR + offsetY);
+
+                        var fireBlast = this.createFirework();
+                        //爆炸初始点
+                        fireBlast.style.left = offsetX + "px";
+                        fireBlast.style.top  = offsetY + "px";
+                        //千万记得加入创建的火花！
+                        this.container.appendChild(fireBlast);
+                        //果然不用bind不行
+                        // move(fireBlast,{
+                        //       left : target_x,
+                        //       top  : target_y,
+                        //       opacity : 30
+                        // },function(fireBlast){
+                        //       console.log(fireBlast);
+                        //       fireBlast.remove();
+                        // }.bind(false,fireBlast))
+
+                        move(false,fireBlast,{
+                              left : target_x,
+                              top  : target_y,
+                              opacity : 30
+                        },function(fireBlast){
+                              console.log(fireBlast);
+                              fireBlast.remove();
+                        }.bind(false,fireBlast))
+                        //bind会return一个新函数 并在这个新函数中调用现在的匿名函数
+                  }
+           }
+    
+
+
+           //烟花移动
+           Firework.prototype.fireworkMove = function(fire,offsetY,callbackBlast){
+                 move(fire,{
+                       top : offsetY
+                 },function(){
+                       fire.remove();
+                       callbackBlast();
+                 })
+           }
+           //鼠标位置的烟花
+           Firework.prototype.locationFirework = function(offsetX){
+                  var fire = this.createFirework();
+                  // console.log(this);
+                  fire.style.left = offsetX + "px";
+                  fire.style.bottom = 0;
+                  this.container.appendChild(fire);
+                  return fire;
+           }
+           //生成烟花
+           Firework.prototype.createFirework = function(){
+                  var fire = document.createElement("div");
+                  fire.className = "firework";
+                  fire.style.background = getrandomColor();
+                  return fire;    
+           }
+            function getrandomColor(){                
+                  var r = Math.round(Math.random()*255);
+                  var g = Math.round(Math.random()*255);
+                  var b = Math.round(Math.random()*255);
+                  return "rgb(" + r + ",+" + g + "," + b + ")";
+            }
+
+            function move(dom,options,callback){
+                  clearInterval(dom.timer);
+                  dom.timer = setInterval(function(){
+
+                        for(var attr in options){
+                              if(attr === "opacity"){
+                                    var iNow = parseInt(getComputedStyle(dom)[attr] *100);
+                              }else{
+                                    var iNow = parseInt(getComputedStyle(dom)[attr]);
+                              }
+                              var speed = (options[attr] - iNow)/10;
+                              speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                              if(options[attr] === iNow){
+                                    delete options[attr];
+
+                                    if(Object.keys(options).length === 0){
+                                          clearInterval(dom.timer);
+                                          typeof callback === "function" ? callback() : "";
+                                    }
+
+                              }
+                              else{
+                                    if(attr === "opacity"){
+                                          dom.style[attr] = (iNow + speed)/100;
+                                    }else{
+                                          dom.style[attr] = iNow + speed + "px";
+                                    }
+                              }
+                        }
+                  },50)
+            }
+            var firework = new Firework("#container");
+      </script>
+</body>
+</html>
