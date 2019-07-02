@@ -31,7 +31,7 @@
         }
 
         function move(target , dom){
-            clearInterval(timer);
+            clearInterval(dom.timer);
             dom.timer = setInterval(function(){
                 var speed = (target - dom.offsetWidth) / 10;
                 speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
@@ -45,7 +45,7 @@
         }
 
         function back(target , dom){
-            clearInterval(timer);
+            clearInterval(dom.timer);
             dom.timer = setInterval(function(){
                 var speed = (target - dom.offsetWidth)/10;
 

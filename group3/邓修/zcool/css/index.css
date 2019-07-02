@@ -312,10 +312,10 @@ sup.subnav-dot-sup {
     display: block;
 }
 .container .wrapper{
-    width: 7910px;
+    width: 6780px;
     height: 286px;
     position: absolute;
-    left: -1130px;
+    left: 0;
 }
 .slider{
     width: 1130px;
