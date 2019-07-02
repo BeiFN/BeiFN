@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 300px;
+            height: 100px;
+            margin: 20px auto;
+            position: relative;
+            background: #ddd;
+            overflow: hidden;
+        }
+        .wrapper{
+            width: 1800px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+        }
+        .slider{
+            height: 100px;
+            width: 300px;
+            float: left;
+            text-align: center;
+            line-height: 100px;
+        }
+        .btn_next{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+            background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) no-repeat center;
+            background-size: 100%;
+        }
+        .btn_prev{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+            background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) no-repeat center;
+            background-size: 100%;
+        }
+        .pagination{
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            bottom: 10px;
+            text-align: center;
+        }
+        .pagination span{
+            background: #ddd;
+            border-radius: 50%;
+            padding: 0 6px;
+        }
+        .pagination .active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <!-- <div class="slider" style="background: #00F">5</div> -->
+            <div class="slider" style="background: #F0F">1</div>
+            <div class="slider" style="background: #0F0">2</div>
+            <div class="slider" style="background: #0FF">3</div>
+            <div class="slider" style="background: #FF0">4</div>
+            <div class="slider" style="background: #00F">5</div>
+            <div class="slider" style="background: #F0F">1</div>
+            <!-- <div class="slider" style="background: #F0F">1</div> -->
+        </div>
+        <div class="btn_next"></div>
+        <div class="btn_prev"></div>
+        <div class="pagination">
+            <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+    </div>
+    <script src="javascript/轮播图练习.js"></script>
+</body>
+</html>

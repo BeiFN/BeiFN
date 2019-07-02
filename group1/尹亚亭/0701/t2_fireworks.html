@@ -19,8 +19,8 @@
 		      }      
 		      
 		      .fireworks{
-		            width: 8px;
-		            height: 8px;
+		            width: 5px;
+		            height: 5px;
 		            border-radius: 50%;
 		            background: #fff;
 		            position: absolute;
@@ -39,18 +39,18 @@
 			// 构造函数
 			function Fireworks(selector){
 				this.main=document.querySelector(selector);
-				if (this.main===null) {		
+				if (this.main === null) {		
 					return false;	// 参数判断;
 				}
 				this.init();
 			}
 			
-			Fireworks.prototype.init=function(){	
-				this.main.addEventListener("click", this.handlerFireclick.bind(this));
+			Fireworks.prototype.init = function(){	
+				this.main.addEventListener("click", this.handlerFireClick.bind(this));
 			}
 			
 			// 点击事件函数
-			Fireworks.prototype.hanlderFireClick=function(evt){
+			Fireworks.prototype.handlerFireClick=function(evt){
 				var e=evt||event;
 				var offsetX=e.offsetX;
 				var offsetY=e.offsetY;
@@ -87,8 +87,8 @@
 			
 			// 烟花爆炸
 			Fireworks.prototype.fireworksBoom=function(offsetX,offsetY){
-				var fireCount=20+Math.round(Math.random()*70);
-				var r=100+Math.round(Math.random()*100);
+				var fireCount=15+Math.round(Math.random()*35);
+				var r=100+Math.round(Math.random()*80);
 				var angleSpace=Math.round(360/fireCount);		
 				var angle=0;
 				for (var i=0;i<fireCount;i++) {
@@ -146,7 +146,7 @@
 							}
 						}
 					}
-				},50)
+				},80)
 			}
 			
 			// move(container,{
@@ -157,8 +157,9 @@
 			// 	console.log("hello,world!")
 			// })
 			
-			var foo= new Fireworks("#container");	
-			foo.init();
+			new Fireworks("#container");
+// 			var foo= new Fireworks("#container");	
+// 			foo.init();
 		</script>
 	</body>
 </html>
