@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>重力回弹运动</title>
+    <style>
+        body {
+            background: aqua;
+        }
+
+        #container {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: black;
+        }
+
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 999;
+        }
+
+        #ball {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(blue, fuchsia);
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .progress {
+            width: 20px;
+            height: 100px;
+            background: top linear-gradient(gray, green);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 2px 2px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="mask"></div>
+        <div id="ball"></div>
+        <div class="progress">
+        </div>
+    </div>
+    <script>
+        var container = document.getElementById("container");
+        var conWidth = parseInt(getComputedStyle(container)["width"]);
+        var conHeight = parseInt(getComputedStyle(container)["height"]);
+        var ball = document.getElementById("ball");
+        var ballWidth = parseInt(getComputedStyle(ball)["width"]);
+        var ballHeight = parseInt(getComputedStyle(ball)["height"]);
+        var progress = document.querySelector(".progress");
+        var timer = null;
+        var speed = 3;
+        var target = conHeight - ballHeight;
+        var g = 0.5;
+        var moving = true;
+        var speedX = 0;
+
+        function handlerMouseMove(evt) {
+            var e = evt || event;
+            
+            // var ball_x = parseInt(ball.style.left ? ball.style.left : 0); // 还得限制范围，一种限制动的范围，一种从事件上不知道能不能清除掉。
+            // var ball_y = parseInt(ball.style.top ? ball.style.top : 0);
+
+            // var ball_x = e.clientX - container.offsetLeft - ballWidth / 2;
+            // var ball_y = e.clientY - container.offsetTop - ballHeight / 2;
+            // if (moving && ball_x >= 0 && ball_x <= conWidth - ballWidth && ball_y >= 0 && ball_y <= conHeight - ballHeight) {
+            //     ball.style.left = e.clientX - container.offsetLeft - ballWidth / 2 + "px";
+            //     ball.style.top = e.clientY - container.offsetTop - ballHeight / 2 + "px";
+            // }
+
+            if (moving) {
+                ball.style.left = e.offsetX - ballWidth / 2 + "px";
+                ball.style.top = e.offsetY - ballHeight / 2 + "px";
+            }
+            getBallTurn(e.offsetX);
+        }
+
+        function getBallTurn(x) {
+            var prop = Math.abs(300 - x) / 3;
+            speedX = prop / 100 * (x <= 300 ? -5 : 5);
+            progress.style.height = prop + "px";
+        }
+
+        function handlerclick() {
+            clearInterval(timer);
+            moving = false;
+            timer = setInterval(ballMove, 50);
+        }
+
+        function ballMove() {
+            speed += g;
+            if (target - ball.offsetTop < speed) {
+                ball.style.top = target + "px";
+                if (speed < 2) {
+                    clearInterval(timer);
+                }
+                speed = -speed + 2;
+            } else {
+                ball.style.left = ball.offsetLeft + speedX + "px";
+                ball.style.top = ball.offsetTop + speed + "px";
+            }
+        }
+
+        container.addEventListener("mousemove", handlerMouseMove);
+        document.addEventListener("click", handlerclick);
+    </script>
+</body>
+
+</html>

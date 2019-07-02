@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      #container{
+          width: 600px;
+          height: 400px;
+          background: #000;
+          border: 2px solid #f10;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+    }      
+    
+    .firework{
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #fff;
+          position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+
+  <script>
+
+    // 1. 创造随机颜色的div的功能;
+    // 2. 上升功能;
+    // 3. 爆炸功能;
+
+// 获取元素，初始化实例
+ 
+  function Firework(selector){
+    this.main = document.querySelector(selector)
+    if(this.main == null) { return false }
+    this.init()
+  }
+
+// 添加事件
+  Firework.prototype.init = function(){
+    this.main.addEventListener("click",this.handlerFireClick.bind(this))
+  }
+  // 执行事件:点击之后元素上升到鼠标点击处
+  Firework.prototype.handlerFireClick = function(evt){
+    var e = evt || window.event
+    // 1.event.offsetY 相对容器的垂直坐标
+    // 2.event.offsetX 相对容器的水平坐标 
+    var offsetY = e.offsetY
+    var offsetX = e.offsetX
+   
+    var fire = this.fireworkInit(offsetX)
+    this.fireworkMove(fire,offsetY,this.fireworkBoom.bind(this,offsetX,offsetY))
+    
+  }
+
+ // 元素的初始位置
+  Firework.prototype.fireworkInit = function(offsetX){
+    var fire = this.createFirework()
+    fire.style.left = offsetX + "px"
+    fire.style.bottom = 0
+    this.main.appendChild(fire)
+    return fire
+  }
+
+// 创建新元素
+  Firework.prototype.createFirework = function(){
+    var fire = document.createElement("div")
+    fire.className = "firework"
+    fire.style.background = getRandomColor()
+    return fire
+  }
+  
+  // 元素上升
+  Firework.prototype.fireworkMove = function(fire,offsetY,boomCallback){
+    move(fire,{
+      top:offsetY
+    },function(){
+      fire.remove()
+      boomCallback()
+    })
+  }
+
+  //元素爆炸
+  Firework.prototype.fireworkBoom = function(offsetX,offsetY){
+    // 随机出席的个数
+    var randomFireCount = 15 + Math.round(Math.random() * 10)
+    // 每个小点之间的角度空隙
+    var blank = Math.round(360/randomFireCount)
+    //随机出现的半径 
+    var r = 100 + Math.round(Math.random() * 100)
+    var angle = 0
+
+    for(var i = 0; i < randomFireCount; i++){
+      // 让每个小点之间的空隙是相同的
+      angle += blank;
+      // Math.PI * angle  / 180是求cos对应的Π，这里的Math.PI就是Π，360° = 2Π
+      //  offsetX：点击的位置距离容器的水平坐标
+      var fire_targetX = Math.round(Math.cos(Math.PI * angle / 180 )  * r + offsetX)
+      var fire_targetY = Math.round(Math.sin(Math.PI * angle / 180 )  * r + offsetY)
+
+      var fire_boom = this.createFirework()
+      fire_boom.style.left = offsetX + "px"
+      fire_boom.style.top = offsetY + "px"
+      // appendChild()将一个节点添加到指定父节点的子节点列表末尾
+      // main是父节点，fire_boom即是参数又是这个方法的返回值
+      this.main.appendChild(fire_boom)
+
+      move(fire_boom,{
+        left : fire_targetX,
+        top : fire_targetY,
+        opacity : 0
+      },function(fire_boom){
+        fire_boom.remove()
+      }.bind(false,fire_boom))
+    }
+  }
+
+  new Firework("#container")
+
+  function getRandomColor(){
+    var r = Math.round(Math.random() * 255)
+    var g = Math.round(Math.random() * 255)
+    var b = Math.round(Math.random() * 255)
+    return "rgb(" + r + "," + g + "," + b + ")"
+  }
+
+
+// 运动框架
+function move( dom , options , callback){
+      clearInterval( dom.timer );
+      dom.timer = setInterval( function(){
+            // console.log(1);
+            // 根据 attr 判定获取 iNow;
+            // 根据iNow 和 target 获取 speed;
+            // 根据target和 iNow 判定终止条件;
+            // 根据attr 判定 dom操作;
+            // * attr  target;
+            for(var attr in options){
+                  // console.log(attr,options[attr]);
+                  if( attr === "opacity"){
+                        var iNow = parseInt(getComputedStyle(dom)[attr] * 100 )
+                  }else{
+                        var iNow = parseInt(getComputedStyle(dom)[attr])
+                  }
+                  // console.log(attr , iNow);
+                  // target => options[attr];
+                  var speed = (options[attr] - iNow) / 10;
+                  speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+
+                  if(options[attr] === iNow){
+                        // 所有属性运动结束之后再去关闭定时器;
+                        delete options[attr];
+                        // console.log(options);
+                        // var count = 0;
+                        // for(var key in options){
+                        //       count ++;
+                        // }
+                        // if(count === 0){
+                        //       clearInterval(dom.timer);
+                        // }
+                        if(Object.keys(options).length === 0){
+                              clearInterval(dom.timer);
+                              typeof callback === "function" ? callback() : "";
+                        }
+                  }else{
+                        if(attr === "opacity"){
+                              dom.style[attr] = (iNow + speed) / 100;
+                        }else{
+                              dom.style[attr] = iNow + speed + "px";
+                        }
+                  }
+            }
+      } ,50)
+}
+</script>
+</body>
+</html>
