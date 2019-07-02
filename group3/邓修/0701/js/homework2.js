@@ -16,6 +16,8 @@ Firework.prototype.handerClick = function (evt) {   //处理点击事件
     var offsetX = e.offsetX;
     var offsetY = e.offsetY;
     var fire = this.createFirework();               //创建随机颜色的烟花
+    fire.style.width="1px";
+    fire.style.height="20px";
     fire = this.setFireworkPosition(fire, offsetX);    //为烟花设置初始位置
     var moveArray = this.fireworkBoom(offsetX, offsetY);   //获取烟花爆炸后移动目标点数组
     var fireworkArray = [];                               //创建烟花爆炸后溅射物的数组
@@ -24,10 +26,11 @@ Firework.prototype.handerClick = function (evt) {   //处理点击事件
         moveFire.style.left = offsetX + "px";
         moveFire.style.top = offsetY + "px";
         moveFire.style.display = "none";
+        moveFire.style.transform="rotate("+moveArray[i].angle+"deg)";   //创建完直接改变角度
         this.container.appendChild(moveFire);
         fireworkArray.push(moveFire);
     }
-    console.log(moveArray, fireworkArray);
+    // console.log(moveArray, fireworkArray);
     this.fireworkMove(fire, offsetY, this.fireworkBoomMove.bind(this, moveArray, fireworkArray));   //烟花移动并爆炸
 }
 
@@ -61,12 +64,13 @@ Firework.prototype.fireworkBoom = function (offsetX, offsetY) {     //计算烟�
     var angle = 0;
     var moveArray = [];
     for (var i = 0; i < randomFireworkCount; i++) {
-        angle += blank;
         var oneFireworkTarget = {};
         oneFireworkTarget.firework_targetX = Math.round(Math.cos(Math.PI / 180 * angle) * r + offsetX);
         oneFireworkTarget.firework_targetY = Math.round(Math.sin(Math.PI / 180 * angle) * r + offsetY);
+        oneFireworkTarget.angle=angle;      //记录角度
         // console.log(oneFireworkTarget.firework_targetX,oneFireworkTarget.firework_targetY);
         moveArray.push(oneFireworkTarget);
+        angle += blank;
     }
     // console.log(moveArray);
     return moveArray;
@@ -76,8 +80,7 @@ Firework.prototype.fireworkBoomMove = function (moveArray, moveFire) {       //�
         moveFire[i].style.display = "block";
         move(moveFire[i], {
             left: moveArray[i].firework_targetX,
-            top: moveArray[i].firework_targetY,
-            opacity: 0
+            top: moveArray[i].firework_targetY
         }, function (fire_boom) {
             fire_boom.remove();
         }.bind(false, moveFire[i]));
@@ -102,7 +105,7 @@ function move(dom, options, callback) {     //移动框架
             } else {
                 var iNow = parseInt(getComputedStyle(dom)[attr])
             }
-            var speed = (options[attr] - iNow) / 5;
+            var speed = (options[attr] - iNow) / 3;
             speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 
             if (options[attr] === iNow) {
@@ -123,4 +126,11 @@ function move(dom, options, callback) {     //移动框架
     }, 50)
 }
 
-new Firework("#container");
+var fire=new Firework("#container");
+setInterval(function(){
+    var evt=new Event("click");
+    evt.offsetX=Math.round(Math.random()*1536);
+    evt.offsetY=Math.round(Math.random()*440);
+    // console.log(evt);
+    fire.container.dispatchEvent(evt);
+},2000);
