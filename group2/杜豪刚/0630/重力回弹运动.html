@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            body{
+                background: #000;
+            }
+            #container{
+                width: 600px;
+                height: 500px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                background: #fff;
+            }
+            #ball{
+                width: 40px;
+                height: 40px;
+                background: radial-gradient(pink,#09f,#f19,yellow,green,blue,red,orange);
+                border-radius: 50%;
+                position: absolute;
+                left: 100px;
+                top: 0;
+            }
+            .mask{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 9;
+            }
+            #btn{
+                width: 150px;
+                height: 35px;
+                text-align: center;
+                line-height: 35px;
+                background: #fff;
+                border-radius:5px;
+                position: absolute;
+                top:200px;
+                left: 200px;
+            }
+      </style>
+</head>
+<body>
+      <div id="container">
+            <div class="mask"></div>
+            <div id="ball"></div>
+      </div>
+      <!-- <div id="btn">开始游戏</div> -->
+
+      <script>
+        
+        var inp       = prompt("请输入小球运动速度");
+        var speed     = Number(inp);
+        var target    = 500;            //目标点
+        // var speed     = 30;          //速度
+        var jSpeed    = 0.3;            //加速度
+        var timer     = null;           //定时器
+        var moving    = false;          //第一次默认不移动
+        var ball_x    = 0;              //x轴的偏移量
+        var container = document.getElementById("container");
+        var ball      = document.getElementById("ball");
+        var btn       = document.getElementById("btn");
+
+        //添加点击事件
+        document.addEventListener("click",handlerClick);
+        //添加移动事件
+        container.addEventListener("mousemove",handlerMove);
+        function handlerMove(evt){
+            var e = evt || event;
+            // 获取球起点的位置
+            if(!moving){
+                ball.style.left = e.offsetX - 20 + "px";
+                ball.style.top = e.offsetY -20 + "px";
+            }
+            // 鼠标移动的时候，判断在左方还是右方，控制小球
+            getBallRun(e.offsetX);
+        }
+        // 控制小球左右移动事件
+        function getBallRun(x){
+            // 判断鼠标方向在中界线哪边
+            if( (x - 300) > 0){
+                var temp = parseInt((x-300)/300*100);
+                ball_x = 3 * (temp/100);
+                // console.log("右",ball_x);
+            }else{
+                var temp = parseInt((300-x)/300*100);
+                ball_x = -3 * (temp/100);
+                // console.log("左",ball_x);
+            }
+        }
+        // 点击小球事件
+        function handlerClick(){
+            moving = true;
+            clearInterval(timer);       //清空定时器
+            timer = setInterval(ballMove,50);
+        }
+        // 移动小球事件
+        function ballMove(){
+            speed += jSpeed;            //每次加速度
+            // ball.style.top = ball.offsetTop + speed + "px";
+            // ball.style.left = ball.offsetLeft + ball_x + "px";
+            // 增加边界
+            if(ball.offsetTop < 0){
+                speed = -speed;
+                ball.style.top = ball.offsetTop + speed + "px";
+            }else{
+                ball.style.top = ball.offsetTop + speed + "px";
+            }
+            if(ball.offsetLeft < 0 ||ball.offsetLeft > 600 -40 ){
+                ball_x = -ball_x;
+                ball.style.left = ball.offsetLeft + ball_x + "px";
+            }else{
+                ball.style.left = ball.offsetLeft + ball_x + "px";
+            }
+            if(Math.abs(target - 40 - ball.offsetTop) <= speed){
+                ball.style.top = target - 40 + "px";
+                speed = -speed;
+                if(speed >-2){
+                    clearInterval(timer);
+                    ball.style.top = target - 40 + "px";
+                }
+            }         
+        }
+      </script>
+</body>
+</html>

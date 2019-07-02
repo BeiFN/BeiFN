@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" id="tHtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一个特效</title>
+    <style>
+        #jingubang {
+            height: 3000px;
+        }
+
+        #nav {
+            width: 100px;
+            height: 250px;
+            background: aqua;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body id="tBody">
+    <div id="jingubang"></div>
+    <div id="nav"></div>
+    <script>
+        var nav = document.getElementById("nav");
+        var timer = null;
+        var cHeight = document.documentElement.clientHeight;
+        console.log(cHeight); // 502
+        // var tHtml = document.getElementById("tHtml");
+        // console.log(tHtml.clientHeight); // 502
+        // var tBody = document.getElementById("tBody");
+        // console.log(tBody.clientHeight); // 3000
+        window.onscroll = function () {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            move((cHeight - nav.offsetHeight) / 2 + scrollTop);
+        }
+        function move(target) {
+            target = parseInt(target);
+            clearInterval(timer);
+            timer = setInterval(function() {
+                var speed = (target - nav.offsetTop) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(nav.offsetTop === target) {
+                    clearInterval(timer);
+                } else {
+                    nav.style.top = nav.offsetTop + speed + "px";
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>

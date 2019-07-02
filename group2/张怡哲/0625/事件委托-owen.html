@@ -45,7 +45,7 @@
                 // console.log();
                 for(var i=0,ele ; ele = eleList[i++];){
                     if(targetFamily === 1 ? target === this : targetFamily.indexOf(ele)!==-1){
-                        createButton.call(ele.e);
+                        eventCallBack.call(ele,e);
                     }
                 }
             }

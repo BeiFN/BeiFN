@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 3000px;
+        }
+        #nav {
+            width: 50px;
+            height: 400px;
+            background: blue;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+    <div></div>
+    <script>
+        var nav = document.getElementById("nav");
+        var timer = null;
+        var clientHeight = document.documentElement.clientHeight;
+        window.onscroll = function() {
+            var target = parseInt(document.documentElement.scrollTop || document.body.scrollTop);
+            // console.log(target);
+            moving((clientHeight - nav.offsetHeight) / 2 + target);
+        }
+        function moving(target) {
+            clearInterval(timer);
+            timer = setInterval(function() {
+                // console.log(target);
+                var navTop = nav.offsetTop;
+                console.log(navTop);
+                // console.log(target - navTop);b
+                var speed = (target - navTop) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(navTop === target) {
+                    console.log(1);
+                    clearInterval(timer);
+                }else {
+                    nav.style.top = navTop + speed + "px";
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>
