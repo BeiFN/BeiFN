@@ -20,7 +20,7 @@ next_button.onclick=function(){
         wrapper.style.left=0
     }else{
         showIndex++;
-        console.log(showIndex)
+        // console.log(showIndex)
         // changPointColornext(showIndex);
     }
     // console.log(showIndex)
@@ -81,12 +81,12 @@ function indexMove(target,dom,arrt){
 
 function changPointColornext(showIndex){
     // console.log(showIndex)
-    for(var i=1,col;col=span[i++];){
+    for(var i=0,col;col=span[i];i++){
         col.className='';
-        console.log(i)
     }
-    span[showIndex].className='active'
-    
+    //    console.log(showIndex)
+    span[showIndex-1].className='active'
+    // console.log(showIndex)
 }
 function changPointColorprev(showIndex){
     // console.log(showIndex);
@@ -94,6 +94,6 @@ function changPointColorprev(showIndex){
         col.className='';
     }
     span[showIndex].className='active'
-    
+    // console.log(showIndex)
 
 }
