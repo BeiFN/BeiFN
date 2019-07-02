@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>缓冲运动</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: aqua;
+            position: absolute;
+            left: 1000px;
+            top: 0;
+        }
+
+        #line {
+            position: absolute;
+            left: 600px;
+            width: 1px;
+            height: 500px;
+            background: fuchsia;
+        }
+
+        #btn {
+            position: absolute;
+            top: 200px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+    <button id="btn">开始运动</button>
+    <script>
+        var box = document.getElementById("box");
+        var line = document.getElementById("line");
+        var btn = document.getElementById("btn");
+        var timer = null;
+        btn.onclick = function () {
+            move();
+        }
+
+        function move() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var speed = (line.offsetLeft - box.offsetLeft) / 20;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                console.log(speed);
+                if (box.offsetLeft === line.offsetLeft) {
+                    clearInterval(timer);
+                } else {
+                    box.style.left = box.offsetLeft + speed + "px";
+                }
+            }, 50);
+        }
+    </script>
+</body>
+
+</html>
