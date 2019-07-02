@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 100px;
+            width: 100px;
+            background: #ddd;
+            position: absolute;
+            left: 0;
+        }
+        #btn{
+            position: absolute;
+            top: 150px;
+        }
+        #line{
+            position: absolute;
+            left: 600px;
+            width: 1px;
+            height: 600px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="line"></div>
+    <button id="btn">开始移动</button>
+    <script>
+        //所谓的运动就是属性值的改变
+        var box = document.getElementById("box")
+        var btn = document.getElementById("btn");
+        var target = 500;
+        btn.addEventListener("click",boxMove);
+        var speed = 7;
+        var timer = null;
+        function boxMove(){
+            clearInterval(timer);//重复点击按钮，就会加快移动速度，重新开始定时器。 解决bug=>每次执行前都先清除一边定时器。
+            timer = setInterval(function(){
+                if(Math.abs(target - box.offsetLeft) <= Math.abs(speed)){//终止条件(应变速度不同，而offsetLeft达不到刚好距离的情况下)
+                    clearInterval(timer);
+                    box.style.left = target + "px";
+                }
+                else{
+                    box.style.left = box.offsetLeft  + speed + "px";
+                }
+                
+            },30)
+        }
+        //要想使得加快移动，1、speed 提高   2、定时器，降低毫秒数
+    </script>
+</body>
+</html>
