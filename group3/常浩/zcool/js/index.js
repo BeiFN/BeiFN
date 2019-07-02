@@ -2,9 +2,8 @@ function $(selector){
     var sel = null;
    return  sel = (document.querySelectorAll(selector).length == 1)　?　document.querySelectorAll(selector)[0] : document.querySelectorAll(selector);
 }
-// var ele_bannerList = $("#banner_list");
-// var forward  = $(".bottom");
-// var back     = $(".top");
+
+
 var nav   = $(".nav"); //导航条的固定
 window.addEventListener("scroll",handlerSticky)
 var goTop = $("#goTop");
