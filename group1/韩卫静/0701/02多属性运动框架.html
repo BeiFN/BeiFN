@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 50px;
+				height: 50px;
+				background-color: #0000DD;
+				/* border-radius: 50%; */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			move(box , {
+				"width" : 400,
+				"height" : 400,
+				"opacity" : 20
+			} , endMove )
+			
+			function move(dom, options , callBack){
+				clearInterval(dom.timer);
+				dom.timer = setInterval(function(){
+					 // 根据 attr 判定获取 iNow;
+					// 根据iNow 和 target 获取 speed;
+					// 根据target和 iNow 判定终止条件;
+					// 根据attr 判定 dom操作;					
+					for(var attr in options){
+						// console.log(attr , options[attr])
+						var inow = attr === "opacity"? parseInt(getComputedStyle(dom)[attr]*100) :parseInt(getComputedStyle(dom)[attr]);
+						var speed = (options[attr] - inow) / 10;
+						speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+						
+						if(options[attr] === inow){
+							delete options[attr];
+							if(Object.keys(options).length === 0){
+								clearInterval(dom.timer);
+								callBack();
+							}							
+						}else{
+							if(attr === "opacity"){
+								dom.style[attr] = (inow + speed) /100 ;
+							}else{
+								dom.style[attr] = (inow + speed) + "px" ;
+							}
+						}
+						
+					}
+				}, 50)
+			}
+			
+			function endMove(){
+				alert("结束");
+			}
+		</script>
+	</body>
+</html>
