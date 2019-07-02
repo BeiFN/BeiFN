@@ -5,25 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             font-size: 30px;
         }
-
+        
         li {
             list-style-type: none;
         }
-
+        
         #pagination {
             background: #ddd;
             width: 300px;
             height: 400px;
             margin: 0 auto;
         }
-
+        
         #btn-list {
             width: 100%;
             height: 50px;
@@ -31,15 +30,15 @@
             background: #b6b6b6;
             line-height: 50px;
         }
-
+        
         #btn-list button {
             padding: 0 20px;
         }
-
+        
         #btn-list button.active {
             background: yellowgreen;
         }
-
+        
         #content-list li {
             width: 300px;
             height: 350px;
@@ -47,11 +46,12 @@
             text-align: center;
             display: none;
         }
-
+        
         #content-list li.active {
             display: block;
         }
     </style>
+    <title>Document</title>
 </head>
 
 <body>
@@ -67,34 +67,39 @@
             <li>3</li>
         </ul>
     </div>
-</body>
-<script>
-    
-
-    function Table(btn, cont) {
-        this.btns = document.getElementById(btn).children;
-        this.cont = document.getElementById(cont).children;
-    }
-
-    Table.prototype.init = function () {
-        for(var i = 0 , btn ; btn = this.btns[i] ; i++){
-            btn.addEventListener("click", this.changeContent.bind(this, i));
-            btn.addEventListener("click", this.changeColor.bind(this, i));
+    <script>
+        function Table(btnSelector, contentSelector) {
+            this.btns = document.getElementById("btn-list").children;
+            this.contents = document.getElementById("content-list").children;
         }
-    }
 
+        Table.prototype.init = function() {
+            for (var i = 0, btn; btn = btns[i]; i++) {
+                btn.addEventListener("click", this.changeContent.bind(this, i));
+                btn.addEventListener("click", this.addBtnColor.bind(this, i));
+            }
+        }
 
-    Table.prototype.changeContent = function (index, evt) {
-        for(var i = 0, content; content = this.cont[i]; i++)
-            content.className = "";
-        this.cont[index].className = "active";
-    }
+        Table.prototype.changeContent = function(index, evt) {
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
 
-    Table.prototype.changeColor = function (index, evt) {
-        this.btns[index].style.background = "#" +  Math.round(parseInt("ffffff",16) * Math.random()).toString(16).padStart(6,"0");
-    }
-    
-    var table = new Table("btn-list", "content-list");
-    table.init();
-</script>
+            for (var i = 0, content; content = tcontents[i]; i++) {
+                content.className = "";
+            }
+            this.contents[index].className = "active";
+        }
+
+        Table.prototype.addBtnColor(index, evt) {
+            var e = evt || window.event;
+            var target = e.target || e.srcEvent;
+
+            this.btns[index].style.background = "#" + Math.round(parseInt("ffffff", 16) * Math.random()).toString(16).padStart(6, "0");
+        }
+
+        var table = new Table("btn-list", "content-list");
+        table.init();
+    </script>
+</body>
+
 </html>
