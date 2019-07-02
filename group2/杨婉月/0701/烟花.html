@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #container{
+                  width: 600px;
+                  height: 400px;
+                  background: #000;
+                  border: 2px solid #f10;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+            }      
+            
+            .firework{
+                  width: 7px;
+                  height: 7px;
+                  border-radius: 50%;
+                  background: #fff;
+                  position: absolute;
+            }
+      </style>
+</head>
+<body>
+      <div id="container">
+      </div>
+      <script>
+
+            function Firework(selector){
+                  this.main = document.querySelector(selector);
+                  if(this.main === null){ return false};
+                  this.init();
+            }
+            //程序初始化
+            Firework.prototype.init = function(){
+                  this.main.addEventListener("click" , this.hanlderFireClick.bind(this));
+            }
+            //操纵烟花
+            Firework.prototype.hanlderFireClick =function(evt){
+                  var e = evt || window.event;
+                  //记录鼠标点击的坐标
+                  var offsetX = e.offsetX;
+                  var offsetY = e.offsetY;
+                  //烟花初始化（初始化时一定要将x轴坐标传入）
+                  var fire = this.fireworkInit(offsetX);
+                  //上升（回调函数：在烟花上升结束后爆炸）
+                  this.fireworkMove(fire,offsetY, this.fireworkBoom.bind(this,offsetX,offsetY));
+            }     
+            //烟花爆炸
+            Firework.prototype.fireworkBoom = function(offsetX,offsetY){
+                //烟花数量随机在15到25
+                  var randomFireCount = 15 + Math.round(Math.random() * 10);
+                  //一度
+                  var blank = Math.round(360 / randomFireCount);
+                  //半径
+                  var r = 100 + Math.round(Math.random() * 100);
+                  //角度
+                  var angle = 0;
+
+                //遍历所有的烟花点
+                  for(var i = 0 ; i < randomFireCount ; i++){   
+                        angle += blank;
+
+                        //确定目标点的坐标
+                        var fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + offsetX); 
+                        var fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + offsetY); 
+
+                        //在该点创建一个烟花
+                        var fire_boom = this.createFirework();
+                        fire_boom.style.left = offsetX + "px";
+                        fire_boom.style.top  = offsetY + "px";
+                        this.main.appendChild(fire_boom);
+
+                        move(fire_boom , {
+                              left : fire_targetX ,
+                              top  : fire_targetY ,
+                              opacity : 0
+                        },function(fire_boom){
+                              fire_boom.remove();
+                        }.bind(false,fire_boom))
+                  }
+
+            }
+            //烟花移动，最后消失
+            Firework.prototype.fireworkMove = function(fire , offsetY , boomCallback){
+                  move(fire,{
+                        top : offsetY
+                  },function(){
+                        fire.remove();
+                        boomCallback();
+                  });
+            }   
+            //烟花初始化  
+            Firework.prototype.fireworkInit = function(offsetX){
+                //制造一个烟花
+                  var fire = this.createFirework();
+                  //确定烟花的初始位置在鼠标点击的垂直下方
+                  fire.style.left = offsetX + "px";
+                  fire.style.bottom = 0;
+                  this.main.appendChild(fire); 
+                  return fire;
+            }
+            //制造一个烟花
+            Firework.prototype.createFirework = function(){
+                  var fire = document.createElement("div");
+                  fire.className = "firework";
+                  fire.style.background = getRandomColor();
+                  return fire;
+            }
+            //随机颜色
+            function getRandomColor(){
+                  var r = Math.round(Math.random() * 255);
+                  var g = Math.round(Math.random() * 255);
+                  var b = Math.round(Math.random() * 255);
+                  return "rgb(" + r + "," + g + "," + b + ")";
+            }
+
+            new Firework("#container");
+
+
+            function move(dom, options, callback){
+                //dom : 运动的节点
+                //options : 属性对象
+                //callback : 回调函数
+
+                //关闭定时器
+                clearInterval(dom.timer);
+
+                dom.timer = setInterval(function(){
+                    //遍历options中所有的对象
+                    for(var attr in options){
+
+                        //得到当前的属性值
+                        //如果是透明度，当前透明度应该乘100
+                        if(attr === "opacity"){
+                            var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                            //getComputedStyle(dom)[attr]是小数  必须先乘100然后再取整，否则iNow为0
+                            //为什么要取整？？？
+                            //如果不取整，则会在最后不断闪
+                            console.log("iNow", iNow);
+                        }
+                        else{
+                            iNow = parseInt(getComputedStyle(dom)[attr]);
+                        }
+                        //计算当前速度：（目标点值-当前属性值）/任意一个整数
+                        speed = (options[attr]-iNow)/10;
+                        //对当前速度取整
+                        speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                        //当所有当前属性值等于目标点值时关闭定时器
+                        if(options[attr]===iNow){
+                            //如何做到当所有属性运动结束后再关闭定时器？？？
+                            //到达一个，删除一个
+                            delete options[attr];
+                            //当options中无对象时，关闭定时器
+                            if(Object.keys(options).length===0){
+                                clearInterval(dom.timer);
+                                //在运动结束之后，执行回调函数
+                                //判断是否为函数
+                            typeof callback === "function"? callback() : "";
+                            }
+                        }else{
+                            if(attr === "opacity"){
+                                dom.style[attr] = (iNow + speed)/100;
+                            }
+                            else{
+                                dom.style[attr] = iNow + speed + "px";
+                            }
+                        }
+                    }
+                }, 50)
+            }
+      
+
+      </script>
+</body>
+</html>
