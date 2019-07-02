@@ -13,7 +13,7 @@ console.log(pagespan);
 var bannerTimer = null;
 
 // 当前显示哪一张
-var showIndex = 1;
+var showIndex = 0;
 window.onload= function(){
     console.log(showIndex,wrapper.offsetLeft);
     
@@ -21,7 +21,17 @@ window.onload= function(){
     wrapper.style.left = -300 * showIndex +"px"; 
     console.log(showIndex,wrapper.offsetLeft,wrapper.style.left);
     changePageView(showIndex);
-    bannerTimer = setInterval(timerNext,2000);
+
+
+    bannerTimer = setInterval(timerNext,3000);
+
+    // //定时器程序中怎么触发事件
+    // setInterval(function(){
+    //     var evto = new Event("click",clickNextBtn);
+    //     // 构建新事件自动调用触发函数，暂无法冒泡。
+    //     next_btn.dispatchEvent(evto);
+    // },2000);
+
 }
 
 
@@ -30,35 +40,47 @@ function $(selector){
     return (ele = document.querySelectorAll(selector)).length ===1 ? ele[0]:ele;
 }
 
+// next_btn.onclick = function clickNextBtn(){
+    
+//     if(showIndex === sliders.length-2){
+//         console.log(666);
+//         showIndex = 1;
+//         wrapper.style.left = 0;
+//     }else{
+//         showIndex ++;
+//     }
+// }
+// next_btn.addEventListener("click",clickNextBtn);
+
 next_btn.onclick = clickNextBtn;
 
 function clickNextBtn(){
-    
-    if(showIndex === sliders.length-2){
-        console.log(666);
+    console.log(111);
+    if(showIndex === sliders.length-1){
         showIndex = 1;
         wrapper.style.left = 0;
     }else{
         showIndex ++;
     }
-    
- 
+    console.log(showIndex);
 }
+
+
 function timerNext(){
-    console.log(111);
     clickNextBtn();
-    changePageView(showIndex);
+    if(showIndex===5){
+        changePageView(0);
+    }else{
+        changePageView(showIndex);
+    }
     move(-300 * showIndex,wrapper,"left");
 }
+
 prev_btn.onclick = function(){
 
     if(showIndex === 0){
-        showIndex = sliders.length-3;
-        wrapper.style.left = "-1500px";
-    }else if(showIndex === 1){
         showIndex = sliders.length-2;
-        wrapper.style.left = "-1800px";
-
+        wrapper.style.left = "-1500px";
     }else{
         showIndex --;
     }
@@ -74,13 +96,19 @@ container.onclick = function(evt){
     if(target === next_btn || target === prev_btn){
         move(-300 * showIndex,wrapper,"left");
     }else if(target.nodeName === "SPAN"){
-        // console.log()
-        showIndex = parseInt( target.innerText);
+        console.log(target.innerText);
+        
+        showIndex = parseInt( target.innerText)-1;
         console.log(showIndex);
         move(-300 * showIndex,wrapper,"left");
     }
     //修改选中页面样式
-    changePageView(showIndex);
+    console.log(showIndex);
+    if(showIndex === 5){
+        changePageView(0);
+    }else{
+        changePageView(showIndex);
+    }
 }
 
 function move(target,dom,attr){
@@ -96,7 +124,6 @@ function move(target,dom,attr){
             clearInterval(dom.timer);
 
             console.log(showIndex, wrapper.offsetLeft, wrapper.style.left);
-
       
         }else{
             dom.style.left = dom.offsetLeft + speed + "px";
@@ -107,7 +134,7 @@ function move(target,dom,attr){
 }
 
 function changePageView(page){
-    for(var i=0,ele; ele = pagespan[i++];){
+    for(var i=0,ele; ele = pagespan[i];i++){
         if(page ===i){
             ele.style.backgroundColor = "#fff";
         }else{
