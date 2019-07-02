@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // var box = document.getElementById("box");
+        // move(800,box,"width");
+        // move(400,box,"height");
+        // // opactity 1-100;
+        // function move(target, dom, attr){
+        //     clearInterval(dom.timer);
+        //     dom.timer = setInterval(function(){
+        //         if(attr === "opacity"){
+        //             var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+        //         }else{
+        //             var iNow = parseInt(getComputedStyle(dom)[attr]);
+
+        //         }
+        //         var speed = (target - iNow )/10;
+        //         speed = speed>0? Math.ceil(speed):Math.floor(speed);
+        //         if(iNow === target){
+        //             clearInterval(dom.timer);
+
+        //         }else{
+        //             if(attr === "opacity"){
+        //                 delete opacity[attr];
+        //                 var count = 0;
+        //                 for(var key in options){
+        //                     count ++; 
+        //                 }
+        //                 if(count === 0){
+        //                     clearInterval(dom.timer);
+        //                     alert("执行结束");
+        //                 }
+        //             }else{
+        //                 dom.style[attr] = iNow + speed +"px";
+        //             }
+        //         }
+        //     },50);
+        // }
+
+
+        var box = document.getElementById("box");
+        function move(dom, json, callBack){
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                for(var attr in json){
+                    console.log(attr,json[attr]);
+                    //获取目标元素dom当前属性值
+                    var iNow = parseInt( getComputedStyle(dom)[attr]);
+                    if(attr === "opacity"){
+                        iNow = parseInt( getComputedStyle(dom)[attr]*100);
+                    }
+                    console.log(iNow);
+                    //计算速度
+                    var speed = (json[attr]-iNow)/10;
+                    //速度取整除去小数
+                    speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+
+                    if(json[attr] === iNow){
+                        delete json[attr];
+                        if(Object.keys(json).length === 0){
+                            clearInterval(dom.timer);
+                            typeof callBack === "function" ? callBack():"";
+                        }
+                    }else{
+                        if(attr === "opacity"){
+                            dom.style[attr] = (iNow + speed)/100;
+                        }else{
+                            dom.style[attr] = iNow + speed + "px";
+                        }
+                    }
+
+                }
+
+            },50);
+        };
+        move(box,{"width":800,"height":500,"opacity":20},function(){
+            box.style.backgroundColor = "red";
+        });
+        // function movew(dom, json){
+        //     clearInterval(dom.timer);
+        //     dom.timer = setInterval(function(){
+        //         // 根据attr判定取值iNow
+        //         //根据iNow和target 获取speed；
+        //         // 根据target和iNow判定终止条件
+        //         // 根据attr 判定 dom操作。
+        //         for(var attr in Options){
+        //             if(attr === "opacity"){
+        //                 var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+        //             }else{
+        //                 var iNow = parseInt(getComputedStyle(dom)[attr]);
+
+        //             }
+        //             speed = (Options[attr]-iNow)/10;
+        //             speed = speed>0?Math.ceil(speed):Math.floor(speed);
+
+        //             if(opacity[attr] === iNow){
+        //                 //所有属性运动完成后关闭定时器。
+        //                 clearInterval(dom.timer);
+        //             }else{
+        //                 if(attr === "opacity"){
+        //                     dom.style[attr] = (iNow +speed )/100 +"px";
+                            
+        //                 }else{
+        //                     dom.style[attr] = iNow +speed + "px";
+        //                 }
+        //             }
+        //         }
+
+        // }
+    </script>
+</body>
+</html>

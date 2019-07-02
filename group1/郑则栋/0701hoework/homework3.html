@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>firework</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#bigbox {
+				width: 500px;
+				height: 500px;
+				background: black;
+				border: deeppink 2px solid;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+
+			.smallBox {
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				position: absolute;
+				z-index: 2;
+			}
+			.smallsmallBox {
+				width: 3px;
+				height: 3px;
+				border-radius: 50%;
+				position: absolute;
+			}
+		</style>
+		<script src="javascript/public.js">
+
+		</script>
+	</head>
+	<body>
+		<div id="bigbox">
+
+		</div>
+		<script type="text/javascript">
+			"use strict"
+
+			function Foo(ele) {
+				// this.obigbox=document.getElementById(ele);
+				this.obigbox = document.getElementById(ele);
+			}
+			Foo.prototype.init = function() {
+				this.obigbox.addEventListener("click", this.createFirework.bind(this));
+			}
+			Foo.prototype.createFirework = function(eve) {
+				var e = eve || window.event;
+				var x = e.offsetX;
+				var y = e.offsetY;
+				var rgb = this.randomColor();
+				this.createFireworks(x, y, rgb,this.fireBoom.bind(this,x,y));
+			}
+			Foo.prototype.createFireworks = function(x, y, rgb,boom) {
+				var smallFire = document.createElement("div");
+				smallFire.className = "smallBox";
+				smallFire.style.background = rgb;
+				console.log(smallFire);
+				this.obigbox.appendChild(smallFire);
+				smallFire.style.bottom = 0;
+				smallFire.style.left = x + "px";
+				move(smallFire, {
+					top: y,
+					opacity:50
+				},function(){
+					smallFire.remove();
+					boom();
+				});
+				
+			}
+
+
+
+
+
+			//圆圈
+			Foo.prototype.fireBoom = function(x,y) {
+				var num = 15 + parseInt(Math.random() * 10);
+				
+				var r = 50 + parseInt(Math.random() * 100);
+
+				for (var i = 0; i <= num; i++) {
+				var rgb=this.randomColor();
+					var smallsmallBox=document.createElement("div");
+					smallsmallBox.className="smallsmallBox";
+					smallsmallBox.style.background=rgb;
+					var angle = parseInt(360 / num)*i;
+					var cosx = Math.round(Math.cos(Math.PI / 180 * angle) * r+x);
+					var siny = Math.round(Math.sin(Math.PI / 180 * angle) * r+y);
+					smallsmallBox.style.left=x+"px";
+					smallsmallBox.style.top=y+"px";
+					this.obigbox.appendChild(smallsmallBox);
+					move(smallsmallBox,{
+						left:cosx,
+						top:siny
+					},function(smallsmallBox){
+						smallsmallBox.remove();
+					}.bind(false,smallsmallBox))
+					//因为smallsmall很多个   而且当定时器执行完是for循环已经执行完了  所以用bind一下
+
+					
+				}
+
+
+			}
+
+			//随机颜色
+			Foo.prototype.randomColor = function() {
+				var r = parseInt(Math.random() * 256);
+				var g = parseInt(Math.random() * 256);
+				var b = parseInt(Math.random() * 256);
+				var rgb = "rgb(" + r + "," + g + "," + b + ")";
+				return rgb;
+			}
+			//use
+			var table = new Foo("bigbox");
+			table.init();
+		</script>
+
+	</body>
+</html>
