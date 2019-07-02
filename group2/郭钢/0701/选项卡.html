@@ -67,34 +67,47 @@
             <li>3</li>
         </ul>
     </div>
-</body>
-<script>
-    
-
-    function Table(btn, cont) {
-        this.btns = document.getElementById(btn).children;
-        this.cont = document.getElementById(cont).children;
-    }
-
-    Table.prototype.init = function () {
-        for(var i = 0 , btn ; btn = this.btns[i] ; i++){
-            btn.addEventListener("click", this.changeContent.bind(this, i));
-            btn.addEventListener("click", this.changeColor.bind(this, i));
+    <script>
+        function Foo(btnSelector,contentSelector) {
+            this.btns = document.getElementById(btnSelector).children;
+            this.contents = document.getElementById(contentSelector).children;
         }
-    }
+
+        Foo.prototype.init = function () {
+            for (var i = 0, btn; btn = this.btns[i]; i++) {
+                btn.addEventListener("click", contentChange.bind(this, i));
+                btn.addEventListener("click", btncolorChange.bind(this, i));
+            }
+        }
 
 
-    Table.prototype.changeContent = function (index, evt) {
-        for(var i = 0, content; content = this.cont[i]; i++)
-            content.className = "";
-        this.cont[index].className = "active";
-    }
 
-    Table.prototype.changeColor = function (index, evt) {
-        this.btns[index].style.background = "#" +  Math.round(parseInt("ffffff",16) * Math.random()).toString(16).padStart(6,"0");
-    }
-    
-    var table = new Table("btn-list", "content-list");
-    table.init();
-</script>
+        function contentChange(index) {
+            for(var i = 0,ele;ele=this.contents[i++];){
+                ele.className = "";
+            }
+            this.contents[index].className = "active";
+            this.contents[index].style.color = randomColor();
+         }
+        function btncolorChange(index) {
+            for(var i = 0,ele;ele=this.btns[i++];){
+                ele.className = "";
+                ele.style.background = "";
+            }
+            this.btns[index].style.background = randomColor();
+         }
+
+         function randomColor(){
+             var r = Math.round(Math.random()*255);
+             var g = Math.round(Math.random()*255);
+             var b = Math.round(Math.random()*255);
+
+             return "rgb("  + r + "," + g + "," + b +")";
+         }
+
+        var foo = new Foo("btn-list","content-list");
+        foo.init();
+    </script>
+</body>
+
 </html>
