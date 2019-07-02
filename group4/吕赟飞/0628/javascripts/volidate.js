@@ -12,6 +12,7 @@
             reg: /^[\!\@\#\$\%\^\&\*\(\)0-9a-z_\-]{6,}$/i
         }
     }
+
     // ====================================================
     // 给用户一个高级选项
     function validate(selector, options) {
@@ -31,7 +32,7 @@
 
         type === "password" && this.getAttribute("v-strength") ? validateStrength(value, this) : "";
 
-        type === "username" && this.getAttribute("v-purenumbers") ? validatePureNum(value, this, this.getAttribute("v-purenumbers") === "true" ? true : false) : "";
+        this.getAttribute("v-purenumbers") ? validatePureNum(value, this, this.getAttribute("v-purenumbers") === "true" ? true : false) : "";
 
         // 在明确的 成功|失败 之后; 创建一个元素 span 并且放在当前元素上面;
 
