@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+                  font-size: 30px;
+            }
+            li{
+                  list-style-type:none;
+            }
+            #pagination{
+                  background: #ddd;
+                  width: 300px;
+                  height: 400px;
+                  margin: 0 auto;
+            }
+            #btn-list{
+                  width: 100%;
+                  height: 50px;
+                  text-align: center;
+                  background: #b6b6b6;
+                  line-height: 50px;
+            }
+            #btn-list button{
+                  padding: 0 20px;
+            }
+            #btn-list button.active{
+                  background: yellowgreen;
+            }
+            #content-list li{
+                  width: 300px;
+                  height: 350px;
+                  line-height: 350px;
+                  text-align:center;
+                  display: none;
+            }
+            #content-list li.active{
+                  display: block;
+            }
+      </style>
+</head>
+<body>
+      <div id="pagination">
+            <div id="btn-list">
+                  <button>1</button>
+                  <button>2</button>
+                  <button>3</button>
+            </div>
+            <ul id="content-list">
+                  <li class="active">1</li>
+                  <li>2</li>
+                  <li>3</li>
+            </ul>
+      </div>
+      <script>
+          //面向对象的方式   将对象放在构造函数， 原型对象放方法
+          function Table(){
+              //实例对象的属性
+              this.buttons = document.getElementById("btn-list").children
+              this.contents = document.getElementById("content-list").children
+          }
+        //原型  放方法
+        Table.prototype.init=function(){
+            //遍历 给每一个btn绑定click事件ain
+            for(var i = 0,btn;btn = this.buttons[i];i++){
+                //将this绑定给实例
+                btn.addEventListener("click",this.changeContext.bind(this,i))
+            }
+        }
+        //将方法写到原型中
+        Table.prototype.changeContext = function(index,evt){
+            //改变内容 获取触发的事件对象
+            var e = evt || event;
+            var target = e.target || e.srcElement;
+            //清除格式
+            for(var i = 0,content;content = this.contents[i];i++){
+                content.className=""
+            }
+            //target就是触发事件的按钮
+            this.contents[index].className = "active"
+
+            //改变button的颜色
+            // console.log(target)
+            //清除所有button的颜色  
+            for(var i = 0,btn;btn = this.buttons[i];i++){
+                btn.className=""
+            }
+            target.className = "active"
+        }
+        //一定要调用一下构造函数
+        var table = new Table();
+        table.init();
+
+
+      </script>
+</body>
+</html>

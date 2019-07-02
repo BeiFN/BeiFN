@@ -301,10 +301,58 @@ sup.subnav-dot-sup {
     padding-bottom: 20px;
     overflow: hidden;
 }
-.slider{
+.container{
     margin: 0 auto;
     max-width: 1130px;
     height: 286px;
+    position: relative;
+    overflow: hidden;
+}
+.container:hover .show{
+    display: block;
+}
+.container .wrapper{
+    width: 6780px;
+    height: 286px;
+    position: absolute;
+    left: 0;
+}
+.slider{
+    width: 1130px;
+    height: 286px;
+    float: left;
+}
+.button-next,.button-prev{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 999;
+    cursor: pointer;
+    display: none;
+}
+.button-next{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+    background-size: 100%;
+    background-position: center;
+    right: 30px;
+}
+.button-prev{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+    background-size: 100%;
+    background-position: center;
+    left: 30px;
+}
+.button-next:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrowhover.svg?v=2);
+    background-size: 100%;
+    background-position: center;
+}
+.button-prev:hover{
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrowhover.svg?v=2);
+    background-size: 100%;
+    background-position: center;
 }
 .clearF{
     height: 20px;
@@ -314,7 +362,7 @@ sup.subnav-dot-sup {
     margin: 0px auto;
     max-width: 1130px;
 }
-.slider-adv .slider img{
+.slider-adv .container img{
     width: 1130px;
     height: 286px;
 }
