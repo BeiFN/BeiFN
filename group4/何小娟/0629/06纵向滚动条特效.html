@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #nav{
+      width: 100px;
+      height: 250px;
+      background: palevioletred;
+      position: absolute;
+      left: 0;
+    }
+    #scrollBar{
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+    <div id="scrollBar"></div>
+    <div id="nav"></div>
+
+    <script>
+      var nav = document.getElementById("nav")
+      // 这里声明timer是为了不让它指向undefined
+      var timer = null
+      var cHeight = document.documentElement.clientHeight
+      nav.style.top = (cHeight - nav.offsetHeight) / 2 + "px"
+      window.onscroll = function(){
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        move((cHeight - nav.offsetHeight) / 2 + scrollTop)
+        console.log(scrollTop)
+      } 
+
+      function move(target){
+        target = parseInt(target)
+        clearInterval(timer)
+
+        timer = setInterval(function(){
+          var speed = (target - nav.offsetTop) /10
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          if(nav.offsetTop === target){
+                clearInterval(timer);
+          }else{
+                nav.style.top = nav.offsetTop + speed + "px";
+          }
+        },50)
+      }
+
+    </script>
+</body>
+</html>
