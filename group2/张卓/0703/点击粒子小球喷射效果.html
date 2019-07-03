@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(#fff, #000);
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //1、创建小球
+        //2、给小球一个初始位置  
+        //3、移动小球
+        function Liziball(ele){
+            this.mainEle = ele.nodeType==9?ele:document.querySelector(ele)
+            //调用初始化的函数
+            this.init();
+        }
+        //初始化  绑定按下事件
+        Liziball.prototype.init=function(){
+            this.timer = null;
+            this.mainEle.addEventListener("mousedown",this.handlerMouseDown.bind(this))
+            this.mainEle.addEventListener("mouseup",this.removeBall.bind(this))
+            this.mainEle.addEventListener("mousemove",this.mouseMoveBall.bind(this))
+        }
+
+        Liziball.prototype.mouseMoveBall = function(evt){
+            var e = evt||event;
+            //ball怎么获取  无法获取ball 那就把自己的属性让ball可以访问
+            this.clientX = e.clientX;
+            this.clientY = e.clientY;
+        }
+
+        Liziball.prototype.handlerMouseDown = function (evt){
+
+            this.timer =  setInterval(function(){
+                var ball = this.createBall(evt)
+                //创建好了小球 让小球移动
+                this.ballMove(ball,evt)
+            }.bind(this),50)
+        }
+        Liziball.prototype.createBall=function(evt){
+            var e = evt||event;
+            var ball = document.createElement("div")
+            ball.className = "ball";
+            ball.style.left = this.clientX+"px"
+            ball.style.top = this.clientY+"px"
+
+            //给ball设置一个过度的属性
+            ball.style.transition = "all 1s"
+            this.mainEle.body.appendChild(ball)
+            return ball;
+        }
+        Liziball.prototype.ballMove = function(ball,evt){
+            var e = evt||event;
+            //设置一个随机目标位置
+            var randomWidth = Math.random()*document.documentElement.clientWidth;
+            var randomHeight = (Math.random()*document.documentElement.clientHeight)+e.offsetY;
+            //Uncaught TypeError: Cannot read property 'style' of undefined
+            setTimeout(function(){
+                ball.style.left = randomWidth+"px";
+                ball.style.top = randomHeight+"px";
+            },0)
+
+            setTimeout(function(){
+                ball.remove();
+            },1000)
+
+        }
+        Liziball.prototype.removeBall = function(){
+            clearInterval(this.timer)
+        }
+        new Liziball(document);
+    </script>
+</body>
+
+</html>
