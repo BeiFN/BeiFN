@@ -38,37 +38,95 @@ function $$(ele) {
     return res.length === 1 ? res[0] : res;
 }
 // 运动函数框架     运动元素，属性对象{属性：终点值}，回调函数
-function move(eleNode, data, callback = () => { }, ) {
-    //运动函数数据初始化
-    clearInterval(eleNode.timer);//格式化：关闭存在的定时器
-    eleNode.timer = setInterval(function () {//运动函数数据整理    
-        var num = 0;
-        for (var attr in data) {// 遍历属性
-            num++;// 计算执行的属性个数
-            let endPoint = data[attr].length == 2 ? data[attr][0] : data[attr],
-                spd = data[attr].length == 2 ? data[attr][1] : undefined,
-                result = attrToendPoint(eleNode, attr, endPoint, spd);
-            if (result) {           // 当前属性执行完成后（参见39行）
-                delete data[attr];// 删除
-            }
+// function move(eleNode, data, callback = () => { }, ) {
+//     //运动函数数据初始化
+//     clearInterval(eleNode.timer);//格式化：关闭存在的定时器
+//     eleNode.timer = setInterval(function () {//运动函数数据整理    
+//         var num = 0;
+//         for (var attr in data) {// 遍历属性
+//             num++;// 计算执行的属性个数
+//             let endPoint = data[attr].length == 2 ? data[attr][0] : data[attr],
+//                 spd = data[attr].length == 2 ? data[attr][1] : undefined,
+//                 result = attrToendPoint(eleNode, attr, endPoint, spd);
+//             if (result) {           // 当前属性执行完成后（参见39行）
+//                 delete data[attr];// 删除
+//             }
+//         }
+//         if (num === 0) {// 执行的属性个数为0时终止
+//             clearInterval(eleNode.timer);// 关闭定时器
+//             callback();// 回调函数 
+//             move.timerList.splice(move.timerList.indexOf(eleNode.timer), 1);
+//         }
+//     }, 50)
+//     move.timerList instanceof Array ? move.timerList.push(eleNode.timer) : move.timerList = [eleNode.timer];
+// }
+// //运动函数    运动元素，属性，终点值,?速度=6
+// function attrToendPoint(eleNode, attr, endPoint, spd = 6) {
+//     var g = getComputedStyle;//获取元素css属性样式  iNow：当前位置  speed：速度
+//     var iNow = attr === 'opacity' ? g(eleNode)[attr] * 100 : parseInt(g(eleNode)[attr]);
+//     var speed = (endPoint - iNow) / spd;
+//     speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+//     iNow += speed;//上：速度 + 和 - 情况下的取整处理  下：不同属性的赋值处理
+//     eleNode.style[attr] = attr === 'opacity' ? iNow / 100 : iNow + 'px';
+//     return iNow === endPoint;//到达终点返回true
+// }
+// 生成缓冲运动对象
+function buffer(ele, data, callback) {
+    var attrs = {},
+        time = 0;
+    for (var attr in data) {
+        var nowPoint = getComputedStyle(ele)[attr], // 当前位置
+            endPoint = null,                        // 终点位置
+            spd = null;                             // 速度
+        attrs[attr] = [];                           // 属性运动值数组
+        // 判断是否传入速度
+        if (data[attr] instanceof Array) {
+            endPoint = data[attr][0];
+            spd = data[attr][1];
+        } else {
+            endPoint = data[attr];
+            spd = 6;
         }
-        if (num === 0) {// 执行的属性个数为0时终止
-            clearInterval(eleNode.timer);// 关闭定时器
-            callback();// 回调函数 
-            move.timerList.splice(move.timerList.indexOf(eleNode.timer), 1);
+        // 判断是否为透明度参数处理
+        if (attr === "opacity") {
+            nowPoint *= 100;
+            endPoint *= 100;
+        } else {
+            nowPoint = parseInt(nowPoint);
+            endPoint = parseInt(endPoint);
+        }
+        // 计算数值插入数组
+        for (var distance = 0; nowPoint !== endPoint;) {
+            distance = (endPoint - nowPoint) / spd;
+            distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance);
+            nowPoint += distance;
+            attrs[attr].push(attr === 'opacity' ? nowPoint / 100 : nowPoint + "px");
+        }
+        time = Math.max(time, attrs[attr].length);
+    };
+    return { "ele": ele, "attrs": attrs, "time": time, "callback": callback }
+}
+// 运动函数
+function move() {
+    var time = 0,
+        index = 0,
+        arg = arguments[0] instanceof Array ? arguments[0] : arguments;
+    timer = null;
+    for (var i in arg) {
+        time = Math.max(time, arg[i].time);
+    }
+    return timer = setInterval(() => {
+        for (var i in arg) {
+            for (var attr in arg[i].attrs) {
+                arg[i].ele.style[attr] = arg[i].attrs[attr][index];
+            }
+            if (arg[i].callback && index === arg[i].time) arg[i].callback();
+        }
+        console.log(index,time);
+        if (index++ === time) {
+            clearInterval(timer);
         }
     }, 50)
-    move.timerList instanceof Array ? move.timerList.push(eleNode.timer) : move.timerList = [eleNode.timer];
-}
-//运动函数    运动元素，属性，终点值,?速度=6
-function attrToendPoint(eleNode, attr, endPoint, spd = 6) {
-    var g = getComputedStyle;//获取元素css属性样式  iNow：当前位置  speed：速度
-    var iNow = attr === 'opacity' ? g(eleNode)[attr] * 100 : parseInt(g(eleNode)[attr]);
-    var speed = (endPoint - iNow) / spd;
-    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
-    iNow += speed;//上：速度 + 和 - 情况下的取整处理  下：不同属性的赋值处理
-    eleNode.style[attr] = attr === 'opacity' ? iNow / 100 : iNow + 'px';
-    return iNow === endPoint;//到达终点返回true
 }
 //事件委托          功能函数，事件对象
 function delegate(callback, selector) {
@@ -76,13 +134,13 @@ function delegate(callback, selector) {
         var e = evt || window.event,
             target = e.target || e.srcElement,
             eleList = [].slice.call(document.querySelectorAll(selector)),
-            ele=null;
+            ele = null;
         while (target !== this) {
-            if(ele=eleList[eleList.indexOf(target)]){
-                callback.call(ele,e);
+            if (ele = eleList[eleList.indexOf(target)]) {
+                callback.call(ele, e);
                 break;
             }
-            target=target.parentNode;
+            target = target.parentNode;
         }
     }
 }

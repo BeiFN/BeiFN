@@ -9,7 +9,7 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .wrapper {
