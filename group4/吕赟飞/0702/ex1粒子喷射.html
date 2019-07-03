@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 1. 鼠标按下;鼠标抬起;
+        // 2. 创建粒子小球。 鼠标抬起终止创建.
+        // 3. 小球运动;
+
+        function Particle(selector) {
+            this.main = selector.nodeType === 9 ? selector : document.querySelector(selector);
+            this.init();
+        }
+
+        Particle.prototype.init = function () {
+            this.timer = null;
+            this.cWidth = document.documentElement.clientWidth;
+            this.cHeight = document.documentElement.clientHeight;
+
+            this.main.addEventListener("mousedown", this.mousedownHandler.bind(this));
+            this.main.addEventListener("mouseup", this.stopHandler.bind(this));
+            this.main.addEventListener("mousemove", this.changeOff.bind(this));
+        }
+
+        Particle.prototype.changeOff = function (evt) {
+            var e = evt || window.event;
+            this.offsetX = e.offsetX;
+            this.offsetY = e.offsetY;
+        }
+
+        Particle.prototype.mousedownHandler = function (evt) {
+            var e = evt || window.event;
+            this.offsetX = e.offsetX;
+            this.offsetY = e.offsetY;
+            this.timer = setInterval(function () {
+                var ball = this.createBall();
+                setTimeout(function () {
+                    this.moveBall(ball, e.offsetY);
+                }.bind(this), 50)
+            }.bind(this), 16);
+        }
+
+        Particle.prototype.moveBall = function (ball, minTop) {
+            var randomLeft = Math.floor(Math.random() * this.cWidth);
+            var randomTop = minTop + Math.floor(Math.random() * (this.cHeight - minTop));
+
+            ball.style.left = randomLeft + "px";
+            ball.style.top = randomTop + "px";
+            ball.style.opacity = 0.5;
+
+            setTimeout(function () {
+                ball.remove();
+            }, 500)
+        }
+
+        Particle.prototype.createBall = function () {
+            var ele = document.createElement("div");
+            ele.className = "ball";
+            ele.style.left = this.offsetX + "px";
+            ele.style.top = this.offsetY + "px";
+            ele.style.transition = "all 1s";
+            ele.style.backgroundColor = getRandomColor();
+            document.body.appendChild(ele);
+            return ele;
+        }
+
+
+        Particle.prototype.stopHandler = function () {
+            clearInterval(this.timer);
+            this.main.removeEventListener("mousemove", this.changeOff.bind(this));
+        }
+
+        function getRandomColor() {
+            var str = "#";
+            for (var i = 0; i < 6; i++) {
+                str += Math.floor(Math.random() * 16).toString(16);
+            }
+            return str;
+        }
+
+
+        new Particle(document)
+    </script>
+</body>
+
+</html>
