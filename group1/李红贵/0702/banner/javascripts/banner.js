@@ -19,7 +19,7 @@
 function Banner(selector,options){
     this.nowIndex = 0;
     //页面跳转状态
-    this.state = "nomal";
+    this.state = "normal";
     // 选择器
     this.main = document.querySelector(selector);
     this.sliders = this.main.querySelectorAll(".slide");
@@ -69,23 +69,28 @@ Banner.prototype.handlerPaginationClick = function(evt){
     var e = evt ||window.event;
     var target = e.target || e.srcElement;
 
-    //bug
+    //
     if(target !== this.pagination_ele){
         console.log( target.parentNode);
         console.log(target.parentNode.children);
 
-        for(var i=0;i<target.parentNode.children.length;i++){
+        for(var i=0; i<target.parentNode.children.length; i++){
+            console.log(33,target,target.parentNode.children[i]);
             if(target === target.parentNode.children[i]){
+                console.log(222);
                 this.toIndex(i);
                 break;
             }
         }
 
     }
+  
 
 }
 //改变页码显示
 Banner.prototype.changePagination = function(){
+
+    console.log("xx");
     for(var i=0,bullet;bullet = this.pagination_ele.children[i++];){
         removeClassName(bullet,"pagination-bullet-active");
     }
@@ -119,6 +124,7 @@ Banner.prototype.layoutPagination = function(){
     this.pagination_ele = document.querySelector(this.options.pagination);
     console.log(this.sliders.length);
     if(this.pagination_ele === null){
+        console.log(false);
         return false;
     }
 
@@ -127,8 +133,8 @@ Banner.prototype.layoutPagination = function(){
 
     var html = "";//字符串创建子节点显示页码
     for(var i =0; i<pagination_count; i++){
-        if(i === this.nextIndex){
-            html += "<div class='pagination-bullet pageination-bullet-active'></div>";
+        if(i === this.nowIndex){
+            html += "<div class='pagination-bullet pagination-bullet-active'></div>";
         }else{
             html += "<div class='pagination-bullet'></div>";
 
@@ -225,8 +231,10 @@ Banner.prototype.nextIndex = function(){
 
 Banner.prototype.slide = function(){
     console.log("“slide”");
+    console.log(this.nowIndex,this.state);
     switch(this.state){
         case "normal" :
+            console.log("normal");
                 this.wrapper.style.left = 0;
                 this.wrapper.style.transition = "left 1s";
                 // 下一帧渲染
@@ -235,6 +243,7 @@ Banner.prototype.slide = function(){
                 }.bind(this),0);
                 break;
         case "changeFirst" :
+            console.log("第一张");
                 
                 this.wrapper.style.transition = "top 1s";
                 this.wrapper.style.left = 0;
@@ -261,6 +270,12 @@ Banner.prototype.slide = function(){
 }
 
 Banner.prototype.toIndex = function(index){
+    console.log(this.nowIndex,index,this.state);
+    if(this.nowIndex === 5){
+        this.wrapper.style.left = 0;
+        console.log("XX");
+        
+    }
     this.nowIndex = index;
 }
 
