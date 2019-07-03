@@ -48,7 +48,7 @@ Banner.prototype.init = function () {
 Banner.prototype.autoPlay = function () {
     this.timer = setInterval(function () {
         this.dispatch();
-    }.bind(this), 2000)
+    }.bind(this), 2000);
 }
 // 事件派发
 Banner.prototype.dispatch = function () {
@@ -57,12 +57,7 @@ Banner.prototype.dispatch = function () {
         cancelable: true,
         view: window,
     });
-    var clicked = !this.btn_next.dispatchEvent(evt);
-    if (clicked) {
-        this.next();
-    } else {
-        return;
-    }
+    return this.btn_next.dispatchEvent(evt);
 }
 // 关闭自动轮播
 Banner.prototype.stopAutoPlay = function () {
@@ -152,6 +147,7 @@ Banner.prototype.layoutAnimate = function () {
             this.slides.push(cloneSlide);
             // console.log(this.slides);
             this.wrapper.style.width = this.oWidth * this.slides.length + "px";
+            this.wrapper.style.left = 0;
             break;
         case "fade":
             this.main.className += " container-fade";
@@ -163,7 +159,6 @@ Banner.prototype.layoutAnimate = function () {
 }
 // slide效果
 Banner.prototype.slide = function () {
-    this.wrapper.style.left = 0;
     switch (this.state) {
         case "normal":
             this.wrapper.style.transition = "left 1s";
