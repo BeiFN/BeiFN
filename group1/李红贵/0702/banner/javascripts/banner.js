@@ -38,6 +38,9 @@ function Banner(selector,options){
     // 初始化
     this.init();
 }
+
+//初始化功能，集中处理耦合关系，调用各功能方法
+// 1.调用  2.事件
 Banner.prototype.init = function(){
 
     // 先布局
@@ -230,6 +233,8 @@ Banner.prototype.nextIndex = function(){
 }
 
 Banner.prototype.slide = function(){
+
+
     console.log("“slide”");
     console.log(this.nowIndex,this.state);
     switch(this.state){
