@@ -219,6 +219,6 @@ Object.defineProperty   方法会直接在一个对象上定义一个新属性�
                   return this.$data.a = val;
                 }
     })   
-
-
 ```
+JSON.prase()  把json数据转化为对象
+JSON.stringify 把对象转化为json格式的字符串；
