@@ -17,6 +17,7 @@ function Banner(selector, options) {
     this.btn_prev = this.main.querySelector(".button-prev");
 
     this.oWidth = this.main.offsetWidth;
+    this.timer = null;
 
     this.options = Object.assign({
         effect: "slide",
@@ -31,7 +32,9 @@ Banner.prototype.init = function () {
     this.layoutAnimate();
     this.layoutPagnination();
     // 自动轮播
-    this.main.addEventListener("mouseenter", this.autoPlay.bind(this));
+    this.autoPlay();
+    this.main.addEventListener("mouseenter", this.stopAutoPlay.bind(this));
+    this.main.addEventListener("mouseleave", this.autoPlay.bind(this));
     // 左右按钮
     this.btn_next.addEventListener("click", this.next.bind(this));
     this.btn_prev.addEventListener("click", this.prev.bind(this));
@@ -41,9 +44,29 @@ Banner.prototype.init = function () {
     this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click", this.toIndex.bind(this));
     this.pagination_ele === null ? "" : this.main.addEventListener("click", this.changeBG.bind(this));
 }
-// 
-Banner.prototype.autoPlay = function(){
-    
+// 开启自动轮播
+Banner.prototype.autoPlay = function () {
+    this.timer = setInterval(function () {
+        this.dispatch();
+    }.bind(this), 2000)
+}
+// 事件派发
+Banner.prototype.dispatch = function () {
+    var evt = new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+    });
+    var clicked = !this.btn_next.dispatchEvent(evt);
+    if (clicked) {
+        this.next();
+    } else {
+        return;
+    }
+}
+// 关闭自动轮播
+Banner.prototype.stopAutoPlay = function () {
+    clearInterval(this.timer);
 }
 
 // 分页跟随
