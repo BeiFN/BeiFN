@@ -68,13 +68,13 @@ function automove(){
 }
 
 // 鼠标悬停时，停止播放,离开时继续播放
-wrapper.addEventListener("mouseenter ",stopPlay);
-wrapper.addEventListener("mouseleave",continuePlay);
-function stopPlay(){
-    console.log(1);
-    clearInterval(auto);
-}
-function continuePlay(){
-    auto = setInterval(automove,2000);
-}
+// wrapper.addEventListener("mouseenter ",stopPlay);
+// wrapper.addEventListener("mouseleave",continuePlay);
+// function stopPlay(){
+//     console.log(1);
+//     clearInterval(auto);
+// }
+// function continuePlay(){
+//     auto = setInterval(automove,2000);
+// }
 
