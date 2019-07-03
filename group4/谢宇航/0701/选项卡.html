@@ -86,7 +86,7 @@
 
     Table.prototype.changeContent = function (index, evt) {
         for(var i = 0, content; content = this.cont[i]; i++)
-            content.className = "";
+            content.removeAttribute("class");
         this.cont[index].className = "active";
     }
 

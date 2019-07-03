@@ -84,22 +84,25 @@
             width: 40px;
             height: 40px;
             position: absolute;
+            border-radius: 50%;
             z-index: 999;
             top: 50%;
             margin-top: -20px;
-            /* background: #0d0; */
-            background-size: 100%;
+
         }
 
         #btn_left {
-            /* background-size:100%; */
             left: 10px;
             background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+            background-position: center;
+            background-size: 100%;
         }
 
         #btn_right {
             right: 10px;
             background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+            background-position: center;
+            background-size: 100%;
         }
     </style>
 </head>
@@ -112,8 +115,8 @@
             <div class="wheel2">2</div>
             <div class="wheel3">3</div>
             <div class="wheel4">4</div>
-            <div class="wheel5">1</div>
-            <div class="wheel1">5</div>
+            <div class="wheel5">5</div>
+            <div class="wheel1">1</div>
         </div>
 
         <div id="pagination">
@@ -132,49 +135,45 @@
             var res = null;
             return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
         }
-        var index = 0;
         var btn_left = $("#btn_left");
         var btn_right = $("#btn_right");
         var wheels = $("#box div");
         var box = $("#box");
         var container = $("#container");
-        // console.log(box);
-        var timer = null;
+        var pagination = $("#pagination").children;
+
         timer = setInterval(btn_left.onclick, 1000);
+        var index = 0;
+        // box.style.left = -index * 300 + "px"
+
+        //点击事件，获取index
         btn_left.onclick = function () {
-            //  index--;
-            // index = (index + 5) % 5;
-            // index--;
             if (index === 0) {
-                index = wheels.length - 2;
                 box.style.left = -(wheels.length - 1) * 300 + "px";
+                index = wheels.length - 2;
+
+                console.log(index);
 
             } else
                 index--;
-            console.log(index);
-            // index--;
-            // box.style.left = -index * 300 + "px";
-
-
+                move(-300 * index, box, "left");
+                
+            
         }
+
         btn_right.onclick = function () {
-            // // index++;
-            // index = (index + 5) % 5;
-            // index++;
             if (index === wheels.length - 1) {
                 box.style.left = 0 + "px";
 
                 index = 1;
-                // box.style.left = -index * 300 + "px";
 
             } else
                 index++;
-            console.log(index);
-            // box.style.left = -index * 300 + "px";
+                move(-300 * index, box, "left");
 
-
+            // console.log(index);
         }
-
+        //获取left位置
         container.onclick = function (evt) {
             var e = evt || window.event;
             var target = e.target || e.srcElement;
@@ -182,7 +181,28 @@
                 move(-300 * index, box, "left");
             }
         }
+        //鼠标放到小圆点轮播图移动
+        for (var i = 0, btn; btn = pagination[i++];) {
+            index = i - 1;
+            btn.addEventListener("mouseover", makeBannerMove.bind(this, index));
+        }
+        //移动
+        function makeBannerMove(index) {
+            // console.log(this, index);
+            move(-300 * index, box, "left");
+        }
 
+        //自动移动
+        setInterval(function () {
+            var evt = new Event("click");
+            // console.log(evt);
+            btn_right.dispatchEvent(evt);
+            // console.log(btn_right.dispatchEvent(evt));
+            move(-300 * index, box, "left");
+        }, 1000)
+
+
+        //移动框架
         function move(target, dom, attr) {
             clearInterval(dom.timer);
             dom.timer = setInterval(function () {
