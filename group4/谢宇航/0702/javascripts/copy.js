@@ -7,15 +7,18 @@ function Banner(selector, options) {
 
     this.options = Object.assign({   //添加默认选项与用户选择   
         effect: "slide",   //效果
-        pagination: ".pagination"    //是否添加分页
+        pagination: ".pagination",    //是否添加分页
+        animation : "true"
     }, options)
 
-    this.nowIndex = 0;   //当前图片索引
+    this.nowIndex = 0   //当前图片索引
     this.status = "normal";   //当前图片状态
     this.timer = null;  //定时器清空
 
     this.init();   //初始化添加侦听事件，布局
-    this.animation();
+
+    //是否需要执行轮播
+    this.options.animation === "true" ? this.animation() : "";
 }
 
 Banner.prototype.init = function () {
@@ -36,8 +39,9 @@ Banner.prototype.init = function () {
     this.pagination_ele === null ? "" : this.main.addEventListener("click", this.changePagination.bind(this));
     this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click", this.handlerPaginationClick.bind(this))
 
-    //添加自动轮播
-    
+    //添加自动轮播  并且设置鼠标移到轮播图自动停播，移开自动轮播
+    this.options.animation === "true" ? this.main.addEventListener("mouseenter", this.stopInterval.bind(this)) : "";
+    this.options.animation === "true" ? this.main.addEventListener("mouseleave", this.startInterval.bind(this)) : "";
 }
 
 // 下一张
@@ -191,8 +195,28 @@ Banner.prototype.handlerPaginationClick = function (evt) {
 
 // 轮播图
 Banner.prototype.animation = function () {
-    var evt = new Event("click");
+    clearInterval(this.timer);
     this.timer = setInterval(function() {
-        var text = this.btn_next.dispatchEvent(evt);
-    }.bind(this), 1000)
+        this.clickEvent(this.btn_next).bind(this);
+    }.bind(this), 3000)
+}
+
+//轮播
+Banner.prototype.clickEvent = function (dom) {
+    this.event = document.createEvent("HTMLEvents");
+    // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+    this.event.initEvent("click", true, true);
+    dom.dispatchEvent(this.event);
+}
+
+//停止轮播
+Banner.prototype.stopInterval = function () {
+    clearInterval(this.timer);
+}
+
+//开始轮播
+Banner.prototype.startInterval = function (evt) {
+    var e = evt || window.event;
+    e.stopPropagation();
+    this.animation();
 }
