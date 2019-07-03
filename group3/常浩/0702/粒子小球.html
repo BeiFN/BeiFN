@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  position: absolute;
+                  
+            }
+    </style>
+</head>
+<body>
+        <script>
+            function Particle(selector){
+                this.timer = null;
+                this.clienWith = document.documentElement.clientWidth;
+                this.clienHeight = document.documentElement.clientHeight;
+                this.ele_main = selector.nodeType === 9 ? selector : document.querySelector(selector);
+                this.init();
+            }    
+            Particle.prototype.init = function(){
+                this.ele_main.addEventListener("mousedown",this.handelerClick.bind(this))
+                this.ele_main.addEventListener("mouseup",this.stopCeatBall.bind(this))
+                
+            }
+            Particle.prototype.handelerClick = function(evt){
+                var e = evt || event ;
+                this.timer = setInterval(function(){
+                    var ball = this.creatBall(e.offsetX,e.offsetY);
+                    
+                    setTimeout(function(){
+                        this.ballMove(ball,e.offsetX,e.offsetY);
+                    }.bind(this),100)
+                }.bind(this),100)
+            }
+            Particle.prototype.creatBall = function(offsetX,offsetY){
+                var ele = document.createElement("div");
+                ele.className = "ball";
+                ele.style.background = "#" + Math.round((parseInt("ffffff",16)*Math.random())).toString(16).padStart(6,"0");
+                ele.style.left   = offsetX + "px";
+                ele.style.top    = offsetY + "px";
+                ele.style.transition  = "all 1s" ;
+                document.body.appendChild(ele);
+                return ele;
+            }
+            Particle.prototype.stopCeatBall = function(){
+                clearInterval(this.timer);
+            }
+            Particle.prototype.ballMove = function(ball,offsetX,offsetY){
+                var tops = offsetY + Math.round(Math.random()*(this.clienHeight - offsetY)) 
+                var lefts = Math.round(Math.random()*this.clienWith);
+
+                ball.style.left = lefts + "px";
+                ball.style.top  = tops + "px";
+                setTimeout(function(){
+                    ball.remove();
+                },1000)
+            }
+
+            new Particle(document);
+        </script>
+</body>
+</html>

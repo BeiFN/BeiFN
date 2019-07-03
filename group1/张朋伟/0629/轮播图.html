@@ -112,8 +112,8 @@
             <div class="wheel2">2</div>
             <div class="wheel3">3</div>
             <div class="wheel4">4</div>
-            <div class="wheel5">1</div>
-            <div class="wheel1">5</div>
+            <div class="wheel5">5</div>
+            <div class="wheel1">1</div>
         </div>
 
         <div id="pagination">
@@ -138,22 +138,23 @@
         var wheels = $("#box div");
         var box = $("#box");
         var container = $("#container");
-        // console.log(box);
-        var timer = null;
+        var pagination = $("#pagination").children;
+        // console.log(pagination);
+
+        // var timer = null;
         timer = setInterval(btn_left.onclick, 1000);
+
+        //点击事件，获取index
         btn_left.onclick = function () {
-            //  index--;
-            // index = (index + 5) % 5;
-            // index--;
+
             if (index === 0) {
                 index = wheels.length - 2;
                 box.style.left = -(wheels.length - 1) * 300 + "px";
 
             } else
                 index--;
-            console.log(index);
-            // index--;
-            // box.style.left = -index * 300 + "px";
+            // console.log(index);
+
 
 
         }
@@ -169,12 +170,11 @@
 
             } else
                 index++;
-            console.log(index);
+            // console.log(index);
             // box.style.left = -index * 300 + "px";
 
-
         }
-
+        //获取left位置
         container.onclick = function (evt) {
             var e = evt || window.event;
             var target = e.target || e.srcElement;
@@ -182,7 +182,29 @@
                 move(-300 * index, box, "left");
             }
         }
+        //鼠标放到小圆点轮播图移动移动
+        for (var i = 0, btn; btn = pagination[i++];) {
+            index = i - 1;
+            btn.addEventListener("mouseover", makeBannerMove.bind(this, index));
+        }
+        //移动
+        function makeBannerMove(index) {
+            // console.log(this, index);
+            move(-300 * index, box, "left");
+        }
 
+        //自动移动
+        setInterval(function () {
+            var evt = new Event("click");
+            // console.log(evt);
+            btn_left.dispatchEvent(evt);
+            // console.log(btn_right.dispatchEvent(evt));
+
+
+        }, 1000)
+
+
+        //移动框架
         function move(target, dom, attr) {
             clearInterval(dom.timer);
             dom.timer = setInterval(function () {
