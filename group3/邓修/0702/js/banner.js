@@ -107,7 +107,7 @@ Banner.prototype.slide = function () {
         this.wrapper.style.transition = "top 1s";
         setTimeout(function () {
             // console.log(this);
-            this.wrapper.style.left = 0 * this.cWidth + "px";
+            this.wrapper.style.left = 0;
             this.state="normal";
             this.slide();
         }.bind(this), 0);
