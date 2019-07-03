@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>粒子小球</title>
+    
+    <style>
+   .box{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: radial-gradient(#fff,#000);
+        position: absolute;
+    }
+
+    
+    
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+
+    </div> -->
+    
+     <script>
+    //   获取元素，绑定事件
+
+
+    // 构建函数
+    function Particle(ele){
+        // 获取当前元素
+    //   document的nodeType是9，如果是document，返回document，如果不是，把它当成选择器，作为选择器进行选择
+                  this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);
+                
+                    // console.log(this.main_ele);
+                // 面向对象的本质是 分工
+
+                // 绑定事件放在init中
+                  this.init();
+            }
+        
+    // 原型访问，绑定事件
+                                //    用bind()方法确保this指向一致
+        Particle.prototype.init = function(){    
+            // 鼠标按下事件
+            
+             this.main_ele.addEventListener("mousedown",this.handlerMouseDown.bind(this));
+            //  鼠标抬起事件
+             this.main_ele.addEventListener("mouseup",this.stopCreateBall.bind(this));
+            //  鼠标移动事件
+            this.main_ele.addEventListener("mousemove",this.changeOffset.bind(this));
+
+            // 获取小球的水平距离
+            this.cWidth = document.documentElement.clientWidth;
+            // 获取小球的垂直距离
+            this.cHeight = document.documentElement.clientHeight;
+                //  小球的定时器
+            this.timer = null;
+
+        }
+        // 鼠标按下的时候，我想干嘛呢？
+            // 1.创建一个小球并获取
+            Particle.prototype.handlerMouseDown = function(evt){
+                var e = evt || window.event;
+               this.offsetX = e.offsetX;
+                this.offsetY = e.offsetY;
+
+                this.timer = setInterval( function(){
+                        var ball = this.createBall();
+
+                        setTimeout(function(){
+                              this.ballMove(ball,e.offsetY);
+                        }.bind(this),100);
+                        
+                  }.bind(this),50)
+            }
+
+
+            //鼠标抬起的时候，我又想干嘛？
+
+            // 创建小粒子
+           Particle.prototype.createBall = function(){
+                // 创建div，生成小球
+                var ele = document.createElement("div");
+                // 给div添加class类
+                ele.className = "box";
+                ele.style.left =this.offsetX + "px";
+                ele.style.top = this.offsetY + "px";
+                ele.style.transition = "all 1s";
+                // 把小球植入页面
+                document.body.appendChild(ele);
+                return ele;
+            }
+            
+
+
+            // 鼠标移动的时候，我想出现什么效果
+            //   出现更多的小粒子 
+
+           Particle.prototype.changeOffset = function(evt){
+                     
+                var e = evt || window.event;
+               this.offsetX = e.clientX;
+               this.offsetY = e.clientY;
+            }
+        
+
+                //   小球运动随机
+        Particle.prototype.ballMove = function(ball , minTop){
+
+               var randomL = Math.round(Math.random()*this.cWidth);
+               var ramdomT = Math.round(Math.round()*(this.cWidth - minTop));
+
+               ball.style.left = randomL + "px";
+               ball.style.top =  ramdomT + "px";
+               ball.style.opacity =0.1;
+
+               setTimeout(function(){
+                   ball.remove();
+               },1000)
+                
+               
+        }
+
+        // 停止小球运动
+        Particle.prototype.stopCreateBall = function(){
+            clearInterval(this.timer);
+        }  
+       //实例化
+       new Particle(document);
+     </script>
+
+
+
+</body>
+</html>
