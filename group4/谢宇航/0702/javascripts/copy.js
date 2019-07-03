@@ -8,7 +8,7 @@ function Banner(selector, options) {
     this.options = Object.assign({   //添加默认选项与用户选择   
         effect: "slide",   //效果
         pagination: ".pagination",    //是否添加分页
-        animation : "true"
+        // animation : "true"
     }, options)
 
     this.nowIndex = 0   //当前图片索引
@@ -181,7 +181,6 @@ Banner.prototype.toIndex = function (index) {
 Banner.prototype.handlerPaginationClick = function (evt) {
     var e = evt || window.event;
     var target = e.target || e.srcElement;
-    console.log(target)
     if(target !== this.pagination_ele){   //如果点击元素不是pagination_ele本身
         //遍历子元素数组，如果匹配，记下下标，然后执行toIndex
         for(var i = 0; i < target.parentNode.children.length; i ++){
@@ -197,16 +196,22 @@ Banner.prototype.handlerPaginationClick = function (evt) {
 Banner.prototype.animation = function () {
     clearInterval(this.timer);
     this.timer = setInterval(function() {
-        this.clickEvent(this.btn_next).bind(this);
+        this.clickEvent(this.btn_next);
     }.bind(this), 3000)
 }
 
 //轮播
 Banner.prototype.clickEvent = function (dom) {
-    this.event = document.createEvent("HTMLEvents");
-    // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
-    this.event.initEvent("click", true, true);
+    // this.event = document.createEvent("HTMLEvents");
+    // // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+    // this.event.initEvent("click", true, true);
+    // dom.dispatchEvent(this.event);
+    this.event = new CustomEvent("click", {
+        bubbles : true,
+        cancelable: true
+    })
     dom.dispatchEvent(this.event);
+
 }
 
 //停止轮播
