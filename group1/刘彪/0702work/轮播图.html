@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="./styles/banner.css">
+      <style>
+        #box{
+              width: 400px;
+              height: 300px;
+        }
+        .slide{
+              text-align: center;
+              color: #fff;
+              line-height:300px;
+              font-size: 100px; 
+        }
+      </style>
+</head>
+<body>
+
+      <div id="box">
+            <div class="container">
+                  <div class="wrapper">
+                        <div class="slide slide-active" style="background:red; ">1</div>
+                        <div class="slide" style="background: blue;"  >2</div>
+                        <div class="slide" style="background: black;" >3</div>
+                        <div class="slide" style="background: green;" >4</div>
+                        <div class="slide" style="background: yellow;">5</div>
+                  </div>
+                  <div class="button-next"></div>
+                  <div class="button-prev"></div>
+                  <div class="pagination pagination-bullets">
+                        <div class="pagination-bullet pagination-bullet-active"></div>
+                        <div class="pagination-bullet"></div>
+                        <div class="pagination-bullet"></div>
+                        <div class="pagination-bullet"></div>
+                  </div>
+            </div>
+      </div>
+
+      
+
+      <script src="JavaScript/banner.js"></script>
+      <script>
+            new Banner(".container" , {
+                  effect : "slide"
+            });
+      </script>
+</body>
+</html>
