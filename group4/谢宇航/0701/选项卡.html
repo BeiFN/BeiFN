@@ -85,16 +85,12 @@
 
 
     Table.prototype.changeContent = function (index, evt) {
-        var e = evt || window.event;
-        var target = e .target || e.srcElement;
         for(var i = 0, content; content = this.cont[i]; i++)
-            content.className = "";
+            content.removeAttribute("class");
         this.cont[index].className = "active";
     }
 
     Table.prototype.changeColor = function (index, evt) {
-        var e = evt || window.event;
-        var target = e .target || e.srcElement;
         this.btns[index].style.background = "#" +  Math.round(parseInt("ffffff",16) * Math.random()).toString(16).padStart(6,"0");
     }
     

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动框架封装</title>
+    <style>
+        #container{
+            width:100px;
+            height:100px;
+            background:violet;
+            opacity: .8;
+            margin:200px auto;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script src = "./scripts/运动框架.js"></script>
+    <script>
+        var container = document.getElementById("container")
+        move(container,{
+            "width":300,
+            "height":300,
+            "opacity":0
+        },function(){
+            container.style.background="red";
+        })
+    </script>
+    
+</body>
+</html>
