@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+              .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: radial-gradient(red,yellow);
+                  position: absolute;
+                  
+            }
+    </style>
+</head>
+<body>
+    
+    <script>
+        // 鼠标按下，鼠标释放
+        // 创建小球
+        // 让小球运动
+        // 小球停止运动
+        // 小球消失
+
+        function Particle(selector){
+            this.main_ele = selector.nodeType === 9 ? selector : document.querySelector(selector);
+            this.init();
+        }
+        Particle.prototype.init = function(){
+            this.timer = null;
+            this.main_ele.addEventListener("mousedown",this.handlerMouseDown.bind(this));
+            this.main_ele.addEventListener("mouseup",this.stopCreateBall.bind(this));
+            this.main_ele.addEventListener("mousemove",this.changePosition.bind(this));
+        }
+
+        Particle.prototype.changePosition = function(evt){
+            var e = e || event;
+            this.ball_left = e.offsetX;
+            this.ball_top  = e.offsetY;
+        }
+        Particle.prototype.handlerMouseDown = function (evt) {
+            var e = evt || event ;
+            this.ball_left = e.offsetX;
+            this.ball_top  = e.offsetY;
+            this.cWideth   = document.documentElement.clientWidth;
+            this.cHeight   = document.documentElement.clientHeight; 
+            
+
+            this.timer = setInterval(function(){
+                 var ball = this.createBall();
+                setTimeout(function(){
+                    this.makeBallMove(ball);
+                }.bind(this),50)
+               
+            }.bind(this),50)
+        }
+
+        Particle.prototype.createBall = function(){
+            var ball = document.createElement("div");
+            ball.className = "ball";
+            
+            ball.style.left = this.ball_left + "px";
+            ball.style.top = this.ball_top + "px"; 
+            ball.style.borderRadius = Math.round(Math.random()*100) +"%";
+            ball.style.background =  getRandomColor();
+            ball.style.transition = "all 1s";
+            document.body.appendChild(ball);
+            return ball;
+        }
+
+        function getRandomColor(){
+                  var r = Math.round(Math.random() * 255);
+                  var g = Math.round(Math.random() * 255);
+                  var b = Math.round(Math.random() * 255);
+                  return "rgb(" + r + "," + g + "," + b + ")";
+            }
+        Particle.prototype.stopCreateBall = function(){
+            clearInterval(this.timer);
+            console.log("结束运动");
+           
+        }
+        Particle.prototype.makeBallMove = function(ball){
+            ball.style.left = Math.round(Math.random() * this.cWideth) +"px";
+            ball.style.top = this.ball_top + Math.round(Math.random()* (this.cHeight-this.ball_top)) + "px";
+            ball.style.opacity = 0.1;
+            setTimeout(function(){
+                ball.remove();
+            },1000)
+        }
+        new Particle(document);
+    </script>
+</body>
+</html>
