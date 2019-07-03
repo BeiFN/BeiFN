@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(#ffaaaa, #3ff);
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+</body>
+<script>
+    //构造一个函数
+    function Particle(selector) {
+        this.main = selector.nodeType === 9 ? selector : document.querySelector(selector);
+        this.init();
+    }
+
+
+    // 初始化，事件添加及全局变量属性存储
+    Particle.prototype.init = function () {
+        this.timer = null;
+        this.main.addEventListener("mousedown", this.handleDown.bind(this));
+        this.main.addEventListener("mouseup", this.handleUp.bind(this));
+        this.main.addEventListener("mousemove", this.ballMoveToMouse.bind(this));
+    }
+
+
+
+    // 鼠标按下时的方法
+    Particle.prototype.handleDown = function (evt) {
+        // 用来使每个生成的小球的坐标固定在鼠标按下的地方
+        var e = evt || event;
+        this.offsetX = e.offsetX;
+        this.offsetY = e.offsetY;
+
+
+        // 来用控制鼠标移动时小球的坐标
+        this.cWidth = document.documentElement.clientWidth;
+        this.cHeight = document.documentElement.clientHeight;
+
+
+
+        // 当鼠标按下时，设置定时器生成小球
+        this.timer = setInterval(function () {
+            var ball = this.createBall(this.offsetX, this.offsetY);
+            setTimeout(function () {
+                // 小球生成后，运行小球运动的方法，之所以设置一个延时器是为了让小球先渲染然完成样式，有运动的样式。
+                this.ballMove(this.cWidth, this.cHeight, ball);
+            }.bind(this), 100)
+        }.bind(this), 50)
+    }
+
+
+
+
+    // 创建小球的方法
+    Particle.prototype.createBall = function (offsetX, offsetY) {
+        var ball = document.createElement("div");
+        ball.className = "ball";
+        ball.style.left = offsetX + "px";
+        ball.style.top = offsetY + "px";
+        ball.style.background = randomColor();
+        ball.style.transition = "all 1s";
+        document.body.appendChild(ball);
+
+        return ball;
+    }
+
+
+    // 小球运动的方法
+    Particle.prototype.ballMove = function (cWidth, cHeight, ball) {
+        ball.style.left = Math.round(Math.random() * cWidth) + "px";
+        ball.style.top = this.offsetY + Math.round(Math.random() * (cHeight - this.offsetY)) + "px";
+        ball.style.opacity = "0";
+
+
+        // 小球运动1秒后移除，之所以设置1秒。是因为小球的运动时间设置的为1秒
+        setTimeout(function () {
+            ball.remove();
+        }.bind(this), 1000)
+    }
+
+
+    // 小球随鼠标移动时的坐标获取，之所以不用offset是因为鼠标可能会放到元素小球身上，导致出现距离不准
+    Particle.prototype.ballMoveToMouse = function (evt) {
+        var e = evt || event;
+        this.offsetX = e.clientX;
+        this.offsetY = e.clientY;
+    }
+
+
+
+
+
+    // 鼠标抬起清除计时器
+    Particle.prototype.handleUp = function () {
+        clearInterval(this.timer);
+    }
+
+
+
+    //小球的随机颜色
+    function randomColor() {
+        var r = Math.round(Math.random() * 255);
+        var g = Math.round(Math.random() * 255);
+        var b = Math.round(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
+
+    new Particle(document);
+</script>
+
+
+</html>
