@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: radial-gradient(#fff,#000);
+                  position: absolute;
+                  
+            }
+      </style>
+</head>
+<body>
+      <!-- <div class="ball">
+
+      </div> -->
+      <script>
+            // 1. 鼠标按下;鼠标抬起;
+            // 2. 创建粒子小球。 鼠标抬起终止创建.
+            // 3. 小球运动;
+            function Partical(selector) {
+                this.timer = null;
+                this.cWidth = document.documentElement.clientWidth;
+                this.cHeight = document.documentElement.clientHeight;
+                this.main_ele = selector.nodeType === 9 ? selector : document.querySelector(selector);
+                console.log(this.main_ele);
+                this.init();
+            }
+            Partical.prototype.init = function() {
+                this.main_ele.addEventListener("mousedown" , this.handerClick.bind(this));
+                this.main_ele.addEventListener("mouseup" , this.stopCreateball.bind(this));
+                this.main_ele.addEventListener("mousemove" , this.changeLocation.bind(this));
+            }
+            Partical.prototype.changeLocation = function(evt) {
+                var e = evt || window.event;
+                this.offsetx = e.clientX;
+                this.offsety = e.clientY;
+            }
+            Partical.prototype.handerClick = function(evt) {
+                var e = evt || event;
+                this.timer = setInterval(function() {
+                    var ball = this.createBall(e.offsetX , e.offsetY);
+
+                    setTimeout(function() {
+                        this.ballmoving(ball , e.offsetY)
+                    }.bind(this) , 50)
+                }.bind(this),50)
+            }
+            Partical.prototype.createBall = function(offsetx , offsety) {
+                var ball = document.createElement("div");
+                ball.className = "ball";
+
+                ball.style.left = this.offsetx - 10 + "px";
+                ball.style.top = this.offsety - 10 + "px";
+                ball.style.transition = "all 1s";
+                ball.style.background = randomColor();
+                document.body.appendChild(ball);
+
+                return ball;
+            }
+            Partical.prototype.stopCreateball = function() {
+                clearInterval(this.timer);
+            }
+            Partical.prototype.ballmoving = function(ball , minY) {
+                var ballLeft = Math.round(Math.random() * this.cWidth);
+                var ballTop = Math.round(minY + (Math.random() * (this.cHeight - minY)));
+
+                ball.style.left = ballLeft + "px";
+                ball.style.top = ballTop + "px";
+                ball.style.opacity = 0.1
+                setTimeout(function() {
+                    ball.remove();
+                },1000) 
+            }
+
+            function randomColor() {
+                return "#" + Math.round(parseInt("ffffff" , 16) * Math.random()).toString(16).padStart(6 , "");
+            }
+            console.log(randomColor());
+            new Partical(document);
+      </script>
+</body>
+</html>
