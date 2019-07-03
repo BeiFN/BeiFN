@@ -21,7 +21,7 @@ window.onload= function(){
     wrapper.style.left = -300 * showIndex +"px"; 
     console.log(showIndex,wrapper.offsetLeft,wrapper.style.left);
     changePageView(showIndex);
-    bannerTimer = setInterval(timerNext,3000);
+    bannerTimer = setInterval(timerNext,2000);
 }
 
 
