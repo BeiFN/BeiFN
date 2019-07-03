@@ -63,15 +63,32 @@
                 // fire.style.left = offsetX+"px";
                 // move(this.fire)
                 var fire = this.fireworkInit(offsetX);
-                this.fireworkMove(fire , offsetY)
+                
+                this.fireworkMove(fire,offsetY,this.fireworkBoom.bind(this,offsetX,offsetY))
 
         }
-
-        Firework.prototype.fireworkMove(fire , offsetY)
+        Firework.prototype.fireworkBoom(offsetX,offsetY)
         {
+           var randomFireCount = 15 + Math.round(Math.random()*10);
+           var blank = Math.round(360/randomFireCount);
+           var r = 100 + Math.round(Math.random()*100);
+           var angle = 0;
+           for(var i = 0  ; i = randomFireCount ; i++)
+           {
+               angle += blank;
+               var target_X = 
+
+           }
+        }
+        Firework.prototype.fireworkMove = function(fire , offsetY , callBack)
+        {
+           
             move(fire , {
                 top : offsetY
-            })
+            },function(){
+                   fire.remove();
+                  callBack();
+            });
         }
         Firework.prototype.fireworkInit = function(offsetX) //独立出来烟花初始化
         {
