@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0; padding: 0;
+            }
+            .box{
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background: yellowgreen;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+            }
+      </style>
+</head>
+<body>
+      <div class="box"></div>
+      
+
+      <script>
+            var box = document.querySelector(".box");
+            move(box,{
+                  "left" : 1,
+                  "top": 1,
+                  "opacity" : 30
+            },function(){
+                  box.style.background = "green";
+            });
+
+            function move(dom , options , callback){
+                  clearInterval(dom.timer);
+                  dom.timer = setInterval(function(){
+                        for(var attr in options){
+                              if(attr === "opacity"){
+                                    var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                              }else{
+                                    var iNow = parseInt(getComputedStyle(dom)[attr]);
+                              }
+                              
+                              var speed = (options[attr] - iNow)/10;
+                              speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                              if(options[attr] === iNow){
+                                    delete options[attr];
+                                    if(Object.values(options).length === 0){
+                                          clearInterval(dom.timer);
+                                          callback();
+                                          console.log(1)
+                                    }
+                              }else{
+                                    if(attr === "opacity"){
+                                          dom.style[attr] = (iNow + speed)/100;
+                                    }else{
+                                          dom.style[attr] = iNow + speed + "px";
+                                    }
+                              }
+                        }
+                  },50)
+            }
+      </script>
+</body>
+</html>

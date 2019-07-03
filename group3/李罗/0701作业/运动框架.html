@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box{
+                  width: 100px;
+                  height: 100px;
+                  background: #000;
+                  position: absolute;
+            }
+      </style>
+</head>
+<body>
+      <div id="box">
+
+      </div>
+
+      <script>
+
+            var box = document.getElementById("box");
+
+            // move( 800 , box , "width" , 400,"height",20,"opacity");
+            // move( 400 , box , "height");
+
+            move(box , {
+                  "width"   : 800,
+                  "height"  : 400,
+                  "opacity" : 21
+            },function(){
+                  box.style.background = "yellowgreen";
+            })
+            // opacity => 100; 
+            // function move( dom , options ){
+            //       clearInterval(dom.timer);
+            //       dom.timer = setInterval( function(){
+            //             if( attr === "opacity"){
+            //                   var iNow = parseInt( getComputedStyle(dom)[attr] * 100);
+            //             }else{
+            //                   var iNow = parseInt( getComputedStyle(dom)[attr])
+            //             }
+            //             var speed = ( target - iNow) / 10;
+            //             speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+            //             if(iNow === target){
+            //                   clearInterval(dom.timer)
+            //             }else{
+            //                   if(attr === "opacity"){
+            //                         dom.style[attr] = (iNow + speed ) / 100;
+            //                   }else{
+            //                         dom.style[attr] = iNow + speed + "px";
+            //                   }
+            //             }
+            //       } , 50)
+            // }
+
+            function move( dom , options , callback){
+                  clearInterval( dom.timer );
+                  dom.timer = setInterval( function(){
+                        // console.log(1);
+                        // 根据 attr 判定获取 iNow;
+                        // 根据iNow 和 target 获取 speed;
+                        // 根据target和 iNow 判定终止条件;
+                        // 根据attr 判定 dom操作;
+                        // * attr  target;
+                        for(var attr in options){
+                              // console.log(attr,options[attr]);
+                              if( attr === "opacity"){
+                                    var iNow = parseInt(getComputedStyle(dom)[attr] * 100 )
+                              }else{
+                                    var iNow = parseInt(getComputedStyle(dom)[attr])
+                              }
+                              // console.log(attr , iNow);
+                              // target => options[attr];
+                              var speed = (options[attr] - iNow) / 10;
+                              speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+
+                              if(options[attr] === iNow){
+                                    // 所有属性运动结束之后再去关闭定时器;
+                                    delete options[attr];
+                                    // console.log(options);
+                                    // var count = 0;
+                                    // for(var key in options){
+                                    //       count ++;
+                                    // }
+                                    // if(count === 0){
+                                    //       clearInterval(dom.timer);
+                                    // }
+                                    if(Object.keys(options).length === 0){
+                                          clearInterval(dom.timer);
+                                          typeof callback === "function" ? callback() : "";
+                                    }
+                              }else{
+                                    if(attr === "opacity"){
+                                          dom.style[attr] = (iNow + speed) / 100;
+                                    }else{
+                                          dom.style[attr] = iNow + speed + "px";
+                                    }
+                              }
+                        }
+                  } ,50)
+            }
+      
+      </script>
+</body>
+</html>
