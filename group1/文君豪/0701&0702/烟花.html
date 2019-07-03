@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #container{
+                  width: 600px;
+                  height: 400px;
+                  background: #000;
+                  border: 2px solid #f10;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+            }      
+            
+            .firework{
+                  width: 7px;
+                  height: 7px;
+                  border-radius: 50%;
+                  background: #fff;
+                  position: absolute;
+            }
+      </style>
+</head>
+<body>
+      <div id="container">
+      </div>
+      <script>
+            // 1. 创造随机颜色的div的功能;
+            // 2. 上升功能;
+            // 3. 爆炸功能;
+        function Firework(selector)
+        {
+            this.main = document.getElementById("container")
+            if(this.main == null)                       //参数判断
+            {
+                return false;
+            }
+
+            this.init();       //调用
+        }
+
+        Firework.prototype.init = function()
+        {
+            console.log(1)
+            this.main.addEventListener("click" , this.hanlderclick.bind(this))
+        }
+
+        Firework.prototype.hanlderclick = function(evt)
+        {
+                  var e = evt || window.event;
+                  var offsetX = e.offsetX;
+                  var offsetY = e.offsetY;
+                //   var fire = this.creatFirework();
+                // this.main.appendChild(fire);
+                // fire.style.bottom = 0;
+                // fire.style.left = offsetX+"px";
+                // move(this.fire)
+                var fire = this.fireworkInit(offsetX);
+                
+                this.fireworkMove(fire,offsetY,this.fireworkBoom.bind(this,offsetX,offsetY))
+
+        }
+        Firework.prototype.fireworkBoom(offsetX,offsetY)
+        {
+           var randomFireCount = 15 + Math.round(Math.random()*10);
+           var blank = Math.round(360/randomFireCount);
+           var r = 100 + Math.round(Math.random()*100);
+           var angle = 0;
+           for(var i = 0  ; i = randomFireCount ; i++)
+           {
+               angle += blank;
+               var target_X = 
+
+           }
+        }
+        Firework.prototype.fireworkMove = function(fire , offsetY , callBack)
+        {
+           
+            move(fire , {
+                top : offsetY
+            },function(){
+                   fire.remove();
+                  callBack();
+            });
+        }
+        Firework.prototype.fireworkInit = function(offsetX) //独立出来烟花初始化
+        {
+                var fire = this.createFirework();                
+                fire.style.bottom = 0;
+                fire.style.left = offsetX+"px";
+                this.main.appendChild(fire);
+                return fire;
+
+              
+        }
+        Firework.prototype.createFirework = function(evt)
+        {
+            var fire = document.createElement("div");//创建
+            fire.className = "firework";        //加样式
+            fire.style.background =  getRandomColor();  //给小球设置随机颜色
+            return fire     //放入页面
+            
+           
+        }
+
+        function getRandomColor()
+        {
+            var r = Math.round(Math.random()*255);
+            var g = Math.round(Math.random()*255);
+            var b = Math.round(Math.random()*255);
+            return "rgb("+r+","+g+","+b+")"
+        }
+
+
+
+        new Firework("#container")
+        
+        
+
+        function move(dom , options , callback)
+        {   
+            clearInterval(dom.timer)
+            dom.timer = setInterval(
+                function ()
+                {
+                    for(var attr in dom)
+                    {
+                        if(attr == "opacity")
+                        {
+                            var iNow = parseInt(getComputedStyle(dom)[attr])*100;
+                        }
+                        else
+                        {
+                            var iNow = parseInt(getComputedStyle(dom)[attr])*100
+                        }
+
+
+                        ////本来有个target在判断，本例没有简单描述
+                        var speed = (options[attr] - iNow) /10 ; 
+
+                        speed = speed>0 ? Math.ceil(speed)  : Math.floor(speed);
+
+                        if(options[attr] ==  iNow)
+                        {
+                            //如果在这里直接清除定时，那么任意属性到达后会立即停止，所以不可行
+                            //clearInterval(dom.attr)
+                            delete option[attr];
+
+                            if(Object.keys(options).length === 0)  //直接object。length不成功，不可以这样使用。必须转为数组
+                            {
+
+                                clearInterval(dom.timer);
+                                typeof callback  === "function" ?  callback() : "";
+ 
+                            }
+                        }
+                        else{
+                            if(options[attr] == "opacity")
+                            {
+                                dom.style[attr] = (iNow + speed)/100;
+                            }
+                            else
+                            {
+                                dom.style[attr]= iNow + speed +"px"
+                            }
+                        }
+
+                    }
+                }
+            )
+
+        }
+      </script>
+</body>
+</html>
