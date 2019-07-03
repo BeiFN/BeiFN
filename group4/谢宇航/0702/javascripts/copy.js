@@ -203,10 +203,16 @@ Banner.prototype.animation = function () {
 
 //轮播
 Banner.prototype.clickEvent = function (dom) {
-    this.event = document.createEvent("HTMLEvents");
-    // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
-    this.event.initEvent("click", true, true);
+    // this.event = document.createEvent("HTMLEvents");
+    // // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+    // this.event.initEvent("click", true, true);
+    // dom.dispatchEvent(this.event);
+    this.event = new CustomEvent("click", {
+        bubbles : true,
+        cancelable: true
+    })
     dom.dispatchEvent(this.event);
+
 }
 
 //停止轮播
