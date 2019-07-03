@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public.css">
+    <style>
+        #hero {
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            position: absolute;
+            top: 700px;
+
+        }
+
+        .monster {
+            width: 10px;
+            height: 10px;
+            background: red;
+            position: absolute;
+            border-radius: 10px;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hero"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <script>
+        var hreo = $("#hero");
+        var monsters = $(".monster");
+        var speedY = 5;
+        var speedX = 0;
+        var g_timer = null;
+
+
+        //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+        function delegation(evt) {
+            var e = evt || window.event;
+            var keyCode = e.keyCode || e.which;
+            switch (keyCode) {
+                case 65: moveLeft(0, hero); break;
+                case 68: moveLeft(1, hero); break;
+                // case 87: moveTop(200, this); break;
+                // case 83: ; break;
+            }
+        }
+
+        function moveLeft(bool, ele) {
+            // if(speedY === 1)return;
+            if(bool){
+                speedX < 6 ? speedX += 0.5 : ""
+            }else{
+                speedX > -6 ? speedX -= 0.5 : ""
+            }
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function(){
+            ele.style.left = ele.offsetLeft + Math.floor(speedX) + "px";
+            },25)
+        }
+
+
+        function $(selector) {
+            var ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
+        }
+
+        function gameStart(evt) {
+            clearInterval(g_timer)
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+            }, 50)
+        }
+
+
+        document.addEventListener("keydown", delegation)
+        document.addEventListener("click", gameStart)
+    </script>
+</body>
+
+</html>

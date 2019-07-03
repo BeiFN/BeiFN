@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:500px;
+            height:500px;
+            background: #000;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+        .fire{
+            height:5px;
+            width:5px;
+            position:absolute;
+            border-radius: 50%;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        function Firefly(){}
+        Firefly.prototype.init=function(selector){
+            this.main=document.querySelector(selector);
+            this.FireInit();
+        }
+        Firefly.prototype.FireInit=function(){
+            var num=(15+parseInt(Math.random()*10));
+            for(var i=0;i<num;i++){
+                var fire=this.createFire.call(this);
+                fire.style.left=randomPosition().target_x+"px";
+                fire.style.top=randomPosition().target_y+"px";
+                this.main.appendChild(fire);
+               
+                this.timer=setInterval(function(fire){
+                    var obj=randomPosition();
+                    move(fire,{
+                    left:obj.target_x,
+                    top:obj.target_y
+                })
+                }.bind(false,fire),2000)
+            }
+        }
+        Firefly.prototype.createFire=function(){
+            var fire=document.createElement("div");
+            fire.className="fire";
+            return fire;
+        }
+        function randomPosition(){
+            var targetX=parseInt(Math.random()*500);
+            targetX=targetX>493?493:targetX;
+            var targetY=parseInt(Math.random()*500);
+            targetY=targetY>493?493:targetY;
+            return {target_x:targetX,target_y:targetY};
+        }
+        function move(dom, options, callback) {
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function () {
+                for (var attr in options) {
+                    if (attr === "opacity") {
+                        var iNow = parseInt(getComputedStyle(dom)[attr] * 100)
+                    } else {
+                        var iNow = parseInt(getComputedStyle(dom)[attr]);
+
+                    }
+                    var speed = (options[attr] - iNow) / 10;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    if (iNow === options[attr]) {
+                        delete options[attr];
+                        if (Object.keys(options).length == 0) {
+                            clearInterval(dom.timer);
+                            typeof callback == "function" ? callback() : "";
+                        }
+                    } else {
+                        if (attr === "opacity") {
+                            dom.style[attr] = (iNow + speed) / 100;
+                        } else {
+                            dom.style[attr] = iNow + speed + "px";
+                        }
+                    }
+                }
+            }, 50)
+        }
+        var firefly=new Firefly();
+        firefly.init("#box");
+    </script>
+</body>
+</html>
