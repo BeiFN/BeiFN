@@ -84,9 +84,9 @@ function autoLive(){
 //运动框架的封装
 function move(target,ele,attr){
     clearInterval(ele.timer);
+    target=(attr==='opacity'?target*100:target);
     ele.timer=setInterval(function(){
         var now=(attr==='opacity'? parseInt(getComputedStyle(ele)[attr]*100):parseInt(getComputedStyle(ele)[attr]));
-        target=(attr==='opacity'?target*100:target);
         var speed=(target-now)/10;
         speed=speed>0?Math.ceil(speed):Math.floor(speed);
         if(target===now){
