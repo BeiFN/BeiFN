@@ -4,6 +4,7 @@ function Magnifier(){
 
     //wrapper => 外包围;
     // cube   => 方块;
+    this.i = 0;
     this.small_wrapper  = $(".small-img");
     this.small_img      = $(".small-img img");
     this.small_cube     = $(".cube");
@@ -12,12 +13,7 @@ function Magnifier(){
     //大图部分;
     this.big_wrapper    = $(".big-img");
     this.big_img        = $(".big-img img");
-    //获取几个值;
-    this.list = [
-        {
-            src : ""
-        }
-    ] 
+    this.img_box           = $(".img-box");
 
     this.small_wrapper_position = getAbsPosition(this.small_wrapper);
     this.small_cube_size        = getSize(this.small_cube);
@@ -29,18 +25,45 @@ function Magnifier(){
 };
 
 Magnifier.prototype.init = function(){
+    this.list = [
+        {
+            srcsmall : "https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            srcBig   :"https://upload-images.jianshu.io/upload_images/16960494-927c81e490e2e3ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+      },
+      {
+            srcsmall : "https://img14.360buyimg.com/n1/s450x450_jfs/t1/40868/26/1431/86285/5cc65cc9E976b43d3/ca2ef76a8a801dcd.jpg",
+            srcBig   :"https://img14.360buyimg.com/n0/jfs/t1/40868/26/1431/86285/5cc65cc9E976b43d3/ca2ef76a8a801dcd.jpg"
+      },
+      {
+            srcsmall :"https://img11.360buyimg.com/n1/s450x450_jfs/t1/74337/9/3553/149378/5d1c8f50Ecd9cdfe0/e79035cf3023f3ff.jpg",
+            srcBig   :"https://img14.360buyimg.com/n0/jfs/t1/74337/9/3553/149378/5d1c8f50Ecd9cdfe0/e79035cf3023f3ff.jpg"
+      }
+    ] 
     this.small_wrapper.addEventListener("mouseenter" , this.show.bind(this));
     this.small_wrapper.addEventListener("mouseleave" , this.hide.bind(this));
 
     this.small_wrapper.addEventListener("mousemove" , this.handlerMousemove.bind(this));
     this.img_btn_wrapper.addEventListener("click" , delegation(this.changeImg.bind(this),".img-box"));
+    this.img_btn_wrapper.addEventListener("click",this.changeTotalImg.bind(this));
 }
 Magnifier.prototype.changeImg = function(evt,ele){
+    var e  = evt || window.event;
+    var target = e.target || e.srcElement;
     for(var i = 0 , btn; btn = this.img_btns[i++];){
+        if(target.parentNode === btn){
+            this.i = i;
+            return false;
+      }
         removeClassName(btn,"active");
 
     }
     ele.className += " active";
+}
+Magnifier.prototype.changeTotalImg = function(){
+    console.log(this.i);
+    this.small_cube.style.backgroundImage = "url("+this.list[this.i].srcsmall+")";
+    this.small_img.src = this.list[this.i].srcsmall;
+    this.big_img.src = this.list[this.i].srcBig;
 }    
 Magnifier.prototype.show = function(){
     this.small_cube.style.display = "block";
