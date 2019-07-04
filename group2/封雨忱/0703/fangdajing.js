@@ -26,14 +26,59 @@ function getSize(dom){
         height:parseInt(getComputedStyle(dom)['height'])
     }
 }
+//事件委托封装
+function delegation( handlerClick , selector ){
+    return function(evt){
+          var e = evt || window.event;
+          var target = e.target || e.srcElement;
+          var eleList = this.querySelectorAll(selector);
+          var targetFamily = [];
+          var _tempTarget = target;
+          var count = 0;
+          while(true && count ++ < 100){
+                if(_tempTarget === this || _tempTarget === null){
+                      break;
+                }
+                targetFamily.push(_tempTarget);
+                _tempTarget = _tempTarget.parentNode;
+          }
+          for(var i = 0 , ele ; ele = eleList[i++]; ){
+                if(targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1){
+                      handlerClick.call(ele , e , ele);
+                      break;
+                }
+          }
+    }
+}
 //构造函数
 function Magnifier(){
+    this.index=0;
     this.small_wrapper=$('.small-img');
     this.small_img=$('.small-img img');
     this.small_cube=$('.cube');
     // console.log(this.small_wrapper,this.small_img,this.small_cube)
     this.big_wrapper=$('.big-img');
     this.big_img=$('.big-img img');
+    this.img_btn=$('.img-btn');
+    // this.img_box=$('.img-box');
+    this.img_box=this.img_btn.children;
+    // console.log(this.img_box);
+    this.list={
+        1:{
+            firstImg:"https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            secondImg:"https://upload-images.jianshu.io/upload_images/16960494-927c81e490e2e3ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+            },
+        2:{
+            firstImg:"https://upload-images.jianshu.io/upload_images/16960494-5e81b49dd994d9cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+            secondImg:"https://upload-images.jianshu.io/upload_images/16960494-82fa6d1cbc1be296.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+        },
+        // 3:{
+        //     firstImg:"https://img11.360buyimg.com/n1/s450x450_jfs/t1/74337/9/3553/149378/5d1c8f50Ecd9cdfe0/e79035cf3023f3ff.jpg",
+        //     secondImg:"https://img14.360buyimg.com/n0/jfs/t1/74337/9/3553/149378/5d1c8f50Ecd9cdfe0/e79035cf3023f3ff.jpg"
+        // }
+
+}
+    // console.log(this.img_btn);
     // console.log(this.big_img)
 
     //获取size值
@@ -54,16 +99,22 @@ Magnifier.prototype.init=function(){
     this.small_wrapper.addEventListener('mouseover',this.show.bind(this));
     this.small_wrapper.addEventListener('mouseout',this.hide.bind(this));
     this.small_wrapper.addEventListener('mousemove',this.hanlderMousemove.bind(this));
+    // this.img_btn.onclick=delegation(this.changeImg.bind(this),'.img_box')
+    this.img_btn.addEventListener("click" , delegation(this.changeImg.bind(this) , ".img-box"));
+    this.img_btn.addEventListener('click',this.changeImgSrc.bind(this));
+
 }
 //div显示
 Magnifier.prototype.show=function(){
     this.small_cube.style.display='block';
     this.big_wrapper.style.display='block';
+    this.small_img.style.opacity = 0.3;
 }
 //div隐藏
 Magnifier.prototype.hide=function(){
     this.big_wrapper.style.display='none';
     this.small_cube.style.display='none';
+    this.small_img.style.opacity = 1;
 }
 //div移动
 Magnifier.prototype.hanlderMousemove=function(evt){
@@ -99,6 +150,8 @@ Magnifier.prototype.move=function(cube_position,big_img_position){
     this.small_cube.style.left=cube_position.x+'px';
     this.small_cube.style.top=cube_position.y+'px';
 
+    this.small_cube.style.backgroundPosition = -cube_position.x + "px " + -cube_position.y + "px";
+
     this.big_img.style.left=-big_img_position.big_img_x+'px';
     this.big_img.style.top=-big_img_position.big_img_y+'px';
 }
@@ -114,5 +167,24 @@ Magnifier.prototype.getBigPosition=function(x,y){
         big_img_x:big_img_x,
         big_img_y:big_img_y
     }
+}
+//更改图片样式
+Magnifier.prototype.changeImg=function(evt){
+    // console.log(ele)
+    var e=evt||window.event;
+    var target=e.target||e.srcElement;
+    for( var i=0,be;be=this.img_box[i++];){
+        if(target.parentNode===be){
+            this.index=i;
+        }
+        be.className='img-box';
+    }
+    target.parentNode.className +=' active';
+}
+Magnifier.prototype.changeImgSrc=function(){
+    // console.log(this.index)
+    this.small_img.src=this.list[this.index].firstImg;
+    this.big_img.src=this.list[this.index].secondImg;
+    this.small_cube.style.backgroundImage="url("+this.list[this.index].firstImg+")"
 }
 new Magnifier();
