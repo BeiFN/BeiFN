@@ -171,4 +171,54 @@ page    到文档的距离
 event  事件
 target  || srcElement   事件源
 
- 
+### ES5
+
+use strict  严格模式
+forEach    用来遍历数组的  参数是一个函数  arr.forEach( foo )
+            会接受一个函数作为参数,并在方法内调用 *参数函数* 数组项数次; 而是 *参数函数* 的形参 
+            function foo(item,index , arr)   其没有返回值 返回值为undefined
+
+map     返回一个新数组，新数组之中装的是参数函数的返回值; 参数同上
+filter   返回新数组.会根据参数函数的返回值判定是否该讲具体的项加入新数组;
+some 判定数组中是否存在某个符合条件的；一旦函数返回true那么some机会终止循环，并且返回true
+every 是判定数组中是否存在某个不符合条件的 ，发现有不符合的就会返回false，并且返回false。
+reduce  是对数组中的每一项进行一个累计计算操作。
+```javascript
+         // var arr = [15000,20000,21000,26000,3000,2000,8000];
+
+            // var res = arr.reduce(function(pre , now , index , arr){
+            //       console.log(pre,now ,index);
+            //       return pre + now;
+            // })
+
+            // console.log(res);   
+```
+flat  数组扁平化
+
+Object.defineProperty   方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+```javascript
+    var obj = {b:1}
+    Object.defineProperty( obj , "a" , {
+                  // 不可删除;
+                  configurable : true,
+                  // 不可枚举;
+                  enumerable : true,
+                  value : "hello world", //
+                  writable : true //是否可以被赋值
+    })
+    Object.defineProperty( obj , "a" , {
+                get : function(){
+                  // this => obj 当前对象;
+                  // console.log(this);
+                  return this.$data.a;
+                },
+                set : function(val){
+                  // val => 设置的参数
+                  // console.log("hello");
+                  // 因为在a设置值的时候已经被作为一个拦截器而进行set处理了,那么这时候我们不能给a直接赋值;
+                  return this.$data.a = val;
+                }
+    })   
+```
+JSON.prase()  把json数据转化为对象
+JSON.stringify 把对象转化为json格式的字符串；

@@ -2,9 +2,8 @@ function $(selector){
     var sel = null;
    return  sel = (document.querySelectorAll(selector).length == 1)　?　document.querySelectorAll(selector)[0] : document.querySelectorAll(selector);
 }
-// var ele_bannerList = $("#banner_list");
-// var forward  = $(".bottom");
-// var back     = $(".top");
+
+
 var nav   = $(".nav"); //导航条的固定
 window.addEventListener("scroll",handlerSticky)
 var goTop = $("#goTop");
@@ -48,6 +47,7 @@ var prev = $(".top");
     //运动框架
     function move (target , dom , attr){
         clearInterval(dom.timer);
+        target = attr === "opacity" ? target * 100 : target ;
         dom.timer = setInterval(function (){
             var iNow = (attr === "opacity" ? parseInt( getComputedStyle(dom)[attr] *  100 ) : parseInt(getComputedStyle(dom)[attr]))
             var speed = (target - iNow) / 8;

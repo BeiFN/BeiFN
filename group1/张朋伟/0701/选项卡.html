@@ -70,10 +70,12 @@
     <script>
         function Table(btn, content) {
             //获取元素
-            var buttons = document.getElementById(btn).children;
-            console.log(buttons);
-            var contents = document.getElementById(content).children;
-            console.log(contents);
+            this.buttons = document.getElementById(btn).children;
+            // console.log(this.buttons);
+            this.contents = document.getElementById(content).children;
+            // console.log(this.contents);
+            this.init();
+
 
         }
         //初始化
@@ -82,26 +84,44 @@
             //     this.btn.addEventListener("click", this.cont_change.bind(this, i));
             // }
 
-            for( var i = 0 , btn ; btn = this.buttons[i] ; i++){
-                        btn.addEventListener( "click" , this.cont_change.bind(this , i) );
-                        // btn.addEventListener( "click" , this.addBtnColor.bind(this , i) );
-                  }
+            for (var i = 0, btn; btn = this.buttons[i]; i++) {
+                btn.addEventListener("click", this.cont_change.bind(this, i));
+                // console.log(btn);
+
+                // btn.addEventListener( "click" , this.addBtnColor.bind(this , i) );
+            }
         }
+        //按钮颜色改变
+        Table.prototype.init = function () {
+
+            for (var i = 0, btn; btn = this.buttons[i]; i++) {
+                btn.addEventListener("click", this.changeColor.bind(this, i));
+
+            }
+        }
+        Table.prototype.changeColor = function (i) {
+            // var e = evt ||window.event;
+            //  var  target
+            // console.log(this)
+            for (var j = 0, btn; btn = this.buttons[j++];) {
+                // console.log(btn);
+                btn.style.background = "";
+            }
+            this.buttons[i].style.background = "#f00";
+        }
+
 
         //选项卡改变
         Table.prototype.cont_change = function (index, evt) {
+            console.log(index);
             var e = window.event || evt;
             var target = e.target || e.srcElement;
-            for (var i = 0, content; content = contents[i]; i++) {
+            for (var i = 0, content; content = this.contents[i]; i++) {
                 content.className = "";
             }
             this.contents[index].className = "active";
-
-
-
         }
-        var table = new Table("btn-list", "content-list");
-        table.init();
+        new Table("btn-list", "content-list");
     </script>
 </body>
 
