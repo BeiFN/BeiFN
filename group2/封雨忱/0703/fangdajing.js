@@ -181,6 +181,7 @@ Magnifier.prototype.changeImg=function(evt){
     }
     target.parentNode.className +=' active';
 }
+//更改图片地址
 Magnifier.prototype.changeImgSrc=function(){
     // console.log(this.index)
     this.small_img.src=this.list[this.index].firstImg;
