@@ -85,6 +85,7 @@ source 控制台断点
 5.onmouseover 鼠标移入
 6.onmouseout 鼠标移出
 7.onmousemove 鼠标移动
+8.onmouseenter 鼠标穿透
 //键盘事件
 
 1.onkeydown 键盘按下
