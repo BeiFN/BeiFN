@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            .container{
+                  width: 350px;
+                  height: 450px;
+                  position: relative;
+                  margin-left: 20px;
+            }
+            .small-img{
+                  width : 350px;
+                  height: 350px;
+                  position: relative;
+                  box-shadow: 0 0 10px #000;
+            }
+            .small-img img{
+                  width: 100%;
+                  height: 100%;
+                  opacity: 0.3;
+            }
+            .cube{
+                  width: 100px;
+                  height: 100px;
+                  background: rgba(0,0,0,.3);
+                  position: absolute;
+                  z-index: 1;
+                  left: 0;
+                  top: 0;
+                  display: none;
+                  background-image: url("http://img14.360buyimg.com/n1/jfs/t1/62832/39/3169/198409/5d15f0eaE22b30af5/4554c0a7ce88ab3f.jpg");
+                  background-repeat: no-repeat;
+                  background-size: 350px 350px;
+                  background-position: 0 0;    
+                  /* border-radius: 50%; */
+                }
+            .big-img{
+                  width: 300px;
+                  height: 300px;
+                  position: absolute;
+                  left: 350px;
+                  top: 0;
+                  box-shadow: 0 0 10px #000;
+                  overflow: hidden;
+                  display: none;
+            }
+            .big-img img{
+                  width: 1050px;
+                  height: 1050px;
+                  position: absolute;
+            }
+
+
+            /* .sssss{
+                  margin-left: 40px;
+            } */
+            .img-btn{
+                padding: 5px;
+                margin: 2px;
+                width: 100%;
+                height: 100px;
+            }
+            .img-btn .img-box{
+                width: 60px;
+                float: left;
+                border: 3px solid rgba(0,0,0,0);
+                overflow: hidden;
+            }
+            .img-btn .img-box.active{
+                border-color: red;
+            }
+            .img-btn .img-box:hover{
+                border-color: red;
+            }
+            .img-btn .img-box img{
+                width: 100%;
+                height: 100%;
+            }
+      </style>
+</head>
+<body>
+
+      <div class="sssss">
+      <div class="container">  
+            <div class="small-img">
+                  <img src="http://img14.360buyimg.com/n1/jfs/t1/62832/39/3169/198409/5d15f0eaE22b30af5/4554c0a7ce88ab3f.jpg" alt="">
+                  <div class="cube"></div>
+            </div>
+            <div class="big-img">
+                  <img src="https://img14.360buyimg.com//n0/jfs/t1/62832/39/3169/198409/5d15f0eaE22b30af5/4554c0a7ce88ab3f.jpg" alt="">
+            </div>
+
+            <div class="img-btn">
+                    <div class="img-box active">  
+                            <img src="https://upload-images.jianshu.io/upload_images/16960494-6016305427ecad9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+                      </div>
+                      <div class="img-box">
+                            <img src="https://upload-images.jianshu.io/upload_images/16960494-7f9040ccc609945a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+                      </div> 
+            </div>
+      </div>
+</div>
+      <!-- <script src="./magnifier.js"></script> -->
+      <script src="./magnifier1.js"></script>
+</body>
+</html>
