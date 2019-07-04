@@ -171,7 +171,7 @@ Banner.prototype.layoutAnimate = function(){
 
 
 Banner.prototype.fade = function(){
-    // console.log("animate");
+    
     for(var i = 0,slide; slide=this.sliders[i++];){
     
         slide.style.opacity= 0;
@@ -180,23 +180,12 @@ Banner.prototype.fade = function(){
     this.sliders[this.nowIndex].style.opacity = 1;
 
 
-    // for(var i = 0; i<this.sliders.length;i++){
-    //     console.log(i);
-    //     this.sliders[i].style.display = "none";
-    // }
-    // this.sliders[this.nowIndex].style.display = "block";
+  
     
 }
 
 Banner.prototype.animate = function(){
-    // console.log("animate");
-    for(var i = 0,slide; slide=this.sliders[i++];){
-    
-        slide.style.opacity= 0;
-        slide.style.transition= 'all 1s';       
-    }
-    this.sliders[this.nowIndex].style.opacity = 1;
-
+  
 
     // for(var i = 0; i<this.sliders.length;i++){
     //     console.log(i);
