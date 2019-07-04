@@ -69,7 +69,7 @@ Magnifier.prototype.moveHandler = function (evt) {
     var y = e.pageY - this.small_wrapper_pos.top - this.cube_size.height / 2;
 
     var cube_pos = this.boundary(x, y);
-    var big_img_pos = this.getBigPositon(x, y);
+    var big_img_pos = this.getBigPositon(cube_pos.x, cube_pos.y);
     this.move(cube_pos, big_img_pos);
 }
 // 根据比例计算大图位置
@@ -158,7 +158,7 @@ function delegation(handlerClick, selector) {
 }
 
 function removeClassName(dom, className) {
-    return dom.className = dom.className.replace(new RegExp("\s?" + className), "");
+    return dom.className = dom.className.replace(new RegExp("\\s\?" + className), "");
 }
 
 
