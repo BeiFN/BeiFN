@@ -50,6 +50,7 @@ Banner.prototype.animateLayout = function(){
             //slides是在构造函数中获取到的，此时向wrapper中添加元素并不会改变slides中的值，所以应该在这里重新添加到slides伪数组中
             this.slides = [].slice.call(this.slides);
             this.slides.push(cloneNode); 
+            console.log(this.slides)
             break;
         case "fade":
             this.main.className += " container-fade";
