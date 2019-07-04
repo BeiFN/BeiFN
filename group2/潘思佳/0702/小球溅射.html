@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Particle(ele) {
+            this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);
+            this.init();
+        }
+
+        Particle.prototype.init = function() {
+            this.timer = null;
+            this.cWidth = document.documentElement.clientWidth;
+            this.cHeight = document.documentElement.clientHeight;
+
+            this.main_ele.addEventListener("mousedown", this.mouseDownHandler.bind(this));
+            this.main_ele.addEventListener("mouseup", this.mouseUpHandler.bind(this));
+            this.main_ele.addEventListener("mousemove", this.positionChange.bind(this));
+        }
+
+        Particle.prototype.positionChange = function(evt) {
+            var e = evt || window.event;
+
+            this.offsetX = e.clientX;
+            this.offsetY = e.clientY;
+        }
+
+        Particle.prototype.mouseDownHandler = function(evt) {
+            var e = evt || window.event;
+            this.offsetX = e.offsetX;
+            this.offsetY = e.offsetY;
+
+            this.timer = setInterval(function() {
+                var ball = this.createBall();
+                setTimeout(function() {
+                    this.ballMove(ball);
+                }.bind(this), 100);
+            }.bind(this), 50)
+        }
+
+        Particle.prototype.createBall = function() {
+            var ball = document.createElement("div");
+            ball.className = "ball";
+            ball.style.left = this.offsetX + "px";
+            ball.style.top = this.offsetY + "px";
+            ball.style.transition = "all 0.2s";
+            ball.style.backgroundColor = "#" + Math.round(parseInt("ffffff", 16) * Math.random()).toString(16).padStart(6, "0");
+
+            document.body.appendChild(ball);
+            return ball;
+        }
+
+        Particle.prototype.ballMove = function(ball) {
+            var randomL = Math.round(Math.random() * this.cWidth);
+            var randomT = Math.round(Math.random() * this.cHeight);
+
+            ball.style.left = randomL + "px";
+            ball.style.top = randomT + "px";
+            ball.style.opacity = 0;
+
+            setTimeout(function() {
+                ball.remove();
+            }, 500);
+        }
+
+        Particle.prototype.mouseUpHandler = function(evt) {
+            clearInterval(this.timer);
+        }
+
+        new Particle(document);
+    </script>
+</body>
+
+</html>

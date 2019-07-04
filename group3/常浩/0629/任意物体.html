@@ -57,8 +57,9 @@
             var dom = this ;
             clearInterval(dom.timer);
             // console.log(dom,attr,target);
+            target = attr === "opacity" ? target*100 : target;
             dom.timer = setInterval(function(){
-
+                console.log(target);
                 if(attr == "opacity"){
                     var iNow = parseInt(getComputedStyle(dom)[attr]*100);
                 }else{
@@ -67,11 +68,11 @@
 
                 // var iNow = parseInt(getComputedStyle(dom)[attr]);
 
-                var speed = ((attr === "opacity" ? target * 100 : target) - iNow )/10;
+                var speed = (target - iNow )/10;
                 // console.log(speed);
                 // var speed = (target - iNow )/10;
                 speed = (speed > 0 ? Math.ceil(speed) : Math.floor(speed));
-                if(target == speed){
+                if(target == iNow){
                     clearInterval(dom.timer);
                 }else{
                     dom.style[attr]  =  (attr === "opacity" ? ((iNow + speed)/100) : (iNow + speed + "px"));
