@@ -5,5 +5,5 @@ function $(selector){
     return (res = document.querySelectorAll(selector)).length === 1 ? res[0] : res;
 }
 cancelBtn.onclick = function(){
-    topAd.remove();
+    topAd.style.display = "none";
 }
