@@ -68,27 +68,29 @@
         </ul>
     </div>
     <script>
-        function Table(btnSelector, contenSelector) {//选择元素
-            this.btns = document.getElementById(btnSelector).children;
-            this.contents = document.getElementById(contenSelector).children;
-            this.init();
-        }
-        Table.prototype.init = function () {//绑定事件
-            for (var i = 0, btn; btn = this.btns[i++];) {
-                btn.addEventListener("click", this.changeColor.bind(this, i-1));
-                btn.addEventListener("click", this.changeContent.bind(this, i-1));
+        class Table {
+            constructor(btnSelector="btn-list", contenSelector="content-list") {//选择元素
+                this.btns = document.getElementById(btnSelector).children;
+                this.contents = document.getElementById(contenSelector).children;
+                this.init();
+            }
+            init = function () {//绑定事件
+                for (var i = 0, btn; btn = this.btns[i++];) {
+                    btn.addEventListener("click", this.changeColor.bind(this, i - 1));
+                    btn.addEventListener("click", this.changeContent.bind(this, i - 1));
+                }
+            }
+            changeColor = function (index) {//改变按钮颜色
+                this.btns[index].style.backgroundColor = "#" + Math.round(parseInt("ffffff", 16) * Math.random()).toString(16).padStart(6, "0");
+            }
+            changeContent = function (index) {//改变内容
+                for (var i = 0, content; content = this.contents[i++];) {
+                    content.className = "";
+                }
+                this.contents[index].className = "active";
             }
         }
-        Table.prototype.changeColor = function (index) {//改变按钮颜色
-            this.btns[index].style.backgroundColor = "#" + Math.round(parseInt("ffffff", 16) * Math.random()).toString(16).padStart(6, "0");
-        }
-        Table.prototype.changeContent = function (index) {//改变内容
-            for (var i = 0, content; content = this.contents[i++];) {
-                content.className = "";
-            }
-            this.contents[index].className = "active";
-        }
-        var table=new Table("btn-list","content-list");
+        var table = new Table();
         // table.init();
     </script>
 </body>

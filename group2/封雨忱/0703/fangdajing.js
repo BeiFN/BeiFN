@@ -126,7 +126,7 @@ Magnifier.prototype.hanlderMousemove=function(evt){
     // this.small_cube.style.left=x+'px';
     // this.small_cube.style.top=y+'px';
     var cube_position=this.boundary(x,y)
-    var big_img_position=this.getBigPosition(x,y)
+    var big_img_position=this.getBigPosition(cube_position.x,cube_position.y)
     this.move(cube_position,big_img_position)
 }
 //边界检测
