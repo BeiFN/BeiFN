@@ -16,6 +16,7 @@ function Banner(selector, options) {
     }, options)
     this.pagEle = document.querySelector(this.options.pagination);
     this.init()
+    this.autoPlay()
 }
 
 
@@ -168,7 +169,12 @@ Banner.prototype.paginationClick = function (evt) {
 
 //自动播放
 Banner.prototype.autoPlay = function () {
-
+    // var evt = new Event("click");
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent("click", true, true)
+    setInterval(function () {
+        this.nextBtn.dispatchEvent(evt);
+    }.bind(this), 3000)
 }
 
 function removeClassName(dom, className) {

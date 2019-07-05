@@ -40,6 +40,7 @@
           //封装move运动框架
           function move (target , dom , attr){
               clearInterval(dom.timer);
+              target = attr === "opacity" ? target * 100 : target;
               dom.timer = setInterval(function(){
                   var iNow = (attr === "opacity" ? parseInt(getComputedStyle(dom)[attr] * 100) : parseInt(getComputedStyle(dom)[attr]));
                   var speed =( target - iNow) /10
@@ -80,8 +81,8 @@
           pagination.addEventListener("click",function(evt){
                 var e = evt || window.event ;
                 target = e.target || e.srcElement ;
+                clearInterval(stars);
                 for(var i = 0 ; i < pagination.children.length ; i ++){
-                    clearInterval(stars);
                     if(target === pagination.children[i]){
                         showId = i ;
                         if(i == 0 ){
@@ -92,22 +93,20 @@
                     }
                     spanChange();
                     move(-300 * showId , wrapper , "left");
-                    //重新开启自动播放在3s之后  一共是6s的时间；
-                    setTimeout(function(){
-                        clearInterval(stars);
-                        var stars = setInterval(automatic,3000) ;
+                    var timer_set = setTimeout(function(){
+                         stars = setInterval(automatic,3000) ;
                     },3000)
-                        
-                    }
                 }
+                }
+                //重新开启自动播放在3s之后  一共是6s的时间；
           })
 
           // 基本下标改变区
           function handlerNext(){
             
             if(showId == slider.length -1){
-                showId = 1;
                 wrapper.style.left = 0;
+                showId = 1;
             }else{
                 showId ++;
             }
@@ -125,7 +124,7 @@
             spanChange();
           }
           // 自动播放区
-        //  document.onload = automatic ;
+         document.onload = automatic ;
          var stars = setInterval(automatic,3000) ;
          function automatic(){
             if(showId < 5){
