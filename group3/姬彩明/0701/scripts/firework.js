@@ -28,6 +28,7 @@ Firework.prototype.createFirework = function () {
 }
 Firework.prototype.fireworkMove = function (fire, offsetY, callback) {
     move(fire, {
+        
         top: offsetY
     }, function () {
         fire.remove()
