@@ -38,6 +38,9 @@ function Banner(selector,options){
     // 初始化
     this.init();
 }
+
+//初始化功能，集中处理耦合关系，调用各功能方法
+// 1.调用  2.事件
 Banner.prototype.init = function(){
 
     // 先布局
@@ -168,7 +171,7 @@ Banner.prototype.layoutAnimate = function(){
 
 
 Banner.prototype.fade = function(){
-    // console.log("animate");
+    
     for(var i = 0,slide; slide=this.sliders[i++];){
     
         slide.style.opacity= 0;
@@ -177,23 +180,12 @@ Banner.prototype.fade = function(){
     this.sliders[this.nowIndex].style.opacity = 1;
 
 
-    // for(var i = 0; i<this.sliders.length;i++){
-    //     console.log(i);
-    //     this.sliders[i].style.display = "none";
-    // }
-    // this.sliders[this.nowIndex].style.display = "block";
+  
     
 }
 
 Banner.prototype.animate = function(){
-    // console.log("animate");
-    for(var i = 0,slide; slide=this.sliders[i++];){
-    
-        slide.style.opacity= 0;
-        slide.style.transition= 'all 1s';       
-    }
-    this.sliders[this.nowIndex].style.opacity = 1;
-
+  
 
     // for(var i = 0; i<this.sliders.length;i++){
     //     console.log(i);
@@ -230,6 +222,8 @@ Banner.prototype.nextIndex = function(){
 }
 
 Banner.prototype.slide = function(){
+
+
     console.log("“slide”");
     console.log(this.nowIndex,this.state);
     switch(this.state){
