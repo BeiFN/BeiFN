@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public.css">
+    <style>
+        #hero {
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            position: absolute;
+            top: 700px;
+            border-radius: 20%
+        }
+
+        .monster {
+            width: 10px;
+            height: 10px;
+            background: red;
+            position: absolute;
+            border-radius: 10px;
+            top: 0;
+            left: 0;
+        }
+
+        .obstacleY {
+            height: 700px;
+            width: 10px;
+            margin-right: 493px;
+            background: #000;
+            position: relative;
+            float: left;
+            top: 0;
+        }
+
+        .obstacleX {
+            height: 10px;
+            width: 278px;
+            position: absolute;
+            top: 0;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hero"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="monster"></div>
+    <div class="obstacleY"></div>
+    <div class="obstacleY" style="top : 50px;"></div>
+    <div class="obstacleY"></div>
+    <div class="obstacleY" style="margin-right: 0; top : 50px;"></div>
+    <div class="obstacleX" style="top : 550px;"></div>
+    <div class="obstacleX" style="top : 350px; left : 235px;"></div>
+    <div class="obstacleX" style="top : 100px; width : 400px;"></div>
+    <script>
+        var hreo = $("#hero");
+        var monsters = $(".monster");
+        var speedY = 5;
+        var speedX = 0;
+        var g_timer = null;
+        var monstersPosition = []
+
+
+        //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+        function delegation(evt) {
+            var e = evt || window.event;
+            var keyCode = e.keyCode || e.which;
+            switch (keyCode) {
+                case 65: moveLeft(0, hero); break;
+                case 68: moveLeft(1, hero); break;
+            }
+        }
+
+        function moveLeft(bool, ele) {
+            if (bool) {
+                speedX < 6 ? speedX += 0.83 : ""
+            } else {
+                speedX > -6 ? speedX -= 0.83 : ""
+            }
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                ele.style.left = ele.offsetLeft + Math.floor(speedX) + "px";
+            }, 25)
+        }
+
+
+        function $(selector) {
+            var ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
+        }
+
+        function pass1() {
+            clearInterval(g_timer)
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+                fistPass();
+            }, 50)
+        }
+
+        function fail() {
+            (confirm("you lose!")) ? location.reload() : window.close();
+        }
+
+        function fistPass() {
+            if (hero.offsetTop > 55 - speedY && hero.offsetTop <= 100 + speedY) {
+                if (hero.offsetLeft <= 350) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetTop >= 300 - speedY && hero.offsetTop <= 350 + speedY) {
+                if (hero.offsetLeft >= 235) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetTop >= 500 - speedY && hero.offsetTop <= 550 + speedY) {
+                if (hero.offsetLeft <= 278) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetLeft >= 453 || hero.offsetLeft < 0) {
+                clearInterval(g_timer)
+                setTimeout(function () {
+                    fail();
+                }, 0)
+            }
+            if (hero.offsetTop <= 5) {
+                clearInterval(g_timer);
+                speedX = 0;
+                document.removeEventListener("click", pass1);
+                document.addEventListener("click", pass2);
+                alert("c");
+                pass2init();
+            }
+        }
+        function pass2init() {
+            speedY = -speedY;
+            hero.style.top = 0;
+            hero.style.left = 503 + "px" ;
+            for (var i = 0, ele; ele = monsters[i++];) {
+                x = Math.round(503 + Math.random() * 493);
+                ele.style.left = x + "px";
+                y = Math.round(50 + Math.random() * 650);
+                ele.style.top = y + "px";
+                monstersPosition.push({
+                    X: x,
+                    Y: y
+                })
+            }
+        }
+
+        function pass2() {
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+                for (var i = 0, ele; ele = monstersPosition[i++];) {
+                    if (((ele.Y <= hero.offsetTop + 50 && ele.Y >= hero.offsetTop) ^ (ele.X <= hero.offsetLeft + 50 && ele.X >= hero.offsetLeft) === 0)) {
+                        clearInterval(g_timer)
+                        setTimeout(function () {
+                            fail();
+                        }, 0)
+                    }
+                }
+            }, 50)
+
+            if (hero.offsetTop >= 700) {
+                clearInterval(g_timer);
+                speedX = 0;
+                document.removeEventListener("click", pass2);
+                // document.addEventListener("click", pass3);
+                alert("c");
+                // pass3init();
+            }
+        }
+
+
+
+
+
+
+
+        // function pass3init() {
+        //     // alert("c")
+        //     hero.style.top = 0;
+        //     for (var i = 0, ele; ele = monsters[i++];) {
+        //         x = Math.round(1006 + Math.random() * 493);
+        //         ele.style.left = x + "px";
+        //         y = Math.round(50 + Math.random() * 650);
+        //         ele.style.top  = y + "px";
+        //         monstersPosition.push({
+        //             X : x,
+        //             Y : y
+        //         })
+        //     }
+        //     monstersMove(x,y);

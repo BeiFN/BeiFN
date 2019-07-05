@@ -41,7 +41,7 @@
     switch(this.options.effect){    
         case "slide":
         this.main.className +=" container-slide";
-        this.wrapper.appendChlid(this.sliders[0].cloneNode(true))
+        this.wrapper.appendChild(this.sliders[0].cloneNode(true))
         this.wrapper.style.width = this.main.offsetWidth * (this.sliders.length+1)+"px"
         
         break;
@@ -86,4 +86,8 @@ Banner.prototype.fade = function()
 
     }
    this.sliders[this.nowIndex].style.opacity =1;
+}
+Banner.prototype.slide = function()
+{
+ this.wrapper.style.left= -this.nowIndex * this.main .offsetWidth + "px"
 }
