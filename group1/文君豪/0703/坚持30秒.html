@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: radial-gradient(#fff,#000);
+                  position: absolute;
+                  
+            }
+		.square{
+			width:20px;
+			height:20px;
+			border: 1px double pink;
+			background: pink;
+			position: absolute;
+			left: 10px;
+			top: 10px;
+			}
+      </style>
+</head>
+<body>
+      <div class="square">
+
+      </div>
+      <script>
+            // 1. 鼠标按下;鼠标抬起;
+            // 2. 创建粒子小球。 鼠标抬起终止创建.
+            // 3. 小球运动;
+            function Particle(ele){
+                  this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);
+                  this.ele_move = document.querySelector(".square")
+                  document.addEventListener("keydown",this.handlerEleMove.bind(this))
+                 // document.addEventListener("keyup",this.stopeleMove.bind(this))
+                  this.timer = null;
+                  this.speed = 25;
+                  this.init();
+            }
+            Particle.prototype.eleMove = function (direct)
+                {
+                    if(direct == 65)
+                    { 
+                    this.ele_move.style.left = this.ele_move.offsetLeft-this.speed+"px";       
+                    }
+                    if(direct == 68)
+                    { 
+                      
+                            this.ele_move.style.left = this.ele_move.offsetLeft+this.speed+"px";  
+                      
+                    }
+                    if(direct == 87)
+                    { 
+                       
+                            this.ele_move.style.top = this.ele_move.offsetTop-this.speed+"px";  
+                      
+                    }
+                    if(direct == 83)
+                    { 
+                   
+                            this.ele_move.style.top = this.ele_move.offsetTop+this.speed+"px";  
+            
+                    }
+
+                }
+            // Particle.prototype.stopeleMove = function ()
+            // {
+            //     clearInterval(this.timer)
+            // }
+            Particle.prototype.handlerEleMove = function(evt)
+            {
+                var e = evt || event ; 
+                //console.log(e.keyCode)
+               
+                this.eleMove(e.keyCode)
+
+            }
+            Particle.prototype.init = function(){
+                  this.timer   = null;// 小球运动定时器;
+                  this.cWidth  = document.documentElement.clientWidth;
+                  this.cHeight = document.documentElement.clientHeight;
+                  // 绑定事件;
+                  this.main_ele.addEventListener("mousedown" , this.handlerMousedown.bind(this));
+                  this.main_ele.addEventListener("mouseup" , this.stopCreateBall.bind(this));
+                  this.main_ele.addEventListener("mousemove" , this.changeOffset.bind(this));
+            }
+
+            Particle.prototype.changeOffset = function(evt){
+                  var e = evt || window.event;
+
+                  this.offsetX = e.clientX ; 
+                  this.offsetY = e.clientY;
+            }
+            // 创建好多的小球; 
+            // => 定时器;
+            Particle.prototype.handlerMousedown = function(evt){
+                  var e = evt || window.event;
+                  this.offsetX = e.offsetX;
+                  this.offsetY = e.offsetY;
+                  this.timer = setInterval( function(){
+                        var ball = this.createBall();
+
+                        setTimeout(function(){
+                              this.ballMove(ball,e.offsetY);
+                        }.bind(this),100);
+                        
+                  }.bind(this),100)
+            }
+            Particle.prototype.createBall = function(){
+                  // console.log("创造小球")
+                  var ele = document.createElement("div");
+                  ele.className = "ball";
+
+                  ele.style.left = this.offsetX + "px";
+                  ele.style.top  = this.offsetY + "px";
+                  ele.style.transition  = "all 1s";
+
+                  document.body.appendChild(ele);
+                  // console.log(ele);
+                  return ele;
+            }
+            Particle.prototype.ballMove = function(ball,minTop){
+
+                  var randomL = Math.round(Math.random() * this.cWidth);
+                  var randomT = minTop + Math.round(Math.random() * (this.cHeight - minTop));
+
+                  ball.style.left = randomL + "px";
+                  ball.style.top  = randomT + "px";
+                  ball.style.opacity  = 0.1;
+
+                  setTimeout(function(){
+                        ball.remove();
+                  },1000)
+            }
+            Particle.prototype.stopCreateBall = function(){
+                  clearInterval(this.timer);
+                  // console.log("结束创造")
+            }     
+
+            new Particle(document);
+
+      </script>
+</body>
+</html>
