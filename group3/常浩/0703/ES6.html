@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let 和 const 是具有块级作用域的 也就是大括号作用域 只能在其内部被访问到 ；
+        // {
+        //     let a = 10 ;
+        //     var b = 20 ;
+        //     const c = 30;
+        //     c = 40;   // 是会报错的  const声明的变量是不可以再次赋值的   声明的就是一个常量  不可以被改变的
+        // }
+        // console.log(a) // 是会报错的
+        // console.log(b) // 20
+        // console.log(c) // 也是会报错的
+
+
+        // for 循环之中的let
+
+        
+
+
+        // var a = [];
+        // for (let i = 0 ; i < 10 ; i++){
+        //     a[ i ] = function (){
+        //         console.log(i);  // 此时打印的结果是6   不是10  因为for循环之后的let声明的i  只对本次循环有作用  javascript引擎是会记录每次循环的i值 不会说一直都是0开始的；
+        //     }
+        // }
+        // a[6](); 
+
+        // var a = [];
+        // for (var  i = 0 ; i < 10 ; i++){
+        //     a[ i ] = function (){
+        //         console.log(i);  //此时打印的是10 ，我们调用的时候for循环已经是执行完毕的了 var声明的i全局是只有一个的 所以这里的i是指向全局中的i所以是10；
+        //     }
+        // }
+        // a[6](); 
+
+
+        
+        //暂时性死区，在let、const 块级作用域中，只有在赋值之后才是可以使用的，在赋值之前使用的话是会报错的  也就是说不存在声明提升
+        // console.log(a);  //undefined
+        // console.log(b);  //是会报错的，Uncaught ReferenceError 引用错误，
+        // var a = 10 ;
+        // let b = 20 ;
+
+        // 不允许重复声明同一个变量（不能再同一作用域内）
+        // var a = 10 ;
+        // var a = 20 ;
+        // console.log(a);  //a 是会被下面的声明操作给覆盖掉的  a 是20 ；
+        // let b = 10 ;
+        // let b = 20 ;   // 是会报错的 
+        
+        // //不能在函数内部重新的去声明参数 
+        // function func(arg) {
+        //     let arg;
+        // }
+        // func() // 报错
+
+        // function func(arg) {
+        //     {
+        //         let arg;  //此时的arg 是在另个块级作用域里面声明的   是不会报错的
+        //     }  
+        // }
+        // func() // 不报错
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(#fff,#000);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="ball">
+        
+    </div> -->
+    <script>
+        //鼠标按下，鼠标抬起
+        //创建小球，鼠标抬起终止创建
+        //小球运动
+        function Particle(ele){
+            this.main_ele = ele.nodeType === 9 ? ele : document.querySelector(ele);    
+            this.init();
+        }
+        Particle.prototype.init = function(){
+            this.timer = null;
+
+            this.main_ele.addEventListener("mousedown",this.handlerMouseDown.bind(this));
+            this.main_ele.addEventListener("mouseup",this.stopCreateBall.bind(this));
+            this.main_ele.addEventListener("mousemove",this.changeOffset.bind(this));
+        }
+        //这里需要bind吗？
+        Particle.prototype.changeOffset = function(evt){
+            var e = evt || window.event;
+            this.offsetX = e.offsetX;
+            this.offsetY = e.offsetY;
+        }
+        Particle.prototype.handlerMouseDown = function(evt){
+            this.timer = setInterval(function(){
+                var ball = this.createBall();
+                setTimeout(function(){
+                    this.ballMove(ball);
+                }.bind(this),1000);
+            }.bind(this),100);
+        }
+        Particle.prototype.createBall = function(){
+            var ele = document.createElement("div");
+            ele.className = "ball";
+            ele.style.left = this.offsetX + "px";
+            ele.style.top = this.offsetY + "px";
+            ele.style.transition = "all 1s";
+            document.body.appendChild(ele);
+            return ele;
+        }
+        Particle.prototype.ballMove = function(ball){
+            var randomL = Math.round(Math.random()*800);
+            var randomT = Math.round(Math.random()*800);
+            ball.style.left = randomL +"px";
+            ball.style.top = randomT + "px";
+            ball.style.opacity = 0.1;
+            setTimeout(function(){
+                ball.remove();
+            },1000);
+        }
+        Particle.prototype.stopCreateBall = function(){
+            clearInterval(this.timer);   
+        }
+        new Particle(document);
+
+    </script>
+</body>
+</html>
