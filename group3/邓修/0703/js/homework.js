@@ -163,6 +163,6 @@ function delegation(handlerClick, selector) {
 }
 
 function removeClassName(dom, className) {
-    return dom.className = dom.className.replace(new RegExp("\S?" + className), "");
+    return dom.className = dom.className.replace(new RegExp("\\s\?" + className), "");
 }
 new Magnifier();
