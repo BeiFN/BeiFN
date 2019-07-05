@@ -22,6 +22,8 @@ Banner.prototype.init = function () {
     this.main.addEventListener("click", this[this.options.effect].bind(this));
     this.pagination_ele === null ? "" : this.main.addEventListener("click", this.changePagination.bind(this));
     this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click", this.handlerPaginationClick.bind(this));
+    this.autoPlay.bind(this);
+    this.autoPlay();
 }
 Banner.prototype.layoutAnimate = function () {
     switch (this.options.effect) {
@@ -156,6 +158,16 @@ Banner.prototype.handlerPaginationClick = function (evt) {
             }
         }
     }
+}
+Banner.prototype.autoPlay=function(){
+    var e=new Event("click",{
+        bubbles:true,
+        cancelabel:true
+    });
+    // console.log(1);
+    setInterval(function(){
+        this.btn_next.dispatchEvent(e);
+    }.bind(this),3000);
 }
 function removeClassName(dom, className) {
     return dom.className = dom.className.replace(new RegExp("\S?" + className), "");
