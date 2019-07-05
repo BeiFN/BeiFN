@@ -14,7 +14,7 @@
             background: yellowgreen;
             position: absolute;
             top: 700px;
-
+            border-radius: 20%
         }
 
         .monster {
@@ -25,6 +25,24 @@
             border-radius: 10px;
             top: 0;
             left: 0;
+        }
+
+        .obstacleY {
+            height: 700px;
+            width: 10px;
+            margin-right: 493px;
+            background: #000;
+            position: relative;
+            float: left;
+            top: 0;
+        }
+
+        .obstacleX {
+            height: 10px;
+            width: 278px;
+            position: absolute;
+            top: 0;
+            background: #000;
         }
     </style>
 </head>
@@ -46,57 +64,233 @@
     <div class="monster"></div>
     <div class="monster"></div>
     <div class="monster"></div>
+    <div class="obstacleY"></div>
+    <div class="obstacleY" style="top : 50px;"></div>
+    <div class="obstacleY"></div>
+    <div class="obstacleY" style="margin-right: 0; top : 50px;"></div>
+    <div class="obstacleX" style="top : 550px;"></div>
+    <div class="obstacleX" style="top : 350px; left : 235px;"></div>
+    <div class="obstacleX" style="top : 100px; width : 400px;"></div>
     <script>
         var hreo = $("#hero");
         var monsters = $(".monster");
         var speedY = 5;
         var speedX = 0;
         var g_timer = null;
+        var r_timer = null;
+        var monstersPosition = []
 
 
         //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
+
+
+
+
+
+
+
+
+        //第一关初始化
+        function pass1() {
+            clearInterval(g_timer)
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+                fistPass();
+            }, 50)
+        }
+
+
+        //第一关
+        function fistPass() {
+            if (hero.offsetTop > 55 - speedY && hero.offsetTop <= 100 + speedY) {
+                if (hero.offsetLeft <= 340) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetTop >= 300 - speedY && hero.offsetTop <= 350 + speedY) {
+                if (hero.offsetLeft >= 235) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetTop >= 500 - speedY && hero.offsetTop <= 550 + speedY) {
+                if (hero.offsetLeft <= 278) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+            if (hero.offsetLeft >= 453 || hero.offsetLeft < 0) {
+                clearInterval(g_timer)
+                setTimeout(function () {
+                    fail();
+                }, 0)
+            }
+            if (hero.offsetTop <= 5) {
+                clearInterval(g_timer);
+                speedX = 0;
+                document.removeEventListener("click", pass1);
+                alert("congratulations!");
+                pass2init();
+            }
+        }
+
+
+
+
+        //第二关初始化
+        function pass2init() {
+            speedY = -speedY;
+            hero.style.top = 0;
+            hero.style.left = 503 + "px";
+            for (var i = 0, ele; ele = monsters[i++];) {
+                x = Math.round(503 + Math.random() * 493);
+                ele.style.left = x + "px";
+                y = Math.round(50 + Math.random() * 650);
+                ele.style.top = y + "px";
+                monstersPosition.push({
+                    X: x,
+                    Y: y
+                })
+            }
+            document.addEventListener("click", pass2);
+        }
+        //第二关
+        function pass2() {
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+                check();
+                if(hero.offset.left <= 503 || hero.offset >= 946 ){
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+                if (hero.offsetTop >= 700) {
+                    clearInterval(g_timer);
+                    speedX = 0;
+                    document.removeEventListener("click", pass2);
+                    alert("congratulations!");
+                    monstersPosition.length = 0;
+                    pass3init();
+                }
+            }, 50)
+        }
+
+
+
+
+
+
+        //第三关初始化
+        function pass3init() {
+            speedY = -speedY;
+            document.addEventListener("click", pass3);
+            hero.style.left = 1006 + "px";
+            hero.style.top = 700 + "px";
+            for (var i = 0, ele; ele = monsters[i++];) {
+                x = Math.round(1006 + Math.random() * 493);
+                ele.style.left = x + "px";
+                y = Math.round(50 + Math.random() * 650);
+                ele.style.top = y + "px";
+                monstersPosition.push({
+                    X: x,
+                    Y: y
+                })
+            }
+            monstersMove(x, y);
+        }
+        //怪物移动
+        function monstersMove(x, y) {
+            for (let i = 0, ele; ele = monsters[i]; i++) {
+                r_timer = 1234 + Math.round(Math.random() * 3456);
+                ele.timer = setInterval(function () {
+                    ele.style.transition = "all,1s";
+                    var upX = Math.round(Math.random() * 20);
+                    monstersPosition[i].X += (upX % 2 === 0) ? upX : -upX;
+                    var upY = Math.round(Math.random() * 20);
+                    monstersPosition[i].Y += (upY % 2 === 0) ? upY : -upY;
+                    ele.style.left = monstersPosition[i].X + "px";
+                    ele.style.top = monstersPosition[i].Y + "px";
+                }, r_timer)
+            }
+        }
+        //第三关
+        function pass3() {
+            clearInterval(g_timer)
+            g_timer = setInterval(function () {
+                hero.style.top = hero.offsetTop - speedY + "px";
+                check();
+                if(hero.offset.left <= 1006 || hero.offset >= 1449 ){
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+                if(hero.offsetTop <= 5) {
+                    clearInterval(g_timer);
+                    alert("通关！")
+                }
+            }, 50)
+        }
+
+        //移动判断
         function delegation(evt) {
             var e = evt || window.event;
             var keyCode = e.keyCode || e.which;
             switch (keyCode) {
                 case 65: moveLeft(0, hero); break;
                 case 68: moveLeft(1, hero); break;
-                // case 87: moveTop(200, this); break;
-                // case 83: ; break;
             }
         }
 
+
+        //移动控制
         function moveLeft(bool, ele) {
-            // if(speedY === 1)return;
-            if(bool){
-                speedX < 6 ? speedX += 0.5 : ""
-            }else{
-                speedX > -6 ? speedX -= 0.5 : ""
+            if (bool) {
+                speedX < 6 ? speedX += 0.83 : ""
+            } else {
+                speedX > -6 ? speedX -= 0.83 : ""
             }
             clearInterval(ele.timer);
-            ele.timer = setInterval(function(){
-            ele.style.left = ele.offsetLeft + Math.floor(speedX) + "px";
-            },25)
+            ele.timer = setInterval(function () {
+                ele.style.left = ele.offsetLeft + Math.floor(speedX) + "px";
+            }, 25)
         }
 
 
+        //碰触检查
+        function check() {
+            for (var a = 0, mon; mon = monstersPosition[a++];) {
+                if ((mon.Y <= hero.offsetTop + 40 && mon.Y >= hero.offsetTop) && (mon.X <= hero.offsetLeft + 40 && mon.X >= hero.offsetLeft - 10)) {
+                    clearInterval(g_timer)
+                    setTimeout(function () {
+                        fail();
+                    }, 0)
+                }
+            }
+        }
+        //失败
+        function fail() {
+            (confirm("you lose!")) ? location.reload() : window.close();
+        }
+
+
+        
         function $(selector) {
             var ele = null;
             return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
         }
-
-        function gameStart(evt) {
-            clearInterval(g_timer)
-            g_timer = setInterval(function () {
-                hero.style.top = hero.offsetTop - speedY + "px";
-            }, 50)
-        }
-
-
         document.addEventListener("keydown", delegation)
-        document.addEventListener("click", gameStart)
+        document.addEventListener("click", pass1)
     </script>
 </body>
 

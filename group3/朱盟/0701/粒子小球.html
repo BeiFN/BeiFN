@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../public/css/normal.css">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        position: relative;
+    }
+
+    .ball {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        /* background: radial-gradient(#ddd, #33e); */
+        position: absolute;
+    }
+</style>
+
+<body>
+
+    <script src="../../public/js/normal.1.js"></script>
+    <script>
+        function Particle(selector) {
+            this.place = $(selector);
+            this.isStart = false;
+            this.ini();
+        }
+        Particle.prototype.ini = function () {
+            this.timer = null; // 小球运动定时器
+            // this.offsetX = null;
+            // this.offsetY = null;
+            this.cWidth = document.documentElement.clientWidth;
+            this.cHeight = document.documentElement.clientHeight;
+            //事件绑定
+            this.place.addEventListener("mousedown", this.ballHandler.bind(this));
+            this.place.addEventListener("mousemove", this.changeOffset.bind(this));
+            this.place.addEventListener("mouseup", this.ballStoperHandler.bind(this));
+        }
+        Particle.prototype.ballHandler = function (ev) {
+            // clearInterval(this.timer);
+            this.isStart ? (this.isStart = false) : (this.isStart = true);
+            if (!this.isStart) {
+                clearInterval(this.timer);
+            }
+            var e = ev || window.event;
+            this.offsetX = e.offsetX - 3;
+            this.offsetY = e.offsetY - 3;
+            // console.log(this.offsetX, this.offsetY); 
+            this.timer = setInterval(function (x, y) {
+                var e_ball = this.ballCreaterHandler();
+
+                setTimeout(function (e_ball) {
+                    this.ballMoveHandler(e_ball);
+                }.bind(this, e_ball), 100);
+
+            }.bind(this), 30);
+
+        }
+
+
+        Particle.prototype.ballCreaterHandler = function () {
+            // console.log(this.offsetX, this.offsetY);
+            var e_ball = createElement({
+                tagName: "div",
+                class: "ball",
+                style: "left:" + this.offsetX + "px; top:" + this.offsetY +
+                    "px; transition: all 3s" + ";background:radial-gradient(" +
+                    randomRgb() + "," + randomRgb() + ")"
+            });
+            // if()
+            this.place.appendChild(e_ball);
+            return e_ball;
+        }
+
+        Particle.prototype.ballMoveHandler = function (e) {
+
+            var x = Math.round(randomNumber(0, this.cWidth));
+            var y = Math.round(randomNumber(this.offsetY, this.offsetY + (this.cHeight - this.offsetY)));
+            // console.log(x, y)
+            e.style.left = x + "px";
+            e.style.top = y + "px";
+
+            e.style.opacity = 0.2;
+            setTimeout(function () {
+                e.remove();
+            }, 1000)
+        }
+
+        Particle.prototype.changeOffset = function (ev) {
+            if (this.isStart) {
+                var e = ev || window.event;
+                var captureE = e.target || e.srcElement;
+                if (captureE.className.indexOf("ball") === -1) {
+                    this.offsetX = e.offsetX - 3;
+                    this.offsetY = e.offsetY - 3;
+                    // console.log("C", this.offsetX, this.offsetY);
+                }
+
+            } else {
+                clearInterval(this.timer);
+            }
+
+        }
+        Particle.prototype.ballStoperHandler = function () {
+            // this.isStart = false;
+            // clearInterval(this.timer);
+        }
+
+        new Particle("body");
+    </script>
+
+
+
+</body>
+
+</html>
