@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            //啊 shit 上课的时候就不太适应这个狗东西箭头
+            //既然躲不掉 那就来吧
+            
+            //先来个正常函数
+
+            // function fn(a , b){
+            //       return a + b;
+            // }
+            // //不用想 3
+            // console.log(fn(1,2));
+            
+            // //开始变形
+            // let gn = ( a , b)=> a+b; 
+            //4 但是就很不习惯
+            // console.log(fn(2,2))
+            //------------------------------------分分割线----键头函数咋用--------
+            //呐 没法了 看看它怎么个用法
+            //let 变量名 = (参数1，参数2，..) => {执行代码}
+            //其实 我想说 为啥 这个等于号老子这么容易忘掉
+
+            //如果参数只有一个的话可以省略小括号
+            //如果执行代码只有一句的话 也可以省略大括号
+            //美滋滋啊 可以偷懒了 （想办法少写点代码）
+
+            //-------------------------------分分分割线-----箭头函数的改动----------------
+            //说了这么多 也该看看它跟普通函数有啥区别了
+            //one return关键字
+
+            // let foo = (a,b) => {
+            //       return a+b;
+            // }
+            // //嗯 意料之中，它还在
+            // console.log(foo(1,2))
+
+            //two arguments
+            //先试试吧 看看老伙计还能用吗
+            // let foo = (a,b,c) =>{
+            //       console.log(a,b,c);
+            //       // console.log(arguments);
+            // }
+            // //1,2,3 日疼咯 arguments 再见老伙计 
+            //唉 箭头函数没法玩不确定参数了
+            // foo(1,2,3,4);
+            
+            //three this指向
+            //再看看this有啥子变化没
+            // let foo = (a,b) =>{
+            //       console.log(this);
+            // }
+            // //嗯..指向window 可以的
+            // foo(1,2);
+
+            //妖孽，看老夫怎么收你
+            // let foo = (a,b) =>{
+            //       console.log(this);
+            // }.bind(this);
+            //卧槽？ bind还报错呢
+            // foo(1,2);
+
+            // var foo = function(a,b){
+            //       console.log(this)
+            // }.bind(this);
+            // //指向window 因为它调用的
+            // foo(1,2)
+
+            //我就不信了
+            // var obj = {
+            //       fn : function(){
+            //             console.log(this);
+            //       },
+            //       gn : ()=>{
+            //             console.log(this);
+            //       }
+            // }
+            // //嗯。。fn指向了obj
+            // obj.fn();
+            // //但 gn指向了window 我讨逆猴子的
+            // obj.gn();
+
+           //原因何在
+            // var obj = {};
+            // //这啥玩意 相当于是在window环境下赋的值 故此指向window
+            // obj.gn = () => {
+            //       console.log(this);
+            // };
+            // //果然是window
+            // obj.gn();
+
+            //既然这样 实践一波
+            
+            // function Foo (){
+            //       this.obj = {};
+            //       this.obj.gn = () =>{
+            //             console.log(this);
+            //       }
+            // }
+            // //hiahiahia.... 果然指向实例对象 莫滋滋
+            // new Foo().obj.gn();
+
+            //终于第four个了 函数箭头到底能不能实例
+            // let Foo = ()=>{
+            //       console.log(this);
+            // }
+            // //呃啊 居然不能实例化箭头函数
+            // new Foo();
+            //-------------------------------------分分分割线-----------小结-----
+            //目前的箭头函数只能作为函数的封装和复用的代码包裹使用了
+            //箭头函数的莫得构造函数,所以出现了class
+            //箭头函数的this再也不会改变了,就算是bind apply call 不能改变this
+            //箭头函数不适合运用在原型函数中,因为它this指向了window
+            //箭头函数一般用于纯粹的封装功能.比如随机数,随机颜色等
+
+            // var obj = {
+            //       foo : ()=>{
+            //             console.log(this);
+            //       }
+            // }
+            // var _this = this;
+            // var obj = {foo : _this};
+            // //拆解
+            // obj = {};
+            // obj.foo = this;
+            // obj.foo();
+            
+            //在window环境下被复制
+            // document.onclick = () =>{
+            //       //依旧是window
+            //       console.log(this);
+            // }
+
+            // (()=>{
+            //       console.log(this);
+            // })();
+            
+            // function Foo(){
+            //       this.a = "你妈卖批";
+            // }
+            // Foo.prototype.sayA = ()=>{
+            //       //唉 this指向了window
+            //       console.log(this.a);
+            //       console.log(this);
+            // }
+            // new Foo().sayA();
+
+            //---------------------呃--啊-------箭头=>函数完了---------map---
+            var arr = [1,2,3,4,5,6,7,8,9,0];
+            // var newArray = arr.map(function(item){
+            //       return item*1.3;
+            // })
+
+            //不得不说这玩意挺优雅 符合我的品味
+            // var newArray = arr.map(item => item*1.3 );
+            // console.log(newArray);
+
+            //再来一个试试
+            // var res = arr.some(item => item > 5);
+            // console.log(res);
+            
+            // var res = arr.every(item => item > 5);
+            // console.log(res);
+      </script>
+</body>
+</html>
