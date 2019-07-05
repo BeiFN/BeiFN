@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+</head>
+<body>
+    <script>
+        // ES6 对js进步最大的一版更新
+        // es5扩展式更新
+
+        // es6 疑难解决方案 异步解决方案
+        // Promise
+        // async await    
+
+        // es6 语法糖，语法更加清爽 更共有bigger
+
+        // es6 全面更新
+        // 兼容性有一定问题
+        // es6，es6转es5  babel工具   nodejs + babel
+
+        // babel
+
+        // 变量声明
+        // var 
+        // function
+        // let   声明变量
+
+        // let 声明的变量有块级作用域的作用，不允许声明提升
+        // 块级作用域   大括号作用域，只在大括号有效
+        // 函数作用域：只在函数大括号中存在
+        // // const 声明常量
+        // if(true){
+        //     var a = 10;
+        //     let b = 10;
+        //     console.log(a,b);
+        // }
+        // console.log(a,b);
+
+        // // 作用域的创造更加自然，不用再像之前一样要匿名函数，减少匿名函数使用
+        // console.log(c);//TDZ 暂时性死区，变量声明时，变量声明之前所有空间，不允许使用这个变量。在局部作用域中同样存在暂时性死区，访问机制和js一致
+        // let c = 10;
+        
+        // let d = 10;
+        // let e = 20;//语法错误，在同一作用域中，不允许重复声明
+
+        // // 常量 const ,定义之后不可赋值
+        // const  aa = 10;
+
+        // ES6解构赋值
+        // let [a,b,c,d] = [1,2,];
+        // console.log(a,b,c,d);
+// ...剩余运算符
+//         let [a,b,c,...d] = [1,2,4,5,6,7,8,9];
+//         console.log(a,b,c,d);
+
+//         // 对象赋值
+//         let obj = {a:10};
+//         let {a} = obj;//var a = obj.a;
+//         console.log(a);
+// // 前面大括号里面放变量名，取后面对象中对应key值的数据赋值，
+
+// // 改名机制  {原有属性: 新名字} = obj;
+
+
+// // 默认参数  
+// function Banner(options){
+//     options = Object.assign({a:10,b:20},options);
+//     console.log(options);
+// }
+// new Banner({a:30,b:40});
+// let {c = 10, d=20} = {c:30,d:40};
+
+// function Banner(options){
+//     options = Object.assign({a:10,b:20},options);
+//     console.log(options);
+// }
+
+// 对象解构赋值,对象结构必须左右都是大括号，
+// let {} = {};
+// 基本使用  变量声明，属性赋值
+// let {a,b} = {a:1,b:2};
+// 声明了变量a和b，并且给变量赋值为对象.a  对象.b
+
+// 变量别名 给c变量赋值 对象.a 的属性值，声明了c和b变量
+// let {a:c,b} = {a:1,b:2};
+
+// 默认参数,声明了a=10，b=20，右侧内容为空，不赋值
+// let {a=10,b=10} = {};
+// console.log(a,b);
+
+// let {a=10,b=10} = {b:30};
+// console.log(a,b);
+
+// function Foo( { effect , pagination } ){
+//       console.log(effect,pagination);
+// }
+// Foo({
+//       effect : "fade",
+//       pagination : ".pagination"
+// })
+        // function Foo( { effect = "fade" , pagination = ".pagination" } = {}){
+        //     console.log(effect,pagination);
+        // }
+        // Foo(
+        //     // {effect : "slide"}
+        // );
+
+
+        var a =[];
+        for(var i = 0; i<10;i++){
+            a[i] = function(){
+                console.log(i);
+            };
+        }
+        a[2]();
+        console.log(a);
+       console.log(a[2]) ;
+        var a =[];
+        for(let i = 0; i<10;i++){
+            a[i] = function(){
+                console.log(i);
+            };
+        }
+        a[2]();
+        console.log(a)
+        console.log(a[2]) ;
+    </script>
+</body>
+</html>

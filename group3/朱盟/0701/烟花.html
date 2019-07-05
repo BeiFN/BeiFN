@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../public/css/normal.css">
+    <title>烟花</title>
+</head>
+<style>
+    body,
+    html {
+        background: #000;
+        width: 100%;
+        height: 100%;
+    }
+
+    #body {
+        position: relative;
+    }
+
+    .firework {
+        width: 2px;
+        height: 8px;
+        border-radius: 6px;
+        position: absolute;
+    }
+
+    .firboom {
+        /* transform: rotate(60deg); */
+        width: 16px;
+        height: 1px;
+        /* border: 1px solid #fff; */
+        border-radius: 10px;
+        position: absolute;
+    }
+</style>
+
+<body>
+    <div id="body" style="width: 100%;height: 100%;">
+    </div>
+    <script src="../../public/js/normal.1.js"></script>
+    <script src="../../public/js/move.js"></script>
+    <script>
+        function Firework(selector) {
+            this.place = $(selector);
+            if (this.place === null) {
+                console.error("您的选择器没有获取到元素，无法绑定烟花效果的显示元素，！");
+                return false;
+            }
+            // console.log(this.place);
+            this.ini();
+        }
+
+        Firework.prototype.ini = function () {
+            // console.log("初始化...");
+            this.place.addEventListener("click", this.fireworkHandler.bind(this));
+        }
+        // console.log(this.fireworkHandler);
+        // console.log("初始化...");
+        // console.log(firework);   // console.log(this); console.log(this);
+        Firework.prototype.fireworkHandler = function (ev) {
+            var e = ev || window.event;
+            var offsetX = e.offsetX;
+            var offsetY = e.offsetY;
+            var firework = this.fireworkCreater(offsetX, 0); //制作烟花,我要求你给我送到（优化性能 ，创建元素就位置在哪里）
+            this.fireworkMover(firework, offsetY, this.fireBoom.bind(this, offsetX, offsetY));
+        }
+        Firework.prototype.fireworkCreater = function (x, y, edg) { //制作者
+            var dir = "bottom: ";
+            var css = "firework";
+            var edge = edg;
+            // console.log(css);
+            arguments.length > 2 ? (dir = "top:") && (css = "firboom") && (edge = ";transform:rotate(" +
+                edge + "deg)") : edge = ";";
+            var fireWorkE = createElement({
+                tagName: "div",
+                class: css,
+                attr: {
+                    style: "left:" + x + "px;" + dir + y + "px;background:linear-gradient(to bottom," +
+                        randomRgb() + "," + randomRgb() + ")" + edge
+                }
+            });
+            // console.log("left:" + x + "px;" + dir + y + "px;background:linear-gradient(to right," +
+            //     randomRgb() + "," + randomRgb() + ")" + +edge);
+            this.place.appendChild(fireWorkE);
+            return fireWorkE;
+        }
+
+        Firework.prototype.fireworkMover = function (e, y, callback) {
+            move(e, "top", y, function () {
+                e.remove();
+                callback();
+            })
+        }
+
+        Firework.prototype.fireBoom = function (x, y) {
+            var edg = Math.PI / 180;
+            var boomCount = randomNumber(15, 20);
+            var range = randomNumber(131.4, 233);
+            var angleOff = Math.round(360 / boomCount);
+            var angle = 0;
+            var edge = 0;
+            for (var i = 0; i < boomCount; i++) {
+
+                var fireX = Math.round(Math.cos(angle) * range + x)
+                var firey = Math.round(Math.sin(angle) * range + y)
+                var boom_fire = this.fireworkCreater(x, y, edge);
+                // console.log(edge);
+                // boom_fire.style.transform = "rotate(" + edge + "deg)";
+                moves(boom_fire, {
+                    left: fireX,
+                    top: firey,
+                    opacity: 0
+                }, function (boom_fire) {
+                    boom_fire.remove();
+                }.bind(false, boom_fire));
+                angle += angleOff * edg;
+                edge += angleOff;
+            }
+
+
+        }
+
+
+
+        var firework = new Firework("#body");
+    </script>
+
+</body>
+
+</html>

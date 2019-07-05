@@ -1,9 +1,13 @@
 /**
  * @$$                   jQuery选择器           元素名 
  * 
+ * @on                   事件绑定               dom,evt,fn
+ * 
+ * @getAbsOffset         获取元素页面定位        dom
+ * 
  * @move                 缓冲运动框架            运动元素，属性对象 {属性：终点值}，*回调函数   *可选：属性对象 {属性：[终点值，速度 =6(倒数)]}                          
  * 
- * @delegate             事件委托               回调函数，条件
+ * @delegate             事件委托               回调函数，事件元素名
  * 
  * @usernameRule         账号验证               输入框，回调函数(bool，tip), *验证规则[{reg,bool,tip}] 京东
  * @passwordRule         密码验证               输入框，回调函数(bool，tip，密码强度1-3), *验证规则[{reg,bool,tip}]，*密码强度{streng:[],tip:[]}}
@@ -37,6 +41,22 @@ function $$(ele) {
     var res = document.querySelectorAll(ele);
     return res.length === 1 ? res[0] : res;
 }
+// 事件绑定
+function on(ele, event_type, event_callback) {
+    return ele.addEventListener(event_type, event_callback);
+}
+// 获取元素页面定位
+function getAbsOffset(dom) {
+    var res = {
+          "left":dom.offsetLeft,
+          "top" :dom.offsetTop
+    };
+    for (; (dom = dom.parentNode) !== document.body;) {
+          res.left += dom.offsetLeft;
+          res.top += dom.offsetTop;
+    }
+    return res
+}
 // 运动函数框架     运动元素，属性对象{属性：终点值}，回调函数
 function move(eleNode, data, callback = () => { }, ) {
     //运动函数数据初始化
@@ -48,7 +68,7 @@ function move(eleNode, data, callback = () => { }, ) {
             let endPoint = data[attr].length == 2 ? data[attr][0] : data[attr],
                 spd = data[attr].length == 2 ? data[attr][1] : undefined,
                 result = attrToendPoint(eleNode, attr, endPoint, spd);
-            if (result) {           // 当前属性执行完成后（参见39行）
+            if (result) {
                 delete data[attr];// 删除
             }
         }
@@ -70,19 +90,19 @@ function attrToendPoint(eleNode, attr, endPoint, spd = 6) {
     eleNode.style[attr] = attr === 'opacity' ? iNow / 100 : iNow + 'px';
     return iNow === endPoint;//到达终点返回true
 }
-//事件委托          功能函数，事件对象
+//事件委托          功能函数，事件对象名
 function delegate(callback, selector) {
     return function (evt) {
         var e = evt || window.event,
             target = e.target || e.srcElement,
             eleList = [].slice.call(document.querySelectorAll(selector)),
-            ele=null;
+            ele = null;
         while (target !== this) {
-            if(ele=eleList[eleList.indexOf(target)]){
-                callback.call(ele,e);
+            if (ele = eleList[eleList.indexOf(target)]) {
+                callback.call(ele, e);
                 break;
             }
-            target=target.parentNode;
+            target = target.parentNode;
         }
     }
 }
@@ -350,3 +370,65 @@ function renderLi(res, tip) {
     })
     tip.innerHTML = `<ul>${html}</ul>`;
 }
+
+
+
+
+// 生成缓冲运动对象
+// function buffer(ele, data, callback) {
+//     var attrs = {},
+//         time = 0;
+//     for (var attr in data) {
+//         var nowPoint = getComputedStyle(ele)[attr], // 当前位置
+//             endPoint = null,                        // 终点位置
+//             spd = null;                             // 速度
+//         attrs[attr] = [];                           // 属性运动值数组
+//         // 判断是否传入速度
+//         if (data[attr] instanceof Array) {
+//             endPoint = data[attr][0];
+//             spd = data[attr][1];
+//         } else {
+//             endPoint = data[attr];
+//             spd = 6;
+//         }
+//         // 判断是否为透明度参数处理
+//         if (attr === "opacity") {
+//             nowPoint *= 100;
+//             endPoint *= 100;
+//         } else {
+//             nowPoint = parseInt(nowPoint);
+//             endPoint = parseInt(endPoint);
+//         }
+//         // 计算数值插入数组
+//         for (var distance = 0; nowPoint !== endPoint;) {
+//             distance = (endPoint - nowPoint) / spd;
+//             distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance);
+//             nowPoint += distance;
+//             attrs[attr].push(attr === 'opacity' ? nowPoint / 100 : nowPoint + "px");
+//         }
+//         time = Math.max(time, attrs[attr].length);
+//     };
+//     return { "ele": ele, "attrs": attrs, "time": time, "callback": callback }
+// }
+// 运动函数
+// function move() {
+//     var time = 0,
+//         index = 0,
+//         arg = arguments[0] instanceof Array ? arguments[0] : arguments;
+//     timer = null;
+//     for (var i in arg) {
+//         time = Math.max(time, arg[i].time);
+//     }
+//     return timer = setInterval(() => {
+//         for (var i in arg) {
+//             for (var attr in arg[i].attrs) {
+//                 arg[i].ele.style[attr] = arg[i].attrs[attr][index];
+//             }
+//             if (arg[i].callback && index === arg[i].time) arg[i].callback();
+//         }
+//         console.log(index,time);
+//         if (index++ === time) {
+//             clearInterval(timer);
+//         }
+//     }, 50)
+// }

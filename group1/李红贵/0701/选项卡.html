@@ -119,7 +119,8 @@
             this.btns = document.getElementById(btnSe).children;
             this.conts = document.getElementById(contSe).children;
         }
-        // 原型初始化
+        // 原型添加初始化属性，实例调用初始化方法
+        // table1.init(); table1调用了init方法，所以init方法里面this指向实例table1
         Table.prototype.init = function(){
             // 从实例对象中获取目标元素添加绑定事件，并让this指向实例对象
             for(var i=0,btn; btn= this.btns[i];i++){
