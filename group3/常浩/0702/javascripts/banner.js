@@ -19,7 +19,6 @@ function Banner(selector,options){
 Banner.prototype.init = function(){
     this.next.addEventListener("click",this.nexting.bind(this));
     this.prev.addEventListener("click",this.preving.bind(this));
-
     //先布局
     // this.layoutfade();
     this.layoutAnimate();
@@ -27,9 +26,10 @@ Banner.prototype.init = function(){
     //再动画
     this.main.addEventListener("click",this.slideMode.bind(this));
     this.pagination_ele === null ? "" : this.main.addEventListener("click",this.changePagination.bind(this));
-    this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click",this.handlerPaginationClick.bind(this))
+    this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click",this.handlerPaginationClick.bind(this));
 
-
+    //增加自动播放功能
+    this.autoPlay();
 }
 Banner.prototype.handlerPaginationClick =function(evt){
     var e = evt || window.event;
@@ -159,4 +159,13 @@ Banner.prototype.slideMode = function(){
 }
 function removeClassName(dom,className){
     return dom.className = dom.className.replace(new RegExp("\S?"+className),"");
+}
+Banner.prototype.autoPlay = function(){
+    setInterval(function(){
+        var  evt  = new Event("click",{
+            bubbles   : true ,
+            // cancelable: true
+        });
+        this.next.dispatchEvent(evt);
+    }.bind(this),3000)
 }
