@@ -71,12 +71,13 @@ Banner.prototype.handlerPaginationClick = function(evt){
 }
 //处理分页的事件绑定到this.main变量上
 Banner.prototype.paginationChange = function(evt){
-    //当用户点击按钮即出发事件,操作nowIndex，设置slides中的第nowIndex个的背景颜色
-    // for(var i = 0; i < this.pagination.children.length; i++){
-    //     removeClass(this.pagination.children[i], "pagination-bullet-active")
-    // }
-    // this.pagination.children[(this.nowIndex )%5].className += " pagination-bullet-active"
+    // 当用户点击按钮即出发事件,操作nowIndex，设置slides中的第nowIndex个的背景颜色
+    for(var i = 0; i < this.pagination.children.length; i++){
+        removeClass(this.pagination.children[i], "pagination-bullet-active")
+    }
+    this.pagination.children[(this.nowIndex )%5].className += " pagination-bullet-active"
     // this.nowIndex = this.nowIndex % 5;
+    //bug都是可以复现的，当点击按钮时，没有更换页码，说明点击之后没有触发更换页码是事件，
 }
 
 //实现分页布局的函数
