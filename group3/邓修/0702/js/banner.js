@@ -22,6 +22,8 @@ Banner.prototype.init = function () {
     this.main.addEventListener("click", this[this.options.effect].bind(this));
     this.pagination_ele === null ? "" : this.main.addEventListener("click", this.changePagination.bind(this));
     this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click", this.handlerPaginationClick.bind(this));
+    this.autoPlay.bind(this);
+    this.autoPlay();
 }
 Banner.prototype.layoutAnimate = function () {
     switch (this.options.effect) {
@@ -107,7 +109,9 @@ Banner.prototype.slide = function () {
         this.wrapper.style.transition = "top 1s";
         setTimeout(function () {
             // console.log(this);
-            this.wrapper.style.left = -this.nowIndex * this.cWidth + "px";
+            this.wrapper.style.left = 0;
+            this.state="normal";
+            this.slide();
         }.bind(this), 0);
     }
 }
@@ -134,35 +138,36 @@ Banner.prototype.handlerPaginationClick = function (evt) {
             if (target === target.parentNode.children[i]) {
                 // console.log(this.nowIndex);
                 if (this.nowIndex === 5) {
-                    console.log(1);
-                    this.nowIndex=0;
+                    // console.log(1);
                     this.state="special";
-                    if(i===0)   break;
+                    if(i===0){   
+                        this.nowIndex=0;
+                        break;
+                    }
+                    else{
+                        this.nowIndex=i;
+                        break;
+                    }
                 }
-                // else if(this.nowIndex===5&&i===1){
-                //     console.log(2);
-                //     this.nowIndex = 1;
-                //     this.state = "tofirst";
-                //     // this.slide();
-                //     break;
-                // }
-                // else if(this.nowIndex===5&&i===4){
-                //     console.log(3);
-                //     this.wrapper.style.left=0+"px";
-                //     this.nowIndex = this.sliders.length - 2;
-                //     this.state = "tofifth";
-                //     // this.slide();
-                //     break;
-                // }
-                //else{
+                else{
                     // console.log(4);
                     this.nowIndex=i;
                     this.state="normal";
                     break;
-                //}
+                }
             }
         }
     }
+}
+Banner.prototype.autoPlay=function(){
+    var e=new Event("click",{
+        bubbles:true,
+        cancelabel:true
+    });
+    // console.log(1);
+    setInterval(function(){
+        this.btn_next.dispatchEvent(e);
+    }.bind(this),3000);
 }
 function removeClassName(dom, className) {
     return dom.className = dom.className.replace(new RegExp("\S?" + className), "");
