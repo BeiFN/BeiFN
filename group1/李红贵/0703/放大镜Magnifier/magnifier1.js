@@ -40,7 +40,8 @@ function Magnifier(){
 
 
 Magnifier.prototype.changeImgs = function(){
-    this.small_img.src = this.list[this.list_i].src;
+    // this.small_img.src = this.list[this.list_i].src;
+    this.small_img.src = this.list[this.list_i].src_d;
     this.small_cube.style.backgroundImage = "url("+ this.list[this.list_i].src_d+")";
     this.big_img.src = this.list[this.list_i].src_d;
 }
