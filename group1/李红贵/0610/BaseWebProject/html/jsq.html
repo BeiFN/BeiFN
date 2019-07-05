@@ -75,24 +75,25 @@
                     console.log("===");
             }
             
-            switch(k){
-            case 13:
-            {
-                    document.getElementById("inp").value=eval(document.getElementById("inp").value);
-                console.log("=");
-            }
-            break;
-            case 12:
-            {   document.getElementById("inp").value="";
-                console.log("c");
+                switch(k){
+                        case 13:
+                        {
+                                document.getElementById("inp").value = eval(document.getElementById("inp").value);
+                                console.log("=");
+                        }
+                        break;
+                        case 12:
+                        {   
+                                document.getElementById("inp").value="";
+                                console.log("c");
+                        }
+                        break;
+                        default:{
+                                console.log(btn.value +"num");
+                                document.getElementById("inp").value=document.getElementById("inp").value+num;
+                        }
+                        break;
                 }
-            break;
-            default:{
-                    console.log(btn.value +"num");
-            document.getElementById("inp").value=document.getElementById("inp").value+num;
-            }
-            break;
-            }
             }
             </script>
     </body>
