@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 箭头函数
+        // function fn(a,b){
+        //     return a+b;
+        // }
+        // fn(1,2);
+
+        // let fn = (a,b) => a+b;
+        // let fn = (a,b) => a+b;
+        // console.log(fn(1,2));
+
+        // let foo = (a,b) =>{
+        //     console.log(arguments); //error:arguments is not defined;
+        // }
+        // foo(1,2);
+
+        // let foo = () =>{
+        //     console.log(this);
+        // }
+        // foo();
+
+        // let foo = function(){
+        //     console.log(this);
+        // }.bind(this);
+        // foo();
+
+
+
+        //字符串模板
+        // var html = "";
+        // function print(str) {
+        //     console.log(1);
+        //     html += str;
+        // }
+        // let str = `for(var i = 0 ; i < 10 ; i ++){
+        //              print( '<h2>hello world</h2>')
+        //            }`;
+        // eval(str);
+        // console.log(html);
+        // document.body.innerHTML= html;
+
+        //特殊的字符串
+        // var str = "𠮷野家";
+        // for(var attr in str){
+        //     console.log(str[attr]);
+        // }
+
+        // var str = "𠮷野家"
+        // console.log(str.codePointAt(0));
+        //     for(var val of str){
+        //         console.log(val);
+        //     }
+
+        //     for(let val of str){
+        //         console.log(val);
+        //     }
+
+        // 符号
+        // let sym = Symbol("接受参数");
+        // console.log(sym);
+
+        // let obj2 = {
+        //     [Symbol("讲师特点")] : "千峰吴彦祖"
+        // }
+        // let obj1 = {
+            
+        //     [Symbol("讲师特点")] : "比金箍棒还棒",
+        //     ...obj2,
+        // }
+       
+        // // console.log(Object.assign(obj1,obj2));
+        // console.log(obj1);
+        // 设置常值
+        // 防止和对象之前的key值冲突;
+        // const key = Symbol("key");
+        // let obj = {
+        //     [key] : "hello"
+        // }
+        // console.log(obj);
+        // console.log(obj[key]);
+
+        //set结构
+        var set = new Set([2,3,4,5,5,6,7,7,9]);
+        // console.log(set);//不允许存在重复值 
+        // var arr = Array.from(set);
+        // console.log(arr);
+        //去重
+        // arr = Array.from(new Set(arr));
+
+        // set.add("hello world");
+        // set.clear();
+        // set.delete("hello world")
+        // console.log(set.entries());
+        // console.log(set.keys());
+        // console.log(set.values());
+        // for(let val of set){
+        //     console.log(val);
+        // }
+        // console.log(set.has(8));
+
+        // map;
+        var map = new Map([
+            ["a",1],
+            ["b",1],
+            ["c",1],
+        ])
+
+        // console.log(map.entries());
+        // console.log(map.keys());
+        // console.log(map.values());
+
+        // for(let val of map.values()){
+        //     console.log(val);
+        // }
+        // console.log(map.has("a"))
+
+
+
+    </script>
+</body>
+
+</html>
