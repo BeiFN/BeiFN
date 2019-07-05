@@ -22,21 +22,7 @@ header{
     text-align: center;
     margin-left: 200px
 }
-.iconfont{
-    font-size: 14px;
-    margin-right: 4px;    
-    font-family: iconfont,sans-serif;
-    font-style: normal;
-    -webkit-text-stroke-width: .2px;
-}
-.iconfont-red{
-    font-size: 14px;
-    color: #f10215;
-    margin-right: 4px;    
-    font-family: iconfont,sans-serif;
-    font-style: normal;
-    -webkit-text-stroke-width: .2px;
-}
+
 .nav-right{
     float: right;
 }
