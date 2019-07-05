@@ -90,24 +90,44 @@
         }
         // 烟花爆炸
         Firework.prototype.fireworkBoom = function(offsetX,offsetY,evt){
-            // var randomFireCount = 15 + Math.round(Math.random() * 10);
-            var e = evt || window.event;
 
-            console.log(e.offsetX,e.offsetY,320-offsetX,540-offsetY);
-            var randomFireCount = Math.min.apply(Math,[e.offsetX,e.offsetY,320-offsetX,540-offsetY]);
-            console.log(randomFireCount);
+            // 烟花数目
+            var randomFireCount = 15 + Math.round(Math.random() * 10);
+            // var randomFireCount = 50;
 
+
+
+            // 角度
             var blank = Math.round(360 / randomFireCount);
-            var r = 100 + Math.round(Math.random() * 100);
+            // 半径
+            // var r = 100 + Math.round(Math.random() * 100);
+
+            var e = evt || window.event;
+            console.log(e.offsetX,e.offsetY,320-offsetX,540-offsetY);
+            var rRand = Math.min.apply(Math,[e.offsetX,e.offsetY,320-offsetX,540-offsetY]);
+            var r = Math.round(Math.random()*rRand);
+            console.log(r);
             var angle = 0;
 
             for(var i = 0 ; i < randomFireCount ; i++){
                   angle += blank;
 
-                  var fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + offsetX); 
-                  var fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + offsetY); 
+                  //圆
+                //   var fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + offsetX); 
+                //   var fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + offsetY); 
 
-                  var fire_boom = this.createFirework(true);
+                //   心形
+                var t = Math.PI / 180 * angle;
+
+                //   var fire_targetX = Math.round((2*Math.cos(t) - Math.cos(2*t)) * 20) + offsetX; 
+                //   var fire_targetY = Math.round((2*Math.sin(t) - Math.sin(2*t)) * 20) + offsetY; 
+
+                  var fire_targetX = Math.round((2*Math.sin(t) - Math.sin(2*t)) * r) + offsetX; 
+                  var fire_targetY = -Math.round((2*Math.cos(t) - Math.cos(2*t)) * r)  + offsetY; 
+
+                  
+                console.log(fire_targetX,fire_targetY);
+                  var fire_boom = this.createFirework(true);//创建的是否是爆炸烟花
                   fire_boom.style.left = offsetX + "px";
                   fire_boom.style.top  = offsetY + "px";
                   this.main.appendChild(fire_boom);
@@ -115,9 +135,12 @@
                   move(fire_boom , {
                         left : fire_targetX ,
                         top  : fire_targetY ,
-                        opacity : 0
+                        // opacity : 0
                   },function(fire_boom){
-                        fire_boom.remove();
+                      setTimeout(function(){
+                          fire_boom.remove();
+                      }, 500);
+                        
                   }.bind(false,fire_boom))
             }
         }
@@ -166,6 +189,7 @@
 
         // 运动框架
         function move(dom, json, callBack){
+            console.log(json);
             clearInterval(dom.timer);
             dom.timer = setInterval(function(){
                 for(var attr in json){
