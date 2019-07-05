@@ -1,0 +1,14 @@
+#container{
+    width:800px;
+    height:400px;
+    position: relative;
+    margin:100px auto;
+    background: black;
+}
+.firework{
+    width:10px;
+    height:10px;
+    border-radius: 50%;
+    background:white;
+    opacity:.8;
+}

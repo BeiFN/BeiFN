@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*去掉标签自带的内外边距*/
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{ margin:0; padding:0;}
+
+/*去掉列表默认样式*/
+li{list-style:none;}
+
+/*修改按钮默认颜色*/
+a{
+	text-decoration:none; 
+	color:#666; 
+	display: block;
+}
+
+/*取消倾斜*/
+i,em{font-style:normal;}
+
+/*取消标题加粗*/
+h1,h2,h4,h3,h5,h6,b,strong{font-weight:normal;}
+
+/*去掉IE浏览器图片默认边框，转块级标签*/
+img{
+	border:none;
+	display:block;
+}
+
+/*输入框点击光标*/
+input{outline:none;}
+
+/*默认界面字体*/
+/* body{font-family:"微软雅黑"; font-size:14px; color:#666;} */
+body {
+    font: 14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+
+
+/*合并cell边线，设置cell间距*/
+table{border-collapse:collapse;border-spacing:0; }
+
+.clearboth:after{
+	content:"";
+	display: block;
+	height: 0;
+	clear: both;
+	/* 隐藏内容，占高度位置 */
+	visibility: hidden;
+	/* 隐藏本身，不占位置 */
+	overflow: hidden;
+}
+.clearboth{
+	zoom: 1;
+}
+
+/*鼠标覆盖式加下划线按钮下划线*/
+/*
+a:hover{text-decoration:underline;}
+*/
+
+
+/*
+table{width:500px;height:300px;  border:1px solid #333; border-spacing:0; }
+td,th{border:1px solid #333;}
+ border-spacing调整相邻单元格间距
+*/
