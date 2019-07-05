@@ -2,52 +2,52 @@
  * 放大镜特性
  * 
  */
-let { randomColor , $ ,getSize,delegation,  getAbsPosition, removeClassName  } = Utils;
+let { randomColor , $ ,getSize,delegation, getAbsPosition, removeClassName  } = Utils;
 // console.log(randomColor());
 // console.log($("body"));
 // console.log(getSize(this.small_cube))
  class Magnifier{
      constructor(){
         this.smallImgWrap = document.querySelector(".small-img");
-    this.smallImg   = document.querySelector(".small-img img")
-    this.smallCube = document.querySelector(".cube");
-    this.bigImgWrap  = document.querySelector(".big-img");
-    this.bigImg  = document.querySelector(".big-img  img");
-    this.img_btn_wrapper = document.querySelector(".img-btn");
-    this.img_btns   =  this.img_btn_wrapper.children;
+        this.smallImg   = document.querySelector(".small-img img")
+        this.smallCube = document.querySelector(".cube");
+        this.bigImgWrap  = document.querySelector(".big-img");
+        this.bigImg  = document.querySelector(".big-img  img");
+        this.img_btn_wrapper = document.querySelector(".img-btn");
+        this.img_btns   =  this.img_btn_wrapper.children;
 
-     
-     this.smallImgWrapPosition = getAbsPosition(this.smallImgWrap);
+        
+        this.smallImgWrapPosition = getAbsPosition(this.smallImgWrap);
+        console.log( this.smallImgWrapPosition)
+        this.smallCubeWidth = parseInt( getComputedStyle(this.smallCube)["width"]);
+        this.smallCubeHeight = parseInt(getComputedStyle(this.smallCube)["height"]);
 
-     this.smallCubeWidth = parseInt( getComputedStyle(this.smallCube)["width"]);
-     this.smallCubeHeight = parseInt(getComputedStyle(this.smallCube)["height"]);
+        this.smallImgWrapWidth =parseInt( getComputedStyle(this.smallImgWrap)["width"]);
+        this.smallImgWrapHeight = parseInt(getComputedStyle(this.smallImgWrap)["height"]);
 
-     this.smallImgWrapWidth =parseInt( getComputedStyle(this.smallImgWrap)["width"]);
-     this.smallImgWrapHeight = parseInt(getComputedStyle(this.smallImgWrap)["height"]);
+        this.bigImgWrapWidth =parseInt( getComputedStyle(this.bigImgWrap)["width"]);
+        this.bigImgWrapHeight = parseInt(getComputedStyle(this.bigImgWrap)["height"]);
+        this.bigImgWidth =parseInt( getComputedStyle(this.bigImg )["width"]);
+        this.bigImgHeight = parseInt(getComputedStyle(this.bigImg )["height"]);
+        var json = 
+        [
+            {
+                "small":"https://upload-images.jianshu.io/upload_images/16960494-6016305427ecad9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                "big":"https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+            },
+            {
+                small:"https://upload-images.jianshu.io/upload_images/16960494-7f9040ccc609945a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                big:"https://upload-images.jianshu.io/upload_images/16960494-82fa6d1cbc1be296.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+            }
+        ]
 
-     this.bigImgWrapWidth =parseInt( getComputedStyle(this.bigImgWrap)["width"]);
-     this.bigImgWrapHeight = parseInt(getComputedStyle(this.bigImgWrap)["height"]);
-     this.bigImgWidth =parseInt( getComputedStyle(this.bigImg )["width"]);
-     this.bigImgHeight = parseInt(getComputedStyle(this.bigImg )["height"]);
-     var json = 
-     [
-         {
-             "small":"https://upload-images.jianshu.io/upload_images/16960494-6016305427ecad9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
-             "big":"https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-         },
-         {
-             small:"https://upload-images.jianshu.io/upload_images/16960494-7f9040ccc609945a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
-             big:"https://upload-images.jianshu.io/upload_images/16960494-82fa6d1cbc1be296.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-         }
-     ]
-
-     this.init();
+        this.init();
      }
     
      
 
 
- init = function(){
+ init (){
      //s三个事件   鼠标划入小图，小方块，大图包围出现
 
      this.smallImgWrap.addEventListener("mouseenter",this.handlerEnter.bind(this));
@@ -62,7 +62,7 @@ let { randomColor , $ ,getSize,delegation,  getAbsPosition, removeClassName  } =
 
 
 
- changeImg = function( e , ele){
+ changeImg ( e , ele){
    for( var i=0,btn;btn = this.img_btns[i++];){
        btn.index = i-1;
        removeClassName(btn,"active")
@@ -77,17 +77,17 @@ let { randomColor , $ ,getSize,delegation,  getAbsPosition, removeClassName  } =
 
 
 
- cubeMove = function(cube_position){
+ cubeMove (cube_position){
     this.smallCube.style.left =cube_position.x+ "px";
     this.smallCube.style.top = cube_position.y+ "px";
     this.smallCube.style.backgroundPosition = -cube_position.x +"px " +  -cube_position.y + "px";
     
  }
- bigMove = function(position){
+ bigMove (position){
     this.bigImg.style.left = -position.x + "px";
     this.bigImg.style.top = -position.y + "px";
  }
- getBigPosition = function (x,y){
+ getBigPosition  (x,y){
      //先求比例
     var cha_smallWidth =this.smallImgWrapWidth - this.smallCubeWidth;
     var cha_smallHeight= this.smallImgWrapHeight- this.smallCubeHeight;
@@ -101,17 +101,17 @@ let { randomColor , $ ,getSize,delegation,  getAbsPosition, removeClassName  } =
  }
  
 
-handlerEnter = function(){
+handlerEnter (){
     this.smallImg.style.opacity = 0.3;
     this.smallCube.style.display = "block";
     this.bigImgWrap.style.display = "block";
  }
-handlerLeave = function(){
+handlerLeave (){
     this.smallImg.style.opacity = 1;
     this.smallCube.style.display = "none";
     this.bigImgWrap.style.display = "none";
 }
-handlerMove = function(){
+handlerMove (){
     
     var position = this.getPosition();
     var x=position.x;
@@ -126,18 +126,18 @@ handlerMove = function(){
 
 }
 //获取当前位置
-getPosition = function(evt){
+getPosition (evt){
      var e= evt || event ;
-     var x = e.pageX-this.smallImgWrapPosition.offsetL-this.smallCubeWidth/2;
-     console.log(this.smallImgWrapPosition.offsetL)
-     var y = e.pageY-this.smallImgWrapPosition.offsetT-this.smallCubeHeight/2;
-     console.log(this.smallImgWrapPosition.offsetT)
+     var x = e.pageX-this.smallImgWrapPosition.left-this.smallCubeWidth/2;
+     //console.log(this.smallImgWrapPosition.offsetL)
+     var y = e.pageY-this.smallImgWrapPosition.top-this.smallCubeHeight/2;
+     //console.log(this.smallImgWrapPosition.offsetT)
      return {
          x :x
         ,y:y};
 }
 
-boundary = function(x,y){
+boundary (x,y){
     if(x<=0){
         x=0;
     }
