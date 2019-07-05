@@ -73,14 +73,14 @@
  //动画效果
  //slide效果
  Banner.prototype.slide = function(){
-     if(this.showIndex === 0){
-         this.wrapper.style.transition = "top 1s";
-         this.wrapper.style.left = 0;
-         this.showIndex ++ ;
-     }
-    this.wrapper.style.left = 0;
-    this.wrapper.style.left = - this.main.offsetWidth * (this.showIndex) + "px";
-    this.wrapper.style.transition = "left 1s";
+    //  if(this.showIndex === 0){
+    //      this.wrapper.style.transition = "top 1s";
+    //      this.wrapper.style.left = 0;
+    //      this.showIndex ++ ;
+    //  }
+    // this.wrapper.style.left = 0;
+    // this.wrapper.style.left = - this.main.offsetWidth * (this.showIndex) + "px";
+    // this.wrapper.style.transition = "left 1s";
 
     switch(this.state){
         case "normal" :

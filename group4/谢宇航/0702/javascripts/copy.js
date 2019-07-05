@@ -8,7 +8,7 @@ function Banner(selector, options) {
     this.options = Object.assign({   //添加默认选项与用户选择   
         effect: "slide",   //效果
         pagination: ".pagination",    //是否添加分页
-        // animation : "true"
+        animation : "true"   //是否需要轮播
     }, options)
 
     this.nowIndex = 0   //当前图片索引
@@ -195,23 +195,19 @@ Banner.prototype.handlerPaginationClick = function (evt) {
 // 轮播图
 Banner.prototype.animation = function () {
     clearInterval(this.timer);
+    var evt = this.creatEvent("click");
     this.timer = setInterval(function() {
-        this.clickEvent(this.btn_next);
+        this.btn_next.dispatchEvent(evt);
     }.bind(this), 3000)
 }
 
 //轮播
-Banner.prototype.clickEvent = function (dom) {
-    // this.event = document.createEvent("HTMLEvents");
-    // // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
-    // this.event.initEvent("click", true, true);
-    // dom.dispatchEvent(this.event);
-    this.event = new CustomEvent("click", {
+Banner.prototype.creatEvent = function (event) {
+    this.event = new Event(event, {
         bubbles : true,
         cancelable: true
     })
-    dom.dispatchEvent(this.event);
-
+    return this.event;
 }
 
 //停止轮播
