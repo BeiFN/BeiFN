@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: radial-gradient(#fff,#000);
+                  position: absolute;
+                  
+            }
+    </style>
+</head>
+<body>
+    <script>
+        //获取元素
+        function Particle(ele){
+            //判定ele的类型是否为document
+            //nodeType 节点类型
+            //一个HTML或XML文档的文件，元素，属性等有不同的节点类型。
+            //有12种不同的节点类型，不同的节点类型也可以有不同的子节点类型：
+            /*
+            1	Element	一个元素	Element, Text, Comment, ProcessingInstruction, CDATASection, Entity参考手册
+            2	Attr	一个属性	Text, Entity参考手册
+            3	Text	一个元素的文本内容 或属性	None
+            4	CDATASection	一个文档的CDATA部分（文本将 不会被解析器解析）	None
+            5	Entity参考手册	实体引用	Element, ProcessingInstruction, Comment, Text, CDATASection, Entity参考手册
+            6	Entity	一个实体	Element, ProcessingInstruction, Comment, Text, CDATASection, Entity参考手册
+            7	ProcessingInstruction	一个处理指令	None
+            8	Comment	一个注释	None
+            9	Document	整个文档（DOM树的根节点）	Element, ProcessingInstruction, Comment, DocumentType
+            10	DocumentType	为文档实体提供接口	None
+            11	DocumentFragment	表示邻接节点和它们的子树。	Element, ProcessingInstruction, Comment, Text, CDATASection, Entity参考手册
+            12	Notation	代表一个符号在DTD中的声明	None
+            */
+            //querySelector() 方法返回匹配指定 CSS 选择器的一个元素。
+            this.ele_mine = ele.nodeType === 9 ? ele : document.querySelector(ele);
+            //初始化
+            this.init();
+        }
+        //初始化绑定事件
+        Particle.prototype.init = function(){
+            this.cWidth = document.documentElement.clientWidth;
+            this.cHeight = document.documentElement.clientHeight;
+            //鼠标按下，操作小球
+            this.ele_mine.addEventListener("mousedown", this.handleMousedown.bind(this));
+            //鼠标抬起，停止创建小球
+            this.ele_mine.addEventListener("mouseup", this.stopHandleBall.bind(this));
+            //小球初始位置随鼠标移动
+            this.ele_mine.addEventListener("mousemove", this.changeOffsetXY.bind(this));
+        }
+
+        Particle.prototype.handleMousedown = function(e){
+            e = e || window.event;
+            this.offsetX = e.offsetX;
+            this.offsetY = e.offsetY;
+            //小球是一个一个的被创建的=>定时器
+            this.timer = setInterval(function(){
+                //创建小球 传入鼠标点击的位置坐标x,y
+                var ball = this.createBall(this.offsetX, this.offsetY);
+                //小球移动
+                this.moveBall(ball);
+                setTimeout(function(){
+                    this.destoryBall(ball);
+                },100)
+                
+               
+            }.bind(this), 50)
+        }
+
+        Particle.prototype.createBall = function(offsetX, offsetY){
+            var ball = document.createElement("div");
+            ball.className = "ball";
+            ball.style.left = offsetX + "px";
+            ball.style.top = offsetY + "px";
+            document.body.appendChild(ball);
+            return ball;
+        }
+
+        Particle.prototype.moveBall = function(ball){
+            var left = Math.round(Math.random()*this.cWidth);
+            var top = Math.round(Math.random()*this.cHeight);
+            move(ball,{
+                left,
+                top,
+                opacity:0
+            } );
+        }
+        Particle.prototype.destoryBall = function(ball){
+            ball.reomove();
+        }
+        Particle.prototype.stopHandleBall = function(){
+            clearInterval(this.timer);
+        }
+
+        Particle.prototype.changeOffsetXY = function(e){
+            e = e || window.event;
+            this.offsetX = e.clientX;
+            this.offsetY = e.clientY;
+        }
+
+        new Particle(document);
+
+        function move(dom, options, callback){
+        //dom : 运动的节点
+        //options : 属性对象
+        //callback : 回调函数
+
+        //关闭定时器
+        clearInterval(dom.timer);
+
+        dom.timer = setInterval(function(){
+            //遍历options中所有的对象
+            for(var attr in options){
+
+                //得到当前的属性值
+                //如果是透明度，当前透明度应该乘100
+                if(attr === "opacity"){
+                    var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                    //getComputedStyle(dom)[attr]是小数  必须先乘100然后再取整，否则iNow为0
+                    //为什么要取整？？？
+                    //如果不取整，则会在最后不断闪
+                    console.log("iNow", iNow);
+                }
+                else{
+                    iNow = parseInt(getComputedStyle(dom)[attr]);
+                }
+                //计算当前速度：（目标点值-当前属性值）/任意一个整数
+                speed = (options[attr]-iNow)/10;
+                //对当前速度取整
+                speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                //当所有当前属性值等于目标点值时关闭定时器
+                if(options[attr]===iNow){
+                    //如何做到当所有属性运动结束后再关闭定时器？？？
+                    //到达一个，删除一个
+                    delete options[attr];
+                    //当options中无对象时，关闭定时器
+                    if(Object.keys(options).length===0){
+                        clearInterval(dom.timer);
+                        //在运动结束之后，执行回调函数
+                        //判断是否为函数
+                       typeof callback === "function"? callback() : "";
+                    }
+                }else{
+                    if(attr === "opacity"){
+                        dom.style[attr] = (iNow + speed)/100;
+                    }
+                    else{
+                        dom.style[attr] = iNow + speed + "px";
+                    }
+                }
+            }
+        }, 50)
+    }
+    </script>
+</body>
+</html>

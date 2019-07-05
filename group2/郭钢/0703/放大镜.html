@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./放大镜/styles/fangdajing.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="wrapperSmall">
+            <img src="https://upload-images.jianshu.io/upload_images/18300474-4cdaea0eafe986d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+            <div id="smallCube"></div>
+        </div>
+        <div id="wrapperBig">
+            <img src="https://upload-images.jianshu.io/upload_images/18300474-313f3edb27ddae60.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+        </div>
+        <div id="imgBtn">
+            <div id="btn1">
+                <img src="https://upload-images.jianshu.io/upload_images/18300474-4d860f1efdb88b1f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+            </div>
+            <div id="btn2">
+                <img src="https://upload-images.jianshu.io/upload_images/18300474-cb31b0625e2f81cd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./放大镜/javascripts/fangdajing.js"></script>
+<script>
+    new Magnify({
+        img1: { 
+        smalle:"https://upload-images.jianshu.io/upload_images/18300474-4d860f1efdb88b1f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        middle:"https://upload-images.jianshu.io/upload_images/18300474-4cdaea0eafe986d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        large:"https://upload-images.jianshu.io/upload_images/18300474-c4ccd3577f0dcb2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+    },
+        img2: { 
+        small:"https://upload-images.jianshu.io/upload_images/18300474-cb31b0625e2f81cd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        middle:"https://upload-images.jianshu.io/upload_images/18300474-938dcf7acdfdfb34.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        large:"https://upload-images.jianshu.io/upload_images/18300474-ddbb9e990f6bca4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+    }
+    });
+</script>
+
+</html>
