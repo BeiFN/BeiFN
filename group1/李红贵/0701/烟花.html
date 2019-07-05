@@ -92,8 +92,8 @@
         Firework.prototype.fireworkBoom = function(offsetX,offsetY,evt){
 
             // 烟花数目
-            // var randomFireCount = 15 + Math.round(Math.random() * 10);
-            var randomFireCount = 50;
+            var randomFireCount = 15 + Math.round(Math.random() * 10);
+            // var randomFireCount = 50;
 
 
 
@@ -112,14 +112,18 @@
             for(var i = 0 ; i < randomFireCount ; i++){
                   angle += blank;
 
+                  //圆
                 //   var fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + offsetX); 
                 //   var fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + offsetY); 
 
                 //   心形
                 var t = Math.PI / 180 * angle;
 
-                  var fire_targetX = (2*Math.cos(t) - Math.cos(2*t)) * 20 + offsetX; 
-                  var fire_targetY = (2*Math.sin(t) - Math.sin(2*t)) * 20 + offsetY; 
+                //   var fire_targetX = Math.round((2*Math.cos(t) - Math.cos(2*t)) * 20) + offsetX; 
+                //   var fire_targetY = Math.round((2*Math.sin(t) - Math.sin(2*t)) * 20) + offsetY; 
+
+                  var fire_targetX = Math.round((2*Math.sin(t) - Math.sin(2*t)) * r) + offsetX; 
+                  var fire_targetY = -Math.round((2*Math.cos(t) - Math.cos(2*t)) * r)  + offsetY; 
 
                   
                 console.log(fire_targetX,fire_targetY);
@@ -133,7 +137,10 @@
                         top  : fire_targetY ,
                         // opacity : 0
                   },function(fire_boom){
-                        // fire_boom.remove();
+                      setTimeout(function(){
+                          fire_boom.remove();
+                      }, 500);
+                        
                   }.bind(false,fire_boom))
             }
         }
@@ -211,7 +218,7 @@
                         }
                     }
                 }
-            },100);
+            },50);
         };
     </script>
 </body>
