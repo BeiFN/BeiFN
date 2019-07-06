@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 350px;
+            height: 350px;
+            position: relative;
+            margin-left: 80px;
+            margin-top:50px;
+        }
+        .small-img{
+            width : 350px;
+            height: 350px;
+            position: relative;
+            box-shadow: 0 0 6px #000;
+        }
+        .small-img img{
+            width: 100%;
+            height: 100%;
+        }
+        .cube{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            z-index: 1;
+            left: -12px;
+            top: -1px;
+            display: none;
+            background:url("https://img13.360buyimg.com/n1/s450x450_jfs/t1/20934/9/14668/305219/5caac06cEb41f2374/a57323b77d9c53e5.jpg") no-repeat 0 0;
+            background-size: 350px 350px;
+        }
+        .big-img{
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            left: 350px;
+            top: 0;
+            box-shadow: 0 0 6px #000;
+            overflow: hidden;
+            display: none;
+        }
+        .big-img img{
+            width: 1050px;
+            height: 1050px;
+            position: absolute;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">  
+        <div class="small-img">
+            <img src="https://img13.360buyimg.com/n1/s450x450_jfs/t1/20934/9/14668/305219/5caac06cEb41f2374/a57323b77d9c53e5.jpg" alt="">
+            <div class="cube"></div>
+        </div>
+        <div class="big-img">
+            <img src="https://img13.360buyimg.com//n0/jfs/t1/20934/9/14668/305219/5caac06cEb41f2374/a57323b77d9c53e5.jpg" alt="">
+        </div>
+    </div>
+    <script src="js/Magnifier-2.js"></script>
+</body>
+</html>
