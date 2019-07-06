@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function A(a){
+            this.a = a;
+        }
+
+        console.log(A.prototype);
+        console.log(A.prototype.__proto__);
+        // console.log(Object.prototype);
+        // console.log(Object.prototype.isPrototypeOf(A));
+        // console.log(A instanceof Object);
+
+
+        function B(b){
+            this.b = b;
+        }
+        var b = new B("lc");
+
+        console.log(b);
+        console.log(b.__proto__ == B.prototype);
+
+
+
+        // var obj = {
+        //     fn :　function(){
+        //         console.log(this);
+        //     }
+        // }
+        // obj.fn();
+
+        // var obj1 = {
+        //     fn : ()=>{
+        //         console.log(this);
+        //     }
+        // }
+        // obj1.fn();
+
+
+        // var obj1 = {
+        //     a: 10,
+        //     b: 20,
+        //     c: 30
+        // }
+
+        // var obj2 = {
+        //     ...obj1,
+        //     d: 40,
+        //     e: 50,
+        //     f: 60
+        // }
+
+        // console.log(obj2);
+    </script>
+</body>
+
+</html>
