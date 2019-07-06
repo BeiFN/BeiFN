@@ -45,3 +45,24 @@
       width: 2000px;
       height: 2000px;
 }
+.imgList{
+      width: 400px;
+      height: 100px;
+      box-shadow: 0 0 5px #ddd;
+      margin: -15px 20px;
+}
+.imgList div{
+      width: 100px;
+      height: 100px;
+      float: left;
+}
+.imgList img{
+      border: 5px solid rgba(0,0,0,0);
+      width: 90px;
+      height: 90px;
+      display: block;
+      cursor: pointer;
+}
+.imgList img:hover{
+      border: 5px solid rgba(255,100,100,1) !important;
+}
