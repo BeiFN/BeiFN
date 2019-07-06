@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id="template">
+        <% for(var i=0;i < 10 ; i ++){ %>
+            <h2>hello world <%= i %></h2>
+        <% } %>
+    </script>
+    <script src="../libs/ejs.js"></script>
+    <script type="text/javascript">
+    //模板引擎就是在写HTML的时候放入JS逻辑；
+    //在对混写代码做预处理的时候：一是拆分逻辑结构，二是拆出HTML部分，三是逻辑执行四是字符串返回；
+    //在script标签type为text/html的时候，内部的所有代码不会解析，只会当成字符串。
+
+    //定规则：<% 内部的代码是逻辑 %>
+    //未被包裹的是html拼接的字符串
+    //eval()；把字符串当成jS代码来执行
+    //print则是用来拼接字符串的
+
+    var template=document.getElementById("template").innerHTML;
+    // console.log(template);
+    var regJs=/<%[^=](.*?)%/g;//匹配["<% for(var i=0;i < 10 ; i ++){ %", "<% } %"]
+        // console.log(template.match(regJs));
+    var res=template.replace(regJs,`\`);$1print(\``);
+    // eval(template.replace(regJs ,"$1"));
+    res=`print(\`${res}\`)`;
+    // console.log(res);
+
+    var html="";
+    function print(str){
+        html+=str;
+
+    }
+    var regVar=/<%=(.*?)%>/g;
+    console.log(res.match(regVar));
+    var res=res.replace(regVar,`\`); print($1); print(\``);
+    // console.log(eval(res));
+    console.log(html);
+    </script>
+</body>
+</html>
