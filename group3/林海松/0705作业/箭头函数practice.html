@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 箭头函数
+        // function fn(a,b){
+        //     return a+b ;
+        // }
+        // console.log(fn(1,2));
+
+        //箭头函数的基本结构
+        // let fn = () =>{
+        //     console.log(1);
+        // }
+        // fn();
+        // let fn = (a,b) =>{
+        //     return a+b ;
+        // }
+        // console.log(fn(1,2));// 3
+
+        //1.return 关键字 箭头函数的return关键字与平常的函数没什么差别
+        // let fn = (a,b) =>{
+        //     return a+b ;
+        // }
+
+        //2.arguments 关键字  箭头函数不支持arguments
+        // let fn = (a,b) =>{
+        //     console.log(arguments);
+        // }
+        // console.log(fn(1,2)); //ReferenceError 报错
+
+        //3.this的指向规则发生了改变
+        // let fn = () =>{
+        //     console.log(this); //箭头函数在创建的时候就已确定了函数的this指向，this指向不会跟着函数的调用而改变。
+        // }
+        // fn();//this 指向window
+
+        // let foo = () =>{
+        //     console.log(this);
+        // }
+        // let fo = foo.bind({name:"吴彦祖"});
+        // fo();//this  指向  window 
+        //ES6版本，函数声明时的this指向哪里函数的this就永远指向这里，而且不会改变
+        //  bind、call、apply都失效
+
+        // document.onclick = () =>{
+        //     console.log(this);//指向window
+        // }
+        //作为事件处理函数的this不再指向触发事件的元素。
+
+        // function foo(){
+        //     this.a = "hello world";
+        // }
+        // foo.prototype.Asb = () =>{
+        //     console.log(this.a);
+        // }
+        // new foo();//结果为空，没有东西输出
+        //this无法作为原型中的方法，this指向是固定的，无法访问实例对象中的属性
+        //箭头函数不太适合作为原型方法的设置。
+
+        //常见的写法
+        var arr = [1,2,3,4,5,6,7,8,9];
+        // var NewArr = arr.map(item => item * 3);
+        // console.log(NewArr); //3,6,9,12,15,18,21,24,27
+        // var NewArr = arr.some(item => item > 4);
+        // console.log(NewArr); //true
+
+    </script>
+</body>
+</html>
