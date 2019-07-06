@@ -73,16 +73,23 @@
         console.log(res.match(regVar));
         // 获取变量i语句
         var res = res.replace(regVar,`\`);  print($1); print(\``);
-		console.log(res);
+        console.log(res);
+        
 
-        eval(res);
-        console.log(eval(res));
 
         var html = "";
+        eval(res);//调用print方法
+        // console.log(eval(res));
+
+        
         function print(str){
+            console.log(2222,str);
             html += str;
+            // console.log(html);
         }
+
         console.log(html);
+        document.body.innerHTML += html;
         
 
 
