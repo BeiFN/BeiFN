@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body,html{
+            height: 100%;
+        }
         .ball {
             width: 20px;
             height: 20px;
@@ -19,59 +22,62 @@
 
 <body>
     <script>
-        function Ball(ele){
-            this.ele_main=ele.nodeType===9?ele:document.querySelector(ele);
-            this.init();
+        class Ball{
+            constructor(ele=document) {
+                this.ele_main = ele.nodeType === 9 ? ele : document.querySelector(ele);
+                // console.log(this.ele_main);
+                this.init();
+            }
+            init = function () {
+                this.timer = null;//小球运动定时器
+                this.cWidth = document.documentElement.clientWidth;
+                this.cHeight = document.documentElement.clientHeight;
+                //绑定事件
+                this.ele_main.addEventListener("mousedown", this.handlerMouseDown.bind(this));
+                this.ele_main.addEventListener("mouseup", this.stopCreateBall.bind(this));
+                this.ele_main.addEventListener("mousemove", this.changeOffset.bind(this));
+            }
+            //鼠标移动时改变clientX和clientY
+            changeOffset = function (evt) {
+                var e = evt || window.event;
+                this.clientX = e.clientX;
+                this.clientY = e.clientY;
+            }
+            handlerMouseDown = function (evt) {
+                var e = evt || window.event;
+                this.clientX = e.clientX;
+                this.clientY = e.clientY;
+                this.timer = setInterval(function () {
+                    var ball = this.createBall();
+                    setTimeout(function () {
+                        this.ballMove(ball, e.clientY);
+                    }.bind(this), 50);
+                }.bind(this), 50);
+            }
+            createBall = function () {
+                var ele = document.createElement("div");
+                ele.className = "ball";
+                ele.style.left = this.clientX + "px";
+                ele.style.top = this.clientY + "px";
+                ele.style.transition = "all 1s";
+                document.body.appendChild(ele);
+                return ele;
+            }
+            ballMove = function (ball, minTop) {
+                var randomL = Math.round(Math.random() * this.cWidth);
+                var randomT = minTop + Math.round(Math.random() * (this.cHeight - minTop));
+                ball.style.left = randomL + "px";
+                ball.style.top = randomT + "px";
+                ball.style.opacity = 0.1;
+                setTimeout(function () {
+                    ball.remove();
+                }, 1000);
+            }
+            stopCreateBall = function () {
+                clearInterval(this.timer);
+            }
         }
-        Ball.prototype.init=function(){
-            this.timer=null;//小球运动定时器
-            this.cWidth=document.documentElement.clientWidth;
-            this.cHeight=document.documentElement.clientHeight;
-            //绑定事件
-            this.ele_main.addEventListener("mousedown",this.handlerMouseDown.bind(this));
-            this.ele_main.addEventListener("mouseup",this.stopCreateBall.bind(this));
-            this.ele_main.addEventListener("mousemove",this.changeOffset.bind(this));
-        }
-        //鼠标移动时改变clientX和clientY
-        Ball.prototype.changeOffset=function(evt){
-            var e=evt||window.event;
-            this.clientX=e.clientX;
-            this.clientY=e.clientY;
-        }
-        Ball.prototype.handlerMouseDown=function(evt){
-            var e=evt||window.event;
-            this.clientX=e.clientX;
-            this.clientY=e.clientY;
-            this.timer=setInterval(function(){
-                var ball=this.createBall();
-                setTimeout(function(){
-                    this.ballMove(ball,e.clientY);
-                }.bind(this),50);
-            }.bind(this),50);
-        }
-        Ball.prototype.createBall=function(){
-            var ele=document.createElement("div");
-            ele.className="ball";
-            ele.style.left=this.clientX+"px";
-            ele.style.top=this.clientY+"px";
-            ele.style.transition="all 1s";
-            document.body.appendChild(ele);
-            return ele;
-        }
-        Ball.prototype.ballMove=function(ball,minTop){
-            var randomL=Math.round(Math.random()*this.cWidth);
-            var randomT=minTop+Math.round(Math.random()*(this.cHeight-minTop));
-            ball.style.left=randomL+"px";
-            ball.style.top=randomT+"px";
-            ball.style.opacity=0.1;
-            setTimeout(function(){
-                ball.remove();
-            },1000);
-        }
-        Ball.prototype.stopCreateBall=function(){
-            clearInterval(this.timer);
-        }
-        new Ball(document);
+        new Ball("body");
     </script>
 </body>
 

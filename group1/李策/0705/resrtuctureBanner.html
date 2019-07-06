@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/banner.css">
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+        }
+
+        .slide {
+            text-align: center;
+            color: #fff;
+            line-height: 300px;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="container">
+            <div class="wrapper">
+                <div class="slide slide-active" style="background:red; ">1</div>
+                <div class="slide" style="background: blue;">2</div>
+                <div class="slide" style="background: black;">3</div>
+                <div class="slide" style="background: green;">4</div>
+                <div class="slide" style="background: yellow;">5</div>
+            </div>
+            <div class="button-next"></div>
+            <div class="button-prev"></div>
+            <div class="pagination pagination-bullets">
+                <div class="pagination-bullet pagination-bullet-active"></div>
+                <div class="pagination-bullet"></div>
+                <div class="pagination-bullet"></div>
+                <div class="pagination-bullet"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        class Banner {
+            constructor(selector, options) {
+                this.nowIndex = 0;
+                this.state = "normal";
+
+                this.main = document.querySelector(selector);
+                this.sliders = this.main.querySelectorAll(".slide");
+                this.btn_prev = this.main.querySelector(".button-prev");
+                this.btn_next = this.main.querySelector(".button-next");
+                this.wrapper = this.main.querySelector(".wrapper");
+
+                this.options = Object.assign({
+                    effect: "slide",
+                    pagination: ".pagination"
+                }, options)
+
+                this.init();
+            }
+            init(){
+                this.layoutAnimate();
+      this.layoutPagnination();
+
+      this.btn_prev.addEventListener("click", this.prevIndex.bind(this));
+      this.btn_next.addEventListener("click", this.nextIndex.bind(this));
+
+      this.main.addEventListener("click", this[this.options.effect].bind(this));
+      this.pagination_ele === null ? "" : this.main.addEventListener("click", this.changePagination.bind(this));
+      this.pagination_ele === null ? "" : this.pagination_ele.addEventListener("click", this.handlerPaginationClick.bind(this))
+            }
+            handlerPaginationClick(evt){
+                var e = evt || window.event;
+      var target = e.target || e.srcElement;
+      if (target !== this.pagination_ele) {
+            for (var i = 0; i < target.parentNode.children.length; i++) {
+                  if (target === target.parentNode.children[i]) {
+                        this.toIndex(i);
+                        break;
+                  }
+            }
+      }
+            }
+            changePagination(){
+                for (var i = 0, bullet; bullet = this.pagination_ele.children[i++];) {
+            this.removeClassName(bullet, "pagination-bullet-active")
+      }
+      var index = this.nowIndex;
+      if (this.options.effect == "slide") {
+            index = this.nowIndex === this.sliders.length - 1 ? 0 : this.nowIndex;
+
+            if (this.nowIndex === 0 && this.state === "back") {
+                  index = 1;
+            }
+            if (this.nowIndex === 5 && this.state === "toend") {
+                  index = this.sliders.length - 2;
+            }
+      }
+
+      this.pagination_ele.children[index].className += " pagination-bullet-active";
+            }
+            layoutPagnination(){
+                var pagination_count = this.sliders.length - (this.options.effect === "slide" ? 1 : 0);
+      this.pagination_ele = document.querySelector(this.options.pagination);
+      if (this.pagination_ele === null) return false;
+      var html = "";
+      for (var i = 0; i < pagination_count; i++) {
+            if (i === this.nowIndex) {
+                  html += "<div class='pagination-bullet pagination-bullet-active'></div>"
+            } else {
+                  html += "<div class='pagination-bullet'></div>"
+            }
+      }
+      this.pagination_ele.innerHTML = html;
+            }
+            layoutAnimate(){
+                switch (this.options.effect) {
+            case "slide":
+                  this.main.className += " container-slide";
+                  var cloneSlide = this.sliders[0].cloneNode(true);
+                  this.wrapper.appendChild(cloneSlide);
+                  this.sliders = [].slice.call(this.sliders);
+                  this.sliders.push(cloneSlide);
+                  this.wrapper.style.width = this.main.offsetWidth * this.sliders.length + "px";
+                  break;
+            case "fade":
+                  this.main.className += " container-fade";
+                  break;
+      }
+            }
+            prevIndex(){
+                this.nowIndex--;
+      this.nowIndex = (this.nowIndex + this.sliders.length) % this.sliders.length;
+      this.state = (this.nowIndex === this.sliders.length - 1) ? "toend" : "normal";
+            }
+            nextIndex(){
+                this.nowIndex++;
+      this.nowIndex %= this.sliders.length;
+      this.state = (this.nowIndex === 0) ? "back" : "normal";
+            }
+            toIndex(index){
+                this.nowIndex = index;
+            }
+            fade(){
+                 for (var i = 0, slide; slide = this.sliders[i++];) {
+            slide.style.opacity = 0;
+            slide.style.transition = "all 1s";
+      }
+      // console.log("动画");
+      this.sliders[this.nowIndex].style.opacity = 1;
+            }
+            slide(){
+                switch (this.state) {
+            case "normal":
+
+                  this.wrapper.style.left = 0;
+                  this.wrapper.style.transition = "left 1s";
+                  setTimeout(function () {
+                        this.wrapper.style.left = -this.nowIndex * this.main.offsetWidth + "px"
+                  }.bind(this), 0)
+                  break;
+            case "back":
+                  this.wrapper.style.transition = "top 1s";
+                  this.wrapper.style.left = 0;
+                  setTimeout(function () {
+                        this.nextIndex();
+                        this.slide();
+                  }.bind(this), 0);
+                  break;
+            case "toend":
+                  this.wrapper.style.transition = "top 1s";
+                  this.wrapper.style.left = -(this.sliders.length - 1) * this.main.offsetWidth + "px";
+                  setTimeout(function () {
+                        this.prevIndex();
+                        this.slide();
+                  }.bind(this), 0)
+      }
+            }
+            removeClassName(dom,className){
+                return dom.className = dom.className.replace(new RegExp("\S?" + className), "");
+            }
+        }
+        new Banner(".container", {
+            effect: "slide"
+        });
+    </script>
+</body>
+
+</html>
