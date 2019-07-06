@@ -17,7 +17,7 @@
             height: 200px;
             /* background: #000; */
             margin: auto;
-            /* overflow: hidden; */
+            overflow: hidden;
             text-align: center;
             /* font-size: 50px; */
             position: relative;
@@ -143,22 +143,18 @@
         var pagination = $("#pagination").children;
 
         timer = setInterval(btn_left.onclick, 1000);
-        var index = 0;
-        // box.style.left = -index * 300 + "px"
+        var index = 4;
+        box.style.left = -index * 300 + "px"
 
         //点击事件，获取index
         btn_left.onclick = function () {
             if (index === 0) {
+                console.log(index);
                 box.style.left = -(wheels.length - 1) * 300 + "px";
                 index = wheels.length - 2;
-
-                console.log(index);
-
             } else
                 index--;
-                move(-300 * index, box, "left");
-                
-            
+            move(-300 * index, box, "left");
         }
 
         btn_right.onclick = function () {
@@ -169,7 +165,7 @@
 
             } else
                 index++;
-                move(-300 * index, box, "left");
+            move(-300 * index, box, "left");
 
             // console.log(index);
         }
@@ -182,18 +178,23 @@
             }
         }
         //鼠标放到小圆点轮播图移动
-        for (var i = 0, btn; btn = pagination[i++];) {
-            index = i - 1;
+        for (var j = 0, btn; btn = pagination[j++];) {
+            index = j - 1;
             btn.addEventListener("mouseover", makeBannerMove.bind(this, index));
+            // btn.addEventListener("mouseout", makeBannerOut.bind(this,index));
         }
         //移动
         function makeBannerMove(index) {
             // console.log(this, index);
             move(-300 * index, box, "left");
+            clearInterval(timer1);
         }
-
+        // function makeBannerOut(index) {
+        //     move(-300 * index, box, "left");
+          
+        // }
         //自动移动
-        setInterval(function () {
+       var timer1 = setInterval(function () {
             var evt = new Event("click");
             // console.log(evt);
             btn_right.dispatchEvent(evt);
