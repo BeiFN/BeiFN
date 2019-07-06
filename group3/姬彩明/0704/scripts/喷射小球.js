@@ -6,10 +6,20 @@ function ShootBall(selector){
 ShootBall.prototype.init = function(){
     this.timer = null 
     this.cHeigth =this.main.offsetHeight
+    this.totalWidth = document.body.clientWidth
+    this.totalHeight = document.body.clientHeight
     this.cWidth=this.main.offsetWidth
     this.main.addEventListener("mousedown",this.initShootBall.bind(this)) 
     this.main.addEventListener("mouseup",this.stopCreateBall.bind(this))
     this.main.addEventListener("mousemove",this.changePosition.bind(this))
+}
+ShootBall.prototype.changePosition = function(evt){
+    var e = evt || window.event
+    this.offsetX = e.clientX - (this.totalWidth-this.cWidth)/2 -20
+    
+    this.offsetY = e.clientY - 90
+    // this.offsetX = e.offsetX
+    // this.offsetY = e.offsetY
 }
 ShootBall.prototype.initShootBall = function(evt){
     var 
@@ -17,17 +27,11 @@ ShootBall.prototype.initShootBall = function(evt){
     this.offsetX = e.offsetX
     this.offsetY = e.offsetY
     this.timer =setInterval(()=>{
-        var ball = this.createBall(this.offsetX,this.offsetY)
-        console.log(1)
+        var ball = this.createBall()
         setTimeout(() => {
-            this.ballMove(ball,this.offsetY)
+            this.ballMove(ball,e.offsetY)
         }, 100);
     },50)
-}
-ShootBall.prototype.changePosition = function(evt){
-    var e = evt || window.event
-    this.offsetX = e.offsetX
-    this.offsetY = e.offsetY
 }
 ShootBall.prototype.createBall = function(){
     
