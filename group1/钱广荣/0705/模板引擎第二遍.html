@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/html" id="template">
+        <% for(let i = 0 ; i < 10 ;  i++){ %>
+            <h2>This is the second time <%= i %><h2>
+        <% } %>
+    </script>
+      <!-- 第二遍***********************第二遍**********************第二遍 -->
+    <script>
+        //存在变量i
+        var templateString = document.getElementById("template").innerHTML
+        var reg1 = /<%[^=](.*?)%>/g;
+        var res = templateString.replace(reg1,`\`); $1 print(\``)
+        res = `print( \`${res}\`)`;
+        var html ="";
+        function print(str){
+            html += str;
+        }
+        var reg2 = /<%=(.*?)%>/g;
+        var res = res.replace(reg2,`\`); print($1) ; print(\``);
+        eval(res);
+        document.write(html);
+        // console.log(html);
+
+    </script>
+</body>
+</html>
