@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>字符串模板</title>
+	</head>
+	<body>
+		 <script type="text/html" id="template">
+            <% for(var i = 0 ; i < 20 ; i ++){ %>
+                  <h2>Hello World ! <%= i %></h2>
+            <% } %>
+        </script>
+		<script type="text/javascript">
+            
+            // 字符串 => 符合JS规则 => 执行逻辑 => 返回结果;
+			// 获取字符串
+			var template = document.getElementById("template").innerHTML;
+            // 把字符串改变的符合JS规则;
+            var regJS = /<%[^=](.*?)%>/g;
+            // 去除标记
+            var res = template.replace( regJS , `\`); $1 print(\``)
+            // 加上开头和结尾的标记,使print完整
+            res = `print(\`${res}\`)`;
+
+            var html = "";
+            // 拼接字符串
+            function print(str){
+                  html += str;
+            }
+			
+            var regVar = /<%=(.*?)%>/g
+            var res = res.replace(regVar,`\`);  print($1); print(\``);
+            
+			console.log(eval(res));
+            console.log(html);
+
+            document.body.innerHTML = html;
+      </script>
+	</body>
+</html>
