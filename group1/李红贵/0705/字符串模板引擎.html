@@ -7,14 +7,8 @@
     <title>字符串模板引擎</title>
 </head>
 <body>
-    <!-- 有一个小说和搜索
-    <script type="text/heml">
-        aleart();
-    </script>
-    for(var i =0; i<100;i++){
-        <h1></h10>
-    }
-    <script>
+    
+    <!-- <script>
         // EJS
         //学习成本低，效率极高 
 
@@ -30,20 +24,24 @@
 
     </script> -->
 
-
-
+<!-- 
     <div id="app">
         <ul>
             <li v-for = "item in json">{{item.title}}</li>
         </ul>
-    </div>
+    </div> -->
 
-        <script type="text/html" id="template">
-            <!-- <%1.为什么写在scriptType里面应为不会对页面产生任何影响
-                <% 
-            -->
+        <!-- 
+            type="text/html"存js和html混合语句
+            <% 写在scriptType里面应为不会对页面产生任何影响
+            <%  js语句 %>
+        -->
+    <script type="text/html" id="template">
+        <% for(var i = 0 ; i < 15 ; i ++){ %>
+            <h2>向世界问好 <%= i %></h2>
+        <% } %>
+    </script>
 
-        </script>
     <script type="text/javascript">
         // 模板引擎
         // SEO 搜索引擎优化  结果优化,后端用的较多
@@ -51,27 +49,48 @@
 
         // 字符串符合js规则，执行逻辑，返回结果
 
-
-        new Vue ({
-            el:"#app"
-        })
-
         var template = document.getElementById("template").innerHTML;
         console.log(template);
 
-        var regJS = /<%(.*?)%>/g;
+        // 把字符串template 改变的符合JS规则;
+
+
+        var regJS = /<%[^=](.*?)%>/g;
         console.log(template.match(regJS));
-        console.log(template.template(regjs,"$1"));
+        // 去标记;
+        // 修改js语句数据格式
+        var res = template.replace( regJS , `\`); $1 print(\``);
+        console.log(res);
+
+
+
+
+        // 拼接print方法前后格式
+        res = `print(\`${res}\`)`;
+        console.log(res);
+
+        var regVar = /<%=(.*?)%>/g;
+        console.log(res.match(regVar));
+        // 获取变量i语句
+        var res = res.replace(regVar,`\`);  print($1); print(\``);
+        console.log(res);
+        
+
 
         var html = "";
+        eval(res);//调用print方法
+        // console.log(eval(res));
+
+        
         function print(str){
+            console.log(2222,str);
             html += str;
+            // console.log(html);
         }
 
-        function print(str){
-            str = str.trim();
-            html +=str;
-        }
+        console.log(html);
+        document.body.innerHTML += html;
+        
 
 
     </script>

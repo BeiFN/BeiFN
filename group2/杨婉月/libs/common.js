@@ -8,12 +8,12 @@
 
  class Utils{
       // 随机颜色; 
-      static randomColor(type){
-            if(type === "rgba"){
-                  let r = Math.round(Math.random() * 255);
-                  let g = Math.round(Math.random() * 255);
-                  let b = Math.round(Math.random() * 255);
-                  let a = Math.random().toFixed(2);
+      static getRandomColor(type){
+            if(type === "rgb"){
+                  var r = Math.round(Math.random() * 255);
+                  var g = Math.round(Math.random() * 255);
+                  var b = Math.round(Math.random() * 255);
+                  var a = Math.random().toFixed(2);
                   return "rgba("+ r +","+ g +","+ b +" ,"+ a +")";
             }else{
                   return "#" + Math.round(Math.random()* parseInt("ffffff",16)).toString(16).padStart(6,"0");
@@ -28,12 +28,12 @@
        */
       // 倒计时;
       static getCountDown(){
-            var  
+            var 
                   hour   = 0,
                   minute = 0,
                   second = 0;
       
-            var  targetDate = new Date();
+            var targetDate = new Date();
             targetDate.setFullYear(arguments[0]); // 2019 6 18 
             targetDate.setMonth   (arguments[1] - 1);       // 2019 7 18 
             targetDate.setDate    (arguments[2]);       // 2019 7 10 
@@ -46,10 +46,10 @@
             }
             targetDate.setHours  (hour);
             targetDate.setMinutes(minute);
-            var targetTime = targetDate.setSeconds(second)
-            
-            var reduce = targetTime - Date.now()
-            
+            var targetTime = targetDate.setSeconds(second);
+      
+            var reduce = targetTime - Date.now();
+      
             var second = parseInt(reduce / 1000 % 60) ;
             var minute = parseInt(reduce / 1000 / 60 % 60);
             var hour   = parseInt( reduce / 1000 / 3600);
@@ -83,12 +83,12 @@
       // 事件委托;
       static delegation( handlerClick , selector ){
             return function(evt){
-                  let e = evt || window.event;
-                  let target = e.target || e.srcElement;
-                  let eleList = this.querySelectorAll(selector);
-                  let targetFamily = [];
-                  let _tempTarget = target;
-                  let count = 0;
+                  var e = evt || window.event;
+                  var target = e.target || e.srcElement;
+                  var eleList = this.querySelectorAll(selector);
+                  var targetFamily = [];
+                  var _tempTarget = target;
+                  var count = 0;
                   while(true && count ++ < 100){
                         if(_tempTarget === this || _tempTarget === null){
                               break;
@@ -98,7 +98,7 @@
                   }
                   for(var i = 0 , ele ; ele = eleList[i++]; ){
                         if(targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1){
-                              handlerClick.call(ele , e, ele);
+                              handlerClick.call(ele , e);
                               break;
                         }
                   }
@@ -108,7 +108,7 @@
       // 获取元素绝对位置;
       
       static getAbsPosition(dom){
-            let position = {
+            var position = {
                   left : dom.offsetLeft,
                   top  : dom.offsetTop
             }
@@ -132,49 +132,65 @@
             return dom.className = dom.className.replace(new RegExp("\S?"+className) , "" );
       }
 
-      //获取元素的大小
-      static getEleSize (dom){
-            let eleSize = {
-                width  :  parseInt(getComputedStyle(dom)["width"]),
-                height :  parseInt(getComputedStyle(dom)["height"])
-            }
-            return eleSize;
-        }
-      /**
-        * 运动框架 
-        * options = {
-        *       attr : target 
-        *   } 
-        */
-      static move( dom , options , callback){
+      static getSize(dom){
+            return {
+                width : parseInt( getComputedStyle(dom)["width"] ),
+                height : parseInt( getComputedStyle(dom)["height"] ) 
+          }
+      }
+
+      static move(dom, options, callback){
+            //dom : 运动的节点
+            //options : 属性对象
+            //callback : 回调函数
+
+            //关闭定时器
             clearInterval(dom.timer);
+
             dom.timer = setInterval(function(){
-                for(let attr in options){
+                //遍历options中所有的对象
+                for(var attr in options){
+
+                    //得到当前的属性值
+                    //如果是透明度，当前透明度应该乘100
                     if(attr === "opacity"){
-                        var iNow = parseInt( getComputedStyle(dom)[attr] * 100 )
-                        var target = options[attr];
-                    }else{
-                        var iNow = parseInt( getComputedStyle(dom)[attr] )
-                        var target = options[attr];
+                        var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                        //getComputedStyle(dom)[attr]是小数  必须先乘100然后再取整，否则iNow为0
+                        //为什么要取整？？？
+                        //如果不取整，则会在最后不断闪
                     }
-                    var speed = (target - iNow) / 10;
-                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed) ;
-                    if(target == iNow){
-                        delete options[attr] ; 
-                        if(Object.keys(options).length === 0 ){
+                    else{
+                        iNow = parseInt(getComputedStyle(dom)[attr]);
+                    }
+                    //计算当前速度：（目标点值-当前属性值）/任意一个整数
+                    let speed = (options[attr]-iNow)/10;
+                    //对当前速度取整
+                    speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    //当所有当前属性值等于目标点值时关闭定时器
+                    if(options[attr]===iNow){
+                        //如何做到当所有属性运动结束后再关闭定时器？？？
+                        //到达一个，删除一个
+                        delete options[attr];
+                        //当options中无对象时，关闭定时器
+                        if(Object.keys(options).length===0){
                             clearInterval(dom.timer);
-                            typeof callback === "function" ? callback() : "";
+                            //在运动结束之后，执行回调函数
+                            //判断是否为函数
+                        typeof callback === "function"? callback() : "";
                         }
                     }else{
-                        if(attr == "opacity"){
-                            dom.style[attr] = (iNow + speed) / 100 ;
-                        }else{
+                        if(attr === "opacity"){
+                            dom.style[attr] = (iNow + speed)/100;
+                        }
+                        else{
                             dom.style[attr] = iNow + speed + "px";
                         }
                     }
                 }
-            },50)
+            }, 50)
         }
+
  }
 
 
