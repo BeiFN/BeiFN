@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id="template">
+       <% for(var i = 0 ; i < 10 ; i ++){ %>
+        <h2>向世界问好</h2>
+      <% } %>
+    </script>
+    <script>
+        var s="";
+        function print(html){
+            s+=html;
+        }
+        let str=document.querySelector("#template").innerHTML;
+        let reg1=/<%(.*?)%>/g;
+        str=str.replace(reg1,`\`);$1 print(\``);
+        str=`print(\`${str}\`)`;
+        console.log(str);
+        eval(str);
+        document.body.innerHTML=s;
+    </script>
+</body>
+</html>

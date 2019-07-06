@@ -1,7 +1,9 @@
 /**
  * @$$                   jQuery选择器           元素名 
  * 
- * @on                   事件绑定               dom,evt,fn
+ * @on                   事件绑定               dom,evt,fn,selector(事件委托)
+ * 
+ * @off                  移除事件绑定           dom,evt,fn
  * 
  * @getAbsOffset         获取元素页面定位        dom
  * 
@@ -42,8 +44,22 @@ function $$(ele) {
     return res.length === 1 ? res[0] : res;
 }
 // 事件绑定
-function on(ele, event_type, event_callback) {
-    return ele.addEventListener(event_type, event_callback);
+function on(dom,evetType,callback,selector){
+    if(dom.addEventListener){
+          if(arguments.length === 4 && typeof arguments[3] === "string" ){
+                dom.addEventListener(evetType , delegate( callback , selector ));
+          }else{
+                dom.addEventListener(evetType , callback);
+          }
+    }else if(dom.attachEvent){
+          dom.attachEvent("on" + eventType, callback);
+    }else{
+          dom["on" + eventType] = callback;
+    }
+}
+// 移除事件绑定
+function off(ele,event_type,event_callback){
+    return ele.removeEventListener(event_type, event_callback);
 }
 // 获取元素页面定位
 function getAbsOffset(dom) {
@@ -68,7 +84,7 @@ function move(eleNode, data, callback = () => { }, ) {
             let endPoint = data[attr].length == 2 ? data[attr][0] : data[attr],
                 spd = data[attr].length == 2 ? data[attr][1] : undefined,
                 result = attrToendPoint(eleNode, attr, endPoint, spd);
-            if (result) {
+            if (result) {           // 当前属性执行完成后（参见39行）
                 delete data[attr];// 删除
             }
         }
@@ -204,7 +220,7 @@ function valiStrenth(input, callback, strengthReg) {
 }
 
 // 倒计时          年月日时分
-function MsTime(hr, mt, sd, edyr, edmth, eddt, edhr, edmt) {
+function MsTime(endtime) {
     this.end = new Date(edyr, edmth - 1, eddt, edhr, edmt, 0).getTime();
     this.show(hr, mt, sd)();
     this.continue(hr, mt, sd);
@@ -374,61 +390,3 @@ function renderLi(res, tip) {
 
 
 
-// 生成缓冲运动对象
-// function buffer(ele, data, callback) {
-//     var attrs = {},
-//         time = 0;
-//     for (var attr in data) {
-//         var nowPoint = getComputedStyle(ele)[attr], // 当前位置
-//             endPoint = null,                        // 终点位置
-//             spd = null;                             // 速度
-//         attrs[attr] = [];                           // 属性运动值数组
-//         // 判断是否传入速度
-//         if (data[attr] instanceof Array) {
-//             endPoint = data[attr][0];
-//             spd = data[attr][1];
-//         } else {
-//             endPoint = data[attr];
-//             spd = 6;
-//         }
-//         // 判断是否为透明度参数处理
-//         if (attr === "opacity") {
-//             nowPoint *= 100;
-//             endPoint *= 100;
-//         } else {
-//             nowPoint = parseInt(nowPoint);
-//             endPoint = parseInt(endPoint);
-//         }
-//         // 计算数值插入数组
-//         for (var distance = 0; nowPoint !== endPoint;) {
-//             distance = (endPoint - nowPoint) / spd;
-//             distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance);
-//             nowPoint += distance;
-//             attrs[attr].push(attr === 'opacity' ? nowPoint / 100 : nowPoint + "px");
-//         }
-//         time = Math.max(time, attrs[attr].length);
-//     };
-//     return { "ele": ele, "attrs": attrs, "time": time, "callback": callback }
-// }
-// 运动函数
-// function move() {
-//     var time = 0,
-//         index = 0,
-//         arg = arguments[0] instanceof Array ? arguments[0] : arguments;
-//     timer = null;
-//     for (var i in arg) {
-//         time = Math.max(time, arg[i].time);
-//     }
-//     return timer = setInterval(() => {
-//         for (var i in arg) {
-//             for (var attr in arg[i].attrs) {
-//                 arg[i].ele.style[attr] = arg[i].attrs[attr][index];
-//             }
-//             if (arg[i].callback && index === arg[i].time) arg[i].callback();
-//         }
-//         console.log(index,time);
-//         if (index++ === time) {
-//             clearInterval(timer);
-//         }
-//     }, 50)
-// }

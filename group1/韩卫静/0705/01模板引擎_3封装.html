@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/html" id="example">
+			<% for(var attr in data ){ %>
+				<h2>hello world  <%= data[attr] %> </h2>
+			<% } %>
+		</script>
+		<script type="text/javascript" src="js/template.js">
+			
+		</script>
+		<script type="text/javascript">
+			var data = {
+				a : "aaa",
+				b : "bbb"
+			};
+			var str = document.getElementById("example").innerHTML;
+			console.log(Template(str , data));
+			document.write(Template(str , data));
+		</script>
+	</body>
+</html>
