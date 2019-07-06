@@ -92,8 +92,8 @@
         Firework.prototype.fireworkBoom = function(offsetX,offsetY,evt){
 
             // 烟花数目
-            var randomFireCount = 15 + Math.round(Math.random() * 10);
-            // var randomFireCount = 50;
+            // var randomFireCount = 15 + Math.round(Math.random() * 10);
+            var randomFireCount = 52;
 
 
 
@@ -137,11 +137,19 @@
                         top  : fire_targetY ,
                         // opacity : 0
                   },function(fire_boom){
-                      setTimeout(function(){
-                          fire_boom.remove();
-                      }, 500);
+                    //   setTimeout(function(){
+                    //         // fire_boom.remove();
+                    //         move(fire_boom , {
+                    //             left : Math.round((2*Math.sin(t) - Math.sin(2*t)) * 5) + 160 ,
+                    //             top  : -Math.round((2*Math.cos(t) - Math.cos(2*t)) * 5)  + 400 ,
+                    //             // opacity : 0
+                    //         },function(fire_boom){
+                    //             fire_boom.remove();
+                    //         }.bind(false,fire_boom));
+
+                    //     }, 500);
                         
-                  }.bind(false,fire_boom))
+                }.bind(false,fire_boom));
             }
         }
 

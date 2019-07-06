@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            div{
+                  background: yellowgreen;
+                  width: 100px;
+                  height: 100px;
+            }
+      </style>
+</head>
+
+<body>
+      <div></div>
+      <script>
+            //首先复习之前学习的内容
+            //第一个就是 let const
+            //然后是解构赋值那一大块
+
+            //关于let 与 const需要注意的点
+            //let 、const不可以重复声明 不会声明提升
+            //let、const 声明会造成一个暂时性死区 也就是当前作用域在未执行let语句之前不允许使用let所声明的变量 
+            //let、const会有一个块级作用域
+
+            //for 循环使用let 会造成闭包 小括号作用域包含了大括号
+      //      for(var j = 0 ; j++ < 10 ;){
+      //            setTimeout(function(){
+      //                  console.log(j);
+      //            },0)
+      //      }
+      //      //j输出十个11
+           
+      //       for(let i = 0 ; i ++< 10;){
+      //             setTimeout(function(){
+      //                   console.log(i);
+      //             },0)
+      //       }
+            //i输出十个十;
+            //const声明常量，且只能在声明时进行赋值，之后不允许更改。
+            //const其实是不允许变量指向的地址所存的数据发生改动
+            
+            //哇塞 解构赋值 （今晚的任务过重，只能自己刚把带）
+
+            //首先 结构赋值 主要是 数组赋值跟对象复制
+            //数组赋值
+
+            //一般形式就是这样咯
+            // let [] = []
+            // let [a,b,c,d] = [1,2,3,4];
+
+
+            //看看下边会输出什么
+            // let[a,b,c,d] = [1,2,3,4,5,7,6,9,2];
+            //啧 1，2，3，4
+            // console.log(a,b,c,d);
+
+      //       let[a,b,c,...d] = [1,2,3,4,5,7,6,9,2];
+      //      //不错不错1,2,3,[.....]
+      //       console.log(a,b,c,d)
+
+      //还有更牛逼的数组嵌套赋值
+      // let[a,b,[c,d,e],...f] =  [1,2,[3,4,5],6,7,8,9]
+      // //我擦咧 结果cde居然不是数组 ，还是只有省略符号f
+      // console.log(a,b,c,d,e,f);
+
+      // let[a,b,[c,d,e],...f] =  [1,2,[3,4,5],6]
+      // //嗯。。就算只有一个 省略符号也算是个爸爸依旧以数组形式输出
+      // console.log(a,b,c,d,e,f);
+
+      //------------------------我是分分分分割线----------
+
+      //好了 下面是对象赋值
+
+      //主要表现形式
+      //注意哦 是右边大括号赋值给左边
+      //还有。。 经检验 右边只能以对象赋值给左边
+      // let{} = {};
+      // let a = {a : 10};
+      // console.log(a);
+
+      let {push} = Array.prototype;
+      let {slice} = Array.prototype;
+      console.log(push);
+      console.log(slice);
+      //为防止取值时，变量名冲突，可以采取别名方式哦
+      let {slice : Myslice} = Array.prototype;
+      console.log(Myslice);
+
+      //咳咳 重头戏来了 小智说的万恶默认参
+      
+      
+      //带参数方式
+      // function Foo({a,b} ){
+      //       console.log(a,b);
+      // }
+      // Foo({
+      //       a: "尼玛",
+      //       b: "爱我"
+      // });
+
+      //不带参数的方式  结果不传参数就成了undefined
+      // function Foo({a,b} = {}){
+      //       console.log(a,b);
+      // }
+      // Foo();
+
+      // 一般采取这种升级豪华版哦 给参数a、b等号来个默认值 
+      //切记哦 是等号赋值可不是冒号 宝贝
+      // function Foo({a = 10,b = 20} = {}){
+      //       console.log(a,b);
+      // }
+      // Foo();
+
+      //看来区区一只默认参数已经无法满足我了
+      //来吧 对象扩展=》对 扩展运算符 就是你了
+      //来让我（你爸爸）感受下你的温暖
+
+      var obj1 = {
+            a : 1,
+            b : 2,
+            c : 3
+      };
+      var obj2 = {
+            ... obj1,
+            d : 2,
+            e : 5,
+            f : 7
+      };
+      console.log(obj2);
+      //1,2,3,2,5,7 漂亮
+      //我开始膨胀了
+
+      Object.assign(obj2,obj1);
+      //1,2,3,2,5,7 ????
+      //靠 咋回事啊 结果居然和楼上一样，我的assign啊
+      console.log(obj2);
+
+      //来吧
+      Object.assign(obj1,obj2);
+      //1,2,3,2,5,7 ???? 黑人问号
+      console.log(obj1);
+      //这可去求 这让我如何是好 
+      //目前理解 ：对象扩展运算符跟Object.assign
+      //草 我sb了 assign本来就是合并！！！
+
+      //倔强的我必须再来一波
+      //来吧重新再找一个对象，咱颜值还行，问题不大
+      var obj3 = {
+            g : 10,
+            h : 11
+      }
+      Object.assign(obj2,obj3);
+      //漂亮 理论成立
+      console.log(obj2);
+
+      //关于这个我爽完了，感觉不错，没啥硬骨头
+      </script>
+</body>
+</html>

@@ -5,10 +5,11 @@ function Magnifier() {
     this.init();
 }
 Magnifier.prototype.init = function (data) {
-    this.lb = $$(".left-bar"); // 左盒子
-    this.rb = $$(".right-bar"); // 右盒子
-    this.cb = $$(".clip-box"); // 小框
-    this.limg = $$(".img-box"); // 左图
+    this.lb = $$(".left-bar");      // 左盒子
+    this.rb = $$(".right-bar");     // 右盒子
+    this.cb = $$(".clip-box");      // 小框
+    this.limg = $$(".img-box");     // 左图
+    this.imgList = $$(".imgList");  // 图片列表
     this.rimg = this.rb.children[0]; // 右图
 
     this.lblt = getAbsOffset(this.lb).left; // 左盒位置
@@ -22,6 +23,20 @@ Magnifier.prototype.bindEvent = function () {
     on(this.lb, "mouseenter", this.show.bind(this));      // 鼠标进入显示
     on(this.lb, "mouseleave", this.hidden.bind(this));    // 鼠标离开隐藏
     on(this.lb, "mousemove", this.move.bind(this));       // 鼠标移动跟随
+    on(this.imgList,"click",this.changeImg.bind(this));
+}
+//    鼠标点击切换图片
+Magnifier.prototype.changeImg = function (evt) {
+    var e=evt||window.event,
+        target=e.target||e.srcElement;
+    if(target===this.imgList)return false;
+    for(var i=0,img;img=this.imgList.children[i++];){
+        img.children[0].style.borderColor="rgba(0,0,0,0)";
+    }
+    target.style.borderColor="rgb(255,100,100)";
+    this.src=target.src;
+    this.limg.children[0].src=this.rimg.src=this.src;
+    this.cb.style.backgroundImage="url("+this.src+")";
 }
 //    鼠标进入显示
 Magnifier.prototype.show = function () {
