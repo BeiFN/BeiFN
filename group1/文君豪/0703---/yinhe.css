@@ -256,13 +256,22 @@
   }
   /* animation-timing-function使用的数学函数，称为三次贝塞尔曲线，速度曲线。使用此函数，您可以使用您自己的值，或使用预先定义的值之一：
   
-  值	描述	测试
+	
+	/* animation-name 
+	animation-duration 
+	animation-iteration-count 
+	animation-duration 
+	animation-delay 
+	animation-direction( normal  reserve alternate(在奇数次正向) alternate-reverse(在奇数次反向)*/
+}
+
+  /* 值	描述	测试
   linear	动画从头到尾的速度是相同的。	测试
   ease	默认。动画以低速开始，然后加快，在结束前变慢。	测试
   ease-in	动画以低速开始。	测试
   ease-out	动画以低速结束。	测试
   ease-in-out	动画以低速开始和结束。	测试
-  cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。   */
+  cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。   */ 
   /*海王星轨道*/
   .neptuneOrbit {
     left:20px;
