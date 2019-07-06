@@ -32,9 +32,9 @@
     <div id="container"></div>
     <script>
         class Firework{
-            constructor(){
+            constructor(selector){
 
-                this.main = document.querySelector("div");
+                this.main = document.querySelector(selector);
                 if(this.main === null){ return false};
                 this.init();
         }
@@ -126,10 +126,6 @@
                     }
                 }
             },50)
-        }
-        function $(selector){
-            var ele = null;
-            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
         }
         new Firework();
     </script>
