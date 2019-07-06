@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/html" id="template">
+            <% for(var i = 0 ; i < 15 ; i ++){ %>
+                <h2>向世界问好 <%= i %></h2>
+            <% } %>
+    </script>
+    <script type="text/javascript">
+        // SEO优化；后端用；
+        //前端框架用
+        //HTML 里面写JS逻辑；
+        //1.为啥写在 script type ="text/html"里面? 因为不会对页面产生任何影响。
+         //字符串=> 符合JS规则 => 执行逻辑 =>返回结果;
+         var template =document.getElementById("template").innerHTML;
+         var regJS = /<%[^=](.*?)%>/g;
+
+         var res = template.replace( regJS , `\`); $1 print(\``)
+
+         res = `print(\`${res}\`)`;
+
+         var html = "";
+         
+
+         function print(str){
+             html += str;
+         }
+         var regVar = /<%=(.*?)%>/g
+
+         console.log(res.match(regVar));
+          var res = res.replace(regVar, `\`);  print($1); print(\``);
+ 
+          console.log(eval(res));
+          console.log(html);
+    </script>
+   
+    
+</body>
+</html>
