@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            max-width: 820px;
+            height: 600px;
+            /* border: 2px solid #ddd; */
+            margin: 20px auto;
+            position: relative;
+        }
+        .left_box{
+            width: 400px;
+            height: 600px;
+            box-shadow: 0 0 10px #000;
+            position: relative;
+        }
+        .img_box{
+            width: 400px;
+            height: 600px;
+        }
+        .left_box .img_box img{
+            width: 100%;
+            height: 100%;
+        }
+        .left_box .clip_box{
+            display: none;
+            width: 80px;
+            height: 120px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 8px #000;
+            background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555254944857&di=b77df6a195c67a40f183dcabf3fba7c0&imgtype=0&src=http%3A%2F%2Fimage.yy.com%2Fyywebalbumbs2bucket%2Fa4bcbd637dc44c61a96cc942cf2a7bec_1505479522220.jpg) no-repeat;
+            background-size: 400px 600px;
+        }
+        .right_box{
+            display: none;
+            width: 400px;
+            height: 600px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            left: 420px;
+            overflow: hidden;
+        }
+        .right_box img{
+            display: block;           
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left_box">
+            <div class="img_box">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555254944857&di=b77df6a195c67a40f183dcabf3fba7c0&imgtype=0&src=http%3A%2F%2Fimage.yy.com%2Fyywebalbumbs2bucket%2Fa4bcbd637dc44c61a96cc942cf2a7bec_1505479522220.jpg" alt="">
+            </div>
+            <div class="clip_box">
+
+            </div>
+        </div>
+        <div class="right_box">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555254944857&di=b77df6a195c67a40f183dcabf3fba7c0&imgtype=0&src=http%3A%2F%2Fimage.yy.com%2Fyywebalbumbs2bucket%2Fa4bcbd637dc44c61a96cc942cf2a7bec_1505479522220.jpg" alt="">
+        </div>
+    </div>
+</body>
+    <script>
+        // OOA
+       
+        // 左侧
+        // 鼠标移入显示放大镜
+        // 鼠标移出隐藏放大镜
+        // 鼠标移动时图片跟随
+
+        // 右侧
+        // 显示放大时的图片位置
+
+        function Magnifier(){
+
+        }
+
+        //初始化
+        Magnifier.prototype.init = function(eleOptions){
+            
+            this.leftBox = $$(eleOptions.lb);
+            this.clipBox = $$(eleOptions.cb);
+            this.imgBox = $$(eleOptions.imgb);
+            this.rightBox = $$(eleOptions.rb);
+            this.cBox = $$(eleOptions.c);
+
+            this.rightImg = this.rightBox.children[0];
+            this.bindEvent();
+        }
+
+        // 事件绑定
+        Magnifier.prototype.bindEvent = function(){
+            this.leftBox.addEventListener("mouseenter",this.eleShow.bind(this));
+            this.leftBox.addEventListener("mouseleave",this.eleHide.bind(this));
+            this.leftBox.addEventListener("mousemove",this.eleFollow.bind(this));
+            
+        }
+
+        //鼠标移入显示放大镜
+        Magnifier.prototype.eleShow = function(){
+            this.clipBox.style.display = "block";
+            this.imgBox.style.opacity = 0.1;
+            this.rightBox.style.display = "block"
+        }
+
+        //鼠标移出隐藏放大镜
+        Magnifier.prototype.eleHide = function(){
+            this.clipBox.style.display = "none";
+            this.imgBox.style.opacity = 1;
+            this.rightBox.style.display = "none"
+        }
+
+        //图片跟随
+        Magnifier.prototype.eleFollow = function(evt){
+            let e = evt || window.event;
+            let {clientX,clientY} = e;
+            // let clientX = e.clientX;
+            let [nLeft, nTop, lmax, tmax , scale , distancel, distancet] = [
+                clientX - this.cBox.offsetLeft - this.leftBox.offsetLeft - this.clipBox.offsetWidth / 2,
+                clientY - this.cBox.offsetTop - this.leftBox.offsetTop - this.clipBox.offsetHeight / 2,
+                this.leftBox.offsetWidth - this.clipBox.offsetWidth,
+                this.leftBox.offsetHeight - this.clipBox.offsetHeight,
+                this.clipBox.offsetWidth / this.rightImg.offsetWidth,
+                this.rightImg.offsetWidth - this.rightBox.offsetWidth,
+                this.rightImg.offsetHeight - this.rightBox.offsetHeight,
+            ];
+            //控制边界
+            nLeft = nLeft < 0 ? 0 : nLeft;
+            nLeft = nLeft > lmax ? lmax : nLeft;
+
+            nTop = nTop < 0 ? 0 : nTop;
+            nTop = nTop > tmax ? tmax : nTop;
+
+
+            // 切片盒子跟随鼠标移动
+            this.clipBox.style.cssText += `;left:${nLeft}px;top:${nTop}px`;
+            
+            // 切片盒子跟随鼠标移动定位背景图
+            this.clipBox.style.backgroundPosition = `-${nLeft}px -${nTop}px`;
+            
+            console.log(distancel);
+            //显示放大时的图片位置
+            this.rightImg.style.cssText += `;left: -${nLeft / lmax * distancel}px;top: -${nTop / tmax * distancet}px`;
+            // this.rightImg.style.cssText += `;left: -${nLeft * 10}px;top: -${nTop * 10}px`;
+            // this.rightImg.style.cssText += `;left: -${nLeft * this.clipBox.offsetWidth / this.rightImg.offsetWidth}px;top: -${nTop * this.clipBox.offsetHeight / this.rightImg.offsetHeight}px`;
+        }
+        
+       
+        // 工具
+        function $$(selector){
+            if(arguments.length > 1){
+                return document.querySelectorAll(selector);
+            }
+            return document.querySelector(selector);
+        }
+        // var a = document.querySelector(".right_box");
+        // console.log(a);
+
+        var magnifier = new Magnifier();
+        magnifier.init({
+            // 左盒
+            lb : ".left_box",
+            // 切片盒子
+            cb : ".clip_box",
+            imgb : ".img_box",
+            rb : ".right_box",
+            c : ".container",
+        })
+
+    </script>
+</html>

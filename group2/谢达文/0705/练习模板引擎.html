@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id="template">
+        <% for(var i = 0; i < 10;i++){ %>
+            <h1>模板引擎我要学疯了<%= i %></h1>
+        <% } %>
+    </script>
+    <script type="text/javascript">
+       
+        let  template  = document.getElementById("template").innerHTML;
+        // console.log(template);
+        let regJs = /<%[^=](.*?) %>/g;
+        // console.log( template.match(regJs));
+        // ["<% for(var i = 0; i < 10;i++){ %>", "<% } %>"]
+        let res = template.replace(regJs,`\`);$1 print(\``);
+        // console.log(res);
+        res = `print(\`${res}\`)`;
+        // console.log(res);
+        let reg = /<%=(.*?)%>/g;
+        // console.log(res.match(reg));
+    //     print(`
+    //     `);for(var i = 0; i < 10;i++){ print(`
+    //         <h1>模板引擎我要学疯了<%= i %></h1>
+    //     `);} print(`
+    // `)
+   
+        
+        
+        
+      
+        
+        res = res.replace(reg,`\`);print($1);print(\``);
+        console.log( typeof res);
+        let print = (attr) =>{
+            html +=attr;
+        }
+        let html = "";
+        eval(res);
+       document.body.innerHTML = html;
+    </script>
+</body>
+</html>

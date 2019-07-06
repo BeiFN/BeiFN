@@ -108,7 +108,7 @@ Magnifier.prototype.handlerMouseMove = function(evt){
     var cube_position = this.boundary(x,y);
     
 
-    var big_img_position = this.getBigPosition(x,y);
+    var big_img_position = this.getBigPosition(cube_position.x, cube_position.y);
 
     this.move(cube_position,big_img_position);
 }
@@ -204,5 +204,6 @@ function removeClassName(dom , className){
     // var classReg = new RegExp("\S?"+className);
     // classString = classString.replace(classReg,"");
     // dom.className = classString;
-    return dom.className = dom.className.replace(new RegExp("\S?"+className) , "" );
+    return dom.className = dom.className.replace(new RegExp("\\s\?"+className) , "" );
+    
 }
