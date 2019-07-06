@@ -88,7 +88,7 @@ Magnifier.prototype.handlerMousemove = function(evt){
     var x = e.pageX - this.small_wrapper_position.left - this.small_cube_size.width / 2;
     var y = e.pageY - this.small_wrapper_position.top  - this.small_cube_size.height / 2;
     var cube_position  = this.boundary(x,y);
-    var big_img_position = this.getBigPosition(x,y);
+    var big_img_position = this.getBigPosition(cube_position.x,cube_position.y);
     this.move(cube_position,big_img_position);
 }
 //边界检测;
@@ -172,7 +172,7 @@ function delegation( handlerClick , selector){
 }
 
 function removeClassName(dom , className){
-    return dom.className = dom.className.replace(new RegExp("\S?" + className) , "");
+    return dom.className = dom.className.replace(new RegExp("\\s\?" + className) , "");
 }
 
 new Magnifier();
