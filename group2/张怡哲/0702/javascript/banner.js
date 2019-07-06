@@ -137,6 +137,7 @@ Banner.prototype.toIndex = function(index){
 Banner.prototype.slide = function(){
     switch(this.state){
         case "normal" :
+            //关闭画面效果
             this.wrapper.style.left = 0;
             this.wrapper.style.transition = "left 1s";
             setTimeout(function(){
@@ -145,7 +146,6 @@ Banner.prototype.slide = function(){
             this.wrapper.style.transition = "left 1s";
             break;
         case "firstIndex" :
-            //关闭画面效果
             this.wrapper.style.transition = "top 1s";
             this.wrapper.style.left = 0;
             //先进行页面渲染后,进行延时器内操作

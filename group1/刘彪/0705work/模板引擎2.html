@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id = "template">
+        <% for(var i = 0; i <10; i++){ %>
+            <h2>向世界问好<%= i %></h2>
+        <% } %>
+    </script>
+    <script>
+        // str = `')for(var i = 0; i <10; i++){print('
+        //              <h2>向世界问好</h2>'
+        //        )}print(' `
+
+        // 1.分离逻辑
+        // 2.分离html
+        // 3.逻辑执行
+        // 4.完成字符串拼接
+
+
+
+
+
+        let template = document.getElementById("template").innerHTML;
+        console.log(template);
+        let reg1 = /<%[^=](.*?)%>/g;
+        let reg2 = /<%=(.*?)%>/g;
+        //分离逻辑和html
+        let res = template.replace(reg1,`\`);$1print(\``);
+        res = res.replace(reg2,`\`);print($1);print(\``)
+        res = `print(\`${res}\`)`;
+        console.log(res);
+
+        
+        let html = "";
+        function print(str){
+         
+            console.log(html)
+            html += str;
+            
+        }
+
+        //完成逻辑的执行和字符串的拼接
+        eval(res);
+        console.log(html);
+
+        document.body.innerHTML = html;
+
+
+        
+    </script>
+
+
+</body>
+</html>
