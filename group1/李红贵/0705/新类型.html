@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var str = "";
+        // for(var attr in str){
+        //     console.log(attr);
+        //     console.log(str[attr]);
+        // }  
+
+        // for(let val of str){
+        //     console.log(val);
+        // }//遍历超出4位ascii码
+
+
+        // // symbol  符号
+        // var sym = Symbol("接受参数");
+        // // 符号类型，每次创建都唯一
+        // console.log(typeof sym);
+        // // 使用来 标志唯一 常量
+
+        // let obj1 = {
+        //     "讲师特点":"aaa"
+        // }
+        // let obj2 = {
+        //     "讲师特点":"bbb"
+        // }
+
+        // Object.assign(obj1,obj2);
+        // console.log(obj1);
+        // let obj3 = {
+        //     [Symbol("讲师特点")]:"ccc",
+        // }
+        // Object.assign(obj3,obj2);
+        // console.log(obj3);
+
+        // // 设置常量  
+        // // 防止和之前的key值冲突
+        // const key = Symbol("key");
+        // let obj5 = {
+        //     [key] : "hello",
+        // }
+        // console.log(obj5[key]);
+
+
+
+
+
+
+        // // set结构
+        // var set = new Set(2,3,4,5,6,7,8,9);
+        // set.add("hellowworld");
+        // set.delete("hellowworld");
+        // // set.clear();//清空
+        // set.entries();//具体结构
+        // console.log(set);
+        // // set结构特征，set结构不存在重复项，值=》值
+        // var arr = Array.from(set);
+        // console.log(arr);
+
+        // // 去除
+        // arr = Array.from(new Set(arr));
+
+
+        // var map = new Map([a,1]);
+
+        // class类  构造函数+原型的语法糖
+        // 扩展
+        // class 
+        function Foo() {
+            this.name = "xxx";
+        }
+        Foo.prototype.show = function() {
+            alert(this.name);
+        }
+
+        var foo = new Foo();
+        foo.show();
+
+        class Foox{
+            constructor(){
+                console.log("调用");
+            }
+        }
+        // 面向对象程序改成ES6Class
+        
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

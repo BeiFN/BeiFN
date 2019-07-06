@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id = "template">
+        <% for(var i = 0 ; i < 15 ; i++){ %>
+            <h2>向世界问好<%= i %></h2>    
+        <% } %>
+    </script>
+    <script type="text/javascript">
+        let template = document.getElementById("template").innerHTML;
+        let regJS    = /<%[^=](.*?)%>/g;
+        let res      = template.replace(regJS , `\`); $1 print(\``);
+        function print(str){
+            html += str;
+        }
+
+        res = `print(\`${res}\`)`;
+        // console.log(res);
+
+        let html = "";
+
+        let regVar = /<%=(.*?)%>/g;
+
+        res = res.replace(regVar , `\`);   print($1);print(\``);
+
+        console.log(eval(res));
+
+        console.log(html);
+    </script>
+</body>
+</html>

@@ -197,7 +197,7 @@ Banner.prototype.fade = function () {
 }
 
 function removeClassName(dom, className) {
-    return dom.className = dom.className.replace(new RegExp("\s?" + className), "");
+    return dom.className = dom.className.replace(new RegExp("\\s\?" + className), "");
 }
 
 //        ┏┓　　　┏┓+ +

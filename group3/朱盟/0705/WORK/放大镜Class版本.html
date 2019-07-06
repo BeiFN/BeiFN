@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Zoom Tool 1-放大镜 |EMB| 朱盟 </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .contain {
+            width: 350px;
+            height: 450px;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .small-img {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .small-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            display: none;
+            background-image: url(https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+            background-repeat: no-repeat;
+            background-size: 350px 350px;
+            background-position: 0 0;
+            /* border: 1px solid #000; */
+        }
+
+        .big-img {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 350px;
+            top: 0;
+            box-shadow: 0 0 10px #000;
+            overflow: hidden;
+            display: none;
+        }
+
+        .big-img img {
+            width: 1050px;
+            height: 1050px;
+            position: absolute;
+        }
+
+        .img-btn {
+            padding-top: 20px;
+            width: 100%;
+            height: 100px;
+        }
+
+        .img-btn .img-box {
+            width: 60px;
+            float: left;
+            border: 3px solid rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        .img-btn .img-box.active {
+            border-color: red;
+        }
+
+        .img-btn .img-box:hover {
+            border-color: red;
+        }
+
+        .img-btn .img-box img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="small-img">
+            <img src="https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                alt="">
+            <div class="cube"></div>
+        </div>
+        <div class="big-img">
+            <img src="https://upload-images.jianshu.io/upload_images/16960494-927c81e490e2e3ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                alt="">
+        </div>
+
+        <div class="img-btn">
+            <div class="img-box active">
+                <img src="https://upload-images.jianshu.io/upload_images/16960494-6016305427ecad9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    alt="">
+            </div>
+            <div class="img-box">
+                <img src="https://upload-images.jianshu.io/upload_images/16960494-7f9040ccc609945a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    alt="">
+            </div>
+        </div>
+    </div>
+    <script src="../../public/js/normal.1.js"></script>
+    <script src="zoom.js"></script>
+    <script>
+        //   domin = ".container",
+        // cube = ".cube",
+        // bigImg = ".big-img",
+        // smImg = ".small-img",
+        // imgbt = ".img-btn",
+        // imgbox = ".img-box",
+        new Zoom({
+            domin: "container",
+            cube: ".cube"
+        });
+        // function Zoom() {
+        //     this.imgList = [{
+        //         sm_url: "https://upload-images.jianshu.io/upload_images/16960494-32836970433a5d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        //         big_url: "https://upload-images.jianshu.io/upload_images/16960494-927c81e490e2e3ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+        //     }, {
+        //         sm_url: "https://upload-images.jianshu.io/upload_images/16960494-5e81b49dd994d9cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+        //         big_url: "https://upload-images.jianshu.io/upload_images/16960494-82fa6d1cbc1be296.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+        //     }]
+        //     // 元素获取 
+        //     this.domin = $(".container");
+        //     this.warpper_smimg = $(".small-img ");
+        //     this.img_sm = $(".small-img img");
+        //     this.img_cube = $(".cube");
+        //     this.img_l = $(".big-img img");
+        //     this.wrapper_limg = $(".big-img");
+        //     this.imgbt = $(".img-btn");
+        //     this.imgboxs = $(".img-box");
+
+        //     this.sizeWarpperSmImg = this.warpper_smimg.getSize();
+        //     this.sizeSmImg = this.img_sm.getSize();
+        //     this.sizeCube = this.img_cube.getSize();
+        //     this.sizeLimg = this.img_l.getSize();
+        //     this.sizeWarpperLImg = this.wrapper_limg.getSize();
+        //     this.posWarpperSmImg = this.warpper_smimg.getAbsPosition();
+        //     // console.log(this.img_sm.getAbsPosition());
+        //     this.ini();
+        // }
+
+        // Zoom.prototype.ini = function () {
+        //     // 事件绑定
+        //     this.warpper_smimg.addEventListener("mouseenter", this.cubeShow.bind(this));
+        //     this.warpper_smimg.addEventListener("mouseleave", this.cubeHide.bind(this));
+        //     this.warpper_smimg.addEventListener("mousemove", this.moveHandler.bind(this));
+        //     this.imgbt.on("click", this.imgChangeHandler.bind(this), ".img-box")
+        // }
+        // Zoom.prototype.imgChangeHandler = function (ev) {
+        //     var e = ev || window.event;
+        //     var ele = e.target || e.srcElement;
+        //     var parent = ele.parentNode;
+        //     // var index=null;
+        //     [].slice.call(this.imgbt.children).forEach((element, index) => {
+        //         element.classRemove("active");
+        //         if (parent === element) {
+        //             var sm = this.imgList[index].sm_url;
+        //             var big = this.imgList[index].big_url;
+        //             this.img_cube.style.backgroundImage = "url(" + sm + ")";
+        //             this.img_sm.src = sm;
+        //             this.img_l.src = big;
+        //         }
+        //     });
+
+        //     parent.classAdd("active");
+        //     // console.log(ele.src);
+        //     // this.imgList
+        // }
+
+        // Zoom.prototype.cubeShow = function () {
+        //     this.img_cube.show();
+        //     this.wrapper_limg.show();
+        //     this.img_sm.style.opacity = 0.3;
+        // }
+        // Zoom.prototype.cubeHide = function () {
+        //     this.img_cube.hide();
+        // }
+
+        // Zoom.prototype.moveHandler = function (ev) {
+        //     var e = ev || window.event;
+        //     var x = e.pageX - this.posWarpperSmImg.left - this.sizeCube.w / 2;
+        //     var y = e.pageY - this.posWarpperSmImg.top - this.sizeCube.h / 2;
+        //     var boundrayPos = this.boundaryVail(x, y);
+        //     this.cubeMoveHandler(boundrayPos.x, boundrayPos.y);
+        //     this.imgBIgMoveHandler(boundrayPos.x, boundrayPos.y);
+        // }
+
+        // Zoom.prototype.cubeMoveHandler = function (x, y) {
+        //     this.img_cube.style.left = x + "px";
+        //     this.img_cube.style.top = y + "px";
+        //     this.img_cube.style.backgroundPosition = -x + "px " + -y + "px";
+        // }
+
+        // Zoom.prototype.imgBIgMoveHandler = function (x, y) {
+        //     var percentX = x / (this.sizeWarpperSmImg.w - this.sizeCube.w);
+        //     var percentY = y / (this.sizeWarpperSmImg.h - this.sizeCube.h);
+
+        //     var moveX = parseInt(percentX * (this.sizeLimg.w - this.sizeWarpperLImg.w));
+        //     var moveY = parseInt(percentY * (this.sizeLimg.h - this.sizeWarpperLImg.h));
+        //     this.img_l.style.left = -moveX + "px";
+        //     this.img_l.style.top = -moveY + "px";
+        //     return {
+        //         x: moveX,
+        //         y: moveY
+        //     }
+        // }
+        // Zoom.prototype.boundaryVail = function (x, y) {
+        //     let {
+        //         w: cubeW,
+        //         h: cubeH
+        //     } = this.sizeCube;
+        //     let {
+        //         w: warpperW,
+        //         h: warpperH
+        //     } = this.sizeWarpperSmImg;
+
+        //    var  maxX = warpperW - cubeW;
+        //    var maxY = warpperH - cubeH;
+
+        //     x < 0 ? x = 0 : "";
+        //     x > maxX ? x = maxX : "";
+        //     y < 0 ? y = 0 : y;
+        //     y > maxY ? y = maxY : "";
+        //     return {
+        //         x: x,
+        //         y: y
+        //     }
+        // }
+
+
+
+
+        // new Zoom();
+    </script>
+</body>
+
+</html>

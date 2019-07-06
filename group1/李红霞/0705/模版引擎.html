@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script type="text/html" id="template">
+            <% for(var attr in data){ %>
+                  <h2>hello world<%= data[attr].a %></h2>
+            <% } %>
+      </script>
+      <script src="./Mytemplate.js"></script>
+      <script type="text/javascript">
+            var data = [{a:1}, {a:2}]
+            var html = MyTemplate(document.getElementById("template").innerHTML,data)
+            console.log(html);
+      </script>
+</body>
+</html>

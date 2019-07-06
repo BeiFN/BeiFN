@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>联系正则</title>
+</head>
+<body>
+
+      <script type="text/html" id="template">          
+            <% for(var attr in data){ %>
+                  <h2>向世界问好 <%= data[attr].a %></h2>
+            <% } %>
+      </script>
+      <script src="./mytemplate.js"></script>
+      <script type="text/javascript">
+      var template = document.getElementById("template");
+      template = template.innerHTML;
+
+      var reg1 = /<%[^=](.*?)%>/g;
+      var reg2 = /<%=(.*?)%>/g;
+
+      var res = template.replace(reg1 , `\`);$1print(\``);
+      res = `print(\`${res}\`)`;
+      // console.log(res);
+
+      //nice 自己写出来了 hiahiahia哈哈哈
+      res = res.replace(reg2 , `\`);print($1);print(\``);
+
+      // print(`          
+      //       `);for(var attr in data){ print(`
+      //             <h2>向世界问好 `);print( data[attr].a );print(`</h2>
+      //       `);} print(`
+      // `)
+      
+      //爽啊宝贝 我写出来了
+
+      console.log(res);
+      
+      var data = [{a : 1} , {a :2}];
+      
+
+      var html ="";
+      function print(str){
+            html +=str;
+      }
+
+      eval(res);
+      console.log(html);
+
+      //     var data = [{a:1},{a:2}]
+      //     var html = myTemplate(document.getElementById("template").innerHTML,data)
+      //     console.log(html);
+      </script>
+</body>
+</html>
