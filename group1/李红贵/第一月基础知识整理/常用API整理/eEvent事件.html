@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件相关基础API</title>
+</head>
+<body>
+    <script>
+        document.write("<br/><br/>基础事件1 鼠标操作div触发事件<br/>");  
+        document.write('<div id="sup" style="width:100px; height:100px; background-color: blue"></div>');
+        sup.ondblclick = function(){
+            console.log("双击");
+            sup.style="background-color:red; width:200px; height:100px";
+            document.getElementById("sup").innerHTML="您双击触发,单击还原";
+
+        }
+        sup.onmouseover = function(){
+            document.getElementById("sup").innerHTML="鼠标移动到标签上，覆盖";
+        }
+        sup.onmouseout = function(){
+            document.getElementById("sup").innerHTML="鼠标离开标签";
+        }
+        sup.onmousedown = function(){
+            document.getElementById("sup").innerHTML="鼠标按下";
+        }
+        sup.onmouseenter = function(){
+            document.getElementById("sup").innerHTML="鼠标穿透该元素，子元素不会反复触发事件";
+        }
+       
+        sup.onmouseleave =function(){
+            document.getElementById("sup").innerHTML="鼠标离开穿透元素";
+        }
+        sup.onmouseup = function(){
+            document.getElementById("sup").innerHTML="鼠标抬起";
+            console.log("鼠标抬起");
+        }
+        sup.onmousemove = function(){
+            document.getElementById("sup").innerHTML="鼠标移动";
+        }
+       
+        sup.onclick = function(){
+            console.log("鼠标单击");
+        
+            sup.style="background-color:blue; width:100px; height:100px";
+        }
+
+document.write("<br/><br/>基础事件2  键盘操作输入框事件<br/>");  
+    document.write('<textarea name="" id="textview" cols="30" rows="10"></textarea>');
+
+    textview.onfocus = function(){
+            console.log("获取焦点");
+        }
+    textview.onkeydown = function(){
+            console.log("键盘按下");
+        }
+    textview.onkeypress = function(){
+            console.log("按键一次完成");
+        }
+    textview.oninput = function(){
+            console.log("正在输入");
+        }
+
+    textview.onkeyup = function(){
+            console.log("按键抬起");
+        }
+    
+
+    textview.onchange = function(){
+            console.log("内容改变");
+            
+            document.getElementById("textview").value="文本域的内容改变触发 只可能在失去焦点之前，内容未改变也不会触发";
+
+        }
+
+        
+    textview.onblur = function(){
+            console.log("失去焦点");
+        }
+    
+    
+
+
+
+
+    window.onload = function(){
+            console.log("加载完成");
+        }
+    window.onscroll = function(){
+            console.log("滚动条改变");
+        }
+    window.onresize = function(){
+            console.log("窗口缩放");
+            alert("");
+        }    
+
+/**高级事件**/ 
+    // domNode   addEventListener( 事件名 , 事件处理函数 , false);
+    // xx.addEventListener();
+    // 参数1：事件名 去掉on的事件名
+    // 参数2：事件处理函数，为函数名，不带括号
+    // 参数3：false 不填 默认冒泡  true为捕获
+
+    // 2. 监听可以同时存在多个事件处理函数;
+    // 注意不要监听太多事件处理函数，20个以下，2-3个
+    sup.addEventListener("click",randomBoxColor);
+    sup.addEventListener("click",alertTip);
+    function randomBoxColor(evt){
+        var e = evt || window.event;
+        var target = e.target || e.srcElement;
+        this.style.color = "red";
+    }
+
+    function alertTip(){
+        console.log("just a test");
+    }
+    // 移除监听
+    sup.removeEventListener("click",alertTip);
+    /*
+        removeEventListener 接受的参数必须是两个;
+        1.事件名 , 2. 事件处理函数的地址;
+        事件处理函数地址出问题，导致事件无法正常删除;
+    */
+
+
+// 阻止事件冒泡;
+    sup.onclick = function(evt){
+        var e = evt || window.event;
+        list.style.display = "block";
+            // 阻止默认事件
+        typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+        // e.stopPropagation();
+        // 老版本IE; IE8以下 ;存在兼容性问题，使用下判断
+        // console.log(e.stopPropagation);
+        // 阻止事件冒泡;
+        typeof e.stopPropagation === "function" ? e.stopPropagation() : e.cancelBubble = true;
+      
+    }
+
+// 修改右键事件默认事件
+    document.oncontextmenu = function(evt){
+          var e = evt || event;
+		  
+		  // 阻止默认事件系统的右键菜单弹出;
+          typeof e.preventDefault === "function" ? e.preventDefault() : e.returnValue = false;
+          // return false;
+          // 三目运算之中，不允许存在return;
+          // true ? return 1 : return  2;
+          
+          var target = e.target||e.srcElement;
+          target.style.background = "#ddd";
+
+    }
+    
+// 事件触发函数on封装    
+function on(dom,evetType,callback,selector){
+      if(dom.addEventListener){
+            if(arguments.length === 4 && typeof arguments[3] === "string" ){
+                  dom.addEventListener(evetType , delegation( callback , selector ));
+            }else{
+                  dom.addEventListener(evetType , callback);
+            }
+      }else if(dom.attachEvent){
+            dom.attachEvent("on" + eventType, callback);
+      }else{
+            dom["on" + eventType] = callback;
+      }
+}
+// 事件委托封装
+function delegation( handlerClick , selector ){
+      return function(evt){
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            var eleList = this.querySelectorAll(selector);
+            var targetFamily = [];
+            var _tempTarget = target;
+            var count = 0;
+            while(true && count ++ < 100){
+                  if(_tempTarget === this || _tempTarget === null){
+                        break;
+                  }
+                  targetFamily.push(_tempTarget);
+                  _tempTarget = _tempTarget.parentNode;
+            }
+            for(var i = 0 , ele ; ele = eleList[i++]; ){
+                  if(targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1){
+                        handlerClick.call(ele , e);
+                        break;
+                  }
+            }
+      }
+}
+        
+    </script>
+</body>
+</html>

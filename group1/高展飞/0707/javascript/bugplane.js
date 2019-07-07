@@ -52,8 +52,7 @@ class Core{
         this.plane_loading ? this.plane_loading.remove():"";
     }
     setHardLevel(target){
-        Core.setHardLevel = Array.from;
-        (target.parentNode.children).indexOf(target);
+        Core.setHardLevel = Array.from(target.parentNode.children).indexOf(target);
     }
     showAll(){
         this.logo = Core.createEle("logo");
@@ -106,9 +105,10 @@ class Plane{
         }
         this.eleSize = {
             width : this.ele.offsetWidth,
-            height : this.main.offsetHeight
+            height : this.ele.offsetHeight
         }
         on(document,"mousemove" ,this.planeMove.bind(this));
+        //返回实例对象操作实际上是用于连缀的
         return this;
     }
     planeMove(evt){
@@ -118,12 +118,13 @@ class Plane{
         Plane.y = y;
         this.ele.style.left = x + "px";
         this.ele.style.top = y +"px";
+        console.log(y)
     }
     boundary(x,y){
-        let minX = THIS.mainSize.left;
+        let minX = this.mainSize.left;
         let maxX = this.mainSize.left + this.mainSize.width-this.eleSize.width;
         x = x < minX ? minX : x;
-        x = x>maxX ? maxX : x;
+        x = x > maxX ? maxX : x;
 
         y= y < 0 ? 0 : y ;
         return {
@@ -132,11 +133,11 @@ class Plane{
         }
     }
     createPlane(){
-        let ele = docuemnt.createElement("div");
+        let ele = document.createElement("div");
         let cWidth = document.documentElement.clientWidth;
         ele.className = "plane";
         ele.style.cursor = "none";
-        docuemnt.body.appendChild(ele);
+        document.body.appendChild(ele);
         ele.style.left = cWidth/2 - ele.offsetWidth/2 + "px";
         Plane.x = ele.offsetLeft;
         Plane.y = ele.offsetTop;
@@ -241,7 +242,7 @@ class Bullet{
 }
 //敌机
 class Enemy{
-    constructor(){
+    constructor(enemy_type){
         this.main = $(".main");
         this.mainSize = {
             width : this.main.offsetWidth,
@@ -278,6 +279,7 @@ class Enemy{
             }
         }
         enemy_type = enemy_type ? enemy_type : "small";
+        this.enemy_data = this.enemies[enemy_type];
         this.init();
     }
     init(){
@@ -327,7 +329,7 @@ class Enemy{
         //双层循环对比
         for(let i = 0 ,bullet;bullet = bullets[i];i++){
             for(let k = 0,enemy;enemy = enemies[k];k++){
-                if(this.collisionLeft(enemyy,bullet)){
+                if(this.collisionLeft(enemy,bullet)){
                     if(this.collisionTop(enemy,bullet)){
                         bullet.die(bullet);
                         enemy.hp --;
@@ -339,10 +341,10 @@ class Enemy{
             }
         }
     }
-    collisionLeft(){
+    collisionLeft(enemy,bullet){
         return bullet.left >= enemy.left - Bullet.bullet_size.width && bullet.left <= enemy.left + enemy.width
     }
-    collisionTop(){
+    collisionTop(enemy,bullet){
         return bullet.top >enemy.top- Bullet.bullet_size.height && bullet.top <= enemy.top + enemy.height
     }
     static  enemy_timer;
@@ -362,4 +364,4 @@ class Enemy{
     }
 }
 new Core();
-let palne = new Plane();
+let plane = new Plane();
