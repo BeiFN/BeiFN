@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo() {
+            getName = function () {
+                console.log(1);
+            };
+            // this ?  => Foo() => window;
+            // new Foo()        => Foo{};
+            return this;
+        }
+        // 引用类型 (函数) 函数上增加了一个getName方法;  Foo.getName;
+        Foo.getName = function () {
+            console.log(2);
+        };
+        // 原型上增加了getName 方法;   new Foo().getName => 
+        Foo.prototype.getName = function () {
+            console.log(3);
+        };
+        // 全局声明的赋值;
+        getName = function () {
+            console.log(4);
+        };
+
+        Foo.getName();       // 2;                
+        getName();           // 4          
+        Foo().getName();     // 1  getName = function(){console.log(1)}    window.getName();      
+        getName();            // 1       
+        new Foo.getName();    // 2;             
+        new Foo().getName();  // 3;          
+        new new Foo().getName();   //Foo{}.getName();  3;    
+    </script>
+</body>
+</html>

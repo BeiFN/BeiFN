@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "𠮷野家" ;
+        // for(var attr in str){
+        //     console.log(attr);// 0 1 2 3 四个
+        //     // console.log(str[attr]); //无法输出 "𠮷" ,会很诡异
+        // }   //for in 循环是根据下标进行查找
+        for(let attr of str ){
+            console.log(attr);
+        }
+        //for of 循环是根据值进行循环查找
+        //能够输出"𠮷"。
+
+        // for in  根据字符串中的下标查找值
+        // for of  根据字符串内含有的值进行查找
+    </script>
+</body>
+</html>

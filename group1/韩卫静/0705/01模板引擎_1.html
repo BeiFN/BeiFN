@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/html" id="example">
+			<% for(var i = 0 ; i < 10 ; i ++ ){ %>
+				<h2>hello world</h2>
+			<% } %>
+		</script>
+		
+		<script type="text/javascript">
+			var html = "";
+			function print(str){
+				html += str;
+			}
+			
+			
+			var str = document.getElementById("example").innerHTML;
+			var reg = /<%(.*?)%>/g;
+			var newstr = str.replace(reg , `\`); $1 print( \` ` );
+			newstr = `print(\` ${newstr} \`)`;
+			
+			eval(newstr);
+			
+			document.write(html);
+			// console.log(html);
+		</script>
+	</body>
+</html>
