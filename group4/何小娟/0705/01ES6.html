@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.箭头函数在创建函数时就已经确定了函数的this指向,this指向不再会随着调用者的改变而改变了。
+      // let foo = (a , b) => {
+      //   console.log(this);
+      // }
+      // console.log(foo(12,30))
+
+      // 2.报错信息：Foo is not a constructor
+      // let foo = (a,b)=>{
+      // }
+      // new Foo();
+
+      // 3.call和apply从此失效了;只有bind可以用
+      // var newFoo = foo.bind({name : "new constructor"});
+      // console.log(newFoo())
+
+  </script>
+</body>
+</html>
