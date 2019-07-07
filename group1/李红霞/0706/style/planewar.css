@@ -52,6 +52,27 @@ html, body{
       position:absolute;
       top: 0;
 }
+
+.bullet.die{
+      width: 41px;
+      height: 43px;
+      background-repeat: no-repeat;
+      animation: bullet-die .5s linear infinite;
+      margin-left: -17px;
+}
+
+@keyframes bullet-die{
+      0%{
+           
+            background-image: url("../images/die1.png");
+      }
+      100%{
+           
+            background-image: url("../images/die2.png");
+      }
+}
+
+
 .small_plane{
       width: 59px;
       height: 36px;
@@ -60,6 +81,23 @@ html, body{
       position: absolute;
       top: 0;
 }
+
+.small_plane.die{
+      animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+      0%{
+            background-image: url("../images/plane1_die1.png");
+      }
+      50%{
+            background-image: url("../images/plane1_die2.png");
+      }
+      100%{
+            background-image: url("../images/plane1_die3.png");
+      }
+}
+
+
 .middle_plane{
       width: 70px;
       height: 92px;
@@ -68,6 +106,25 @@ html, body{
       position: absolute;
       top: 0;
 }
+
+.middle_plane.die{
+      animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+      0%{
+            background-image: url("../images/plane2_die1.png");
+      }
+      33%{
+            background-image: url("../images/plane2_die2.png");
+      }
+      66%{
+            background-image: url("../images/plane2_die3.png");
+      }
+      100%{
+            background-image: url("../images/plane2_die4.png");
+      }
+}
+
 .big_plane{
       width: 165px;
       height: 256px;
@@ -76,6 +133,32 @@ html, body{
       position: absolute;
       top: 0;
 }
+
+.enemy-large.die{
+      animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+      0%{
+            background-image: url("../images/plane3_die1.png");
+      }
+      20%{
+            background-image: url("../images/plane3_die2.png");
+      }
+      40%{
+            background-image: url("../images/plane3_die3.png");
+      }
+      60%{
+            background-image: url("../images/plane3_die4.png");
+      }
+      80%{
+            background-image: url("../images/plane3_die5.png");
+      }
+      100%{
+            background-image: url("../images/plane3_die6.png");
+      }
+}
+
+
 .logo{
       width: 428px;
       height: 104px;
