@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container{
+              width: 600px;
+              height: 400px;
+              background: #000;
+              border: 2px solid #f10;
+              position: absolute;
+              left: 0;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              margin: auto;
+        }      
+        
+        .firework{
+              width: 7px;
+              height: 7px;
+              border-radius: 50%;
+              background: #fff;
+              position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var timer = null;
+        class FireWork{
+            constructor(selector){
+                this.main = document.querySelector(selector);
+                if(this.main === null) return false;
+                this.init();
+                //console.log(this)
+            }
+            init(){
+                this.main.addEventListener("click",this.handerClick.bind(this));
+
+            }
+            handerClick (evt){
+                var e = evt || event;
+                var offsetX = e.offsetX;
+                var offsetY = e.offsetY;
+
+                var fire = this.fireInit(offsetX);
+
+                this.fireWorkMove(fire,offsetY,this.fireWorkBoom.bind(this,offsetX,offsetY)); 
+            }
+
+             fireWorkBoom(x,y){
+                var randomFireCount = 15 + Math.round(Math.random()*10);
+                var space = Math.round(360 / randomFireCount);
+                var angle = 0;
+                var r = 100 + Math.round(Math.random() * 100);
+                for(var i = 0 ; i < randomFireCount; i++){
+                    angle += space;
+                    var fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + x); 
+                    var fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + y); 
+
+                    var fire_boom = this.creatFire();
+                    fire_boom.style.left = x + "px";
+                    fire_boom.style.top = y + "px";
+                    this.main.appendChild(fire_boom);
+                    this.move(fire_boom,{
+                        "left" : fire_targetX,
+                        "top"  :fire_targetY,
+                        "opacity" : 0
+                    },function(fire_boom){
+                        fire_boom.remove();
+                    }.bind(false,fire_boom));
+                }
+            }
+
+             fireWorkMove(fire,y,callback){
+                this.move(fire,{
+                    "top" : y
+                },function(){
+                        fire.remove();
+                        callback();
+                });
+            }
+            move(dom,option,callback){
+                clearInterval(dom.timer);
+                timer = setInterval(function(){
+                    for(var attr in option){
+                        if(attr === "opacity"){
+                            var iNow = parseInt(getComputedStyle(dom)[attr]*100);
+                        }else{
+                            var iNow = parseInt(getComputedStyle(dom)[attr]);
+                        }
+                        var speed = (option[attr] - iNow) / 10;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        if(option[attr] === iNow){
+                            delete option[attr];
+                            if(Object.keys(option).length === 0 ){
+                                clearInterval(dom.timer);
+                                typeof callback === "function" ? callback() : "";
+                            }
+                        }else{
+                            if(attr === "opacity"){
+                                dom.style[attr] = (speed + iNow) / 100;
+                            }else{
+                                dom.style[attr] = speed + iNow + "px";
+                            }
+                        }
+                    }
+                },50)
+            }
+        
+            fireInit(x){
+                var fire = this.creatFire();
+                fire.style.left = x + "px";
+                fire.style.bottom = 0;
+                this.main.appendChild(fire);
+                return fire;
+            }
+
+            creatFire(){
+                var fire = document.createElement("div");
+                fire.className = "firework";
+                fire.style.background = this.getRandomColor();
+                return fire;
+            }
+
+            getRandomColor(){
+                var r = Math.round(Math.random() * 255);
+                var g = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+        }
+
+        new FireWork("#container");
+    
+    </script>
+    
+</body>
+</html>
