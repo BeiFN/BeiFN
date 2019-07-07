@@ -125,8 +125,9 @@ Magnifier.prototype.changePic = function (i, evt) {
       // console.log(this.big_img);
       this.small_img.src = urls.smallUrl;
       this.big_img.src = urls.bigUrl;
-
-      this.small_cube.style.background.url = urls.smallUrl;
+      this.small_cube.style.backgroundImage ='url("' +urls.smallUrl +'")';
+      console.log(i)
+      // this.small_cube.style.backgroundImage = "urls.smallUrl";
       // console.log(this.small_img);
       // console.log(this.big_img);
 }

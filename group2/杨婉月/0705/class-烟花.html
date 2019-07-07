@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #container{
+                  width: 600px;
+                  height: 400px;
+                  background: #000;
+                  border: 2px solid #f10;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+            }      
+            
+            .firework{
+                  width: 7px;
+                  height: 7px;
+                  border-radius: 50%;
+                  background: #fff;
+                  position: absolute;
+            }
+      </style>
+      <script src="../libs/common.js"></script>
+</head>
+<body>
+      <div id="container">
+      </div>
+      <script>
+        let {move, getRandomColor} = Utils;
+        class Firework{
+            constructor(selector){
+                this.main = document.querySelector(selector);
+                if(this.main === null){ return false};
+            }
+            init(){
+            this.main.addEventListener("click" , this.hanlderFireClick.bind(this));
+            }   
+            hanlderFireClick(evt){
+                let e = evt || window.event;
+                let offsetX = e.offsetX;
+                let offsetY = e.offsetY;
+                let fire = this.fireworkInit(offsetX);
+                this.fireworkMove(fire,offsetY, this.fireworkBoom.bind(this,offsetX,offsetY));
+            }
+            fireworkInit(offsetX){
+            let fire = this.createFirework();
+            fire.style.left = offsetX + "px";
+            fire.style.bottom = 0;
+            this.main.appendChild(fire); 
+            return fire;
+            }
+            createFirework(){
+                let fire = document.createElement("div");
+                fire.className = "firework";
+                fire.style.background = getRandomColor();
+                return fire;
+            }
+            fireworkMove(fire , offsetY , boomCallback){
+                move(fire,{
+                        top : offsetY
+                },function(){
+                        fire.remove();
+                        boomCallback();
+                });
+            }
+            fireworkBoom(offsetX,offsetY){
+                let randomFireCount = 15 + Math.round(Math.random() * 10);
+                let blank = Math.round(360 / randomFireCount);
+                let r = 100 + Math.round(Math.random() * 100);
+                let angle = 0;
+                for(let i = 0 ; i < randomFireCount ; i++){   
+                        angle += blank;
+                        let fire_targetX = Math.round(Math.cos( Math.PI / 180 * angle ) * r + offsetX); 
+                        let fire_targetY = Math.round(Math.sin( Math.PI / 180 * angle ) * r + offsetY); 
+                        let fire_boom = this.createFirework();
+                        fire_boom.style.left = offsetX + "px";
+                        fire_boom.style.top  = offsetY + "px";
+                        this.main.appendChild(fire_boom);
+                        move(fire_boom , {
+                            left : fire_targetX ,
+                            top  : fire_targetY ,
+                            opacity : 0
+                        },function(fire_boom){
+                            fire_boom.remove();
+                        }.bind(false,fire_boom))
+                }
+            }
+        }
+        let firework = new Firework("#container");
+        firework.init();
+      </script>
+</body>
+</html>

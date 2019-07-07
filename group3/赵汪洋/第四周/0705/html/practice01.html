@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6回顾总结</title>
+</head>
+
+<body>
+    <script>
+        // let const    ES6里声明变量/常量
+
+        // let a = 10;
+        // var b = 10;
+
+        // let {} = {};
+        // let {} = null; // 报错
+        // let {} = undefined; // 报错
+
+        let {
+            slice
+        } = Array.prototype;
+        // console.log(Array.prototype.slice); // ƒ slice() { [native code] }
+        Array.prototype.slice = 5;
+        console.log(Array.prototype.slice); // 5
+        console.log(slice); // ƒ slice() { [native code] }
+        let {
+            slice: mySlice
+        } = Array.prototype;
+        console.log(Array.prototype.slice); // 5
+        console.log(Array.prototype.mySlice); // undefined 把上面修改变量名语句注释掉还是undefined
+        console.log(mySlice); // 5
+        console.log(slice); // ƒ slice() { [native code] }
+
+        function Foo({
+            a = 10,
+            b = 20
+        } = {}) {
+            console.log(a, b);
+        }
+        // Foo(); // 10 20
+        // Foo({
+        //     a: "hello",
+        //     b: "world"
+        // }); // hello world
+
+        var obj2 = {
+            d: 40,
+            e: 50,
+            f: 60
+        };
+        var obj1 = {
+            ...obj2, // 等价于Object.assign(obj1, obj2);
+            a: 10,
+            b: 20,
+            c: 30
+        }
+        console.log(obj1); // {d: 40, e: 50, f: 60, a: 10, b: 20, c: 30}
+        Object.assign(obj1, obj2);
+        console.log(obj1); // {d: 40, e: 50, f: 60, a: 10, b: 20, c: 30}
+    </script>
+</body>
+
+</html>
