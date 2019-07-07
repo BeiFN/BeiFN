@@ -62,10 +62,8 @@
         var res = template.replace( regJS , `\`); $1 print(\``);
         console.log(res);
 
-
-
-
         // 拼接print方法前后格式
+        // ${}固定格式，拼接大括号内内容
         res = `print(\`${res}\`)`;
         console.log(res);
 
