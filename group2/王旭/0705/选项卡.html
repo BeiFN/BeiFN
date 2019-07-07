@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+              margin: 0;
+              padding: 0;
+              font-size: 30px;
+        }
+        li{
+              list-style-type:none;
+        }
+        #pagination{
+              background: #ddd;
+              width: 300px;
+              height: 400px;
+              margin: 0 auto;
+        }
+        #btn-list{
+              width: 100%;
+              height: 50px;
+              text-align: center;
+              background: #b6b6b6;
+              line-height: 50px;
+        }
+        #btn-list button{
+              padding: 0 20px;
+        }
+        #btn-list button.active{
+              background: yellowgreen;
+        }
+        #content-list li{
+              width: 300px;
+              height: 350px;
+              line-height: 350px;
+              text-align:center;
+              display: none;
+        }
+        #content-list li.active{
+              display: block;
+        }
+  </style>
+</head>
+<body>
+    <div id="pagination">
+        <div id="btn-list">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+            <ul id="content-list">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+    </div>
+    <script>
+        //构造函数 实例
+        class Table{
+            constructor(){
+                this.btns = document.getElementById("btn-list").children;
+                this.contents = document.getElementById("content-list").children;
+                for(var i = 0 ,btn ; btn = this.btns[i];i++){
+                    btn.addEventListener("click",this.changeContent.bind(this,i));
+                    btn.addEventListener("click",this.changeColor.bind(this,i));
+                }
+                
+            }
+        //方法
+            // init(){
+            //     for(var i = 0 ,btn ; btn = this.btns[i];i++){
+            //         btn.addEventListener("click",this.changeContent.bind(this,i));
+            //         btn.addEventListener("click",this.changeColor.bind(this,i));
+            //     }
+               
+            // }
+            changeContent(index,evt){
+                var e = evt || event;
+                var target = e.target || e.srcEvent;
+                for(var i = 0, content;content = this.contents[i++];){
+                    content.className = "";
+                }
+                this.contents[index].className = "active";
+                
+            }
+            changeColor(index,evt){
+                var e = evt || event;
+                var target = e.target || e.srcEvent;
+                this.btns[index].style.background = "#" + Math.round(Math.random()*parseInt("ffffff",16)).toString(16).padStart(6,"0");
+            }
+    }
+    new Table();
+    </script>
+    
+</body>
+</html>
