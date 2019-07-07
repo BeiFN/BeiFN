@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎2</title>
+</head>
+<body>
+    <script type="text/html" id = "htmlTest">
+        <% for (var i = 0 ; i < 10 ; i ++) { %>
+        <h2>hello world <%= i %> </h2>
+        <% } %>
+    </script>
+    <script type="text/javascript">
+        var text = document.getElementById("htmlTest").innerHTML
+        var reg = /<%[^=](.*?)%>/g
+        text = text.replace(reg,"\`);$1 ;print(\`")
+        console.log(text)
+        var bianReg = /<%=(.*?)%>/
+        text = text.replace(bianReg,"\$\{$1\}")
+        var res = `print(\`${text}\`)`
+        
+        var html = "";
+            // print就是拼接字符串的方法;
+        function print(res){
+                res = res.trim();
+                html += res;
+        }
+        //eval里面的print调用的就是上面这个方法
+        eval(res);
+        console.log(html)
+
+    </script>
+</body>
+</html>

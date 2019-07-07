@@ -18,6 +18,14 @@
             border-radius: 50%;
             position: absolute;
         }
+        body::after{
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
     </style>
 </head>
 
@@ -51,20 +59,17 @@
 
         Particle.prototype.mousedownHandler = function (evt) {
             var e = evt || window.event;
-            this.offsetX = e.offsetX;
-            this.offsetY = e.offsetY;
             this.timer = setInterval(function () {
                 var ball = this.createBall();
                 setTimeout(function () {
-                    this.moveBall(ball, e.offsetY);
+                    this.moveBall(ball, this.offsetY);
                 }.bind(this), 50)
             }.bind(this), 16);
         }
 
         Particle.prototype.moveBall = function (ball, minTop) {
             var randomLeft = Math.floor(Math.random() * this.cWidth);
-            var randomTop = minTop + Math.floor(Math.random() * (this.cHeight - minTop));
-
+            var randomTop = minTop + Math.abs(Math.floor(Math.random() * (this.cHeight - minTop)));
             ball.style.left = randomLeft + "px";
             ball.style.top = randomTop + "px";
             ball.style.opacity = 0.5;
