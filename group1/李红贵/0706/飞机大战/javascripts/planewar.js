@@ -5,7 +5,7 @@ let {$,on} = Utils;
 class Core{
       constructor(){
             this.option = $(".options");
-            this.main = $(".main");
+            this.main = Utils.$(".main");
             this.init();
       }
       init(){
@@ -28,7 +28,7 @@ class Core{
             setTimeout(()=>{
                   this.clearAll();//清除开场显示
                   this.gameStart();//开始游戏
-            },1000);
+            },1500);
 
       }
       clearAll(){
@@ -47,8 +47,29 @@ class Core{
       animate(){
             let index = 0;
             this.loading = setInterval(()=>{
-                  this.plane_loading.style.backgroundImage = `url(./images/loading${++index%3+1}.png)`;
-            },800);
+                  index ++;
+                  console.log("loading",index);
+
+                  if(index%3 === 0){
+                        console.log("ss");
+                        this.plane_loading.style.backgroundImage = `url("https://upload-images.jianshu.io/upload_images/2845301-4483375ae7043942.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240")`;
+
+                  }else if(index%3 === 1){
+                        console.log("ss3");
+
+                        this.plane_loading.style.backgroundImage = `url("https://upload-images.jianshu.io/upload_images/2845301-c53b48a9025ef930.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240")`;
+
+                  }else{
+                        console.log("ss2");
+
+                        this.plane_loading.style.backgroundImage = `url("https://upload-images.jianshu.io/upload_images/2845301-ecb7640ccd9e7b77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240")`;
+
+                  }
+                  
+                  console.log(index);
+                  // this.plane_loading.style.backgroundImage = `url(./images/loading${++index%3+1}.png)`;
+            },500);
+
             let positionY = 0;
             let speed =5;
             switch(this.hardLevel){
@@ -201,7 +222,7 @@ class Bullet{
       bulletMove(){
             for(let attr in Bullet.bullet_list){
                   let bullet = Bullet.bullet_list[attr];
-                  if(bullet.top <= 50){
+                  if(bullet.top <= -50){
                         this.bulletDie(bullet);
                         continue;
                   }
@@ -311,10 +332,12 @@ class Enemy{
             for(let i =0,bullet; bullet = bullets[i];i++){
                   for(let k =0,enemy; enemy = enemys[k];k++){
                         if(this.collisionLeft(enemy,bullet)){
-                              bullet.die(bullet);
-                              enemy.hp --;
-                              if(enemy.hp <= 0){
-                                    enemy.die(enemy);
+                              if(this.collisionTop(enemy,bullet)){
+                                    bullet.die(bullet);
+                                    enemy.hp --;
+                                    if(enemy.hp <= 0){
+                                          enemy.die(enemy);
+                                    }
                               }
                         }
                   }
@@ -324,7 +347,7 @@ class Enemy{
             return bullet.left > enemy.left - Bullet.bullet_size.width && bullet.left < enemy.left + enemy.width;
       }
       collisionTop(enemy, bullet){
-            return bullet.target > enemy.top - Bullet.bullet_size.height && bullet.top <enemy.top + enemy.height;
+            return bullet.top > enemy.top - Bullet.bullet_size.height && bullet.top < enemy.top + enemy.height;
       }
       static enemy_timer;
       static enemy_list;
