@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎封装</title>
+</head>
+<body>
+    <!-- script标签，存储js和html混编代码 -->
+    <script type="text/heml" id="template" >
+        <% for(var attr in data){ %>
+            <h2> 向世界问好 <%= data[attr].a %> </h2>
+        <% } %>
+
+    </script>
+
+    <!-- 导入封装库 -->
+    <script src="./myTemplate.js"></script>
+
+    <!-- 使用 -->
+    <script>
+        var data = [{a:1},{a:2}];
+        var html = myTemplate(document.getElementById("template").innerHTML,data);
+        console.log(html);
+        document.body.innerHTML = html;
+    </script>
+
+
+</body>
+</html>
