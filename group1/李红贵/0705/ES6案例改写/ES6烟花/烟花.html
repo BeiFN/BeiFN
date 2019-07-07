@@ -132,31 +132,14 @@
                   fire_boom.style.top  = offsetY + "px";
                   this.main.appendChild(fire_boom);
 
-                move(fire_boom , {
+                move(fire_boom , 
+                    {
                         left : fire_targetX ,
                         top  : fire_targetY ,
                         // opacity : 0
                     },
                     this.fireSecondMove(fire_boom)
-                //     function(fire_boom){
-                //         moveArr.push(fire_boom);
-                //         if(moveArr.length===52){
-                          
-                //             console.log("全部删除");
-
-                //             setTimeout(function(){
-                //                 move(fire_boom , {
-                //                     left : Math.round((2*Math.sin(t) - Math.sin(2*t)) * 27) + 160 ,
-                //                     top  : -Math.round((2*Math.cos(t) - Math.cos(2*t)) * 27)  + 400 ,
-                //                 // opacity : 0
-                //                 },function(fire_boom){
-                //                 fire_boom.remove();
-                //                 }.bind(false,fire_boom)
-                //                 );
-
-                //             }, 500);
-                //         }                        
-                //     }.bind(false,fire_boom)
+               
                 );
             }
         }
@@ -170,18 +153,18 @@
                         if(moveArr.length===52){
                           
                             console.log("全部删除");
-                            console.log(moveArr);
+                            // console.log(moveArr);
 
                             setTimeout(function(){
                                 console.log(222);
                                 for(var k =0;k<moveArr.length;k++){
-                                    console.log(moveArr[k]);
+                                    // console.log(moveArr[k]);
                                     moveArr[k].remove();
-                                   console.log(moveArr.length);
+                                //    console.log(moveArr.length);
                                 }
                                 moveArr.length=0;
 
-                            }, 1000);
+                            }, 1520);
                             
                         }                        
                   

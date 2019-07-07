@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串模板</title>
+</head>
+
+<body>
+    <!-- <div>
+        <img src="#" alt="">
+        <h2>一个商品</h2>
+        <p>一个介绍</p>
+    </div> -->
+    <script>
+        let src = `https://img14.360buyimg.com/n7/jfs/t1/25620/12/4201/194557/5c2f3ac8E7219defc/1d122b8740dcaff0.jpg`;
+        let title = "一个商品";
+        let describe = "一个介绍";
+        let randomColor = () => {
+            return "#" + parseInt(parseInt("ffffff", 16) * Math.random()).toString(16).padStart(6, "0");
+        }
+        var str = '<div>' +
+            '<img src="' + src + '" alt="">' +
+            '<h2>' + title + '</h2>' +
+            '<p>' + describe + '</p>' +
+            '</div>';
+        // console.log(str); // <div><img src="#" alt=""><h2>一个商品</h2><p>一个介绍</p></div>
+
+        var str2 = `<div>
+            <img src="${src}" alt="">
+            <h2 style="background:${randomColor()}">${title}</h2>
+            <p>${describe}</p>
+            </div>`;
+        console.log(str2);
+        document.querySelector("body").innerHTML = str2;
+    </script>
+</body>
+
+</html>
