@@ -1,0 +1,69 @@
+.container {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-slide .wrapper {
+    display: flex;
+    position: relative;
+}
+
+.slide {
+    width: 100%;
+    text-align: center;
+    color: silver;
+    line-height: 300px;
+    font-size: 100px;
+}
+
+.container-fade .slide {
+    position: absolute;
+}
+
+.button-prev,
+.button-next {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    z-index: 2;
+}
+
+.button-prev {
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2) center / 100%;
+    left: 0;
+}
+
+.button-next {
+    background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2) center / 100%;
+    right: 0;
+}
+
+.pagination {
+    position: absolute;
+    text-align: center;
+    transition: .3s opacity;
+    transform: translate3d(0, 0, 0);
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 100%;
+    background: black;
+    opacity: .4;
+}
+
+.pagination-bullet-active {
+    opacity: 1;
+    background: aqua;
+}

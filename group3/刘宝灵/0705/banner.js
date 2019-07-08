@@ -1,13 +1,13 @@
 class Banner{
     //当前显示那个图片
-    constructor(){
+    constructor(selector,options){
     this.nowIndex = 0;
     this.state = "normal";
-    this.sliders = $(".slide");
-    this.btn_next= $(".btn_next");
-    this.btn_prev= $(".btn_prev");
-    this.wrapper = $(".wrapper");
-    this.main = document.querySelector("div");
+    this.main = document.querySelector(selector);
+    this.sliders = this.main.querySelectorAll(".slide");
+    this.btn_prev = this.main.querySelector(".button-prev");
+    this.btn_next = this.main.querySelector(".button-next");
+    this.wrapper  = this.main.querySelector(".wrapper");
     this.options = Object.assign({
             effect : "slide",
             pagination : ".pagination"
@@ -153,7 +153,4 @@ slide (){
 function removeClassName(dom , className){
     return dom.className = dom.className.replace(new RegExp("\S?" + className) , "");
 }
-function $(selector){
-    var ele = null;
-    return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
-}
+

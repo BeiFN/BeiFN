@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id="template">
+      
+        <% for(var i = 0 ; i < 15 ; i++){%>
+            <h2>向世界问好 <%= i %></h2>
+        <% } %>
+
+
+    </script>
+    <script type="text/javascript">
+
+        // res = `print(\`${res}\`);`
+        // console.log(res);
+
+        // var html = "";
+        // function print(str){
+        //     console.log(1);
+        //     html += str;
+        // }
+        // eval(res);
+        
+
+        //SEO优化 ： 后端用；
+        //前端框架用；
+        
+        //字符串 => 符合JS规则 => 执行逻辑 => 返回结果；
+        var template = document.getElementById("template").innerHTML;
+            // console.log(template);
+
+        //把字符串改变的符合JS规则
+        var regJS = /<%[^=](.*?)%>/g;
+            // console.log(template.match(regJS));
+
+            //去标记
+        var res = template.replace( regJS , `\`);$1 print(\``)
+
+        // eval(template.replace(regJS , "$1"))
+
+      
+
+
+        // var res  = template.replace( regJS , `\`); $1 print(\``)
+        
+
+        res = `print(\`${res}\`)`;
+        // console.log(res);
+        
+
+        var html = "";
+        function print(str){
+            html += str;
+        }
+        // print("字符串")
+
+        var regVar = /<%=(.*?)%>/g
+
+        console.log(res.match(regVar));
+        var res = res.replace(regVar,`\`); print($1); print(\``);
+
+        console.log(eval(res));
+
+        console.log(html);
+
+
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

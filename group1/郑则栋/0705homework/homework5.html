@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>banner</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+        }
+
+        .slide {
+            text-align: center;
+            color: #fff;
+            line-height: 300px;
+            font-size: 100px;
+        }
+        .container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /* overflow: hidden; */
+}
+.wrapper{
+      width: 100%;
+      height: 100%;
+      position: relative;
+}
+.slide{
+      width: 100%;
+      height: 100%;
+}
+.slide-active{
+      z-index: 1;
+}
+.button-next,.button-prev{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+      z-index: 999;
+}
+.button-next{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/right_arrow.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+      right: 0;
+}
+.button-prev{
+      background: url(https://static.zcool.cn/git_z/z/widget/slider/images/svg/left_arrow.svg?v=2);
+      background-size: 100%;
+      background-position: center;
+      left: 0;
+}
+.pagination{
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s opacity;
+    -o-transition: .3s opacity;
+    transition: .3s opacity;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    z-index: 10;
+}
+.pagination-bullets{
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+.pagination-bullet{
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+}
+.pagination-bullet-active{
+      opacity: 1;
+      background: #007aff;
+}
+/* fade专用样式 */
+.container.container-fade .slide{
+      position: absolute;
+}
+
+.container.container-slide .wrapper{
+      display: flex;
+}
+    </style>ss
+</head>
+
+<body>
+    <div id="box">
+        <div class="container">
+            <div class="wrapper">
+                <div class="slide slide-active" style="background:red; ">1</div>
+                <div class="slide" style="background: blue;">2</div>
+                <div class="slide" style="background: black;">3</div>
+                <div class="slide" style="background: green;">4</div>
+                <div class="slide" style="background: yellow;">5</div>
+            </div>
+            <div class="button-next"></div>
+            <div class="button-prev"></div>
+            <div class="pagination pagination-bullets">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        class Banner {
+            constructor({effect="slide",pagination=".pagination"}={}) {
+                this.container = document.querySelector(".container");
+                this.slides = document.querySelectorAll(".wrapper div");
+                this.wrap = document.querySelector(".wrapper");
+                this.pre = document.querySelector(".button-prev");
+                this.next = document.querySelector(".button-next");
+                this.smallbtn = document.querySelector(".pagination");
+                this.page = 0;
+                this.back = 0;
+                // this.options = Object.assign({
+                //     effect: "slide",
+                //     pagination: ".pagination"
+                // })
+                this.options={effect,pagination};
+                this.init();
+            }
+            init() {
+                this.layoutAn();
+                this.layoutBtn();
+                this.pre.addEventListener("click", this.goPre.bind(this));
+                this.next.addEventListener("click", this.goNext.bind(this));
+                this.smallbtn.addEventListener("click", this.goBtn.bind(this));
+                this.container.addEventListener("click", this.fade.bind(this));
+            }
+            goPre() {
+                if (this.page === 0) {
+                    this.page = this.slides.length - 1;
+                    this.back = 1;
+                }
+                else {
+                    this.page--;
+                }
+            }
+            goNext() {
+                if (this.page === this.slides.length - 1) {
+                    this.page = 0;
+                    this.back = 2;
+
+                }
+                else {
+                    this.page++;
+                }
+            }
+            layoutBtn() {
+                let html = "";
+                this.pages = this.slides.length;
+                if (this.options.effect === "slide") {
+                    this.pages = this.slides.length - 1;
+                }
+                for (var i = 0; i < this.pages; i++) {
+                    if (i === this.page) {
+                        html += "<div class='pagination-bullet pagination-bullet-active'></div>";
+                    }
+                    else {
+                        html += "<div class='pagination-bullet'></div>";
+                    }
+                }
+                this.smallbtn.innerHTML = html;
+            }
+            goBtn(eve) {
+                var e = eve || event;
+                for (var i = 0; i < this.pages; i++) {
+                    if (i === this.page) {
+                        i = 0;
+                    }
+                    removeClassName(this.smallbtn.children[i], "pagination-bullet-active");
+                }
+                var target = e.target || e.srcElement;
+                var index = 0
+                // console.log(target,this.smallbtn.children[1]);
+                for (var i = 0; i < this.pages; i++) {
+                    if (target == this.smallbtn.children[i]) {
+                        this.page = i;
+                    }
+
+                }
+                target.className += " pagination-bullet-active";
+            }
+            layoutAn() {
+                switch (this.options.effect) {
+                    case "slide": {
+                        this.container.className += " container-slide";
+                        var clone = this.slides[0].cloneNode(true);
+                        this.wrap.appendChild(clone);
+                        this.slides = [].slice.call(this.slides);
+                        this.slides.push(clone);
+                        this.wrap.style.width = (this.slides.length) * this.container.offsetWidth + "px";
+                        break;
+                    }
+                    case "fade": {
+                        this.container.className += " container-fade";
+                        break;
+                    }
+                }
+            }
+            fade() {
+                switch (this.options.effect) {
+                    case "fade": {
+                        for (i = 0; i < this.slides.length; i++) {
+                            this.slides[i].style.opacity = 0;
+                            this.slides[i].style.transition = "all 1s";
+                        }
+                        this.slides[this.page].style.opacity = 1;
+                        break;
+                    }
+                    case "slide": {
+                        switch (this.back) {
+                            case 0: {
+                                this.wrap.style.left = 0;
+                                this.wrap.style.transition = "all 1s";
+                                setTimeout(function () {
+                                    this.wrap.style.left = -this.page * this.container.offsetWidth + "px";
+                                }.bind(this), 0);
+                                break;
+                            }
+                            case 1: {
+                                this.wrap.style.transition = "top 1s";
+                                this.back = 0;
+                                this.wrap.style.left = -this.page * this.container.offsetWidth + "px";
+                                this.page = this.slides.length - 2;
+                                setTimeout(function () {
+                                    this.fade();
+                                }.bind(this), 10);
+                                break;
+                            }
+                            case 2: {
+                                this.wrap.style.transition = "top 1s";
+                                this.back = 0;
+                                this.wrap.style.left = -this.page * this.container.offsetWidth + "px";
+                                this.page = 1;
+                                setTimeout(function () {
+                                    this.fade();
+                                }.bind(this), 10)
+                                break;
+                            }
+
+                        }
+
+                    }
+                }
+                var _temp = this.page;
+                for (var i = 0; i < this.pages; i++) {
+                    removeClassName(this.smallbtn.children[i], "pagination-bullet-active");
+                }
+                _temp = (this.page === this.slides.length - 1) ? 0 : this.page;
+                this.smallbtn.children[_temp].className += " pagination-bullet-active";
+            }
+
+
+        }
+        function removeClassName(dom, className) {
+            return dom.className = dom.className.replace(new RegExp("\S?" + className), "");
+        }
+        new Banner({effect:"slide"});
+
+
+
+
+    </script>
+</body>
+
+</html>
