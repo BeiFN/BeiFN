@@ -2,7 +2,6 @@
     function myTemplate(str , data){
         var regJS = /<%[^=](.*?)%>/g;
         var regVar = /<%=(.*?)%>/g;
-        str = str.replace(/\//g,"\/");
         var res = str.replace(regJS, `\`); $1 print(\``);
             res = res.replace(regVar, `\`); print($1); \n print(\``);
             res = `print(\`${res}\`)`;
@@ -20,7 +19,6 @@
     function myTemplate(str, data){
         var regJS = /<%[^=](.*?)%>/g;
         var regVar = /<%=(.*?)%>/g;
-        str = str.replace(/\//g,"\/");
         var res = str.replace(regJS , `\`); $1 print(\``);
             res = res.replace(regVar , `\`); print($1); print(\``);
             res = `print(\`${res}\`)`;
