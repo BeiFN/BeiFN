@@ -2,6 +2,12 @@
 
 class Magnifier{
     constructor({
+        small_wrapper = ".small-img",
+        small_img = ".small-img img",
+        small_cube =  ".cube",
+        big_wrapper =  ".big-img",
+        big_img =  ".big-img img",
+        img_btn_wrapper = ".img-btn",
         list_i = 0,
         list = [
             {
@@ -18,13 +24,13 @@ class Magnifier{
     } = {}){
 
         // // 属性获取，元素选择
-        this.small_wrapper = $(".small-img");
-        this.small_img = $(".small-img img");
-        this.small_cube = $(".cube");
-        this.big_wrapper = $(".big-img");
-        this.big_img = $(".big-img img");
+        this.small_wrapper = $(small_wrapper);
+        this.small_img = $(small_img);
+        this.small_cube = $(small_cube);
+        this.big_wrapper = $(big_wrapper);
+        this.big_img = $(big_img);
 
-        this.img_btn_wrapper = $(".img-btn");
+        this.img_btn_wrapper = $(img_btn_wrapper);
         this.img_btns = this.img_btn_wrapper.children;
         console.log(this.img_btns);
 
