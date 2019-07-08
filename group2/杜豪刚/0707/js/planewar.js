@@ -1,21 +1,5 @@
-
-let($,on)=Utils;
-
-/**
- * 1. 核心部分 => 难度选择，开场动画，计分，暂停...
- * 2. 飞机     => 跟随移动
- * 3. 子弹     => 飞行移动 , 和敌机的交互(击落)
- * 4. 敌机     => 分类 , 小中大。
- * 
- *  */ 
-
 let { $ , on } = Utils;
-
- // 核心部分;
- // 1. logo入场 ;
- // 2. 飞机动画 ;
- // 3. 背景运动 ;
-
+// 核心类
  class Core{
       constructor(){
             // 核心元素;
@@ -28,7 +12,6 @@ let { $ , on } = Utils;
             // 绑定事件;
             on(this.option , "click" , this.hanlderClick.bind(this));
       }
-      //游戏刚开始的时候显示的游戏等级点击后的效果
       hanlderClick(evt){
             // 处理耦合关系;
             // 记录当前元素的下标;
@@ -36,37 +19,32 @@ let { $ , on } = Utils;
             let e = evt || window.event;
             let target = e.target || e.srcElement;
             if(target.nodeName !== "P") return false;
-            // 获取下标; 并且设置等级
+            // 获取下标;
             this.setHardLevel(target);
-            // 清场; 
+            // 清场;
             this.clearAll();
             // 显示logo;
             this.showAll();
             // 显示飞机动画;  
             this.animate();
-            //特定时间后开始游戏
             setTimeout( () => {
                   this.clearAll();
                   this.gameStart();
             } , 1000)
       }
-      //清场
       clearAll(){
             this.option ? this.option.remove() :"";
             clearInterval(this.loading);
             this.logo? this.logo.remove() : "";
             this.plane_loading? this.plane_loading.remove(): "";
       }
-      //通过下标标记等级
       setHardLevel(target){
             Core.hardLevel = Array.from(target.parentNode.children).indexOf(target);
       }
-      //显示logo和喷气飞机
       showAll(){
             this.logo = Core.createEle("logo");
             this.plane_loading = Core.createEle("plane-loading");
       }
-      //
       animate(){
             let index = 0;
             this.loading = setInterval( ()=>{
@@ -93,6 +71,7 @@ let { $ , on } = Utils;
             // 游戏开始了;
             // console.log("let's start");
             plane.init().fire();
+            Enemy.enemyCreater();
       }
 
       static createEle(className){
@@ -103,7 +82,8 @@ let { $ , on } = Utils;
       }
       static hardLevel;
  }
-// 功能调用;
+
+// 飞机;
  class Plane{
        constructor(){
 
@@ -130,7 +110,6 @@ let { $ , on } = Utils;
        }
        planeMove(evt){  
             let e = evt || window.event;
-           
             let { x , y } = this.boundary( e.clientX - this.eleSize.width / 2 , e.clientY - this.eleSize.height / 2);
             Plane.x = x;
             Plane.y = y;
@@ -167,7 +146,7 @@ let { $ , on } = Utils;
 
             switch(Core.hardLevel){
                   case 0 : 
-                        frequency = 500;
+                        frequency = 400;
                         break;
                   case 1 : 
                         frequency = 300;
@@ -238,18 +217,20 @@ let { $ , on } = Utils;
 
             return ele;
       }
-
       bulletMove(){
+            let level = Core.hardLevel;
             // console.log("让所有的子弹运动");
             for(let attr in Bullet.bullet_list){
                   let bullet = Bullet.bullet_list[attr];
-                  if(bullet.top <= -20){
+                  if(bullet.top <= -50){
                         this.bulletDie(bullet);
                         continue ;
-                  }
-                  bullet.ele.setAttribute("data","move");
+                  };
                   bullet.top -= this.speed ;
                   bullet.ele.style.top  =  bullet.top + "px";
+                  // if(level === 3){
+                  //       console.log("123")
+                  // }
                   bullet.ele.style.left =  bullet.left + "px";
             }
       }
@@ -270,8 +251,6 @@ let { $ , on } = Utils;
       static bullet_list;
       static bullet_size;
  }
-
-//  new Bullet();
 
 // 敌机;
  class Enemy{
@@ -296,7 +275,7 @@ let { $ , on } = Utils;
             this.enemies = {
                   "small" : {
                         className : "enemy-small",
-                        speed     : 10,
+                        speed     : 8,
                         hp        : 1,
                         dieClassName : "enemy-small-die"
                   },
@@ -309,7 +288,7 @@ let { $ , on } = Utils;
                   "large" : {
                         className : "enemy-large",
                         speed     : 1,
-                        hp        : 50,
+                        hp        : 30,
                         dieClassName : "enemy-large-die"
                   } 
             }
@@ -318,7 +297,8 @@ let { $ , on } = Utils;
             this.init();
        }
        init(){
-             this.createEnemy();
+            this.createEnemy();
+            on(document , "keydown" , this.judge.bind(this));
        }
        createEnemy(){
             let ele = document.createElement("div");
@@ -341,6 +321,7 @@ let { $ , on } = Utils;
                   enemy.top += enemy.speed;
 
                   if(enemy.top >= this.mainSize.height - 50){
+                        this.judge(enemy);
                         this.enemyDie(enemy);
                         continue;
                   }
@@ -349,12 +330,24 @@ let { $ , on } = Utils;
             }
        }
        enemyDie(enemy){
-            let index = Enemy.      enemy_list.indexOf(enemy);
+            let index = Enemy.enemy_list.indexOf(enemy);
             Enemy.enemy_list.splice(index , 1);
             enemy.ele.className += " die";
             setTimeout(()=>{
                   enemy.ele.remove();
             },1000)
+       }
+       judge(evt,enemy){
+            // let e = evt || event;
+            // if(e.keyCode === 32){
+            //       // alert();
+            //       let index = Enemy.enemy_list.indexOf(enemy);
+            //       Enemy.enemy_list.splice(index);
+            //       enemy.ele.className += " die";
+            //       setTimeout(()=>{
+            //             enemy.ele.remove();
+            //       },100)
+            // }
        }
        collisionDetection(){
             // 碰撞检测;
@@ -382,7 +375,7 @@ let { $ , on } = Utils;
        }
        collisionTop(enemy,bullet){
            return bullet.top > enemy.top - Bullet.bullet_size.height && bullet.top < enemy.top + enemy.height;
-       }
+       };
        static enemy_timer ;
        static enemy_list ;
        static enemy_size  ;
@@ -397,23 +390,8 @@ let { $ , on } = Utils;
                   Math.random() > 0.5 ? new Enemy() : "";
                   count % 5 === 0 ? (Math.random() < 0.8 ? new Enemy("middle") : "") : "";
                   count % 10 === 0 ? (Math.random() < 0.9 ? new Enemy("large") : "") : "";
-             } , 1000)
+             } , 1200)
        }
  }
-
-
-//  class Interval{
-//       constructor (){
-//             this.init();
-//       }
-//       init(){
-//            setInterval( ()=>{
-//                   this.move();
-//            } , 50)
-//       }
-//  }
-
-
  new Core();
  let plane =  new Plane();
-
