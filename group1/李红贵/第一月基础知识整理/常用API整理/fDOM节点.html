@@ -13,13 +13,45 @@
 // Document Object Model
 // document   把整个网页看做一个对象
 // 通过操作整个对象，来控制改变网页的内容
+<<<<<<< HEAD
+<<<<<<< HEAD
+// document.write();
+// document.createElement()   创建一个DOM元素
+// box.appendChild(target)    将target元素追加到box元素的内部，此时浏览器才能正确加载并显示元素
+// parent.insertBefore(newnode, oldnode)   将newnode元素插入到parent元素的内部，同时放在oldnode元素的前面
+// parent.removeChild(child)    将child元素删除，parent是child元素的父亲
+// node.remove();
+// 内容修改
+// 	innerHTML，设置该属性时，标签元素会自动显示标签样式，打印该属性时，会将标签一起打印出来。
+// innerText，设置该属性时，标签字符串在网页中原样显示为字符串。打印该属性时，只打印标签文字，不会打印标签。
+// 属性改变，key值
+// 	setAttribute ，设置新属性key和属性值value
+// 	removeAttribute ，删除某个属性key值
+// 	getAttribute ，获取某个属性key对应的value值
+// 元素属性（CSS样式）获取并修改
+// 	修改box元素的style属性。box.style.background = "red";   
+// document.getElementById()    通过ID号查找元素
+// document.getElementsByTagName()    通过标签名称查找元素
+// document.getElementsByName()      通过name属性来查找元素
+// document.getElementsByClassName()   通过class属性来查找元素，IE8以下 不支持byClassName方法
+// document.querySelector("#box");<!-- 根据IDbox获取单个元素 -->
+// document.querySelectorAll(".box");<!-- 获取所有class为box的元素 -->
+
+// 增
+// 	createAttribute增加属性节点
+=======
+=======
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
 
 // 获取元素
-// document.getElementById("box");    通过ID号查找元素,可以查找某个元素，box.getElementByID("childID");
+// document.getElementById("box");    通过ID号查找元素,可以查找某个元素，
 // document.getElementsByTagName("span");    通过标签名称查找元素
 // document.getElementsByName("");      通过name属性来查找元素
 // document.getElementsByClassName("classname");   通过class属性来查找元素，IE8以下 不支持byClassName方法
-// document.querySelector("#box");<!-- 根据IDbox获取单个元素 -->
+// 上四种方法只能右document调用
+
+// 下两个方法可以由任意dom调用
+// document.querySelector("#box");<!-- 根据IDbox获取单个元素 --> box.querySelector("childID");
 // document.querySelectorAll(".box");<!-- 获取所有class为box的元素 -->
 
 
@@ -65,15 +97,34 @@
 // var myAttr = document.createAttribute("data-hello");//创建属性，固定为document.createAttribute(),只是创建，需要再添加
 // myAttr.nodeValue = "helloWorld";
 // console.log(myAttr);
-// box.setAttributeNode(test1);//创建的属性添加到box上
+// box.setAttributeNode(myAttr);//创建的属性添加到box上
 
+<<<<<<< HEAD
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
 // 	createTextNode添加文本节点
-// 	createComment添加注释节点
+// var textNode = document.createTextNode("hello world   ");
+// console.log(textNode);
+// box.appendChild(textNode);
+
+// 	createComment添加注释节点			
+// box.appendChild(document.createComment("这是一个注释"));
+
 // 删
 // 	removeAttribute删除属性节点
 // childNodes[i].noteValue=value;改
+<<<<<<< HEAD
+<<<<<<< HEAD
+// childNodes，获取所有子节点
+=======
 // childNodes，获取所有子节点var childNodes = box.childNodes;
 // console.log(box.childNodes[i].nodeType);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+// childNodes，获取所有子节点var childNodes = box.childNodes;
+// console.log(box.childNodes[i].nodeType);
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
 
 // nodeType获取节点类型，返回代表节点类型的数字
 // 	常用节点类型
@@ -87,7 +138,16 @@
 // 一个容器，用于暂时存放创建的dom元素
 // 作用：将需要添加的大量元素  先添加到文档碎片中，再将文档碎片添加到需要插入的位置，大大 减少dom操作，提高性能（IE和火狐比较明显）
 // nodeName 辨别元素节点类型和属性节点属性名
+
 // 	通过nodeName属性，可以区分标签类型，该方法获取的标签全是大写的
+//var str = dom.nodeName;//获取dom的标签名，返回全大写标签"DIV"
+
+// 如果使用属性节点调用nodeName，返回的是属性名，
+// var c=document.getElementById("demo").getAttributeNode("id");
+// //先获取属性节点,
+// alert(c.nodeName);
+//再获取属性节点名称
+
 // nodeValue获取节点值
     </script>
 </body>
