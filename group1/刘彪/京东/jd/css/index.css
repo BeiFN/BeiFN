@@ -147,7 +147,7 @@ body{
 .nav .site:hover .dropdown{
     display: block;
 }
-.nav .site span{
+.nav .site .beijing{
    line-height: 30px;
    font-size: 12px;
    color: #999;
@@ -254,6 +254,7 @@ body{
     float: left;
     margin-left: 25px;
     color: black;
+    font-size: 14px;
 }
 
 /* 轮播图广告 */
@@ -261,5 +262,205 @@ body{
 .bannerad{
     width: 100%;
     height: 480px;
-    background: tan;
+}
+.bannerad .w1190{
+    overflow: hidden;
+}
+.bannerad .left-nav{
+    width: 190px;
+    height: 480px;
+    float: left;
+    background:white;
+}
+.bannerad .left-nav li{
+    width: 100%;
+    height: 26px;
+}
+.bannerad .left-nav li:hover{
+    background: #ddd;
+}
+.bannerad .left-nav li a{
+    text-align: center;
+    display: block;
+    height: 100%;
+    line-height: 26px;
+    font-size: 14px;
+    color: #626262;
+}
+
+.bannerad .banner{
+    width: 590px;
+    height:470px ;
+    float: left;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.bannerad .banner .wrapper{
+    width: 5310px;
+    height: 470px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.bannerad .banner .button-next{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.bannerad .banner .button-prev{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.bannerad .banner .wrapper a{
+    float: left;
+    width: 590px;
+    height: 470px;
+}
+.bannerad .three-box{
+    width: 190px;
+    height: 470px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.bannerad .three-box .box{
+    width: 190px;
+    height: 150px;
+    margin-top: 10px;
+    float: left;
+}
+.bannerad .three-box .box:nth-child(1){
+    margin: 0;
+}
+.bannerad .three-box img{
+    width: 100%;
+    height: 100%;
+}
+.bannerad .right-nav{
+    width: 190px;
+    height: 470px;
+    float: left;
+    background: yellow;
+    margin-top: 10px;
+}
+.bannerad .right-nav .box1{
+    width: 190px;
+    height: 150px;
+    float: left;
+    position: relative;
+    background: white;
+}
+.bannerad .right-nav .box1 .pic{
+    width: 65px;
+    height: 65px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    margin-left: -34px;
+}
+.bannerad .right-nav .box1 a img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.bannerad .right-nav .box1 p{
+    margin-top:  60px;
+    margin-left: 40px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1em;
+}
+.bannerad .right-nav .box1 .logn{
+    margin-left: 65px;
+    margin-top: 10px;
+    width: 100%;
+    height: 20px;
+}
+.bannerad .right-nav .box1 .logn a{
+    font-size: 12px;
+    color: #666;
+    float: left;
+    margin-right: 5px;
+    line-height: 1em;
+}
+.bannerad .right-nav .box1 .button1,.button2{
+    width: 70px;
+    height: 25px;
+    border-radius: 25%;
+    box-shadow: 0 0 5px ;
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+}
+.bannerad .right-nav .box1 .button1{
+  background: white;
+  margin: 0 10px 0 20px;
+}
+.bannerad .right-nav .box1 .button2{
+       color:   #e43f3b;;
+   background: #363634;
+}
+.bannerad .right-nav .box2{
+    width: 190px;
+    height: 130px;
+    margin-top: 150px;
+    background:white;
+
+}
+.bannerad .right-nav .box2 .title{
+    width: 100%;
+    margin-left: 15px;
+    color: #1e1e1e;
+    margin-bottom: 15px;
+}
+.bannerad .right-nav .box2 .title h2{
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 75px;
+}
+.bannerad .right-nav .box2 .title .more{
+    font-size: 12px;
+    color: #999;
+}
+.bannerad .right-nav .box2 .news{
+    display: block;
+    width:90%;
+    height: 20px;
+    color: #999;
+    overflow:hidden;
+	white-space:nowrap;
+    text-overflow:ellipsis;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.bannerad .right-nav .box2 .news span{
+    display: inline-block;
+    font-size: 12px;
+    height: 16px;
+    width: 35px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #e47f7f;
+    margin-right: 6px;
 }
