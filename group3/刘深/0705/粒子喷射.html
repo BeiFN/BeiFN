@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .ball{
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  background: #f00;
+                  position: absolute;
+                  
+            }
+    </style>
+</head>
+<body>
+    <script>
+        //获取元素
+    class Patical{
+        constructor(ele){
+            this.main  =  ele.nodeType === 9? ele : document.querySelector("ele");
+            this.init(); 
+        }
+
+        init(){
+            this.cWidth  = document.documentElement.clientWidth;
+            this.cHeight = document.documentElement.clientHeight;
+            this.timer = null;
+            this.main.addEventListener("mousedown" , this.handlerMousedown.bind(this));
+            this.main.addEventListener("mouseup" , this.stopBall.bind(this));
+            this.main.addEventListener("mousemove" , this.changeBall.bind(this)); 
+            
+        }
+
+        //小球随着鼠标
+        changeBall(evt){
+            var e = evt || event;
+            this.offsetX = e.clientX;
+            this.offsetY = e.clientY;
+        }
+
+        handlerMousedown(evt){
+                var e = evt || event;
+                // this.offsetX = e.offsetX;
+                // this.offsetY = e.offsetY;
+                this.timer = setInterval(function(){
+                    var ball = this.createBall();
+                    setTimeout(function(){
+                        this.ballMove(ball , e.offsetY);
+                    }.bind(this),100);
+                    
+                }.bind(this) ,100);
+        }
+        
+                  //创造小球
+        createBall(){
+           var ele = document.createElement("div");
+           ele.className = "ball";
+           ele.style.left = this.offsetX - 10 + "px";
+           ele.style.top = this.offsetY - 10 + "px";
+           ele.style.background = "#" + this.ballColor(); 
+           document.body.appendChild(ele);
+           return ele;
+        }
+                     //随机颜色
+        ballColor(){
+            var ball_color = parseInt((Math.random()*parseInt("ffffff" , 16))).toString(16).padStart(6 , "0");
+            return ball_color;
+        }
+
+                //小球发射
+        ballMove(ball ,minTop ){
+                var randomL = Math.round(Math.random()*this.cWidth) ;
+                var randomT = minTop + Math.round(Math.random()*(this.cHeight-minTop));
+                ball.style.left = randomL + "px";
+                ball.style.top = randomT + "px"; 
+                
+                setTimeout(function(){
+                    ball.remove();
+                },1000)
+        }
+
+            //小球消失
+        stopBall(){
+            clearInterval(this.timer);
+
+        }
+    }
+
+        new Patical(document);
+    </script>
+</body>
+</html>

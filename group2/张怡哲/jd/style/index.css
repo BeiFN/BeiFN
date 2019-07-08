@@ -40,11 +40,15 @@
     border:1px solid #ccc;
     position: absolute;
     left: -2px;
+    padding: 10px;
+}
+.city a{
+    color: #999;
 }
 .city-top{
     height: 216px;
     padding:10px;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
 }
 .city-top li{
     width: 60px;
@@ -59,6 +63,21 @@
 }
 .city-top li:hover a{
     background: #eee;
+    color: red;
+}
+.city-middle{
+    margin: 10px 0 10px 10px;
+    border-top: dotted 1px #eee;
+}
+.city p{
+    margin: 9px 0;
+}
+.city-middle li{
+    width: 145px;
+    height: 26px;
+    line-height: 26px;
+}
+.city-middle li:hover a {
     color: red;
 }
 .header-left-position-logo{

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            [Symbol("讲师特点")] : "和蔼可亲"
+        }
+        let obj2 = {
+            [Symbol("讲师特点")] : "比晓鑫阿姨年轻"
+        }
+        console.log(obj1[Symbol("讲师特点")]);
+        console.log(Object.assign(obj1,obj2));
+
+
+
+
+        //设置常量；防止和对象之前的key值冲突；
+        const key = Symbol("key");
+        let obj = {
+            [key] : "hello"
+        }
+        console.log(obj);
+        console.log(obj[key]);
+    </script>
+</body>
+</html>
