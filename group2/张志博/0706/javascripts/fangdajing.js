@@ -134,5 +134,5 @@ static $(selector){
 }
 
     
-let{getSize,getAbsPosition,removeClassName,delegation,$} = Magnifier
+let{getSize,getAbsPosition,$} = Magnifier
 new Magnifier();
