@@ -9,7 +9,7 @@ html, body{
 .main{
       width: 460px;
       height: 100%;
-      background-image: url(../images/bg.jpg);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-1624816ce79c5ca5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: repeat-y;
       background-size: 100% 100%;
       background-position: center;
@@ -41,13 +41,13 @@ html, body{
       height: 122px;
       position: absolute;
       bottom: 0;
-      background-image: url(../images/me.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b1dd77f18a850060.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
 }
 .bullet{
       width: 7px;
       height: 18px;
-      background-image:url(../images/bullet.png);
+      background-image:url(https://upload-images.jianshu.io/upload_images/18483085-c616b05dc733fc32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position:absolute;
       top: 0;
@@ -64,7 +64,7 @@ html, body{
 @keyframes bullet-die{
       0%{
            
-            background-image: url("../images/die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-85468c0574c92c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
            
