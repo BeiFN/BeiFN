@@ -1,0 +1,174 @@
+*{padding: 0;margin: 0}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.main{
+    width: 400px;
+    height: 80%;
+    background-image:url(https://upload-images.jianshu.io/upload_images/18459867-7d519f41c19e925f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+    background-position-y: 0;
+    margin: 0 auto; 
+    border-radius: 10px ;
+    min-height: 500px;
+}
+.option{
+    width: 400px;
+    height: 70%;
+    position: absolute;
+    left: 50%;
+    margin-top: 10%;
+    margin-left:  -200px;
+    top: 0;
+}
+.option p{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    background-color: rgb(111,111,111,0.8);
+    text-align: center;
+    line-height: 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #666;
+    cursor: pointer;
+}
+.plane{
+    width: 98px;
+    height: 122px;
+    background-image: url(https://upload-images.jianshu.io/upload_images/18459867-bd56d15db7c2799d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/98/format/webp);
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.bullet{
+    width:7px;
+    height:18px;
+    background-image: url(https://upload-images.jianshu.io/upload_images/18459867-308ef39c97233ff7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/7/format/webp);
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+}
+.bullet.die{ /*子弹爆炸*/
+    width:41px;
+    height: 43px;
+    background-image: ;
+    background-repeat: no-repeat;
+    animation:  bullet-die .5s linear infinite;
+    margin-left: -17px;
+}
+@keyframes bullet-die{
+    0%{
+        background-image: url(https://upload-images.jianshu.io/upload_images/18459867-9ea7ac9647759fcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/41/format/webp);
+    }
+    100%{
+        background-image: url(https://upload-images.jianshu.io/upload_images/18459867-da7ae74c8136e72b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/40/format/webp);
+    }
+}
+.enemy-small{
+    width: 59px;
+    height: 36px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18459867-711329b83ba039a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/59/format/webp");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-small.die{
+    animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+    0%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-208e81335250ca36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/59/format/webp");
+    }
+    50%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-0c7249d64f4c0042.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/59/format/webp");
+    }
+    100%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-ec57f990470a061a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/59/format/webp");
+    }
+}
+.enemy-middle{
+    width: 70px;
+    height: 92px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18459867-8db7a236e0871a58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/70/format/webp");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-middle.die{
+    animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+    0%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-56587b41cac0760a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/70/format/webp");
+    }
+    33%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-d378ed154a7dff63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/70/format/webp");
+    }
+    66%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-29b9df47f57da5f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/70/format/webp");
+    }
+    100%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-5413694fc52c3fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/70/format/webp");
+    }
+}
+.enemy-large{
+    width: 165px;
+    height: 256px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18459867-17427e0c586b039d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+
+}
+.enemy-large.die{
+    animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+    0%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-23ebd2097306a6f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+    20%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-0497f161a6a458bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+    40%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-d3aa31c3adff6bc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+    60%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-f85ff4f74b5281e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+    80%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-f2ff8f9090bbb757.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+    100%{
+          background-image: url("https://upload-images.jianshu.io/upload_images/18459867-09ab97fc078baca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/165/format/webp");
+    }
+}
+.logo{
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    top: 15%;
+    margin-left: -200px;
+    left: 50%;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18459867-b93096bf19305755.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/428/format/webp");
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.plane-loading{
+    width: 192px;
+    height: 41px;
+    position: absolute;
+    top: 40%;
+    margin-left: -96px;
+    left: 50%;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18459867-09b01e7d3e8de50d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/192/format/webp)";
+}
