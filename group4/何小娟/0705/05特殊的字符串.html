@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 特殊的字符串，用5位的Unicode 编码，比如那下面的“𠮷”
+    // 特殊字符串应for of遍历，因为val是key，不是下标
+    // for in里的attr是下标
+
+
+    let str = "𠮷野家"
+    for(let val of str){
+      console.log(val)
+    }  
+
+    // for(let attr in str){
+    //   console.log(attr,str[attr])
+    // }
+  </script>
+</body>
+</html>

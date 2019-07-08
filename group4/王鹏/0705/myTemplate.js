@@ -12,4 +12,5 @@
         eval(res)
         return html;
     }
+    window.myTemplate = myTemplate;
 }()
