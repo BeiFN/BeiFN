@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 400px;
+            background: #000;
+            border: 2px solid #f10;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .firework {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            background: rgb(red, green, blue)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <script>
+        class firework {
+            constructor({
+                selector = "#container"
+            } = {}) {
+                //获取到了容器对象
+                this.box = document.querySelector(selector)
+                if (this.box == null) return false;
+                //调用初始化函数
+                this.init();
+            }
+            init() {
+                //初始化函数就是给container添加事件
+                this.box.addEventListener("click", this.handlerClick.bind(this))
+            }
+            //创建元素和移动元素进行整合
+            handlerClick(evt) {
+                let e = evt || event;
+                // var target = e.target || e.srcElement;
+                let fire = this.initFire(e)
+                this.fireMove(e, fire, this.fireBoom.bind(this, e));
+            }
+
+            //烟花爆炸
+            fireBoom(e) {
+                let orignX = e.offsetX;
+                let orignY = e.offsetY;
+                //创建爆炸烟花数
+                let fireNum = Math.round(Math.random() * 10) + 15
+                let angel = 0;
+                let a = parseInt(360 / fireNum)
+                let radius = Math.round(Math.random() * 100) + 100
+                for (let i = 0; i < fireNum; i++) {
+
+                    angel += a;
+                    let targetX = parseInt(Math.cos(Math.PI / 180 * angel) * radius + orignX)
+                    let targetY = parseInt(Math.sin(Math.PI / 180 * angel) * radius + orignY)
+
+                    let fire = this.createFire()
+                    fire.style.left = orignX + "px";
+                    fire.style.top = orignY + "px";
+                    this.box.appendChild(fire)
+                    move(fire, {
+                        left: targetX,
+                        top: targetY
+                    }, function foo(fire) {
+                        fire.remove();
+                        //这里卡住  传参 
+                    }.bind(false, fire))
+                }
+            }
+            //移动 调用移动框架
+            fireMove(e, fire, callback) {
+                let topHeight = e.offsetY
+                move(fire, {
+                    top: topHeight
+                }, function () {
+                    fire.remove();
+                    callback();
+                });
+            }
+
+            //将创建的烟花初始化
+            initFire(e) {
+                let fire = this.createFire(e);
+                fire.style.left = e.offsetX + "px"
+                fire.style.bottom = 0;
+                this.box.appendChild(fire)
+                return fire;
+            }
+            //创建烟花
+            createFire(e) {
+                let fire = document.createElement("div")
+                fire.className = "firework";
+                // console.log(1);
+                fire.style.backgroundColor = getRandomColor();
+                return fire;
+            }
+
+            //随机颜色的函数
+            static getRandomColor() {
+                var r = Math.round(Math.random() * 255);
+                var g = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+                // console.log(3);
+                return "rgb(" + r + "," + g + "," + b + ")"
+
+            }
+
+            //move框架
+            static move(ele, attrObj, callback) {
+                clearInterval(ele.timer)
+                ele.timer = setInterval(function () {
+                    //遍历属性对象
+                    for (var attr in attrObj) {
+                        var target = attrObj[attr]
+                        if (attr === "opacity") {
+                            var iNow = getComputedStyle(ele)[attr] * 100
+                        } else {
+                            //去掉px
+                            var iNow = parseInt(getComputedStyle(ele)[attr])
+                        }
+                        var speed = (target - iNow) / 10;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+                        //这样写会有一个bug  不是所有的数字都到达目标  
+                        if (target == iNow) {
+                            //每到达一个属性  就把这个属性从obj中移除
+                            delete attrObj[attr]
+                            //也可以获取所有的key来判断返回的key数组的长度  Object.keys(options).length   
+                            if (Object.keys(attrObj).length === 0) {
+                                clearInterval(ele.timer)
+                                typeof callback == "function" ? callback() : ""
+                            }
+                        } else {
+                            if (attr === "opacity") {
+                                ele.style[attr] = (iNow + speed) / 100
+                            } else {
+                                ele.style[attr] = iNow + speed + "px"
+                            }
+                        }
+
+                    }
+                }, 50)
+            }
+        }
+        // console.log(getRandomColor)
+        // console.log(2);
+        let {
+            getRandomColor,
+            move
+        } = firework; 
+        new firework("#container");
+    </script>
+</body>
+
+</html>

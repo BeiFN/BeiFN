@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script type="text/html" id="template"> -->
+        <!-- <% for(var i = 0 ; i < 10 ; i ++){ %>
+            <h2>hello world</h2>
+        <% } %> -->
+    <script type="text/html" id="template">            
+        <% for(var i = 0 ; i < 15 ; i ++){ %>
+            <h2>向世界问好 <%= i %></h2>
+        <% } %>
+    </script>
+    <script type="text/javascript">
+        //何为模板引擎？？  就是在写HTML的时候放入js逻辑
+        //对混写代码尽心预处理：
+        //1、拆分逻辑部分
+        //2、拆除HTML部分
+        //3、逻辑执行
+        //4、字符串返回
+
+        //在script的type为 text/html 的时候，内部的所有代码不会被解析，只会当成字符串
+
+        //在承载 HTML + JS 混写代码字符串的地方对其进行规则制定
+        //规则：<% 内部的代码是逻辑 %>    未被<% %>包裹的是HTML拼接的字符串
+        //使用eval() 进行执行
+
+        //一：
+        // var str = document.getElementById("template");
+        // var strValue = str.innerHTML;
+        // var reg = /<%(.*?)%>/g ;//给贪婪匹配
+        // strValue = strValue.replace(reg ,`\`); $1 print ( \``) ;
+        // var res = `print(\`${strValue}\`);` ;
+        // var html = "";
+        // function print(str){
+        //     html += str;
+        //     console.log(1);
+        // }
+        // eval(res);//将字符串当做代码执行
+        // console.log(html);
+
+        //strValue最终的展现形式：
+        //print(` `);<% for(var i = 0 ; i < 10 ; i++) %>{ %>
+                        //print(`<h2>hello world</h2>`)
+                // <% } %> ; print(` `);
+
+        //二：输出变量是=》print( i )
+        var template = document.getElementById("template");
+        //把字符串改成符合js规则
+        var regJS    = /<%[^=](.*?)%>/g ;//找到<% %>包裹到的字符串，除=号外
+        var res      = template.innerHTML.replace(regJS,`\`); $1 print(\``);//替换，去标记
+        res          = `print(\`${res}\`);`;
+        var html = "";
+        function print(str){//print拼接字符串的方法
+            html += str ;
+        }
+        var regJS_1  = /<%=(.*?)%>/g ;
+        var res      = res.replace(regJS_1,`\`);  print($1); print(\``);
+        eval(res);
+        console.log(html);
+        //最终形态
+        // print(` `); for(var i = 0 ; i < 15 ; i ++){  
+        //     print(` <h2>向世界问好 `);  print(i);  print(`</h2>`); }  
+        // print(` `);
+    </script>
+</body>
+</html>
