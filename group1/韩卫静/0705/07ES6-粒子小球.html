@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.ball{
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: radial-gradient(#ddd,#222);
+				position: absolute;
+			}
+			.text{
+				width: 200px;
+				height: 100px;
+				font-size: 20px;
+				line-height: 100px;
+				box-shadow: 0 0 5px #0099FF;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="text">
+			长点空白发射彩色小球
+		</div>
+		
+		<script type="text/javascript" src="js/common.js">
+			
+		</script>
+		<script type="text/javascript">
+			let {randomColor} = Utils;
+			class Particle{
+				constructor(ele){
+					this.mainPart = ele.nodeType === 9 ? ele : document.querySelector(ele);
+					this.timer = null;
+					this.cWidth = document.documentElement.clientWidth;
+					this.cHeight = document.documentElement.clientHeight;
+				
+					this.init();
+				}
+				init(){
+					this.mainPart.addEventListener("mousedown" , this.startInitBall.bind(this) );
+					this.mainPart.addEventListener("mouseup" , this.stopCreateBall.bind(this) );
+					this.mainPart.addEventListener("mousemove" , this.positionMove.bind(this))
+					console.log(this.mainPart);
+				}
+				startInitBall(evt){
+					var e = evt || window.event;
+					this.offsetX = e.clientX;
+					this.offsetY = e.clientY;
+					clearInterval(this.timer);
+					this.timer = setInterval(function(){
+						var ball = this.createBall(this.offsetX , this.offsetY);
+						setTimeout(function(){
+							this.ballMove(ball,this.offsetY);
+						}.bind(this),10)
+					}.bind(this),100);
+					
+				}
+				stopCreateBall(){
+					clearInterval(this.timer);
+					console.log("stop")
+				}
+				createBall(offsetX , offsetY){
+					var ball = document.createElement("div");
+					ball.className = "ball";
+					ball.style.left = offsetX + "px";
+					ball.style.top = offsetY + "px";
+					ball.style.transition = "all 1s";
+					ball.style.background = "radial-gradient(" + randomColor() + "," + randomColor() + ")" ;
+					document.body.appendChild(ball);
+					return ball;
+				}
+				ballMove(ele , offsetY){
+					var randomT = offsetY + Math.round( Math.random()* (this.cHeight - offsetY) );
+					var randomL = Math.round(Math.random() * this.cWidth);
+					ele.style.left = randomL + "px";
+					ele.style.top = randomT + "px";
+				}
+				positionMove(evt){
+					var e = evt || window.event;
+					// this.offsetX = e.offsetX;
+					// this.offsetY = e.offsetY;
+					//避免鼠标点到小球上,而产生错误的offsetX和offsetY
+					this.offsetX = e.clientX ; 
+				     this.offsetY = e.clientY;
+				}
+			}
+			
+			
+			new Particle(document);
+		
+		</script>
+	</body>
+</html>
