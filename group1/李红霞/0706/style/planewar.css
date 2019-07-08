@@ -1,0 +1,199 @@
+*{
+      margin: 0; 
+      padding: 0;
+}
+html, body{
+      width: 100%;
+      height: 100%
+}
+.main{
+      width: 460px;
+      height: 100%;
+<<<<<<< HEAD
+      background-image: url(../images/bg.jpg);
+=======
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-1624816ce79c5ca5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+      background-repeat: repeat-y;
+      background-size: 100% 100%;
+      background-position: center;
+      margin: 0 auto;
+      overflow: hidden;
+}
+.options{
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      
+}
+.options p{
+      width: 300px;
+      height: 80px;
+      margin: 0 auto;
+      background: antiquewhite;
+      line-height: 80px;
+      margin-top: 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 20px;
+}
+.my_plane{
+      width: 98px;
+      height: 122px;
+      position: absolute;
+      bottom: 0;
+<<<<<<< HEAD
+      background-image: url(../images/me.png);
+=======
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b1dd77f18a850060.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+      background-repeat: no-repeat;
+}
+.bullet{
+      width: 7px;
+      height: 18px;
+<<<<<<< HEAD
+      background-image:url(../images/bullet.png);
+=======
+      background-image:url(https://upload-images.jianshu.io/upload_images/18483085-c616b05dc733fc32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+      background-repeat: no-repeat;
+      position:absolute;
+      top: 0;
+}
+
+.bullet.die{
+      width: 41px;
+      height: 43px;
+      background-repeat: no-repeat;
+      animation: bullet-die .5s linear infinite;
+      margin-left: -17px;
+}
+
+@keyframes bullet-die{
+      0%{
+           
+<<<<<<< HEAD
+            background-image: url("../images/die1.png");
+=======
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-85468c0574c92c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+      }
+      100%{
+           
+            background-image: url("../images/die2.png");
+      }
+}
+
+
+.small_plane{
+      width: 59px;
+      height: 36px;
+      background-image: url(../images/plain1.png);
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+}
+
+.small_plane.die{
+      animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+      0%{
+            background-image: url("../images/plane1_die1.png");
+      }
+      50%{
+            background-image: url("../images/plane1_die2.png");
+      }
+      100%{
+            background-image: url("../images/plane1_die3.png");
+      }
+}
+
+
+.middle_plane{
+      width: 70px;
+      height: 92px;
+      background-image: url(../images/plain2.png);
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+}
+
+.middle_plane.die{
+      animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+      0%{
+            background-image: url("../images/plane2_die1.png");
+      }
+      33%{
+            background-image: url("../images/plane2_die2.png");
+      }
+      66%{
+            background-image: url("../images/plane2_die3.png");
+      }
+      100%{
+            background-image: url("../images/plane2_die4.png");
+      }
+}
+
+.big_plane{
+      width: 165px;
+      height: 256px;
+      background-image: url(../images/plain3.png);
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+}
+
+.enemy-large.die{
+      animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+      0%{
+            background-image: url("../images/plane3_die1.png");
+      }
+      20%{
+            background-image: url("../images/plane3_die2.png");
+      }
+      40%{
+            background-image: url("../images/plane3_die3.png");
+      }
+      60%{
+            background-image: url("../images/plane3_die4.png");
+      }
+      80%{
+            background-image: url("../images/plane3_die5.png");
+      }
+      100%{
+            background-image: url("../images/plane3_die6.png");
+      }
+}
+
+
+.logo{
+      width: 428px;
+      height: 104px;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      margin-left: -214px;
+      background-image: url(../images/logo.png);
+      background-repeat: no-repeat;
+      background-position: center;
+}
+.loading{
+      width: 192px;
+      height: 41px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -96px;
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-005ac445289d320e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+      background-repeat: no-repeat;
+      background-position: center;
+}

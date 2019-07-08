@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // 1.类   =>   构造函数 + 原型的语法糖
+
+  class Foo{
+    // 相当于构造函数
+    constructor(){
+      // this是实例
+      this.name = "林赛"
+    }
+
+    // 直接给原型对象上添加一个方法;
+    show(){
+      console.log(12)
+    }
+  }
+
+ console.log(new Foo())
+
+
+//  2.class的get拦截属性
+class CreateMystructure{
+    constructor(){
+      this.myStrcture = {}
+    }
+    push(key,value){
+      this.myStrcture[key] = value
+    }
+    get size(){
+      let count = 0
+      for(let attr in this.myStrcture){
+        count ++
+      }
+      return count
+    }
+
+}
+
+  var my = new CreateMystructure();
+  my.push("a",1);
+  console.log(my.size);
+  console.log(my);
+  </script>
+</body>
+</html>
