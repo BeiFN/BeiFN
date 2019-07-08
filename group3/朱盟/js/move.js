@@ -1,4 +1,41 @@
-function move(e, eAttributeName, eToVal) {
+/****EMB 移动核心
+ *  Author:EMB
+ *  Date:2019.7   
+ *  Now Version:V:D-0.0.1
+ * 
+ *  Description:
+ * ----------------------------↓
+ *      Function:
+ *      -------------------↓
+ *      move (e [移动元素], eAttributeName[移动元素的属性], eToVal[属性目标值], callBack[执行回调]) 单属性改变 
+ *      moves(e[移动元素], moveAttr[
+ *      {
+ *       移动元素的属性:属性目标值,
+ *       移动元素的属性:属性目标值,...
+ *      }
+ *      ], callBack[执行回调])
+ *      -------------------↑
+ * 
+ *      Update Description:
+ *      ------------------↓
+ *      v 0.0.1 基础移动核心，多属性改变
+ * 
+ *      -------------------↑
+ * 
+ *      Version Initials:
+ *      ------------------↓
+ *      V:D->Developer
+ *      V:B->Bate   
+ *      V:R->Release   
+ *      ------------------↑
+ * ---------------------------↑
+ */
+
+
+
+
+
+function move(e, eAttributeName, eToVal, callBack) {
     clearInterval(e.timer);
     var isOpacity = (eAttributeName === "opacity" ? true : false);
     // 调整目标值 要重新赋值的 ;如果是透明的话就是 属性值*100
@@ -16,6 +53,7 @@ function move(e, eAttributeName, eToVal) {
         if (eToVal === eNowVal) {
             clearInterval(e.timer);
             e.timer = null;
+            typeof callBack === "function" ? callBack() : "";
         } else {
             isOpacity ? e.style.opacity = (eNowVal + speed) / 100 : e.style[eAttributeName] = eNowVal + speed + "px";
         }
@@ -23,8 +61,7 @@ function move(e, eAttributeName, eToVal) {
 }
 
 
-
-function moves(e, moveAttr) { // move 核心更新
+function moves(e, moveAttr, callBack) { // move 核心更新
     clearInterval(e.timer);
     e.timer = setInterval(() => {
         for (const attName in moveAttr) {
@@ -36,9 +73,8 @@ function moves(e, moveAttr) { // move 核心更新
             speed = (speed >= 0 ? Math.ceil(speed) : Math.floor(speed));
             if ((isOpacity ? moveAttr[attName] * 100 : moveAttr[attName]) === eNowVal) {
                 delete moveAttr[attName];
-                Object.keys(moveAttr).length === 0 ? (clearInterval(e.timer)) || (e
+                Object.keys(moveAttr).length === 0 ? (clearInterval(e.timer)) || (typeof callBack === "function" ? callBack() : "") || (e
                     .timer = null) : "";
-                console.log(moveAttr);
             } else {
                 isOpacity ? e.style.opacity = (eNowVal + speed) / 100 : e.style[
                     attName] = eNowVal + speed + "px";

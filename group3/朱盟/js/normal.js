@@ -2,16 +2,13 @@
  * 一些基本方法的js
  * author:emb
  * date:2019.6.12
- * v 0.0.3 
- *  0.0.1 基础 对象类库 随机颜色，随机字符，Timer 倒数计时器 ，及（本人认为的）万能的时间处理方法 getTime ，padInt补全
- *  0.0.2 加入 Dom 操作  .html() .text() creatElement(), attr() , 根据元素Key ：val 删除数组中对象的 delEleArray，.show, .hide()
- *  0.0.3 加入 Event Delegation  事件监听 并实现方法On 加入原生的 apply 实现的ibind 方法 实 现定参数 柯里化
+ * v 0.0.1
  */
-
-
-
+console.log("base-js File loaded!");
 
 /**
+ *
+ *
  * @returns rgba string
  */
 function randomRgb() {
@@ -35,10 +32,6 @@ function randomRgba() {
  * @returns
  */
 function randomNumber(min, max) {
-    if (arguments.length === 1) {
-        max = min;
-        min = 0;
-    }
     return min + Math.round(Math.random() * (max - min));
 }
 
@@ -48,12 +41,6 @@ function randomNumber(min, max) {
 
 // 格式化生成验证码  A 代表大写字母 随机生成数字，并转化层所对应Ascll 码对应的随机字母，根据字母和数字的范围来生成
 // 合并了randomNumber 方法
-/**
- *随机字符生成器
- * @param {表达式* A 大写字母 a 小写字母 0 数字}  express:"A-A"= return "Q-F"
- * @param {max 最大值 ，此参数填写时 此函数变成随机数字生成器 第一个参数为最小值* Number} max
- * @returns 随机生成格式化的字符串
- */
 function randomChars(express, max) {
     var str = "";
     if (arguments.length > 1) {
@@ -101,26 +88,19 @@ function randomChars(express, max) {
  *计时器 EMB|吃火星的宝宝|朱盟
  *
  * @param {*执行函数} handler(count（当前句柄的执行次数）,Interval（当前句柄的执行间隔）) 
- * @param {*执行次数} count  空值默认执行1次
+ * @param {*执行次数} count
  * @param [可选 执行间隔 (毫秒)] Interval
- * @param [可选] function 计时结束执行器 ,暂未实现
- * @param [可选] o 计时执行对象 ,暂未实现
- * @returns 返回当前的计时器对象 
+ * @returns 返回当前的计时器对象
  */
-function Timer(handler, count, o) {
+function Timer(handler, count) {
     var time_count = count;
     var time_Interval = 1000;
-    // console.log(count);
-    count ? "" : time_count = 1;
-    arguments.length > 2 && arguments[2] > 0 ? time_Interval = arguments[2] : time_Interval = 1000;
-    // console.log(arguments);
+    arguments.length > 2 && arguments[2] > 0 && arguments[2] > 0 ? time_Interval = arguments[2] : time_Interval = 1000;
     var timer_id = setInterval(function () {
         if (time_count === 0) {
             clearInterval(timer_id);
-            // arguments[3]();
-            timer_id = null;
         } else {
-            handler(time_count, time_Interval, o);
+            handler(time_count, time_Interval);
             time_count--;
         }
 
@@ -137,6 +117,7 @@ function Timer(handler, count, o) {
  * Timer(handler,1,100); //执行一次 间隔100
  * Timer(handler,-1,100); //无限次执行
  */
+
 
 
 /**
@@ -271,19 +252,8 @@ function GetTime(dateObj) {
 
 
 
-/**
- * 
- * @param {遍历*Array} arry 
- * @param {对象属性*string} key 
- * @param {属性值*} val 
- */
-function delEleArray(arry, key, val) {
-    for (var i = 0, item; item = arry[i++];) {
-        if (item[key] === val) {
-            return arry.splice(i - 1, 1);
-        }
-    }
-}
+
+
 
 
 
@@ -299,12 +269,6 @@ function $(selecter) {
     return (ele = document.querySelectorAll(selecter)).length === 1 ? ele[0] : ele;
     //如果查找出元素的个数是1个那么，就返回匹配的选择符的伪数组的第一个，否则就返回全部
 }
-
-Node.prototype.$=function(selector){
-    var e = null;
-    return (e= this.querySelectorAll(selector)).length===1? e[0] : e;
-}
-
 
 
 /**
@@ -324,15 +288,6 @@ function createElement(object) {
     object.tagName ? "" : object.tagName = "div";
     //如果对象tagName是空，那么给他默认值为div
     var ele = document.createElement(object.tagName);
-
-
-    object.attr ? "" : object.attr = {};
-    object.value ? (object.attr.value = object.value) : "";
-    object.id ? (object.attr.id = object.id) : "";
-    object.title ? (object.attr.title = object.title) : "";
-    object.style ? (object.attr.style = object.style) : "";
-    object.name ? (object.attr.name = object.name) : "";
-    object.type ? (object.attr.type = object.type) : "";
     //创建对象
     for (const key in object.attr) {
         ele.setAttribute(key, object.attr[key]);
@@ -349,6 +304,8 @@ function createElement(object) {
 }
 
 
+
+
 // console.dir(); 原型方法的封装 
 Element.prototype.attr = function attr(key, val) {
     if (arguments.length > 1) //如果值为2个 则为设置
@@ -357,137 +314,14 @@ Element.prototype.attr = function attr(key, val) {
     } else {
         return this.getAttribute(key); //如果值为1个 则为获取
     }
-}
-Node.prototype.attrs = function (key, val) {
-    key ? (key = key) : (key = ".");
-    var attrReg = new RegExp(key, "i");
-    var attrs = [];
-    var isSet = arguments.length <= 1 ? false : true;
-    [].slice.call(this.attributes).forEach(element => {
-        // console.log(element.name, element.value);
-        if (attrReg.test(element.name)) {
-            // console.log(1);
-            attrs.push(element);
-            isSet ? this.attr(element.name, val) : "";
-        }
-    });
-    return attrs;
-}
 
-Element.prototype.html = function (html) {
-    if (!arguments[0]) return this.innerHTML;
-    this.innerHTML = html;
 }
-Element.prototype.text = function (txt) {
-    if (!arguments[0]) return this.innerText;
-    this.innerText = txt;
-}
-Element.prototype.val = function (val) {
-    if (!arguments[0]) return this.value;
-    this.value = val;
-}
-Element.prototype.hide = function () {
-    this.style.display = "none";
-}
-Element.prototype.show = function () {
-    this.style.display = "block";
-}
+var p = createElement({
+    tagName: "p"
+});
 
-Node.prototype.classAdd = function (className, notJudge) {
-    var hasClassReg = new RegExp(className, "g")
-    var isNotJudge = false;
-    notJudge ? isNotJudge = notJudge : "";
-    if (isNotJudge) {
-        this.className += (" " + className);
-    } else {
-        hasClassReg.test(this.className) ? this.className = this.className.replace(hasClassReg, className) : this.className += (" " + className);
-    }
-}
-Node.prototype.classRemove = function (className) {
-    var hasClassReg = new RegExp(className, "g")
-    hasClassReg.test(this.className) ? this.className = this.className.replace(hasClassReg, "") : "";
-}
-// 事件绑定的封装
-// Node.prototype.on = function (eventType, handler, isCapture) {
-//     arguments.length > 2 && isCapture ? "" : isCapture = false;
-//     if (this.addEventListener) {
-//         this.addEventListener(eventType, handler, isCapture);
-//     } else if (this.attachEvent) {
-//         this.attachEvent(eventType, handler);
-//     } else {
-//         this["on" + eventType] = handler;
-//     }
-// }
-
-
-// on 的更新 加入事件委托机制
-/**
- * 事件的绑定与委托
- *
- * @param{ eventType 事件类型}
- * @param{ handler 执行句柄}
- * @param{ targetSelector 选择器->绑定的执行目标 }
- * @returns undefine
- */
-Node.prototype.on = function (eventType, handler, targetSelector) {
-    // console.log("on");
-    if (this.addEventListener) {
-        arguments.length > 2 && targetSelector ? this.addEventListener(eventType, delegation(handler, targetSelector)) :
-            this.addEventListener(eventType, handler);
-    } else if (this.attachEvent) {
-        this.attachEvent(eventType, handler);
-    } else {
-        this["on" + eventType] = handler;
-    }
-}
-
-// 事件移除的封装
-Node.prototype.off = function (eventType, handler) {
-    if (this.removeEventListener) {
-        this.removeEventListener(eventType, handler);
-    } else if (this.detachEvent) {
-        this.detachEvent(eventType, handler);
-    } else {
-        this["on" + eventType] = null;
-    }
-}
-
-
-// 事件的委托的实现
-function delegation(executeHandler, targetSelector) {
-    return function (ev) { // 我本人认为第一步应先给监听事件要的东西， 就是执行事件对吧？
-        // 这个函数被作为传进去的执行者，那么他是不是接受了事件对象？嘿嘿
-        var e = ev || window.event; // 获取到了事件对象
-        // 获取当前捕获元素
-        var captureElemet = e.target || e.srcElement;
-        //获取要执行的目标元素
-        var targetElemets = this.querySelectorAll(targetSelector);
-        var targetFamilay = [] //抓住一家子
-        var _targetemp = captureElemet;
-        while (true) {
-            if (_targetemp === this) break;
-            //如果是找到的父元素 放弃寻找
-            targetFamilay.push(_targetemp);
-            _targetemp = _targetemp.parentNode
-        }
-        if (!targetFamilay.length) return false;
-        // console.log(captureElemet, this);
-        // 那是不是 执行目标和捕获目标相同 就执行就好了？
-        // 但是我们的目标元素不是一堆啊? 那是不是得一一辨认？
-        for (var i = 0, targetItem; targetItem = targetElemets[i++];) {
-            if (targetFamilay.length === 1 ? captureElemet == targetItem : targetFamilay.indexOf(targetItem) !== -1) { // 如果是这个目标 那就杠
-                executeHandler.call(targetItem, e);
-                //执行事务 ,并把执行事务 的参数给人家句柄 
-                //指向执行的人，事件对象给执行句柄
-            }
-        }
-
-    }
-}
-
-
-// 删除对象中的某个值
-
+// p.attr("id", "d2");
+// console.dir(p.attr("id"));
 
 
 
@@ -554,5 +388,3 @@ function intersection() {
     }
     return o;
 }
-
-console.log("base-js File loaded!");
