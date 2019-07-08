@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.求圆的面积
+        // function circular(r){
+        //     return Math.PI * r * r;
+        // }
+        // console.log(circular(2).toFixed(3));
+
+        // 编写函数digit(num, k)，函数功能是：求整数num从右边开始的第k位数字的值，
+        // 如果num位数不足k位则返回0。
+        // function digit(num, k){
+        //     for(var i = 0 ; i < k ;i++ ){
+        //         var res = num % 10;
+        //         num = parseInt(num / 10);
+        //     }
+        //     return res;
+        // }
+        // console.log(digit(123456789, 10));
+
+        
+        //编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数。
+        //比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31;
+        function odd(a,b){
+            for(var i = a ; i <= b ;i++){
+                for(var j = a  ; j <= b ; j++ ){
+                    var c = "" + i + j;
+                    if(c %　2 != 0){
+                        console.log(c);
+                    }
+                }
+            }
+        }
+    odd(0,3);
+    </script>
+</body>
+</html>

@@ -45,7 +45,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
     <div id="pagination">
         <div id="btn-list">
             <button>1</button>
@@ -63,6 +63,7 @@
         class Table{
             constructor({btnSe="btn-list",contSe="content-list"}={}){
                 console.log("constructor", this);
+                console.log(document);
                 this.btns = document.getElementById(btnSe).children;
                 this.conts = document.getElementById(contSe).children;
                 this.init();
@@ -97,6 +98,12 @@
         
         new Table({btnSe:"btn-list",contSe:"content-list"});
 
+        function randomColorFuc(){
+            console.log(parseInt(Math.pow(16,6)*Math.random()).toString(16).padStart(6,"0"));
+            console.log(parseInt(Math.round(parseInt("ffffff",16)*Math.random()).toString(16).padStart(6,"0")));
+            return "#" + parseInt(Math.pow(16,6)*Math.random()).toString(16).padStart(6,"0");
+        }
+        randomColorFuc();
         
     </script>
 </body>
