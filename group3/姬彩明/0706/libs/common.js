@@ -24,4 +24,29 @@ class Utils{
             dom["on"+event_type] = callback
         }
     }
+    //事件委托封装
+    static delegation(callback,selector){
+        return function(evt){
+            let e = evt||window.event,
+                target = e.target || e.srcElement,
+                eleList = this.querySelectorAll(selector)
+        }
+    }
+    //删除类名
+    static classNameRemove(dom ,className){
+        return dom.className = dom.className.replace(new RegExp("\S"+className),"")
+    }
+    //获取元素绝对位置
+    static getAbsPosition(dom){
+        let position = {
+            left:dom.offsetLeft,
+            top : dom.offsetTop
+        }
+        if(dom.offsetParent === document.body){
+            return position
+        }
+        else{
+            let pos = getAbsPosition
+        }
+    }
 }
