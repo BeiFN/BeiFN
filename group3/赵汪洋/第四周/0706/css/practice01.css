@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    height: 100%;
+    width: 460px;
+    background: url(https://upload-images.jianshu.io/upload_images/18639920-23a5a6c1cf223adb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) repeat-y center / 100%;
+    margin: 0 auto;
+}
+
+.options {
+    width: 460px;
+    position: absolute;
+    left: 50%;
+    margin-left: -230px;
+    top: 0;
+    padding-top: 10%;
+}
+
+.options p {
+    width: 40%;
+    font-size: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+}
+
+.logo {
+    width: 428px;
+    height: 114px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin-left: -214px;
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-0a4dafa73cfdf65e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+}
+
+.plane-loading {
+    width: 192px;
+    height: 41px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -96px;
+    background-image: url(../课件/images/loading1.png);
+}
+
+.plane {
+    width: 98px;
+    height: 122px;
+    background: url(../课件/images/me.png) no-repeat center / 100%;
+    position: absolute;
+    bottom: 0;
+    cursor: none;
+}
+
+.bullet {
+    width: 7px;
+    height: 18px;
+    background-image: url(../课件/images/bullet.png);
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+}
+
+.bullet.die {
+    width: 41px;
+    height: 43px;
+    background-repeat: no-repeat;
+    animation: bullet-die .5s linear infinite;
+    margin-left: -17px;
+}
+
+@keyframes bullet-die{
+    0%{
+         
+          background-image: url("../课件/images/die1.png");
+    }
+    100%{
+         
+          background-image: url("../课件/images/die2.png");
+    }
+}
+
+.enemy-small{
+    width: 59px;
+    height: 36px;
+    background-image: url("../课件/images/plane1.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-small.die{
+    animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+    0%{
+          background-image: url("../课件/images/plane1_die1.png");
+    }
+    50%{
+          background-image: url("../课件/images/plane1_die2.png");
+    }
+    100%{
+          background-image: url("../课件/images/plane1_die3.png");
+    }
+}
+.enemy-middle{
+    width: 70px;
+    height: 92px;
+    background-image: url("../课件/images/plane2.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-middle.die{
+    animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+    0%{
+          background-image: url("../课件/images/plane2_die1.png");
+    }
+    33%{
+          background-image: url("../课件/images/plane2_die2.png");
+    }
+    66%{
+          background-image: url("../课件/images/plane2_die3.png");
+    }
+    100%{
+          background-image: url("../课件/images/plane2_die4.png");
+    }
+}
+.enemy-large{
+    width: 165px;
+    height: 256px;
+    background-image: url("../课件/images/plane3.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+
+}
+.enemy-large.die{
+    animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+    0%{
+          background-image: url("../课件/images/plane3_die1.png");
+    }
+    20%{
+          background-image: url("../课件/images/plane3_die2.png");
+    }
+    40%{
+          background-image: url("../课件/images/plane3_die3.png");
+    }
+    60%{
+          background-image: url("../课件/images/plane3_die4.png");
+    }
+    80%{
+          background-image: url("../课件/images/plane3_die5.png");
+    }
+    100%{
+          background-image: url("../课件/images/plane3_die6.png");
+    }
+}
