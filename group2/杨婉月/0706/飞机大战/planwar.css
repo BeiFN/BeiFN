@@ -1,0 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    height:100%;
+    width:100%;
+}
+body{
+    height:100%;
+    width:100%;
+}
+.main{
+    width:480px;
+    height:100%;
+    background: url('https://i.loli.net/2019/07/06/5d208b188c29861631.jpg');
+    background-position-y: 0;
+    margin:0 auto;
+    position: relative;
+}
+.option{
+    width:50%;
+    height:50%;
+    margin: auto;
+    padding-top: 160px;
+}
+.option p{
+    width:100%;
+    height:60px;
+    background: burlywood;
+    border-radius: 5%;
+    line-height: 60px;
+    text-align: center;
+    margin-top: 20px;
+    border: 3px solid #999;
+    font-size: 25px;
+}
+.plane{
+    width:98px;
+    height:122px;
+    background: url('https://i.loli.net/2019/07/06/5d208ec0ae35f30623.png');
+    position: absolute;
+    bottom:0;
+}
+
+.bullet{
+    width:7px;
+    height:18px;
+    background: url('https://i.loli.net/2019/07/06/5d208f487d84540918.png');
+    position: absolute;
+    left : 30px;
+    bottom: 0;
+}
+
+.enemy-small{
+    width:59px;
+    height:36px;
+    background: url('https://i.loli.net/2019/07/06/5d208fc22da0076198.png');
+    position: absolute;
+    left : 0;
+    top:0;
+}
+.enemy-small.die{
+    width:59px;
+    height:36px;
+    animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+    0%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21ba117c96585452.png");
+    }
+    50%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21ba3d8700338059.png");
+    }
+    100%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21ba6a7d37d94818.png");
+    }
+}
+
+.enemy-middle{
+    width:70px;
+    height:92px;
+    background: url('https://i.loli.net/2019/07/06/5d209018247c796613.png');
+    position: absolute;
+    left : 0;
+    top:0;
+}
+.enemy-middle.die{
+    width:70px;
+    height:92px;
+    animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+    0%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21ba858d00256143.png");
+    }
+    33%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21ba97185ea93999.png");
+    }
+    66%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21baab0d8ad81844.png");
+    }
+    100%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21babe62a3454197.png");
+    }
+}
+.enemy-large{
+    width:165px;
+    height:256px;
+    background: url('https://i.loli.net/2019/07/06/5d2090db1b10626332.png');
+    position: absolute;
+    left : 0;
+    top:0;
+}
+.enemy-large.die{
+    width:165px;
+    height:256px;
+    animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+    0%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21badc356c386445.png");
+    }
+    20%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21baefe7ed658965.png");
+    }
+    40%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21bb08edca617721.png");
+    }
+    60%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21bb1daec3595453.png");
+    }
+    80%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21bb32c69d049653.png");
+    }
+    100%{
+          background-image: url("https://i.loli.net/2019/07/07/5d21bb43027ba92813.png");
+    }
+}
+.logo{
+    width: 428px;
+    height: 114px;
+    background:url('https://i.loli.net/2019/07/06/5d20959d0e0d447887.png');
+    position: absolute;
+    left: 20px;
+    top :50px;
+}
+
+.loading{
+    width: 192px;
+    height: 41px;
+    background:url('https://i.loli.net/2019/07/06/5d209bcb7910182436.png');
+    position: absolute;
+    left: 150px;
+    top :300px;
+}
+
+.die{
+    width:41px;
+    height:43px;
+    position: absolute;
+    animation: bullet-die .5s linear infinite;
+}
+
+@keyframes bullet-die{
+    0%{
+         
+          background-image: url("https://i.loli.net/2019/07/07/5d21b3444adc223310.png");
+    }
+    100%{
+         
+          background-image: url("https://i.loli.net/2019/07/07/5d21b941d37eb10899.png");
+    }
+}
+
