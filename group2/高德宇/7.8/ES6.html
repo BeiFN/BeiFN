@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600718 (zh-CN, DDL); Windows/6.1.1 (Win64);"/>
+  <meta name="content-class" content="yinxiang.markdown"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="644"/>
+
+<div><span><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">let声明变量 const声明常量<br/>
+let 声明的变量 :</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">有块级作用域的概念;</li>
+<li style="line-height: 160%; box-sizing: content-box;">不允许声明提升了;<br/>
+块级作用域; =&gt; 函数作用域;<br/>
+大括号作用域;<br/>
+作用域的创造更加自然了, 不再使用像是之前一样匿名函数作为作用域，而是使用 大括号直接作为作用域;<br/>
+减少匿名函数使用频率<br/>
+temporal Dead Zone 在变量声明时，变量之前所有空间，不允<br/>
+许使用这个变量<br/>
+在同一作用域之中,不允许重复声明变量<br/>
+常量;<br/>
+定义之后不可赋值<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">解构赋值</strong><br/>
+数组赋值<br/>
+剩余运算符<br/>
+let [a,b,c,d,...e] = [1,2,3,4,5,6,7,8,9,0];<br/>
+1,2,3,4,[5,6,7,8,9,0,]<br/>
+对象赋值<br/>
+var slice = Array.prototype.slice<br/>
+let { slice , concat } = Array.prototype<br/>
+改名 机制 为了<br/>
+{ 原有属性 : 新变量名 }<br/>
+let { slice : mySlice , concat } = Array.prototype</li>
+</ol>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">默认参数</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">function Banner(options) {<br/>
+options = Object.assign({<br/>
+a: 10,<br/>
+b: 20<br/>
+}, options);<br/>
+console.log(options);<br/>
+}<br/>
+new Banner({<br/>
+a: 30,<br/>
+b: 40<br/>
+});</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">function Banner(options) {<br/>
+options ? &quot;&quot; : options = {};<br/>
+let {<br/>
+a = 10, b = 20<br/>
+} = options;<br/>
+console.log(a, b);<br/>
+}<br/>
+Banner({<br/>
+a: 30<br/>
+});</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">function Banner( { a = 10 , b = 20 } = {}){<br/>
+console.log(a,b);<br/>
+}<br/>
+Banner({<br/>
+a : 40<br/>
+});</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">基本结构; =&gt; 对象结构要求左右两侧必须均为大括号，否则报错：<br/>
+let {} = {};</li>
+<li style="line-height: 160%; box-sizing: content-box;">基本使用 =&gt; 变量声明 , 属性赋值;<br/>
+let { a , b } = { a : 1 , b : 2};<br/>
+声明了变量 a 和 b , 并且给变量赋值为 对象.a 和 对象.b;</li>
+<li style="line-height: 160%; box-sizing: content-box;">变量别名 给 c 变量赋值 对象.a 的属性值;<br/>
+let { a : c , b } = { a : 1, b:2} ;<br/>
+console.log(c,b)</li>
+<li style="line-height: 160%; box-sizing: content-box;">默认参数; let {} = {};<br/>
+let { a = 10, b = 20 } = {};<br/>
+声明了a = 10; b = 20;<br/>
+赋值右侧的内容;<br/>
+右侧结构为空值;<br/>
+<em style="line-height: 160%; box-sizing: content-box; font-style: italic;">Array.from(that.parentNode.children).forEach(function(els,index)<br/>
+{<br/>
+if(this === ele){<br/>
+res = index};<br/>
+//或 ele.index = index;<br/>
+}.bind(this)</em></li>
+</ol>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">左边 解构 -&gt; 对象</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">扩展运算符<br/>
+...object<br/>
+箭头函数不能作为构造函数</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">1作为事件处理函数 this指向<br/>
+Symbal 符号类型<br/>
+Class</p>
+</div><center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">%0Alet%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%20const%E5%A3%B0%E6%98%8E%E5%B8%B8%E9%87%8F%0Alet%20%E5%A3%B0%E6%98%8E%E7%9A%84%E5%8F%98%E9%87%8F%20%3A%0A1.%20%E6%9C%89%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E6%A6%82%E5%BF%B5%3B%0A2.%20%E4%B8%8D%E5%85%81%E8%AE%B8%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87%E4%BA%86%3B%0A%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%3B%20%3D%3E%20%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%3B%0A%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%BD%9C%E7%94%A8%E5%9F%9F%3B%0A%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%88%9B%E9%80%A0%E6%9B%B4%E5%8A%A0%E8%87%AA%E7%84%B6%E4%BA%86%2C%20%E4%B8%8D%E5%86%8D%E4%BD%BF%E7%94%A8%E5%83%8F%E6%98%AF%E4%B9%8B%E5%89%8D%E4%B8%80%E6%A0%B7%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8C%E8%80%8C%E6%98%AF%E4%BD%BF%E7%94%A8%20%E5%A4%A7%E6%8B%AC%E5%8F%B7%E7%9B%B4%E6%8E%A5%E4%BD%9C%E4%B8%BA%E4%BD%9C%E7%94%A8%E5%9F%9F%3B%0A%E5%87%8F%E5%B0%91%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E9%A2%91%E7%8E%87%0Atemporal%20Dead%20Zone%20%E5%9C%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E6%97%B6%EF%BC%8C%E5%8F%98%E9%87%8F%E4%B9%8B%E5%89%8D%E6%89%80%E6%9C%89%E7%A9%BA%E9%97%B4%EF%BC%8C%E4%B8%8D%E5%85%81%0A%E8%AE%B8%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E5%8F%98%E9%87%8F%0A%E5%9C%A8%E5%90%8C%E4%B8%80%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B9%8B%E4%B8%AD%2C%E4%B8%8D%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%0A%E5%B8%B8%E9%87%8F%3B%0A%E5%AE%9A%E4%B9%89%E4%B9%8B%E5%90%8E%E4%B8%8D%E5%8F%AF%E8%B5%8B%E5%80%BC%0A**%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC**%20%0A%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC%20%0A%E5%89%A9%E4%BD%99%E8%BF%90%E7%AE%97%E7%AC%A6%0Alet%20%5Ba%2Cb%2Cc%2Cd%2C...e%5D%20%3D%20%5B1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C0%5D%3B%0A1%2C2%2C3%2C4%2C%5B5%2C6%2C7%2C8%2C9%2C0%2C%5D%0A%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC%0Avar%20slice%20%3D%20Array.prototype.slice%0Alet%20%7B%20slice%20%2C%20concat%20%7D%20%3D%20Array.prototype%0A%E6%94%B9%E5%90%8D%20%E6%9C%BA%E5%88%B6%20%E4%B8%BA%E4%BA%86%0A%7B%20%E5%8E%9F%E6%9C%89%E5%B1%9E%E6%80%A7%20%3A%20%E6%96%B0%E5%8F%98%E9%87%8F%E5%90%8D%20%7D%0Alet%20%7B%20slice%20%3A%20mySlice%20%2C%20concat%20%7D%20%3D%20Array.prototype%0A%0A%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%0A%0A%0Afunction%20Banner(options)%20%7B%0Aoptions%20%3D%20Object.assign(%7B%0Aa%3A%2010%2C%0Ab%3A%2020%0A%7D%2C%20options)%3B%0Aconsole.log(options)%3B%0A%7D%0Anew%20Banner(%7B%0Aa%3A%2030%2C%0Ab%3A%2040%0A%7D)%3B%0A%0A%0Afunction%20Banner(options)%20%7B%0Aoptions%20%3F%20%22%22%20%3A%20options%20%3D%20%7B%7D%3B%0Alet%20%7B%0Aa%20%3D%2010%2C%20b%20%3D%2020%0A%7D%20%3D%20options%3B%0Aconsole.log(a%2C%20b)%3B%0A%7D%0ABanner(%7B%0Aa%3A%2030%0A%7D)%3B%0A%0A%0A%0Afunction%20Banner(%20%7B%20a%20%3D%2010%20%2C%20b%20%3D%2020%20%7D%20%3D%20%7B%7D)%7B%0Aconsole.log(a%2Cb)%3B%0A%7D%0ABanner(%7B%0Aa%20%3A%2040%0A%7D)%3B%0A%0A%0A%0A1.%20%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%3B%20%3D%3E%20%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E8%A6%81%E6%B1%82%E5%B7%A6%E5%8F%B3%E4%B8%A4%E4%BE%A7%E5%BF%85%E9%A1%BB%E5%9D%87%E4%B8%BA%E5%A4%A7%E6%8B%AC%E5%8F%B7%EF%BC%8C%E5%90%A6%E5%88%99%E6%8A%A5%E9%94%99%EF%BC%9A%0Alet%20%7B%7D%20%3D%20%7B%7D%3B%0A2.%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%20%3D%3E%20%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%20%2C%20%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC%3B%0Alet%20%7B%20a%20%2C%20b%20%7D%20%3D%20%7B%20a%20%3A%201%20%2C%20b%20%3A%202%7D%3B%0A%E5%A3%B0%E6%98%8E%E4%BA%86%E5%8F%98%E9%87%8F%20a%20%E5%92%8C%20b%20%2C%20%E5%B9%B6%E4%B8%94%E7%BB%99%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%E4%B8%BA%20%E5%AF%B9%E8%B1%A1.a%20%E5%92%8C%20%E5%AF%B9%E8%B1%A1.b%3B%0A3.%20%E5%8F%98%E9%87%8F%E5%88%AB%E5%90%8D%20%E7%BB%99%20c%20%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%20%E5%AF%B9%E8%B1%A1.a%20%E7%9A%84%E5%B1%9E%E6%80%A7%E5%80%BC%3B%0Alet%20%7B%20a%20%3A%20c%20%2C%20b%20%7D%20%3D%20%7B%20a%20%3A%201%2C%20b%3A2%7D%20%3B%0Aconsole.log(c%2Cb)%0A4.%20%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%3B%20let%20%7B%7D%20%3D%20%7B%7D%3B%0Alet%20%7B%20a%20%3D%2010%2C%20b%20%3D%2020%20%7D%20%3D%20%7B%7D%3B%0A%E5%A3%B0%E6%98%8E%E4%BA%86a%20%3D%2010%3B%20b%20%3D%2020%3B%0A%E8%B5%8B%E5%80%BC%E5%8F%B3%E4%BE%A7%E7%9A%84%E5%86%85%E5%AE%B9%3B%0A%E5%8F%B3%E4%BE%A7%E7%BB%93%E6%9E%84%E4%B8%BA%E7%A9%BA%E5%80%BC%3B%0A*Array.from(that.parentNode.children).forEach(function(els%2Cindex)%0A%7B%0Aif(this%20%3D%3D%3D%20ele)%7B%0Ares%20%3D%20index%7D%3B%0A%2F%2F%E6%88%96%20ele.index%20%3D%20index%3B%0A%7D.bind(this)*%0A%0A%20%E5%B7%A6%E8%BE%B9%20%E8%A7%A3%E6%9E%84%20-%3E%20%E5%AF%B9%E8%B1%A1%0A%20%0A%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6%0A...object%0A%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E4%BD%9C%E4%B8%BA%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%0A%0A1%E4%BD%9C%E4%B8%BA%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%20this%E6%8C%87%E5%90%91%0ASymbal%20%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B%20%0AClass%0A%0A%0A%0A%0A%0A</center></span>
+</div></body></html> 
