@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/html" id="template">
+        
+        <% for(var i = 0 ; i < 10 ; i ++){ %>
+            <h2> 向世界问好 </h2>
+        <% } %>
+        
+    </script>
+    <script>
+
+    var template = document.getElementById("template").innerHTML;
+    var reg1 = /<%(.*?)%>/g;
+    // var res  = template.match(reg1)
+    // console.log(res);
+    //<% for(var attr in data){ %>", "<%= i %>", "<% } %>匹配到的结果
+    var res = template.replace(reg1, `\`); $1 print(\``);
+    //  )` for(var attr in data){ print(`
+    console.log(res);
+    res = `print(\`${res}\`);` ;
+    console.log(res);
+    var html = "";
+    function print(str){
+        html += str;
+    }
+    eval(res);
+    document.querySelector("body").innerHTML = html;
+    </script>
+</body>
+</html>
