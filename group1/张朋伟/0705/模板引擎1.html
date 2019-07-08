@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>引擎模板11111</title>
 </head>
 
 <body>
@@ -26,8 +26,10 @@
             var regJS = /<%(.*?)%>/g;
             // html 匹配正则
             var regVal = /<%[^=](.*?)%>/g;
+
             //html匹配
-            var res = cont.replace(regVal, `\`);$1print(\``);
+            var res = cont.replace(regVal, `\`);$1 print(\``);
+
             res = `print(\`${res}\`)`;
             //变量匹配
             res = res.replace(regJS, `  \`);print(data[attr].a);print(\` `)
