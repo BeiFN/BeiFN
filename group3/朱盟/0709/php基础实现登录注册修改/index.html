@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            padding: 60px;
+            width: 400px;
+            height: 400px;
+            margin: 60px auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        p {
+            margin: 30px;
+        }
+
+        button {
+            border: 1px solid #ddd;
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            transition: all .2s;
+            border-radius: 2px;
+        }
+
+        button:hover {
+            background: #222;
+            color: #eee;
+        }
+
+        input {
+            outline: 0px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="javascript:void(0);" id="eform">
+        <h1> Demo</h1>
+
+        <p> <span>账户&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="userName" id="userName">
+        </p>
+        <p> <span>密码&nbsp;&nbsp;&nbsp;：</span>
+            <input class="" type="text" name="passWord" id="passWord">
+        </p>
+        <!-- <p>
+            <input type="file" name="file" id="file">
+        </p> -->
+
+        <br>
+        <br>
+
+        <p><button id="login">登录</button></p>
+        <p><button id="register">注册</button></p>
+        <p><button id="updata">修改</button></p>
+    </form>
+    <script>
+        // ./index.php
+        var login_bt = document.getElementById("login");
+        var register_bt = document.getElementById("register");
+        var updata_bt = document.getElementById("updata");
+        var name_in = document.getElementById("userName");
+        var pw_in = document.getElementById("passWord");
+        login_bt.addEventListener("click", clickHandler);
+        register_bt.addEventListener("click", clickHandler);
+        updata_bt.addEventListener("click", clickHandler);
+
+
+
+        function clickHandler(ev) {
+            var e = ev || window.event;
+            var captureE = e.target || e.srcElement;
+
+            switch (captureE.id) {
+                case "login":
+                    formAction("login");
+                    console.log("login");
+                    break;
+                case "register":
+                    formAction("register");
+                    console.log("register");
+                    break;
+                case "updata":
+                    formAction("updata");
+                    console.log("updata");
+                    break;
+                default:
+                    formAction("login");
+                    console.log("login");
+                    break;
+            }
+
+
+            function formAction(type) {
+                location.href = "./index.php?name=" + name_in.value + "&pw=" + pw_in.value + "&type=" + type;
+            }
+            // console.log(captureE.id);
+        }
+    </script>
+
+</body>
+
+</html>

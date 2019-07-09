@@ -10,24 +10,59 @@
 
 <body>
     <script>
-        function A(a){
+        function A(a) {
             this.a = a;
         }
 
-        console.log(A.prototype);
-        console.log(A.prototype.__proto__);
+        // console.log(A.prototype);
+        // console.log(A.prototype.__proto__);
         // console.log(Object.prototype);
         // console.log(Object.prototype.isPrototypeOf(A));
         // console.log(A instanceof Object);
 
 
-        function B(b){
+        function B(b) {
             this.b = b;
         }
         var b = new B("lc");
 
-        console.log(b);
-        console.log(b.__proto__ == B.prototype);
+        // console.log(b);
+        // console.log(b.__proto__ == B.prototype);
+
+        // 声明提升
+        var getName;
+
+        function getName() {
+            console.log(5);
+        }
+
+
+        function Foo() {
+            getName = function () {
+                console.log(1);
+            };
+            return this;
+            // Foo()=> window 
+            // new Foo()=> Foo{} 
+        }
+        Foo.getName = function () { // 引用类型 (函数) 函数上增加了一个getName方法;  
+            console.log(2);
+        };
+        Foo.prototype.getName = function () { // 原型上增加了getName 方法;
+            console.log(3);
+        };
+        getName = function () {
+            console.log(4);
+        };
+
+
+        // Foo.getName(); // 2
+        // getName(); // 4
+        // Foo().getName(); // 1
+        // getName(); // 1
+        // new Foo.getName(); // 2
+        // new Foo().getName(); // 3 
+        // new new Foo().getName(); // 3
 
 
 

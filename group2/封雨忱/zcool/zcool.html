@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>站酷(ZCOLL)-设计师互动平台</title>
+    <link rel="stylesheet" href="./css/banner.css">
     <link rel="stylesheet" href="./css/zcool.css">
 </head>
 <body>
@@ -58,12 +59,25 @@
     </header>
     <!-- 首页轮播图 -->
     <div class="Rotary">
-        <div>
-        <div class="map">
-            <a href="#">
-                <img src="https://img.zcool.cn/community/0117f05d0c6059a801213ec294105e.jpg@1380w" alt="">
-            </a>
-        </div>
+            <div id="box">
+                    <div class="container">
+                          <div class="wrapper">
+                                <div class="slide slide-active" style="background:red; "><a href="#"><img src="https://img.zcool.cn/community/01ca4a5d22a698a8012076405fc485.jpg@1380w"></a></div>
+                                <div class="slide" style="background: blue;"  ><a href="#"><img src="https://img.zcool.cn/community/0111a65d22b308a801207640a9a72e.jpg@1380w"></a></div>
+                                <div class="slide" style="background: black;" ><a href="#"><img src="https://img.zcool.cn/community/0145735d22b31fa801213763ea5380.jpg@1380w"></a></div>
+                                <div class="slide" style="background: green;" ><a href="#"><img src="https://img.zcool.cn/community/01c3bc5d22a892a801213763b07944.jpg@1380w"></a></div>
+                                <div class="slide" style="background: yellow;"><a href="#"><img src="https://img.zcool.cn/community/0105335d22aceaa801213763bc0d74.jpg@1380w"></a></div>
+                          </div>
+                          <div class="button-next"></div>
+                          <div class="button-prev"></div>
+                          <div class="pagination pagination-bullets">
+                                <div class="pagination-bullet pagination-bullet-active"></div>
+                                <div class="pagination-bullet"></div>
+                                <div class="pagination-bullet"></div>
+                                <div class="pagination-bullet"></div>
+                          </div>
+                    </div>
+              </div>
         <div class="Rotary_ul">
             <ul>
                 <li><a href="#"><img src="https://reviveimg.hellorf.com/www/images/38241dd404d16055de5935bb22e0a93b.jpg" alt=""></a></li>
@@ -74,7 +88,6 @@
             </ul>
         </div>
         </div>
-    </div>
     <!-- 页面主体导航 -->
     <div id="mian_nav" class="mian_nav">
         <div><ul class="mian_nav_ul">
@@ -920,6 +933,7 @@
     </footer>
     <!-- 回到顶部 -->
     <div id="back" class="back"><a href="#"></a></div>
+    <script src="./js/banner.js"></script>
     <script src="./js/zcool.js"></script>
 </body>
 </html>
