@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--<button onclick="handlerClick()">点我</button> -->
+    <button id="btn">点点</button>
+    <script>
+        //匿名函数
+        // var foo = function poo(){
+        //     console.log("hello");
+        // }
+        // //foo();
+        // poo();
+        // var foo = function poo(){
+        //     console.log(poo);
+        // }
+        // foo();
+       
+        //事件
+        // function handlerClick(){
+        //     alert("hello");
+        // }
+
+        // btn.onclick = function(){
+        //     alert("youdian");
+        // }
+
+        //声明提升
+        // for (var i = 0; i++ <2;){
+        //     console.log("aaaaa");  //打印两次
+        // }
+        // console.log(i); //i = 3;
+
+        // var i = 0;
+        // function foo(){
+        //     for (var i = 0; i < 2; i++){
+        //         console.log("aaaaa");  //打印两次
+        //         console.log(i);         //i = 1;
+        //     }
+        // }
+        // foo();
+        // console.log(i);     //i = 0;
+
+        // var a = 10;
+        //     function foo(){
+        //         console.log(a); //  undefined 
+        //         var a = 20;
+        //         console.log(a); //  20;
+        //     } 
+        //     console.log(a);     //  10
+
+        //引用
+        // var obj1 = {};
+        // var obj2 = obj1;
+        // console.log( obj1===obj2 ); //true
+
+        // console.log({} instanceof Array);  //false
+        // console.log([] instanceof Object);  //true
+
+
+        //
+        function home(){
+            var ID = 16;
+            var cat = function(){
+                for(var i = 0; i < ID; i++){
+                    console.log("啊");
+                }
+            }
+            return cat;
+        }
+        var key = home();
+        key();
+    </script>
+   
+</body>
+</html>

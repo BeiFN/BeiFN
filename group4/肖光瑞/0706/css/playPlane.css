@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    height: 100%;
+    width: 460px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-678e8400cd69e5c5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+    background-position-y: 0;
+    margin: 0 auto;
+}
+
+.options {
+    width: 460px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -230px;
+    top: 0;
+    padding-top: 10%;
+}
+
+.options p {
+    width: 40%;
+    height: 80px;
+    font-size: 20px;
+    background-color: antiquewhite;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #000;
+    cursor: pointer;
+}
+
+.plane {
+    width: 98px;
+    height: 122px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-e2dc50b2b976d473.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.bullet {
+    width: 7px;
+    height: 18px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-003a9ae0bfe9e702.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+}
+
+.bullet.die {
+    width: 41px;
+    height: 43px;
+    background-repeat: no-repeat;
+    animation: bullet-die .5s linear infinite;
+    margin-left: -17px;
+}
+
+@keyframes bullet-die {
+    0% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-c1333f119989d1f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    100% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-4063508e0bb3593b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+}
+
+.enemy-small {
+    width: 59px;
+    height: 36px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-82fb91bfe47fe7d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+
+.enemy-small.die {
+    animation: small-die 1s linear infinite;
+}
+
+@keyframes small-die {
+    0% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-726a889a809dbd16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    50% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-e7d54032b9ed67d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    100% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-4f1e7e880393316f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+}
+
+.enemy-middle {
+    width: 70px;
+    height: 92px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-ef5ce1f836cfb057.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+
+.enemy-middle.die {
+    animation: middle-die 1s linear infinite;
+}
+
+@keyframes middle-die {
+    0% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-f3ca50ab455db4f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    33% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-7a859513b0c8ecc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    66% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-b9b03cb5f0492d74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    100% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-765fb8f4a01f206c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+}
+
+.enemy-large {
+    width: 165px;
+    height: 256px;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-2108168cf1d9bba2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+
+.enemy-large.die {
+    animation: large-die 1s linear infinite;
+}
+
+@keyframes large-die {
+    0% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-1940792c449afca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    20% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-d2ec58c1e74d4d87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    40% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-99897c4e906238ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    60% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-09cad07a4041ebb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    80% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-3950fe0e9e221b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+    100% {
+        background-image: url("https://upload-images.jianshu.io/upload_images/18597145-f0d8813ae47da360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+    }
+}
+
+.logo {
+    width: 428px;
+    height: 114px;
+    position: absolute;
+    top: 15%;
+    margin-left: -214px;
+    left: 50%;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-0e35bfa37edfcfc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+}
+
+.plane-loading {
+    width: 192px;
+    height: 41px;
+    position: absolute;
+    top: 50%;
+    margin-left: -96px;
+    left: 50%;
+    background-image: url("https://upload-images.jianshu.io/upload_images/18597145-1a4f0cdfd3074b06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础数组API整理</title>
+
+</head>
+<body>
+    <script>
+                // 赋值，初始化  
+        var arr = [1,2,3,4,5,6,7,8,9,9,9,"hhh",true,function(){ alert("过分!!!!")} , {}];
+        arr[2] = 33;//静态赋值
+        console.log(arr);
+        arr[11]();
+        // pop 是删除数组最后一项的方法 ;  pop的返回值是删除掉的数据;
+        console.log(arr.pop());
+        console.log(arr);
+        // push 是想数组后面新增数据的方法 ; push 的返回值是新数组的length ;  
+        console.log(arr.push(8,9));
+        console.log(arr);
+        // shift 是删除数组第一项的方法 ; shift的返回值是删除掉的数据;
+        console.log(arr.shift());
+        console.log(arr);
+        // unshift 是新增数组第一项的方法 ; unshift的返回值是改变后数组长度;
+        console.log(arr.unshift(10));
+        console.log(arr);
+        // splice(index,length,value)删除从index开始的length个数据，并用value替换，以数组形式返回删除的数据
+        console.log(arr.splice(3,2))
+        console.log(arr);
+        可以替换删除掉的内容;
+        console.log(arr.splice(3,1,"hello world"));
+        console.log(arr);
+        拼接;// Array.prototype.concat() 将括号内元素每一项拼接 返回拼接后的数组，
+        var arr1 = [1,2,3];
+        var arr2 = "jiushisisi";
+        var arr3 = [7,5,6];
+        console.log(arr1.concat(arr2,arr3));
+
+        数组的转换功能 ;// 把数组转换成字符串，用（）中字符连接，返回转换后的字符串
+        Array.prototype.join()
+        var arr = [2019,6,14];
+        console.log(arr.join("/"))
+        // "2019/6/14"
+        console.log(arr.join("~"))
+        Array.prototype.toString()//转字符串原样返回
+        console.log(arr.toString());
+        // "2019,6,14"
+
+        // 找某一值在数组之中的位置;
+        console.log(arr.indexOf(9));    //第一个 9 在数组之中的下标;
+        console.log(arr.lastIndexOf(9));//最后一个 9 在数组之中的下标;
+
+        // 拷贝子数组，不改变原数组 传入参数（star，end）起、止下标，只写一个下标拷贝到最后，包括star不包括end。
+        Array.prototype.slice()
+        var array = arr.slice(5,9);
+        console.log(arr.slice(5));
+
+        
+// forEach 遍历数组，参数为函数
+// map 返回一个新数组，新数组之中装的是参数函数的返回值;
+// filter返回新数组.会根据参数函数的返回值判定是否该讲具体的项加入新数组;返回原数组满足条件的值
+// some 判断是否有满足条件的值
+// every 判断是否都满足
+// reduce 累计方法
+// flat es6方法，数组扁平化
+
+// 伪数组转数组：
+// 目的：伪数组可以使用数组的方法。
+// 方法一：自定义mySlice方法
+//             function mySlice(targetArray,start,end){
+//                   var arr = [];
+//                   for(var i = start ? start : 0; i < ( end ? end : targetArray.length) ; i++){
+//                         arr.push(targetArray[i]);
+//                   }
+//                   return arr;
+//             }
+
+//             console.log(mySlice([1,2,3,3,4,5,6,7]))
+
+// 方法二：
+//             function foo(){
+//                  // arguments.indexOf(1);
+//                  // var arg = mySlice(arguments);
+//                   console.log(arg.indexOf(1));
+
+//                   // 1. 记住他;
+//                   console.log([].slice.call(arguments));
+
+//                   // 2. 
+//                   console.log(slice().call(arguments));
+//             }           
+
+// 方法三反柯里化;
+//             function slice(){
+//                   console.log(Array.prototype.slice)
+//                   return Array.prototype.slice;
+//             }
+    </script>
+ 
+</body>
+</html>

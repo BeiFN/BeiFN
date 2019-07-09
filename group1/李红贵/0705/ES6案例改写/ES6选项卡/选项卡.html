@@ -45,7 +45,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
     <div id="pagination">
         <div id="btn-list">
             <button>1</button>
@@ -63,6 +63,7 @@
         class Table{
             constructor({btnSe="btn-list",contSe="content-list"}={}){
                 console.log("constructor", this);
+                console.log(document);
                 this.btns = document.getElementById(btnSe).children;
                 this.conts = document.getElementById(contSe).children;
                 this.init();
@@ -94,21 +95,15 @@
                 btn.style.backgroundColor = "#"+Math.round(parseInt("ffffff",16)*Math.random()).toString(16).padStart(6,"0");
             }
         }
-
-
-        Table.prototype.init = function(){
-            // 从实例对象中获取目标元素添加绑定事件，并让this指向实例对象
-            for(var i=0,btn; btn= this.btns[i];i++){
-                // btn.addEventListener("click",this.handlerContent);//该语句为btn触发事件为实例中的方法属性handlerContent
-                btn.addEventListener("click",this.handlerContent.bind(this,i));
-                // 实例对象中的目标元素，调用原型的属性方法（实例和原型的关系可以看成是实参和形参的关系，实际调用init方法的是实例），并使用bind方法将指向btn的指针this指向实例
-
-                btn.addEventListener("click",this.changeColor.bind(this,i));
-            }
-        }
         
         new Table({btnSe:"btn-list",contSe:"content-list"});
 
+        function randomColorFuc(){
+            console.log(parseInt(Math.pow(16,6)*Math.random()).toString(16).padStart(6,"0"));
+            console.log(parseInt(Math.round(parseInt("ffffff",16)*Math.random()).toString(16).padStart(6,"0")));
+            return "#" + parseInt(Math.pow(16,6)*Math.random()).toString(16).padStart(6,"0");
+        }
+        randomColorFuc();
         
     </script>
 </body>
