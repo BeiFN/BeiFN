@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{ margin:0; padding:0;}
+li{list-style:none;}
+a,s{text-decoration:none; color:#222;}
+i,em{font-style:normal;}
+h1,h2,h4,h3,h5,h6,b,strong{font-weight:normal;color: #111;}
+img{border:none;display:block;}
+input{outline:none;}
+body{font-family:"微软雅黑"; font-size:12px; color:#666;}
+table{border-collapse:collapse;}
+/*a:hover{text-decoration:underline;}*/
+
+/*
+table{width:500px;height:300px;  border:1px solid #333; border-spacing:0; }
+td,th{border:1px solid #333;}
+ border-spacing调整相邻单元格间距
+*/
