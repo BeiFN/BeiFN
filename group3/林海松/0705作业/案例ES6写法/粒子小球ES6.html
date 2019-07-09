@@ -19,11 +19,14 @@
 <body>
     <script>
         class Practice{
-            constructor(ele){
+            constructor({ele = document}= { }){
                 this.main_ele = ele.nodeType ===  9 ? ele : document.querySelector(ele);
                 this.timer = null;//定时器
                 this.CWidth = document.documentElement.clientWidth;
                 this.CHeight = document.documentElement.clientHeight;
+                this.init();
+            }
+            init(){
                 this.main_ele.addEventListener("mousedown" , this.handerClick.bind(this));
                 this.main_ele.addEventListener("mouseup"   , this.stopCreateBall.bind(this));
                 this.main_ele.addEventListener("mousemove" , this.ballFollow.bind(this))
@@ -73,7 +76,7 @@
                 clearInterval(this.timer);
             }
         }
-        new Practice(document);
+        new Practice();
     </script>
 </body>
 </html>
