@@ -7,14 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <p>
-            用户名 : <input type="text" name="username">
-        </p>
-        <p>
-            密码 : <input type="text" name="password">
-        </p>
-        <button id="btn">注册</button>
-    </form>
+    <?php
+    for($i=0;$i<10;$i++){
+        echo "<h3>hello world</h3>";
+    }
+    ?>
 </body>
 </html>
