@@ -75,14 +75,15 @@ body,html{
     bottom: 0;
     left: 50px;
 }
-.shell .die{
+.shell.die{
     width: 41px;
     height: 43px;
     background-repeat: no-repeat;
-    animation: bullet-die .5s linear infinite;
+    animation: shell-die .5s linear infinite;
     margin-left: -17px;
 }
-@keyframes bullet-die{
+
+@keyframes shell-die{
     0%{
          
           background-image: url("../images/die1.png");
