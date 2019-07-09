@@ -55,13 +55,13 @@ html {
     top: 50%;
     left: 50%;
     margin-left: -96px;
-    background-image: url(../课件/images/loading1.png);
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-770a82e87eacd14b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
 }
 
 .plane {
     width: 98px;
     height: 122px;
-    background: url(../课件/images/me.png) no-repeat center / 100%;
+    background: url(https://upload-images.jianshu.io/upload_images/18639920-072ef2459e30222b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat center / 100%;
     position: absolute;
     bottom: 0;
     cursor: none;
@@ -70,12 +70,11 @@ html {
 .bullet {
     width: 7px;
     height: 18px;
-    background-image: url(../课件/images/bullet.png);
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-4da7712ae6cdc721.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     background-position: center;
     background-size: 100%;
     position: absolute;
     left: 30px;
-    bottom: 0;
 }
 
 .bullet.die {
@@ -86,93 +85,112 @@ html {
     margin-left: -17px;
 }
 
-@keyframes bullet-die{
-    0%{
-         
-          background-image: url("../课件/images/die1.png");
+@keyframes bullet-die {
+    0% {
+
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-224d5de6c4f5748b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    100%{
-         
-          background-image: url("../课件/images/die2.png");
+
+    100% {
+
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-c62cfbe7332142ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
 }
 
-.enemy-small{
+.enemy-small {
     width: 59px;
     height: 36px;
-    background-image: url("../课件/images/plane1.png");
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-a4cd63200021a53c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     background-position: center;
     background-size: 100%;
     position: absolute;
 }
-.enemy-small.die{
+
+.enemy-small.die {
     animation: small-die 1s linear infinite;
 }
-@keyframes small-die{
-    0%{
-          background-image: url("../课件/images/plane1_die1.png");
+
+@keyframes small-die {
+    0% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-32888524736eeb6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    50%{
-          background-image: url("../课件/images/plane1_die2.png");
+
+    50% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-7eabdb0da1163e43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    100%{
-          background-image: url("../课件/images/plane1_die3.png");
+
+    100% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-dbc84afb6a2359ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
 }
-.enemy-middle{
+
+.enemy-middle {
     width: 70px;
     height: 92px;
-    background-image: url("../课件/images/plane2.png");
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-08fecb829f394cf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     background-position: center;
     background-size: 100%;
     position: absolute;
 }
-.enemy-middle.die{
+
+.enemy-middle.die {
     animation: middle-die 1s linear infinite;
 }
-@keyframes middle-die{
-    0%{
-          background-image: url("../课件/images/plane2_die1.png");
+
+@keyframes middle-die {
+    0% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-cde8ca4601acd459.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    33%{
-          background-image: url("../课件/images/plane2_die2.png");
+
+    33% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-f3a436a4196ba43a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    66%{
-          background-image: url("../课件/images/plane2_die3.png");
+
+    66% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-8b97f6ec29b03e1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    100%{
-          background-image: url("../课件/images/plane2_die4.png");
+
+    100% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-a4fc653b287616f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
 }
-.enemy-large{
+
+.enemy-large {
     width: 165px;
     height: 256px;
-    background-image: url("../课件/images/plane3.png");
+    background-image: url(https://upload-images.jianshu.io/upload_images/18639920-1194559c68247125.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     background-position: center;
     background-size: 100%;
     position: absolute;
 
 }
-.enemy-large.die{
+
+.enemy-large.die {
     animation: large-die 1s linear infinite;
 }
-@keyframes large-die{
-    0%{
-          background-image: url("../课件/images/plane3_die1.png");
+
+@keyframes large-die {
+    0% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-db00a26012d59001.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    20%{
-          background-image: url("../课件/images/plane3_die2.png");
+
+    20% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-10de2cb639066b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    40%{
-          background-image: url("../课件/images/plane3_die3.png");
+
+    40% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-3a1166580e748187.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    60%{
-          background-image: url("../课件/images/plane3_die4.png");
+
+    60% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-21ddce82a7ef0666.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    80%{
-          background-image: url("../课件/images/plane3_die5.png");
+
+    80% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-bc10fe6e3e61a906.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
-    100%{
-          background-image: url("../课件/images/plane3_die6.png");
+
+    100% {
+        background-image: url(https://upload-images.jianshu.io/upload_images/18639920-1e6e30227f3f6b7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
     }
 }
