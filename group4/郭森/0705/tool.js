@@ -319,7 +319,7 @@ class tool {
             expires: -1
         }
         options = typeof options == "object" ? Object.assign(default_options, options) : default_options;
-        cookie(key, null, options)
+        tool.cookie(key, null, options)
     }
     // 获取cookie
     static getCookie(key) {
