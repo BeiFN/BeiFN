@@ -32,11 +32,14 @@
     </div>
     <script>
         class Firework{
-            constructor(selector){
+            constructor({selector = "#container"} = {}){
                 this.main = document.querySelector(selector);
                 if(this.main === null){ 
                     return false
                 };
+                this.init();
+            }
+            init(){
                 this.main.addEventListener("click",this.handerOnclick.bind(this));
             }
             handerOnclick(evt){
@@ -118,7 +121,7 @@
             } ,50)
         }          
     }
-    new Firework("#container");
+    new Firework();
     </script>
 </body>
 </html>

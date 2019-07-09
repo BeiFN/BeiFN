@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.top-bar{
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background: #e3e4e5;
+}
+.top-bar-x{
+    width: 1190px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    color: #999;
+}
+.list-1{
+    float: left;
+}
+.li-1{
+    float: left;
+    position: relative;
+    z-index: 21;
+}
+#li-bar{
+    margin-left: 200px;
+}
+.dingwei{
+    height: 28px;
+    line-height: 28px;
+    padding-left: 7px;
+    padding-right: 7px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    float: left;
+    border: 1px solid #e3e4e5;
+}
+
+.dingwei img{
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    
+}
+
+.fr{
+    float: right;
+}
+.fr li{
+    float: left;
+}
+#ttbar-login{
+    margin-right: 8px;
+    z-index: 20;
+}
+.shortcut_btn{
+    position: relative;
+    z-index: 21;
+}
+.fr a{
+    color: #999;
+}
+.fr .style-red{
+    color: #f10215;
+}
+.fr li.spacer{
+    overflow: hidden;
+    margin: 11px 7px 0;
+    width:1px;
+    height: 10px;
+    background-color: #ccc;
+}
+.fr .dt{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.fr .dd{
+    line-height: 24px;
+}
+.fr img{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 25;
+    top: 5px;
+    left:60px;
+}
+#ttbar-myjd .dropdown-layer{
+    left : 0;
+    width:280px;
+    top:30px;
+}
+.dropdown-layer{
+    display: none;
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+}
+#ttbar-myjd:hover .dropdown-layer{
+    display: block;
+}
+.fore5:hover .dropdown-layer{
+    display: block;
+}
+#ttbar-serv:hover .dropdown-layer{
+    display: block;
+}
+#ttbar-navs:hover .dropdown-layer{
+    display: block;
+}
+#ttbar-myjd .myjdlist{
+    padding: 10px 0 10px 15px;
+    overflow: hidden;
+}
+.fore5 .dropdown-layer{
+    left: 0;
+    width: 140px;
+    top: 30px;
+}
+.myjdlist .fore1{
+    float: left;
+    width: 126px;
+}
+.shortcut_num{
+    margin-left: 4px;
+}
+.myjdlist .fore2{
+    float: left;
+    width: 126px;
+}
+#ttbar-myjd .myjdlist_2{
+    border-top: solid 1px #f1f1f1;
+} 
+.shortcut_btn_company2 .dt a {
+    color: #f00;
+}
+.fr .cw-icon{
+    height: 28px;
+    line-height: 28px;
+}
+.fr .cw-icon{
+    padding-right: 20px!important;
+}
+.cw-icon{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    float: left;
+    border: 1px solid #e3e4e5;
+}
+.shortcut_btn_company .dropdown-layer{
+    left: 0;
+    width: 140px;
+    padding: 10px 0 10px 15px;
+}
+.shortcut_btn_company .item{
+    display: inline-block;
+    width: 56px;
+    white-space: nowrap;
+}
+#ttbar-serv .dd{
+    right: 0;
+    width: 170px;
+    padding:10px 0;
+}
+#ttbar-serv .dropdown-layer{
+    top: 30px;
+}
+#ttbar-serv .item-client{
+    padding-left: 15px;
+    font-weight: 700;
+    color: #666;
+}
+#ttbar-serv .item{
+    display: inline-block;
+    width: 70px;
+    padding-left: 15px;
+}
+#ttbar-serv .item-business{
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px dotted #eee;
+    padding-left: 15px;
+    font-weight: 700;
+    color: #666;
+}
+#ttbar-navs .dd{
+    right: -84px;
+    width: 1188px;
+    padding: 15px 0 ;
+    position: absolute;
+    z-index: 30;
+}
+#ttbar-navs .dropdown-layer{
+    top: 30px;
+}
+#ttbar-navs dl.fore1{
+    border-left: none;
+    width: 340px;
+}
+#ttbar-navs dl{
+    float: left;
+    width: 255px;
+    padding-left: 20px;
+    border-left: 1px solid #eee;
+}
+#ttbar-navs dt{
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #666;
+}
+#ttbar-navs dd{
+    overflow: hidden;
+}
+#ttbar-navs .item{
+    overflow: hidden;
+    float: left;
+    width: 85px;
+    white-space: nowrap;
+}
+
+.mobile{
+    position: relative;
+    z-index: 21;
+}
+.mobile_static{
+    position: absolute;
+    left: 3px;
+    width: 66px;
+    height: 66px;
+    border: 1px solid #cfcfcf;
+}
+.mobile_pop::before, .mobile_static::before{
+    content: "";
+    position: absolute;
+    display: block;
+    top:-9px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #e4e4e4 #e4e4e4 #f6f6f6;
+}
+.mobile_static_qrcode{
+    position: relative;
+    z-index: 1;
+    margin: 4px auto;
+    width:60px;
+    height: 60px;
+    background: #f6f6f6 url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/mobile_qrcode.png) 50% no-repeat;
+}
+.mobile_pop{
+    display: none;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 30px;
+    width: 190px;
+    border: 1px solid #cfcfcf;
+    background: #fff;
+    border-bottom: 3px solid #60575a;
+}
+#J_mobile:hover .mobile_pop{
+    display: block;
+}
