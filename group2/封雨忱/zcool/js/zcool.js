@@ -233,3 +233,6 @@ function removeClassName(dom , className){
   // dom.className = classString;
   return dom.className = dom.className.replace(new RegExp("\S?"+className) , "" );
 }
+new Banner(".container" , {
+  effect : "slide"
+});

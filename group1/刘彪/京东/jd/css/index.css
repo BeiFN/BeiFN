@@ -354,7 +354,7 @@ body{
     width: 190px;
     height: 470px;
     float: left;
-    background: yellow;
+
     margin-top: 10px;
 }
 .bannerad .right-nav .box1{
@@ -402,7 +402,7 @@ body{
 .bannerad .right-nav .box1 .button1,.button2{
     width: 70px;
     height: 25px;
-    border-radius: 25%;
+    border-radius: 10px;
     box-shadow: 0 0 5px ;
     float: left;
     font-size: 12px;
@@ -414,7 +414,7 @@ body{
   margin: 0 10px 0 20px;
 }
 .bannerad .right-nav .box1 .button2{
-       color:   #e43f3b;;
+       color:   #e5d790;
    background: #363634;
 }
 .bannerad .right-nav .box2{
@@ -422,6 +422,12 @@ body{
     height: 130px;
     margin-top: 150px;
     background:white;
+}
+.bannerad .right-nav .box2 .line{
+    width: 80%;
+    height: 2px;
+    margin: 10px auto 0;
+    background: #888;
 
 }
 .bannerad .right-nav .box2 .title{
@@ -464,3 +470,264 @@ body{
     background-color: #e47f7f;
     margin-right: 6px;
 }
+.bannerad .right-nav .box3{
+    padding-top: 10px;
+    width : 190px;
+    height: 180px;
+    background: white;
+}
+.bannerad .right-nav .box3 .small-icon{
+    width: 42px;
+    height: 45px;
+    float: left;
+    text-align: center;
+    margin: 2px 0 0 5px;
+    padding-top: 10px;
+    color: #888;
+}
+.bannerad .right-nav .box3 .small-icon:hover{
+    color: #e33333;
+    font-weight: bold;
+
+}
+.bannerad .right-nav .box3 p{
+    font-size: 12px;
+}
+
+/* 秒杀 */
+.flash-sale{
+    widows: 100%;
+    height: 275px;
+    margin-top: 30px;
+}
+.flash-sale .left{
+    height: 275px;
+    width: 190px;
+    background: #e83632;
+    float: left;
+}
+.flash-sale .left h2{
+    width: 100%;
+    margin-top: 42px;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+}
+.flash-sale .left h3{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;    
+    color: rgba(255, 255, 255, 0.5);
+
+}
+.flash-sale .left .flashicon{
+    display: block;
+    width: 20px;
+    height: 33px;
+    margin-left: 86px;
+    margin-top: 5px;
+    background: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sprite.seckill.png);
+    background-position: -35px -25px;
+}
+.flash-sale .left p{
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+
+}
+.flash-sale .lefttime{
+    width: 135px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+.flash-sale .lefttime .hours,.minutes,.seconds{
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    float: left;
+    margin-right: 5px;
+    position: relative;
+}
+
+.flash-sale .lefttime .line{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background:  #e83632;
+}
+.flash-sale .lefttime span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.flash-sale .middle{
+    width: 800px;
+    height: 275px;
+    background: white;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+.flash-sale .middle .wrapper1{
+    width: 4000px;
+    height: 275px;
+    position: absolute;
+    left: 0;
+}
+.flash-sale .middle .wrapper1 .slide1{
+    width: 800px;
+    height: 275px;
+    float: left;
+}
+.flash-sale .middle  .button-next1{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.flash-sale .middle .button-prev1{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.flash-sale .middle .inner-box{
+    width: 199px;
+    height: 275px;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+.flash-sale .middle .inner-box p{
+    width: 160px;
+   
+    font-size: 12px;
+    color: #888;
+    padding: 0 15px;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.flash-sale .middle .inner-box .price{
+    width: 160px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.flash-sale .middle .inner-box span{
+    float: left;
+    width: 80px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    color:white;
+    background: #e33333;
+}
+.flash-sale .middle .inner-box del{
+    float: left;
+    width: 78px;
+    height: 18px;
+    font-size: 13px;
+    color:#666;
+    border:1px solid #e33333;
+    
+}
+.flash-sale .middle .inner-box img{
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+
+.flash-sale .right{
+    width: 200px;
+    height: 275px;
+    background: white;
+    float: left;
+}
+.flash-sale .right .title{
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    margin-top: 10px;
+}
+.flash-sale .right .title i{
+    display: inline-block;
+    width: 11.5px;
+    height: 11.5px;
+    margin-left: 7px;
+    background: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sk_arrow@1x.png);
+    background-size: 100%;
+}
+.flash-sale .right img{
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+.flash-sale .right .ad{
+    width: 184px;
+    height: 90px;
+    background: url(https://img10.360buyimg.com/img/jfs/t1/19991/28/14831/2834/5cab1971E808f7fe2/14bde026c1c107fa.png);
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    color:white;
+}
+.flash-sale .right .ad h5{
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.flash-sale .right .ad p{
+    margin-top: 1px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
