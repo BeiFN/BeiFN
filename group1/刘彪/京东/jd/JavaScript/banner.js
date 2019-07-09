@@ -16,17 +16,17 @@
  //    2. 影响动画效果;
 
 
- function Banner(selector,options){
+ function Banner(selector,options,slide,wrapper,button_p,button_n){
       // 当前显示哪个图片;
       this.nowIndex = 0;
       //
       this.state = "normal";
 
       this.main     = document.querySelector(selector);
-      this.sliders  = this.main.querySelectorAll(".slide");
-      this.btn_prev = this.main.querySelector(".button-prev");
-      this.btn_next = this.main.querySelector(".button-next");
-      this.wrapper  = this.main.querySelector(".wrapper");
+      this.sliders  = this.main.querySelectorAll(slide);
+      this.wrapper  = this.main.querySelector(wrapper);
+      this.btn_prev = this.main.querySelector(button_p);
+      this.btn_next = this.main.querySelector(button_n);
     
       this.options = Object.assign({
                   effect : "slide",
@@ -185,6 +185,5 @@
  }
 
 
- new Banner(".banner" , {
-      effect : "slide"
-});
+ new Banner(".banner" , {effect : "slide"},".slide",".wrapper",".button-prev",".button-next");
+ new Banner(".middle" , {effect : "slide"},".slide1",".wrapper1",".button-prev1",".button-next1");
