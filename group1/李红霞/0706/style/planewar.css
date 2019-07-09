@@ -100,7 +100,7 @@ html, body{
       }
       100%{
            
-            background-image: url("../images/die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-4ce90f5b4d964b71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -108,7 +108,7 @@ html, body{
 .small_plane{
       width: 59px;
       height: 36px;
-      background-image: url(../images/plain1.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-f51a4d89e32f077d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
@@ -119,13 +119,13 @@ html, body{
 }
 @keyframes small-die{
       0%{
-            background-image: url("../images/plane1_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-cafe7966e83fad21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       50%{
-            background-image: url("../images/plane1_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-257e5538c261aea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane1_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-e0a28f037f690f9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -133,7 +133,7 @@ html, body{
 .middle_plane{
       width: 70px;
       height: 92px;
-      background-image: url(../images/plain2.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-af054816d78ba735.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
@@ -144,49 +144,49 @@ html, body{
 }
 @keyframes middle-die{
       0%{
-            background-image: url("../images/plane2_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-1e84706475120a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       33%{
-            background-image: url("../images/plane2_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-1b1bcefe0592dd1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       66%{
-            background-image: url("../images/plane2_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-d5c45c9b6f8302e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane2_die4.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-ac269a5fbf716763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
 .big_plane{
       width: 165px;
       height: 256px;
-      background-image: url(../images/plain3.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-cebffb63f5b39969.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
 }
 
-.enemy-large.die{
+.big_plane.die{
       animation: large-die 1s linear infinite;
 }
 @keyframes large-die{
       0%{
-            background-image: url("../images/plane3_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-b636b83875ab22bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       20%{
-            background-image: url("../images/plane3_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-e9ab818140bcf2d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       40%{
-            background-image: url("../images/plane3_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-af752609e81a4076.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       60%{
-            background-image: url("../images/plane3_die4.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-c9e507e0e4704888.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       80%{
-            background-image: url("../images/plane3_die5.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-0b69e32507c50664.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane3_die6.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-7bb7bb5c599ca8fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -198,7 +198,7 @@ html, body{
       top: 20%;
       left: 50%;
       margin-left: -214px;
-      background-image: url(../images/logo.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b78a11d82b99265a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       background-position: center;
 }
