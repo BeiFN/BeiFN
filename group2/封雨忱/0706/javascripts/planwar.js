@@ -1,3 +1,6 @@
+
+let($,on)=Utils;
+
 /**
  * 1. 核心部分 => 难度选择，开场动画，计分，暂停...
  * 2. 飞机     => 跟随移动
@@ -413,3 +416,4 @@ let { $ , on } = Utils;
 
  new Core();
  let plane =  new Plane();
+
