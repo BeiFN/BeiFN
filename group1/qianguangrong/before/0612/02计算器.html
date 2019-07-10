@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="num2">
+    <button id="calculation">计算</button>
+</body>
+    <script>
+        calculation.onclick = function(){
+           var a = num1.value;
+           var b = num2.value;
+           var c = op.value;
+           var res = calculator(a,b,c);
+           document.write(res);
+        }
+        function calculator(a,b,c){
+            switch(c){
+                case "+" :
+                    return Number(a) + Number(b);//return a+b时 会发生字符串拼接ab；
+                    break;
+                case "-" :
+                    return a - b;
+                    break;
+                case "*" :
+                    return a * b;
+                    break;
+                case "/" :
+                    return a / b;
+                    break;
+                case "%" :
+                    return a % b;
+                    break;
+            }
+        }
+    </script>
+</html>
