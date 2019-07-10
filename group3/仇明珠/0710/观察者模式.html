@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Observer{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            accept(msg){
+                console.log(`我是${this.name}我接收了${msg}`);
+            }
+        }
+        class Publisher{
+            constructor(){
+                this.list={
+                    12:[],
+                    18:[],
+                    "all":[]
+                };
+            }
+            subscribe(obj,age){
+                if(age>=12&&age<=18){
+                    this.list[12].push(obj);
+                }
+                if(age>=18){
+                    this.list[18].push(obj);
+                }
+                this.list["all"].push(obj);
+            }
+            publish(age,msg){
+                let type="all";
+                if(age>=12&&age<18){
+                    type=12;
+                }
+                if(age>=18){
+                    type=18;
+                }
+                this.list[type].forEach(obj => {
+                    obj.accept(msg);
+                });
+            }
+        }
+        let obs1=new Observer("小王",13);
+        let obs2=new Observer("小李",11);
+        let obs3=new Observer("小刘",19);
+        let obs4=new Observer("小红",10);
+        let pub=new Publisher();
+        pub.subscribe(obs1,obs1.age);
+        pub.subscribe(obs2,obs2.age);
+        pub.subscribe(obs3,obs3.age);
+        pub.subscribe(obs4,obs4.age);
+        pub.publish(12,"hello world");
+        pub.publish(20,"我是成年人");
+        pub.publish("all","大家好");
+    </script>
+</body>
+</html>
