@@ -211,13 +211,15 @@ class Bullet{
     }
 
     //移动子弹
+    //记录上一次top值 比对上一次和下一次的值是否相等  相等则说明其没有动  未能解决 
     bulletMove(){
         for(let attr in Bullet.bullet_list){
             let bullet = Bullet.bullet_list[attr];
+            let _top = bullet.bullets.style.top ;
             bullet.top -= this.speed;
             bullet.bullets.style.left = bullet.left  + "px";
             bullet.bullets.style.top  = bullet.top   + "px";
-            if(bullet.top <= 0){
+            if(bullet.top <= 0 || bullet.top == _top || bullet.top === undefined){
                 this.bulletDie(bullet);
             }
         }
@@ -332,7 +334,7 @@ class Enemy{
         return bullet.left > enemy.left - Bullet.bullet_size.width && bullet.left < enemy.left + enemy.width;
     }
     collisionTop(enemy,bullet){
-        return bullet.top > enemy.top - Bullet.bullet_size.height && bullet.top <enemy.top + enemy.height;
+        return bullet.top > enemy.top - Bullet.bullet_size.height && bullet.top < enemy.top + enemy.height;
     }
     static enemy_list;
     static enemy_timer;
