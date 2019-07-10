@@ -149,7 +149,7 @@ function Utils(){
 }
 
 // 纯工具
-// 获取决定定位
+// 获取决对定位
 // function getAbsPosition(dom){
 //     var position = {
 //         left : dom.offsetLeft,

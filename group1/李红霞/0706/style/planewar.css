@@ -9,7 +9,15 @@ html, body{
 .main{
       width: 460px;
       height: 100%;
+<<<<<<< HEAD
+<<<<<<< HEAD
+      background-image: url(../images/bg.jpg);
+=======
       background-image: url(https://upload-images.jianshu.io/upload_images/18483085-1624816ce79c5ca5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-1624816ce79c5ca5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
       background-repeat: repeat-y;
       background-size: 100% 100%;
       background-position: center;
@@ -41,13 +49,29 @@ html, body{
       height: 122px;
       position: absolute;
       bottom: 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+      background-image: url(../images/me.png);
+=======
       background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b1dd77f18a850060.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b1dd77f18a850060.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
       background-repeat: no-repeat;
 }
 .bullet{
       width: 7px;
       height: 18px;
+<<<<<<< HEAD
+<<<<<<< HEAD
+      background-image:url(../images/bullet.png);
+=======
       background-image:url(https://upload-images.jianshu.io/upload_images/18483085-c616b05dc733fc32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+      background-image:url(https://upload-images.jianshu.io/upload_images/18483085-c616b05dc733fc32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
       background-repeat: no-repeat;
       position:absolute;
       top: 0;
@@ -64,11 +88,19 @@ html, body{
 @keyframes bullet-die{
       0%{
            
+<<<<<<< HEAD
+<<<<<<< HEAD
+            background-image: url("../images/die1.png");
+=======
             background-image: url("https://upload-images.jianshu.io/upload_images/18483085-85468c0574c92c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+>>>>>>> c06fb0e3536ba3aa20926adb2f3f8daef459b4a9
+=======
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-85468c0574c92c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+>>>>>>> 77277d2d1ac55d36f072081d085168e22f4fac15
       }
       100%{
            
-            background-image: url("../images/die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-4ce90f5b4d964b71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -76,7 +108,7 @@ html, body{
 .small_plane{
       width: 59px;
       height: 36px;
-      background-image: url(../images/plain1.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-f51a4d89e32f077d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
@@ -87,13 +119,13 @@ html, body{
 }
 @keyframes small-die{
       0%{
-            background-image: url("../images/plane1_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-cafe7966e83fad21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       50%{
-            background-image: url("../images/plane1_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-257e5538c261aea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane1_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-e0a28f037f690f9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -101,7 +133,7 @@ html, body{
 .middle_plane{
       width: 70px;
       height: 92px;
-      background-image: url(../images/plain2.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-af054816d78ba735.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
@@ -112,49 +144,49 @@ html, body{
 }
 @keyframes middle-die{
       0%{
-            background-image: url("../images/plane2_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-1e84706475120a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       33%{
-            background-image: url("../images/plane2_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-1b1bcefe0592dd1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       66%{
-            background-image: url("../images/plane2_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-d5c45c9b6f8302e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane2_die4.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-ac269a5fbf716763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
 .big_plane{
       width: 165px;
       height: 256px;
-      background-image: url(../images/plain3.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-cebffb63f5b39969.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
 }
 
-.enemy-large.die{
+.big_plane.die{
       animation: large-die 1s linear infinite;
 }
 @keyframes large-die{
       0%{
-            background-image: url("../images/plane3_die1.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-b636b83875ab22bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       20%{
-            background-image: url("../images/plane3_die2.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-e9ab818140bcf2d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       40%{
-            background-image: url("../images/plane3_die3.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-af752609e81a4076.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       60%{
-            background-image: url("../images/plane3_die4.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-c9e507e0e4704888.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       80%{
-            background-image: url("../images/plane3_die5.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-0b69e32507c50664.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
       100%{
-            background-image: url("../images/plane3_die6.png");
+            background-image: url("https://upload-images.jianshu.io/upload_images/18483085-7bb7bb5c599ca8fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
       }
 }
 
@@ -166,7 +198,7 @@ html, body{
       top: 20%;
       left: 50%;
       margin-left: -214px;
-      background-image: url(../images/logo.png);
+      background-image: url(https://upload-images.jianshu.io/upload_images/18483085-b78a11d82b99265a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);
       background-repeat: no-repeat;
       background-position: center;
 }
