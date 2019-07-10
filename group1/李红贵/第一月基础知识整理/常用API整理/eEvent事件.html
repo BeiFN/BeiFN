@@ -191,6 +191,23 @@ function delegation( handlerClick , selector ){
             }
       }
 }
+
+//获取绝对定位
+function getAbsPosition(dom){
+    var position = {
+        left :dom.offsetLeft,
+        top:dom.offsetTop,
+    }
+    if(dom.offsetParent === document.body){
+        return position;
+    }else{
+        var pos = getAbsPosition(dom.offsetParent);
+        return {
+            left : dom.offsetLeft + pos.left,
+            top : dom.offsetTop + pos.top,
+        }
+    }
+}
         
     </script>
 </body>
