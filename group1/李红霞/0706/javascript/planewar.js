@@ -14,6 +14,8 @@ class Core{
       static main_height;
       static main_top;
       static main_left;
+      //标记用户选择的难度等级
+      static hardLevel;
       constructor(){
             this.main = $(".main"); 
             this.option = $(".options")
@@ -37,10 +39,8 @@ class Core{
                   if(this.click == 1){
                         count++;
                   }
-                  count++;
-                  if(this.click == 1 && count >= 6){
+                  if(this.click == 1 && count > 6){
                         let bullet_ins = new Bullet();
-                        // console.log(bullet_ins.bullet)
                         Core.bullet_list.push(bullet_ins);
                         if(count%3 == 0 && Math.random()>0.3){
                               enemy_plane_ins = new EnemyPlane("small_plane");
@@ -65,8 +65,8 @@ class Core{
             let options = Array.from(this.option.children);
             let e = evt || window.event;
             let target = e.target || e.srcElement;
-            this.hardLevel = options.indexOf(target);
-            if(this.hardLevel == -1){
+            Core.hardLevel = options.indexOf(target);
+            if(Core.hardLevel == -1){
                   return false;
             }
             //用户点击选择难度之后进入loading界面，直接调用清场函数
