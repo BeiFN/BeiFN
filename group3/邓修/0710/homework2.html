@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function myAJAX(
+            url,
+            {
+                callback = (res) => { },
+                type = "GET",
+                data = {},
+                contentType = "application/x-www-form-urlencoded"
+            } = {}
+        ) {
+            var list = [];
+            var data_str = "";
+            for (var attr in data) {
+                data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${$data[attr]}`;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
+            type === "POST" ? xhr.setRequestHeader("Content-type", contentType) : "";
+            xhr.send(type === "POST" ? data_str : null);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // callback(xhr.responseText);
+                    for (var i = 0; i < list.length; i++) {
+                        list[i](xhr.responseText);
+                    }
+                }
+            }
+            return {
+                add: function () {
+                    list = list.concat(Array.from(arguments));
+                    return list;
+                }
+            }
+        }
+        var url = "http://localhost/study/stage_two/classroom/0710/02json.json";
+        console.log(myAJAX(url).add(function (res) {
+            console.log("函数1\n",res);
+        }, function () {
+            console.log("函数2");
+        }));
+    </script>
+</body>
+
+</html>
