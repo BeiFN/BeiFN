@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #999;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-size: 12px;
+    line-height: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+    font-weight: normal;
+}
+
+em,
+i {
+    font-style: normal;
+}
+img{
+    border: none;
+}

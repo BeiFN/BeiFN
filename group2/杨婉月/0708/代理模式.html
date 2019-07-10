@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class ProxyImg {
+			constructor(){
+                this.target = document.createElement("img");
+                this.target.src = "proxy_img.jpg";
+				this.proxy = new Image();
+				this.proxy.onload = ()=>{
+					this.target.src = this.proxy.src;
+				}
+			}
+			appendTo(ele){
+				ele.appendChild(this.target)
+			}
+			src(url){
+				this.proxy.src = url;
+				//this.target.src = url;
+			}
+		}
+		
+		let oImg = new ProxyImg();
+		oImg.src( "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556603602806&di=6f9390ffa3ee2dba9f65a7f435fa07e0&imgtype=0&src=http%3A%2F%2Fwww.wallcoo.com%2Fnature%2FSunsets_Sunrises_Wallpapers_widescreen%2Fwallpapers%2F1920x1200%2F%255Bwallcoo_com%255D_Sunsets_Sunrises_%2520ODU_Oceanography.jpg" );
+		oImg.appendTo(document.body);    
+    </script>
+</body>
+</html>
