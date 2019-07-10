@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ajax(url, {
+            type = "GET",
+            data = {},
+            contentType = "application/x-www-form-urlencoded"
+        } = {}) {
+            return pro = new Promise(
+                function (res, rej) {
+                    for (var attr in data) {
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                    }
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?" + data_str) : ""));
+                    xhr.send(type === "POST" ? data_str : null);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            res(xhr.responseText);
+                        } else {
+                            rej(xhr.statusText);
+                        }
+                    }
+                }
+            )
+        }
+
+        ajax().then(function () {
+            console.log(1);
+        }, function () {
+            console.log(2);
+        })
+
+    </script>
+
+
+</body>
+
+</html>

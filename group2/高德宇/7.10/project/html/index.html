@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+    <iframe name="iframe1" scrolling=no marginwidth=0 marginheight=0 width=100% src="./head.html" frameborder=0></iframe>
+    <iframe name="iframe2" id="ifram" scrolling=no marginwidth=0 marginheight=0 width=100% height="" src="./bottom.html" frameborder=0></iframe>
+    <!-- <script>
+        function setWinHeight(obj) {
+            var win = obj;
+            if (document.getElementById) {
+                if (win && !window.opera) {
+                    if (win.contentDocument && win.contentDocument.body.offsetHeight)
+                        win.height = win.contentDocument.body.offsetHeight + 20;
+                    else if (win.Document && win.Document.body.scrollHeight)
+                        win.height = win.Document.body.scrollHeight + 20;
+                }
+            }
+        }
+    </script> -->
+
+    <script language="javascript">
+        var timeIframe;
+        window.onload = function() {
+            timeIframe = setTimeout(GetIframeStatus, 10);
+        }
+
+        function GetIframeStatus() {
+            var iframe = document.getElementById("ifram");
+            var iframeWindow = iframe.contentWindow;
+            //内容是否加载完
+            if (iframeWindow.document.readyState == "complete") {
+                var iframeWidth, iframeHeight;
+                //获取Iframe的内容实际宽度
+                iframeWidth = iframeWindow.document.documentElement.scrollWidth;
+                //获取Iframe的内容实际高度
+                iframeHeight = iframeWindow.document.documentElement.scrollHeight;
+                //设置Iframe的宽度
+                iframe.width = iframeWidth;
+                //设置Iframe的高度
+                iframe.height = iframeHeight;
+            } else {
+                timeIframe = setTimeout(GetIframeStatus, 10);
+            }
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
