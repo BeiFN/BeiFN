@@ -10,26 +10,31 @@
 
 <body>
     <script>
-        function myPromise() {
-            var list = [];
-            var pro = new Promise(
-                function (resolve, reject) {
-                    setTimeout(() => {
-                        for (let i = 0; i < list.length; i++) {
-                            list[i](res);
+        function ajax(url, {
+            type = "GET",
+            data = {},
+            contentType = "application/x-www-form-urlencoded"
+        } = {}) {
+            return pro = new Promise(
+                function (res, rej) {
+                    for (var attr in data) {
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                    }
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?" + data_str) : ""));
+                    xhr.send(type === "POST" ? data_str : null);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            res(xhr.responseText);
+                        } else {
+                            rej(xhr.statusText);
                         }
-                    }, 1000);
+                    }
                 }
             )
-            return {
-                then: function () {
-                    list = list.concat(Array.from(arguments));
-                    return list;
-                }
-            }
         }
 
-        myPromise().then(function () {
+        ajax().then(function () {
             console.log(1);
         }, function () {
             console.log(2);
