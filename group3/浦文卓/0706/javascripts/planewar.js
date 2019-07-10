@@ -80,6 +80,7 @@ class Main{
 
     getStart(){
         new Plane().fire();
+        Enemy.enemyCreater();
     }
 
 //创建元素
@@ -205,7 +206,8 @@ class Bullet{
         Bullet.bullet_list.push({
             ele,
             left : ele.offsetLeft,
-            top : ele.offsetTop
+            top : ele.offsetTop , 
+            die : this.bulletDie.bind(this),
         });
 
         return ele;
@@ -236,7 +238,7 @@ class Bullet{
 
         setTimeout(() => {
             bullet.ele.remove();
-            bullet = false;
+            bullet = false;//????????????????????
         }, 500);
         
     }
@@ -250,14 +252,24 @@ class Bullet{
 
 //敌机
 class Enemy{
-    constructor(enemy_type){
+    constructor(enemy_type){//????????????????????????
+
+        this.main = $(".main");
+        //敌机移动定时器
         if(Enemy.enemy_timer === undefined){
             Enemy.enemy_timer = setInterval(()=>{
                 this.enemyMove();
+                this.collisionDetection();
             },50)
         }
 
-        Enemy.enemy_list = {
+        //敌机列表
+        if(Enemy.enemy_list === undefined){
+            Enemy.enemy_list = [];
+        }
+
+        //敌机类型数据
+        this.enemies = {
             "small" : {
                 className : "enemy-small",
                 speed : 10,
@@ -278,21 +290,107 @@ class Enemy{
             },
         }
 
-        this.enemy = this.createEnemy(enemy_type);
+        enemy_type = enemy_type ? enemy_type : "small";
+        this.enemy_data = this.enemies[enemy_type];
+
 
         this.init();
     }
 
     init(){
+        this.enemy = this.createEnemy();
 
     }
 
-    createEnemy(enemy_type){
+//创建敌机
+    createEnemy(){
         let ele = document.createElement("div");
-        ele.className = enemy_type.className;
+        ele.className = this.enemy_data.className;
         document.body.appendChild(ele);
 
+        Enemy.enemy_list.push({
+            ele,
+            hp : this.enemy_data.hp,
+            speed : this.enemy_data.speed,
+            left : this.randomPosition(getoffset(this.main).left + ele.offsetWidth,getoffset(this.main).left + getSize(this.main).width) - ele.offsetWidth ,
+            top : 0,
+            die : this.enemyDie.bind(this),//???????????????????
+        })
         return ele;
+    }
+
+//敌机随机位置
+    randomPosition(min,max){
+        return min + Math.round(Math.random() * (max - min));
+    }
+
+//敌机移动
+    enemyMove(){
+        for(let attr in Enemy.enemy_list){
+            let enemy = Enemy.enemy_list[attr];
+            enemy.top += enemy.speed;
+
+            if(enemy.top >= getSize(this.main).height - getSize(enemy.ele).height){
+                this.enemyDie(enemy);
+                continue;
+            }
+
+            enemy.ele.style.left = enemy.left + "px";
+            enemy.ele.style.top = enemy.top + "px";
+        }    
+    }
+
+//飞机落下爆炸
+    enemyDie(enemy){
+        let index = Enemy.enemy_list.indexOf(enemy);
+        Enemy.enemy_list.splice(index,1);
+
+        enemy.ele.className += " die";
+
+        setTimeout(() => {
+            enemy.ele.remove();
+            enemy = false;          
+        }, 1000);
+    }
+
+//碰撞检测
+    collisionDetection(){
+        let bullets = Bullet.bullet_list;
+        let enemys = Enemy.enemy_list;
+        for(let i = 0, bullet;bullet = Bullet.bullet_list[i] ; i ++){
+            for(let j = 0 ,enemy ; enemy = Enemy.enemy_list[j] ; j ++){
+                if(this.collisionLeft(bullet,enemy)){
+                    if(this.collisionTop(bullet,enemy)){
+                        bullet.die(bullet);
+                        enemy.hp --;
+                        if(enemy.hp <= 0){
+                            enemy.die(enemy);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+//left检测
+    collisionLeft(bullet,enemy){
+        return bullet.left > getoffset(enemy.ele).left - getSize(bullet.ele).width && bullet.left < getoffset(enemy.ele).left + getSize(enemy.ele).width;
+    }
+
+//top检测
+collisionTop(bullet,enemy){
+    return bullet.top > getoffset(enemy.ele).top - getSize(bullet.ele).height && bullet.top < getSize(enemy.ele).height + getoffset(enemy.ele).top;
+}
+
+    static enemyCreater(){
+        let count = 0;
+        setInterval(()=>{
+            count ++ ;
+            Math.random() < 0.5 ? new Enemy() : "";
+            count % 5 === 0 ? (Math.random() > 0.8 ? new Enemy("middle") : "") : "";
+            count % 10 ===0 ? (Math.random() > 0.9 ? new Enemy("big") : "") : "";
+
+        },1000)
     }
 
     static enemy_timer;
