@@ -84,6 +84,7 @@
         
 
         while($row = mysqli_fetch_assoc($result)){
+            // 先给row赋值，再判断row是否存在
             echo json_encode($row);
             echo "84";
 
