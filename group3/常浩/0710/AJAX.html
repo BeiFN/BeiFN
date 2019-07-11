@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、创建AJAX对象
+        // let xhr = new XMLHttpRequest();
+        // 2、配置AJAX 请求方式，请求地址，是否支持异步（默认是支持的）
+        // xhr.open("GET","地址")；
+        // 3、发送请求
+        // xhr.send(null);
+        // 4、事件监听，监听xhr对象的状态变化
+        // xhr.onreadystatechange = function(){
+        //     if(xhr.readyState === 4 && xhr.status === 200){
+        //         let res = xhr.responseText;
+        //     }
+        // }
+        
+        // AJAX的简单封装 
+        // function AJAX(callback,url,type="GET"){
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.open(type,url);
+        //     xhr.send(null);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState === 4 && xhr.status === 200){
+        //             callback(xhr.responseText);
+        //         }
+        //     }
+        // }
+        // AJAX(function(res){
+        //     document.documentElement.querySelector("body").innerHTML = res;
+        // },"http://localhost/0710/ajax.txt")
+
+        //AJAX的二次封装
+        //封装需求   参数多样化  post的时候也可以提交  另外是可以向服务器发送信息的；
+        // function AJAX(url,
+        //     {
+        //         callback=(res)=>{},
+        //         type ="GET",
+        //         data = {},
+        //         contentType = "application/x-www-form-urlencoded"
+        //     }={}
+        
+        // ){
+        //     let data_str = "";
+        //     for(let attr in data){
+        //         data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+        //     }
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.open(type,url + (type === "GET" ? (/\?/.test(url) ? "$" : "?") + data_str : ""));
+        //     type === "POST" ? xhr.setRequestHeader("Content-type",contentType) : "";
+        //     xhr.send(type === "POST" ? data_str : null);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState === 4 && xhr.status === 200){
+        //             callback(xhr.responseText);
+        //         }
+        //     }
+        // }
+
+        // AJAX("http://localhost/0710/ajax.txt",{
+            // callback:function(res){
+            //     document.querySelector("body").innerHTML=res;
+            // },
+            // type:"POST",
+            // data:{
+            //     username: "hello world",
+            //     passworld: "123456"
+            // }
+        // })
+
+        //AJAX 使用观察者模式;
+            // function AJAX(url){
+            //     let list = [];
+            //     let xhr = new XMLHttpRequest();
+            //     xhr.open("GET",url);
+            //     xhr.send(null);
+            //     xhr.onreadystatechange = function(){
+            //         if(xhr.readyState === 4 && xhr.status === 200){
+            //             for(let i = 0 ; i < list.length; i ++){
+            //                 list[i](xhr.responseText);
+            //             }
+            //         }
+            //     }
+            //     return{
+            //         add : function(){
+            //             list = list.concat(Array.from(arguments));
+            //             return list;
+            //         }
+            //     }
+            // }
+            // let url = "http://localhost/0710/ajax.txt";
+            // AJAX(url).add(
+            //     function(res){
+            //         document.querySelector("body").innerHTML = res;
+            //     },
+            //     function(res){
+            //         console.log(res);
+                    
+            //     }
+            // )
+
+
+            //AJAX 二次封装使用观察者模式
+
+                // function AJAX (url,
+                //         {
+                //         type ="GET",
+                //         data = {},
+                //         contentType = "application/x-www-form-urlencoded"
+                //         }={}
+                // ){
+                //     let list = [];
+                //     let xhr = new XMLHttpRequest();
+                //     let data_str = "";
+                //     for(let attr in data){
+                //         data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                //     }
+                //     xhr.open(type,type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : "");
+                //     type === "POST" ? xhr.setRequestHeader("Content-type",contentType) : "";
+                //     xhr.send(type === "POST" ? data_str : null);
+                //     xhr.onreadystatechange = function(){
+                //         if(xhr.readyState === 4 && xhr.status === 200){
+                //             for(let i = 0 ; i < list.length ; i ++){
+                //                 list[i](xhr.responseText);
+                //             }
+                //         }
+                //     }
+                //     return {
+                //         add:function(){
+                //             list = list.concat(Array.from(arguments));
+                //             return list;
+                //         }
+                    
+                //     }
+                // }
+                // let url = "http://localhost/0710/ajax.txt";
+                // AJAX(url,{
+                //     data:{
+                //         username: "hello world",
+                //         passworld: "123456"
+                //     }
+                // }).add( function(res){
+                //             document.querySelector("body").innerHTML= res;
+                //         },
+                //         function(res){
+                //             console.log(res)
+                //         });
+
+
+
+                function AJAX(url,
+                    {
+                        type ="GET",
+                        data = {},
+                        contentType = "application/x-www-form-urlencoded"
+                    }={}
+                
+                ){
+                    let list = [];
+                    let data_str = "";
+                    for(let attr in data){
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                    }
+                    let xhr = new XMLHttpRequest();
+                    xhr.open(type,url + (type === "GET" ? (/\?/.test(url) ? "$" : "?") + data_str : ""));
+                    type === "POST" ? xhr.setRequestHeader("Content-type",contentType) : "";
+                    xhr.send(type === "POST" ? data_str : null);
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4 && xhr.status === 200){
+                            for(let i = 0 ; i < list.length ; i ++){
+                                
+                            }
+                        }
+                    }
+                    return add=function(){
+                        list = list.concat(Array.from(arguments));
+                        return list;
+                    }
+                }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ajax(
+            url,
+            {
+                type = "GET",
+                data = {},
+                contentType = "application/x-www-form-urlencoded"
+            } = {}
+        ) {
+            // 订阅者名单
+            var list = [];
+
+            var data_str = "";
+            for (var attr in data) {
+                data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
+            type === "POST" ? xhr.setRequestHeader("Content-type", contentType) : "";
+            xhr.send(type === "POST" ? data_str : null);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //发布信息
+                    for (let i = 0; i < list.length; i++) {
+                        list[i](xhr.responseText);
+
+                    }
+                }
+            }
+
+            return {
+                add: function () {
+                    list = list.concat(Array.from(arguments));
+                    return list;
+                }
+            }
+
+        }
+
+        ajax(
+            "http://localhost/mycoding12/0710/02json.json",
+        ).add(
+            function (res) {
+                console.log("xgr")
+            },
+            function (res) {
+                console.log("nb")
+            }
+        );
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
