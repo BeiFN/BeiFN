@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // function cb(res){
+        //     console.log(res);  
+        // }
+
+        // document.onclick = function(){
+        //     var script = document.createElement("script");
+        //     //script.src = "http://localhost/qianguangrong/0711/05jsonp.php";
+        //     //将上变下  目的 给后端发送数据 改变函数名字
+        //     script.src = "http://localhost/qianguangrong/0711/05jsonp.php?callback=cb";
+        //     document.body.appendChild(script);
+        //     script.onload = function(){
+        //         this.remove();
+        //     }
+        // }
+
+
+
+        //简单封装
+        function jsonp(url,cb_key,cb){
+            let FOO = "foo"
+            window[FOO] = function(res){
+                cb(res);
+            }
+            //发送请求；
+            let script = document.createElement("script");
+            url += /\?/.test(url)?"&" : "?";
+            script.src = url + cb_key + "=" + FOO;;
+            document.body.appendChild(script);
+            script.onload = function(){
+                this.remove();
+            }
+        }
+        //调用
+        jsonp("http://localhost/qianguangrong/0711/05jsonp.php","callback",function(res){
+            console.log(res);
+            
+        })
+
+    </script>
+    <!-- <script src="http://localhost/qianguangrong/0711/05jsonp.php"></script> -->
+</body>
+</html>
