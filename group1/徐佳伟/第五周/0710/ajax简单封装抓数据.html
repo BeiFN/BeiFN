@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax封装</title>
+    <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            body,html{
+                  height: 100%;
+                  background: #f4f4f4;
+            }
+            .box{
+                  float: left;
+                  position: relative;
+                  background: #fff;
+                  margin: 0 20px 20px 0;
+                  overflow: hidden;
+                  border-radius: 4px;
+                  -webkit-border-radius: 4px;
+                
+            }
+            .box img{
+                  width: 210px;
+                  height: 158px;
+            }
+            .title-box{
+                  width: 190px;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+                  -webkit-box-pack: justify;
+                  -ms-flex-pack: justify;
+                  justify-content: space-between;
+                  padding: 10px;
+                  display: -webkit-box;
+                  white-space: nowrap;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 1;
+                  overflow: hidden;
+                  text-overflow:ellipsis;
+
+
+            }
+            .container{
+                  width: 1150px;
+                  height: 223px;
+                  margin: 0 auto;
+    
+            }
+      </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+    <!-- <script type="text/html" id="templane">
+        <%for(var attr in data){%>
+            <div class="box">
+                <img src="<%=data[attr].cover%>" alt="">
+                <div class="title-box"><%=data[attr].title%></div>
+            </div>
+        <%}%>
+    </script>
+    <script src="../../libs/ejs.js"></script> -->
+
+    <script type="text/html" id="templane">
+        <%for(var attr in data){%>
+        <div class="box">
+            <img src="<%=data[attr].hd_url%>" alt="">
+            <div class="title-box"><%=data[attr].goods_name%></div>
+        </div>
+        <%}%>
+    </script>
+    <script src="../../libs/ejs.js"></script>
+    <script>
+        //基本ajax的操作步骤就是这样
+        //声明
+        // let xml = new XMLHttpRequest();
+        // xml.open("GET","http://localhost/js/0710/02json.json");
+        // //发送数据这一块还没有讲，需要等待
+        // xml.send(null);
+        // //ajax的状态
+        // xml.onreadystatechange = function(){
+        //     //判断如果ajax加载完成和浏览器允许执行 就执行下列代码
+        //     if(xml.readyState === 4 && xml.status === 200){
+        //         console.log(xml.responseText);
+        //     }
+        // }
+
+            // function ajax(type,url,callback){
+            //     //先把四个步骤写出来
+            //     var xml = new XMLHttpRequest();
+            //     xml.open(type,url);
+            //     xml.send(null);
+            //     xml.onreadystatechange = function(){
+            //         xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "" ;
+            //     }
+
+            // }
+
+            // //调用
+            // ajax("GET","http://localhost/js/0710/02json.json" , function(res){
+            //     console.log(res);
+            // })
+
+        //假数据？
+            // function ajax(type,url,callback){
+            //     //先把四个步骤写出来
+            //     var xml = new XMLHttpRequest();
+            //     xml.open(type,url);
+            //     xml.send(null);
+            //     xml.onreadystatechange = function(){
+            //         xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "" ;
+            //     }
+
+            // }
+
+            // //调用
+            // ajax("GET","http://localhost/js/0710/02json.json" , function(res){
+            //     // console.log(res);
+            //     //装换成json
+            //     res = JSON.parse(res);
+            //     console.log(res);
+            //     var container = document.querySelector(".container");
+            //     var res = ejs.render(document.getElementById("templane").innerHTML,{data : res.data.contents});
+            //     console.log(res);
+            //     container.innerHTML = res;
+            // })
+
+            //在在在来一遍 深入理解一波
+
+            //先简单的封装一下ajax
+            function ajax(type , url , callback){
+                var xml = new XMLHttpRequest();
+
+                xml.open(type,url);
+
+                xml.send(null);
+
+                xml.onreadystatechange = function(){
+                    xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "";
+                }
+            }
+            //总结一波 真得劲啊
+            //先去网站
+            //第一步打开控制台 点击nerwork
+            //第二步点击页面 随时观察有没有文件
+            //第三步 preview中发现json 墨紫紫
+            //第四步点击headers General里有个URL地址存的就是这个json
+            //第五步json转移大法
+
+            //然后进行一系列ajax操作
+            //注意ejs.render(样式表(ele.innerHTML) , {data : res.(获取json串)})
+            //大功告成nice
+            ajax ("GET","http://localhost/js/0710/03json.json",function(res){
+                res = JSON.parse(res);
+                console.log(res);
+                var container = document.querySelector(".container");
+                var templane = document.getElementById("templane");
+                
+                res = ejs.render(templane.innerHTML,{data : res.goods_list});
+                console.log(res);
+                container.innerHTML = res;
+            })
+
+    </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax的POST封装</title>
+</head>
+<body>
+    <script>
+        function ajax(url,callback,type="POST",data){
+            var data_str = "";
+            // 判定是否为第一次拼接,第一次拼接不拼接"";
+            for(var attr in data)
+            {
+                data_str += `${data_str.length>0 ? "&" : ""}${attr} = ${data}${attr}`
+            }
+            // 1.new
+            var xhr = new XMLHttpRequest();
+            // 2.open
+            xhr.open(type,url);
+          
+            // 2.5 setRequestHeader
+            xhr.setRequestHeader("Content-type" ,"application/x-www-form-urlencoded");
+
+            // 3.send
+            xhr.send(data_str);
+            // 4.onreadystatechange
+            xhr.onreadystatechange=function(){
+                if (xhr.readyState===4 && xhr.status === 200) {
+                    callback(xhr.responseText);
+                }
+            }
+        }
+
+
+
+        //Ajax的POST封装 的简单使用
+        ajax("http://localhost/yyt/0710/ajaxEncapsulation02.php",function(res){
+            console.log = res;      // POST 浏览器（的控制台）并不能打印出POST的(JSON)数据  // ajaxEncapsulation02.php里面的内容是否？？
+        },"POST","username : hello");
+    </script>
+</body>
+</html>
