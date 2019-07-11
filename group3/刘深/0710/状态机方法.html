@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pro1 = new Promise(function(resolve , reject){
+            setTimeout(function(){
+                resolve("hello1");
+            },Math.random()*5000)
+        })
+        var pro2 = new Promise(function(resolve , reject){
+            setTimeout(function(){
+                resolve("hello");
+            },3000)
+        })  
+        var pro3 = new Promise(function(resolve , reject){
+            setTimeout(function(){
+                resolve("hello3");
+            },2000)
+        })
+       //竞赛 打印最快的
+       Promise.race([pro1 , pro2 , pro3]).then(function(res){
+           console.log(res);
+       },function(res){
+           console.log(2);
+       })
+       console.dir(Promise);
+
+        // Promise.all([pro1 , pro2 ,pro3]).then(function(){
+        //     console.log(arguments);
+        // },function(){
+        //     console.log(2);
+        // })
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*改变状态机状态*/
+        // var promise = new Promise(function(resolve,reject){
+        //     reject();
+        // });
+        // console.log(promise);
+
+        /*超时设置*/
+        //先完成的改变状态机状态
+
+    //     var promise = new Promise(function(resolve,reject){
+    //         setTimeout(() => {
+    //             resolve("hello,I'm resolved");
+    //         }, Math.random()*5000);
+    //         setTimeout(()=>{
+    //             reject("I'm reject Timeout");
+    //         },3000)
+    //    })
+    //    promise.then(function(res){
+    //        console.log(res);
+    //    },function(error){
+    //        console.log(error);
+    //    })
+
+    // console.dir(Promise);
+    // 多个承诺同时执行
+    // race  谁先执行完停止
+    //  all  所有执行完后停止,有reject立即停止
+    var pro1 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro1");
+                  } ,Math.random() * 5000)
+            } )
+    var pro2 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro2");
+                        // reject();
+                  } ,Math.random() * 5000)
+            } )
+    var pro3 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro3");
+                  } ,Math.random() * 5000)})
+        // Promise.all( [pro1 , pro2 , pro3] )
+        //     .then(function(){
+        //           console.log(arguments);
+        //     },function(){
+        //           console.log(2);
+        //     })
+        Promise.race( [pro1 , pro2 , pro3] )
+            .then(function(){
+                  console.log(arguments);
+            },function(){
+                  console.log(2);
+            })
+
+    </script>
+</body>
+</html>
