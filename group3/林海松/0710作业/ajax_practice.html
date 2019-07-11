@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax练习</title>
+</head>
+<body>
+    <script>
+        //使用本地访问，才做ajax
+        // var xhr = new XMLHttpRequest();//创建对象
+        // xhr.open("GET","http://localhost/0710/01ajax.txt");//创建HTTP请求，获取方式和数据地址
+        // xhr.send(null);
+        // xhr.onreadystatechange = function(){
+        //     if(xhr.readyState === 4 && xhr.status === 200){
+        //         document.body.innerHTML = xhr.responseText;//请求内容
+        //     }
+        // }
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET","http://localhost/0710/01ajax.txt");
+        xhr.send(null);
+        xhr.onreadystatechange = function(){//调用send()函数之后，才绑定onreadystatechange(),所以只监听到了234三个阶段
+            if(xhr.readyState === 4 && xhr.status === 200){
+                document.body.innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</body>
+</html>
