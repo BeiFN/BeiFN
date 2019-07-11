@@ -60,9 +60,12 @@
     </div>
     <script>
         class Table{
-            constructor(btnSelector,contentSelector){
+            constructor({btnSelector = "btn-list"} = { },{contentSelector = "content-list"} = { }){
                 this.btns = document.getElementById(btnSelector).children;
                 this.contents = document.getElementById(contentSelector).children;
+                this.init(this.btns);
+            }
+            init(btns){
                 for(var i = 0 , btn ; btn = this.btns[i] ; i++){
                     btn.addEventListener("click",this.handerOnclick.bind(this,i));
                     btn.addEventListener("click",this.BtnBgColorChange.bind(this,i));
@@ -82,7 +85,7 @@
                 return "#"+ Math.round( Math.random() * 16777215).toString(16).padStart(6,"0");
             }
         }
-        new Table("btn-list","content-list");
+        new Table();
     </script>
 </body>
 </html>
