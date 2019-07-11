@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX</title>
+</head>
+<body>
+    <!-- 
+        ajax 异步js和xml，是一个技术合集
+        A qsynchronous 异步
+        J JavaScript 
+        A and
+        X xml   
+
+        *为啥要用ajax
+        1.优化了用户体验，传统数据表单数据提交一旦进行发送页面会刷新，AJAX实现了无刷新加载页面，可以在提交数据过程中添加更多优化。
+        2.我们利用ajax实现前后端分离的开发模式，提高了开发效率。 1：4比例配置前后端控制开发时效性。
+
+        AJAX在使用时的小问题
+        1.关键字检索SEO优化很差，不执行js无法让数据渲染到页面上，导致程序SEO优化很差。 京东在商品列表渲染时为了更优的SEO优化，规避使用ajax。
+        2.没有history，没有记录，无法前进后退，可以通过js技术手段弥补。
+        3.兼容性问题。ie8+浏览器支持
+
+        AJAX来自ie的插件actioveX，被大牛封装成了ajax
+
+        ajax怎么用
+            1.获取ajax对象，let xhr = new XMLHttpRequest();
+            2.配置ajax对象
+                xhr.open(method(发送方式 get|post|),url（路径），是否启用异步（true（默认）|false）)
+            3.发送ajax请求  利用xhr对象驱动浏览器发送一个请求
+                xhr.send(要发送的数据)；
+            4.事件监听 ，监听xhr对象的状态变化,当准备状态发生改变的时候
+                xhr.onreadystatechange = function(){
+
+                }
+
+
+        http  
+        TCP UDP  传输协议
+        约定了数据的可信性 数据的完整性
+        TCP可靠协议，验证链接的可靠性，，再进行数据传输  验证数据完整性 断开连接
+        UDP不可靠协议 可能存在丢数据，数据顺序不正确这样的情况，
+
+        TCP经过大牛封装http  ，无状态数据传输协议。
+        http在传输数据之前会测试链接可靠性，三次握手
+        数据总数的信息，传输的信息 http报文头理论来讲，所有信息都可以放入报文头中，但我们可以配置我们想要放入的东西
+        http 四次挥手断开连接
+        无状态，无论谁都可以访问
+
+        请求方式
+        GET 
+            简单轻便效率高，
+            发送信息放在请求地址上，
+                数据不能过大（4-10kb，限定最多传4kb）
+                保密性差，曝光风险大，存在安全隐患
+            用？划分key=value形式传递一组数据，以&间隔每组数据。
+
+            主要用来获取数据
+        POST
+            发送数据大小严格意义来说不受限制
+            post把数据放在body中，
+                数据不会曝光，实际安全性没有太大差距
+
+            主要用来发送数据
+
+
+
+     -->
+
+
+     <script>
+        //  创建请求对象
+         var xhr = new XMLHttpRequest();
+         
+         //创建连接
+         xhr.open("GET","http://10.9.10.118/0710/data.txt");
+
+         //上传参数
+         xhr.send(null);
+
+         //请求结果
+         xhr.onreadystatechange = function(){
+             document.body.innerHTML = xhr.responseText;//显示返回数据
+             console.log(1, xhr.responseText);
+         }
+     </script>
+</body>
+</html>
