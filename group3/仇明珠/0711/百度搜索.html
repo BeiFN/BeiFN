@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="ipt">
+    <div class="content"></div>
+    <script>
+        function jsonp(url, cb_filed, data) {
+            return new Promise(function (resolve, reject) {
+                var GLOBAL_CB = "foo";
+                window[GLOBAL_CB] = function (res) {
+                    resolve(res)
+                }
+                url += (/\?/.test(url) ? "&" : "?") + cb_filed + "=" + GLOBAL_CB;
+                if (typeof data == "object") {
+                    var str = "";
+                    for (attr in data) {
+                        console.log(5);
+                        str += (str.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                    }
+                    url += "&"+str;
+                }
+                var script = document.createElement("script");
+                script.src = url;
+                script.onload = function () {
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        } 
+        var ipt=document.querySelector(".ipt");
+        var content=document.querySelector(".content");
+        var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        var data = {
+                  json:1 ,
+                  p:3,
+                  // sid:1423_21080_29238_28518_29099_28830_29221_22158,
+                  req:2,
+                  sc:"eb",
+                  csor:0,
+                  _:Date.now(),
+                  wd : ""
+            }
+        ipt.oninput=function(){
+            data.wd=this.value;
+            jsonp(url,"cb",data).then(function(res){
+                var html="";
+                res.s.forEach(item=>{
+                    html+=`<p>${item}</p>`
+                });
+                content.innerHTML=html;
+            })
+        }
+          
+    </script>
+</body>
+</html>
