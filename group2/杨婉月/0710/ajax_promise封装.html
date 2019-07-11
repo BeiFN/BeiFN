@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    function ajax(
+        //设置参数
+        //第一个参数url
+        url,
+        //将[get||post],回调函数，contentType放入，请求的数据放入一个对象中，利用解构赋值给参数设置默认值
+        {
+            type = "get",
+            callback = (res)=>{},
+            contentType = "application/x-www-form-urlended",
+            data = {}
+        }={}){
+            return new Promise(function(reslove, reject){
+                //send方法中的参数
+                let data_str = "";
+                //循环遍历所请求的数据， 将其变为  "data1=1&data2=2" 这种形式
+                for(let attr in data){
+                    //如果请求的数据不是0，那么使用字符串拼接形成以上形式
+                    data_str += `${data_str.length>0 ? "&" : ""}${attr}=${data_str[attr]}`;
+                }
+                let xhr = new XMLHttpRequest();
+                //如果是get类型，需要在地址后面加上参数  
+                //eg. http://localhost:8888/gp12-js-php/js_test/0710/ajax.txt?name=aaa&&password=bbb
+                xhr.open(type,url + (type === "GET" ? ( /\?/.test(url) ? "&" : "?" ) + data_str : "" ));
+                //如果类型是post, 需要有一个请求头
+                type === "POST" ? xhr.setRequestHeader("Content-type" , contentType) : "";
+                //如果类型是post， 需要给send中传参数
+                xhr.send(type === "POST" ? data_str : null);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        callback(resolve(xhr.responseText));
+                    }
+                    else{
+                        reject(xhr);
+                    }
+                }
+            })
+        }
+
+
+        var taskOne = ajax('http://localhost:8888/gp12-js-php/js_test/0710/ajax.txt');
+        var taskTwo = ajax('http://localhost:8888/gp12-js-php/js_test/0710/products.json');
+
+        taskOne.then(function(){
+            console.log("1");
+        }, function(error){
+            console.log(error.status);
+        })
+</script>
+</html>
