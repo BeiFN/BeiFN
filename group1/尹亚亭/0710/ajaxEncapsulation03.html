@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax的GET和POST封装</title>
+</head>
+<body>
+    <script>
+        function ajax(url,
+        {
+            callback    = (res)=>{ },
+            type        = "POST" ,  //  type = "GET" ,
+            data        = { },   // post传递的数据
+            contentType = "application/x-www-form-urlencoded" //post的setRequestHeader的参数值
+        }={}){
+            var data_str = "";
+            // 判定是否为第一次拼接,第一次拼接不拼接"";
+            for(var attr in data)
+            {
+                data_str += `${data_str.length>0 ? "&" : ""}${attr} = ${data}${attr}`
+            }
+            // 1.new
+            var xhr = new XMLHttpRequest();
+
+            // 2.open  **
+            xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
+
+            // //打印出get跳转的地址
+            // console.log(url + (type === "GET" ? ( /\?/.test(url) ? "&" : "?" ) + data_str : "" ));
+
+            // 2.5 setRequestHeader  **
+            type === "POST" ?xhr.setRequestHeader("Content-type" ,contentType) : "";
+
+            // 3.send *
+            xhr.send(type==="POST" ? data_str : null);
+            // 4.onreadystatechange
+            xhr.onreadystatechange=function(){
+                if (xhr.readyState===4 && xhr.status === 200) {
+                    callback(xhr.responseText);
+                }
+            }
+        }
+
+
+
+        //Ajax的GET封装的简单使用
+        ajax(" http://localhost/yyt/0710/ajax01.txt",{
+                callback : function(res){
+                    document.body.innerHTML = res;
+                    console.log(res);
+                },
+                type : "GET",
+                data : {
+                    username  : "hello world",
+                    passworld : "123456"
+                }
+        });
+    
+        //  Ajax的POST封装,GET封装
+        ajax("http://localhost/yyt/0710/ajaxEncapsulation03.txt",{
+                callback : function(res){
+                    console.log(res);
+                },
+                type : "GET",
+                data : {
+                    username  : "hello world",
+                    passworld : "123456"
+                }
+        });
+
+        //Ajax的POST封装 的简单使用
+        ajax("http://localhost/yyt/0710/ajaxEncapsulation02.php?data=1", {
+            callback: function (res) {
+                console.log(res);           // POST 浏览器（的控制台）并不能打印出POST的(JSON)数据  // ajaxEncapsulation02.php里面的内容是否？？
+                console.log({data:{}});
+            },
+            type: "POST",
+            data: {
+              username: "hello world"
+            }
+        });
+        
+         //Ajax的POST封装 的简单使用
+         ajax("http://localhost/yyt/0710/ajaxEncapsulation03.json",{
+            callback : function(res){
+                console.log(res);
+            },
+            type : "POST",
+            data : {
+                username  : "hello world",
+                passworld : "123456"
+            }
+        });
+        
+         
+
+
+
+
+    </script>
+</body>
+</html>

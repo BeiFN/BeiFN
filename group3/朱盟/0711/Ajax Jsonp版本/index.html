@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../public/css/normal.css">
+    <script src="../../public/js/normal.1.js"></script>
+    <title> JsonP 请求百度 接口 测试 EMB</title>
+</head>
+<style>
+    .center {
+        width: 400px;
+        height: 600px;
+        margin: 60px auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow-y: auto;
+        text-align: center;
+    }
+
+    input {
+        outline: 0px;
+        border: 1px solid #222;
+        border-radius: 2px;
+        width: 260px;
+        height: 18px;
+        padding: 4px 8px;
+        font-size: 16px;
+        margin-top: 60px;
+        color: #36e;
+        box-shadow: 0 0 2px #222;
+
+    }
+
+    .box {
+        width: 360px;
+        height: 380px;
+        margin: 60px auto;
+        border: 1px solid #ddf;
+        border-radius: 2px;
+        overflow-y: auto;
+        text-align: center;
+    }
+
+    p {
+        width: 180px;
+        height: 24px;
+        padding: 6px;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 0 auto;
+        color: #333;
+        text-align: center;
+        width: auto;
+        transition: all .2s;
+    }
+
+    p:hover {
+        background-color: #333;
+        color: #eff;
+    }
+</style>
+
+<body>
+
+    <div class="center">
+
+        <input id="ipt" type="text">
+        <div id="box" class="box">
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function JsonP(url, cb_feild, data) {
+            return new Promise(function (resolve, reject) {
+                let GLOBAL_CB = "callBackHandler";
+                window[GLOBAL_CB] = function (res) {
+                    resolve(res);
+                }
+                let script = document.createElement("script");
+                url += (/\?/.test(url) ? "&" : "?") + cb_feild + "=" + GLOBAL_CB;
+                if (typeof data === "object") {
+                    let dataStr = "";
+                    for (const key in data) {
+                        dataStr += (dataStr.length > 0 ? "&" : "") + key + "=" + data[key];
+                    }
+                    url += "&" + dataStr;
+                }
+                script.onload = function () {
+                    this.remove();
+                }
+                script.src = url;
+                document.body.appendChild(script);
+            });
+        }
+
+
+        let url = "https:www.baidu.com/sugrec"
+        let data = {
+            pre: 1,
+            p: 3,
+            ie: "utf-8",
+            json: 1,
+            prod: "pc",
+            from: "pc_web",
+            wd: "haha",
+            req: 2,
+            csor: 2,
+            _: Date.now()
+        }
+
+        ipt.oninput = function () {
+
+            let keyWord = this.value;
+            if (keyWord.length <= 0) {
+                box.innerHTML = "";
+                return false;
+            } else {
+                data.wd = this.value
+                JsonP(url, "cb", data).then(res => {
+
+                    let html = "";
+                    let searchList = res.g;
+                    for (const key in searchList) {
+                        let item = searchList[key];
+                        html += `<p> ${item.q} </p>`;
+                    }
+
+                    box.innerHTML = html;
+                });
+            }
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

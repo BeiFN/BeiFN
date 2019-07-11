@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            body,html{
+                  height: 100%;
+                  background: #f4f4f4;
+            }
+            .box{
+                  float: left;
+                  position: relative;
+                  background: #fff;
+                  margin: 0 20px 20px 0;
+                  overflow: hidden;
+                  border-radius: 4px;
+                  -webkit-border-radius: 4px;
+                
+            }
+            .box img{
+                  width: 210px;
+                  height: 158px;
+            }
+            .title-box{
+                  width: 190px;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+                  -webkit-box-pack: justify;
+                  -ms-flex-pack: justify;
+                  justify-content: space-between;
+                  padding: 10px;
+                  display: -webkit-box;
+                  white-space: nowrap;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 1;
+                  overflow: hidden;
+                  text-overflow:ellipsis;
+
+
+            }
+            .container{
+                  width: 1150px;
+                  height: 223px;
+                  margin: 0 auto;
+    
+            }
+      </style>
+</head>
+<body>
+      <div class="container"></div>
+      <script src="../libs/ejs.js"></script>
+      <script type="text/html" id="template">
+            <% for(var attr in data ){ %>
+                  <div class="box">
+                        <img src="<%= data[attr].cover %>" alt="">
+                        <div class="title-box"><%= data[attr].title %></div>
+                  </div>
+            <% } %>
+      </script>
+      <script>
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST","http://localhost/gp12coding/0710/03ajaxPost.php");
+            // xhr.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+            // xhr.send("username=hello world");
+            // xhr.onreadystatechange = function(){
+            //       if(xhr.readyState === 4 && xhr.status === 200){
+            //             console.log(xhr.responseText);
+            //       }
+            // }
+
+
+            // function ajax(
+            //       url,
+            //       {
+            //             callback    = (res)=>{} ,
+            //             type        = "GET",
+            //             data        = {},
+            //             contentType = "application/x-www-form-urlencoded"
+            //       } = {}
+            // )
+            // {
+            //       var data_str = "";
+            //       for(var attr in data){
+            //             // 判定是否为第一次拼接,第一次拼接不拼接"";
+            //             data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+            //       }
+            //       // console.log(data_str);
+            //       var xhr = new XMLHttpRequest();
+            //       xhr.open(type,url + (type === "GET" ? ( /\?/.test(url) ? "&" : "?" ) + data_str : "" ));
+            //       type === "POST" ? xhr.setRequestHeader("Content-type" , contentType) : "";
+            //       xhr.send(type === "POST" ? data_str : null);
+            //       xhr.onreadystatechange = function(){
+            //             if(xhr.readyState === 4 && xhr.status === 200){
+            //                  callback(xhr.responseText);
+            //             }
+            //       }
+            // }
+            // ajax("http://localhost/fiveweek/0710/02json.json",{
+            //       callback : function(res){
+            //             console.log(res);
+            //       },
+            //       type : "GET",
+            //       data : {
+            //             username  : "hello world",
+            //             passworld : "123456"
+            //       }
+            // })
+
+            // POST => " username=hello world&passworld=12345";
+            // GET  => "?username=hello world&passworld=12345"
+
+            // POST 请求为啥没法请求json,  原因 => 返回结果是由谁决定的; response 由 服务器决定。 不允许post访问json数据; 
+            // 前端设置的 requestHeader => 我发给服务器的内容;
+
+                  
+            function ajax(url,{
+                  // callback = (res) => {},
+                  type = "GET",
+                  data = {},
+                  contentType = "application/x-www-form-urlencoded"
+            }={}){
+                  // 订阅者名单
+                  // 只要有观察者订阅就会往里面放函数
+                  // 等数据下载完成返回结果时，发布信息给观察者
+                  let list = [];
+                  let str = "";
+                  for(let attr in data){
+                        str += `${(str.length > 0 ? "&" : " ")}${attr} = ${data[attr]}`;
+                  }
+                  let xhr = new XMLHttpRequest();
+                  xhr.open(type,url + `${type == "GET" ?(/\?/.test(url) ? "&" : "?") + str : " "}`);
+                  type == "GET" ? "":xhr.setRequestHeader("Content-type" , contentType);
+                  xhr.send(type == "GET" ? null:str);
+                  xhr.onreadystatechange = function(){
+                        if(xhr.readyState == 4 && xhr.status ==200){
+                              // 
+                              // callback(xhr.responseText);
+                              for(let attr in list){
+                                    list[attr](xhr.responseText);
+                              }
+                        }
+                  }
+                  return{
+                        add:function(){
+                              list = list.concat(Array.from(arguments));
+                              return list;
+                        }
+                  }
+            }
+
+            ajax("http://localhost/fiveweek/0710/02json.json",{
+                  // callback : function(res){
+                  //       console.log(res);
+                  // },
+                  type:"GET",
+                  data:{
+                        username:"xiedawen",
+                        password:"1234565"
+                  }
+            }).add(function(res){
+                  console.log(res);
+                  res = JSON.parse(res);
+                  let container = document.getElementById(".container");
+                  let re = ejs.render(document.getElementById("template").innerHTML,{data:res.data.contents});
+                  document.body.innerHTML = re;
+            },function(res){
+                  console.log("哈哈哈，我是第二个！！");
+            })
+      </script>
+</body>
+</html>
