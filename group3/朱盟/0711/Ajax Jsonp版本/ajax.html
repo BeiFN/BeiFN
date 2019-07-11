@@ -29,7 +29,7 @@
                 let isJsonP = Boolean(jsonp && jsonp.length > 0) //是否JSONP
                 let sendOBJ = null; //初始化发送字符串
                 //生成数据提交字符串 和 URL;
-                if (typeof data === "object" && Object.keys(data).length > 0) {
+                if (data&&typeof data === "object" && Object.keys(data).length > 0) {
                     let dataStr = "";
                     for (const key in data) {
                         dataStr.length > 0 ? dataStr += `&${key}=${data[key]}` : dataStr +=
