@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            // 利用浏览器发送了一个请求, 请求到了服务器服务器会自动分发数据给你去解析执行。
+            var xhr = new XMLHttpRequest();
+            // xhr.onreadystatechange = function(){
+            //       console.log(xhr.readyState);
+            // }
+            xhr.open("GET","http://localhost/gp12/0710day/01ajax.txt");
+            xhr.send(null);
+            // readyState => 0 1 2 3 4 
+            xhr.onreadystatechange = function(){
+                  // console.log(xhr.readyState);
+                  if(xhr.readyState === 4 && xhr.status === 200){
+                        // console.log(xhr.responseText);
+                        document.body.innerHTML = xhr.responseText;
+                  }
+            }
+            // 1. readyState这玩意其实无论你在加载过程之中遇到了什么问题, 只负责一件事加载成功执行结果。 
+            // 2. GET 是啥。 
+                                    
+      </script>
+</body>
+</html>

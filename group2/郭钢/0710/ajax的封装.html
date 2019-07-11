@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1150px;
+            margin: 0 auto;
+            
+        }
+
+        .box {
+            width: 210px;
+            float: left;
+            position: relative;
+            background: #fff;
+            border-radius: 4px;
+            margin: 0 20px 20px 0;
+        }
+
+        .box img {
+            width: 210px;
+            height: 158px;
+        }
+
+        .title {
+            margin-bottom: 1px;
+            position: relative;
+            height: 20px;
+            line-height: 20px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+
+
+
+    <script type="text/html" id="template">
+        <% for(let attr in data){%>
+            <div class="box">
+                <img src="<%=data[attr].cover%>" alt="">
+                <p class="title"><%=data[attr].title%></p>
+            </div>
+    <%}%>
+    </script>
+    <script src="../libs/ejs.js"></script>
+    <script>
+        function myAjax(url, callback, type = "GET") {
+            let xhr = new XMLHttpRequest();
+            xhr.open(type, url);
+            xhr.send(null);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // console.log(xhr.responseText);
+                    callback(xhr.responseText);
+                }
+            }
+        }
+
+
+        myAjax("http://localhost/gp12/0710/zcjson.json", function (res) {
+            res = JSON.parse(res);
+            // console.log(res);
+            var res = ejs.render(document.querySelector("#template").innerHTML,{data:res.data.contents})
+            // console.log(res);
+            var container = document.querySelector(".container");
+            container.innerHTML = res;
+        });
+    </script>
+
+
+
+</body>
+
+</html>

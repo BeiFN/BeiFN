@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function ajax(url){
+      // 获取数据之后需要调用的函数放入这个数组之中
+      var list = [];
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.send(null);
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+          // Ajax获取数据结束,可以开始处理获取的数据了
+          list.forEach(cb => {
+            typeof cb === "function" ? cb(xhr.responseText) : "";
+          })
+        }
+      }
+      // 执行ajax时将 要在数据获取结束之后进行的函数进行返回
+      return{
+        // add是订阅器，将要执行的函数放入ajax数组之中，在ajax之中调用，使ajax变成了观察者模型
+        add : function(callback){
+          // list.push(callback);
+          list = list.concat(Array.from(arguments));
+          return list;
+        }
+      }
+    }
+    var url = "http://localhost/myCode/0710/json.json";
+    // console.log(ajax(url).add(function(res){
+    //   console.log(res);
+    // }));
+    console.log(ajax(url).add(function(res){
+      console.log("函数1");
+    },function(){
+      console.log("函数2");
+    }));
+  </script>
+</body>
+</html>
