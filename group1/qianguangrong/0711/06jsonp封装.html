@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function jsonp(url , cb_key ,data){
+            var cb_value = "foo";
+            window[cb_value] = function(res){
+                resolve(res);
+            }
+            //字段名于回调函数进行拼接
+            url += (/\?/.test(url))?"&" : "?" + cb_key + "=" + cb_value;
+            // 判定是否存在数据;数据拼接;
+            if(typeof data === "object"){
+                var dataStr = "";
+                for(var attr in data){
+                    dataStr += (data.length > 0 ?"&" : "") + attr + "=" + data[attr];
+                }
+                url += "&" + dataStr;
+            }
+            //发送请求
+            var script = document.createElement("script");
+            script.src = url;
+            document.body.appendChild(script);
+            script.onload = function(){
+                this.remove();
+            }
+        }    
+        jsonp( url, "cb" , data)
+        .then(function(res){
+            console.log(res);
+        })
+
+
+    </script>
+</body>
+</html>
