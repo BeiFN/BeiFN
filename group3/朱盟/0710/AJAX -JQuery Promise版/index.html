@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../public/css/normal.css">
+    <script src="../../public/js/normal.1.js"></script>
+    <title> AJAX 封装 |EMB </title>
+</head>
+
+<body>
+
+
+    <script>
+        //   step 1 基本的 阿贾克斯
+        // get
+        // let url = "./test.json";
+        // let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"));
+        // xhr.open("get", url);
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // xhr.send(null);
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         console.log(xhr.responseText);
+        //     }
+        // }
+
+        // post
+        // let url = "http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php";
+        // let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"));
+        // xhr.open("post", url);
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         console.log(xhr.responseText);
+        //     }
+        // }
+        // xhr.send("test=123");
+        // get
+        // let url = "http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php?test=123";
+        // let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"));
+        // xhr.open("get", url);
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         console.log(xhr.responseText);
+        //     }
+        // }
+        // xhr.send(null);
+
+
+
+        // console.log(xhr.responseText);
+        // let url = "http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php";
+
+        //   step 2 封装 阿贾克斯 模仿JQuery ajax 的部分简单功能
+        //   基本的 简单 封装  v-0.1
+        // ————————————————————————————————————————
+        // function ajax({
+        //     type = "get",
+        //     url = "",
+        //     async = true,
+        //     contentType = "application/x-www-form-urlencoded",
+        //     data = {},
+        //     error = () => {},
+        //     success = (text) => {console.log(text)}
+        // } = {}) {
+        //     type = type.toUpperCase();
+        //     let isGet = Boolean(type === "GET");
+        //     let dataStr = "";
+        //     let sendOBJ = null;
+        //     // Object.keys(data)[Object.keys(data).length-1] 最后一项的KEY;
+        //     for (const key in data) {
+        //         let lastkey = Object.keys(data)[Object.keys(data).length - 1];
+        //         key === lastkey ? dataStr += `${key}=${data[key]}` : dataStr += `${key}=${data[key]}&`;
+        //     }
+        //     if (isGet) {
+        //         url += "?" + dataStr;
+        //     } else {
+        //         sendOBJ = dataStr;
+        //     }
+        //     let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"));
+        //     xhr.open(type, url, async);
+        //     xhr.setRequestHeader("Content-type", contentType);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState === 4 && xhr.status === 200) {
+        //             success(xhr.responseText);
+        //         } else {
+        //             error(xhr.responseText);
+        //         }
+        //     }
+        //     xhr.send(sendOBJ);
+        // }
+
+
+        // ajax({
+        //     type:"post",
+        //     url:"http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php",
+        //     data:{
+        //         test:"12ad3",
+        //         name:"baobao"
+        //     },
+        //     success:function(text){
+        //         alert(text);
+        //     }
+        // });
+
+        //测试完成 
+
+        // Step 3  加入观察者模式 增加监听者版本
+        // function ajax({
+        //     type = "get",
+        //     url = "",
+        //     async = true,
+        //     contentType = "application/x-www-form-urlencoded",
+        //     data = {},
+        //     error = () => {},
+        //     success = (text) => {
+        //         console.log(text)
+        //     }
+        // } = {}) {
+
+        //     type = type.toUpperCase();
+        //     var list = [];
+        //     let isGet = Boolean(type === "GET");
+        //     let dataStr = "";
+        //     let sendOBJ = null;
+        //     // Object.keys(data)[Object.keys(data).length-1] 最后一项的KEY;
+        //     for (const key in data) {
+        //         let lastkey = Object.keys(data)[Object.keys(data).length - 1];
+        //         key === lastkey ? dataStr += `${key}=${data[key]}` : dataStr += `${key}=${data[key]}&`;
+        //     }
+        //     if (isGet) {
+        //         url += "?" + dataStr;
+        //     } else {
+        //         sendOBJ = dataStr;
+        //     }
+        //     let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"));
+        //     xhr.open(type, url, async);
+        //     xhr.setRequestHeader("Content-type", contentType);
+        //     xhr.send(sendOBJ);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState === 4 && xhr.status === 200) {
+        //             console.log(list);
+        //             list.forEach(handler => {
+        //                 typeof handler === "function" ? handler(xhr.responseText) : "";
+        //             });
+        //             typeof success === "function" ? success(xhr.responseText) : "";
+        //         } else {
+        //             typeof error === "function" ? error(xhr.responseText) : "";
+        //         }
+        //     }
+
+
+        //     return {
+        //         addListeners: function () {
+        //             list =   list.concat(Array.from(arguments));
+        //             return list;
+        //         }
+        //     }
+        // }
+
+        // var xhr = ajax({
+        //     type: "post",
+        //     url: "http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php",
+        //     data: {
+        //         test: "12ad3",
+        //         name: "baobao"
+        //     },
+        //     success: function (text) {
+        //         alert(text);
+        //     }
+        // }).addListeners((data) => {
+        //     console.log("监听者 1 ： 收到：", data);
+        // }, (data) => {
+        //     console.log("监听者 2 ： 收到：", data);
+        // });
+        // //测试完成 
+
+
+
+
+
+        // Step 3  加入Promise then 版本 删除 监听
+        function ajax({
+            type = "get",
+            url = "",
+            async = true,
+            contentType = "application/x-www-form-urlencoded",
+            data = {},
+            error = () => {},
+            success = (text) => {
+                console.log(text)
+            }
+        } = {}) {
+
+            type = type.toUpperCase();
+
+            let isGet = Boolean(type === "GET");
+            let dataStr = "";
+            let sendOBJ = null;
+            // Object.keys(data)[Object.keys(data).length-1] 最后一项的KEY;
+            for (const key in data) {
+                let lastkey = Object.keys(data)[Object.keys(data).length - 1];
+                key === lastkey ? dataStr += `${key}=${data[key]}` : dataStr += `${key}=${data[key]}&`;
+            }
+            if (isGet) {
+                url += "?" + dataStr;
+            } else {
+                sendOBJ = dataStr;
+            }
+
+
+            let xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject(
+                "Microsoft.XMLHTTP"));
+            xhr.open(type, url, async);
+            xhr.setRequestHeader("Content-type", contentType);
+            xhr.send(sendOBJ);
+            let promise = new Promise(function (resolve, reject) {
+                xhr.onreadystatechange = function () {
+
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        typeof success === "function" ? success(xhr.responseText) : "";
+                        resolve(xhr.responseText);
+                    } else if (xhr.status != 200) {
+                        typeof error === "function" ? error(xhr.responseText) : "";
+                        reject(xhr.responseText);
+                    }
+
+                }
+            });
+
+            console.log(promise);
+            return promise;
+        }
+
+
+        // var xhr = ajax({
+        //     url: "http://127.0.0.1/2019.7.10_2.js.ajax/WORK/index.php",
+        //     data: {
+        //         test: "12ad3"
+        //     }
+        // }).then(function (data) {
+        //     console.log("then收到的 resolve ：", data);
+        // });
+
+
+        //测试完成 
+    </script>
+</body>
+
+</html>
