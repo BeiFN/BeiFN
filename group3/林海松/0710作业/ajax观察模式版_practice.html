@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(url , data , type){
+            var list = [] ;//订阅者名单
+            var xhr = new XMLHttpRequest();
+            if(XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }
+            else{
+                xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+            }
+            if(xhr === null) throw "浏览器不支持ajax";
+            var data_str = "";
+            for(var attr in data){
+                data_str += (data_str.length > 0 ? "&" : "?") + attr + "=" + data[attr];
+            }
+            type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+            xhr.open(type ? type : "GET" , url);
+            type === "POST" ? xhr.setRequestHeader("content-type","application/x-www-form-urlencoded") : "";
+            xhr.send(type === "POST" ? data_str : "");
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    // console.log(xhr.responseText);给出回应 => 发布信息
+                    for(var i = 0 ; i < list.length ; i++){//遍历订阅者名单，并发布信息
+                        list[i](xhr.responseText);//数组中的每一项都是函数
+                    }
+                }
+            }
+            return {
+                add : function(){
+                    list = list.concat(Array.from(arguments));//不定参，合并
+                    return list;
+                }
+            }
+        }
+        ajax("http://localhost/0710/01ajax.txt").add(function(res){
+            console.log("函数1",res);
+        },function(res){
+            console.log("函数2",res);
+        })
+    </script>
+</body>
+</html>
