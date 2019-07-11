@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+    function foo(res){
+        console.log(res);
+    }
+    </script>
+    <script src="http://127.0.0.1/0711/jsonp.php"></script> -->
+    <script>
+    function jsonp(url,cb_fild,callback,){
+        let GLOBAL_CB="foo"
+        window[GLOBAL_CB]=function(){
+            callback(res);
+        }
+        var script=document.createElement('script');
+        url+= (/\?/).test(url)?"&":"?"+url;
+        script.src=url;
+        script.onload=function(){
+            this.remove();
+        }
+
+    }
+    jsonp("http://127.0.0.1/0711/jsonp.php","callback",function(){
+        console.log(res);
+    })
+    </script>
+</body>
+</html>

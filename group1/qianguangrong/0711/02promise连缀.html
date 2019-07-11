@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //正常语句
+        // var promise = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         console.log(1);
+        //         resolve();
+        //     },1000)
+        // })    
+        // promise.then(function(){
+        //     setTimeout(function(){
+        //         console.log(2);
+                
+        //     },1000)
+        // })
+
+        //连缀   四次输出
+        var promise = new Promise((resolve,reject) => {
+            setTimeout(function(){
+                console.log("1");
+                resolve();
+            },1000)
+        })  
+        .then( second => {//第二次输出
+                  return new Promise( (resolve , reject) =>{
+                        setTimeout( a => {
+                              console.log("2");
+                              resolve();
+                        },1000)
+                  })
+            })
+        .then(third =>{//第三次输出
+            return new Promise((resolve , reject) => {
+                setTimeout( a => {
+                    console.log("3");
+                    resolve();
+                },1000)
+            })
+        })
+        .then( last => {//第四次输出
+                  setTimeout( a => {
+                        console.log("4");
+                  },1000)
+            })
+            // then 返回一个新的值;
+
+    </script>
+</body>
+</html>
