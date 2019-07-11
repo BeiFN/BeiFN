@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var promise = new Promise(function(resolve, reject){
+    //   // resolve();
+    //   reject();
+    // });
+    // console.log(promise);
+
+    // var promise = new Promise(function(resolve, reject){
+    //   setTimeout(function(){
+    //     resolve("1");
+    //   },Math.random() * 5000);
+    //   setTimeout(function(){
+    //     reject("2");
+    //   },3000)
+    // })
+    // promise.then(function(res){
+    //   console.log(res);
+    // },function(error){
+    //   console.log(error);
+    // })
+
+    var pro1 = new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve("pro1");
+      },Math.random() * 5000)
+    })
+    var pro2 = new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve("pro2");
+      },Math.random() * 5000)
+    })
+    var pro3 = new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve("pro3");
+      },Math.random() * 5000)
+      // reject();
+    })
+    // Promise.all([pro1, pro2, pro3]).then(function(){
+    //   console.log(arguments);
+    // },function(){
+    //   console.log(2);
+    // })
+    Promise.race([pro1, pro2, pro3]).then(function(){
+      console.log(arguments);
+    },function(){
+      console.log(2);
+    })
+  </script>
+</body>
+</html>
