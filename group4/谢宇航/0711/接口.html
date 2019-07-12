@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script scr="https://cj.weather.com.cn/portal/js/base.js"></script>
+    <script>
+        // function jsonp(url, cb_fild, data) {
+        //     return new Promise(function (resolve, reject) {
+        //         var GLOBAL_CB = "foo";
+        //         window[GLOBAL_CB] = function (res) {
+        //             // 这是异步;
+        //             resolve(res);
+        //         }
+
+        //         // 判定是否存在数据;数据拼接;
+        //         if (typeof data === "object") {
+        //             var dataStr = "";
+        //             for (var attr in data) {
+        //                 dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+        //             }
+        //             url += "&" + dataStr;
+        //         }
+        //         url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + GLOBAL_CB;
+        //         // 请求发送;
+        //         console.log(url);
+        //         var script = document.createElement("script");
+        //         script.src = url;
+        //         script.onload = function () {
+        //             this.remove();
+        //         }
+        //         document.body.appendChild(script);
+        //     })
+        // }
+        var UID = "U785B76FC9";
+        var KEY = "4r9bergjetiv1tsd";
+        var API = "http://api.seniverse.com/v3/weather/now.json";
+        var location = "beijing";
+        var ts = Math.floor((new Date()).getTime() / 1000);
+        var str = "ts=" + ts + "&uid=" + UID;
+        var sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
+        sig = encodeURIComponent(sig);
+        str = str + "&sig=" + sig;
+        var jsonpCallback = function (data) {
+            var obj = document.querySelector("body");
+            var weather = data.results[0];
+            var text = [];
+            text.push("Location: " + weather.location.path);
+            text.push("Weather: " + weather.now.text);
+            text.push("Temperature: " + weather.now.temperature);
+            obj.innerText = text.join("\n");
+        }
+        // 构造最终请求的 url
+        var url = API + "?location=" + LOCATION + "&" + str + "&callback=jsonpCallback";
+        // 向 HTML 中动态插入 script 标签，通过 JSONP 的方式进行调用
+        var newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.src = url;
+        document.body.append(newScript);
+
+        // src="https://api.seniverse.com/v3/weather/now.json?location=beijing&ts=1443079775&ttl=300&uid=[your_uid]&sig=[your_signature]&callback=showWeather"
+    </script>
+</body>
+
+</html>

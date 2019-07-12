@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //jsonp的封装;
+        function jsonp(url, cb_fild, callback) {
+            var GLOBAL_CB = "foo";
+            //1.全局函数;
+            window[GLOBAL_CB] = function (res) {
+                callback(res);
+            }
+
+            //2.发送请求
+            //创建标签
+            var script = document.createElement("script");
+            // 拼接url
+            url += /\?/.test(url) ? "&" : "?";
+
+            script.src = url + cb_fild + "=" + GLOBAL_CB;
+            console.log(script.src);
+            //移除
+            script.onload = function () {
+                this.remove();
+            }
+            //写入
+            document.body.appendChild(script);
+        }
+
+        jsonp("http://localhost/0711/3jsonpPractice.php","callback",function(res){
+          document.body.innerHTML = res;
+        })
+
+
+    </script>
+</body>
+
+</html>

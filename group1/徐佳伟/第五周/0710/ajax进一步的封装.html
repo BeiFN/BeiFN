@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX进一步的封装</title>
+</head>
+<body>
+    <script>
+        //post可能携带大量的数据
+        //所以浏览器对post的请求进行一个安全验证
+            // function ajax(type, url ,callback){
+            //     var xml = new XMLHttpRequest();
+            //     xml.open(type,url);
+            
+            //     //对于post方式需要加上这么一句请求头
+            //     // xml.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+            //     xml.send(null);
+
+            //     xml.onreadystatechange = function(){
+            //         xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "";
+            //     }
+            // }
+
+            // ajax("POST" , "http://localhost/js/0710/02json.json" , function(res){
+            //     res = JSON.parse(res);
+            //     console.log(res);
+            // })  
+
+           
+                // var xml = new XMLHttpRequest();
+                // xml.open("post","http://localhost/js/0710/03ajaxPost.php");
+            
+                // //对于post方式需要加上这么一句请求头
+                // //不加请求头也可以跳转但是没办法接受数据
+                // xml.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+                // //post应该在send里边传入
+                // //传入数据跟get url一样一样的 切记等号= 紧挨着变量才行
+                // xml.send("username=you father");
+
+                // xml.onreadystatechange = function(){
+                //    if(xml.readyState === 4 && xml.status === 200 ) {
+                //        document.body.innerHTML = xml.responseText;
+                //     //   var res = xml.responseText;
+                //     //    res = JSON.parse(res);
+                //     //     console.log(res);
+                //     }
+                // }
+        
+                // function ajax(
+                // url ,{
+                //         callback = (res)=>{},
+                //         type     = "GET",
+                //         data     = {},
+                //         contentType = "application/x-www-form-urlencoded"
+                //     } = {}
+                //     ){
+
+                //     var data_str = "";
+                //     for(var attr in data){
+                //         // data_str += data_str.length > 0 ? "&" : "" +`${attr}=${data[attr]}`;
+                //         data_str += `${data_str.length > 0 ? "&" : "" }${attr}=${data[attr]}`;
+                //     }
+                //     // console.log(data_str);
+                //     var xml = new XMLHttpRequest();
+               
+                //     xml.open(type,url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") +data_str : ""));
+                //     //如果type为post加入请求头
+                //     type === "POST" ? xml.setRequestHeader("Content-type",contentType) : "";
+                //     xml.send(type === "POST" ? data_str : null);
+
+                //     xml.onreadystatechange = function(){
+                //         xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "";
+                //     }
+                // }
+           
+                // ajax("http://localhost/js/0710/02json.json?" , {
+                //     callback : function(res){
+                //         console.log(res);
+                //     },
+                //     type : "POST",
+                //     data :{
+                //         username : "helloword",
+                //         password : "123456"
+                //     }
+                // })
+            // POST 请求为啥没法请求json,  原因 => 返回结果是由谁决定的; response 由 服务器决定。 不允许post访问json数据; 
+            // 前端设置的 requestHeader => 我发给服务器的内容;
+
+            //封装基本完成
+                function ajax(
+                    url ,
+                    //对象解构赋值
+                    {
+                        callback = (res) =>{},
+                        type     = "GET",
+                        data     = {}
+                    } = {}){
+
+                        var data_str ="";
+                        for(var attr in data){
+                            //判断字符串长度是否大于0 等于0说明紧挨着问号不用加连接符
+                            data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                        }
+                        // console.log(data_str);
+                    var xml = new XMLHttpRequest();
+                        // console.log(type);
+                        //有一个bug url后边就加个？ 会错的; 判断url有问号吗 有就加连接符，没有加？
+                    xml.open(type , url +(type === "GET" ? (/\?/.test(data_str) ? "&" : "?")+data_str : ""));
+
+                    //post请求头一定要加载send前边，否则服务器不会接受数据
+                    type === "POST" ? xml.setRequestHeader("Content-type","application/x-www-form-urlencoded") :"";
+                    xml.send(type === "POST" ? data_str : null);
+
+                    xml.onreadystatechange = function(){
+                        xml.readyState === 4 && xml.status === 200 ? callback(xml.responseText) : "";
+                    }
+                }
+
+                
+                ajax("http://localhost/js/0710/02json.json",{
+                    callback : function(res){
+                        console.log(res);
+                    },
+                    // type : "POST",
+                    data : {
+                        "username" : "daweige",
+                        "password" : "123456"
+                    }
+                })
+
+
+
+
+        
+    </script>
+</body>
+</html>
