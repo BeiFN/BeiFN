@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function aaa(res){
+            console.log(res);
+        }
+        //创建一个script标签，并控制在页面加载完以后再发起请求
+        document.onclick = function(){
+            var script = document.createElement("script");
+            script.src = "http://localhost/GP12coding/0711/05jsonp.php?callback=aaaa";
+            script.onload = function(){
+                this.remove();
+            }
+            document.body.appendChild(script);
+        }
+    
+    </script>
+</body>
+</html>

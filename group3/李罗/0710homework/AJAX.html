@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ajax的使用
+        //1.AJAX对象的获取
+        var xhr=new XMLHttpRequest();
+        //2.配置AJAX对象
+        xhr.open("GET","http://localhost/JS/0710作业/ajax.txt");
+        //3.发送AJAX请求
+        xhr.send(null);
+        //4.事件监听，也就是监听xhr对象的状态变化
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4 && xhr.status===200){
+                document.body.innerHTML=xhr.responseText;
+            }
+        }
+        //1.readyState这玩意其实就是无论你在加载过程中遇到了什么问题，只是负责一件事。就是加载成功，执行结果
+        //2.GET 是啥
+        
+    
+    </script>
+    
+</body>
+</html>
