@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function jsonp(url , cb_filed , callback){
+				var GLOBLE_CB ="foo";
+				window[GLOBLE_CB] = function(res){
+					callback(res);
+				}
+				let script = document.createElement("script");
+				url += /\?/.test(url) ? "&" : "?" ;
+				script.src = url + cb_filed + "=" + GLOBLE_CB;
+				console.log(url + cb_filed + "=" + GLOBLE_CB);
+				script.onload = function(){
+                        this.remove();
+                 }
+				document.body.appendChild(script);
+			}
+			
+			jsonp("http://localhost/hwj/0711/jsonp.php","cb_name",function(res){
+				console.log(res);
+			})
+		</script>
+	</body>
+</html>

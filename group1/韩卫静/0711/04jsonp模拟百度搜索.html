@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#ipt{
+				width: 200px;
+			}
+			#content{
+				width: 200px;
+				border: #666 solid 1px;
+			}
+			#content p:hover{
+				background-color: aliceblue;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="ipt">	
+			<div id="content"></div>
+		<script type="text/javascript">
+			function jsonp(url , cb_filed, data){
+				return new Promise(function(resolve,reject){
+					var GLOBLE_CB ="foo";
+					window[GLOBLE_CB] = function(res){
+						resolve(res);
+					}
+					url += /\?/.test(url) ? "&" : "?" ;
+					url = url + cb_filed + "=" + GLOBLE_CB
+					
+					if(typeof data === "object"){
+						var data_str = "";
+						for(var attr in data){
+							data_str.length > 0 ? data_str+=`&${attr}=${data[attr]}` :data_str+=`${attr}=${data[attr]}`;
+						}
+						url += ("&" + data_str);
+					}	
+										
+					let script = document.createElement("script");				
+					script.src = url ;
+					script.onload = function(){
+					        this.remove();
+					 }
+					document.body.appendChild(script);
+				})
+			}
+			
+		
+		var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+
+            var data = {
+                  json:1 ,
+                  p:3,
+                  sid : "1423_21080_29238_28518_29099_28830_29221_22158",
+                  req:2,
+                  sc:"eb",
+                  csor:0,
+                  _:Date.now(),
+                  wd : ""
+            }
+
+            // jsonp( url, "cb" , data)
+            // .then(function(res){
+            //       console.log(res);
+            // })
+            
+            var ipt = document.getElementById("ipt");
+            var content = document.getElementById("content");
+
+            ipt.oninput = function(){		
+                  data.wd = this.value;
+                  jsonp( url , "cb" , data)
+                  .then( function (res){
+                        var html = "";
+                        res.s.forEach( item => html += `<p>${item}</p>`);
+                        content.innerHTML = html;
+                  })
+            }
+		</script>
+	</body>
+</html>
