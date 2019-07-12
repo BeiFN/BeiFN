@@ -79,7 +79,6 @@ class Utils{
                   document.body.appendChild(script);
             })
       }
-      
       static cookie( 
             name , value ,
             { 
@@ -110,5 +109,10 @@ class Utils{
                   path,
                   expires : -1
             })
+      }
+
+      static $(selector){
+            let ele = null;
+            return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
       }
 }
