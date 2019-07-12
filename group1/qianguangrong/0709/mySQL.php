@@ -25,7 +25,7 @@
     //     echo mysqli_error($conn);
     // }
 
-    #增 INSERT INTO GTTEST()
+    #增 INSERT INTO GTTEST(username) VALUE('HELLO WORLD')
     // $sql_insert = "insert into GPTEST(username)
     //     VALUE('HELLO WORLD')";
     // if(mysqli_query($conn,$sql_insert)){
