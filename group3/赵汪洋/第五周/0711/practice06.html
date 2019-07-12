@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp百度搜索</title>
+</head>
+
+<body>
+    <script>
+        // console.log(typeof undefined === 'object');
+
+        function myPromiseJsonp(url, cb_filed, data) {
+            return new Promise(function (resolve, reject) {
+                let GLOBLE_CB = "foo";
+                window[GLOBLE_CB] = function (res) {
+                    resolve(res);
+                }
+                url += (/\?/.test(url) ? "&" : "?") + cb_filed + "=" + GLOBLE_CB;
+                if (typeof data === "object") {
+                    let data = "";
+                    for (let)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
