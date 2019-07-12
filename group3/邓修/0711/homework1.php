@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin:*");
     // $cbname=$_GET["callback"];
     // $name=$_GET["name"];
     // $class=$_GET["class"];
