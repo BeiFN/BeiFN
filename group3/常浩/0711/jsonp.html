@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 本地跨域的实现 -->
+    <!-- <script>
+        
+        function foo(res){
+            console.log(res);
+        }
+        
+    </script>
+    <script src="http://localhost/0711/jsonp.php"></script> -->
+    <script src="Utils.js"></script>
+
+    <script>
+    
+        //jsonp 封装
+        //可变参数  url  url上拼接的字符  callback
+        // function jsonp (url,cb_field,callback){
+        //     let global_cb = "foo";
+        //     window[global_cb] = function(res){
+        //         callback(res);
+        //     }
+        //         let script = document.createElement("script");
+        //         url += /\?/.test(url) ? "&" : "?";
+        //         script.src = url + cb_field + "=" + global_cb;
+        //         script.onload = function(){
+        //             this.remove();
+        //         }
+        //         document.body.appendChild(script);
+        // }
+        //后端的参数接收方法
+        // <?php
+        //     $cbname = $_GET['callback'];
+        //     $data = "hello world";
+        //     echo "$cbname('$data')";
+        // ?>
+    
+
+        //服务器代理跨域
+            let{AJAX} = Utils;
+            let url =  "http://localhost/dt?include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&filter_id=%E5%AE%B6%E5%B1%85%E7%94%9F%E6%B4%BB&start=24&_=1562809436168";
+            AJAX(url).then(res =>{
+                console.log(JSON.parse(res));
+            })
+        
+
+
+
+        //jsonp 二次封装Promise
+        // function jsonp(url , cb_fild , data){
+        //     return new Promise(function(resolve , reject){
+        //         var global_cb = "foo";
+        //         window[global_cb] = function(res){
+        //             resolve(res);
+        //         }
+        //         //字段名和回调函数名拼接；
+        //         url += (/\?/.test(url)? "&" : "?")+ cb_fild + "=" + global_cb;
+        //         //判定是否存在数据 ，数据拼接；
+        //         if(typeof data === "object"){
+        //             var dataStr = "";
+        //             for(var attr in data){
+        //                 dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" +data[attr];
+        //             }
+        //             url += "&" + dataStr;
+
+        //         }
+        //         //请求发送
+        //         var script = document.createElement("script");
+        //         script.src = url;
+        //         script.onload = function(){
+        //             this.remove();
+        //         }
+        //         document.body.appendChild(script); 
+        //     })
+        // }
+    </script>
+</body>
+</html>

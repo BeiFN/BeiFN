@@ -173,4 +173,66 @@ class Utils {
                   }
             }, 50)
       }
+      //封装的AJAX
+      static myAJAX(
+            url,
+            {
+                  type = "GET",
+                  data = {},
+                  content_type = "application/x-www-form-urlencoded"
+            } = {}
+      ) {
+            return new Promise(function (resolve, reject) {
+                  let xhr = null;
+                  if (XMLHttpRequest) {
+                        xhr = new XMLHttpRequest();
+                  }
+                  else {
+                        xhr = new ActiveXObject("Mricosoft.XMLHTTP")
+                  }
+                  if (xhr === null) throw "浏览器不支持ajax";
+                  let data_str = "";
+                  for (let attr in data) {
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                  }
+                  type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+                  xhr.open(type, url);
+                  type === "POST" ? xhr.setRequestHeader("Content-type", content_type) : "";
+                  xhr.send(type === "POST" ? data_str : null);
+                  xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                              resolve(xhr.responseText);
+                        }
+                  }
+                  setTimeout(function () {
+                        reject(xhr, "timeout");
+                  }, 5000);
+            });
+      }
+      static jsonp(url, cb_name, data) {
+            return new Promise(function (resolve, reject) {
+                  let global_cb = "foo";
+                  window[global_cb] = function (res) {
+                        resolve(res);
+                  }
+                  //字段名和回调函数名拼接
+                  url += `${/\?/.test(url) ? "&" : "?"}${cb_name}=${global_cb}`;
+                  if (typeof data === "object") {
+                        let data_str = "";
+                        for (let attr in data) {
+                              data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                        }
+                        url += `"&"${data_str}`;
+                  }
+                  let script = document.createElement("script");
+                  script.src = url;
+                  script.onload = function () {
+                        this.remove();
+                  }
+                  document.body.appendChild(script);
+                  setTimeout(function () {//超时失败
+                        reject("failed to get resources");
+                  }, 3000);
+            });
+      }
 }
