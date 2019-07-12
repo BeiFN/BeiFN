@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/day22/post.php")
+        xhr.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        xhr.send("username = hello world")
+        xhr.onreadystatechange= function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText)
+            }
+        }
+
+        function ajax(url,
+            {
+                type = "GET",
+                data = {},
+                content_type = "application/x-www-form-urlencoded",
+                callback = (res) => { }  //箭头函数  (res)=> { } 
+            } = {}
+        ) {
+            //遍历获取data_str
+            var data_str = ""
+            for (var attr in data) {
+                data_str += `${data_str.length>0?"&":""}${attr}=${data[attr]}`
+            }
+            var xhr = new XMLHttpRequest();
+            // POST => " username=hello world&passworld=12345";
+            // GET  => "?username=hello world&passworld=12345"
+            xhr.open(type, url + (type == "GET" ? (/\?/.test(url) ? "&" : "") + data_str : ""));
+            type == "GET" ? "" : (xhr.setRequestHeader("Content-type", content_type));
+            xhr.send(type === "POST" ? data_str : "");
+            xhr.onreadystatechange = function () {
+                if (xhr.status == 200 && xhr.readyState === 4) {
+                    callback(xhr.responseText);
+                }
+            }
+        }
+
+
+        ajax("http://localhost/day22/json02.json",{
+            type:"GET",
+            callback : function(res){
+                console.log(res)
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

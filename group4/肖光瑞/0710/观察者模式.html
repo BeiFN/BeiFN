@@ -53,8 +53,8 @@
                 this.list["all"].push(obs)
             }
             //移除订阅功能
-            unsubscrible(obs) {
-                this.list.splice(this.list.indexOf(obs), 1);
+            unsubscrible(type,obs) {
+                this.list[type].splice(this.list[type].indexOf(obs), 1);
             }
         }
 
