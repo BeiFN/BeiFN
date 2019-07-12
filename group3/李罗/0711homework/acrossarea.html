@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css">
+</head>
+<body>
+    <script src="../0711homework/libs/utils.js"></script>
+    <script>
+        let {ajax}=Utils;
+        let url="http://127.0.0.1/JS/0711homework/server/jsonp.php";
+        ajax(url).then(res=>{
+            console.log(res);
+        })
+        //全局函数可以在任意位置调用，声明一个全局函数。可以被外联的script调用，等待后端字符串去调用
+        // function foo(res){
+        //     console.log(res);
+        // }
+    </script>
+    <!-- 利用script标签发起请求 -->
+    <!-- <script src="http://localhost/JS/0711homework/acossarea.php"></script> -->
+
+    <script src="http://127.0.0.1/JS/0711homework/server/jsonp.php"></script>
+</body>
+</html>
