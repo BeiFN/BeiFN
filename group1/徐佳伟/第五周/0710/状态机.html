@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>状态机</title>
+</head>
+<body>
+
+
+    <script>
+        //总结一下
+        //promise又称为承诺对象，因为promise对象状态一旦发生改变将不可逆转
+        //promise对象依赖于判断，也就是需要把判断机制内置于promise对象中才能创建
+        //promise三个状态
+                    //pendding 正在执行，初始化状态
+                    //resolve  已经完成状态
+                    //reject   执行失败状态
+        //promise内置函数内有两个默认参数 resolve、reject;可以通过resolve()执行语句，
+        //也不算执行语句，某种意义上就是传递参数，然后再then的函数中调用执行
+
+        //resolve经验证 就是起到传递参数，切换状态，异步执行代码的作用;不要误认为是它执行代码
+        //我在加一句resolve就是成功状态传递一个信息，reject是失败状态接受信息
+        //promise.then可以内置两个函数，第一个用于执行成功状态，第二个是执行失败状态;且两者只会执行其中的一个
+
+        //all方法内置一个promis的数组，等所有对象都执行完毕再输出
+        //race方法让promis数组进行赛跑，最快的先输出其他的停止。
+
+        //这玩意咋回事了
+        // jQuery => Deferred ; 
+        // ES6    => Promise  ;
+
+        //报错了 状态机不能这么搞
+        // var promise = new Promise()
+        //只能吧判断机制内置才行
+        //pendding 正在进行，初始状态
+        //resolved 已经完成状态
+        //rejected 失败状态
+        //切记 一旦状态切换，不可逆转
+
+        //promise默认情况下为正在进行初始装填
+        // let promise = new Promise(function(resolve , reject){
+        //     console.log(1);
+        //     //切换成完成状态
+        //     // resolve();
+        //     //改成为终止状态之后，默认报错因为没有后续的监听
+        //     // reject();
+           
+        // });
+        // console.log(promise)
+
+        //then 然后呢 
+        let promise = new Promise(function(resolve,reject){
+                setTimeout( () => {
+                    //resolve 和 reject 都可以then ，貌似只要切换状态就可以then
+                    resolve(function(){
+                        console.log("fuckyou");
+                    });
+                },3000);
+
+                setTimeout( ()=>{
+                    //reject可以会执行但会报错
+                    //但是通过then error异步的方式不会出错
+                    reject("你已经超时");
+                },5000);
+        });
+        // promise.then( res =>{
+        //     console.log(res);
+        // })
+
+        //我曹 then可以有两个函数，默认第一个为成功函数，第二个为失败函数
+        //这样设置不会报错
+        //也可以说这是 ajax的超时设置
+        promise.then(function(res){
+            console.log(res);
+        },function(error){
+            console.log(error);
+        })
+
+        //挖掘宝藏？
+        //基本的 resolve reject
+        //prototype 也就是Promise原型的方法中有 then、catch、finally
+        //其他 all race
+        // console.dir(Promise);
+
+        // var por1 = new Promise( function(reslove,reject){
+        //     setTimeout(function(){
+        //         reslove("我是por1");
+        //     },Math.random()*5000);
+        // })
+
+        // var por2 = new Promise( function(reslove,reject){
+        //     setTimeout(function(){
+        //         reslove("我是por2");
+        //     },Math.random()*5000);
+        // })
+        // var por3 = new Promise( function(reslove,reject){
+        //     setTimeout( function(){
+        //         reslove("我是por3");
+        //     },Math.random()*5000);
+        // })
+
+        //这里的all方法必须等到数组中所有的promise对象都执行完毕，才执行下列的方法（输出）
+        // Promise.all([por1,por2,por3])
+        // .then ( function(){
+        //     console.log(arguments);
+        // },function(){
+        //     console.log("失败");
+        // })
+        
+        //这里的race方法是数组中执行最快的promise对象最先执行 真的就是赛跑
+
+        // Promise.race([por1,por2,por3])
+        // .then(function(){
+        //     console.log(arguments);
+        // },function(){
+        //     console.log("再次失败");
+        // })
+    </script>
+</body>
+</html>

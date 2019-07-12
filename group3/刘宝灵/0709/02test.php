@@ -20,6 +20,7 @@
 </html>
 
 <?php
+    header("Content-type:text/html;charset=utf-8;");
     $usr = @$_GET["username"];
     $pwd = @$_GET["password"];
     if(!$usr || !$pwd){
@@ -43,9 +44,11 @@
     if(!$conn){
         die("Connection failed :" . mysqli_connect_error());
     }
+    // echo "链接成功";
     $sql_select = "SELECT * FROM jkl WHERE username='$usr'";
     $col = mysqli_query($conn,$sql_select);
-    if(!$col){
+    // echo var_dump($col);
+    if($col){
         echo "语法没错";
         if(mysqli_num_rows($col) > 0){
             die("用户名重名");
