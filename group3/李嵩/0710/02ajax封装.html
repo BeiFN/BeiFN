@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+              margin: 0;
+              padding: 0;
+        }
+        body,html{
+              height: 100%;
+              background: #f4f4f4;
+        }
+        .box{
+              float: left;
+              position: relative;
+              background: #fff;
+              margin: 0 20px 20px 0;
+              overflow: hidden;
+              border-radius: 4px;
+              -webkit-border-radius: 4px;
+            
+        }
+        .box img{
+              width: 210px;
+              height: 158px;
+        }
+        .title-box{
+              width: 190px;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+              -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+              justify-content: space-between;
+              padding: 10px;
+              display: -webkit-box;
+              white-space: nowrap;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+              text-overflow:ellipsis;
+
+
+        }
+        .container{
+              width: 1150px;
+              height: 223px;
+              margin: 0 auto;
+
+        }
+  </style>
+</head>
+<body>
+        <div class="container">
+
+        </div>
+
+        <script type ="text/html" id="template">
+            <% for(var attr in data ){ %>
+                <div class="box">
+                    <img src="<%= data[attr].cover %>" alt="">
+                    <div class="title-box"><%=data[attr].title %></div>
+                </div>
+            <% } %>
+        </script>
+        <script src="./ejs.js"></script>
+        <script>
+
+            function ajax(url,callback,type="GET"){
+                var xhr = new XMLHttpRequest();;
+                xhr.open(type,url);
+                xhr.send(null);
+                xhr.onreadystatechange =function(){
+                    if(xhr.readyState === 4&& xhr.status === 200){
+                        callback(xhr.responseText);
+                    }
+                }
+            }
+            ajax("http://localhost/0710/02.json",function(res){
+                var container = document.querySelector(".container");
+                res = JSON.parse(res);
+                var res = ejs.render(document.getElementById("template").innerHTML , {data :res.data.contents});
+                console.log(res);
+
+                container.innerHTML = res;
+            })
+
+
+
+        </script>
+</body>
+</html>
