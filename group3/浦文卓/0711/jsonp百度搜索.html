@@ -17,15 +17,15 @@
                 window[GLOBLE] = function(res){
                     resolve(res);
                 }
-                url += (/\?/.test(url) ? "&" : "?") + cb_fild + GLOBLE; 
+                url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + GLOBLE; 
                 if(typeof data === "object"){
                        var data_str = "";
                        for(var attr in data){
-                           data_str += (data_str.length > 0 ? "&" : "?") + attr + "=" +data[attr];
+                           data_str += "&" + attr + "=" +data[attr];
                        }
                 }
                 var script = document.createElement("script");
-                script.src += url + "&" + data_str;
+                script.src += url + data_str;
                 script.onload = function(){
                     script.remove();
                 }
@@ -47,7 +47,7 @@
             var ipt = document.getElementById("ipt");
             var content = document.getElementById("content");
             ipt.oninput = function(){
-                data.wb = this.value;
+                data.wd = this.value;
 
                 jsonp(url,data,"cb")
                 .then(function(res){
@@ -56,6 +56,7 @@
                     res.s.forEach(item => {
                         html += `<p>${item}</p>`;
                     });
+                    content.innerHTML = html;
                 })
             }
             

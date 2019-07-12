@@ -68,12 +68,14 @@
                         data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
                     }
                 }
-                if (jsonp) {
-                    let global_cb = "foo";
+                if (jsonp) {//使用jsonp请求数据
+                    let global_cb = "_"+Date.now();
                     url += `${/\?/.test(url) ? "&" : "?"}${cb_name}=${global_cb}`;
                     url += `"&"${data_str}`;
                     window[global_cb] = function (res) {
                         resolve(res);
+                        delete window[global_cb];
+                        global_cb=false;
                     };
                     let script = document.createElement("script");
                     script.src = url;
@@ -82,7 +84,7 @@
                     }
                     document.body.appendChild(script);
                 }
-                else {
+                else {//使用xhr请求数据
                     let xhr = null;
                     if (XMLHttpRequest) {
                         xhr = new XMLHttpRequest();
@@ -103,9 +105,9 @@
                         }
                     }
                 }
-                // setTimeout(function () {//超时失败
-                //     reject("failed to get resources");
-                // }, 3000);
+                setTimeout(function () {//超时失败
+                    reject("failed to get resources");
+                }, 3000);
             });
         }
 
@@ -131,7 +133,7 @@
                 // data: data,
                 // jsonp:true
             });
-            console.log(promise);
+            // console.log(promise);
             promise.then(function (res) {
                 // let html = "";
                 // res.s.forEach(item => html += `<p>${item}</p>`);
