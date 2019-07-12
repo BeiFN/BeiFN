@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function jsonp(url , cb_filed, data){
+				return new Promise(function(resolve,reject){
+					var GLOBLE_CB ="foo";
+					window[GLOBLE_CB] = function(res){
+						resolve(res);
+					}
+					url += /\?/.test(url) ? "&" : "?" ;
+					url = url + cb_filed + "=" + GLOBLE_CB
+					
+					//数据拼接
+					if(typeof data === "object"){
+						var data_str = "";
+						for(var attr in data){
+							data_str.length > 0 ? data_str+=`&${attr}=${data[attr]}` :data_str+=`${attr}=${data[attr]}`;
+						}
+						url += ("&" + data_str);
+					}
+					
+									
+					console.log(url);
+					
+					let script = document.createElement("script");				
+					script.src = url ;
+					script.onload = function(){
+					        this.remove();
+					 }
+					document.body.appendChild(script);
+				})
+			}
+			
+			let url = "http://10.9.10.163/hwj/0711/jsonp.php";
+			let data = {
+				name:"apple",
+				type:"php"
+			}
+			jsonp(url,"cb_name",data)
+			.then(function(res){
+				console.log(res);
+			})
+		</script>
+	</body>
+</html>

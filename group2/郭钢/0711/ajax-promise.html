@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ajax(url, data, type) {
+            return new Promise(
+                function (resolve, reject) {
+                    var xhr = new XMLHttpRequest();
+                    var data_str = "";
+                    for (var attr in data) {
+                        data_str = (data_str.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                    }
+                    type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+
+                    xhr.open(type, url);
+                    type === "POST" ? xhr.setRequestHeader("Conten-type", "application/x-www-form-urlencoded") : "";
+                    xhr.send(type === "POST" ? data_str : null);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            resolve(xhr.responseText);
+                            setTimeout(() => {
+                                reject("超时")
+                            }, 5000)
+                        }
+                    }
+                }
+            )
+        }
+
+
+        ajax("http://localhost/gp12/0710/zcjson.json", {}, "GET")//data为空数组时的检测?
+            .then(function (res) {
+                console.log(res);
+            }, function (error) {
+                console.log(res);
+            })
+    </script>
+
+
+
+</body>
+
+</html>
