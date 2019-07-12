@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <div id="content">
+
+    </div>
+    <script>
+        //jsonp无法选择提交方式是get或post   此处只有script的src用于提交
+        //                  字段       回调函数   数据
+        // function jsonp(url ,cb_fild ,callback ,data){
+        //     //函数名
+        //     var GLOBAL_CB = "yoyo";
+        //     window[GLOBAL_CB] = function(res){
+        //         callback(res);//这是异步
+        //     }
+        //     //判断有没有data
+        //     if(typeof data === "object"){
+        //         var dataStr = "";
+        //         for(var attr in data ){
+        //             dataStr += (dataStr.length > 0 ? "&" : "?")+attr + "=" + data[attr];
+        //         }
+        //         url += (/\?/.test(url) ? "&" : "?" )+dataStr;
+        //     }
+        //     //创建script标签
+        //     var script =document.createElement("script");
+        //     //设置script的src链接地址
+        //     script.src = url;
+        //     //清空，将加载完成的script标签清除
+        //     script.onload = function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+
+        // }    
+        
+        //2.promise版本
+        function jsonp(url ,cb_fild, data){
+            //使用promise内带参的匿名函数
+            return new Promise(function(resolve,reject){
+                var GLOBAL_CB = "YOYO";
+                window[GLOBAL_CB] = function(res){
+                    resolve(res);
+                }
+
+                url += (/\?/.test(url) ? "&" : "?")+cb_fild + "="+ GLOBAL_CB;
+
+                if(typeof data === "object"){
+                    var dataStr = "";
+                    for(var attr in data){
+                        dataStr += (dataStr.length > 0? "&" : "")+attr + "="+data[attr];
+                    }
+                    url+= "&"+dataStr;
+                }
+                var script = document.createElement("script");
+                script.src = url;
+                script.onload = function(){
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+        
+        var url = "https://www.baidu.com/sugrec";
+        var data = {
+            pre:1,
+            p : 3,
+            ie:"utf-8",
+            json:1,
+            prod:"pc",
+            from:"pc_web",
+            sugsid:"1435,21119,18560,20880,29523,29519,29238,28518,29098,28839,29220,",
+            req:2,
+            wd:"",
+            csor:9,
+            _:Date.now()
+
+        }
+        var ipt = document.getElementById("ipt");
+        var content = document.getElementById("content");
+        ipt.oninput = function(){
+            data.wd = this.value;
+            jsonp(url , "cb" ,data)
+            .then(function(res){
+                // console.log(typeof  res);
+                console.log(res);
+                var html = "";
+                res.g.forEach(item => html +=`<p>${item.q}</p>`);
+                console.log(html)
+                content.innerHTML = html;
+            })
+        }
+
+        // jsonp(,"cb")
+        // .then(function(res){
+        //     console.log(res);
+        // })
+       
+    </script>
+</body>
+</html>
