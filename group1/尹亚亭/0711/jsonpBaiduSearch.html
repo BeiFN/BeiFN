@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp_完美封装_百度搜索</title>
+    <style>
+         body,html{
+            height: 100%;
+         }
+         #ifr{
+            height: 100%;
+            width:100%;
+         }
+    </style>
+</head>
+<body>
+    <!-- <iframe src="http://www.baidu.com" id="ifr" frameborder="0"></iframe> -->
+    
+    <input type="text" id="ipt">
+    <div id="content">
+
+    <script>
+
+        // promies版本
+        function jsonp( url , cb_field , data ){
+            return new Promise(function(resolve,reject){
+                 // 全局函数**名字可变**
+                var GLOBAL_CB = "foo";
+                 // 1.全局函数 
+                window[GLOBAL_CB] = function(res){
+                    resolve(res) ;  // !!! 这是异步
+                }
+                // 字段名和回调函数名拼接;
+                url += (/\?/.test(url) ? "&" : "?") + cb_field + "=" + GLOBAL_CB;
+                // 判定是否存在数据;数据拼接;
+                if (typeof data === "object") {
+                    var data_str = "";
+                    for (var attr in data) {
+                       data_str += (data_str.length>0 ? "&" : "") + attr + "=" + data[attr];
+                    }
+                    url += "&" + data_str;
+                }
+                // 2.发送请求 
+                // 创建script标签并给其添加src的url
+                var script = document.createElement("script");
+                script.src = url;
+                // 让发起请求的script标签受js控制
+                script.onload = function(){
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+
+        // https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=&json=1&p=3&sid=26524_1433_21102_29522_29519_29237_28518_29098_28835_29220&req=2&bs=%E4%BD%A0%E5%A5%BD&pbs=%E4%BD%A0%E5%9D%8F&sc=eb&csor=0&pwd=%E4%BD%A0%E5%9D%8F&cb=jQuery11020321985045869994_1562856006255&_=1562856006310
+
+        //  封装函数的使用
+        var url =  "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su"
+
+        var data = {
+            json:1,
+            p:3,
+            sid:26524_1433_21102_29522_29519_29237_28518_29098_28835_29220,
+            req:2,
+            sc:"eb",
+            csor:0,
+            _:Date.now(),
+
+            wd:""
+        }
+        
+        // jsonp(url, "cb", data)
+        // .then(function(res){
+        //     console.log(res);
+        // })
+
+        // 优化：在页面上显示
+        var input = document.getElementById("ipt");
+        var result = document.getElementById("content");
+        
+        input.oninput = function(){
+
+            data.wd = this.value;
+
+            jsonp(url, "cb", data)
+            .then(function(res){
+                //console.log(res);
+                var html = "";
+                res.s.forEach(item =>{html += `<p>${item}</p>`})
+                result.innerHTML = html;
+            })
+        }
+
+    </script>
+
+</body>
+</html>
