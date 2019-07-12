@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//获取ajax对象
+			let xhr = new XMLHttpRequest();
+			//配置ajax对象,三个参数
+			//xhr.open( method [GET | POST ] , url , 是否启用异步[true | false] )
+			xhr.open("GET","http://10.9.10.163/hwj/0710/01ajax.txt");
+			//发送ajax请求; => 利用xhr对象驱动浏览器发送一个请求,请求到了服务器服务器会自动分发数据给你去解析执行。
+			//send(要发送的数据),如果知识请求数据,默认填写null
+			xhr.send(null);
+			//事件监听,监听xhr对象状态的变化
+			//onreadystatechange => 当准备状态发生改变的时候
+			xhr.onreadystatechange = function(){
+				// console.log(xhr.readyState);
+				//xhr.readyState是当前的状态，每种状态对应不同的数字,4代表下载完成
+				if(xhr.readyState === 4){
+					// console.log(xhr.responseText);
+					//responseText是返回的结果
+					document.body.innerHTML = xhr.responseText;
+					//将结果显示在前端页面中,实现前后端交互
+				}
+			}
+		</script>
+	</body>
+</html>
