@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>Jsonp百度搜索下拉搜索</title>
+</head>
+<body>
+          <input type="text" name="" id="ipt">
+          <div id="content"></div>
+          <script>
+          // promise
+          function jsonp(url,cb_filed,data){
+                    return new Promise(function(resolve,reject){         
+                              var Global_cb = "foo";
+                              window[Global_cb] = function(res){
+                                        // 异步
+                                       resolve(res)
+                              }
+                              
+
+                              // 字段名和回调函数拼接
+                              url += (/\?/.test(url)?"&":"?") + cb_filed + "=" +Global_cb;
+
+                              // 判断是否存在数据，数据拼接
+                              if(typeof data==="object"){
+                              var dataStr = "";//空串
+                              for(var attr in data){
+
+                                                  //  key=value
+                                        dataStr+=(dataStr.length>0?"&":"")+attr + "="+ data[attr];
+                                        console.log(dataStr);
+                              }
+                              url +="&" + dataStr;
+                    }
+
+                              var script = document.createElement("script");
+                              script.src = url;
+                              script.onload = function(){
+                                        this.remove();
+                              }
+                              document.body.appendChild(script);
+                              
+          })    
+          }
+          // https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=lu&json=1&p=3&sid=1450_21117_29522_29519_29237_28518_29099_28834_29221_26350&req=2&bs=%E4%BD%A0%E5%A5%BD&csor=2&cb=jQuery110209596027103391171_1562837984804&_=1562837984805
+          var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+          var data = {
+                     // key：yes
+                    json:1,
+                    p:3,
+                    sid:1450_21117_29522_29519_29237_28518_29099_28834_29221_26350,
+                    req:2,
+                    csor:2,
+                    _:Date.now(),
+                    wd : ""
+                   
+          }
+
+          var ipt = document.getElementById("ipt");
+          var content = document.getElementById("content");
+
+
+          ipt.oninput = function(){
+                    // console.log(this.value);
+                    data.wd = this.value;
+                    jsonp(url,"cb",data)
+                    .then(function(res){
+                    // console.log(res);
+                    var html = "";
+                    res.s.forEach(item => {html +=`<p>${item}</p>`;
+                    content.innerHTML = html;
+                              
+                    
+          })
+})
+          }
+          </script>
+</body>
+</html>

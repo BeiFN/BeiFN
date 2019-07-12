@@ -106,21 +106,21 @@
 
 
             //AJAX 二次封装使用观察者模式
-
-                // function AJAX (url,
-                //         {
-                //         type ="GET",
-                //         data = {},
-                //         contentType = "application/x-www-form-urlencoded"
-                //         }={}
+                // function AJAX(url,
+                //     {
+                        // type ="GET",
+                        // data = {},
+                        // contentType = "application/x-www-form-urlencoded"
+                //     }={}
+                
                 // ){
                 //     let list = [];
-                //     let xhr = new XMLHttpRequest();
                 //     let data_str = "";
                 //     for(let attr in data){
                 //         data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
                 //     }
-                //     xhr.open(type,type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : "");
+                //     let xhr = new XMLHttpRequest();
+                //     xhr.open(type,url + (type === "GET" ? (/\?/.test(url) ? "$" : "?") + data_str : ""));
                 //     type === "POST" ? xhr.setRequestHeader("Content-type",contentType) : "";
                 //     xhr.send(type === "POST" ? data_str : null);
                 //     xhr.onreadystatechange = function(){
@@ -135,7 +135,6 @@
                 //             list = list.concat(Array.from(arguments));
                 //             return list;
                 //         }
-                    
                 //     }
                 // }
                 // let url = "http://localhost/0710/ajax.txt";
@@ -144,45 +143,39 @@
                 //         username: "hello world",
                 //         passworld: "123456"
                 //     }
-                // }).add( function(res){
-                //             document.querySelector("body").innerHTML= res;
-                //         },
-                //         function(res){
-                //             console.log(res)
-                //         });
+                // }).add(function(res){
+                //     console.log(res);
+                // },function(res){
+                //     document.documentElement.querySelector("body").innerHTML = res;
+                // })
 
-
-
-                function AJAX(url,
-                    {
-                        type ="GET",
-                        data = {},
-                        contentType = "application/x-www-form-urlencoded"
-                    }={}
-                
-                ){
-                    let list = [];
-                    let data_str = "";
-                    for(let attr in data){
-                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
-                    }
-                    let xhr = new XMLHttpRequest();
-                    xhr.open(type,url + (type === "GET" ? (/\?/.test(url) ? "$" : "?") + data_str : ""));
-                    type === "POST" ? xhr.setRequestHeader("Content-type",contentType) : "";
-                    xhr.send(type === "POST" ? data_str : null);
-                    xhr.onreadystatechange = function(){
-                        if(xhr.readyState === 4 && xhr.status === 200){
-                            for(let i = 0 ; i < list.length ; i ++){
-                                
-                            }
-                        }
-                    }
-                    return add=function(){
-                        list = list.concat(Array.from(arguments));
-                        return list;
-                    }
-                }
-
+            //AJAX promise 封装
+            // function AJAX(url,data,type){
+            //     return new Promise(function(resolve,reject){
+            //         let xhr = new XMLHttpRequest();
+            //         let dataStr = "";
+            //         data ? data : {};
+            //         for(let attr in data){
+            //             dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" +data[attr];
+            //         }
+            //         type === "GET" ? url += (/\?/.test(url)? "&" : "?")+ dataStr : "";
+            //         xhr.open(type ? type : "GET",url)
+            //         type === "POST" ? xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded"):"";
+            //         xhr.send(type==="POST" ? dataStr :null);
+            //         xhr.onreadystatechange = function(){
+            //             if(xhr.readyState === 4 && xhr.status === 200){
+            //                 resolve(xhr.responseText);
+            //             }
+            //         }
+            //         setTimeout(function(){
+            //             reject(xhr,"timeout");
+            //         },8000)
+            //     })
+            // }
+            // let url = "http://localhost/0710/ajax.txt";
+            // AJAX(url).then(function(res){
+            //     console.log(res);
+            // })
     </script>
 </body>
 </html>
