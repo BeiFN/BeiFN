@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //配置ajax对象
+        xhr.open("GET","http://localhost/day22/ajaxTest1.txt")
+        //发送ajax请求
+        xhr.send(null)
+        //事件监听 监听xhr准备状态发生改变的时候
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                console.log(xhr.responseText)
+            }
+        }
+
+    </script>
+</body>
+</html>
