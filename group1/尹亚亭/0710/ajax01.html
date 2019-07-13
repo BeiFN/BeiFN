@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax基本使用</title>
+</head>
+<body>
+    <script>
+    // 1.new
+    var xhr = new XMLHttpRequest();
+    // 2.open
+    xhr.open("GET","http://localhost/yyt/0710/ajax01.txt");
+    // 3.send
+    xhr.send(null);
+    // 4.onreadystatechange
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4) {
+            document.body.innerHTML = xhr.responseText;
+        }
+    }
+    </script>
+</body>
+</html>

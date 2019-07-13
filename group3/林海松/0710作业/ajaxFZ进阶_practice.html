@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax封装完全版</title>
+</head>
+<body>
+    <script>
+        //考虑post方式的情况
+        function ajax( url , 
+            {
+                callback    = (res)=>{ } ,
+                type        = "GET",
+                data        = { },  //data为所要发送的数据
+                contentType = "application/x-www-form-urlencoded"
+            } = { }           
+        ){
+            var data_str = "";
+            for(var attr in data){
+                //判断是否为第一次拼接
+                data_str += (data_str.length > 0 ? "&" : "") + `${attr}=${data[attr]}`;
+            }
+            console.log(data_str);
+            var xhr = new XMLHttpRequest();
+            //为GET的情况下，url加上? + data_str
+            xhr.open(type , url +(type === "GET" ?(/\?/.test(url) ? "&" : "?")+ data_str : "") );//加问号前再判断原url中是否有问号
+            type === "post" ? xhr.setRequestHeader("content-type",contentType ? contentType : ""):"";
+            xhr.send(type === "POST" ? data : null);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    callback(xhr.responseText);
+                }
+            }
+        }    
+        ajax("http://localhost/0710/02json.json",{
+            callback : function(res){
+                console.log(res);
+            },
+            type : "POST" ,
+            data : {
+                username : "hello world",
+                password : "123456"
+            }
+        })
+        // GET 和 POST 的发送方式不一样,发送给后台，url上的不同如下：
+        // POST => " username=hello world&passworld=12345";
+        // GET  => "?username=hello world&passworld=12345";
+    </script>
+</body>
+</html>
