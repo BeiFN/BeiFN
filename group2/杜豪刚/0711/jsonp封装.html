@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp封装</title>
+</head>
+<body>
+    <script>
+            //jsonp
+            // function demo(res){
+            //     console.log(res);
+            // } 
+            // document.onclick = function(){
+            //     let script = document.createElement("script");
+            //         //src 后面？callback=可以传任何函数
+            //         script.src = "http://localhost/0711/demo.php?callback=demo";
+            //         script.onload = function(){
+            //             // 当script加载完毕时，删除script
+            //             this.remove();
+            //         }
+            //     document.body.appendChild(script);
+            // }
+            // jsonp的简单封装
+            // function jsonp(url,cb_fild,callback){
+            //     let TEMP= "foo";
+            //     window[TEMP] = function(res){
+            //         callback(res)
+            //     }
+            //     let script = document.createElement("script");
+            //     // 判断url地址中是否有？号
+            //         url += /\?/.test(url) ? "&" : "?";
+            //         script.src = url + cb_fild + "=" + TEMP;
+            //         script.onload = function(){
+            //             this.remove();
+            //         }
+            //     document.body.appendChild(script);
+            // }
+
+            // jsonp("http://localhost/0711/demo.php","callback",function(res){
+            //     console.log(res);
+            // });
+
+            // jsonp封装
+            // function jsonp(url,cb_fild,callback,data){
+            //     let TEMP= "foo";
+            //     window[TEMP] = function(res){
+            //         callback(res)
+            //     }
+            //     // https://www.baidu.com/sugrec?pre=1&p=3
+            //     if(typeof data === "object"){
+            //         let dataStr = "";
+            //         for(let attr in data){
+            //             dataStr +=(dataStr.length>0? "&" : "") + attr + "=" +data[attr];
+            //         }
+            //         url += (/\?/.test(url)? "&":"?") + dataStr;
+            //     }
+            //     let script = document.createElement("script");
+            //         script.src = url;
+            //         script.onload = function(){
+            //             this.remove();
+            //         }
+            //     document.body.appendChild(script);
+            // }
+            // let url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=26522,1429,21120,29522,29518,29237,28519,29098,28834,29221&wd=lol&req=2&bs=11&pbs=hello&csor=3&pwd=lo&cb=jQuery1102017725804049139948_1562824612594&_=1562824612623";
+            // jsonp(url,"cb").then(function(res){
+            //     conlose.log(res);
+            // });
+            // function foo(){
+            //     window.fun = function(){
+            //         console.log(1)
+            //     }
+            // }
+            // foo()
+            // fun();
+            function jsonp(url,cb_fild,data){
+                return new Promise(function(resolve,reject){
+                    let TEMP= "foo";
+                    window[TEMP] = function(res){
+                        resolve(res)
+                    }
+
+                    url += (/\?/.test(url)? "&":"?")+cb_fild+"="+TEMP;
+                    // https://www.baidu.com/sugrec?pre=1&p=3
+                    if(typeof data === "object"){
+                        let dataStr = "";
+                        for(let attr in data){
+                            dataStr +=(dataStr.length>0? "&" : "") + attr + "=" +data[attr];
+                        }
+                        url += "&" + dataStr;
+                    }
+                    let script = document.createElement("script");
+                        script.src = url;
+                        script.onload = function(){
+                            this.remove();
+                        }
+                    document.body.appendChild(script);
+                    })
+            }
+            let url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=26522,1429,21120,29522,29518,29237,28519,29098,28834,29221&wd=lol&req=2&bs=11&pbs=hello&csor=3&pwd=lo&cb=jQuery1102017725804049139948_1562824612594&_=1562824612623";
+            jsonp(url,"cb").then(function(res){
+                console.log(res);
+            });
+    </script>
+    <script src="http://localhost/0711/demo.php"></script>
+</body>
+</html>
