@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax工具封装的使用 与 CORES解决跨域问题</title>
+</head>
+<body>
+    <script src="../libs/utils.js"></script>
+    <script>
+        let {ajax} = Utils;
+
+        
+        //  ajax的封装的基本使用
+        let url_local = "http://localhost/yyt/0712/useAjax.txt" ;
+            ajax( url_local )
+            .then( res => {
+                  console.log(res);
+        })
+
+
+        //  ajax的封装的json格式的基本使用
+        let url_local_json = "http://localhost/yyt/0712/useAjax.doc" ;
+            ajax( url_local_json , { dataType : "json"} )
+            .then( res => {
+                  console.log(res);
+        })
+
+
+        var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        var data = {
+            json:1,
+            p:3,
+            sid:26524_1433_21102_29522_29519_29237_28518_29098_28835_29220,
+            req:2,
+            sc:"eb",
+            csor:0,
+            _:Date.now(),
+
+            wd:"hello"
+        }
+        
+       // ajax的封装的跨域的jsonp的使用
+        ajax(url,
+            {
+             type : "GET",
+             data : data,
+             callback : "cb" ,
+             dataType : "jsonp"
+            })
+        .then( res => {
+            console.log(res);
+        });
+
+        // CORES 解决浏览器的同源策略
+        var url_cores = "http://localhost/yyt/0712/useAjax.php"
+        ajax(url_cores)
+        .then( res => {
+            console.log(res);
+        })
+        
+    </script>
+</body>
+</html>
