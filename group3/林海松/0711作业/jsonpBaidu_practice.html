@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <div id="cintainer">
+
+    </div>
+    <script>
+        // 百度下拉搜索
+        function jsonp(url , cb_filed , data){
+            return new Promise(function(resolve , reject){
+                var GOALBAL = "foo";
+                window[GOALBAL] = function(res){//请求、发送、回应都是异步
+                    resolve(res);
+                }
+                url += ( /\?/.test(url) ? "&" : "?" ) + cb_filed + "=" + GOALBAL;
+                if(typeof data === "object"){
+                    var data_str = "";
+                    for(var attr in data){
+                        data_str += (data_str.length > 0 ? "&" : "?") + attr + "=" + data[attr];
+                    }
+                    url += "&" + data_str ;
+                }
+                var script = document.createElement("script");
+                script.src = url;
+                script.onload = function(){
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+        // jsonp("https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1448,21119,29522,29520,29238,28519,29099,28839,29221&wd=香香&req=2&bs=%E4%BD%A0%E5%A5%BD&pbs=%E4%BD%A0%E5%A5%BD&csor=5&pwd=niha&_=1562890291666","cb",{
+        //     wd : "香香"
+        // })
+        // .then(function(res){
+        //     console.log(res);
+        // })
+        var url  ="https://www.baidu.com/sugrec";
+        var data = {
+            json : 1 ,
+            p    : 3 ,
+            sid  : "1448_21119_29522_29520_29238_28519_29099_28839_29221" ,
+            req  : 2 ,
+            sc   : 'eb' ,
+            csor : 0 ,
+            _    : Date.now() ,
+            wb   : ""
+        }
+        var ipt = document.getElementById("ipt");
+        var container = document.getElementById("container");
+        ipt.oninput = function(){
+            data.wb = this.vaule;
+            jsonp(url , "cb" , data)
+            .then(function(res){
+                var html ="";
+                res.s.forEach(item => html += `<p>${item}</p>`);//数组遍历
+                container.innerHTML = html ;
+            })
+
+        }
+    </script>
+</body>
+</html>
