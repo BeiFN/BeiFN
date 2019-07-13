@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    function jsonp(url,cb_file,callback){
+
+        // 1.创建全局函数
+        var GLOGB = "foo"
+        window[GLOGB] = function(res){
+          callback(res)
+        }
+
+        // 2.创建一个script标签
+        var script = document.createElement('script')
+        url += /\?/.test(url) ? "&" : "?"
+        script.src = url +  cb_file + "=" + GLOGB
+        script.onload = function(){
+          this.remove()
+        }
+        document.body.appendChild(script)
+
+      }
+
+
+    jsonp("http://localhost/0711/01jsonp.php","callbakc",function(res){
+        alert(res)
+    })
+    
+  </script>
+</body>
+</html>
