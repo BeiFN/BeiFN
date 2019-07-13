@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 100px;
+        height: 200px;
+        background: pink;
+    }
+    </style>
+    <link rel="stylesheet" href="font_qjosqdy07lc/iconfont.css">
+</head>
+<body>
+
+    <!-- <div>
+            <span class="iconfont">&#xe60d</span>北京
+    </div> -->
+    <script>
+//    console.log("abcdef".includes("c"))
+
+// var col = "#"
+// for(var i =0 ;i <3 ;i++)
+// {
+//     col += Math.floor(Math.random()*256).toString(16).padStart(2,"0");
+// }
+// console.log(col)
+
+let data=[
+{id:1001,icon:"img/1.png",name:"餐饮0",num:1,price:10},
+{id:1002,icon:"img/2.png",name:"餐饮1",num:1,price:20},
+{id:1003,icon:"img/3.png",name:"餐饮2",num:1,price:30},
+{id:1004,icon:"img/4.png",name:"餐饮3",num:1,price:40},
+{id:1005,icon:"img/5.png",name:"餐饮4",num:1,price:50},
+{id:1006,icon:"img/6.png",name:"餐饮5",num:1,price:60},
+{id:1007,icon:"img/7.png",name:"餐饮6",num:1,price:70},
+{id:1008,icon:"img/8.png",name:"餐饮7",num:1,price:80},
+{id:1009,icon:"img/9.png",name:"餐饮8",num:1,price:90},
+{id:1010,icon:"img/10.png",name:"餐饮9",num:1,price:100}
+];
+// let trs = ``
+// for(let i = 0 ; i<data.length ;i++)
+// {
+//     let tds = ``;
+//   for(let attr in data[i])
+//   {
+//        tds += `<td>${data[i][attr]}</td>`;//给每个td放入内容
+
+//   }
+//   trs += `<tr>${tds}</tr>` //给每个tr放入内容
+// }
+
+// let table = `<table>${trs}</table>`  //给table放入trs
+
+// document.body.innerHTML = table;
+
+// let trs =``;
+// for(let i = 0 ;i<data.length ;i++)
+// {
+//     let tds=``;
+//     for(let attr in data[i])
+//     {
+//         tds += `<td>${data[i][attr]}</td>`
+//     }
+//     trs +=`<tr>${tds}</tr>`
+// }  
+// let table = `<table>${trs}</table>` 
+
+// document.body.innerHTML = table;
+
+
+// let a = Symbol("a")
+// let b = Symbol("a");
+// console.log(a==b)  //false
+
+// console.log(a.toString())
+// let arr =[1,2,3,4,5,1,2,3];
+// let a = new Set([1,2,3,4,5,12,2]);
+// console.log(a)
+// for(let prop of a)
+// {
+//     console.log(prop)
+// }
+let  m ={
+    a : 1,
+    b : 2,
+    c : 3
+}
+ m = new Map(); //唯一方法
+m.set ("a",3);
+m.set("b",3);
+console.log(m)
+for(let prop of m.entries())
+{
+    console.log(prop)
+}
+m.forEach( (t,index,arr) => console.log(t,index,arr));
+</script>
+</body>
+</html>

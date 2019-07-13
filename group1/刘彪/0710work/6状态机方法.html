@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //状态机 =>告知你一个消息,你对消息作出相应的反馈;
+
+        var promise = new Promise(function(resolve,reject){
+            resolve();
+            reject();
+        })
+        console.log(promise);
+
+        // // ajax超时设置;
+        // var promise = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve("hello i'm resolves");
+        //     },Math.random()*5000);
+        //     setTimeout(() => {
+        //         reject("i'm rejected timeout");
+        //     }, 3000);
+        // })
+        
+        // promise.then(function(res){
+        //     console.log(res)
+        // },function(error){
+        //     console.log(error);
+        // })
+
+
+        //all会等到
+        var pro1 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro1");
+                  } ,Math.random() * 5000)
+            } )
+            var pro2 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro2");
+                  } ,Math.random() * 5000)
+            } )
+            var pro3 = new Promise( function(resolve , reject){
+                  setTimeout( function(){
+                        resolve("i'm pro3");
+                  } ,Math.random() * 5000)
+
+                //    reject();
+            } )
+
+            // Promise.all( [pro1 , pro2 , pro3] )
+            // .then(function(){
+            //     //等到所有的promise执行完才打印;
+            //       console.log(arguments);
+            // },function(){
+            //     //有一个promise失败,就会进入此函数
+            //       console.log(2);
+            // })
+
+
+            Promise.race( [pro1 , pro2 , pro3] )
+            .then(function(){
+                  console.log(arguments);
+            },function(){
+                  console.log(2);
+            })
+    </script>
+</body>
+</html>

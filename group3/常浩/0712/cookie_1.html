@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            options = {
+                expires,
+                path,
+                domain,
+                secure
+            }
+        */
+        function setcookie(name,value,options){
+            let d;
+            options = typeof options === "object" ? options : {};
+            return (document.cookie = [
+                name + "=" + value,
+                options.expires ? ";expires=" +  ((d = new Date()).setDate(d.getDate()+options.expires)&&d) : "",
+                options.path    ? ";path=" + options.path : "",
+                options.domain    ? ";domain=" + options.domain : "",
+                options.secure    ? ";secure=" + options.secure : ""
+            ].join(""));
+        }    
+        // setcookie("ch","ch",{
+        //     expires:10
+        // })
+        // for(var i = 0 ; i < 10 ; i ++){
+        //     setcookie("hello"+i,i);
+        // }
+        //删除cookie
+        // function removeCookie(name,path){
+            
+        //     setcookie(name,"",{
+        //         path : (path ? path : ""),
+        //         expires : -1
+        //     })
+        // }
+        // removeCookie("hello");
+        
+    </script>
+</body>
+</html>

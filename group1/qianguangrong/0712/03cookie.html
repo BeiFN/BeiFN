@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //cookie  expires 时效性设置 , path 访问路径设置 , domain 访问域设置;
+    // 如何区分两条cookie : 
+    //   1. cookie 的 name;
+    //   2. cookie 的 path;
+
+
+        //1.设置cookie
+        function setCookie(name , value ,options){
+            // typeof在检测到null时会显示为object
+            typeof options === "object" ? "" : options = {};
+            // let d = new Date().setDate(d.getDate() + options.expires);//这样错误：初始化前无法获得d值
+            // let d = new Date();
+            return(document.cookie = [
+                name + "=" + value,
+                options.expires ? ";expires =" + "new Date().setDate(d.getDate() + options.expires)" : "" ,
+                options.path ? ";path = " + options.path : "" ,
+                options.domain ? ";domain =" + options.domain : "",
+                options.secure ? ";secure = " + options.secure : ""
+            ].join(""));//把数组中的所有元素放入一个字符串。
+        }
+    //    setCookie( "username" ,"hello",{
+    //               expires : 10,
+    //               path : "/"
+    //         })
+
+        // //2.获取cookie
+        // function getCookie(name){
+        //     let ck = document.cookie;
+        //     let ckA = ck.split("; ");
+        //     for(let i = 0 ,item ;item = i ;i++){
+        //         let itemA = item.split("=")
+        //        if(itemA[0] === name){
+        //             return itemA[1];
+        //        } 
+        //     }
+        // }
+        // //验证  耍耍
+        // for(var i = 0 ; i < 10 ; i++){
+        //           setCookie( "hello" + i , i);
+        //     }
+        // console.log(getCookie("hello3"));//undefined
+        
+       
+       
+       
+       
+       
+        //3. 删除cookie
+        function removeCookie(name , path){
+            setCookie(name ,"" ,{
+                path : path ? path :"",
+                expires : -1
+            })
+        }
+        removeCookie("hello1");
+        removeCookie("hello2");
+
+
+
+
+    </script>
+</body>
+</html>

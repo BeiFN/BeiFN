@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <div id="content">
+
+    </div>
+    <script>
+        //常规版;
+        // function jsonp(url,cb_fild ,callback,data){
+        //     var GLOBAL_CB = "foo";
+        //     window[GLOBAL_CB] = function(res){
+        //         //这是异步
+        //         callback(res);
+        //     }
+
+        //     //判断是否传入数据;
+        //     url += (/\?/.test(url) ? "&" : "?")+ cb_fild + "=" + GLOBAL_CB; 
+        //     //判断data是否传入
+        //     if(typeof data === "object"){
+        //         var dataStr = "";
+        //         for(var attr in data){
+        //             dataStr +=(dataStr.length > 0 ? "&" :"")
+        //              +attr + "=" +data[attr];
+        //         }
+        //        url += "&" + dataStr;
+        //     }
+
+        //     //请求发送;
+        //     var script = document.createElement("script");
+        //     script.src = url;
+
+        //     script.onload = function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }   
+        // var url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1462,21089,29074,29523,29518,29237,28519,29098,28838,29220,28701&req=2&bs=%E4%BD%A0%E5%A5%BD&pbs=%E4%BD%A0%E5%A5%BD&csor=2&_=1562830158527";
+
+        // jsonp(url,"cb",function(res){ console.log(res) },{ wd:"二哈"});
+
+
+
+        //promise版本
+        function jsonp(url, cb_fild, data) {
+
+            return new Promise(function (resolve, reject) {
+
+
+                var GLOBAL_CB = "foo";
+                window[GLOBAL_CB] = function (res) {
+                    //这是异步
+                    resolve(res);
+                }
+                //字段名和回调函数名拼接;
+                url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + GLOBAL_CB;
+                //判断data是否传入;数据拼接
+                if (typeof data === "object") {
+                    var dataStr = "";
+                    for (var attr in data) {
+                        dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                    }
+                    url += "&" + dataStr;
+                }
+
+                //请求发送;
+                var script = document.createElement("script");
+                script.src = url;
+
+                script.onload = function () {
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+        var url = "https://www.baidu.com/sugrec";
+
+        var data = {
+            pre: 1,
+            p: 3,
+            ie: "utf-8",
+            json: 1,
+            prod: "pc",
+            from: "pc_web",
+            sugsid: "1462,21089,29074,29523,29518,29237,28519,29098,28838,29220,28701",
+            req: 2,
+            bs: "%E4%BD%A0%E5%A5%BD",
+            pbs: "%E4%BD%A0%E5%A5%BD",
+            csor: 2,
+            _: Date.now(),
+            wd: ""
+        }
+
+        var ipt = document.getElementById("ipt");
+        var content = document.getElementById("content");
+
+        ipt.oninput = function () {
+            if (this.value !=="") {
+                data.wd = this.value;
+                jsonp(url, "cb", data)
+                    .then(function (res) {
+                        var html = "";
+                        //    res.s.forEach(element =>hmtl+=`<p>${element}</p>`);
+                        //    content.innerHTML = hmtl;
+                        res.g.forEach(element => html += `<p>${element.q}</p>`);
+                        content.innerHTML = html;
+                        console.log(res);
+                    })
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
