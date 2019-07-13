@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(url){
+            //订阅者名单
+            var list=[];
+            var xhr=new XMLHttpRequest();
+            xhr.open("GET",url);
+            xhr.send(null);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    for(var i=0;i<list.length;i++){
+                        list[i](xhr.responseText);
+                    }
+                }
+            }
+            //add 是订阅器;
+            return {
+                add:function(){
+                    list=list.concat(Array.from(arguments));
+                    return list;
+                }
+            }
+        }
+        //可以add好几个
+        var url="http://localhost/GP12/0710/02zcooljson.json";
+        console.log(ajax(url).add(function(res){
+            console.log(res);  //打印json数据
+            // console.log("函数1");  //打印函数1
+        },function(){
+            console.log("函数2");  //打印函数2
+        }))
+        
+        
+    </script>
+    
+</body>
+</html>
