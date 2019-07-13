@@ -34,51 +34,7 @@
             login.disabled = "disabled";
             login.innerHTML = "loading...";
             //调用ajax
-            ajax({
-                url: url,
-                data: data,
-                type: "POST",
-                data_type: "json"
-            }).then(res => {
-                console.log(res);
-                //根据返回的状态码给出相应的提示
-                switch (res.stateCode) {
-                    case 0:
-                        alert("用户名或密码为空");
-                        location.reload();
-                        break;
-                    case 1:
-                        alert("登录成功");
-                        location.reload();
-                        break;
-                    case 2:
-                        alert("数据库链接失败");
-                        location.reload();
-                        break;
-                    case 3:
-                        alert("用户名不存在");
-                        location.reload();
-                        break;
-                    case 4:
-                        alert("密码错误");
-                        location.reload();
-                        break;
-                    case 5:
-                        alert("注册用户名重名");
-                        location.reload();
-                        break;
-                    case 6:
-                        alert("注册数据插入数据库失败");
-                        location.reload();
-                        break;
-                    case 7:
-                        alert("注册成功");
-                        location.reload();
-                        break;
-                }
-                login.removeAttribute("disabled");
-                login.innerHTML = "登录";
-            });
+            callAJAX(url,data,login);
         });
         register.addEventListener("click", evt => {
             alert(2);
@@ -92,6 +48,30 @@
             register.disabled = "disabled";
             register.innerHTML = "loading...";
             //调用ajax
+            callAJAX(url,data,register);
+        });
+        window.onload = () => {
+            ajax({
+                url: url,
+                data_type: "json"
+            }).then(res => {
+                // console.log(res);
+                if (res.state) {
+                    return false;
+                }
+                $("form").style.display = "none";
+                document.body.innerHTML += "用户名为:" + res.username + "</br><button id='exit'>退出登陆</button>";
+                let logout = $("#exit");
+                logout.addEventListener("click", evt => {//点击退出登录按钮退出登录
+                    removeCookie("token");//删除cookie
+                    $("form").style.display = "block";
+                    logout.style.display = "none";
+                    location.reload();
+                    alert("退出登录成功");
+                });
+            });
+        };
+        function callAJAX(url, data, dom) {
             ajax({
                 url: url,
                 data: data,
@@ -134,31 +114,10 @@
                         location.reload();
                         break;
                 }
-                register.removeAttribute("disabled");
-                register.innerHTML = "注册";
+                dom.removeAttribute("disabled");
+                dom.id==="login"?dom.innerHTML="登录":dom.innerHTML = "注册";
             });
-        });
-        window.onload = () => {
-            ajax({
-                url: url,
-                data_type: "json"
-            }).then(res => {
-                // console.log(res);
-                if (res.state) {
-                    return false;
-                }
-                $("form").style.display = "none";
-                document.body.innerHTML += "用户名为:" + res.username + "</br><button id='exit'>退出登陆</button>";
-                let logout = $("#exit");
-                logout.addEventListener("click", evt => {
-                    removeCookie("token");
-                    $("form").style.display = "block";
-                    logout.style.display="none";
-                    location.reload();
-                    alert("退出登录成功");
-                });
-            });
-        };
+        }
     </script>
 </body>
 
