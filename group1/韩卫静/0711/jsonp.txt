@@ -1,0 +1,1 @@
+foo("hello i am a txt");

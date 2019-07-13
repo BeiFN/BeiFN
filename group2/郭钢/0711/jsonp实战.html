@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function hhhh(res) {
+        //     console.log(res);
+        // }
+
+        // document.onclick = function () {
+        //     var script = document.createElement("script");
+        //     script.src = "http://localhost/gp12/0711/jsonp.php?cbname=hhhh";
+        //     script.onload=function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }
+
+
+
+
+        function jsonp(url, cbname, callback) {
+            var hhh = "foo"
+            window[hhh] = function (res) {
+                callback(res);
+            }
+            // document.onclick = function(){
+            var script = document.createElement("script");
+            url += (/\?/.test(url) ? "&" : "?");
+            script.src = url + cbname + "=" + hhh;
+            script.onload = function () {
+                this.remove();
+            }
+            document.body.appendChild(script);
+            // }
+
+
+        }
+        jsonp("http://localhost/gp12/0711/jsonp.php", "hhh", function (res) {
+            console.log(res);
+        });
+    </script>
+</body>
+
+</html>

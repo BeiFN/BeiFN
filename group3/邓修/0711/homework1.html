@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function jsonp(url,cb_field,callback,data){
+            let global_cb="foo";
+            window[global_cb]=function(res){//全局函数
+                callback(res);
+            }
+            let script=document.createElement("script");
+            url+=`${/\?/.test(url)?"&":"?"}${cb_field}=${global_cb}`;
+            if(typeof data === "object"){//如果传入了数据,就将数据拼接在url上
+                let data_str="";
+                for(let attr in data){
+                    data_str+=`${data_str.length>0?"&":""}${attr}=${data[attr]}`;
+                }
+                url+=`&${data_str}`;
+            }
+            //发送请求
+            script.src=url;
+            script.onload=function(){
+                this.remove();
+            }
+            // console.log(script);
+            document.body.appendChild(script);
+        }
+        jsonp("http://localhost/homework/coding_homework_exercise/group3/邓修/0711/homework1.php","callback",function(res){
+            console.log(res);
+        },{
+            name:"dengxiu",
+            class:"gp12"
+        });
+    </script>
+</body>
+</html>

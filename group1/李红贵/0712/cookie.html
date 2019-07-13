@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+</head>
+<body>
+    <script>
+        // cookie  免登陆
+        // 免登陆
+        // http  无状态可靠协议，可靠，传输接收结果一直，http不记录，不知道来的谁
+        // http记录来源  通过 自报家门的模式去记录请求来源
+        // http状态解决方案
+        // 会话跟踪技术，给每一个http请求以会话为单位添加一个身份牌，纯文本。
+        // 身份牌，纯文本。
+
+        // cookie信息来源多平台，浏览器端 和 服务器端 都可以。
+        // cookie必须是纯字符串：cookie会被放置于http的请求头之中，编码模式是倾向于URI编码的。
+        // cookie存储数据最大值4kb，最多50条
+        // cookie有安全性限制，可访问的，可作用的区间path限制，遵循同源策略
+        // cookie可以做不同域数据交互， domain 跨域解决方案。
+        // 时效性
+
+        // document.cookie;  必须在服务器上运行，得有http协议才能运行
+
+        document.cookie = "cookiehello";
+        
+
+        // 会话cookie 当前会话不关闭，cookie一直存在，会话一旦关闭，cookie就删除，这样cookie叫会话cookie
+
+        // cookie字符串规则
+        // 单次document.cookie 只能设置一条cookie
+
+        // keyvalue设置
+        // 1.key = value
+        // 时效性设置
+        // expires
+        var d = new Date();
+        d.setDate(22);
+        // 22当前日期+保质期 
+        d.setDate(d.getDate()+10);
+        document.cookie = "username=xxx;expires="+d;
+
+        //2. cookie 删除
+        var d  = new Date();
+        d.setDate(d.getDate()+10);
+        document.cookie = "username=xxx;expires="+d;
+        document.cookie = "username=xxx";//覆盖
+        // 将日期设为前一天，也可清除cookie
+
+        // var d  = new Date();
+        // d.setDate(d.getDate()-1);
+        // document.cookie = "username=xxx;expires="+d;
+
+        // 3.cookie 访问路径，家丑不可外扬，
+
+        // 访问域设置domain 
+        // domain 和path 一致，那么cookie是共享的，任何页面都可以访问；子集可访问
+        // cookie存在浏览器中，页面存在浏览器上，所以可以访问
+
+        // 区分cookie不同的是name和path，同名会覆盖，path可设置，path拼接路径
+
+
+    </script>
+</body>
+</html>
