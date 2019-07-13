@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>状态机封装ajax</title>
+</head>
+<body>
+    <script>
+        //再来一遍ajax封装
+        //这貌似是第五遍还是第六编了 加油！
+        //居然写成了typeof type 还是不行
+        //总结在下面
+
+        // function ajax(
+        //             url,
+        //             {
+        //                 type = "GET",
+        //                 data = {}
+        //             } = {}){
+        //     let datastr = "";
+
+        //     for( let attr in data){
+        //         datastr += `${datastr.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+        //     }
+        //     console.log(datastr);
+        //     let xml = new XMLHttpRequest();
+
+        //      type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + datastr : "";
+        //     console.log(url)
+        //     xml.open(type,url);
+        //      type === "POST" ? xml.setRequestHeader("Content-type","application/x-www-form-urlencoded") : "";
+        //     xml.send(type === "POST" ? datastr : null);
+
+        //     xml.onreadystatechange = function(){
+        //         if(xml.readyState === 4 && xml.status === 200){
+        //             console.log(xml.responseText);
+        //         }
+        //     }
+
+        // }    
+
+        // ajax("http://localhost/js/0710/02json.json",{
+        //     type : "POST",
+        //     data :{
+        //         "username" : "daweige",
+        //         "password" : "123456"
+        //     }
+        // })
+
+        //下面开始promise封装     
+        //总结一下
+        //封装成为ajax().then()的形式其实就是在ajax函数内return一个promise对象
+        //唯一的难点就是要想到吧ajax的判断语句放入promise对象内,需要执行的语句通过reslove传参
+        //然后再then内以异步的形式接受参数在进行执行  
+        
+        //reslove,reject如果真想传递多个参数，需要用到数组进行传递
+        //不能使用对象传递，会报错
+        function ajax(
+                    url,
+                    {
+                        type = "GET",
+                        data = {}
+                    } = {}){          
+            return new Promise(function(reslove,reject){
+                let datastr = "";
+
+                for( let attr in data){
+                    datastr += `${datastr.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                }
+                // console.log(datastr);
+                let xml = new XMLHttpRequest();
+
+                type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + datastr : "";
+            
+                xml.open(type,url);
+                type === "POST" ? xml.setRequestHeader("Content-type","application/x-www-form-urlencoded") : "";
+                xml.send(type === "POST" ? datastr : null);
+
+                xml.onreadystatechange = function(){
+                    if(xml.readyState === 4 && xml.status === 200){
+                        // console.log(xml.responseText);
+                        reslove(xml.responseText);
+                    }
+                }
+
+                //在设置个超时
+                setTimeout(()=>{
+                    reject([xml,"error is timeout"]);
+                },0)
+            });
+        }    
+
+        ajax("http://localhost/js/0710/02json.json",{
+            type : "POST",
+            data :{
+                "username" : "daweige",
+                "password" : "123456"
+            }
+        })
+        .then(function(res){
+            console.log(res);
+        },function([rej,msg]){
+            console.log(rej,msg);
+        })
+
+        
+    </script>
+</body>
+</html>

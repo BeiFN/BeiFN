@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>免登录的登录</title>
+</head>
+<body>
+        <form id="form">
+                <p>用户名 : <input type="text" name="username" value="yanghuaizhi"></p>
+                <p>密  码 : <input type="text" name="password" value="123456"></p>
+                <button id="btn">提交</button>
+        </form>
+
+        <script src="../libs/utils.js"></script>
+        <script>
+            let { ajax , $ } = Utils ;
+            // 选择元素
+            let [ form , btn ] = [
+                                     $("#form"),
+                                     $("#btn")
+                                  ];
+            
+            // 给表格添加submit监听事件以阻止表格的默认提交事件
+            form.addEventListener("submit", evt => {
+                 let e = evt || window.event;
+                 e.preventDefault();
+                evt.preventDefault();
+            });
+
+            // 给提交按钮添加click监听事件
+            btn.addEventListener("click", evt => {
+                let e = evt || window.event;
+                 e.preventDefault();
+                 // 获取两个input的值
+                  let [usrValue , pwdValue ]  = [
+                       $("input[name=username]").value,
+                        $("input[name=password]").value,
+                  ]
+
+                 // 禁用按钮;
+                 btn.disabled = "disabled";
+                  // 小优化：加载中
+                 btn.innerHTML = "loading...";
+                 // 使用封装的ajax方法
+                let url = "http://localhost/yyt/0712/login.php";
+                let data = {
+                    username : usrValue,
+                    password : pwdValue
+                }
+                 ajax(url,{
+                     data,
+                     type:"POST",
+                     dataType : "json"
+                 })
+                .then( res => {
+                   // 根据免登录的登录接口文档里的stateCode来进行相关的中文提示
+                        switch (res.stateCode) {
+                            case 0 : 
+                                alert("登录参数不全");
+                                break;
+                            case 2 : 
+                                alert("数据库连接失败");
+                                break;
+                            case 3 : 
+                                alert("用户名不存在");
+                                break;
+                            case 4 : 
+                                alert("密码错误");
+                                break;
+                            case 1:
+                                alert("登录成功")
+                                // 登录成功后 reload()
+                                location.reload();
+                                break;    
+                        }
+                       // 解除对按钮的禁用,并更改文字为“登录”
+                       btn.removeAttribute("disabled");
+                       btn.innerHTML = "登录" ;
+                })      
+            })
+                     
+
+
+            // 先发一个请求,验证是否存在tocken ,如果存在就不用登陆了;如果不存在我继续去登陆;
+            // validateTocken 函数
+            function validateTocken()
+            {
+                 // 获取路径
+                 let url = "http://localhost/yyt/0712/login.php";
+                 ajax(url)
+                 .then( res => {
+                    // res转为json
+                    res = JSON.parse(res);
+                    // 如果登录状态为成功， return false
+                     if (res.state) {
+                         return false;
+                     }   
+
+                    // 显示登录信息和注销登录的按钮
+                    form.innerHTML = "用户名：" + res.username  + "<br/><button id='exit'>注销登录</button>" ;
+                 })     
+                       
+            }           
+			
+            // 调用validateTocken函数
+            validateTocken();
+
+        </script>
+
+</body>
+</html>

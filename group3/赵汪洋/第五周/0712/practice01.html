@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 这是对象的解构赋值写法。
+        // let {
+        //     x,
+        //     y
+        // } = {
+        //     x: 1,
+        //     y: 2
+        // };
+
+
+
+        // 这是给函数默认参数的写法，调用此函数传实参时也要写成对象类型,且参数的变量名要一样，不一样的话无法传参，还是会使用默认参数。
+        // function foo({
+        //     x = 1,
+        //     y = 2
+        // } = {}) {
+        //     console.log(x, y);
+        // }
+
+        // foo({
+        //     x: 3,
+        //     y: 8
+        // }); // 3 8
+
+        // foo({
+        //     x: 3
+        // }); // 3 2
+
+        // foo({
+        //     x: 3,
+        //     z: 4
+        // }); // 3 2
+
+
+
+        // 这就是一个正常的函数声明。
+        // function aoo(x, y) {}
+
+
+
+        // 这种也是给形参一个默认值的写法。
+        // function poo(x = 1) {
+        //     console.log(x);
+        // }
+
+        // poo(); // 1
+        // poo(2); // 2
+
+
+
+        // 这种写法就是把正常解构赋值用在设置函数形参的默认值上，相当于在声明函数时给形参附上了值，传实参时如果不传就默认使用这个数值，如果传入空、只传部分形参以及传入全部形参都会覆盖掉这个值，这样写的好处就是可以传入个别的参数而不被顺序制约，直接调用不传参数时也可以有默认参数。
+        // function boo({
+        //     x,
+        //     y
+        // } = {
+        //     x : 1,
+        //     y : 2
+        // }) {
+        //     console.log(x, y);
+        // }
+
+        // boo(); // 1 2
+        // boo({}); // undefined undefined
+
+        // boo({
+        //     x: 3
+        // }); // 3 undefined
+
+        // boo({
+        //     x: 3,
+        //     y: 4
+        // }); // 3 4
+    </script>
+</body>
+
+</html>
