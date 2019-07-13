@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        function fn() {
+
+            let callbackName = 'foo';
+          
+            document.onclick = function () {
+                let script = document.createElement('script');
+                script.src = 'http://localhost:8082/0711/this1.php?callback=foo';
+                script.onload = function () {
+                    this.remove();
+                }
+                document.body.appendChild(script);
+                // window[callbackName]();
+            }
+            window[callbackName] = function (res) {
+                console.log(res);
+            }
+        }
+        fn();
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

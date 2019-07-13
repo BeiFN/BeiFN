@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="utils.js"></script>
+    <script>
+        //请求基本接口;
+        let {ajax} = Utils;
+        // let url = "http://localhost/0712/01text.txt";
+        // ajax( url ,{dataType :"json"})
+        // .then( res =>{
+        //     console.log(res);
+        // })
+
+        var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+            var data = {
+                  json:1 ,
+                  p:3,
+                  sid:1423_21080_29238_28518_29099_28830_29221_22158,
+                  req:2,
+                  sc:"eb",
+                  csor:0,
+                  _:Date.now(),
+                  wd : "hello"
+            }
+            ajax(url ,{ dataType :"jsonp", callback :"cb", data :data})
+            .then(res=>{
+                console.log(res);
+            })
+        
+        
+        
+    </script>
+</body>
+</html>
