@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function jsonp (url,field,callback){
+        //     //声明一个全局函数 通过一个外联js可以访问的全局函数来调用里面的回调函数
+        //     window.foo = function(res){
+        //         callback(res)
+        //     }
+        //     //创建script  放置src
+        //     let script = document.createElement("script")
+        //     url += /\?/.test(url)?"&":"?"
+        //     script.src = url+field+"=foo";
+        //     //等加载完成后删除
+        //     script.onload = function(){
+        //         script.remove();
+        //     }
+        //     document.body.appendChild(script);
+        //     // 
+        // }    
+
+        function jsonp(url, cbname, callback) {
+
+            window.foo = function (res) {
+                callback(res);
+            }
+            var script = document.createElement("script");
+            url += (/\?/.test(url) ? "&" : "?");
+            script.src = url + cbname + "=foo";
+            script.onload = function () {
+                this.remove();
+            }
+            console.log(script+"111")
+            document.body.appendChild(script);
+        }
+
+        jsonp("http://localhost/day23/05jsonp.php", "hhh", function (res) {
+            console.log(res);
+            alert(res)
+        });
+
+        
+
+        //script src => jsonp.php=> 调用window.foo 函数  并将jsonp.php中的值传递给形参res     调用第三个参数callback，这里的function就是上面的callback
+        // jsonp("http://localhost/day23/jsonp.php","cb",function(res){
+        //     console.log(res)
+        // })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id ="ipt">
+    <div id = "content"></div>
+    <script>
+        // function jsonp(url,cb_fild,callback){
+        //     let globle = "foo";
+        //     window[globle] = (res)=>{
+        //         callback(res);
+        //     }
+        //     let script = document.createElement("script");
+        //     url += /\?/.test(url) ? "&": "?";
+        //     script.src = url + cb_fild + "=" + globle;
+        //     script.onload = function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }   
+        // jsonp("http://localhost/php/0711/05jsonp.php","callback",(res)=>{
+        //     console.log(res);
+        // }); 
+            
+        //Promise版本
+        function jsonp(url,cb_fild,data){
+            return new Promise(function(reslove,reject){
+                let globle = "foo";
+                window[globle] = res =>{
+                    //这里是异步;
+                    reslove(res);
+                }
+                url += (/\?/.test(url)? "&" :"?")+ cb_fild + "=" + globle;
+                if(typeof data ==="object"){
+                    let data_str = "";
+                    for(let attr in data){
+                        data_str += (data_str.length > 0 ? "&": "") + attr + "="+ data[attr];
+                    }
+                    url += "&" + data_str;
+                }
+                
+
+                //发送数据
+                let script =document.createElement("script");
+                script.src = url;
+                script.onload = function(){
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            });
+        }
+        url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        data = {
+                  json:1 ,
+                  p:3,
+                  sid:1423_21080_29238_28518_29099_28830_29221_22158,
+                  req:2,
+                  sc:"eb",
+                  csor:0,
+                  _:Date.now(),
+                  wd : ""
+        }
+        let ipt = document.getElementById("ipt");
+        let content = document.getElementById("content");
+        ipt.onchange = function(){
+            data.wd = this.value;
+            jsonp(url,"cb",data)
+            .then(function(res){
+                let html = "";
+                res.s.forEach(item => {
+                    html += `<p>${item}</p>`
+                });
+                content.innerHTML = html;
+            });
+        }
+    </script>
+</body>
+</html>
