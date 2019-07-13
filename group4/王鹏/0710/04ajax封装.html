@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+            
+            <!-- GET
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","http://localhost/zuoye/0710zuoye/01txt.txt");
+            xhr.send(null);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    document.body.innerHTML = xhr.responseText;
+                }
+            }
+
+       
+                POST
+            let xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost/zuoye/0710zuoye/03Post.php");
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send("username=hello");
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    console.log(xhr.responseText);
+                }
+            } -->
+
+
+
+        <script>
+            
+            function ajax(
+                url,
+                {
+                    callback = (res) => {},
+                    type = "get",
+                    data = {},
+                    contentType = "application/x-www-form-urlencoded"
+                } = {}
+            )
+            {
+                var data_str = "";
+                for(var attr in data){
+                    // 判定是否为第一次拼接，第一次不加"&"符; 
+                    data_str += (data_str.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                }
+                var xhr = new XMLHttpRequest();
+                // 因为 url 类似 "http://www.baidu.com?key=value&key=value";
+                // 判断url中是否有 "?" 没有加"?",  已有加 "&"
+                xhr.open(type,url + (type.toLowerCase() === "get" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
+                type.toLowerCase() === "post" ? xhr.setRequestHeader("Content-type",contentType) : "";
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                            callback(xhr.responseText);
+                    }
+                }
+                xhr.send(type.toLowerCase() === "post" ? data_str : null);
+            }
+
+
+            // POST 接受的字符串 => " username=hello world&passworld=12345";
+            // GET  接受的字符串 => "?username=hello world&passworld=12345"
+
+
+            // POST 请求无法请求json,  原因 => 返回结果response 是由服务器决定。 不允许post访问json数据; 
+            // 前端设置的 requestHeader 针对的是 => 我发给服务器的内容;
+
+
+
+
+            ajax("http://localhost/zuoye/0710zuoye/02json.json",{
+                callback : function(res){
+                    console.log(res);
+                },
+                type : "get",
+                data : {
+                    username : "hello",
+                    password : "123456"
+                }
+            })
+        </script>
+    </body>
+</html>
