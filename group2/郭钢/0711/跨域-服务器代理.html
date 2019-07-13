@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./utils.js">
+        
+    </script>
+    <script>
+     let {ajax} =Utils;
+     ajax("http://localhost/dt?include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&filter_id=%E5%BD%B1%E9%9F%B3%E4%B9%A6&start=24&_=1562847954275").then(res=>{
+         console.log(JSON.parse(res)) ;
+     });
+    </script>
+</body>
+
+</html>

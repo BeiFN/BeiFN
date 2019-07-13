@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //利用浏览器发送了一个请求,请求到服务器会自动分发数据给你去解析执行;
+
+        //实例Ajax对象;
+        var xhr = new XMLHttpRequest();
+        //open method url
+        xhr.open("GET","http://localhost/0710/ajaxData.txt");
+        //发送
+        xhr.send(null);
+        //readyState只做一件事,加载成功执行结果
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                document.body.innerHTML = xhr.responseText;
+                console.log(xhr.responseText);
+            }
+
+        }
+    </script>
+</body>
+</html>
