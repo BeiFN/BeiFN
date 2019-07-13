@@ -173,4 +173,181 @@ class Utils {
                   }
             }, 50)
       }
+      //封装的AJAX
+      static myAJAX(
+            url,
+            {
+                  type = "GET",
+                  data = {},
+                  data_type = "text",
+                  content_type = "application/x-www-form-urlencoded"
+            } = {}
+      ) {
+            return new Promise(function (resolve, reject) {
+                  let xhr = null;
+                  if (XMLHttpRequest) {
+                        xhr = new XMLHttpRequest();
+                  }
+                  else {
+                        xhr = new ActiveXObject("Mricosoft.XMLHTTP")
+                  }
+                  if (xhr === null) throw "浏览器不支持ajax";
+                  let data_str = "";
+                  for (let attr in data) {
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                  }
+                  type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+                  xhr.open(type, url);
+                  type === "POST" ? xhr.setRequestHeader("Content-type", content_type) : "";
+                  xhr.send(type === "POST" ? data_str : null);
+                  xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                              let res = xhr.responseText;
+                              switch (data_type) {
+                                    case "text": res = typeof res === "string" ? res : JSON.stringify(res);
+                                          break;
+                                    case "json": res = typeof res === "string" ? JSON.parse(res) : "";
+                                          break;
+                              }
+                              resolve(res);
+                        }
+                  }
+                  setTimeout(function () {
+                        reject(xhr, "timeout");
+                  }, 5000);
+            });
+      }
+      //封装的jsonp
+      static jsonp(url, data, cb_name = "cb") {
+            return new Promise(function (resolve, reject) {
+                  let global_cb = "_" + Date.now();
+                  window[global_cb] = function (res) {
+                        resolve(res);
+                        delete window[global_cb];
+                        global_cb = false;
+                  }
+                  //字段名和回调函数名拼接
+                  url += `${/\?/.test(url) ? "&" : "?"}${cb_name}=${global_cb}`;
+                  if (typeof data === "object") {
+                        let data_str = "";
+                        for (let attr in data) {
+                              data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                        }
+                        url += `"&"${data_str}`;
+                  }
+                  let script = document.createElement("script");
+                  script.src = url;
+                  script.onload = function () {
+                        this.remove();
+                  }
+                  document.body.appendChild(script);
+                  setTimeout(function () {//超时失败
+                        reject("failed to get resources");
+                  }, 3000);
+            });
+      }
+      //整合了xhr请求方式和jsonp请求方式的ajax
+      static ajax(
+            {
+                  url = "",
+                  data = null,
+                  jsonp = false,
+                  cb_name = "cb",
+                  type = "GET",
+                  data_type = "text",
+                  content_type = "application/x-www-form-urlencoded"
+            } = {}
+      ) {
+            return new Promise(function (resolve, reject) {
+                  let data_str = "";
+                  if (url === "") {
+                        throw "url is null";
+                        return false;
+                  }
+                  if (typeof data === "object") {
+                        for (let attr in data) {
+                              data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                        }
+                  }
+                  if (jsonp) {//使用jsonp请求数据
+                        let global_cb = "_" + Date.now();
+                        url += `${/\?/.test(url) ? "&" : "?"}${cb_name}=${global_cb}`;
+                        url += `"&"${data_str}`;
+                        window[global_cb] = function (res) {
+                              resolve(res);
+                              delete window[global_cb];
+                              global_cb = false;
+                        };
+                        let script = document.createElement("script");
+                        script.src = url;
+                        script.onload = function () {
+                              this.remove();
+                        }
+                        document.body.appendChild(script);
+                  }
+                  else {//使用xhr请求数据
+                        let xhr = null;
+                        if (XMLHttpRequest) {
+                              xhr = new XMLHttpRequest();
+                        }
+                        else {
+                              xhr = new ActiveXObject("Mricosoft.XMLHTTP")
+                        }
+                        if (xhr === null) throw "浏览器不支持ajax";
+                        data_str !== "" ? (type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "") : "";
+                        // console.log(url);
+                        // console.log(0,type);
+                        xhr.open(type, url);
+                        type === "POST" ? xhr.setRequestHeader("Content-type", content_type) : "";
+                        xhr.send(type === "POST" ? data_str : null);
+                        xhr.onreadystatechange = function () {
+                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                    let res = xhr.responseText;
+                                    switch (data_type) {
+                                          case "text": res = typeof res === "string" ? res : JSON.stringify(res);
+                                                break;
+                                          case "json": res = typeof res === "string" ? JSON.parse(res) : "";
+                                                break;
+                                    }
+                                    resolve(res);
+                              }
+                        }
+                  }
+                  setTimeout(function () {//超时失败
+                        reject("failed to get resources");
+                  }, 3000);
+            });
+      }
+      //封装cookie,实现了获取和设置cookie的功能
+      static cookie(
+            name, value,
+            {
+                  expires,
+                  path,
+                  domain,
+                  secure
+            } = {}
+      ) {
+            let d = null;
+            //获取cookie
+            if (arguments.length === 1) {
+                  let [a, res] = [document.cookie.split("; "), ""];
+                  res = a.filter(item => item.split("=")[0] === name);
+                  return res.length === 0 ? "" : res[0].split("=")[1];
+            }
+            return (document.cookie = [
+                  name + "=" + value,
+                  expires ? ";expires=" + ((d = new Date()).setDate(d.getDate() + expires) && d) : "",
+                  path ? ";path=" + path : "",
+                  domain ? ";path=" + domain : "",
+                  secure ? ";path=" + secure : ""
+            ].join(""));
+      }
+      //删除cookie
+      static removeCookie(name, path = "") {
+            Utils.cookie(name, "", {
+                  path,
+                  expires: -1
+            });
+      }
 }
