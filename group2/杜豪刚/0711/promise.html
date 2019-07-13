@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        // function ajax(type,url,callback){
+        //     let xhr = null;
+        //     if(XMLHttpRequest){
+        //         xhr = new XMLHttpRequest();
+        //     }else{
+        //         xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+        //     }
+        //     if(xhr === null)return false;
+        //     // console.log(xhr);
+        //     xhr.open(type ? type : "GET",url);
+        //     xhr.send(null);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState === 4 && xhr.status === 200){
+        //             callback(xhr.responseText);
+        //         }
+        //     }
+        // } 
+
+        // function ajax(type,url,callback,data){
+        //     let xhr = null;
+        //     if(XMLHttpRequest){
+        //         xhr = new XMLHttpRequest();
+        //     }else{
+        //         xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+        //     }
+        //     if(xhr === null)return false;
+        //     let dataStr = "";
+        //     for(let attr in data){
+        //         // 遍历，并判断
+        //         dataStr += (dataStr.length>0?  "&":"" ) + attr + "=" +data[attr];
+        //         // console.log(dataStr);
+        //     }
+        //     // type = type? type : "GET";
+        //     // 如果是GET  url + data放在地址栏上
+        //     // 如果是POST 1.设置请求头  2.dataStr放入send里
+        //     type === "GET" ? url +=( /\?/.test(url)? "&" : "?" )+dataStr : "" ;
+        //     xhr.open(type ? type : "GET",url);
+        //     type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+        //     xhr.send(type === "POST" ? dataStr : null);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState === 4 && xhr.status === 200){
+        //             callback(xhr.responseText);
+        //         }
+        //     }
+        // } 
+        // ajax(1,2,3,{
+        //     a:1,
+        //     b:2,
+        //     c:3
+        // });
+
+        // function ajax(url,data,type){
+        //     return new Promise(function(resolve,reject){
+        //             let xhr = null;
+        //             if(XMLHttpRequest){
+        //                 xhr = new XMLHttpRequest();
+        //             }else{
+        //                 xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+        //             }
+        //             if(xhr === null)return false;
+        //             let dataStr = "";
+        //             for(let attr in data){
+        //                 // 遍历，并判断
+        //                 dataStr += (dataStr.length>0?  "&":"" ) + attr + "=" +data[attr];
+        //                 // console.log(dataStr);
+        //             }
+        //             // type = type? type : "GET";
+        //             // 如果是GET  url + data放在地址栏上
+        //             // 如果是POST 1.设置请求头  2.dataStr放入send里
+        //             // type = type ? type : "GET";
+        //             type === "GET" ? url +=( /\?/.test(url)? "&" : "?" )+dataStr : "" ;
+        //             xhr.open(type ? type : "GET" ,url);
+        //             // xhr.open(type,url );
+        //             type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+        //             xhr.send(type === "POST" ? dataStr : null);
+        //             xhr.onreadystatechange = function(){
+        //                 if(xhr.readyState === 4 && xhr.status === 200){
+        //                     // 加载成功时
+        //                     resolve(xhr.responseText);
+        //                 }
+        //             }   
+                    
+        //             // 加载失败时
+        //             setTimeout(a=>{
+        //                 reject("sorry")
+        //             },5000);
+        //     })
+        // }
+        // ajax("http://localhost/0710/zcool.json",{
+        //     username : "Tom",
+        //     age      : 21,
+        //     sex      : "男🚹",
+        // })
+        // .then(function(res){
+        //     console.log(JSON.parse(res));
+        // });
+
+        function ajax(url,data,type,callback){
+            // return new Promise(function(resolve,reject){
+                    let xhr = null;
+                    if(XMLHttpRequest){
+                        xhr = new XMLHttpRequest();
+                    }else{
+                        xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+                    }
+                    if(xhr === null)return false;
+                    let dataStr = "";
+                    for(let attr in data){
+                        // 遍历，并判断
+                        dataStr += (dataStr.length>0?  "&":"" ) + attr + "=" +data[attr];
+                        // console.log(dataStr);
+                    }
+                    // type = type? type : "GET";
+                    // 如果是GET  url + data放在地址栏上
+                    // 如果是POST 1.设置请求头  2.dataStr放入send里
+                    // type = type ? type : "GET";
+                    type === "GET" ? url +=( /\?/.test(url)? "&" : "?" )+dataStr : "" ;
+                    xhr.open(type ? type : "GET" ,url);
+                    // xhr.open(type,url );
+                    type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+                    xhr.send(type === "POST" ? dataStr : null);
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4 && xhr.status === 200){
+                            // 加载成功时
+                            // callback(xhr.responseText);
+                            callback(url,xhr.responseText);
+                        }
+                    }   
+                    
+                    // // 加载失败时
+                    // setTimeout(a=>{
+                    //     reject("sorry")
+                    // },5000);
+            // })
+        }
+        ajax("http://localhost/0710/zcool.json",{
+            username : "Tom",
+            age      : 21,
+            sex      : "男🚹",
+        },"GET",function(res,temp){
+            console.log(res,JSON.parse(temp));
+        })
+        // .then(function(res){
+        //     console.log(JSON.parse(res));
+        // });
+
+    </script>
+</body>
+</html>

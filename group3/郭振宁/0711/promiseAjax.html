@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(url , data , type) {
+            return new Promise(function(resolve , reject) {
+                var xhr = null;
+                if(XMLHttpRequest) {
+                    var xhr = new XMLHttpRequest();
+                }else {
+                    xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+                }
+                if(xhr === null) throw "浏览器不支持";
+                
+                var data_str = "";
+                for(var attr in data) {
+                    data_str += (data_str.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                }
+                type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+
+                xhr.open(type ? type : "GET" , url); 
+                type === "POST" ? xhr.setRequestHeader("Content-type" , "application/x-www-form-urlencoded") : "";
+                // type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+                xhr.send(type === "POST" ? data_str : null);
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState === 4 && xhr.status === 200) {
+                        resolve(xhr.responseText);
+                    }
+                }
+
+                setTimeout(function() {
+                    reject(xhr , "timeout")
+                },8000);
+            })
+        }    
+
+        ajax("http://localhost/me/0711/jsonp.php" ,
+            {
+                username : "hahaha",
+                password : 123456
+            },
+            "POST"
+        )
+        .then(function(res) {
+            console.log(res);
+        })
+    </script>
+</body>
+</html>
