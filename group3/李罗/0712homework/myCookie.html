@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+</head>
+<body>
+    <script>
+        // document.cookie="hello";
+        // //当前会话不关闭，cookie一直存在，会话一旦关闭，namecookie就删除了，这样的cookie我们叫做会话cookie
+
+        //1.设置cookie
+        function setCookie(name ,value ,options){
+            //判断一下options是不是对象，是的话返回options，不是的话，设置为一个空对象
+            typeof options==="object"?"":options={};
+            var d;
+            return (document.cookie=[
+                name + "=" + value,
+                options.expires? ";expires =" + ((d=new Date()).setDate(d.getDate()+options.expires)&& d):"",
+                options.path?";path=" + options.path :"",
+                options.domain ?";domain=" +options.domain :"",
+                options.secure ? ";secure=" + options.secure :""
+            ].join(""));//将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符，默认是逗号分隔
+        }
+
+        //2.删除cookie；
+        // function removeCookie(name,path){
+        //     setCookie(name,"",{
+        //         path:path? path:"",
+        //         expires:-1
+        //     })
+        // }
+
+        // setCookie("username","hello",{
+        //     expires:10,
+        //     path:"/"
+        // })
+        // removeCookie("username","/");
+        for(var i=0;i<10;i++){
+            setCookie("hello"+i,i);
+        }
+
+        // 3.获取cookie
+        // (d=new Date()).setDate(d.getDate()+ options.expires)&&d;
+        // console.log(document.cookie);//得出来一串字符串每个数据的 间隔是分号；加空格 ；把它变成数组
+
+         //遍历;每一条cookie出来了；还是字符串，还要split；
+    //    document.cookie.split("; ").forEach(item=>{
+    //     console.log(item);
+    //    })
+
+
+    document.cookie.split("; ").forEach(item=>{
+        console.log(item.split("="));
+       })
+       //splice ("; ")用括号里面的东西来分隔起来
+       document.cookie.split("; ").filter(item=>{
+        console.log(item.split("=")[0]==="hello2");
+       })
+
+    </script>
+
+    <!-- <script src="../0712/libs/utils.js"></script> -->
+    <script>
+        // let {cookie}=Utils;
+        // console.log(Cookie("wuyanzu1"));
+    </script>
+</body>
+</html>
