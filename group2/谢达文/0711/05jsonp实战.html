@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            #ipt{
+                  margin: 0 auto;
+            }
+            .content{
+                  margin: 0 auto;
+            }
+      </style>
+</head>
+<body>
+      <div>
+            <input type="text" id="ipt">
+      </div>
+      <div class="content" id="content"></div>
+      <!-- <script>
+            // function ssss(res){
+            //       console.log(res);
+            // }      
+            // // 问题1 : 我不想在页面加载的时候就发起请求;
+
+            // // 让发起请求script标签受js控制。 
+            // // 自己创建script标签;
+            // document.onclick = function(){
+            //       var script = document.createElement("script");
+            //       script.src = "http://localhost/gp12coding/0711/05jsonp.php?callback=ssss"
+            //       script.onload = function(){
+            //             this.remove();
+            //       }
+            //       document.body.appendChild(script);
+            // }
+            // 问题2 : 我不想把全局函数名再叫做jsonpcallback了;
+
+            // 问题3 : 想要封装  ;
+
+            // 1. 在函数内怎么声明全局函数; 
+
+            // function jsonp(){
+            //       window.sss = function(){
+
+            //       }
+            // }
+            // jsonp();
+            // console.log(sss);
+
+            function jsonp(url,cb_fild,callback){
+                  var GLOBAL_CB = "foo"
+                  // 1.全局函数;
+                  window[GLOBAL_CB] = function (res){
+                        callback(res)
+                  }
+                  // 2. 发送请求; 
+                  var script = document.createElement("script");
+                  url += /\?/.test(url) ? "&" : "?";
+                  script.src = url + cb_fild + "=" + GLOBAL_CB;
+                  script.onload = function(){
+                        this.remove();
+                  }
+                  document.body.appendChild(script);
+            }
+
+            jsonp("http://localhost/fiveweek/0711/05jsonp.php","callback",function(res){
+                  alert(res);
+            })
+      </script> -->
+      <!-- <script>
+            let input = document.getElementById("ipt");
+            let content = document.getElementById("content");
+            function jsonp(url,cb_fild,data){
+                  return new Promise (function(resolve,reject){
+                        let GLOBAL_CB = "accept";
+                        window[GLOBAL_CB] = function(res){
+                              resolve(res);
+                        }
+                        
+                        url += (/\?/.test(url) ? "&":"?")+ cb_fild + "=" + GLOBAL_CB;
+                        if(typeof data === "object"){
+                              var datastr = "";
+                              for(var  attr in data){
+                                    datastr += `${datastr.length > 0 ?"&":""}${attr}=${data[attr]}`;
+                              }
+                        }
+
+
+                        var  script = document.createElement("script");
+                        script.src = url + "&"+ datastr;
+                        document.body.appendChild(script);
+                        script.onload = function(){
+                              this.remove();
+                        }
+                  })
+                 
+            }
+            
+            
+            // let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&p=3&sid=1423_21080_29238_28518_29099_28830_29221_22158&req=2&sc=eb&csor=0&_=1562831017980";
+            let url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1461,21103,29523,29518,29238,28518,29099,28831,29220,26350&req=2&csor=2&_=1562831974751";
+            // let url = "http://localhost/fiveweek/0711/05jsonp.php";
+            let data = {
+                  wd:""
+            }
+
+            input.oninput = function(){
+                  data.wd = this.value;
+                  jsonp(url,"cb",data).then(function(res){
+                        let html = "";
+                        res.g.forEach(element => {
+                              html += `<p>${element.q}</p>`;
+                        })
+                        content.innerHTML = html;
+                  })
+            }
+            
+            
+      </script> -->
+
+
+      <script>
+            function jsonp(url,cb_fild,data){
+                  return new Promise(function(resolve,reject){
+                        let GLOBAL_CB = "accept";
+                        window[GLOBAL_CB] = function(res){
+                              resolve(res);
+                        }
+
+                        url +=(/\?/.test(url) ? "&":"?") + cb_fild + "=" + GLOBAL_CB;
+                        if(typeof data === "object"){
+                              var  datastr = "";
+                              for(var attr in data){
+                                    datastr += `${datastr.length > 0 ? "&":""}${attr}=${data[attr]}`;
+                              }
+                        }
+                        
+                        var script = document.createElement("script");
+                        script.src = url + "&" + datastr;
+                        document.body.appendChild(script);
+                        script.onload = function(){
+                              this.remove();
+                        } 
+                  })
+            }
+
+
+            // function jsonp(url,cb_fild,data){
+            //       return new Promise (function(resolve,reject){
+            //             let GLOBAL_CB = "accept";
+            //             window[GLOBAL_CB] = function(res){
+            //                   resolve(res);
+            //             }
+                        
+            //             url += (/\?/.test(url) ? "&":"?")+ cb_fild + "=" + GLOBAL_CB;
+            //             if(typeof data === "object"){
+            //                   var datastr = "";
+            //                   for(var  attr in data){
+            //                         datastr += `${datastr.length > 0 ?"&":""}${attr}=${data[attr]}`;
+            //                   }
+            //             }
+            //             var  script = document.createElement("script");
+            //             script.src = url + "&"+ datastr;
+            //             document.body.appendChild(script);
+            //             script.onload = function(){
+            //                   this.remove();
+            //             }
+            //       })
+            // }
+            let url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1461,21103,29523,29518,29238,28518,29099,28831,29220,26350&req=2&csor=2&_=1562831974751";
+            let data = {
+                  wd:"nihao"
+            }
+            jsonp(url,"cb",data).then(function(res){
+                  alert();
+            })    
+
+      </script>
+      <!-- <script src="http://localhost/gp12coding/0711/05jsonp.php"></script> -->
+</body>     
+</html>
