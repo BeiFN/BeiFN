@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./libs/utils.js"></script>
+    <script>
+        let {ajax} = Utils;
+        let url = "http://10.9.10.126/0712/0712/02test.php";
+
+        ajax(url)
+        .then(res =>{
+            console.log(res);
+        })
+    </script>
+</body>
+</html>
