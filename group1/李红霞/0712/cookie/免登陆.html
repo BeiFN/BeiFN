@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <form id = "form">
+            <p>用户名：
+                  <input type="text" name = "username" value="hello" id="username">
+            </p>
+            <p>密码：
+                  <input type="text" name="password" value="hello" id="password">
+            </p>
+            <button type="submit" id="btn">submit</button>
+      </form>
+      <script src="./utils.js"></script>
+      <script>    
+            //实现登录功能 利用ajax与后端进行交互
+            // 1.阻止用户的默认事件  2.获取用户输入的数据 3.调用ajax传入后端并获取后端输入的页面
+            var form = document.getElementById("form");
+            var userp = document.getElementById("username");
+            var passp = document.getElementById("password");
+            var btn = document.getElementById("btn");
+            form.addEventListener("submit", evt=>{
+                  var e = evt||window.event;
+                  e.preventDefault();
+            })
+            btn.addEventListener("click", evt=>{
+                  var usn = userp.value;
+                   pwd = passp.value;
+                  var {ajax} =  Utils;
+                  var url = "http://localhost/cookie/cookie.php";
+                  ajax(url, {
+                        type: "POST",
+                        data:{
+                              "username":usn,
+                              "password":pwd,
+                        },
+                     dataType:"json",
+                  })
+                  .then(res => {
+                        console.log(res);
+                  });
+            })
+            // 获取到值之后请求后端，调用ajax方法
+      </script>
+</body>
+</html>
