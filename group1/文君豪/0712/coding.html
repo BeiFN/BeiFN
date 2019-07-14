@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Utils{
+            static cookie(name,value,{
+                expires,
+                path,
+                domain,
+                secure
+            }={ }){
+
+                if(arguments.length == 1){
+                    let[a,res] = [document]
+                }
+
+
+                var d;
+                return (document.cookie = [
+                name + "=" + value,
+                expires ? ";expires=" + ((d = new Date()).setDate(d.getDate() + expires) && d ): "",
+                path    ? ";path="    +  path   : "",
+                domain  ? ";domain="  +  domain : "",
+                secure  ? ";secure="  +  secure : ""
+          ].join(""))
+
+            }
+
+
+        }    
+         let{cookie} =Utils
+        console.log(cookie("username","wenjh",{
+            expires:"1",
+            path   :"/"
+        }))
+    </script>
+</body>
+</html>
