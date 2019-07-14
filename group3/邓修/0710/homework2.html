@@ -9,46 +9,88 @@
 </head>
 
 <body>
+    <script src="../libs/common.js"></script>
     <script>
-        function myAJAX(
-            url,
-            {
-                callback = (res) => { },
-                type = "GET",
-                data = {},
-                contentType = "application/x-www-form-urlencoded"
-            } = {}
-        ) {
-            var list = [];
-            var data_str = "";
-            for (var attr in data) {
-                data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${$data[attr]}`;
-            }
-            var xhr = new XMLHttpRequest();
-            xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
-            type === "POST" ? xhr.setRequestHeader("Content-type", contentType) : "";
-            xhr.send(type === "POST" ? data_str : null);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // callback(xhr.responseText);
-                    for (var i = 0; i < list.length; i++) {
-                        list[i](xhr.responseText);
-                    }
-                }
-            }
-            return {
-                add: function () {
-                    list = list.concat(Array.from(arguments));
-                    return list;
-                }
-            }
-        }
-        var url = "http://localhost/study/stage_two/classroom/0710/02json.json";
-        console.log(myAJAX(url).add(function (res) {
-            console.log("函数1\n",res);
-        }, function () {
-            console.log("函数2");
-        }));
+        // function myAJAX(
+        //     url,
+        //     {
+        //         callback = (res) => { },
+        //         type = "GET",
+        //         data = {},
+        //         contentType = "application/x-www-form-urlencoded"
+        //     } = {}
+        // ) {
+        //     var list = [];
+        //     var data_str = "";
+        //     for (var attr in data) {
+        //         data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${$data[attr]}`;
+        //     }
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str : ""));
+        //     type === "POST" ? xhr.setRequestHeader("Content-type", contentType) : "";
+        //     xhr.send(type === "POST" ? data_str : null);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState === 4 && xhr.status === 200) {
+        //             // callback(xhr.responseText);
+        //             for (var i = 0; i < list.length; i++) {
+        //                 list[i](xhr.responseText);
+        //             }
+        //         }
+        //     }
+        //     return {
+        //         add: function () {
+        //             list = list.concat(Array.from(arguments));
+        //             return list;
+        //         }
+        //     }
+        // }
+        // var url = "http://localhost/study/stage_two/classroom/0710/02json.json";
+        // console.log(myAJAX(url).add(function (res) {
+        //     console.log("函数1\n",res);
+        // }, function () {
+        //     console.log("函数2");
+        // }));
+        //promise版本
+        // function myAJAX(
+        //     url,
+        //     {
+        //         type = "GET",
+        //         data = {},
+        //         content_type = "application/x-www-form-urlencoded"
+        //     } = {}
+        // ) {
+        //     return new Promise(function (resolve, reject) {
+        //         let xhr = null;
+        //         if (XMLHttpRequest) {
+        //             xhr = new XMLHttpRequest();
+        //         }
+        //         else {
+        //             xhr = new ActiveXObject("Mricosoft.XMLHTTP")
+        //         }
+        //         if (xhr === null) throw "浏览器不支持ajax";
+        //         let data_str = "";
+        //         for (let attr in data) {
+        //             data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+        //         }
+        //         type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + data_str : "";
+        //         xhr.open(type, url);
+        //         type === "POST" ? xhr.setRequestHeader("Content-type", content_type) : "";
+        //         xhr.send(type === "POST" ? data_str : null);
+        //         xhr.onreadystatechange = function () {
+        //             if (xhr.readyState === 4 && xhr.status === 200) {
+        //                 resolve(xhr.responseText);
+        //             }
+        //         }
+        //         setTimeout(function () {
+        //             reject(xhr, "timeout");
+        //         }, 5000);
+        //     });
+        // }
+        // let {myAJAX}=Utils;
+        // let url = "http://localhost/dt?include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&filter_id=%E5%AE%B6%E5%B1%85%E7%94%9F%E6%B4%BB&start=24&_=1562809436168";
+        // myAJAX(url).then(res => {
+        //     console.log(JSON.parse(res));
+        // });
     </script>
 </body>
 
