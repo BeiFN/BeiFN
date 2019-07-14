@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            background: #f4f4f4;
+        }
+
+        .box {
+            float: left;
+            position: relative;
+            background: #fff;
+            margin: 0 20px 20px 0;
+            overflow: hidden;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+
+        }
+
+        .box img {
+            width: 210px;
+            height: 158px;
+        }
+
+        .title-box {
+            width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 10px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+
+
+
+        }
+
+        .container {
+            width: 1150px;
+            height: 223px;
+            margin: 0 auto;
+
+        }
+    </style>
+    <script src="libs/ejs.js"></script>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script type="text/html" id="text">
+        <% for(var attr in data ){ %>
+            <div class="box">
+                  <img src="<%= data[attr].cover %>" alt="">
+                  <div class="title-box"><%= data[attr].title %></div>
+            </div>
+      <% } %> 
+    </script>
+
+    <script>
+
+        class untils {
+            static ajax(url, {
+                data = {},
+                type = 'get',
+                dataType = 'text',
+                callback = 'callback'
+            }) {
+                if (dataType === 'jsonp') {
+                    return untils.jsonp(url, data, callback);
+                }
+                return new Promise((resolve, reject) => {
+                    let xhr = null;
+                    XMLHttpRequest ? xhr = new XMLHttpRequest() : xht = new ActiveXObject("Mricosoft.XMLHTTP");
+                    let data_attr = '';
+                    console.log(xhr.readyState);
+                    for (let element in data) {
+                        data_attr += (data_attr.length > 0 ? '&' : '') + element + '=' + data[element];
+                    }
+                    type === 'get' ? (url += /\?/.test(url) ? '&' : '?' + data_attr + '&') : url;
+                    xhr.open(type, url);
+                    type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded") : "";
+                    xhr.send(type === 'get' ? '' : data_attr);
+                    xhr.onreadystatechange = function () {
+                        console.log(xhr.readyState);
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            let res = xhr.responseText;
+                            switch (dataType) {
+                                case 'text': { res = typeof res === 'string' ? res : JSON.stringify(res); break; }
+                                case 'json': { res = typeof res === 'string' ? JSON.parse(res) : res; break; }
+                            }
+                            // console.log(1);
+                            resolve(res);
+                        }
+                        setTimeout(() => {
+                            reject('time out');
+                        }, 8000);
+                    }
+                });
+            }
+
+            static jsonp(url, data, callback = 'callback') {
+                return new Promise((resolve, seject) => {
+                    let GROBLE_FN = 'foo';
+                    window[GROBLE_FN] = function (res) {
+                        resolve(res);
+                    }
+                    let data_attr = '';
+                    for (let element in data) {
+                        data_attr += (data_attr.length > 0 ? '&' : '') + element + '=' + data[element];
+
+                    }
+
+                    url += /\?/.test(url) ? '&' : '?' + data_attr + '&' + callback + '=' + GROBLE_FN;
+                    console.log(url);
+
+                    let script = document.createElement('script');
+                    script.src = url;
+                    script.onload = function () {
+                        this.remove();
+                    }
+                    document.body.appendChild(script);
+                })
+
+            }
+        }
+
+        // let url = 'https://sp3.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su';
+        // let callback = 'cb';
+        // let dataType = 'jsonp';
+        // let data = {
+        //     wd: "",
+        //     json: 1,
+        //     p: 6,
+        //     sid: 1423_21080_29238_28518_29099_28830_29221_22158,
+        //     req: 2,
+        //     sc: "eb",
+        //     csor: 0,
+        //     _: Date.now(),
+        // }
+
+        // jsonp
+        // let ipt = document.getElementById('ipt');
+        // let content = document.getElementById('content');
+        // ipt.oninput = function () {
+        //     let html = '';
+        //     data.wd = ipt.value;
+        //     untils.ajax(url, { dataType, callback, data }).then((res) => {
+
+        //         res.s.forEach(element => {
+        //             html += `<p>${element}</p>`;
+        //         });
+        //         content.innerHTML = html;
+
+        //     });
+        // }
+        //ajax
+
+        // let url = 'http://localhost:8082/0712homework/homework1.json?data=1';
+        // untils.ajax(url, {
+        //     type: 'get',
+        //     data: {
+        //         username: 'flower',
+        //         password: '123456'
+        //     }
+        // }).then((res) => {
+        //     console.log(1);
+        //     console.log(res);
+        //     var container = document.querySelector('.container');
+        //     var otext = document.getElementById('text').innerHTML;
+        //     var res = JSON.parse(res);
+        //     console.log(res);
+        //     res = ejs.render(otext, { data: res.data.contents });
+        //     container.innerHTML = res;
+        //     console.log(res);
+        // });
+        // function calback(res) {
+        //     console.log(res);
+        //     var container = document.querySelector('.container');
+        //     var otext = document.getElementById('text').innerHTML;
+        //     var res = JSON.parse(res);
+        //     console.log(res);
+        //     res = ejs.render(otext, { data: res.data.contents });
+        //     container.innerHTML = res;
+        //     console.log(res);
+        // }
+
+    </script>
+
+
+</body>
+
+</html>

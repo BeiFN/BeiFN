@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{
+              height: 100%;
+        }
+    </style>
+  
+</head>
+<body>
+    <input type="text" id="ipt">
+    <div id="content"></div>
+
+    <script>
+        function jsonp(url,cb,data){
+            var promise = new Promise(function(resolve,reject){
+                var _funcn = "foo";
+                window[_funcn] = function(res){
+                    console.log(res);
+                    resolve(res);
+                };
+
+                if(/\?/.test(url)){
+                    console.log(url.lastIndexOf("?") ,url.length-1);
+                    if(url.lastIndexOf("?") !== url.length-1){
+                        url += "&";
+                    }
+                }else{
+                    url += "?";
+                }
+
+                url += cb+"="+_funcn;
+                console.log(url);
+
+                var datastr = "";
+                if(data &&  (typeof data === "object")){
+                    
+                    for(var key in data){
+                        datastr +=  "&" + key + "=" + data[key];
+                    }
+                }
+                console.log(datastr);
+
+                var script = document.createElement("script");
+                script.src = url+datastr;
+                script.onload = function(){
+                    script.remove();
+                }
+                document.body.appendChild(script);
+
+
+
+            });
+            return promise;
+
+        }
+        var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        var data = {
+                  json:1 ,
+                  p:3,
+                  sid:1423_21080_29238_28518_29099_28830_29221_22158,
+                  req:2,
+                  sc:"eb",
+                  csor:0,
+                  _:Date.now(),
+                  wd : ""
+            };
+
+        var ipt = document.getElementById("ipt");
+        var content = document.getElementById("content");
+        ipt.oninput = function(res){
+            data.wd = this.value
+            jsonp(url,"cb",data).then(function(res){
+                console.log(res);
+                var html = "";
+                for(var i=0; i<res.s.length; i++){
+                    html += `<p>`+ res.s[i] +`</p>`
+                }
+                content.innerHTML = html;
+                
+            });
+        }
+    </script>
+    
+</body>
+</html>

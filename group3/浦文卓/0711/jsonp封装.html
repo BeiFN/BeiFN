@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function jsonp(url,cb_fild,callback){
+            var GLOBLE = "foo";
+            window[GLOBLE] = function(res){
+                callback(res);
+            }
+            url += /\?/.test(url) ? "&" : "?";
+            var script = document.createElement("script");
+            script.src = url + cb_fild + "=" + GLOBLE ; 
+            console.log(url + cb_fild + "=" + GLOBLE);
+            script.onload = function(){
+                script.remove();
+            }
+            console.log(script);
+            document.body.appendChild(script);
+        }    
+
+        jsonp("http://localhost/mycoding/0711/kuayu.php","username",function(res){
+            // console.log(res);
+            alert(res);
+        })
+        
+    </script>
+</body>
+</html>

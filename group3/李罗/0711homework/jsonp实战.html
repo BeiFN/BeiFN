@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //在外部的script调用全局函数;结果显示在php页面上
+        // function foo(res){
+        //     console.log(res);
+        // }
+
+        //1.我不想在页面加载的时候就发起请求
+        //解决方案：让它自己发起请求，script标签受到js的控制，点击屏幕自己创建script标签
+
+        // document.onclick=function(){
+        //     var script=document.createElement("script");
+        //     script.src="http://localhost/JS/0711homework/jsonp3.php?callback=foo";
+        //     script.onload=function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }
+
+        //2.我不想把全局函数的名字再叫作jsonpcallback了；
+
+
+        //3.很好，开始封装；
+        //首先思考如何在函数内部声明全局变量
+        function jsonp(url,cb_field,callback){
+            var GLOBAL_CB="foo"
+            //全局函数
+            window[GLOBAL_CB]=function(res){
+                callback(res);
+            }
+
+            //发送请求
+
+            var script=document.createElement("script");
+            url += /\?/.test(url)?"&":"?";
+            script.src=url+cb_field+"="+GLOBAL_CB;
+            script.onload=function(){
+                this.remove();
+            }
+            document.body.appendChild(script);
+        }
+        // jsonp();
+        // console.log(ssss);
+        jsonp("http://localhost/JS/0711homework/jsonp3.php","callback",function(res){
+            alert(res);
+        })
+
+
+
+
+
+
+        // function jsonp(url , cb_fild, callback){
+        //     var GLOBAL_CB="foo";
+
+        //     //全局函数；
+        //     window[GLOBAL_CB]=function(res){
+        //         callback(res);
+        //     }
+
+        //     //发送请求
+        //     var script =document.createElement("script");
+        //     url +=/\?/.test(url)?"&" : "?";
+        //     script.src=url + cb_fild +"=" +GLOBAL_CB;
+        //     script.onload=function(){
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }
+        // jsonp("http://localhost/JS/0711homework/jsonp1.php","callback",function(res){
+        //     alert(res);
+        // })
+    </script>
+
+
+    <!-- <script src="http://localhost/JS/0711homework/jsonp2.php ></script> -->
+
+    <!-- <script src="http://localhost/JS/0711homework/jsonp3.php ></script> -->
+
+</body>
+</html>
