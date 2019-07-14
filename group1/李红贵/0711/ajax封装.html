@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(url, callback, data, type){
+            var xhr = null;
+            if(XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }else{
+                xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+
+            }
+            if(xhr === null) throw "不支持";
+            xhr.open(type?type:"GET",url);
+            type === "POST"?xhr.setRequestHeader(""):"";
+            xhr.send(null);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    callback(xhr.responseText);
+                }
+                  
+            } 
+
+        }
+        ajax();
+
+        function ajaxData(url,callback,data,type){
+            var dataStr = "";
+            for(var attr in data){
+                dataStr += `${dataStr.length>0?"&":""}${attr}=${data[attr]}`;
+            }
+            console.log(dataStr);
+            
+            
+
+        }
+        ajaxData("http://www.baidu.com",2,{key:"value",key2:"value2"});
+
+    </script>
+</body>
+</html>
