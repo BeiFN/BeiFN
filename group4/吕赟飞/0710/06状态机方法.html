@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+
+<body>
+      <script>
+            // 状态机 => 告知你一个信息,你对信息作出相应的反馈;
+            // jQuery => Deferred ; 
+            // ES6    => Promise  ;
+
+            // var promise = new Promise();
+            // 不让任何外人干扰到promise的执行;
+            // 只有把判断机制内置;
+
+            // promise 究竟怎么用 ;
+            // then
+
+            // AJAX超时设置;
+            // var promise = new Promise( function(resolve , reject){
+            //       setTimeout( function(){
+            //             resolve("hello i'm resolved");
+            //       } , Math.random() * 5000);
+
+            //       setTimeout( function(){
+            //             reject("i'm rejected timeout");
+            //       } , 3000)
+            // })
+            // promise.then( function(res){
+            //       console.log(res)
+            // } ,function(error){
+            //       console.log(error);
+            // })
+
+            // console.dir(Promise);
+            // 可能存在一个场景 => 多个promise同时处理程序。
+
+            // var pro1 = new Promise( function(resolve , reject){
+            //       setTimeout( function(){
+            //             resolve("i'm pro1");
+            //       } ,Math.random() * 5000)
+            // } )
+            // var pro2 = new Promise( function(resolve , reject){
+            //       setTimeout( function(){
+            //             resolve("i'm pro2");
+            //       } ,Math.random() * 5000)
+            // } )
+            // var pro3 = new Promise( function(resolve , reject){
+            //       setTimeout( function(){
+            //             resolve("i'm pro3");
+            //       } ,Math.random() * 5000)
+
+            //       // reject();
+            // } )
+
+            // Promise.all( [pro1 , pro2 , pro3] )
+            // .then(function(){
+            //       console.log(arguments);
+            // },function(){
+            //       console.log(2);
+            // })
+
+
+            // Promise.race( [pro1 , pro2 , pro3] )
+            // .then(function(){
+            //       console.log(arguments);
+            // },function(){
+            //       console.log(2);
+            // })
+
+            // 在 aja x之中 使用 promise 对像是 返回list一样在ajax().then(function(){}) 使用ajax封装。
+
+
+            function ajax(
+                  url, {
+                        type = "GET",
+                        data = {},
+                        contentType = "application/x-www-form-urlencoded"
+                  } = {}
+            ) {
+                  return new Promise(function (resolve, reject) {
+                        var data_str = "";
+                        for (var attr in data) {
+                              data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                        }
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open(type, url + (type === "GET" ? (/\?/.test(url) ? "&" : "?") + data_str :
+                              ""));
+                        type === "POST" ? xhr.setRequestHeader("Content-type", contentType) : "";
+                        xhr.send(type === "POST" ? data_str : null);
+                        xhr.onreadystatechange = function () {
+                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                    resolve(xhr.responseText);
+                              }
+                        }
+                        setTimeout(function () {
+                              reject(xhr, "timeout");
+                        }, 8000)
+                  })
+
+            }
+
+            var url = "http://localhost/0710/02json.json";
+
+            console.log(ajax(
+                  url, {
+                        type: "GET",
+                  }
+            ).then(function (res) {
+                  console.log("函数1");
+            }, function () {
+                  console.log("函数2");
+            }));
+      </script>
+</body>
+
+</html>
