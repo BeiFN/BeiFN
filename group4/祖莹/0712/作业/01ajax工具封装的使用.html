@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../libs/utils.js"></script>
+    <script>
+        //请求基本接口 => 请求同文件夹下的txt文件
+        //utils 里有封装的ajax方法
+        let {ajax}= Utils;
+        let url="http://localhost/GP12/0712/01text.txt";
+        ajax(url,{dataType:"json"})
+        .then(res=>{
+            console.log(res);
+        })
+
+        //通过百度接口请求数据
+        let { ajax } = Utils;
+        let url = "https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1428,21117,29523,29519,29237,28519,29099,28839,29221,26350,29071&req=2&csor=1&pwd=sun&cb=jQuery110206692568836794779_1562937794202&_=1562937794208";
+        let data = {
+            wd: "孙策",
+        }
+        ajax(url, { dataType: "jsonp", callback: "cb" ,data:data})
+            .then(res => {
+                console.log(res);
+            })
+
+    </script>
+</body>
+
+</html>
