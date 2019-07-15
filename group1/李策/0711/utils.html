@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class Utils{
+        constructor(){}
+        ajax(url,{
+            data = {},
+            type = "GET",
+            datatype = "text",
+            callback = "callback"
+            } = {}){
+            if( type === jsonp ){
+                return Utils.jsonp(url,data,callback)
+            }
+            return new Promise(function(resolve,reject){
+                let xhr = null;
+                if( XMLHTTPRequest ){
+                    xhr = new XMLHTTPRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                if( xhr === null ) throw "浏览器不支持ajax";
+
+                let dataStr = "";
+                for(let attr in data){
+                    dataStr += (dataStr.length > 0 ? "&" : "")
+                }
+
+                type === "GET"  ? url += (/\?/.test(url) ? "&" : "?") : "";
+                type === "POST" ? xhr.setRequestHeader("Content-type" , "application/x-www-form-urlencoded") : "";
+                xhr.send = (type === "POST" ? dataStr : null );
+                xhr.onreadystatechange = function(){
+                    if(xhr.onreadystatechange === 4 && xhr.status === 200){
+                        let res = xhr.responseText;
+                        switch(dataType){
+                            case "text" : res = typeof res === "string" ? res : JSON.stringify(res);
+                            break;
+                            case "json" : res = typeof res === "string" ? JSON.parse(res) : "";
+                        }
+                    }
+                }
+
+            }
+
+            }
+        }
+    }
+    </script>
+    
+</body>
+</html>
