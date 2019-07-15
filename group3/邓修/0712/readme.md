@@ -14,7 +14,7 @@
       ```
             {
                   state : "success|error",
-                  stateCode : 0 , 
+                  stateCode : 0|1|2|3|4|5|6|7 , 
                   [,username : 用户名  [,password : md5加密后的密码]]
             }
       ```
