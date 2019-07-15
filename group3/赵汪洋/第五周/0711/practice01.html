@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+
+<body>
+    <script>
+        console.log(1);
+        let promise = new Promise((resolve, reject) => { // 可以把这个函数看做一个实参，Promise构造函数在构造实例时必须要有一个这样的函数作为实参传递进去，且构造时会执行这个函数。
+            console.log(2);
+            resolve();
+        });
+        console.log(typeof promise); // object
+        console.log(promise); // Promise {<resolved>: undefined}
+        console.log(3);
+        setTimeout(() => {
+            console.log(6);
+        }, 0);
+        promise.then(function () {
+            console.log(4);
+        });
+        console.log(5); // 1 2 3 5 4 6
+
+        
+        // function foo() {
+        // alert('called');
+        // }
+        // let bar = new foo(); // 弹出警告框
+        // let bar2 = new foo; // 弹出警告框
+        // new关键字会做四件事，是new在使用这个函数，跟它本身带不带括号没啥关系
+
+
+        // function foo() {
+        //     this.x = 1;
+        // }
+        // new foo().x == true;
+        // // new foo.x; // Uncaught TypeError: foo.x is not a constructor
+        // var z = function () {
+        //     this.x = 1;
+        // }
+
+        // function Bar() {
+        //     return z;
+        // }
+        // z.prototype.construct = Bar;
+        // var bar = new Bar;
+        // var bar1 = new Bar();
+    </script>
+</body>
+
+</html>

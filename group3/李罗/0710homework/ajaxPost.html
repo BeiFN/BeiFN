@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var xhr=new XMLHttpRequest();
+        // xhr.open("POST","http://localhost/JS/0710homework/ajaxPost.php");
+        // //POST 类型的要加一个请求头，并且send里面要发送数据
+        // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        // xhr.send("username=hello world");
+        // xhr.onreadystatechange=function(){
+        //     if(xhr.readyState===4&&xhr.status===200){
+        //         console.log(xhr.responseText);
+        //     }
+        // }    
+        
+
+
+
+        //封装
+        function ajax(
+            url,
+            {
+                callback=(res)=>{},
+                type="GET",
+                data={},//传入的数据
+                contentType="application/x-www-form-urlencoded"
+            }={}
+        ){
+            var data_str="";
+            for(var attr in data){
+                //判定是否为第一次拼接，第一次拼接不拼接
+                
+                data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+            }
+            var xhr=new XMLHttpRequest();
+            xhr.open(type,url+(type==="GET"?(/\?/.test(url)?"&":"?")+data_str:""));
+            type==="POST"?xhr.setRequestHeader("Content-type" ,contentType):"";
+            xhr.send(type==="POST"?data_str:null);
+            xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4 && xhr.status === 200){
+                             callback(xhr.responseText);
+                        }
+                  }
+                }
+
+
+        
+        ajax("http://localhost/JS/0710homework/json.json?data=1",{
+            callback:function(res){
+                console.log(res);
+            },
+            type:"GET",
+            data:{
+                username:"hello world",
+                password:"123456"
+            }
+        })        
+
+
+
+    </script>
+</body>
+</html>
