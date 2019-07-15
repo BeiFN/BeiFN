@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="referrer" content="no-referrer" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="./styles/index.css">
+      <script src="../libs/ejs.js"></script>
+      <script src="../libs/untils.js"></script>
+      <script src="../flow/javascript/index.js"></script>
+</head>
+<body>
+      <h1>瀑布流</h1>
+      <div class="container">
+            <div class="wrapper">
+                  <!-- <div class="box">
+                        <div class="box-img">
+                              <img src="https://c-ssl.duitang.com/uploads/item/201905/23/20190523154247_ggxrq.thumb.400_0.jpg" alt="">
+                              <u></u>
+                        </div>
+                        <div class="box-detail">
+                              <div class="title">
+                                    橡皮章
+                              </div>
+                        </div>
+                  </div> -->
+            </div>
+      </div>
+      <script>
+      new flow().init({
+            wrap:'wrapper',
+            data_ajax:{
+                  url:'http://localhost/dt',
+                  data:{
+                        include_fields:'top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count',
+                        filter_id:'手工DIY',
+                        start:0
+                  }
+            }
+
+      });
+      
+      </script>
+  
+</body>
+</html>
