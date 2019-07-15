@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1、设置cookie
+        // function setCookie ( name , value , options){
+        //     typeof options === "object" ? "" : options = { };
+        //     var d;
+        //     return (document.cookie = [
+        //         name + "=" + value ,
+        //         options.expires ? ";expires="+((d = new Date()).setDate(d.getDate() + options.expires) && d) :"",
+        //         // 非0 => 时间戳; 只要前面的是非0的时间戳，则与 && d ，输出的都是d(设置后的时间)
+        //         options.path ? ";path="+ options.path : "",
+        //         options.domain ? ";domain="+ options.domain : "",
+        //         options.secure ? ";secure="+ options.secure : ""               
+        //     ].join(""));//join()是个数组方法，把数组中的所有元素放入一个字符串中，通过指定分隔符分隔
+        // }
+        // let a = setCookie("username","LHS",{
+        //             expires : 10 ,
+        //             path    : 0712 ,
+        //             domain  : "localhost"
+        //         });
+        
+        //2、删除cookie
+        // function moveCookie(name,path){
+        //     setCookie(name,"",{
+        //         expires : -1 ,
+        //         path    : path ? path : ""
+        //     })
+        // }
+
+        //3、获取cookie
+        // for(var  i = 0 ; i < 10 ; i++){
+        //    setCookie("hello"+ i , i);
+        // }
+        // console.log(document.cookie.split("; "))
+        // console.log(document.cookie.split("; ").filter(item =>{
+        //     return item.split("=")[0] === "hello4";//数组中的元素以=号再划分为数组
+        // }));
+
+        // function getCookie(name){
+        //     var s = document.cookie ,a = document.cookie.split("; ");
+        //     for(var i = 0 ,item ; item = a[i]; i++){
+        //         if((itemA =item.split("=")[0] )=== name ){
+        //             return itemA[1];
+        //         }
+        //     }
+        // }
+
+        //设置cookie 与 获取cookie 合并版
+        function cookie(name , value ,options){
+            if(arguments === 1){
+                var cookieValue,res;
+                cookieValue = document.cookie;
+                res = cookieValue.split("; ");
+                for(var i = 0 ,item ; item = res[i] ; i++){
+                    if((itemA = item.split("="))[0] === name){
+                        return itemA[1];
+                    }
+                }
+                return "";
+            }
+            typeof options === "object" ? "" : options = {};
+            var d = null;
+            return (document.cookie = [
+                name + "=" + value ,
+                options.expires ? ";expires=" + ((d = new Date()).setDate(d.getDate() + options.expires) && d ) : "",
+                options.path ? ";path=" + options.path : "" ,
+                options.domain ? ";domain=" + options.domain : "",
+                options.scure ? ";scure=" + options.scure : ""
+            ].join(""));
+        }
+    </script>
+</body>
+</html>
