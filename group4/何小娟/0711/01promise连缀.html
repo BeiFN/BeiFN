@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let pro = new Promise(function(resolve,reject){
+        console.log(1)
+        resolve("hello hxj")
+    })
+
+    let promise = pro.then(function(res){
+        // promise的连缀
+        console.log(res)      //hello hxj
+        return new Promise(function(resolve,reject){
+            console.log(2) 
+            resolve("hello lsh")
+        })
+
+    }).then(function(res){
+        console.log(3)
+        console.log(res)      //hello lsh
+    })
+
+
+    console.log(pro)
+  </script>
+</body>
+</html>

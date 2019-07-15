@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function setCookie(name , value , options) {
+        //     typeof options === "object" ? "" : options = {};
+        //     var d;
+        //     return (document.cookie = [
+        //         name + "=" + value,
+
+        //         // options.expires ?";expires=" + ((d = new Date()).setDate(d.getDate() + options.expires) && d ): "",
+
+        //         options.expires ?";expires=" + ((d = new Date()).setDate(d.getDate() + options.expires) && d ) : "",
+        //         options.path ? ";path=" + options.path : "",
+        //         options.domain ? ";domain=" + options.domain : "",
+        //         options.secure ? ";secure=" + options.secure : ""
+        //     ].join(""))
+        // }
+        // // console.log(setCookie("haha" , 123 , {
+        // //     expires : 20,
+        
+        // // }));
+        // setCookie("haha" , 456123 , {
+        //     path : "/",
+        //     expires : 20,
+        
+        // });
+        // function removeCookie(name , path) {
+        //     setCookie(name , "" , {
+        //         path : path ? path : "",
+        //         expires : -1
+        //     })
+        // }
+        // removeCookie("haha");
+
+        function getCookie(name) {
+            var cookie_list = document.cookie;
+            var a = cookie_list.split("; ");
+            for(var i=0 , itemA , item; item = a[i]; i++) {
+                if((itemA = item.split("="))[0] === name) {
+                    return itemA[1];
+                }
+            }
+        }
+        
+
+        function cookie(name , value , options) {
+            var d , s , a;
+            if(arguments.length === 1) {
+                s = document.cookie;
+                a = s.split("; ");
+                for(var i=0 , itemA , item; item = a[i]; i++) {
+                    if((itemA = item.split("="))[0] === name) {
+                        return itemA[1];
+                    }
+                }
+                return "";
+            }
+
+            typeof options === "object" ? "" : options = {};
+            return (document.cookie = [
+                name + "=" + value,
+                options.expires ? ";expires=" + ((d = new Date()).setDate(d.getDate() + options.expires) && d) : "",
+                options.path ? ";path=" + options.path : "",
+                options.domain ? ";domain" + options.path : "",
+                options.secure ? ";secure" + options.secure : ""
+            ].join(""))
+        }
+        console.log(cookie("世界" , 5 , {
+            expires : 60,
+            path : "/",
+            domain : "localhost"
+        }));
+    </script>
+</body>
+</html>
