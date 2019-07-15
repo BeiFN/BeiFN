@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .image-list{
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-list"></div>
+    <div class="pagination"></div>
+  </div>
+
+  <script type="text/html" id="template">
+    <% for(var i = 0 ; i < data.length; i ++){%>
+      <div class="box">
+        <img src="<%= data[i].thumb_url %>" alt="">
+      </div>
+    <%}%>
+  </script>
+  <script src="../libs/utils.js"></script>
+  <script src="./pagination封装.js"></script>
+  <script>
+    new Pagination().init({
+    list : ".image-list",
+    page : ".pagination",
+    getData : {
+      url : "http://localhost/pxx",
+      data : {
+        data_array : "goods_list",
+        subject_id : 5578,
+        page : 1,
+        size : 40
+      }
+    },
+    pageNo : 1,
+    showNo : 10,
+    template : $("#template").innerHTML
+  });
+  </script>
+</body>
+</html>
