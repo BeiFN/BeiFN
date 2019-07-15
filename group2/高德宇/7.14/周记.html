@@ -1,0 +1,631 @@
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600718 (zh-CN, DDL); Windows/6.1.1 (Win64);"/>
+  <meta name="content-class" content="yinxiang.markdown"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="652"/>
+
+<div><span><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">登陆注册</h3>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">&lt;?php
+header(&quot;Content-type:text/html;charset=utf-8;&quot;);//请求头
+$users = @$_GET[&quot;username&quot;]
+$pasds = @$_GET[&quot;password&quot;];//@  非空也可
+$rename = @$_GET[&quot;rename&quot;];
+$repass = @$_GET[&quot;repass&quot;];
+$del=@$_GET[&quot;namex&quot;];
+$loo=@$_GET['loo'];// 查看数据库
+// if(!$users|| !$pasds||!$rename||!$repass ){
+// die(&quot;哈哈哈&quot;);
+// }
+$server = &quot;localhost:3306&quot;;
+$username = &quot;root&quot;;
+$password = &quot;root&quot;;
+$sqls = &quot;gp12121&quot;;
+$conn = mysqli_connect($server,$username,$password,$sqls);
+if(!$conn){
+die(&quot;errorconn&quot; . mysqli_connect_error());
+};
+if($rename){$sql_update = &quot;UPDATE USERTABLE SET password='$repass' WHERE username='$rename'&quot;;
+if(mysqli_query($conn,$sql_update)){
+echo &quot;成功&quot;;
+}else{
+echo mysqli_error($conn);
+};};
+//
+if($users){
+$selecttab = &quot;SELECT * FROM USERTABLE WHERE USERNAME='$users'&quot;;
+$cl =mysqli_query($conn,$selecttab);
+if($cl){
+if(mysqli_num_rows($cl) &gt; 0){
+die(&quot;用户名重名&quot;);}
+}else{
+die(&quot;Error select userdata: &quot; . mysqli_error($conn));
+};
+$pasds = md5($pasds);
+$insertsql = &quot;INSERT INTO USERTABLE (
+username , password
+)VALUES('$users','$pasds')
+;&quot;;
+if(mysqli_query($conn,$insertsql))
+{
+echo &quot;success&quot;;
+}else{
+echo &quot;filesure&quot;.mysqli_error($conn);
+};
+};
+if($del){$sql_delete = &quot;DELETE FROM USERTABLE WHERE username='$del'&quot;;
+if(mysqli_query($conn,$sql_delete)){
+echo &quot;成功&quot;;
+}else{
+echo mysqli_error($conn);
+};};
+if($loo){
+$sql_select = &quot;SELECT username FROM USERTABLE&quot;;
+if($result = mysqli_query($conn,$sql_select)){
+// 查看存在多少条数据;
+// echo mysqli_num_rows($result);
+// $row = mysqli_fetch_assoc($result);
+// $row = mysqli_fetch_assoc($result);
+// echo var_dump($row);
+// 拿出每一条数据;
+while($row = mysqli_fetch_assoc($result)){
+echo json_encode($row);
+};
+}else{
+echo mysqli_error($conn);
+};
+}
+// $sql_select = &quot;SELECT username FROM gptest&quot;;
+// if($result = mysqli_query($conn,$sql_select)){
+// // 查看存在多少条数据;
+// // echo mysqli_num_rows($result);
+// // $row = mysqli_fetch_assoc($result);
+// // $row = mysqli_fetch_assoc($result);
+// // echo var_dump($row);
+// // 拿出每一条数据;
+// while($row = mysqli_fetch_assoc($result)){
+// echo json_encode($row);
+// }
+// }else{
+// echo mysqli_error($conn);
+// };
+mysqli_close($conn);
+?&gt;
+</code></pre>
+<h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">ajax</h3>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">利用浏览器发送了一个请求, 请求到了服务器服务器会自动分发数据给你去解析执行。</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">readyState这玩意其实无论你在加载过程之中遇到了什么问题, 只负责一件事加载成功执行结果。</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+var xhr = new XMLHttpRequest();
+xhr.open(&quot;GET&quot;, &quot;http://localhost/gp12coding/0710/01ajax.txt&quot;);
+xhr.send(null);
+// readyState =&gt; 0 1 2 3 4
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+document.body.innerHTML = xhr.responseText;
+}
+}
+var xml = new XMLHttpRequest();
+xhr.open(&quot;GET&quot;, &quot;http/;//localhost/&quot;);
+xhr.send(null);
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+document.body.innerHTML = xhr.responseText;
+}
+}
+</code></pre>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">优化了用户体验; 传统的表单数据提交一旦进行数据发送页面会刷新。 AJAX实现了无刷新加载页面。 可以在提交数据过程之中添加更多的优化。</li>
+<li style="line-height: 160%; box-sizing: content-box;">我们利用AJAX实现前后端分离的开发模式提高了开发效率。 1 : 4 比列配置前端端控制开发时效性。</li>
+</ol>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">AJAX在使用时也会带给我们一些小问题</li>
+</ul>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">SEO优化相当差。 不执行JS无法让数据渲染到页面上，导致程序SEO优化很差。 比如京东在商品列表渲染时为了更优的SEO优化, 规避使用ajax。</li>
+<li style="line-height: 160%; box-sizing: content-box;">没有 history 没法回退或者前进。可以通过技术手段进行弥补;</li>
+<li style="line-height: 160%; box-sizing: content-box;">兼容性问题。 IE8 + 浏览器支持。</li>
+</ol>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">AJAX是哪里来的</li>
+</ul>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">来自于IE的插件 ActioveX , 被大牛封装成了ajax。</li>
+</ol>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">AJAX 怎么用;</li>
+</ul>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">获取到ajax对象</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;"><span style="color: #569cd6; line-height: 160%; box-sizing: content-box;">let</span> xhr = <span style="color: #569cd6; line-height: 160%; box-sizing: content-box;">new</span> XMLHttpRequest()
+</code></pre>
+<ol start="2" style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">配置ajax对象;</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">xhr.open( method [GET | POST ] , url , 是否启用异步[<span style="color: #569cd6; line-height: 160%; box-sizing: content-box;">true</span> | <span style="color: #569cd6; line-height: 160%; box-sizing: content-box;">false</span>] )
+</code></pre>
+<ol start="3" style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">发送ajax请求; =&gt; 利用xhr对象驱动浏览器发送一个请求;</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">xhr.send(要发送的数据);
+</code></pre>
+<ol start="4" style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">事件监听 ; =&gt; 监听xhr对象的状态变化.<br/>
+onreadystatechange =&gt; 当准备状态发生改变的时候。</li>
+</ol>
+<h2 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 34px; border-bottom: 1px solid #dbdbdb; color: #333;">http</h2>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">TCP , UDP 传输协议;</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">约定了数据的可信性。 数据的完整性。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">TCP =&gt; 可靠协议 ; 验证链接的可靠性。 再去进行数据的传入 。 验证数据的完整性，断开连接。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">UDP =&gt; 不可靠协议; 1 2 3 4 5 =&gt; 3 2 4 1 可能存在丢数据，数据顺序不正确这样的情况。</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">TCP经过了大牛封装HTTP 无状态数据传输协议。</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">HTTP 在传输数据之前会测试链接可靠性 , 三次握手 。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">HTTP 报文头 : 理论上来讲所有信息都可以被放入报文头之中, 但是我们可以配置我们想要放入的东西;</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">HTTP 四次挥手断开连接。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">无状态无论你是谁，这时候都可以进行访问。</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">浏览器调试工具 network<br/>
+<img src="https://upload-images.jianshu.io/upload_images/16960494-1968ee8574ce9d16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="line-height: 160%; margin: 4px 0 10px; box-sizing: border-box; vertical-align: top; max-width: 100%;"></img></li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">Response Request</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">response 相应 ; Server =&gt; Browser</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">request 请求 ; Browser =&gt; Server</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">http 状态码</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">都是人定义的，当然在你的项目之中可以自定义状态码。<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">消息</strong><br/>
+▪ 100 Continue<br/>
+▪ 101 Switching Protocols<br/>
+▪ 102 Processing<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">成功</strong><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">200 OK</code><br/>
+▪ 201 Created<br/>
+▪ 202 Accepted<br/>
+▪ 203 Non-Authoritative Information<br/>
+▪ 204 No Content<br/>
+▪ 205 Reset Content<br/>
+▪ 206 Partial Content<br/>
+▪ 207 Multi-Status<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">重定向</strong><br/>
+▪ 300 Multiple Choices<br/>
+▪ 301 Moved Permanently<br/>
+▪ 302 Move Temporarily<br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">303 See Other</code><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">304 Not Modified</code><br/>
+▪ 305 Use Proxy<br/>
+▪ 306 Switch Proxy<br/>
+▪ 307 Temporary Redirect<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">请求错误</strong><br/>
+▪ 400 Bad Request<br/>
+▪ 401 Unauthorized<br/>
+▪ 402 Payment Required<br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">403 Forbidden</code><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">404 Not Found</code><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">405 Method Not Allowed</code><br/>
+▪ 406 Not Acceptable<br/>
+▪ 407 Proxy Authentication Required<br/>
+▪ 408 Request Timeout<br/>
+▪ 409 Conflict<br/>
+▪ 410 Gone<br/>
+▪ 411 Length Required<br/>
+▪ 412 Precondition Failed<br/>
+▪ 413 Request Entity Too Large<br/>
+▪ 414 Request-URI Too Long<br/>
+▪ 415 Unsupported Media Type<br/>
+▪ 416 Requested Range Not Satisfiable<br/>
+▪ 417 Expectation Failed<br/>
+▪ 418 I'm a teapot<br/>
+▪ 421 Too Many Connections<br/>
+▪ 422 Unprocessable Entity<br/>
+▪ 423 Locked<br/>
+▪ 424 Failed Dependency<br/>
+▪ 425 Too Early<br/>
+▪ 426 Upgrade Required<br/>
+▪ 449 Retry With<br/>
+▪ 451 Unavailable For Legal Reasons<br/>
+<strong style="line-height: 160%; box-sizing: content-box; font-weight: 700;">服务器错误</strong><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">500 Internal Server Error</code><br/>
+▪ 501 Not Implemented<br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">502 Bad Gateway</code><br/>
+▪ <code style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; color: #c1788b; padding: 4px 4px 2px 0; letter-spacing: -.3px;">503 Service Unavailable</code><br/>
+▪ 504 Gateway Timeout<br/>
+▪ 505 HTTP Version Not Supported<br/>
+▪ 506 Variant Also Negotiates<br/>
+▪ 507 Insufficient Storage<br/>
+▪ 509 Bandwidth Limit Exceeded<br/>
+▪ 510 Not Extended<br/>
+▪ 600 Unparseable Response Headers</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">请求方式</li>
+</ul>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">GET</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">简单轻便效率高</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">发送信息的功能, 数据放在了请求的地址上 ?进行划分以key=value的形式传递一组数据,以&amp; 间隔每组数。 =&gt; 导致数据不能过大 4 ~ 10kb数据发送的上限， 我们限定为4kb为最大传输数据。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">GET的所有数据都放在了地址栏上，导致数据曝光风险较大。 数据存在一定的安全隐患。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">GET把所有的数据放在头部;</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">安全性没有太大的区别。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">主要用来获取数据</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">POST</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">发送数据大小严格意义上来说不受限制。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">数据不会曝光。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">POST把数据放在了body之中。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">安全性没有太大的区别。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">主要用来发送数据。</li>
+</ul>
+<h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">跨域</h3>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">1服务器代理<br/>
+2jsonp<br/>
+SRC 请求方式不受同源策略限制;<br/>
+函数可以传参;<br/>
+script 标签做了些啥 ;<br/>
+发起了一个请求, 请求返回的结果(一段字符串) , 把这些字符串直接当成JS去解析。<br/>
+在前端定义一个全局函数，在后端拼接字符串进行调用。<br/>
+百度搜索</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">function jsonp( url , cb_fild , data){
+return new Promise( function(resolve , reject){
+var GLOBAL_CB = &quot;foo&quot;;
+window[GLOBAL_CB] = function(res){
+// 这是异步;
+resolve(res)
+}
+// 字段名和回调函数名拼接;
+url += (/\?/.test(url) ? &quot;&amp;&quot; : &quot;?&quot;)+ cb_fild + &quot;=&quot; + GLOBAL_CB;
+// 判定是否存在数据;数据拼接;
+if(typeof data === &quot;object&quot;){
+var dataStr = &quot;&quot;;
+for(var attr in data){
+dataStr += (dataStr.length &gt; 0 ? &quot;&amp;&quot; : &quot;&quot;) + attr + &quot;=&quot; + data[attr];
+}
+url += &quot;&amp;&quot; + dataStr;
+}
+// 请求发送;
+var script = document.createElement(&quot;script&quot;);
+script.src = url;
+script.onload = function(){
+this.remove();
+}
+document.body.appendChild(script);
+})
+}
+var url = &quot;https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su&quot;;
+var data = {
+json:1 ,
+p:3,
+sid:1423_21080_29238_28518_29099_28830_29221_22158,
+req:2,
+sc:&quot;eb&quot;,
+csor:0,
+_:Date.now(),
+wd : &quot;&quot;
+}
+// jsonp( url, &quot;cb&quot; , data)
+// .then(function(res){
+// console.log(res);
+// })
+var ipt = document.getElementById(&quot;ipt&quot;);
+var content = document.getElementById(&quot;content&quot;);
+ipt.oninput = function(){
+// console.log(this.value);
+data.wd = this.value;
+jsonp( url , &quot;cb&quot; , data)
+.then( function (res){
+// console.log(res);
+var html = &quot;&quot;;
+res.s.forEach( item =&gt; html += `&lt;p&gt;${item}&lt;/p&gt;`);
+content.innerHTML = html;
+})
+}
+&lt;/script&gt;
+</code></pre>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">3 cors</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">后端 header(&quot;Access-Control-Allow-Origin:http://localhost&quot;)<br/>
++1</p>
+<h5 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 16px; color: #333;">domian 跨域</h5>
+<h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">cookie</h3>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">1.当前会话不关闭，cooki一直存在, 会话一旦关闭那么cookie就删除了，这样的cookie我们叫做会话cookie;<br/>
+cookie的时效性设置; expries<br/>
+var d = new Date();<br/>
+d.setDate(d.getDate() + 10);<br/>
+22 =&gt; 当前日期 + 保质期;<br/>
+document.cookie=&quot;username=huaizhiy;expires=&quot; + d;<br/>
+2. cookie咋删除 ?<br/>
+cookie过期时间设置为前一天就可以删除cookie了;<br/>
+var d = new Date();<br/>
+d.setDate( d.getDate() + 10);<br/>
+document.cookie = &quot;username=huaizhiy;expires=&quot; + d;<br/>
+3. cookie访问路径; 家丑不可外扬;<br/>
+document.cookie = &quot;username=wuyanzu;path=gp12coding/0712&quot;;<br/>
+domain 和 path 一致那么cookie是共享的。 任何页面都可以访问;<br/>
+cookie 存在浏览器之中; 页面运行在浏览器之上。<br/>
+区分cookie不同的是 :</p>
+<ol style="line-height: 160%; box-sizing: content-box; display: block; padding-left: 30px; margin: 6px 0 10px; color: #333; list-style-type: decimal;">
+<li style="line-height: 160%; box-sizing: content-box;">name cookie名;</li>
+<li style="line-height: 160%; box-sizing: content-box;">cookie 的path;</li>
+</ol>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+## 免登陆
+- 登陆之后 , 后台创建一条cookie , 放在响应头并带到浏览器,浏览器发觉存在cookie那么浏览器会将cookie保存在本地硬盘。
+- 如果用户访问请求时，先去比对是否存在已经登陆的cookie
+- 流程
+浏览器发起一个请求 =&gt; 服务器判定是否存在cookie ,存在 cookie 验证cookie;
+=&gt; 不存在cookie , 走登陆流程，如果成功登陆，创建cookie;
+-存cookie的加密规范,jwt规范 ; json-web-tocken;
+iss：发行人
+exp：到期时间
+sub：主题
+aud：用户
+nbf：在此之前不可用
+iat：发布时间
+jti：JWT ID用于标识该JWT
+明文 : {
+alg : &quot;HS256&quot;,
+typ : &quot;JWT&quot; ,
+payload : &quot;10&quot;,
+}
+加密 :
+xxxxx.xxxxx.xxxxxx
+把密文存在tocken之中。
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">## 接口文档
+- 路径 : http://localhost/gp12coding/0712/login.php
+- 请求方式 : POST
+- 参数(字段) :
+username:&quot;username&quot;,
+password:&quot;password&quot;
+- 返回值 :
+{
+state : &quot;success|error&quot;,
+stateCode : 0 ,
+[,username : 用户名 [,password : md5加密后的密码]]
+}
+stateCode : 0 缺少参数;
+1 表示登陆成功;
+2 数据库连接失败;
+3 用户名不存在;
+4 密码错误;
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+1. 设置cookie;
+function setCookie( name , value , options ){
+typeof options === &quot;object&quot; ? &quot;&quot; : options = {};
+var d;
+return (document.cookie = [
+name + &quot;=&quot; + value ,
+options.expires ?&quot;;expires=&quot; + ((d = new Date()).setDate(d.getDate() + options.expires) &amp;&amp; d ): &quot;&quot;,
+options.path ?&quot;;path=&quot; + options.path : &quot;&quot;,
+options.domain ?&quot;;domain=&quot; + options.domain : &quot;&quot;,
+options.secure ?&quot;;secure=&quot; + options.secure : &quot;&quot;,
+].join(&quot;&quot;));
+}
+// 2. 删除cookie;
+function removeCookie(name,path){
+setCookie(name , &quot;&quot; , {
+path : path ? path : &quot;&quot;,
+expires : -1
+})
+}
+// setCookie( &quot;username&quot; ,&quot;hello&quot;,{
+// expires : 10,
+// path : &quot;/&quot;
+// })
+// removeCookie(&quot;username&quot;,&quot;/&quot;);
+for(var i = 0 ; i &lt; 10 ; i++){
+setCookie( &quot;hello&quot; + i , i);
+}
+// 3. 获取cookie;
+// ((d = new Date()).setDate(d.getDate() + options.expires) &amp;&amp; d
+// 非0 =&gt; 时间戳;
+// console.log(document.cookie.split(&quot;; &quot;));
+// // 遍历每一条cookie;
+// console.log(document.cookie.split(&quot;; &quot;).filter (item =&gt; {
+// return item.split(&quot;=&quot;)[0] === &quot;hello2&quot;;
+// }))
+function getCookie( name ){
+// 获取cookie字符串 , 并以每条cookie为拆分依据将cookie拆分成一个数组;
+var s = document.cookie, a = s.split(&quot;; &quot;);
+for(var i = 0 , item , itemA ; item = a[i]; i++){
+if((itemA = item.split(&quot;=&quot;))[0] === name){
+return itemA[1];
+}
+}
+}
+// console.log(getCookie(&quot;hello2&quot;));
+function cookie( name , value , options ){
+var d,s,a;
+if(arguments.length === 1){
+s = document.cookie;
+a = s.split(&quot;; &quot;);
+for(var i = 0 , item , itemA ; item = a[i]; i++){
+if((itemA = item.split(&quot;=&quot;))[0] === name){
+return itemA[1];
+}
+}
+return &quot;&quot;;
+}
+typeof options === &quot;object&quot; ? &quot;&quot; : options = {};
+return (document.cookie = [
+name + &quot;=&quot; + value ,
+options.expires ?&quot;;expires=&quot; + ((d = new Date()).setDate(d.getDate() + options.expires) &amp;&amp; d ): &quot;&quot;,
+options.path ?&quot;;path=&quot; + options.path : &quot;&quot;,
+options.domain ?&quot;;domain=&quot; + options.domain : &quot;&quot;,
+options.secure ?&quot;;secure=&quot; + options.secure : &quot;&quot;,
+].join(&quot;&quot;));
+}
+
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+&lt;form &gt;
+&lt;p&gt;用户名 : &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;yanghuaizhi&quot;&gt;&lt;/p&gt;
+&lt;p&gt;密 码 : &lt;input type=&quot;text&quot; name=&quot;password&quot; value=&quot;123456&quot;&gt;&lt;/p&gt;
+&lt;button &gt;提交&lt;/button&gt;
+&lt;/form&gt;
+&lt;script src=&quot;../libs/utils.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+let {
+ajax,
+$
+} = Utils;
+let [form, btn] = [
+$(&quot;#form&quot;),
+$(&quot;#btn&quot;)
+];
+// console.log(form);
+form.addEventListener(&quot;submit&quot;, evt =&gt; {
+let e = evt || window.event;
+e.preventDefault();
+})
+btn.addEventListener(&quot;click&quot;, evt =&gt; {
+let [
+userValue,
+pwdValue
+] = [
+$(&quot;input[name=username]&quot;).value,
+$(&quot;input[name=password]&quot;).value,
+]
+// 禁用按钮;
+btn.disabled = &quot;disabled&quot;;
+btn.innerHTML = &quot;loading...&quot;;
+let url = &quot;http://localhost/0712/login.php&quot;;
+let data = {
+username: userValue,
+password: pwdValue
+}
+ajax(url, {
+data,
+type: &quot;POST&quot;,
+dataType: &quot;json&quot;
+})
+.then(res =&gt; {
+// console.log(res);
+switch (res.stateCode) {
+case 0:
+alert(&quot;登陆参数不全&quot;);
+break;
+case 2:
+alert(&quot;数据库连接失败&quot;);
+break;
+case 3:
+alert(&quot;用户名不存在&quot;);
+break;
+case 4:
+alert(&quot;密码错误&quot;);
+break;
+case 1:
+alert(&quot;登陆成功&quot;);
+location.reload();
+break;
+}
+btn.removeAttribute(&quot;disabled&quot;);
+btn.innerHTML = &quot;登陆&quot;;
+console.log(res);
+})
+})
+// 先发一个请求,验证是否存在tocken ,如果存在就不用登陆了;如果不存在我继续去登陆;
+function validateTocken() {
+let url = &quot;http://localhost/0712/login.php&quot;;
+ajax(url)
+.then(res =&gt; {
+res = JSON.parse(res)
+if (res.state) {
+return false;
+}
+form.innerHTML = &quot;用户名为:&quot; + res.username + &quot;&lt;button &gt;退出登陆&lt;/button&gt;&quot;;
+})
+}
+validateTocken()
+&lt;/script&gt;
+
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">
+php
+header(&quot;content-type:text/html;charset=utf8;&quot;);
+$usr = @$_POST[&quot;username&quot;];
+$pwd = @$_POST[&quot;password&quot;];
+$tocken = @$_COOKIE[&quot;TOCKEN&quot;];
+if($tocken &amp;&amp; !$pwd &amp;&amp; !$usr){
+die($tocken);
+}
+if(!$usr || !$pwd ) {
+$result = array( &quot;state&quot; =&gt; &quot;error&quot; , &quot;stateCode&quot; =&gt; 0);
+die( json_encode($result) );
+}
+// 链接数据库
+$host = &quot;localhost:3306&quot;;
+$username = &quot;root&quot;;
+$password = &quot;root&quot;;
+$dbname = &quot;gp12121&quot;;
+$conn = mysqli_connect($host,$username,$password,$dbname);
+if(!$conn){
+// die(&quot;数据库连接失败&quot; . mysqli_error());
+$result = array( &quot;state&quot; =&gt; &quot;error&quot; , &quot;stateCode&quot; =&gt; 2 , &quot;errorMsg&quot; =&gt; mysqli_error());
+die( json_encode($result) );
+}
+$sql_select = &quot;SELECT username,password FROM usertable WHERE username='$usr'&quot;;
+// 辨别查询结果之中有多少条数据
+$res = mysqli_query($conn,$sql_select);
+if(mysqli_num_rows( $res ) === 0 ) {
+$result = array( &quot;state&quot; =&gt; &quot;error&quot; , &quot;stateCode&quot; =&gt; 3 );
+die( json_encode($result) );
+}else{
+while($row = mysqli_fetch_assoc($res)){
+if($row[&quot;password&quot;] == md5($pwd)){
+$result = array( &quot;state&quot; =&gt; &quot;success&quot; , &quot;stateCode&quot; =&gt; 1 , &quot;username&quot; =&gt; $usr , &quot;password&quot; =&gt; $row[&quot;password&quot;]);
+$tocken = array( &quot;username&quot; =&gt; $usr , &quot;password&quot; =&gt; $row[&quot;password&quot;]);
+setcookie(&quot;TOCKEN&quot;,json_encode($tocken),time()+3600 * 24);
+die( json_encode($result) );
+// 设置一个tocken;
+}
+}
+$result = array( &quot;state&quot; =&gt; &quot;error&quot; , &quot;stateCode&quot; =&gt; 4 );
+die( json_encode($result) );
+}
+?&gt;
+
+</code></pre>
+<h3 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 27px; color: #333;">Aasync Await</h3>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">同步<br/>
+异步<br/>
+微任务<br/>
+宏任务</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">await 之下的所有程序都是异步的<br/>
+只要你在js之中触发事件,事件其实就是函数调用</p>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;"> waterfall 获取数据
+ 
+ 渲染页面 
+ 第一排 放入数组
+ 拼接页面
+</code></pre>
+<pre style="line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; margin: 2px 0 8px; background-color: #f5f7f8;"><code style="display: block; overflow-x: auto; background: #1e1e1e; line-height: 160%; box-sizing: content-box; border: 0; border-radius: 0; letter-spacing: -.3px; padding: 18px; color: #f4f4f4; white-space: pre-wrap;">pagination 
+渲染
+绑定
+渲染
+</code></pre>
+</div><center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">%23%23%23%20%E7%99%BB%E9%99%86%E6%B3%A8%E5%86%8C%0A%60%60%60%0A%3C%3Fphp%0Aheader(%22Content-type%3Atext%2Fhtml%3Bcharset%3Dutf-8%3B%22)%3B%2F%2F%E8%AF%B7%E6%B1%82%E5%A4%B4%0A%24users%20%3D%20%40%24_GET%5B%22username%22%5D%0A%24pasds%20%3D%20%40%24_GET%5B%22password%22%5D%3B%2F%2F%40%20%20%E9%9D%9E%E7%A9%BA%E4%B9%9F%E5%8F%AF%0A%24rename%20%3D%20%40%24_GET%5B%22rename%22%5D%3B%0A%24repass%20%3D%20%40%24_GET%5B%22repass%22%5D%3B%0A%24del%3D%40%24_GET%5B%22namex%22%5D%3B%0A%24loo%3D%40%24_GET%5B'loo'%5D%3B%2F%2F%20%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93%0A%2F%2F%20if(!%24users%7C%7C%20!%24pasds%7C%7C!%24rename%7C%7C!%24repass%20)%7B%0A%2F%2F%20die(%22%E5%93%88%E5%93%88%E5%93%88%22)%3B%0A%2F%2F%20%7D%0A%24server%20%3D%20%22localhost%3A3306%22%3B%0A%24username%20%3D%20%22root%22%3B%0A%24password%20%3D%20%22root%22%3B%0A%24sqls%20%3D%20%22gp12121%22%3B%0A%24conn%20%3D%20mysqli_connect(%24server%2C%24username%2C%24password%2C%24sqls)%3B%0Aif(!%24conn)%7B%0Adie(%22errorconn%22%20.%20mysqli_connect_error())%3B%0A%7D%3B%0Aif(%24rename)%7B%24sql_update%20%3D%20%22UPDATE%20USERTABLE%20SET%20password%3D'%24repass'%20WHERE%20username%3D'%24rename'%22%3B%0Aif(mysqli_query(%24conn%2C%24sql_update))%7B%0Aecho%20%22%E6%88%90%E5%8A%9F%22%3B%0A%7Delse%7B%0Aecho%20mysqli_error(%24conn)%3B%0A%7D%3B%7D%3B%0A%2F%2F%0Aif(%24users)%7B%0A%24selecttab%20%3D%20%22SELECT%20*%20FROM%20USERTABLE%20WHERE%20USERNAME%3D'%24users'%22%3B%0A%24cl%20%3Dmysqli_query(%24conn%2C%24selecttab)%3B%0Aif(%24cl)%7B%0Aif(mysqli_num_rows(%24cl)%20%3E%200)%7B%0Adie(%22%E7%94%A8%E6%88%B7%E5%90%8D%E9%87%8D%E5%90%8D%22)%3B%7D%0A%7Delse%7B%0Adie(%22Error%20select%20userdata%3A%20%22%20.%20mysqli_error(%24conn))%3B%0A%7D%3B%0A%24pasds%20%3D%20md5(%24pasds)%3B%0A%24insertsql%20%3D%20%22INSERT%20INTO%20USERTABLE%20(%0Ausername%20%2C%20password%0A)VALUES('%24users'%2C'%24pasds')%0A%3B%22%3B%0Aif(mysqli_query(%24conn%2C%24insertsql))%0A%7B%0Aecho%20%22success%22%3B%0A%7Delse%7B%0Aecho%20%22filesure%22.mysqli_error(%24conn)%3B%0A%7D%3B%0A%7D%3B%0Aif(%24del)%7B%24sql_delete%20%3D%20%22DELETE%20FROM%20USERTABLE%20WHERE%20username%3D'%24del'%22%3B%0Aif(mysqli_query(%24conn%2C%24sql_delete))%7B%0Aecho%20%22%E6%88%90%E5%8A%9F%22%3B%0A%7Delse%7B%0Aecho%20mysqli_error(%24conn)%3B%0A%7D%3B%7D%3B%0Aif(%24loo)%7B%0A%24sql_select%20%3D%20%22SELECT%20username%20FROM%20USERTABLE%22%3B%0Aif(%24result%20%3D%20mysqli_query(%24conn%2C%24sql_select))%7B%0A%2F%2F%20%E6%9F%A5%E7%9C%8B%E5%AD%98%E5%9C%A8%E5%A4%9A%E5%B0%91%E6%9D%A1%E6%95%B0%E6%8D%AE%3B%0A%2F%2F%20echo%20mysqli_num_rows(%24result)%3B%0A%2F%2F%20%24row%20%3D%20mysqli_fetch_assoc(%24result)%3B%0A%2F%2F%20%24row%20%3D%20mysqli_fetch_assoc(%24result)%3B%0A%2F%2F%20echo%20var_dump(%24row)%3B%0A%2F%2F%20%E6%8B%BF%E5%87%BA%E6%AF%8F%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE%3B%0Awhile(%24row%20%3D%20mysqli_fetch_assoc(%24result))%7B%0Aecho%20json_encode(%24row)%3B%0A%7D%3B%0A%7Delse%7B%0Aecho%20mysqli_error(%24conn)%3B%0A%7D%3B%0A%7D%0A%2F%2F%20%24sql_select%20%3D%20%22SELECT%20username%20FROM%20gptest%22%3B%0A%2F%2F%20if(%24result%20%3D%20mysqli_query(%24conn%2C%24sql_select))%7B%0A%2F%2F%20%2F%2F%20%E6%9F%A5%E7%9C%8B%E5%AD%98%E5%9C%A8%E5%A4%9A%E5%B0%91%E6%9D%A1%E6%95%B0%E6%8D%AE%3B%0A%2F%2F%20%2F%2F%20echo%20mysqli_num_rows(%24result)%3B%0A%2F%2F%20%2F%2F%20%24row%20%3D%20mysqli_fetch_assoc(%24result)%3B%0A%2F%2F%20%2F%2F%20%24row%20%3D%20mysqli_fetch_assoc(%24result)%3B%0A%2F%2F%20%2F%2F%20echo%20var_dump(%24row)%3B%0A%2F%2F%20%2F%2F%20%E6%8B%BF%E5%87%BA%E6%AF%8F%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE%3B%0A%2F%2F%20while(%24row%20%3D%20mysqli_fetch_assoc(%24result))%7B%0A%2F%2F%20echo%20json_encode(%24row)%3B%0A%2F%2F%20%7D%0A%2F%2F%20%7Delse%7B%0A%2F%2F%20echo%20mysqli_error(%24conn)%3B%0A%2F%2F%20%7D%3B%0Amysqli_close(%24conn)%3B%0A%3F%3E%0A%60%60%60%0A%23%23%23%20ajax%0A%0A%E5%88%A9%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E4%BA%86%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%2C%20%E8%AF%B7%E6%B1%82%E5%88%B0%E4%BA%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91%E6%95%B0%E6%8D%AE%E7%BB%99%E4%BD%A0%E5%8E%BB%E8%A7%A3%E6%9E%90%E6%89%A7%E8%A1%8C%E3%80%82%0A1.%20readyState%E8%BF%99%E7%8E%A9%E6%84%8F%E5%85%B6%E5%AE%9E%E6%97%A0%E8%AE%BA%E4%BD%A0%E5%9C%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E4%B9%8B%E4%B8%AD%E9%81%87%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%2C%20%E5%8F%AA%E8%B4%9F%E8%B4%A3%E4%B8%80%E4%BB%B6%E4%BA%8B%E5%8A%A0%E8%BD%BD%E6%88%90%E5%8A%9F%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E3%80%82%0A%60%60%60%0A%0Avar%20xhr%20%3D%20new%20XMLHttpRequest()%3B%0Axhr.open(%22GET%22%2C%20%22http%3A%2F%2Flocalhost%2Fgp12coding%2F0710%2F01ajax.txt%22)%3B%0Axhr.send(null)%3B%0A%2F%2F%20readyState%20%3D%3E%200%201%202%203%204%0Axhr.onreadystatechange%20%3D%20function()%20%7B%0Aif%20(xhr.readyState%20%3D%3D%3D%204%20%26%26%20xhr.status%20%3D%3D%3D%20200)%20%7B%0Adocument.body.innerHTML%20%3D%20xhr.responseText%3B%0A%7D%0A%7D%0Avar%20xml%20%3D%20new%20XMLHttpRequest()%3B%0Axhr.open(%22GET%22%2C%20%22http%2F%3B%2F%2Flocalhost%2F%22)%3B%0Axhr.send(null)%3B%0Axhr.onreadystatechange%20%3D%20function()%20%7B%0Aif%20(xhr.readyState%20%3D%3D%3D%204%20%26%26%20xhr.status%20%3D%3D%3D%20200)%20%7B%0Adocument.body.innerHTML%20%3D%20xhr.responseText%3B%0A%7D%0A%7D%0A%60%60%60%0A%0A1.%20%E4%BC%98%E5%8C%96%E4%BA%86%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%3B%20%E4%BC%A0%E7%BB%9F%E7%9A%84%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E6%8F%90%E4%BA%A4%E4%B8%80%E6%97%A6%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81%E9%A1%B5%E9%9D%A2%E4%BC%9A%E5%88%B7%E6%96%B0%E3%80%82%20AJAX%E5%AE%9E%E7%8E%B0%E4%BA%86%E6%97%A0%E5%88%B7%E6%96%B0%E5%8A%A0%E8%BD%BD%E9%A1%B5%E9%9D%A2%E3%80%82%20%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E8%BF%87%E7%A8%8B%E4%B9%8B%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BC%98%E5%8C%96%E3%80%82%0A2.%20%E6%88%91%E4%BB%AC%E5%88%A9%E7%94%A8AJAX%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%8F%90%E9%AB%98%E4%BA%86%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E3%80%82%201%20%3A%204%20%E6%AF%94%E5%88%97%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%AB%AF%E6%8E%A7%E5%88%B6%E5%BC%80%E5%8F%91%E6%97%B6%E6%95%88%E6%80%A7%E3%80%82%0A*%20AJAX%E5%9C%A8%E4%BD%BF%E7%94%A8%E6%97%B6%E4%B9%9F%E4%BC%9A%E5%B8%A6%E7%BB%99%E6%88%91%E4%BB%AC%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98%0A1.%20SEO%E4%BC%98%E5%8C%96%E7%9B%B8%E5%BD%93%E5%B7%AE%E3%80%82%20%E4%B8%8D%E6%89%A7%E8%A1%8CJS%E6%97%A0%E6%B3%95%E8%AE%A9%E6%95%B0%E6%8D%AE%E6%B8%B2%E6%9F%93%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%8A%EF%BC%8C%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8FSEO%E4%BC%98%E5%8C%96%E5%BE%88%E5%B7%AE%E3%80%82%20%E6%AF%94%E5%A6%82%E4%BA%AC%E4%B8%9C%E5%9C%A8%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E6%97%B6%E4%B8%BA%E4%BA%86%E6%9B%B4%E4%BC%98%E7%9A%84SEO%E4%BC%98%E5%8C%96%2C%20%E8%A7%84%E9%81%BF%E4%BD%BF%E7%94%A8ajax%E3%80%82%0A2.%20%E6%B2%A1%E6%9C%89%20history%20%E6%B2%A1%E6%B3%95%E5%9B%9E%E9%80%80%E6%88%96%E8%80%85%E5%89%8D%E8%BF%9B%E3%80%82%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%BC%A5%E8%A1%A5%3B%0A3.%20%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%E3%80%82%20IE8%20%2B%20%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81%E3%80%82%0A*%20AJAX%E6%98%AF%E5%93%AA%E9%87%8C%E6%9D%A5%E7%9A%84%0A1.%20%E6%9D%A5%E8%87%AA%E4%BA%8EIE%E7%9A%84%E6%8F%92%E4%BB%B6%20ActioveX%20%2C%20%E8%A2%AB%E5%A4%A7%E7%89%9B%E5%B0%81%E8%A3%85%E6%88%90%E4%BA%86ajax%E3%80%82%0A*%20AJAX%20%E6%80%8E%E4%B9%88%E7%94%A8%3B%0A1.%20%E8%8E%B7%E5%8F%96%E5%88%B0ajax%E5%AF%B9%E8%B1%A1%0A%60%60%60javascript%0Alet%20xhr%20%3D%20new%20XMLHttpRequest()%0A%60%60%60%0A2.%20%E9%85%8D%E7%BD%AEajax%E5%AF%B9%E8%B1%A1%3B%0A%60%60%60javascript%0Axhr.open(%20method%20%5BGET%20%7C%20POST%20%5D%20%2C%20url%20%2C%20%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8%E5%BC%82%E6%AD%A5%5Btrue%20%7C%20false%5D%20)%0A%60%60%60%0A3.%20%E5%8F%91%E9%80%81ajax%E8%AF%B7%E6%B1%82%3B%20%3D%3E%20%E5%88%A9%E7%94%A8xhr%E5%AF%B9%E8%B1%A1%E9%A9%B1%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%3B%0A%60%60%60javascript%0Axhr.send(%E8%A6%81%E5%8F%91%E9%80%81%E7%9A%84%E6%95%B0%E6%8D%AE)%3B%0A%60%60%60%0A4.%20%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%20%3B%20%3D%3E%20%E7%9B%91%E5%90%ACxhr%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96.%0A%20onreadystatechange%20%3D%3E%20%E5%BD%93%E5%87%86%E5%A4%87%E7%8A%B6%E6%80%81%E5%8F%91%E7%94%9F%E6%94%B9%E5%8F%98%E7%9A%84%E6%97%B6%E5%80%99%E3%80%82%0A%20%0A%0A%23%23%20http%0A-%20TCP%20%2C%20UDP%20%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%3B%0A*%20%E7%BA%A6%E5%AE%9A%E4%BA%86%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%AF%E4%BF%A1%E6%80%A7%E3%80%82%20%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%82%0A*%20TCP%20%3D%3E%20%E5%8F%AF%E9%9D%A0%E5%8D%8F%E8%AE%AE%20%3B%20%E9%AA%8C%E8%AF%81%E9%93%BE%E6%8E%A5%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E3%80%82%20%E5%86%8D%E5%8E%BB%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BC%A0%E5%85%A5%20%E3%80%82%20%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7%EF%BC%8C%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E3%80%82%0A*%20UDP%20%3D%3E%20%E4%B8%8D%E5%8F%AF%E9%9D%A0%E5%8D%8F%E8%AE%AE%3B%201%202%203%204%205%20%3D%3E%203%202%204%201%20%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E4%B8%A2%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%A1%BA%E5%BA%8F%E4%B8%8D%E6%AD%A3%E7%A1%AE%E8%BF%99%E6%A0%B7%E7%9A%84%E6%83%85%E5%86%B5%E3%80%82%0A-%20TCP%E7%BB%8F%E8%BF%87%E4%BA%86%E5%A4%A7%E7%89%9B%E5%B0%81%E8%A3%85HTTP%20%E6%97%A0%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E3%80%82%0A*%20HTTP%20%E5%9C%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%89%8D%E4%BC%9A%E6%B5%8B%E8%AF%95%E9%93%BE%E6%8E%A5%E5%8F%AF%E9%9D%A0%E6%80%A7%20%2C%20%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%20%E3%80%82%0A*%20HTTP%20%E6%8A%A5%E6%96%87%E5%A4%B4%20%3A%20%E7%90%86%E8%AE%BA%E4%B8%8A%E6%9D%A5%E8%AE%B2%E6%89%80%E6%9C%89%E4%BF%A1%E6%81%AF%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%A2%AB%E6%94%BE%E5%85%A5%E6%8A%A5%E6%96%87%E5%A4%B4%E4%B9%8B%E4%B8%AD%2C%20%E4%BD%86%E6%98%AF%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E9%85%8D%E7%BD%AE%E6%88%91%E4%BB%AC%E6%83%B3%E8%A6%81%E6%94%BE%E5%85%A5%E7%9A%84%E4%B8%9C%E8%A5%BF%3B%0A*%20HTTP%20%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E3%80%82%0A*%20%E6%97%A0%E7%8A%B6%E6%80%81%E6%97%A0%E8%AE%BA%E4%BD%A0%E6%98%AF%E8%B0%81%EF%BC%8C%E8%BF%99%E6%97%B6%E5%80%99%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C%E8%AE%BF%E9%97%AE%E3%80%82%0A-%20%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%20network%0A!%5Bimage.png%5D(https%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F16960494-1968ee8574ce9d16.png%3FimageMogr2%2Fauto-orient%2Fstrip%257CimageView2%2F2%2Fw%2F1240)%0A-%20Response%20Request%0A*%20response%20%E7%9B%B8%E5%BA%94%20%3B%20Server%20%3D%3E%20Browser%0A*%20request%20%E8%AF%B7%E6%B1%82%20%3B%20Browser%20%3D%3E%20Server%0A-%20http%20%E7%8A%B6%E6%80%81%E7%A0%81%0A*%20%E9%83%BD%E6%98%AF%E4%BA%BA%E5%AE%9A%E4%B9%89%E7%9A%84%EF%BC%8C%E5%BD%93%E7%84%B6%E5%9C%A8%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B9%8B%E4%B8%AD%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8A%B6%E6%80%81%E7%A0%81%E3%80%82%0A**%E6%B6%88%E6%81%AF**%0A%E2%96%AA%20100%20Continue%0A%E2%96%AA%20101%20Switching%20Protocols%0A%E2%96%AA%20102%20Processing%0A**%E6%88%90%E5%8A%9F**%0A%E2%96%AA%20%60200%20OK%60%0A%E2%96%AA%20201%20Created%0A%E2%96%AA%20202%20Accepted%0A%E2%96%AA%20203%20Non-Authoritative%20Information%0A%E2%96%AA%20204%20No%20Content%0A%E2%96%AA%20205%20Reset%20Content%0A%E2%96%AA%20206%20Partial%20Content%0A%E2%96%AA%20207%20Multi-Status%0A**%E9%87%8D%E5%AE%9A%E5%90%91**%0A%E2%96%AA%20300%20Multiple%20Choices%0A%E2%96%AA%20301%20Moved%20Permanently%0A%E2%96%AA%20302%20Move%20Temporarily%0A%E2%96%AA%20%60303%20See%20Other%60%0A%E2%96%AA%20%60304%20Not%20Modified%60%0A%E2%96%AA%20305%20Use%20Proxy%0A%E2%96%AA%20306%20Switch%20Proxy%0A%E2%96%AA%20307%20Temporary%20Redirect%0A**%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF**%0A%E2%96%AA%20400%20Bad%20Request%0A%E2%96%AA%20401%20Unauthorized%0A%E2%96%AA%20402%20Payment%20Required%0A%E2%96%AA%20%60403%20Forbidden%60%0A%E2%96%AA%20%60404%20Not%20Found%60%0A%E2%96%AA%20%60405%20Method%20Not%20Allowed%60%0A%E2%96%AA%20406%20Not%20Acceptable%0A%E2%96%AA%20407%20Proxy%20Authentication%20Required%0A%E2%96%AA%20408%20Request%20Timeout%0A%E2%96%AA%20409%20Conflict%0A%E2%96%AA%20410%20Gone%0A%E2%96%AA%20411%20Length%20Required%0A%E2%96%AA%20412%20Precondition%20Failed%0A%E2%96%AA%20413%20Request%20Entity%20Too%20Large%0A%E2%96%AA%20414%20Request-URI%20Too%20Long%0A%E2%96%AA%20415%20Unsupported%20Media%20Type%0A%E2%96%AA%20416%20Requested%20Range%20Not%20Satisfiable%0A%E2%96%AA%20417%20Expectation%20Failed%0A%E2%96%AA%20418%20I'm%20a%20teapot%0A%E2%96%AA%20421%20Too%20Many%20Connections%0A%E2%96%AA%20422%20Unprocessable%20Entity%0A%E2%96%AA%20423%20Locked%0A%E2%96%AA%20424%20Failed%20Dependency%0A%E2%96%AA%20425%20Too%20Early%0A%E2%96%AA%20426%20Upgrade%20Required%0A%E2%96%AA%20449%20Retry%20With%0A%E2%96%AA%20451%20Unavailable%20For%20Legal%20Reasons%0A**%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF**%0A%E2%96%AA%20%60500%20Internal%20Server%20Error%60%0A%E2%96%AA%20501%20Not%20Implemented%0A%E2%96%AA%20%60502%20Bad%20Gateway%60%0A%E2%96%AA%20%60503%20Service%20Unavailable%60%0A%E2%96%AA%20504%20Gateway%20Timeout%0A%E2%96%AA%20505%20HTTP%20Version%20Not%20Supported%0A%E2%96%AA%20506%20Variant%20Also%20Negotiates%0A%E2%96%AA%20507%20Insufficient%20Storage%0A%E2%96%AA%20509%20Bandwidth%20Limit%20Exceeded%0A%E2%96%AA%20510%20Not%20Extended%0A%E2%96%AA%20600%20Unparseable%20Response%20Headers%0A-%20%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%0A*%20GET%0A*%20%E7%AE%80%E5%8D%95%E8%BD%BB%E4%BE%BF%E6%95%88%E7%8E%87%E9%AB%98%0A*%20%E5%8F%91%E9%80%81%E4%BF%A1%E6%81%AF%E7%9A%84%E5%8A%9F%E8%83%BD%2C%20%E6%95%B0%E6%8D%AE%E6%94%BE%E5%9C%A8%E4%BA%86%E8%AF%B7%E6%B1%82%E7%9A%84%E5%9C%B0%E5%9D%80%E4%B8%8A%20%3F%E8%BF%9B%E8%A1%8C%E5%88%92%E5%88%86%E4%BB%A5key%3Dvalue%E7%9A%84%E5%BD%A2%E5%BC%8F%E4%BC%A0%E9%80%92%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%2C%E4%BB%A5%26%20%E9%97%B4%E9%9A%94%E6%AF%8F%E7%BB%84%E6%95%B0%E3%80%82%20%3D%3E%20%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E4%B8%8D%E8%83%BD%E8%BF%87%E5%A4%A7%204%20~%2010kb%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81%E7%9A%84%E4%B8%8A%E9%99%90%EF%BC%8C%20%E6%88%91%E4%BB%AC%E9%99%90%E5%AE%9A%E4%B8%BA4kb%E4%B8%BA%E6%9C%80%E5%A4%A7%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E3%80%82%0A*%20GET%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E9%83%BD%E6%94%BE%E5%9C%A8%E4%BA%86%E5%9C%B0%E5%9D%80%E6%A0%8F%E4%B8%8A%EF%BC%8C%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E6%9B%9D%E5%85%89%E9%A3%8E%E9%99%A9%E8%BE%83%E5%A4%A7%E3%80%82%20%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E4%B8%80%E5%AE%9A%E7%9A%84%E5%AE%89%E5%85%A8%E9%9A%90%E6%82%A3%E3%80%82%0A*%20GET%E6%8A%8A%E6%89%80%E6%9C%89%E7%9A%84%E6%95%B0%E6%8D%AE%E6%94%BE%E5%9C%A8%E5%A4%B4%E9%83%A8%3B%0A*%20%E5%AE%89%E5%85%A8%E6%80%A7%E6%B2%A1%E6%9C%89%E5%A4%AA%E5%A4%A7%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82%0A*%20%E4%B8%BB%E8%A6%81%E7%94%A8%E6%9D%A5%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%0A*%20POST%0A*%20%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B0%8F%E4%B8%A5%E6%A0%BC%E6%84%8F%E4%B9%89%E4%B8%8A%E6%9D%A5%E8%AF%B4%E4%B8%8D%E5%8F%97%E9%99%90%E5%88%B6%E3%80%82%0A*%20%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%BC%9A%E6%9B%9D%E5%85%89%E3%80%82%0A*%20POST%E6%8A%8A%E6%95%B0%E6%8D%AE%E6%94%BE%E5%9C%A8%E4%BA%86body%E4%B9%8B%E4%B8%AD%E3%80%82%0A*%20%E5%AE%89%E5%85%A8%E6%80%A7%E6%B2%A1%E6%9C%89%E5%A4%AA%E5%A4%A7%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82%0A*%20%E4%B8%BB%E8%A6%81%E7%94%A8%E6%9D%A5%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E3%80%82%0A%0A%23%23%23%20%E8%B7%A8%E5%9F%9F%0A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%90%86%0A2jsonp%0ASRC%20%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E4%B8%8D%E5%8F%97%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E9%99%90%E5%88%B6%3B%0A%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E4%BC%A0%E5%8F%82%3B%0Ascript%20%E6%A0%87%E7%AD%BE%E5%81%9A%E4%BA%86%E4%BA%9B%E5%95%A5%20%3B%0A%E5%8F%91%E8%B5%B7%E4%BA%86%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%2C%20%E8%AF%B7%E6%B1%82%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C(%E4%B8%80%E6%AE%B5%E5%AD%97%E7%AC%A6%E4%B8%B2)%20%2C%20%E6%8A%8A%E8%BF%99%E4%BA%9B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B4%E6%8E%A5%E5%BD%93%E6%88%90JS%E5%8E%BB%E8%A7%A3%E6%9E%90%E3%80%82%0A%E5%9C%A8%E5%89%8D%E7%AB%AF%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%EF%BC%8C%E5%9C%A8%E5%90%8E%E7%AB%AF%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8%E3%80%82%0A%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%0A%60%60%60%0Afunction%20jsonp(%20url%20%2C%20cb_fild%20%2C%20data)%7B%0Areturn%20new%20Promise(%20function(resolve%20%2C%20reject)%7B%0Avar%20GLOBAL_CB%20%3D%20%22foo%22%3B%0Awindow%5BGLOBAL_CB%5D%20%3D%20function(res)%7B%0A%2F%2F%20%E8%BF%99%E6%98%AF%E5%BC%82%E6%AD%A5%3B%0Aresolve(res)%0A%7D%0A%2F%2F%20%E5%AD%97%E6%AE%B5%E5%90%8D%E5%92%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%90%8D%E6%8B%BC%E6%8E%A5%3B%0Aurl%20%2B%3D%20(%2F%5C%3F%2F.test(url)%20%3F%20%22%26%22%20%3A%20%22%3F%22)%2B%20cb_fild%20%2B%20%22%3D%22%20%2B%20GLOBAL_CB%3B%0A%2F%2F%20%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%95%B0%E6%8D%AE%3B%E6%95%B0%E6%8D%AE%E6%8B%BC%E6%8E%A5%3B%0Aif(typeof%20data%20%3D%3D%3D%20%22object%22)%7B%0Avar%20dataStr%20%3D%20%22%22%3B%0Afor(var%20attr%20in%20data)%7B%0AdataStr%20%2B%3D%20(dataStr.length%20%3E%200%20%3F%20%22%26%22%20%3A%20%22%22)%20%2B%20attr%20%2B%20%22%3D%22%20%2B%20data%5Battr%5D%3B%0A%7D%0Aurl%20%2B%3D%20%22%26%22%20%2B%20dataStr%3B%0A%7D%0A%2F%2F%20%E8%AF%B7%E6%B1%82%E5%8F%91%E9%80%81%3B%0Avar%20script%20%3D%20document.createElement(%22script%22)%3B%0Ascript.src%20%3D%20url%3B%0Ascript.onload%20%3D%20function()%7B%0Athis.remove()%3B%0A%7D%0Adocument.body.appendChild(script)%3B%0A%7D)%0A%7D%0Avar%20url%20%3D%20%22https%3A%2F%2Fsp0.baidu.com%2F5a1Fazu8AA54nxGko9WTAnF6hhy%2Fsu%22%3B%0Avar%20data%20%3D%20%7B%0Ajson%3A1%20%2C%0Ap%3A3%2C%0Asid%3A1423_21080_29238_28518_29099_28830_29221_22158%2C%0Areq%3A2%2C%0Asc%3A%22eb%22%2C%0Acsor%3A0%2C%0A_%3ADate.now()%2C%0Awd%20%3A%20%22%22%0A%7D%0A%2F%2F%20jsonp(%20url%2C%20%22cb%22%20%2C%20data)%0A%2F%2F%20.then(function(res)%7B%0A%2F%2F%20console.log(res)%3B%0A%2F%2F%20%7D)%0Avar%20ipt%20%3D%20document.getElementById(%22ipt%22)%3B%0Avar%20content%20%3D%20document.getElementById(%22content%22)%3B%0Aipt.oninput%20%3D%20function()%7B%0A%2F%2F%20console.log(this.value)%3B%0Adata.wd%20%3D%20this.value%3B%0Ajsonp(%20url%20%2C%20%22cb%22%20%2C%20data)%0A.then(%20function%20(res)%7B%0A%2F%2F%20console.log(res)%3B%0Avar%20html%20%3D%20%22%22%3B%0Ares.s.forEach(%20item%20%3D%3E%20html%20%2B%3D%20%60%3Cp%3E%24%7Bitem%7D%3C%2Fp%3E%60)%3B%0Acontent.innerHTML%20%3D%20html%3B%0A%7D)%0A%7D%0A%3C%2Fscript%3E%0A%60%60%60%0A3%20cors%0A%0A%0A%E5%90%8E%E7%AB%AF%20header(%22Access-Control-Allow-Origin%3Ahttp%3A%2F%2Flocalhost%22)%0A%2B1%20%20%0A%23%23%23%23%23%20domian%20%E8%B7%A8%E5%9F%9F%20%0A%23%23%23%20cookie%0A%0A%0A1.%E5%BD%93%E5%89%8D%E4%BC%9A%E8%AF%9D%E4%B8%8D%E5%85%B3%E9%97%AD%EF%BC%8Ccooki%E4%B8%80%E7%9B%B4%E5%AD%98%E5%9C%A8%2C%20%E4%BC%9A%E8%AF%9D%E4%B8%80%E6%97%A6%E5%85%B3%E9%97%AD%E9%82%A3%E4%B9%88cookie%E5%B0%B1%E5%88%A0%E9%99%A4%E4%BA%86%EF%BC%8C%E8%BF%99%E6%A0%B7%E7%9A%84cookie%E6%88%91%E4%BB%AC%E5%8F%AB%E5%81%9A%E4%BC%9A%E8%AF%9Dcookie%3B%0Acookie%E7%9A%84%E6%97%B6%E6%95%88%E6%80%A7%E8%AE%BE%E7%BD%AE%3B%20expries%0Avar%20d%20%3D%20new%20Date()%3B%0Ad.setDate(d.getDate()%20%2B%2010)%3B%0A22%20%3D%3E%20%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%20%2B%20%E4%BF%9D%E8%B4%A8%E6%9C%9F%3B%0Adocument.cookie%3D%22username%3Dhuaizhiy%3Bexpires%3D%22%20%2B%20d%3B%0A2.%20cookie%E5%92%8B%E5%88%A0%E9%99%A4%20%3F%0Acookie%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E4%B8%BA%E5%89%8D%E4%B8%80%E5%A4%A9%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%88%A0%E9%99%A4cookie%E4%BA%86%3B%0Avar%20d%20%3D%20new%20Date()%3B%0Ad.setDate(%20d.getDate()%20%2B%2010)%3B%0Adocument.cookie%20%3D%20%22username%3Dhuaizhiy%3Bexpires%3D%22%20%2B%20d%3B%0A3.%20cookie%E8%AE%BF%E9%97%AE%E8%B7%AF%E5%BE%84%3B%20%E5%AE%B6%E4%B8%91%E4%B8%8D%E5%8F%AF%E5%A4%96%E6%89%AC%3B%0Adocument.cookie%20%3D%20%22username%3Dwuyanzu%3Bpath%3Dgp12coding%2F0712%22%3B%0Adomain%20%E5%92%8C%20path%20%E4%B8%80%E8%87%B4%E9%82%A3%E4%B9%88cookie%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E3%80%82%20%E4%BB%BB%E4%BD%95%E9%A1%B5%E9%9D%A2%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%3B%0Acookie%20%E5%AD%98%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%8B%E4%B8%AD%3B%20%E9%A1%B5%E9%9D%A2%E8%BF%90%E8%A1%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%8B%E4%B8%8A%E3%80%82%0A%E5%8C%BA%E5%88%86cookie%E4%B8%8D%E5%90%8C%E7%9A%84%E6%98%AF%20%3A%0A1.%20name%20cookie%E5%90%8D%3B%0A2.%20cookie%20%E7%9A%84path%3B%0A%0A%60%60%60%0A%0A%23%23%20%E5%85%8D%E7%99%BB%E9%99%86%0A-%20%E7%99%BB%E9%99%86%E4%B9%8B%E5%90%8E%20%2C%20%E5%90%8E%E5%8F%B0%E5%88%9B%E5%BB%BA%E4%B8%80%E6%9D%A1cookie%20%2C%20%E6%94%BE%E5%9C%A8%E5%93%8D%E5%BA%94%E5%A4%B4%E5%B9%B6%E5%B8%A6%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%2C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E8%A7%89%E5%AD%98%E5%9C%A8cookie%E9%82%A3%E4%B9%88%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BC%9A%E5%B0%86cookie%E4%BF%9D%E5%AD%98%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%9B%98%E3%80%82%0A-%20%E5%A6%82%E6%9E%9C%E7%94%A8%E6%88%B7%E8%AE%BF%E9%97%AE%E8%AF%B7%E6%B1%82%E6%97%B6%EF%BC%8C%E5%85%88%E5%8E%BB%E6%AF%94%E5%AF%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%B7%B2%E7%BB%8F%E7%99%BB%E9%99%86%E7%9A%84cookie%0A-%20%E6%B5%81%E7%A8%8B%0A%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%20%3D%3E%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8cookie%20%2C%E5%AD%98%E5%9C%A8%20cookie%20%E9%AA%8C%E8%AF%81cookie%3B%0A%3D%3E%20%E4%B8%8D%E5%AD%98%E5%9C%A8cookie%20%2C%20%E8%B5%B0%E7%99%BB%E9%99%86%E6%B5%81%E7%A8%8B%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%88%90%E5%8A%9F%E7%99%BB%E9%99%86%EF%BC%8C%E5%88%9B%E5%BB%BAcookie%3B%0A-%E5%AD%98cookie%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%84%E8%8C%83%2Cjwt%E8%A7%84%E8%8C%83%20%3B%20json-web-tocken%3B%0Aiss%EF%BC%9A%E5%8F%91%E8%A1%8C%E4%BA%BA%0Aexp%EF%BC%9A%E5%88%B0%E6%9C%9F%E6%97%B6%E9%97%B4%0Asub%EF%BC%9A%E4%B8%BB%E9%A2%98%0Aaud%EF%BC%9A%E7%94%A8%E6%88%B7%0Anbf%EF%BC%9A%E5%9C%A8%E6%AD%A4%E4%B9%8B%E5%89%8D%E4%B8%8D%E5%8F%AF%E7%94%A8%0Aiat%EF%BC%9A%E5%8F%91%E5%B8%83%E6%97%B6%E9%97%B4%0Ajti%EF%BC%9AJWT%20ID%E7%94%A8%E4%BA%8E%E6%A0%87%E8%AF%86%E8%AF%A5JWT%0A%E6%98%8E%E6%96%87%20%3A%20%7B%0Aalg%20%3A%20%22HS256%22%2C%0Atyp%20%3A%20%22JWT%22%20%2C%0Apayload%20%3A%20%2210%22%2C%0A%7D%0A%E5%8A%A0%E5%AF%86%20%3A%0Axxxxx.xxxxx.xxxxxx%0A%E6%8A%8A%E5%AF%86%E6%96%87%E5%AD%98%E5%9C%A8tocken%E4%B9%8B%E4%B8%AD%E3%80%82%0A%60%60%60%0A%60%60%60%0A%23%23%20%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%0A-%20%E8%B7%AF%E5%BE%84%20%3A%20http%3A%2F%2Flocalhost%2Fgp12coding%2F0712%2Flogin.php%0A-%20%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%20%3A%20POST%0A-%20%E5%8F%82%E6%95%B0(%E5%AD%97%E6%AE%B5)%20%3A%0Ausername%3A%22username%22%2C%0Apassword%3A%22password%22%0A-%20%E8%BF%94%E5%9B%9E%E5%80%BC%20%3A%0A%7B%0Astate%20%3A%20%22success%7Cerror%22%2C%0AstateCode%20%3A%200%20%2C%0A%5B%2Cusername%20%3A%20%E7%94%A8%E6%88%B7%E5%90%8D%20%5B%2Cpassword%20%3A%20md5%E5%8A%A0%E5%AF%86%E5%90%8E%E7%9A%84%E5%AF%86%E7%A0%81%5D%5D%0A%7D%0AstateCode%20%3A%200%20%E7%BC%BA%E5%B0%91%E5%8F%82%E6%95%B0%3B%0A1%20%E8%A1%A8%E7%A4%BA%E7%99%BB%E9%99%86%E6%88%90%E5%8A%9F%3B%0A2%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%3B%0A3%20%E7%94%A8%E6%88%B7%E5%90%8D%E4%B8%8D%E5%AD%98%E5%9C%A8%3B%0A4%20%E5%AF%86%E7%A0%81%E9%94%99%E8%AF%AF%3B%0A%60%60%60%0A%0A%60%60%60%0A%0A1.%20%E8%AE%BE%E7%BD%AEcookie%3B%0Afunction%20setCookie(%20name%20%2C%20value%20%2C%20options%20)%7B%0Atypeof%20options%20%3D%3D%3D%20%22object%22%20%3F%20%22%22%20%3A%20options%20%3D%20%7B%7D%3B%0Avar%20d%3B%0Areturn%20(document.cookie%20%3D%20%5B%0Aname%20%2B%20%22%3D%22%20%2B%20value%20%2C%0Aoptions.expires%20%3F%22%3Bexpires%3D%22%20%2B%20((d%20%3D%20new%20Date()).setDate(d.getDate()%20%2B%20options.expires)%20%26%26%20d%20)%3A%20%22%22%2C%0Aoptions.path%20%3F%22%3Bpath%3D%22%20%2B%20options.path%20%3A%20%22%22%2C%0Aoptions.domain%20%3F%22%3Bdomain%3D%22%20%2B%20options.domain%20%3A%20%22%22%2C%0Aoptions.secure%20%3F%22%3Bsecure%3D%22%20%2B%20options.secure%20%3A%20%22%22%2C%0A%5D.join(%22%22))%3B%0A%7D%0A%2F%2F%202.%20%E5%88%A0%E9%99%A4cookie%3B%0Afunction%20removeCookie(name%2Cpath)%7B%0AsetCookie(name%20%2C%20%22%22%20%2C%20%7B%0Apath%20%3A%20path%20%3F%20path%20%3A%20%22%22%2C%0Aexpires%20%3A%20-1%0A%7D)%0A%7D%0A%2F%2F%20setCookie(%20%22username%22%20%2C%22hello%22%2C%7B%0A%2F%2F%20expires%20%3A%2010%2C%0A%2F%2F%20path%20%3A%20%22%2F%22%0A%2F%2F%20%7D)%0A%2F%2F%20removeCookie(%22username%22%2C%22%2F%22)%3B%0Afor(var%20i%20%3D%200%20%3B%20i%20%3C%2010%20%3B%20i%2B%2B)%7B%0AsetCookie(%20%22hello%22%20%2B%20i%20%2C%20i)%3B%0A%7D%0A%2F%2F%203.%20%E8%8E%B7%E5%8F%96cookie%3B%0A%2F%2F%20((d%20%3D%20new%20Date()).setDate(d.getDate()%20%2B%20options.expires)%20%26%26%20d%0A%2F%2F%20%E9%9D%9E0%20%3D%3E%20%E6%97%B6%E9%97%B4%E6%88%B3%3B%0A%2F%2F%20console.log(document.cookie.split(%22%3B%20%22))%3B%0A%2F%2F%20%2F%2F%20%E9%81%8D%E5%8E%86%E6%AF%8F%E4%B8%80%E6%9D%A1cookie%3B%0A%2F%2F%20console.log(document.cookie.split(%22%3B%20%22).filter%20(item%20%3D%3E%20%7B%0A%2F%2F%20return%20item.split(%22%3D%22)%5B0%5D%20%3D%3D%3D%20%22hello2%22%3B%0A%2F%2F%20%7D))%0Afunction%20getCookie(%20name%20)%7B%0A%2F%2F%20%E8%8E%B7%E5%8F%96cookie%E5%AD%97%E7%AC%A6%E4%B8%B2%20%2C%20%E5%B9%B6%E4%BB%A5%E6%AF%8F%E6%9D%A1cookie%E4%B8%BA%E6%8B%86%E5%88%86%E4%BE%9D%E6%8D%AE%E5%B0%86cookie%E6%8B%86%E5%88%86%E6%88%90%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%3B%0Avar%20s%20%3D%20document.cookie%2C%20a%20%3D%20s.split(%22%3B%20%22)%3B%0Afor(var%20i%20%3D%200%20%2C%20item%20%2C%20itemA%20%3B%20item%20%3D%20a%5Bi%5D%3B%20i%2B%2B)%7B%0Aif((itemA%20%3D%20item.split(%22%3D%22))%5B0%5D%20%3D%3D%3D%20name)%7B%0Areturn%20itemA%5B1%5D%3B%0A%7D%0A%7D%0A%7D%0A%2F%2F%20console.log(getCookie(%22hello2%22))%3B%0Afunction%20cookie(%20name%20%2C%20value%20%2C%20options%20)%7B%0Avar%20d%2Cs%2Ca%3B%0Aif(arguments.length%20%3D%3D%3D%201)%7B%0As%20%3D%20document.cookie%3B%0Aa%20%3D%20s.split(%22%3B%20%22)%3B%0Afor(var%20i%20%3D%200%20%2C%20item%20%2C%20itemA%20%3B%20item%20%3D%20a%5Bi%5D%3B%20i%2B%2B)%7B%0Aif((itemA%20%3D%20item.split(%22%3D%22))%5B0%5D%20%3D%3D%3D%20name)%7B%0Areturn%20itemA%5B1%5D%3B%0A%7D%0A%7D%0Areturn%20%22%22%3B%0A%7D%0Atypeof%20options%20%3D%3D%3D%20%22object%22%20%3F%20%22%22%20%3A%20options%20%3D%20%7B%7D%3B%0Areturn%20(document.cookie%20%3D%20%5B%0Aname%20%2B%20%22%3D%22%20%2B%20value%20%2C%0Aoptions.expires%20%3F%22%3Bexpires%3D%22%20%2B%20((d%20%3D%20new%20Date()).setDate(d.getDate()%20%2B%20options.expires)%20%26%26%20d%20)%3A%20%22%22%2C%0Aoptions.path%20%3F%22%3Bpath%3D%22%20%2B%20options.path%20%3A%20%22%22%2C%0Aoptions.domain%20%3F%22%3Bdomain%3D%22%20%2B%20options.domain%20%3A%20%22%22%2C%0Aoptions.secure%20%3F%22%3Bsecure%3D%22%20%2B%20options.secure%20%3A%20%22%22%2C%0A%5D.join(%22%22))%3B%0A%7D%0A%0A%60%60%60%0A%60%60%60%0A%0A%3Cform%20id%3D%22form%22%3E%0A%3Cp%3E%E7%94%A8%E6%88%B7%E5%90%8D%20%3A%20%3Cinput%20type%3D%22text%22%20name%3D%22username%22%20value%3D%22yanghuaizhi%22%3E%3C%2Fp%3E%0A%3Cp%3E%E5%AF%86%20%E7%A0%81%20%3A%20%3Cinput%20type%3D%22text%22%20name%3D%22password%22%20value%3D%22123456%22%3E%3C%2Fp%3E%0A%3Cbutton%20id%3D%22btn%22%3E%E6%8F%90%E4%BA%A4%3C%2Fbutton%3E%0A%3C%2Fform%3E%0A%3Cscript%20src%3D%22..%2Flibs%2Futils.js%22%3E%3C%2Fscript%3E%0A%3Cscript%3E%0Alet%20%7B%0Aajax%2C%0A%24%0A%7D%20%3D%20Utils%3B%0Alet%20%5Bform%2C%20btn%5D%20%3D%20%5B%0A%24(%22%23form%22)%2C%0A%24(%22%23btn%22)%0A%5D%3B%0A%2F%2F%20console.log(form)%3B%0Aform.addEventListener(%22submit%22%2C%20evt%20%3D%3E%20%7B%0Alet%20e%20%3D%20evt%20%7C%7C%20window.event%3B%0Ae.preventDefault()%3B%0A%7D)%0Abtn.addEventListener(%22click%22%2C%20evt%20%3D%3E%20%7B%0Alet%20%5B%0AuserValue%2C%0ApwdValue%0A%5D%20%3D%20%5B%0A%24(%22input%5Bname%3Dusername%5D%22).value%2C%0A%24(%22input%5Bname%3Dpassword%5D%22).value%2C%0A%5D%0A%2F%2F%20%E7%A6%81%E7%94%A8%E6%8C%89%E9%92%AE%3B%0Abtn.disabled%20%3D%20%22disabled%22%3B%0Abtn.innerHTML%20%3D%20%22loading...%22%3B%0Alet%20url%20%3D%20%22http%3A%2F%2Flocalhost%2F0712%2Flogin.php%22%3B%0Alet%20data%20%3D%20%7B%0Ausername%3A%20userValue%2C%0Apassword%3A%20pwdValue%0A%7D%0Aajax(url%2C%20%7B%0Adata%2C%0Atype%3A%20%22POST%22%2C%0AdataType%3A%20%22json%22%0A%7D)%0A.then(res%20%3D%3E%20%7B%0A%2F%2F%20console.log(res)%3B%0Aswitch%20(res.stateCode)%20%7B%0Acase%200%3A%0Aalert(%22%E7%99%BB%E9%99%86%E5%8F%82%E6%95%B0%E4%B8%8D%E5%85%A8%22)%3B%0Abreak%3B%0Acase%202%3A%0Aalert(%22%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%22)%3B%0Abreak%3B%0Acase%203%3A%0Aalert(%22%E7%94%A8%E6%88%B7%E5%90%8D%E4%B8%8D%E5%AD%98%E5%9C%A8%22)%3B%0Abreak%3B%0Acase%204%3A%0Aalert(%22%E5%AF%86%E7%A0%81%E9%94%99%E8%AF%AF%22)%3B%0Abreak%3B%0Acase%201%3A%0Aalert(%22%E7%99%BB%E9%99%86%E6%88%90%E5%8A%9F%22)%3B%0Alocation.reload()%3B%0Abreak%3B%0A%7D%0Abtn.removeAttribute(%22disabled%22)%3B%0Abtn.innerHTML%20%3D%20%22%E7%99%BB%E9%99%86%22%3B%0Aconsole.log(res)%3B%0A%7D)%0A%7D)%0A%2F%2F%20%E5%85%88%E5%8F%91%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%2C%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8tocken%20%2C%E5%A6%82%E6%9E%9C%E5%AD%98%E5%9C%A8%E5%B0%B1%E4%B8%8D%E7%94%A8%E7%99%BB%E9%99%86%E4%BA%86%3B%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%AD%98%E5%9C%A8%E6%88%91%E7%BB%A7%E7%BB%AD%E5%8E%BB%E7%99%BB%E9%99%86%3B%0Afunction%20validateTocken()%20%7B%0Alet%20url%20%3D%20%22http%3A%2F%2Flocalhost%2F0712%2Flogin.php%22%3B%0Aajax(url)%0A.then(res%20%3D%3E%20%7B%0Ares%20%3D%20JSON.parse(res)%0Aif%20(res.state)%20%7B%0Areturn%20false%3B%0A%7D%0Aform.innerHTML%20%3D%20%22%E7%94%A8%E6%88%B7%E5%90%8D%E4%B8%BA%3A%22%20%2B%20res.username%20%2B%20%22%3Cbutton%20id%3D'exit'%3E%E9%80%80%E5%87%BA%E7%99%BB%E9%99%86%3C%2Fbutton%3E%22%3B%0A%7D)%0A%7D%0AvalidateTocken()%0A%3C%2Fscript%3E%0A%0A%60%60%60%0A%60%60%60%0A%0Aphp%0Aheader(%22content-type%3Atext%2Fhtml%3Bcharset%3Dutf8%3B%22)%3B%0A%24usr%20%3D%20%40%24_POST%5B%22username%22%5D%3B%0A%24pwd%20%3D%20%40%24_POST%5B%22password%22%5D%3B%0A%24tocken%20%3D%20%40%24_COOKIE%5B%22TOCKEN%22%5D%3B%0Aif(%24tocken%20%26%26%20!%24pwd%20%26%26%20!%24usr)%7B%0Adie(%24tocken)%3B%0A%7D%0Aif(!%24usr%20%7C%7C%20!%24pwd%20)%20%7B%0A%24result%20%3D%20array(%20%22state%22%20%3D%3E%20%22error%22%20%2C%20%22stateCode%22%20%3D%3E%200)%3B%0Adie(%20json_encode(%24result)%20)%3B%0A%7D%0A%2F%2F%20%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%0A%24host%20%3D%20%22localhost%3A3306%22%3B%0A%24username%20%3D%20%22root%22%3B%0A%24password%20%3D%20%22root%22%3B%0A%24dbname%20%3D%20%22gp12121%22%3B%0A%24conn%20%3D%20mysqli_connect(%24host%2C%24username%2C%24password%2C%24dbname)%3B%0Aif(!%24conn)%7B%0A%2F%2F%20die(%22%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%22%20.%20mysqli_error())%3B%0A%24result%20%3D%20array(%20%22state%22%20%3D%3E%20%22error%22%20%2C%20%22stateCode%22%20%3D%3E%202%20%2C%20%22errorMsg%22%20%3D%3E%20mysqli_error())%3B%0Adie(%20json_encode(%24result)%20)%3B%0A%7D%0A%24sql_select%20%3D%20%22SELECT%20username%2Cpassword%20FROM%20usertable%20WHERE%20username%3D'%24usr'%22%3B%0A%2F%2F%20%E8%BE%A8%E5%88%AB%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E4%B9%8B%E4%B8%AD%E6%9C%89%E5%A4%9A%E5%B0%91%E6%9D%A1%E6%95%B0%E6%8D%AE%0A%24res%20%3D%20mysqli_query(%24conn%2C%24sql_select)%3B%0Aif(mysqli_num_rows(%20%24res%20)%20%3D%3D%3D%200%20)%20%7B%0A%24result%20%3D%20array(%20%22state%22%20%3D%3E%20%22error%22%20%2C%20%22stateCode%22%20%3D%3E%203%20)%3B%0Adie(%20json_encode(%24result)%20)%3B%0A%7Delse%7B%0Awhile(%24row%20%3D%20mysqli_fetch_assoc(%24res))%7B%0Aif(%24row%5B%22password%22%5D%20%3D%3D%20md5(%24pwd))%7B%0A%24result%20%3D%20array(%20%22state%22%20%3D%3E%20%22success%22%20%2C%20%22stateCode%22%20%3D%3E%201%20%2C%20%22username%22%20%3D%3E%20%24usr%20%2C%20%22password%22%20%3D%3E%20%24row%5B%22password%22%5D)%3B%0A%24tocken%20%3D%20array(%20%22username%22%20%3D%3E%20%24usr%20%2C%20%22password%22%20%3D%3E%20%24row%5B%22password%22%5D)%3B%0Asetcookie(%22TOCKEN%22%2Cjson_encode(%24tocken)%2Ctime()%2B3600%20*%2024)%3B%0Adie(%20json_encode(%24result)%20)%3B%0A%2F%2F%20%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AAtocken%3B%0A%7D%0A%7D%0A%24result%20%3D%20array(%20%22state%22%20%3D%3E%20%22error%22%20%2C%20%22stateCode%22%20%3D%3E%204%20)%3B%0Adie(%20json_encode(%24result)%20)%3B%0A%7D%0A%3F%3E%0A%0A%60%60%60%0A%23%23%23%20Aasync%20Await%0A%E5%90%8C%E6%AD%A5%20%0A%E5%BC%82%E6%AD%A5%0A%E5%BE%AE%E4%BB%BB%E5%8A%A1%0A%E5%AE%8F%E4%BB%BB%E5%8A%A1%0A%0Aawait%20%E4%B9%8B%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E7%A8%8B%E5%BA%8F%E9%83%BD%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84%0A%E5%8F%AA%E8%A6%81%E4%BD%A0%E5%9C%A8js%E4%B9%8B%E4%B8%AD%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6%2C%E4%BA%8B%E4%BB%B6%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%0A%0A%60%60%60%0A%20waterfall%20%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%0A%20%0A%20%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%20%0A%20%E7%AC%AC%E4%B8%80%E6%8E%92%20%E6%94%BE%E5%85%A5%E6%95%B0%E7%BB%84%0A%20%E6%8B%BC%E6%8E%A5%E9%A1%B5%E9%9D%A2%0A%60%60%60%0A%60%60%60%0Apagination%20%0A%E6%B8%B2%E6%9F%93%0A%E7%BB%91%E5%AE%9A%0A%E6%B8%B2%E6%9F%93%0A%60%60%60%0A</center></span>
+</div></body></html> 
