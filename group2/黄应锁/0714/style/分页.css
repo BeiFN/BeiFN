@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    background: #f4f4f4;
+}
+.hot{
+    width: 1150px;
+    height: 219px;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+}
+.box{
+    width: 210px;
+    float: left;
+    position: relative;
+    background: #fff;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.img img{
+    width: 210px;
+    height: 158px;
+}
+.title{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 10px ;
+}
+.title a{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    color:black;
+    text-decoration: none;
+}
+.title span{
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: auto 16px;
+    background-position: center;
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    background: url("https://static.zcool.cn/git_z/build/images/svg/bianjijingxuan.svg?v=1");
+}
+.pagination{
+    margin-top: 20px;
+    text-align: center;
+
+}
+.pagination span{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    color: #333;
+    box-shadow: 0 0 5px #282828;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 10px;
+    
+}
+.pagination span.active{
+    background: antiquewhite;
+    box-shadow: 0 0 5px #282828;
+}
