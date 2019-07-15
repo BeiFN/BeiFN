@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>总结回顾ES6</title>
+</head>
+<body>
+    <script>
+      //var:
+        /* console.log("测试001");
+        for(var i = 0; i<5; i++){
+            for(var i = 0; i<5; i++){
+                console.log(i);
+            }
+        } */
+        //var 的 i是全局变量，for未形成闭包
+        //像for循环的大括号，是不会形成作用域的
+/* 
+        console.log("测试002");
+        for(var i = 0; i<5; i++){
+            setTimeout(function(){
+                alert(i);
+            },1000);
+        }
+        
+        
+        //let:
+        console.log("测试003");
+        for(let i = 0; i<5; i++){
+            console.log(i);
+        }
+        //let 的i为局部变量，for形成局部作用域    0，1,2,3,4
+
+        console.log("测试004");
+        for(let i = 0; i<5; i++){
+            for(let i = 0; i<5; i++){
+                console.log(i);
+            }
+        }
+        //打印25次
+
+        console.log("测试005");
+        for(let i = 0; i<5; i++){
+            setTimeout(function(){
+                console.log(i);
+            },1000)
+        }
+
+ */
+        //知识回顾：定时器
+       /*  setInterval(function(){
+                //js语句
+        },1000) */
+        //以1000ms周期性执行function
+       /*  setTimeout(function(){
+            //js语句
+        },1000) */
+        //1000ms后执行function，只执行一次
+
+
+        //const 常量定义
+       /*  const  PI = 3.14;
+        console.log(10*10*PI); */
+
+
+        //解构
+        //数组赋值
+        /* let [x,y,z] = [1,2,3];
+        console.log(x,y,z); */
+        //对象 赋值
+       // let {} = {};
+        // let {} = null;//报错
+         //let {} = undefined;//报错
+        // 等号左边解构  =   右边对象
+
+       // let { slice} = Array.prototype; //声明了slice变量并给其赋值
+       
+        //let { slice : myslice } = Array.prototype; //改变量名：直接加上冒号
+
+       /*  function Foo( {a,b} = {}) {
+            console.log(a,b);
+        }
+        Foo();//undefined,undefined
+        Foo({
+            a:"aaa",
+            b:"bbb"
+        })
+ */
+        /* function Foo( {a=10,b=20} = {}) {
+            console.log(a,b);
+        }
+        Foo();
+        Foo({
+            a:"aaa",
+            b:"bbb"
+        })
+ */
+        //对象的扩展：扩展运算符
+     /*   //方法一
+        var obj1 = {
+            a:1,
+            b:2,
+            c:3
+        }
+        var obj2 = {
+            d:4,
+            e:5,
+            f:6
+        }
+        //连接两个对象,将obj2的内容复制到obj1中
+        Object.assign(obj1,obj2);
+        console.log(obj1);
+ */
+        //方法二
+        var obj2 = {
+            d:4,
+            e:5,
+            f:6
+        }
+        var obj1 = {
+            ...obj2,
+            a:1,
+            b:2,
+            c:3
+        }
+        console.log(obj1);
+
+
+
+
+    </script>
+</body>
+</html>
