@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper{
+                display: flex;
+        }
+    </style>
+    <title>分页插件的使用_拼多多</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-wrapper">
+
+        </div>
+        <div class="page-wrapper">
+
+        </div>
+    </div>
+
+    <script type="text/html" id="template">
+        <% for(var i=0; i<data.length; i++){ %>
+            <div class="box">
+                <img src="<%= data[i].thumb_url %>" alt="">
+            </div>
+        <% } %>
+    </script>
+
+    <script src="../libs/utils.js"></script>
+    <script src="pagination.js"></script>
+
+    <script>
+        new Pagination().init({
+            list : ".image-wrapper",
+            page : ".page-wrapper",
+            page_now : 1,
+            page_show : 8,
+            template : $("template").innerHTML,
+            getData : {
+                url  : "http://localhost/pxx",
+                data : {
+                    subject_id : 5578,
+                    page : 1,
+                    size : 40
+                }
+            }
+        })
+    </script>
+</body>
+</html>
