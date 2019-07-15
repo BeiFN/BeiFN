@@ -63,6 +63,10 @@ body{
     margin-top: 10px;
     padding: 0;
 }
+
+.nav .nav1 li:nth-child(9) a{
+    color : red;
+}
 .nav .nav1 .creAcc{
     color: #e33333;
 }
@@ -99,11 +103,51 @@ body{
     height: 30px;
     margin-left: 210px;
     text-align: center;
+    position: relative;
 }
+.nav .site .dropdown {
+    z-index: 1;
+    width: 300px;
+    height: 400px;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    display: none;
+}
+.nav .site .dropdown li{
+    width: 60px;
+    height: 28px;
+    float: left;
+}
+.nav .site .dropdown li:nth-child(1) a{
+    background: #e33333;
+    color: white;
+}
+.nav .site .dropdown li:hover a{
+    background:black;
+    opacity: 0.5;
+}
+.nav .site .dropdown a{
+    display: block;
+    font-size: 12px;
+    width: 45px;
+    height: 23px;
+    color: #999;
+    line-height: 23px;
+    text-align: center;
+    margin: auto;
+
+}
+
+
 .nav .site:hover{
     background: white;
 }
-.nav .site span{
+.nav .site:hover .dropdown{
+    display: block;
+}
+.nav .site .beijing{
    line-height: 30px;
    font-size: 12px;
    color: #999;
@@ -127,7 +171,6 @@ body{
 .header{
     width: 100%;
     height: 140px;
-    background: tan;
 }
 .header .w1190{
     overflow: hidden;
@@ -181,4 +224,510 @@ body{
     text-align: center;
    
 }
+
+.header  .hotwords{
+    float: left;
+    margin-top: 10px;
+    width: 550px;
+    height: 20px;
+    margin-left: 320px;
+}
+.header .hotwords a{
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #999;
+    margin-right: 10px;
+}
+
+.header .hotwords a:nth-child(1){
+    color: #e33333;
+}
+
+.header .navitem {
+    float: left;
+    width: 790px;
+    margin-left: 230px;
+    margin-top: 30px;
+}
+.header .navitem a{
+    float: left;
+    margin-left: 25px;
+    color: black;
+    font-size: 14px;
+}
+
+/* 轮播图广告 */
+
+.bannerad{
+    width: 100%;
+    height: 480px;
+}
+.bannerad .w1190{
+    overflow: hidden;
+}
+.bannerad .left-nav{
+    width: 190px;
+    height: 480px;
+    float: left;
+    background:white;
+}
+.bannerad .left-nav li{
+    width: 100%;
+    height: 26px;
+}
+.bannerad .left-nav li:hover{
+    background: #ddd;
+}
+.bannerad .left-nav li a{
+    text-align: center;
+    display: block;
+    height: 100%;
+    line-height: 26px;
+    font-size: 14px;
+    color: #626262;
+}
+
+.bannerad .banner{
+    width: 590px;
+    height:470px ;
+    float: left;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.bannerad .banner .wrapper{
+    width: 5310px;
+    height: 470px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.bannerad .banner .button-next{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.bannerad .banner .button-prev{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.bannerad .banner .wrapper a{
+    float: left;
+    width: 590px;
+    height: 470px;
+}
+.bannerad .three-box{
+    width: 190px;
+    height: 470px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.bannerad .three-box .box{
+    width: 190px;
+    height: 150px;
+    margin-top: 10px;
+    float: left;
+}
+.bannerad .three-box .box:nth-child(1){
+    margin: 0;
+}
+.bannerad .three-box img{
+    width: 100%;
+    height: 100%;
+}
+.bannerad .right-nav{
+    width: 190px;
+    height: 470px;
+    float: left;
+
+    margin-top: 10px;
+}
+.bannerad .right-nav .box1{
+    width: 190px;
+    height: 150px;
+    float: left;
+    position: relative;
+    background: white;
+}
+.bannerad .right-nav .box1 .pic{
+    width: 65px;
+    height: 65px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    margin-left: -34px;
+}
+.bannerad .right-nav .box1 a img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.bannerad .right-nav .box1 p{
+    margin-top:  60px;
+    margin-left: 40px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1em;
+}
+.bannerad .right-nav .box1 .logn{
+    margin-left: 65px;
+    margin-top: 10px;
+    width: 100%;
+    height: 20px;
+}
+.bannerad .right-nav .box1 .logn a{
+    font-size: 12px;
+    color: #666;
+    float: left;
+    margin-right: 5px;
+    line-height: 1em;
+}
+.bannerad .right-nav .box1 .button1,.button2{
+    width: 70px;
+    height: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px ;
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+}
+.bannerad .right-nav .box1 .button1{
+  background: white;
+  margin: 0 10px 0 20px;
+}
+.bannerad .right-nav .box1 .button2{
+       color:   #e5d790;
+   background: #363634;
+}
+.bannerad .right-nav .box2{
+    width: 190px;
+    height: 130px;
+    margin-top: 150px;
+    background:white;
+}
+.bannerad .right-nav .box2 .line{
+    width: 80%;
+    height: 2px;
+    margin: 10px auto 0;
+    background: #888;
+
+}
+.bannerad .right-nav .box2 .title{
+    width: 100%;
+    margin-left: 15px;
+    color: #1e1e1e;
+    margin-bottom: 15px;
+}
+.bannerad .right-nav .box2 .title h2{
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 75px;
+}
+.bannerad .right-nav .box2 .title .more{
+    font-size: 12px;
+    color: #999;
+}
+.bannerad .right-nav .box2 .news{
+    display: block;
+    width:90%;
+    height: 20px;
+    color: #999;
+    overflow:hidden;
+	white-space:nowrap;
+    text-overflow:ellipsis;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.bannerad .right-nav .box2 .news span{
+    display: inline-block;
+    font-size: 12px;
+    height: 16px;
+    width: 35px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #e47f7f;
+    margin-right: 6px;
+}
+.bannerad .right-nav .box3{
+    padding-top: 10px;
+    width : 190px;
+    height: 180px;
+    background: white;
+}
+.bannerad .right-nav .box3 .small-icon{
+    width: 42px;
+    height: 45px;
+    float: left;
+    text-align: center;
+    margin: 2px 0 0 5px;
+    padding-top: 10px;
+    color: #888;
+}
+.bannerad .right-nav .box3 .small-icon:hover{
+    color: #e33333;
+    font-weight: bold;
+
+}
+.bannerad .right-nav .box3 p{
+    font-size: 12px;
+}
+
+/* 秒杀 */
+.flash-sale{
+    widows: 100%;
+    height: 275px;
+    margin-top: 30px;
+}
+.flash-sale .left{
+    height: 275px;
+    width: 190px;
+    background: #e83632;
+    float: left;
+}
+.flash-sale .left h2{
+    width: 100%;
+    margin-top: 42px;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+}
+.flash-sale .left h3{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;    
+    color: rgba(255, 255, 255, 0.5);
+
+}
+.flash-sale .left .flashicon{
+    display: block;
+    width: 20px;
+    height: 33px;
+    margin-left: 86px;
+    margin-top: 5px;
+    background: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sprite.seckill.png);
+    background-position: -35px -25px;
+}
+.flash-sale .left p{
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+
+}
+.flash-sale .lefttime{
+    width: 135px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+.flash-sale .lefttime .hours,.minutes,.seconds{
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    float: left;
+    margin-right: 5px;
+    position: relative;
+}
+
+.flash-sale .lefttime .line{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background:  #e83632;
+}
+.flash-sale .lefttime span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.flash-sale .middle{
+    width: 800px;
+    height: 275px;
+    background: white;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+.flash-sale .middle .wrapper1{
+    width: 4000px;
+    height: 275px;
+    position: absolute;
+    left: 0;
+}
+.flash-sale .middle .wrapper1 .slide1{
+    width: 800px;
+    height: 275px;
+    float: left;
+}
+.flash-sale .middle  .button-next1{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.flash-sale .middle .button-prev1{
+    width: 24px;
+    height: 40px;
+    background: black;
+    opacity: 0.4;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -20px;
+}
+.flash-sale .middle .inner-box{
+    width: 199px;
+    height: 275px;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+.flash-sale .middle .inner-box p{
+    width: 160px;
+   
+    font-size: 12px;
+    color: #888;
+    padding: 0 15px;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.flash-sale .middle .inner-box .price{
+    width: 160px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.flash-sale .middle .inner-box span{
+    float: left;
+    width: 80px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    color:white;
+    background: #e33333;
+}
+.flash-sale .middle .inner-box del{
+    float: left;
+    width: 78px;
+    height: 18px;
+    font-size: 13px;
+    color:#666;
+    border:1px solid #e33333;
+    
+}
+.flash-sale .middle .inner-box img{
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+
+.flash-sale .right{
+    width: 200px;
+    height: 275px;
+    background: white;
+    float: left;
+}
+.flash-sale .right .title{
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    margin-top: 10px;
+}
+.flash-sale .right .title i{
+    display: inline-block;
+    width: 11.5px;
+    height: 11.5px;
+    margin-left: 7px;
+    background: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sk_arrow@1x.png);
+    background-size: 100%;
+}
+.flash-sale .right img{
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+.flash-sale .right .ad{
+    width: 184px;
+    height: 90px;
+    background: url(https://img10.360buyimg.com/img/jfs/t1/19991/28/14831/2834/5cab1971E808f7fe2/14bde026c1c107fa.png);
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    color:white;
+}
+.flash-sale .right .ad h5{
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.flash-sale .right .ad p{
+    margin-top: 1px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

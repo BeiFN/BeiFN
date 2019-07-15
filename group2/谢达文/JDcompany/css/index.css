@@ -1,0 +1,295 @@
+/* 顶部 */
+.content{
+    width: 1190px;
+    margin: 0 auto;
+}
+.top{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #ddd;
+}
+.top .content{
+    height: 30px;
+    line-height: 30px;
+}
+.top_left{
+    width: 258px;
+    height: 30px;
+    float: left;
+    position: relative;
+}
+.top_left li{
+    float: left;
+    width: 58px;
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    text-align: center;
+}
+.top_left li i{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 195px;
+    z-index: 99;
+    top:5px;
+    
+    
+}
+.top_left li:nth-child(1){
+    width: 200px;
+    height: 30px;
+}
+.top_right{
+    width: 758px;
+    height: 30px;
+    float: right;
+    
+}
+.top_right li{
+    float: left;
+    width: 77px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+.top_right li i{
+    margin-left: 2px;
+}
+.top_right li:nth-of-type(2n){
+    width: 1px;
+    background: #aa0;
+    height: 30px;
+    margin: 11px 5px 0;
+    height: 10px;
+}
+.top_right li:nth-child(1){
+    width: 167px;
+    color: red;
+}
+.top_right li:nth-child(3){
+    width: 62px;
+}
+.top_right li:nth-child(7){
+    width: 62px;
+}
+.top_right li:nth-child(15){
+   margin-left: 4px;
+}
+/* 导航部分 */
+.nav{
+    width: 100%;
+    height: 140px;
+    background: #eee;
+}
+.nav .content{
+    height: 140px;
+    position: relative;
+}
+.nav .content .logo{
+    width: 190px;
+    height: 170px;
+    background: url("https://upload-images.jianshu.io/upload_images/18223867-e0160f7329dbafc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top:-30px;
+    z-index: 1;
+}
+.nav .content .search{
+    width: 100%;
+    height: 60px;
+   
+    position: relative;
+}
+.nav .content .search .scan{
+    background: url("https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/mobile_qrcode.png") no-repeat;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.nav .content .search .form{
+    width: 550px;
+    height: 35px;
+    position: absolute;
+    top:25px;
+    left: 320px;
+   
+}
+.nav .content .search .form input{
+    width: 550px;
+    height: 35px;
+    border: 0;
+    font-size: 14px;
+}
+.nav .content .search .form .photo{
+    width: 19px;
+    height: 15px;
+    background: url("https://misc.360buyimg.com/product/search/1.0.4/css/i/sprite-photo-search.png") no-repeat;
+   display: block;
+   position: absolute;
+   right: 60px;
+   top:10px;
+}
+.nav .content .search .form .search_logo{
+    width: 50px;
+    height: 35px;
+    background: url("https://upload-images.jianshu.io/upload_images/18223867-6cf768b861ebc2d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat;
+    position: absolute;
+    background-size: 100%;
+    right: 0px;
+    top: 0;
+}
+.nav .content .mybuycar{
+    width: 190px;
+    height: 33px;
+    line-height: 35px;
+    position: absolute;
+    right: 99px;
+    top:25px;
+    text-align: center;
+    
+    border: 1px solid #ddd;
+    background: #fff;
+    
+}
+.nav .content .mybuycar i {
+    background: url("https://upload-images.jianshu.io/upload_images/18223867-a535aedb67152617.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240")no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    position: absolute;
+    z-index: 2;
+    left: 40px;
+    top: 10px;
+}
+.nav .content .mybuycar>span{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    font-size: 12px;
+    color: #fff;
+    position: absolute;
+    right: 45px;
+    top: 8px;
+    text-align: center;
+    line-height: 15px;
+
+}
+.nav .content .mybuycar a{
+    color: red;
+    font-size: 12px;
+}
+
+.nav .content .search_nav{
+    width: 550px;
+    height: 20px;
+    position: absolute;
+    left: 320px;
+    top:65px;
+    line-height: 20px;
+}
+.nav .content .search_nav a{
+    float: left;
+    font-size: 12px;
+    color: #999;
+    margin-right: 10px;
+}
+.nav .content .search_nav a:nth-child(1){
+    color: red;
+    
+    margin-right: 15px;
+}
+.nav .content .navitems{
+    width: 792px;
+    height: 40px;
+    padding-top:20px;
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+    text-align: center;
+    line-height: 40px;
+}
+.nav .content .navitems ul {
+    float: left;
+    text-align: center;
+    height: 16px;
+   
+}
+.nav .content .navitems ul li{
+    float: left;
+    width: 65px;
+}
+
+.nav .content .navitems ul:nth-child(1){
+    width: 260px;
+    height: 40px;
+}
+
+.nav .content .navitems ul:nth-child(2){
+    width: 296px;
+    height: 40px;
+
+}
+
+.nav .content .navitems ul:nth-child(3){
+    width: 162px;
+    height: 40px;
+  
+}
+
+
+/* 货物列表部分 */
+
+.goods{
+    width: 100%;
+    height: 480px;
+    background: #eee;
+}
+.goods .content{
+    width: 1190px;
+    height: 480px;
+    background:pink;
+}
+.goods .content .goods1{
+    width: 190px;
+    height: 480px;
+    background:fuchsia;
+    border-top:1px solid #999;
+    margin-right: 10px;
+    float: left;
+}
+.goods .content .goods1 > ul{
+    width: 190px;
+    height: 480px;
+}
+.goods .content .goods1 > ul li{
+    width: 190px;
+    height: 26px;
+    line-height: 26px;
+}
+.goods .content .goods2{
+    width: 590px;
+    height: 480px;
+    margin-right: 10px;
+    float: left;
+    background: greenyellow;
+}
+.goods .content .goods3{
+    width: 190px;
+    height: 480px;
+    float: left;
+    background: peru;
+}
+
+.goods .content .goods4{
+    width: 190px;
+    height: 480px;
+    float: right;
+    background: olive;
+}

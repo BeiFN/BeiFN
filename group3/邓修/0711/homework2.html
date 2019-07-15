@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        #search{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 20px;
+            width: 400px;
+            margin-top: 28px;
+            outline: 0;
+            border: 1px solid #000;
+        }
+        #content{
+            /* border: 1px solid #000; */
+            height: 100%;
+            width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="search">
+    <div id="content">
+
+    </div>
+    <script>
+        function jsonp(url, cb_name, data) {
+            return new Promise(function (resolve, reject) {
+                let global_cb = "foo";
+                window[global_cb] = function (res) {
+                    resolve(res);
+                };
+                //字段名和回调函数名拼接
+                url += `${/\?/.test(url) ? "&" : "?"}${cb_name}=${global_cb}`;
+                if (typeof data === "object") {
+                    let data_str = "";
+                    for (let attr in data) {
+                        data_str += `${data_str.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+                    }
+                    url += `"&"${data_str}`;
+                }
+                let script = document.createElement("script");
+                script.src = url;
+                script.onload = function () {
+                    this.remove();
+                }
+                document.body.appendChild(script);
+                setTimeout(function () {//超时失败
+                    reject("failed to get resources");
+                }, 3000);
+            });
+        }
+        let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        let data = {
+            json: 1,
+            p: 3,
+            // sid:1423_21080_29238_28518_29099_28830_29221_22158,
+            req: 2,
+            sc: "eb",
+            csor: 0,
+            _: Date.now(),
+            wd: ""
+        };
+        let ipt=document.getElementById("search");
+        let content=document.getElementById("content");
+        ipt.oninput=function(){
+            data.wd=this.value;
+            jsonp(url,"cb",data).then(function(res){
+                let html="";
+                res.s.forEach(item=>html+=`<p>${item}</p>`);
+                content.innerHTML=html;
+            },res=>console.log(res));
+        }
+    </script>
+</body>
+
+</html>

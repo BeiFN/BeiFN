@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css">
+</head>
+<body>
+	<script type="text/javascript">
+	//	//初级的jsonp封装
+	// 	//封装jsonp函数需要的参数 1.后台服务器处理的php函数, 2.字段名 3.回调函数
+	// 	function jsonp(url, cb_filed, callback){
+	// 		//先声明全局函数,能够被后台的处理函数进行调用
+	// 		var GLOBAL = "foo";
+	// 		window[GLOBAL] = function(res){
+	// 			callback(res)
+	// 		}
+	// 		//创建script元素并且添加到界面上,实现src调用
+	// 		var script = document.createElement("script");
+	// 		url +=  /\?/.test(url)? "&":"?";
+	// 		url += `${cb_filed} = ${GLOBAL}`;
+	// 		script.src = url;
+	// 		script.onload = function(){
+	// 			this.remove();
+	// 		}
+	// 		document.body.appendChild(script);
+	// 	}
+	// 	function callback(res){
+	// 		console.log(res);
+	// 	}
+	// jsonp("http://localhost/jsonp/jsonp.php", "cb_filed", callback)
+	
+
+	// //中级的jsonp封装 增加data参数,用ES6的语法实现
+	// function jsonp(url, {cb_filed = "cb_filed", callback = "callback", data = {}} = {}){
+	// 	//设置全局的函数
+	// 	let GLOBAL = "foo";
+	// 	window[GLOBAL] = function(res){
+	// 		typeof callback == "function"? callback(res) :"";
+	// 	}
+	// 	//获取用户传入的数据并拼接地址
+	// 	//地址包括  url + 字段 + 数据  url？"cb_filed" = "callback" & "username" = "username" & "password" = "password";
+	// 	url += /\?/.test(url)? "&" : "?";
+	// 	url += `${cb_filed} = ${GLOBAL}`;
+	// 	for(let attr in data){
+	// 		url += `&${attr}=${data[attr]}`;
+	// 	}
+	// 	//创建script元素并用发送src请求
+	// 	let script = document.createElement("script");
+	// 	script.src = url;
+	// 	script.onload = function(){
+	// 		this.remove();
+	// 	}
+	// 	document.body.appendChild(script);
+	// }
+	// function callback(res){
+	// 	console.log(res);
+	// }
+	// //调用封装的jsonp函数{cb_filed = "cb_filed", callback = "callback", data = {}} = {}
+	// jsonp("http://localhost/jsonp/jsonp.php", {
+	// 	"cb_filed":"cb_filed",
+	// 	"callback":callback,
+	// 	"data":{
+	// 		"username":"hellousername",
+	// 		"password":"hellopassword"
+	// 	}
+	// });
+	
+	
+	// jsonp高级的封装 用promise代替回调函数
+	function jsonp(url, {cb_filed = "cb_filed", data = {}} = {}){
+		return new Promise(function(resolve, reject){
+				let GLOBAL = "foo";
+				window[GLOBAL] = function(res){
+					resolve(res);
+				}
+				url += /\?/.test(url)? "&" : "?";
+				url += `${cb_filed} = ${GLOBAL}`;
+				for(let attr in data){
+					url += `&${attr}=${data[attr]}`;
+				}
+				let script = document.createElement("script");
+				script.src = url;
+				script.onload = function(){
+					this.remove();
+				}
+				document.body.appendChild(script);
+			});
+		}
+
+	
+	//调用封装的jsonp函数{cb_filed = "cb_filed", callback = "callback", data = {}} = {}
+	jsonp("http://localhost/jsonp/jsonp.php", {
+		"cb_filed":"cb_filed",
+		"data":{
+			"username":"hellousername",
+			"password":"hellopassword"
+		}
+	})
+	.then(function(res){
+		console.log(res);
+	});
+	
+	
+</script>
+		
+
+</body>
+</html>

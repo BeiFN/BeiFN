@@ -19,7 +19,7 @@ parseInt(a,16); 表示把十六进制的a转为10进制数
 
 10.Number();    进行整体的数据类型变换; 只要存在任何不符合数字规则的部分，那么会被转换成NaN;
 
-11.isNan(); 返回bool值
+11.isNaN(); 返回bool值
 <!-- > isNaN(NaN)
     > 1. 把传入的内容用 Number() 强制数据类型转换;
     > 2. 判定转换结果是否为NaN; -->
@@ -85,6 +85,7 @@ source 控制台断点
 5.onmouseover 鼠标移入
 6.onmouseout 鼠标移出
 7.onmousemove 鼠标移动
+8.onmouseenter 鼠标穿透
 //键盘事件
 
 1.onkeydown 键盘按下

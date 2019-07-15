@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+//  function Banner(options)
+//  {
+// options ? "" :  options = {};
+//    console.log(options)
+//  let {a = 11 , b=12} = options;
+//  console.log(a,b)
+//  }
+ 
+//  new Banner(
+//  { a:10 }
+//  )
+
+// var obj = {
+//     a:10,
+//     b:20,
+//     c:21,
+// }
+// var obj2 = {
+//     d:12,
+//     e:15,
+//     f:17,
+//     ...obj
+// }
+
+// console.log(obj2)
+
+
+// let fn = (a,b) => {a+b}
+// console.log(fn(1,2))
+
+// var who = name =>'hello'+name
+// console.log(who)
+
+// let foo = (a,b) => {return a+b}
+// console.log(foo(1,5))
+
+// var box = document.querySelector("body")
+// document.onclick = function(evt)
+// {
+//     var e= evt || event;
+//     console.log(e)
+// }
+// let randomColor = ()=>{
+//     return "#"+Math.round(parseInt("ffffff",16) * Math.random()).toString(16).padStart(6,"0");
+// }
+// var src = `https://img14.360buyimg.com/n7/jfs/t1/25620/12/4201/194557/5c2f3ac8E7219defc/1d122b8740dcaff0.jpg`;
+// var str = ` <div>
+//         <img src="${src}" alt="">
+//         <h2 style="background:${randomColor()}">一个商品</h2>
+//         <p>一个介绍</p>
+//   </div> `
+
+// console.log(str);
+
+
+    </script>
+<script type = "text/html" id="ss">
+   <% for(var i = 0; i < 10 ; i++){ %>
+        <h2>hello world</h2>
+    <% } %>
+
+
+    <!-- 定规则 -->
+
+</script>
+<script type = "text/javascript">
+    // var template = document.querySelector("#ss")
+    // var templateString = template.innerHTML;
+    // var reg1 = /<%(.*?)%>/g
+    // var res = templateString.replace(reg1 ,`\`); $1 print ( \`` );
+    // res = `print(\`${res}\`);`
+    // //console.log(res);
+    // var html = "";
+    //         function print(str){
+    //               console.log(1);
+    //               html += str;
+    //         }
+    //         eval(res);
+    //console.log(templateString.match(reg))
+
+// var template = document.querySelector("#ss")
+
+// var templateString = template.innerHTML;
+// // console.log(templateString)
+
+// var reg1 = /<%(.*?)%>/g
+
+// var res = templateString.replace(reg1, `\`);$1 print(\``);
+// res = `print(\`${res}\`);`
+// console.log(res)
+// var html = "";
+//       function print(str){
+//             // console.log(1);
+//              html += str;
+//         }
+
+//         eval(res);
+//         document.body.innerHTML = html 
+
+ 
+var template = document.querySelector("#ss")
+
+var templateString = template.innerHTML;
+// console.log(templateString)
+
+var reg1 = /<%(.*?)%>/g
+
+var res = templateString.replace(reg1, `\`);$1 print(\``);
+res = `print(\`${res}\`);`
+console.log(res)
+var html = "";
+      function print(str){
+            // console.log(1);
+             html += str;
+        }
+
+        eval(res);
+        document.body.innerHTML = html  
+</script>
+</body>
+</html>

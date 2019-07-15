@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //声明了一个变量slice，并赋值为Array.prototype.slice
+    let{slice} = Array.prototype;
+    console.log(slice);    //ƒ slice() { [native code] }
+        
+    //改变量名
+    let{slice:mySlice} = Array.prototype;
+    console.log("mySlice", mySlice);  //mySlice ƒ slice() { [native code] }
+
+    if(true){
+        let a = 10;
+        console.log(a);
+    }
+    // console.log(a);
+
+    // console.log(a);  //undefind
+    // var a = 10; 
+    
+    let [a, b, c, ...d] = [1, 2, 3 ,4 ,5, 6, 7]; 
+    console.log(d);
+    console.log(c);
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        为什么存在跨域问题？
+            浏览器存在同源策略：同协议，同端口，同域名
+        跨域：
+        1.服务器代理 nginx
+            服务器不受同源策略限制，浏览器发送ajax请求=》本机的nginx服务器=》代理请求，目标服务器发起请求并返回数据=》返回数据由nginx进行转发，返回浏览器；
+            server{
+                location = /自己的代理名称/{
+                    proxy_pass 远程服务器域名；
+                }
+            }
+        2.jsonp
+            浏览器是只对ajax有同源策略，src|href可以请求任何来源的数据
+            开启头脑风暴，
+                全局函数可以在任意位置调用
+                可以被外联script调用
+                script在浏览器中解析的机制，只要浏览器看到srcipt，会立即给srcipt分类，带src的script，标签会立即发起请求，请求结果会当成js去解析。
+                script src传入php路径，让浏览器向php路径发起请求，得到结果进行解析。
+                利用该规则，将后端php返回的结果设置成调用前端全局函数的字符串。
+                因为字符串是php内部拼接可以访问数据，所以我们可以在php拼接的函数调用字符串之中传入实参（php数据库查询结果）
+        -->
+    <script>
+        function foo(arg){
+            console.log(arg);
+        }
+    </script>
+
+    <script src="http://localhost/0711/jsonpdata.php">
+    </script>
+</body>
+</html>
