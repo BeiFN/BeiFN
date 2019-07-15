@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie简单封装</title>
+</head>
+<body>
+    <script>
+
+        // name=value , expires 时效性设置 , path 访问路径设置 , domain 访问域设置;
+        // let data = new Date();
+        // data.setDate(data.getDate() + 10);
+        // document.cookie = "username=zhang;path=/;expires="+data+";";
+        
+        function setCookie(name,value,options){
+            // date.setDate(date.getDate() + expires);
+            // new Date().setDate(new Date().getDate() + expires);
+            typeof(options) === "object" ?  "" :options = {};
+            var date = new Date();
+                date.setDate(date.getDate()+ options.expires);
+            return (document.cookie = [
+                name + "=" + value,
+                options.expires? ";expires="  + date : "",
+                options.path ?    ";path="    + options.path : "",
+                options.domain ?  ";domain="  + options.domain : "",
+            ].join(""));
+            
+        }
+        // setCookie("user","helloooo",{
+        //     expires : 10,
+        //     path    : "/",
+        //     // domain  : "127.0.0.1"
+        // });
+        // setCookie("username","haogang");
+        // function removeCookie(name,path){
+        //     setCookie(name,"",{
+        //         path : path ? path : "",
+        //         expires :-1,
+        //     })
+        // }
+        // removeCookie("user","/");
+        for(var i=0;i<20;i++){
+            setCookie("user" +i ,+i);
+        }
+        function getCookie(name){
+            var cookie = document.cookie.split("; ");
+            for(var i=0;i<cookie.length;i++){
+                // console.log(cookie[i]);
+                // console.log(cookie[i].split("="));
+                if(name === cookie[i].split("=")[0]){
+                    return cookie[i].split("=")[1];
+                }
+            }
+        }
+        // function getCookie(name){
+        //     var cookie = document.cookie.split("; ");
+        //     console.log(cookie);
+        //     var res = cookie.filter(item=>item.split("=")[0] === name );
+        //     return res[0].split("=")[1];
+        // };
+        // function getCookie(){
+        //     var cookie = document.cookie.split("; ");
+        //     cookie.forEach((item)=>{
+        //           console.log(item.split("="));
+        //     });
+        
+        console.log(getCookie("user19"));
+        // getCookie()
+
+    </script>
+</body>
+</html>

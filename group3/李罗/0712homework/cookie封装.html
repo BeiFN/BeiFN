@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function cookie(name,value,options){
+            var d,s,a;
+            if(arguments.length===1){
+                //获取cookie字符串。并以每条cookie为拆分一句将cookie拆分成一个数组
+                s=document.cookie;
+                a=s.split("; ");
+                //遍历
+                for(var i ,item;item=a[i];i++){
+                    // console.log(item);
+                    if(item.split("=")[0]===name){
+                        return item.split("=")[1];
+                    }
+
+                }
+
+                // for(var i=0,item, itemA;item=a[i];i++){
+                //     if((itemA=item.split("="))[0]===name){
+                //         return itemA;
+                //     }
+                // }
+                return "";
+            }
+            
+            //赋值
+            typeof options ==="object"?"":{};
+            // var d;
+            return (document.cookie=[
+                name + "=" + value,
+                options.expires?";expires="+((d=new Date()).setDate(d.getDate()+ options.expires)&&d):"",
+                options.path?";path="+ options.path:"",
+                options.domain?";domain="+options.domain :"",
+                options.secure?";secure="+options.secure:""
+            ].join(""));           
+        }
+        cookie("username","wuyanzu",{
+            expires:10,
+            path:"/",
+        }) 
+    </script>
+</body>
+</html>

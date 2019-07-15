@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+      <div class="container">
+            <p class="title"></p>
+            <div class="wrapper">
+                  <div class="image-list">
+                        <!-- <div class="box">
+                              <div class="box-img">
+                                    <img src="https://img.zcool.cn/community/00ff03598803240000002129833089.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt="">
+                              </div>
+                              <div class="box-title">
+                                    <a href="">
+                                                绘本
+                                    </a>
+                                    <span class="fire"></span>
+                              </div>
+                        </div> -->
+                  </div>
+            </div>
+
+            <div class="pagination">
+                  <!-- <span class="active"></span>
+                  <span></span>
+                  <span></span>
+                  <span></span> -->
+            </div>
+      </div>
+      <script type="text/html" id="template">
+            
+            <%for(let i = first; i < first + pageSize; i++){%>
+                  <div class="box">
+                        <div class="box-img">
+                              <img src="<%=data[i].cover%>" alt="">
+                        </div>
+                        <div class="box-title">
+                              <a href="">
+                                    <%=data[i].title%>
+                              </a>
+                              <span class="fire"></span>
+                        </div>
+                  </div>
+            <%}%>
+      </script>
+      <script src="./utils.js"></script>
+      <script src="./index.js"></script>
+</body>
+</html>

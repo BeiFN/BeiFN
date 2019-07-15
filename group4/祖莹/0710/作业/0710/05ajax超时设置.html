@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //超过3秒直接执行reject,3秒内执行resolve;
+        var promise=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve("hello i'm resolved");
+            },Math.random()*5000);
+
+            setTimeout(function(){
+                reject("i'm reject timeout");
+            },3000);
+        })
+        promise.then(function(res){
+            console.log(res)
+        },function(error){
+            console.log(error);
+        })
+        
+        
+    </script>
+    
+</body>
+</html>
