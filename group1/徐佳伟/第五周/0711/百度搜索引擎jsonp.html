@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度搜索引擎</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <div id="content"></div>
+    <script>
+            // function jsonp(url ,cb_fild,data){
+            //     return new Promise(function(resolve,reject){
+            //         let GLOBAL_CB = "foo";
+            //         window[GLOBAL_CB] = function(res){
+            //             //异步
+            //             resolve(res);
+            //         }
+            //         let datastr = "";
+            //         url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + GLOBAL_CB;
+            //         if(typeof data === "object"){
+            //             for(let attr in data){
+            //                 datastr += (datastr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+            //             }
+    
+            //             url += "&" + datastr;
+            //         }
+
+            //         let script = document.createElement("script");
+                   
+                    
+            //         script.src = url ;
+            //             script.onload = function(){
+            //                 this.remove();
+            //             }
+            //         document.body.appendChild(script);   
+            //     });
+               
+            // }
+            // let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+            // let data = {
+            //             wd   : "bilibili",
+            //             json : "1",
+            //             p    : "3",
+            //             sid  : "26525_1424_21103_18559_29523_29521_29237_28518_29098_28831_29220_26350",
+            //             req  : "2",
+            //             sc   :"eb",
+            //             csor : "0"
+            //         }
+            // jsonp(url,"cb",data)
+            // .then(function(res){
+            //         console.log(res);
+            // })
+
+            // var ipt = document.getElementById("ipt");
+            // var content = document.getElementById("content");
+
+            // ipt.oninput = function(){
+            //     // ipt.value = this.value;
+            //     data.wd = this.value;
+            //     jsonp(url,"cb",data)
+            //     .then(function(res){
+            //         // console.log(res);
+            //         var html = "";
+            //         res.s.forEach(item => {
+            //             html += `<p>${item}</p>`;
+            //         });
+            //         content.innerHTML = html;
+            //     })
+            // }
+
+            function jsonp(url , cb_fild , data){
+                return new Promise(function(resolve,reject){
+                    let GLOBAL_CB = "foo";
+                    window[GLOBAL_CB] = function(res){
+                        resolve(res);
+                    }
+                        let datastr = "";
+                    if(typeof data === "object"){
+                        for(let attr in data){
+                            datastr += (datastr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                        }
+                    }
+                    url += /\?/.test(url) ? "&" : "?" + datastr + "&" + cb_fild + "=" + GLOBAL_CB;
+                    let script = document.createElement("script");
+                    script.src = url ;
+                    script.onload = function(){
+                        this.remove();
+                    }
+                    document.body.appendChild(script);
+                   
+                })
+            }
+            let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+            let data = {
+                "json" : "1",
+                "p"    : "3",
+                "sid"  : "26525_1424_21103_18559_29523_29521_29237_28518_29098_28831_29220_26350",
+                "sc"   : "eb",
+                "csor" : "0",
+                "req"  : "2",
+                 "wd"  : "我爱你"
+            }
+            jsonp(url,"cb",data)
+            .then(function(res){
+                // console.log(res);
+                let ipt = document.getElementById("ipt");
+                let content = document.getElementById("content");
+
+                ipt.oninput = function(){
+                    data.wd = this.value;
+                    jsonp(url,"cb",data)
+                    .then(function(res){
+                        let html = "";
+                        res.s.forEach(item => {
+                            html += `<p>${item}</p>`;
+                        });
+                        content.innerHTML = html ;
+                    })
+                }
+            })
+    </script>
+</body>
+</html>
