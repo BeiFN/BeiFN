@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../libs/untils.js"></script>
+</head>
+
+<body>
+    <form action="javascript:void(0)">
+        <label for="">username</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="">password</label>
+        <input type="password" name="password" id="password"><br>
+        <button id="btn">login</button>
+    </form>
+    <script>
+
+        let { ajax, cookie } = untils;
+
+        let co = cookie('username');
+        if (co) {
+            document.body.innerHTML = 'Welcome ,' + co + '!';
+        }
+        else {
+            let username = document.querySelector('#username');
+            let password = document.querySelector('#password');
+            let btn = document.querySelector('#btn');
+            btn.addEventListener('click', login);
+            function login() {
+                let user_value = username.value;
+                let pass_value = password.value;
+                let url = 'http://localhost/0713/login/login.php'
+                let res = ajax(url, {
+                    data: {
+                        username: user_value,
+                        password: pass_value
+                    },
+                    type: 'get',
+                    dataType: 'json'
+                }).then(res => {
+                    switch (res.static) {
+                        case '0': alert('username or password is not input'); break;
+                        case '1': alert('the database is die'); break;
+                        case '2': alert('the username is inexcitence'); break;
+                        case '3': alert('your password is not true,please try again'); break;
+                        case '4': alert('i also dont konw the reason why.Please go out off here'); break;
+                        case '5': alert('land successfully');location.reload(); break;
+
+                    }
+                    
+                    // document.body.innerHTML+=res;
+                    // console.log(res);
+                });
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

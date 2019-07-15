@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise连缀</title>
+</head>
+<body>
+    <script>
+        //总结一下
+        //可以确定是promise连缀依据的是then可以返回一个新的Promise对象,通过这个办法将异步链问题得到了优化
+
+            //原始版本
+        //     let promise = new Promise( function(resolve,reject){
+                    
+        //             resolve();
+        //     } );
+        //    let promise1= promise.then(function(){
+        //         return new Promise( function(resolve , reject){
+        //             resolve(this);
+        //         });
+        //     })
+        //     promise1.then(function (res){
+        //             console.log(res);
+        //     })
+            
+            //在进行宏微任务的前提下，还要知道代码到底能不能继续执行下去
+            //如果不能就只能等待异步队列
+            let promise = new Promise( function(resolve,reject){
+                console.log(1)
+                    setTimeout(function(){
+                        resolve();
+                        console.log(2);
+                    },1000)
+                    
+            } );
+           let promise1= promise.then(function(){
+                console.log(3)
+               setTimeout(function(){
+                   return new Promise( function(resolve , reject){
+                       resolve(this);
+                     console.log(5)
+                   });
+               },1000)
+            })
+            promise1.then(function (res){
+                console.log(4)
+                    console.log(res);
+            })
+            //剖析
+            
+    </script>
+</body>
+</html>
