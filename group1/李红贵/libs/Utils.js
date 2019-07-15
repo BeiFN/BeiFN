@@ -59,7 +59,7 @@ class Utils{
               callback : "callback"
          })
         {
-
+            console.log(arguments);
         if(dataType === "jsonp"){
               return Utils.jsonp( url , data , callback)
         }
@@ -78,12 +78,18 @@ class Utils{
               }
 
               type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + dataStr : "";
+
+              console.log("url="+url+"\n"+"datastr="+dataStr);
+
               xhr.open( type ? type : "GET" , url );
               type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
               xhr.send( type === "POST" ? dataStr : null );
               xhr.onreadystatechange = function(){
                     if(xhr.readyState === 4 && xhr.status === 200){
                           let res = xhr.responseText;
+                          
+                          console.log(res);
+
                           switch(dataType){
                                 case "text" :res =  typeof res === "string" ? res : JSON.stringify(res);
                                       break;
