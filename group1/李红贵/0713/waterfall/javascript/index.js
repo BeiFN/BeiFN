@@ -35,15 +35,15 @@ class WaterFall{
       }
       //宽度改变
       changeContainerWidth(){
-          let cWidth = document.documentElement.clientWidth;
-          this.count = parseInt(cWidth / 250);//每行显示图片数
-          console.log(this.count);
-      //     图片父视图宽度改变
-          this.container.style.width = this.count * 250 + "px";  
-      //     this.container.style.backgroundColor = "red";
-      // //     重新排序
+
+            let cWidth = document.documentElement.clientWidth;
+            this.count = parseInt(cWidth / 250);//每行显示图片数
+            console.log(this.count);
+            //     图片父视图宽度改变
+            this.container.style.width = this.count * 250 + "px";  
       
-          this.sort();
+            // //重新排序
+             this.sort();
       }
 
       render(list){    

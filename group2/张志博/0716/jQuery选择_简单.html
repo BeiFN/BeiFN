@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #f99;
+            margin: 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script src="../libs(jQuery/jquery.js"></script>
+    <script>
+        $(".box").css({
+            width : 200
+        })
+        $("div").css({
+            background : "yellowgreen"
+        })
+
+
+        //改变其中第几个元素
+        console.log($(".box")[0]);
+        $(".box")[1].setAttribute("key" , "value");
+    </script>
+</body>
+</html>
