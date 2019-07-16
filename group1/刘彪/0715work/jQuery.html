@@ -48,12 +48,36 @@
         </div>
     </div>
 
+    <ul class="list2">
+        <li>
+            
+        </li>
+        <li></li>
+        <li>hello</li>
+        <li></li>
+        <li><span></span></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li lang="hello"></li>
+        <li></li>
+    </ul>
 
+        <form action="" id="myForm">
+            <p>这是一个表单</p>
+            <button>提交按钮</button>
+            <input type="text" placeholder="这是一个输入框">
+        </form>
 
 
 
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script>
+
+
+        // 会隐藏表单元素,p标签不会隐藏
+        $(myForm.elements).hide();
+
         // $(document).ready(function(){
         //     alert("结构加载完毕,不包含图片");
         // })
@@ -164,6 +188,49 @@
     //        border:"1px solid black"
     //    })
 
+
+    //过滤选择器 : 过滤规则;
+
+    // $(".list2 li:odd").css({
+       
+    //     background:"#ddd",
+    // })
+    // $(".list2 li:even").css({
+    //     background:"yellowgreen",
+    // })
+
+    // $(".list2 li:first").css({
+    //     background: "#f99",
+    // })
+    // //精准选择某一个;
+    // $(".list2 li:eq(2)").css({
+    //     background: "black",
+    // })
+
+    //排除选择器
+    // $("li:not(.box)").css({
+    //     background : "yellowgreen",
+    //     marginTop :10,
+    // })
+
+
+    //包含选择器
+    // $(".list2 li:has(span)").css({
+    //     background : "yellowgreen",
+    // })
+
+        //小标大于2不包含2 的元素
+    // $(".list2 li:gt(2)").css({
+    //     background: "yellowgreen",
+    // })
+
+    // $(".list2 li:lang(hello)").css({
+    //     background:"yellowgreen",
+    // })
+
+    // $(".list2 li:contains(hello)").css({
+    //     background : "yellowgreen",
+    // })
 
     </script>
 </body>
