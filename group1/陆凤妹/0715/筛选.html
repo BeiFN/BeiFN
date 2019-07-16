@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>筛选</title>
+          <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+          <style>
+          *{
+                    margin: 0;
+                    padding: 0;
+          }
+          html,body{
+                    color: #ffffff;
+                    text-align: center;
+          }
+        li,  p{
+                    width: 100%;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+          }
+          
+          </style>
+</head>
+<body>
+          <div class="one">1</div>
+          <div class="two">2</div>
+          <div class="three">3</div>
+         <ul>
+                   <li>Hello jQuery</li>
+                   <li>Hello jQuery</li>
+                   <li>Hello jQuery</li>
+                   <li>Hello jQuery</li>
+                   <li>Hello jQuery</li>
+         </ul>
+
+
+          <script>
+          
+          
+          //    eq(index | -index)
+         
+          $("div").eq(0).css({
+                  "background":"red"
+          })
+           $("div").eq(-2).css({
+                  "background":"green"
+                  
+          })
+
+
+
+          // hasClass(class)  检查当前元素是否含有某个特定的类，如果有，则返回true
+         
+          console.log($("div").hasClass("box"));
+
+          
+          // filter(expr | obj | ele | fn)  筛选出于指定表达式匹配的元素集合。 这个方法用于缩小匹配的范围，用逗号分隔多个表达式
+         
+          $("div").filter(".three").css({
+                     "background":"#009"
+           })
+
+
+          //  is(expr | obj | ele | fn)  根据选择器、DOM元素或者jQuery对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式，就返回true。
+          //                             如果没有元素符合，或者表达式无效 ，都返回false。
+
+           console.log($("div").is(".three"));
+
+
+          //  slice(start,[end])   
+          // start   开始选取子集的位置，第一个元素是0.如果是负数，则可以从集合的尾部开始选起
+          // end     结束选取子集的位置，如果不指定，则就是本身的结尾
+         $("li").slice(0,4).css({
+                   "background":"#678",
+                   "marginTop":"20px"
+         })
+
+
+          </script>
+         
+  
+
+
+</body>
+</html>
