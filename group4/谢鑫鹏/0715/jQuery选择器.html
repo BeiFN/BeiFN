@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      background: #ddd;
+    }
+    .hide{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="hide"></div>
+    <div>hello</div>
+    <div id="box">
+      <span></span>
+    </div>
+    <div lang="hello"></div>
+    <div class="box"></div>
+    <div class="box">
+      <a href="">
+        <span></span>
+      </a>
+    </div>
+    <script src="../libs/jquery.js"></script>
+    <script>
+      // 简单选择器 : id , class , tag;
+      // $("#box").css("background", "#000");
+      // $("#box").css({
+      //   width : "+=200px",
+      //   background : "#000"
+      // });
+      // $(".box").css("background", "#000");
+      // $("div").css("background", "#000");
+      // console.log(document.querySelector(".box") === document.querySelector(".box")); // true;
+      // console.log($(".box") === $(".box")); // false
+      // 后代选择器;
+      // console.log($("div span"));
+      //          ||
+      // console.log($("div").find("span"));
+      // console.log($("div>span"));
+      // 群组选择器;
+      // console.log($("div, span"));
+      // 通配选择器;
+      // console.log($("*"));
+      // 高级选择器
+      // $("#box").next().css("background", "#000");
+      // $("#box").nextAll().css("background", "#000");
+      // $("#box").nextUntil(".box").css("background", "#000");
+      // $("#box").prev().css("background", "#000");
+      // $("#box").parent().css("background", "#000");
+      // $("#box").parentsUntil("body").css("background", "#000");
+      // $("#box").parents().css("background", "#000");
+      // 过滤器
+      // $("div:odd").css({background : "#000"}); // 奇数
+      // $("div:even").css({background : "#000"}); // 偶数
+      // $("div:first").css({background : "#000"});
+      // $("div:last").css({background : "#000"});
+      // 精准选择某一个;
+      // $("div:eq(2)").css({background : "#000"});
+      // 排除选择;
+      // $("div:not(.box)").css({background : "#000"});
+      // 包含;
+      // $("div:has(span)").css({background : "#000"});
+      // 可见、不可见选择器; 
+      // $("div:visible").css({background : "#000"});
+      // $("div:hidden").css({background : "#000"});
+      // 从后往前数
+      // $("div:gt(2)").css({background : "#000"});
+      // 从前往后数
+      // $("div:lt(2)").css({background : "#000"});
+      // lang
+      // $("div:lang(hello)").css({background : "#000"});
+      // 内容有
+      $("div:contains(hello)").css({background : "#000"});
+
+
+
+
+    </script>
+</body>
+</html>
