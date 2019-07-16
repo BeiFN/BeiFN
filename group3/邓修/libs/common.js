@@ -262,7 +262,6 @@ class Utils {
                   let data_str = "";
                   if (url === "") {
                         throw "url is null";
-                        return false;
                   }
                   if (typeof data === "object") {
                         for (let attr in data) {
