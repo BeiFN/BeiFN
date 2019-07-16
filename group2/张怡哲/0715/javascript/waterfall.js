@@ -1,4 +1,4 @@
-let { ajax , $ , on} = utils;
+let { ajax , $ , on} = Utils;
 
 class Waterfall{
     constructor(){
@@ -8,31 +8,41 @@ class Waterfall{
         this.template       = $("#template");
         this.wrapper        = $(".wrapper");
         this.container      = $(".container");
+        this.img_wrapper    = $(".box-img");
 
         //页面当前宽度能够放下的盒子总量;
         this.count          = 0;
         //高度数组;
         this.heightArray    = [];
-        this.flat    = false;
-        this.cHeight = document.documentElement.offsetHeight;
+        this.load_url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563172097821&di=5a91819ee43850fc70b858e143165238&imgtype=0&src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201505%2F23%2F20150523090235_fJUxr.gif";
+        this.cHeight  = document.documentElement.clientHeight;
         this.changeContainerWidth();
-        let timer = null;
+        //防抖计时器;
+        let widthTimer = null;
+        //节流计时器;
+        let heightTimer = null;
         on(window , "resize" , ()=>{
             //防抖处理;
-            clearTimeout(timer);
-            timer = setTimeout(()=>{
+            clearTimeout(widthTimer);
+            widthTimer = setTimeout(()=>{
                 this.changeContainerWidth();
                 timer = null;
             },500);
         });
 
         on(window , "scroll" , ()=>{
-
-        })
+            if(heightTimer != null) return false;
+            heightTimer = setTimeout(()=>{
+                this.imgShow();
+                heightTimer = null;
+            } , 500);
+        });
 
         let res = await new Load().init(0);
-        this.render(res);
 
+        console.log(res);
+        this.render(res);
+        this.getAllimg();
         this.sort();
     }
 
@@ -44,11 +54,11 @@ class Waterfall{
 
     render(list){
         let html = "";
-        for(var i = 0; i < list.length ; i++){
+        for(let i = 0; i < list.length ; i++){
             //等比例计算高度;
             let scaleHeight = parseInt(235 / list[i].photo.width * list[i].photo.height);
             html += `<div class="box">
-                            <div class="box-img" style="height:${scaleHeight}px">
+                            <div class="box-img" style="height:${scaleHeight}px" data-img=${list[i].path}>
                                 <img src="${list[i].photo.path}" alt="">
                                 <u style="height:${scaleHeight}px"></u>
                             </div>
@@ -60,6 +70,24 @@ class Waterfall{
                     </div>`
         }
         this.wrapper.innerHTML = html;
+    }
+
+    getAllimg(){
+        this.imgs = Array.from(this.img_wrapper.children);
+        this.imgs.forEach(img => {
+            img.setAttribute("data-top" , img.offsetTop);
+        })
+    }
+
+    imgShow(){
+        let scorllTop = document.body.scrollTop || document.documentElement.scrollTop;
+        this.imgs.forEach(img => {
+            let img_top = img.getAttribute("data-top");
+            if(scrollTop + this.cHeight >= img_top - 300){
+                let src = img.getAttribute("data-img");
+                img.children[0].src = src;
+            }
+        })
     }
 
     //图片排列
