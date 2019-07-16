@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function ajax(url,
+			{
+                 type = "GET" ,
+                 data = {} ,
+                 dataType = "text",
+                 callback = "callback"
+            } 
+            ={})
+			 {
+				 console.log(type);
+				//jsonp类型
+				if(dataType === "jsonp"){
+					return jsonp(url,callback, data);
+				}
+				//ajax请求
+				return new Promise(function(resolve , reject){
+					
+					let xhr = new XMLHttpRequest();
+					var dataStr = "";
+					for(var attr in data){
+						dataStr += (dataStr.lenght > 0 ? "&" : "");
+						dataStr += `${attr}=${data[attr]}`
+					}
+					if(dataStr.length != 0){
+						url = url + (/\?/.test(url) ? "&" : "?") + dataStr;
+					}				
+					xhr.open(type , url );
+					type === "POST" ? xhr.setRequestHeader("Content-type" , contentType) : "";
+					xhr.send(type === "POST"? dataStr : null);
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState === 4 && xhr.status === 200){
+							var res = xhr.responseText;
+							switch(dataType){
+								case "text": res = typeof res === "string" ? res : JSON.stringify(res);
+									break;
+								case "json": res = typeof res === "string" ? JSON.parse(res) : "";
+									break;
+							}
+							resolve(res);
+						}
+					}	
+							
+					setTimeout(function(){
+						reject("timeout :");
+					},5000);
+				})
+				
+			}
+			
+			function jsonp(url , cb_filed = "cb_name", data){
+				return new Promise(function(resolve,reject){
+					var GLOBLE_CB ="foo";
+					window[GLOBLE_CB] = function(res){
+						resolve(res);
+					}
+					url += /\?/.test(url) ? "&" : "?" ;
+					url = url + cb_filed + "=" + GLOBLE_CB
+					
+					//数据拼接
+					if(typeof data === "object"){
+						var data_str = "";
+						for(var attr in data){
+							data_str.length > 0 ? data_str+=`&${attr}=${data[attr]}` :data_str+=`${attr}=${data[attr]}`;
+						}
+						url += ("&" + data_str);
+					}
+					
+									
+					console.log(url);
+					
+					let script = document.createElement("script");				
+					script.src = url ;
+					script.onload = function(){
+					        this.remove();
+					 }
+					document.body.appendChild(script);
+				})
+			}
+			
+			let url = "http://localhost/hwj/0712/test.json";
+			ajax(url,{
+				dataType : "json"
+			}).then(function(res){
+				console.log(res);
+			});
+		</script>
+	</body>
+</html>

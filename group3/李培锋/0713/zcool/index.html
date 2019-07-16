@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p class="title"></p>
+        <div class="wrapper">
+            <div class="image-list">
+                
+            </div>
+        </div>
+        <div class="pagination">
+
+        </div>
+<!-- 模板 -->
+        <script type="text/html" id="template">
+            <% for(var i = 0 , item ; item = data[i] ; i++ ) {%>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="<%= item.cover %>" alt="">
+                    </div>
+                    <div class="box-title">
+                        <a href="">
+                            <%= item.title %>
+                        </a>
+                        <span class="fire"></span>
+                    </div>
+                </div>
+            <% } %>
+        </script>
+        <!-- 工具库  -->
+        <script src="js/utils.js"></script>
+        <!-- 模板引擎 -->
+        <script src="js/ejs.js"></script>
+        <!-- 业务 -->
+        <script src="js/index.js"></script>
+        <script>
+            new Pagination().init({
+                list : ".image-list",
+                page : ".pagination",
+                getData : {
+                    url : "http://localhost/zc",
+                    data : {
+                        pageSize: 100,
+                        contentId : (""+Date.now()).slice(6)+"_3",
+                        day : new Date().toISOString().slice(0,10)
+                    }  
+                },
+                pageNo : 2,
+                showNo : 10,
+                template : $("#template").innerHTML
+            })
+        </script>
+    </div>
+</body>
+</html>
