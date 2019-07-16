@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // .end() 返回上一级   **********************************
+        //toggle(2000) ;显示隐藏 持续2ms
+        //fadeIn() 淡入
+        //fadeout() 淡出
+        //fadeToggle() 淡入淡出
+        // fadeTo()  到
+        // 拉上拉下
+        // $().sideDown(speed,function)拉下去（显示）
+        // $().sideUp(speed,function) 拉上来（隐藏）
+        // $().sideToggle(speed,function)隐藏显示切换
+
+        // 二、自定义动画 animate  **********************************
+        // animate(运动的参数和目标 json , 动画时长 , 运动速度 , 回调函数)
+        // $(".box").animate( {
+        //       width : 300,
+        //       height : 200,
+        //       // transform: "scale(2)"
+        // },5000)
+
+        // 三、队列机制  **********************************
+        // .queue() 清除队列机制，不可以执行下面队列了，里面加next（）后又可以
+
+        // stop终止队列及动画(继续执行动画队列并不清空, 立即终止但不完成动画)
+
+
+        // 四、jQueryDOM  **********************************
+        // 增
+        // 1.直接在创建时加入
+        // var $div = $("<div>hello world</div>");
+        // $("body").append($div);
+        //2.创建后加入（innerHTML）;
+
+        // 插入方式; appendTo;append
+        // insertAfter;insertBefore 同级之后 之前（）
+        // $div.insertAfter($("h1")); 把div 插入到h1之后
+
+        // before,after
+        // $("body").after($div);把div插入body后 与上面的相反
+        
+
+        // 04jQuery属性操作  attr **********************************
+        // 取值：$("#box").attr("id")  ;
+        // 设值：$("#box").attr("className","hello world");
+
+        // $("#box").attr({
+        //           "data-id" : "hello",
+        //           "class"   : "hello"
+        //     }); //设多个值
+
+        // 定制一些功能; **********************************
+        // addClass();
+        // removeClass();
+        // toggleClass();对设置或移除被选元素的一个或多个类进行切换
+
+        // 属性专属配合选择器的的判断  is
+
+
+        // 样式; **********************************
+
+            // css;
+
+            //$("#box").width(); 不包括padding和border；
+            //$("#box").outerWidth();含padding 和 border；
+            //$("#box").innerWidth();不含border
+
+            // offset();匹配元素在当前视口的相对偏移  top 和 left
+            // position();匹配元素相对父元素的偏移
+
+
+        // jquery事件
+        // addEventListener是标准事件处理方法，接收三个参数（事件类型,
+        // 事件处理方法,第三个决定是在捕获阶段调用事件处理程序(true)，
+        // 还是在事件冒泡阶段调用事件处理程序(false) eventloop
+
+        // 是DOM0事件处理程序，只能在事件冒泡阶段触发 DOM.对象方法
+
+
+        // 事件高级;$(document).on("click" , "h1" ,function(){ }
+        // 自定义事件  trigger => 不会触发事件冒泡;
+
+
+
+
+
+
+    </script>
+</body>
+</html>
