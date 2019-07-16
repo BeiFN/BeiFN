@@ -7,7 +7,7 @@ class Pagination{
         this.init();
     }
     async init(){
-        this.list_wrapper = $(".list-wrapper");
+        this.container = $(".container");
         this.res = await this.loadData();
             console.log(this.res);  
 
@@ -29,7 +29,7 @@ class Pagination{
         return res;
     }
 
-    // // 渲染页面   需要用到模板
+    // // // 渲染页面   需要用到模板
     render(){
         let data = this.res.data.contents;
         let template = `
@@ -45,7 +45,7 @@ class Pagination{
                         </div>
                     <% } %>`;       
         ejs.render(template , {data : data}); // 问题 ： 为什么不能是data；******************************************
-        this.bigwrapper.innerHTML = html;
+        this.container.innerHTML = html;
     }
     //切换页面
     nextPage(){
