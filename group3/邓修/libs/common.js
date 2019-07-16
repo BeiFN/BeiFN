@@ -102,6 +102,10 @@ class Utils {
                   }
                   for (var i = 0, ele; ele = eleList[i++];) {
                         if (targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1) {
+                              e.target.index = function () {
+                                    // console.log(e.target);
+                                    return Array.from(e.target.parentNode.children).indexOf(e.target);
+                              }
                               handlerClick.call(ele, e);
                               break;
                         }
@@ -243,7 +247,7 @@ class Utils {
                   document.body.appendChild(script);
                   setTimeout(function () {//超时失败
                         reject("failed to get resources");
-                  }, 3000);
+                  }, 5000);
             });
       }
       //整合了xhr请求方式和jsonp请求方式的ajax
@@ -314,7 +318,7 @@ class Utils {
                   }
                   setTimeout(function () {//超时失败
                         reject("failed to get resources");
-                  }, 3000);
+                  }, 5000);
             });
       }
       //封装cookie,实现了获取和设置cookie的功能
