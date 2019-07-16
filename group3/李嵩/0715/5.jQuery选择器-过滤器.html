@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <ul>
+            <li lang="hello">hello world</li>
+            <li>hello</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <p class="box">hello world</p>
+            <li>hello world</li>
+            <li>
+                  <span>hello</span>
+            </li>
+            <p id="box">hello world</p>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+      </ul>
+      <script src="../../libs/jquery.js"></script>
+      <script>
+            // 过滤 选择器:过滤规则;
+            // $("li:odd").css({
+            //       background : "#ddd"
+            // })
+            // $("li:even").css({
+            //       background : "#f99"
+            // })
+            // $("li:first").css({
+            //       background : "yellowgreen"
+            // })
+            // $("li:last").css({
+            //       background : "yellowgreen"
+            // })
+            // // 精准选贼某一个;
+            // $("li:eq(2)").css({
+            //       background : "yellowgreen"
+            // })
+
+            // 排除选择;
+            // $("li:not(.box)").css({
+            //       background : "yellowgreen"
+            // })
+
+            // 包含;
+            // $("li:has(span)").css({
+            //       background :"yellowgreen"
+            // })
+
+            // 可见性选择器; 
+            // .... 
+
+            // $("li:gt(2)").css({
+            //       background : "yellowgreen"
+            // })大于2
+
+            // $("li:lt(2)").css({
+            //       background : "yellowgreen"
+            // })小于2
+            
+            // $("li:lang(hello)").css({
+            //       background : "yellowgreen"
+            // })
+
+            // $("p:target").css({
+            //       background : "yellowgreen"
+            // })
+
+            $("p:contains(hello)").css({
+                  background : "yellowgreen"
+            })
+      </script>
+</body>
+</html>
