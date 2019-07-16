@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .box{
+                  width: 100px;
+                  height: 100px;;
+                  background: #ddd;
+                  margin: 10px;
+            }
+      </style>
+</head>
+<body>
+      <ul class="list">
+            <li>
+                  <a>hello</a>
+            </li>
+            <li>
+                  <span>world</span>
+            </li>
+            <li>
+                  <strong>!!</strong>
+            </li>
+            <li>
+                  <i>!!</i>
+                  <ul>
+                        <li>内部的li</li>
+                  </ul>
+            </li>
+      </ul>
+      <script src="../../libs/jquery.js"></script>
+      <script>
+            // 1. 进阶选择器 : li a ; li a, li span,li strong ; * ;
+
+             //console.log($("ul li")); 后代选择器;
+             //console.log($(".list>li")); 
+
+            // 群组选择器;
+            // $("li a,li span,li strong").css({
+            //       color : "yellowgreen"
+            // })
+
+            // 统配选择器;
+
+            // $("li *").css({
+            //       color : "yellowgreen"
+            // })
+            // console.log(document.querySelectorAll("*"));
+            
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>与jQuery的初次邂逅</title>
+</head>
+<body>
+
+    <div id="box">
+        <p class="first"">我是p标签🏷</p>
+        <p>我是p标签🏷</p>
+        <p>
+            我是p标签🏷
+            <span>我是span标签</span>
+        </p>
+        <p class="content">我是p标签🏷</p>
+        <p>
+            我是p标签🏷
+            <strong>我是strong标签</strong>
+        </p>
+        <p>我是p标签🏷</p>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        // console.log(jQuery);
+        console.log($("#box"));
+        $("#box").css({
+            background : "yellowgreen",
+            width:200,
+            height:300,
+            textAlign:"center",
+            margin:"20px auto",
+        });
+        // $("#box").css("background" , "#699");
+        // $("#box p").css({
+        //     background:"red"
+        // })
+        // $("#box p")[0].setAttribute("data-title","7-15");
+        // $(".p1")[0].setAttribute("key","value");
+        // $("p").attr("data-img","photo.jpg")
+        // $("div p strong").css({
+        //     background : "#ddd",
+        //     display    : "inline-block"
+        // })
+        // $("div p").find("strong").css({
+        //         background : "#ddd",
+        //         display    : "inline-block"
+        // });
+        // console.log($("div").children().children("span"));
+        // $(".content").css({
+        //     background : "yellow"
+        // })
+        // .next().css({
+        //     background : "pink"
+        // });
+        // $(".content").prev().css({
+        //     background : "blue",
+        // });
+        // $("p span,p strong").css({
+        //     background : "#700",
+        //     display    : "block",
+        // });
+        // $("div *").css({
+        //     background : "#ddd"
+        // });
+        // $("div p:odd").css({
+        //     background : "pink",
+        // });
+        // $("div p:even").css({
+        //     background : "orange"
+        // });
+        // $("div p:eq(2)").css({
+        //     background : "#ddd",
+        // });
+        $(".first ~ .content").css({
+            background : "purple"
+        });
+    </script>    
+
+</body>
+</html>

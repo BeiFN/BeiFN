@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li lang="hello">hello world</li>
+        <li>hello</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <p class="box">i'm P</p>
+        <li>hello world</li>
+        <li>
+            <span>hello</span>
+        </li>
+        <li id="box">hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script src="../libs(jQuery/jquery.js"></script>
+    <script>
+        // //偶数
+        // $("li:odd").css({
+        //     background : "#f88"
+        // })
+
+
+        // //奇数
+        // $("li:even").css({
+        //     background : "#f33"
+        // })
+    
+        //精准选择eq
+        // $("li:eq(2)").css({
+        //     background : "yellowgreen"
+        // })
+
+        // //排除选择
+        // $("li:not(.box)").css({
+        //     background : "#f00"
+        // })
+
+        // $("li:has(span)").css({
+        //     background : "#f77"
+        // })
+
+
+        //包含span不算  l为小于0；g为大于0
+        // $("li:lt(2)").css({
+        //     background : "yellow"
+        // })
+        // $("li:gt(2)").css({
+        //     background : "green"
+        // })
+
+        $("li:lang(hello)").css({
+            background : "pink"
+        })
+
+        $("p:target").css({
+            background : "blue"
+        })
+
+        $("li:contains(hello)").css({
+            background : "#f28a02"
+        })
+
+
+
+
+
+
+        
+
+
+    </script>
+</body>
+</html>
