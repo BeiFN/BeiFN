@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 400px;
+            background: tan;
+        }
+        .second{
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- <div id="special" class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div> -->
+
+    <div class="first">
+        <div class="second">
+                <ul class="list">
+                        <li class="box">
+                            <a href="">hello</a>
+                        </li>
+                        <li>
+                            <span>hello</span>
+                        </li>
+                        <li class="box2">
+                            <strong>world</strong>
+                        </li>
+                        <li class="last">
+                            <ol>
+                                <li>内部的li</li>
+                            </ol>
+                        </li>
+                    </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     alert("结构加载完毕,不包含图片");
+        // })
+        // $(document).ready(function(){
+        //     alert("结构加载结束,其中不包含图片");
+        // })
+        
+        // $(function(){
+        //     alert("这是最简单的书写方式");
+        // })
+        //  $(function(){
+        //      alert("这是最简单的结构加载结束的事件的书写方式")
+        //  })
+
+
+        // 1.简单选择器:id,class,tag
+        // jQuery之中所有对元素的操作都是批量的;
+        //  $(".box").css({
+        //      width :"200px",
+        //      height:200,
+        //      marginTop: 10,
+        //      background:"yellowgreen"
+        //  })
+       
+         //  tips:可以通过setAttribute设置css样式;
+         //  let first = document.getElementById("special");
+         //  first.setAttribute("style","width:200px;height:300px;background:black;")
+        
+        
+         //jQuery选择器选择出来的实例不是对象,所以说和原生DOMAPI不通用;
+         //可以利用下标去获取被包裹的DOM对象;
+         //实例对象之中获取原生DOM对象;
+        //  console.log($(".box")[0]);
+        //  $(".box")[0].setAttribute("key","value");
+        // jQuery提供了所有的DOM操作方案,不用原生DOM对象;
+        
+
+        //2.进阶选择器: li a; li span,li strong;*;
+
+        // 后代选择器;
+        // console.log($("ul li"));
+        // console.log($(".list>li"));
+
+        //群组选择器
+        // $("li a,li span,li strong").css({
+        //     color : "yellowgreen",
+        // })
+        
+        //通配选择器; 慎用通配选择器,一定要加上限制范围;
+        // $("li *").css({
+        //     color : "yellowgreen",
+        // })
+
+        //3.高级选择器;
+        //后代选择器,兄弟选择器,子元素选择器;
+
+        //传统的递归选择方式性能较弱;
+        //jQuery里为长选择器封装了各种方法;
+
+        // 后代选择器
+        // $("ul li span")=>$("ul").find("li").find("span");
+        // console.log($("ul li").find("span"));
+
+        //除了find之外的所有方法,不传参数默认参数为*;
+        console.log($(".list").children().children("span"));
+
+        //连缀式的编程模式;
+         // 兄弟选择器分为很多的类型;
+
+        // 弟
+        // $(".box").next().next().css({
+        //     background : "skyblue",
+        // })
+        // 弟们
+        // $(".box").nextAll().css({
+        //     background:"skyblue",
+        // })
+        // 兄
+        // $(".box2").prev().css({
+        //     background : "skyblue",
+        // })
+        // 兄们
+        // $(".last").prevAll().css({
+        //     color : "yellowgreen",
+        // })
+        
+        //弟~弟之间;
+        // $(".box").nextUntil(".box2").css({
+        //     color : "skyblue",
+        // })
+       //兄~兄之间
+       $(".box2").prevUntil(".box1").css({
+           color : "red",
+       })
+
+       //父级
+       //所有祖先
+       //范围祖先;
+    //    $(".box").parent().css({
+    //         border: "1px solid black",
+    //    })
+
+    //    $(".box").parents().css({
+    //        border : "1px solid black",
+    //    })
+
+    //    $(".box").parentsUntil("body").css({
+    //        border:"1px solid black"
+    //    })
+
+
+    </script>
+</body>
+</html>
