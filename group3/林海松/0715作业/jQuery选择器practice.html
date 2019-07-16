@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* #box{
+            background: yellowgreen ;
+            height: 50px;
+            width: 50px;
+        } */
+        /* .box{
+            height: 50px;
+            width: 50px;
+            background: #ddd;
+            margin-top: 10px;
+        } */
+        div{
+            padding: 100px;
+            border: 10px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="box" class="abc"></div> -->
+    <!-- <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div> -->
+    <!-- <ul class="list">
+        <li>
+            <a>hello</a>
+        </li>
+        <li class="">
+            <span>world</span>
+        </li>
+        <li>
+            <strong>!!</strong>
+        </li>
+        <li>
+            <i>!!</i>
+            <ul>
+                <li>内部的li</li>
+            </ul>
+        </li>
+    </ul> -->
+    <!-- <div class="hello">hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div class="box">hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <span>hhhhhh</span>
+    <div>hello world</div>
+    <strong>sssss</strong>
+    <div>hello world</div>
+    <div>hello world</div>  -->
+    <!-- <div>
+        <div>
+              <div>
+                    <div>
+                        <div class="box"></div>
+                    </div>
+              </div>
+        </div>
+    </div> -->
+    <ul>
+        <li lang="hello">hello world</li>
+        <li>hello</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <p class="box">hello world</p>
+        <li>hello world</li>
+        <li>
+              <span>hello</span>
+        </li>
+        <p id="box">hello world</p>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script src="./libs/jquery.js"></script>
+    <script>
+        //简单选择器  id选择器 class选择器  元素选择器
+        //id选择器
+        // $("#box").css("background" , "#ddd");
+        // $("#box").css({
+        //     background : "#000" 
+        // })  // 两种设置模式 1、"key" , "value"  2、key : value
+        //class选择器
+        // $(".abc").css("background" , "#ddd");
+        // $(".abc").css({
+        //     background : "#ddd"
+        // })
+        //元素选择器
+        // $("div").css("background" , "#000");
+        // $("div").css({
+        //     background : "#ddd"
+        // })
+
+        //jQuery提供了所有的DOM操作方案，不使用原生的DOM对象
+        // $(".box").setAttribute("data-top","1");//报错
+        //可以获取元素的下标，进而可以使用原生的DOM对象
+        // $(".box")[0].setAttribute("data-top","1");//不报错，可用
+        
+        //进阶的选择器 后代选择器  群组选择器  通配符选择器
+        //后代选择器
+        // $("ul li").css({
+        //     background : "#ddd" //所有
+        // })
+        //群组选择器
+        // $("li span , li a , li strong").css({
+        //     background : "#ddd"
+        // })
+        //通配符选择器
+        // $("*").css({
+        //     background : "#ddd" //选择了所有元素，包括body、html标签。 需要给 * 选择器添加一个范文
+        // })
+        // $(".list *").css({
+        //     background : "#ddd" //设置了范围(在ul之中)
+        // })
+
+        //高级选择器
+        //兄弟选择器  兄弟选择器包含了许多的类型
+        // $(".box").css({
+        //     background : "#ddd"
+        // })
+        // .next().css({
+        //     background : "#ddd"
+        // })
+        // .nextAll().css({
+        //     background : "#000"
+        // })
+        // $(".box").nextUntil("span").css({ // .box 到 span为止(不包含span)
+        //     background : "#ddd"
+        // })
+        // $(".box").css({
+        //     background : "#ddd"
+        // })
+        // .prev().css({
+        //     background : "#ddd"
+        // })
+        // .prevAll().css({
+        //     background : "#000"
+        // })
+        // $(".box").css({
+        //     background : "#ddd"
+        // })
+        // .prevUntil(".hello").css({ // 从.box 到 .hello为止(不包含.hello)
+        //     background : "#ddd"
+        // })
+
+        //父代选择器 
+        // $(".box").parent().css({ //直接父级
+        //       borderColor : "#f99"
+        // })
+        // $(".box").parents().css({  // 所有的父级 (需要加范围)
+        //       borderColor : "#f99"
+        // })
+        // $(".box").parentsUntil("body").css({ // 从.box 直到body (不含.box body)
+        //       borderColor : "#f99"
+        // })
+
+        //后代选择器
+        // $("ul li span") => $("ul").find("li").find("span") //等价于
+        // $("ul li").find("span").css({
+        //     background : "#ddd"
+        // })
+        //find()方法若不传参数，就相当于是传入了*
+
+        //子选择器
+        // $("li>span").css({
+        //     background : "#ddd"
+        // })
+
+        //过滤器
+        // $("li:odd").css({ //奇数
+        //     background : "#ddd"
+        // })
+        // $("li:even").css({ //偶数
+        //     background : "red"
+        // })
+        // $("li:eq(1)").css({ //匹配一个给定索引值的元素
+        //     background : "red"
+        // })
+        // $("li:gt(1)").css({ // 匹配所有大于给定索引值的元素
+        //     background : "#ddd"
+        // })
+        // $("li:lt(2)").css({  // 匹配所有小于给定索引值的元素
+        //     background : "#ddd"
+        // })
+        // $("li:first").css({ //获取第一个元素
+        //     background : "#ddd"
+        // })
+        // $("li:last").css({ //获取最后一个元素
+        //     background : "#ddd"
+        // })
+        // $("p:not(.box)").css({ //去除所有与给定选择器匹配的元素
+        //     background : "#ddd"
+        // })
+    </script>
+</body>
+</html>
