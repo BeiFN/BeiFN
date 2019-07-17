@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">hello word</div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $("#box").attr("id")//获取id属性
+        
+        $("#box").attr("class","hello");//设置class属性;
+
+        $("#box").atr({
+            "hello" : "word",
+            "key"   : "value" ,
+        });  //设置多条属性
+
+        $("#box").addClass("hello");//设置class属性
+
+        $("#box").removeAttr("id");//删除掉某条属性
+
+        //css
+
+        $("#box").width();//取得第一个匹配元素当前计算的宽度值
+        $("#box").innerWidth();//获取第一个匹配元素内部区域宽度（包括补白、不包括边框）。
+        $("#box").outerWidth();//获取第一个匹配元素外部宽度（默认包括补白和边框）。
+
+        $("#box").offset();//获取匹配元素在当前视口的相对偏移。
+        $("#box").position();//相对于定位元素的距离;
+
+
+
+
+    </script>
+</body>
+</html>
