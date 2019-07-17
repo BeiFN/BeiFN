@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <h1>aaaaaa</h1>
+    <button>点吧</button>
+    <script src="../libs/jquery.js"></script>
+    <script>
+        // $(document).on("click",function(){
+        //     alert("出来了");
+        // })
+
+        // $(document).click(function(){
+        //     alert(1);
+        // })
+        // $(document).click(function(){
+        //     alert(2);
+        // })
+
+        // $(document).hover(
+        //     function(){
+        //         console.log("鼠标移入")
+        //     },
+        //     function(){
+        //         console.log("鼠标移出")
+        //     }
+        // )
+
+        // $(document).on({
+        //     click : function(){
+        //         alert(1);
+        //     },
+        //     mouseover : function(){
+        //         alert(2);
+        //     }
+        // })
+
+        // 自定义事件小名
+        $("button").on("click.a",function(){
+                console.log(1);
+        })
+        $("button").on("click.b",function(){
+                console.log(2);
+        })
+        // $("button").off("click.b");
+    </script>
+    
+</body>
+</html>

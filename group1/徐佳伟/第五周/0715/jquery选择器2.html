@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery选择器</title>
+    <style>
+        ul{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" checked>
+    <input type="password">
+    <div class="div">
+        <ul>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <li>喜欢你li</li>
+            <ul>
+                <li>厌恶的感觉</li>
+                <li>厌恶的感觉</li>
+                <li>厌恶的感觉</li>
+            </ul>
+        </ul>
+        <h1>1</h1>
+        <h2>1</h2>
+        <a href="#foo">222</a>
+        <p id="foo">1</p>
+    </div>
+    <script src="../../libs/jquery.js"></script>
+    <script>
+        //这里开始都是伪类
+
+        //还是我这么写是对的
+        // console.log($("input[type]:not(:text)"))
+        //有一点需要注意 它这个选择器是从零开始计数的
+        //选择偶数行 从0开始
+        // $("li:even").css({
+        //     backgroundColor : "yellowgreen"
+        // })
+        //选择奇数行
+        // $("li:odd").css({
+        //     backgroundColor : "#ff0"
+        // })
+        
+        //怎么说呢eq里冒号不能有空格,另外单行属性也是需要加双引号的
+        //从0计数，也就是第六行设置了样式
+        // $("li:eq(5)").css("backgroundColor" ,"green");
+        
+        //gt也就是大于号
+        //选中所有大于5的
+        // $("li:gt(5)").css("backgroundColor","green")
+        //lt就是小于号了
+
+        //last最后一个 确定就是选择所有li的最后一个 很棒
+        // $("ul li:last").css("backgroundColor","green")
+            
+        //header 会选中h1-h6
+        // $(":header").css("backgroundColor","green")
+
+        //animated 1s内完成的动画
+        // $(".div").click(function(){
+        //     $("ul").animate({left : "+=20"},1000)
+        // })
+        //下面这几行实现了hover的效果
+        // $(".div").hover(function(){
+        //     $("ul").css("background","red");
+        // },function(){
+        //     $("ul").css("background","#fff");
+        // })
+
+        // 在HTML中，文档的根元素，和$(":root")选择的元素一样， 永远是<html>元素。
+        // $(":root").css("background","yellow");
+
+        //target
+        // console.log($("p:target"));
+        //target只能通过时间进行触发
+        $("a").click(function(){
+            $("p:target").css("background","yellow");
+        })
+    </script>
+</body>
+</html>

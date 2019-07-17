@@ -13,6 +13,8 @@ class Waterfall{
         this.count          = 0;
         //高度数组;
         this.heightArray    = [];
+        this.flat    = false;
+        this.cHeight = document.documentElement.offsetHeight;
         this.changeContainerWidth();
         let timer = null;
         on(window , "resize" , ()=>{
@@ -23,6 +25,10 @@ class Waterfall{
                 timer = null;
             },500);
         });
+
+        on(window , "scroll" , ()=>{
+
+        })
 
         let res = await new Load().init(0);
         this.render(res);

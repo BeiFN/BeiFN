@@ -154,4 +154,15 @@ class Utils{
             var ele = null;
             return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele;
         }
+        //节流
+      static throttle(cb , delay = 100){
+            let timer = null;
+            return function(){
+                  if(timer !== null) return false;
+                  timer = setTimeout( () => {
+                  cb();
+                  timer = null;
+            },delay)
+            }
+        }
 }

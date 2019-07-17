@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: #faa;
+            position: absolute;
+            top: 50px;
+        }
+
+        .box2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #aff;
+            left: 150px;
+            top: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">哒哒哒哒哒哒哒</button>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $(".btn").click(function () {
+        // $(".box1").hide(1000);
+        // $(".box2").show(500);
+
+        // $("div:visible").hide(2000);
+        // $("div:hidden").show(2000);
+
+        // $("div").toggle(2000);
+
+        // $(".box1").fadeOut(2000);
+        // $(".box2").fadeIn(2000);
+        // $("div").fadeToggle(3000)
+
+
+        // $(".box1").slideUp(2000);
+        // $(".box2").slideDown(2000);
+        // $("div").slideToggle(3000)
+
+        // $("div").fadeTo(1000,0.5)
+        
+        
+        
+        
+        // 自定义动画
+        // $("div").animate({
+        //     width:200,
+        //     height:200
+        // },1000)
+
+        $(".box1").animate({
+            left:300,
+            width:200,
+            height:200
+        },2000)
+        .animate({
+            top:300,
+            width:400,
+            height:400,
+        },2000)
+        .animate({
+            left:0,
+            width:200,
+            height:200
+        },2000)
+        .animate({
+            top:50,
+            width:100,
+            height:100,
+        },2000)
+        .queue(function(){
+            $(this).css({
+                background:"#aff"
+            },500)
+        })
+        // .animate({stop:0})
+        return false;
+    }
+    )
+    
+    $(document).click(function(){
+        console.log(1);
+        $(".box1").stop(true)
+    })
+
+
+</script>
+
+</html>
