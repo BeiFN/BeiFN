@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/waterfall.css">
+</head>
+
+<body>
+    <h1>瀑布流</h1>
+    <div class="container">
+        <div class="wrapper">
+            <!-- <div class="box">
+                        <div class="box-img">
+                              <img src="https://c-ssl.duitang.com/uploads/item/201905/23/20190523154247_ggxrq.thumb.400_0.jpg" alt="">
+                              <u></u>
+                        </div>
+                        <div class="box-detail">
+                              <div class="title">
+                                    橡皮章
+                              </div>
+                        </div>
+                  </div> -->
+        </div>
+    </div>
+    <!-- <script src="../../libs/utils.js"></script> -->
+    <!-- <script src="../waterfall/js/waterfall.js"></script> -->
+    <script src="../../libs/jquery.js"></script>
+    <script src="../../libs/ejs.js"></script>
+    <script type="text/javascript">
+        function Waterfall() {
+            this.init()
+        }
+        $.extend(Waterfall.prototype, {
+            //初始化
+            init: function () {
+                //获取wrapper
+                this.imgWrapper = $(".wrapper")[0]
+                this.container = $(".container")[0]
+
+                //放图片高度的数组
+                this.heightArr = []
+                let timer = null;
+                //页面尺寸改变触发函数  触发函数
+                $(window).on("resize", () => {
+                    clearTimeout(timer)
+                    timer = setTimeout(() => {
+                        this.coculateWidth();
+                        this.sort()
+                        // this.render(data);
+                        timer = null;
+                    }, 500)
+                })
+                this.cHeigth = document.documentElement.clientHeight;
+                //节流的方式
+                this.loading = false;
+                //滑轮滚动  下面有await所以这里要用async
+                $(window).on("scroll", $.proxy(function () {
+                    // console.log(this.min)
+                    let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                    // console.log(this.cHeigth)
+                    if (scrollTop + this.cHeigth > (this.minHeight - 500) && !this.loading) {
+                        // 加载;
+                        new Load().init(Load.nextStart).done(function (res) {
+                            this.loading = true;
+                            this.render(res);
+                            this.sort();
+                            // console.log(1)
+                            // 加载结束要归零;
+                            this.loading = false;
+                        })
+                    }
+                }))
+                //加载图片数据
+                new Load().init(0).done($.proxy(function (res) {
+                    this.coculateWidth();
+                    this.render(res)
+                    this.sort();
+                }, this))
+
+            },
+            //图片的高度等的渲染
+            render: function (data) {
+                console.log(data)
+                let html = ""
+                $.each(data.data.object_list, function (index, item) {
+                    console.log(index, item)
+                    //卡住  不知道怎么设置高度  
+                    let scaleHeight = (235 / item.photo.width) * item.photo.height;
+                    html += `  
+                    <div class="box">
+                        <div class="box-img"  style="height:${scaleHeight}px" >
+                            <img src="${item.photo.path}" alt="">
+                            <u style="height:${scaleHeight}px"></u>
+                        </div>
+                        <div class="box-detail">
+                            <div class="title">
+                                ${item.msg}
+                            </div>
+                        </div>
+                    </div>`
+                })
+                this.imgWrapper.innerHTML += html;
+                console.log(this.imgWrapper.innerHTML, html)
+                //
+            },
+            sort: function () {
+                //首先获取所有生成的元素
+                let boxList = this.imgWrapper.children;
+                //获取里面的每一个box
+                this.minIndex = 0;
+                $.each(boxList, $.proxy(function (index, box) {
+                    if (index < this.total) {
+                        this.heightArr.push(box.offsetHeight)
+                        box.style.position = "static"
+                    } else {
+                        this.min = Math.min.apply(false, this.heightArr)
+                        this.minIndex = this.heightArr.indexOf(this.min)
+                        // console.log(box)
+                        box.style.position = "absolute"
+                        box.style.left = this.minIndex * 250 + "px"
+                        box.style.top = this.min + 20 + "px"
+                        // console.log(box.offsetHeight)
+                        this.heightArr[this.minIndex] += box.offsetHeight + 20;
+                    }
+                }, this))
+
+                this.minHeight = Math.min.apply(false, this.heightArr)
+                this.container.style.height = Math.max.apply(false, this.heightArr) + "px"
+                //排版结束后清空数组避免再次排序导致的bug
+                this.heightArr = []
+            },
+            coculateWidth: function () {
+                this.cWidth = document.documentElement.clientWidth;
+                this.total = parseInt(this.cWidth / 250)
+                //给装图片的容器
+                // console.log(this.container)
+                this.container.style.width = this.total * 250 + "px"
+            }
+
+        })
+
+
+        class Load {
+            constructor() {
+            }
+            static nextStart
+        }
+        $.extend(Load.prototype, {
+            init: function (start) {
+                let url = "http://localhost/dt";
+                let data = {
+                    include_fields: "top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+                    filter_id: "手工DIY",
+                    //start是开始的下标
+                    start: start
+                };
+                return $.ajax({
+                    url: url,
+                    data: data, dataType: "json"
+                })
+                // .done(function (res) {
+                //     Load.nextStart = res.data.next_start;
+                //     //返回的就是图片的数据了
+                //     console.log(res)
+                //     return res
+                // })
+            },
+        })
+        $.extend(Load, {
+            nextStart: {}
+        })
+
+        new Waterfall();
+    </script>
+</body>
+
+</html>

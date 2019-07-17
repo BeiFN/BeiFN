@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery属性操作</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{
+            width: 500px;
+            height: 300px;
+            background: yellowgreen;
+            border: 10px solid;
+            padding: 10px;
+
+        }
+        .container{
+            width: 600px;
+            height: 400px;
+            background: #a3a3a3;
+            margin-left: 200px;
+            position: relative;
+            left: 0;
+            top: 200px;
+        }
+        .jingubang{
+            width: 5000px;
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box">
+            hello world
+        </div>
+    </div>
+    <div class="jingubang"></div>
+    <script src="../../libs/jquery.js"></script>
+    <script>
+
+        // $(window).height();                                  //浏览器当前窗口可视区域高度
+        // $(document).height();                              //浏览器当前窗口文档的高度
+        // $(document.body).height();                     //浏览器当前窗口文档body的高度
+        // $(document.body).outerHeight(true);      //浏览器当前窗口文档body的高度
+
+        //attr------------------属性设置
+        //成功获取了id为box
+
+        //attr设置一个参数代表获取属性，两个参数代表设置属性
+        // console.log($("#box").attr("id"))
+        // $("#box").attr("class","weigege");
+
+        //也可以同时设置多个属性
+        // $("#box").attr({
+        //     "weigege" : "xuxu",
+        //     "daweige" : "bang!"
+        // })
+        //删除属性
+        // $("#box").removeAttr("weigege")
+
+        //其他属性操作
+        //addClass 设置class名
+        //removeClass
+        //经检验这个toggle 就是有就删没有就加上  咋感觉就是贱呢
+        //toggleClass 
+
+        // $("#box").addClass("weigege");
+        // $("#box").toggleClass("weigege")
+
+        //属性专属的配合选择器的判断功能 is()
+        //判断标签类别 又符合要求的就返回true
+        // console.log($("#box").is("div"))
+
+        //-----------------------css样式--
+        //
+        console.log($("#box").width()) //原始盒子的大小
+        console.log($("#box").outerWidth())//标准盒模型大小
+        console.log($("#box").innerWidth())//原始盒子大小加上内填充
+
+        // offset() 相对文档的距离
+        //position() 相对定位元素的距离
+        //好吧 相对绝对 粘性sticky fixed都可以
+        // console.log($("#box").offset());
+        // console.log($("#box").position())
+
+        // $(document).scroll(function(){
+        //     console.log($(this).scrollTop());
+        // })
+        // $(document).click(function(){
+        //     $("html,body").scrollLeft(100);
+        // })
+
+        //当前文档的宽度
+        console.log($(document).width())
+
+        console.log($(window).height())
+        $(document).scroll(function(){
+            let scroll = $("html,body").scrollLeft();
+            console.log(scroll)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <!-- <img src="" alt=""> -->
+    </div>
+    <script src="../0715/libs/utils.js"></script>
+    <script>
+        let { ajax , $ ,on} = Utils;
+        class Render{
+            constructor(){
+                this.init();
+            }
+            async init(){
+                this.container = $(".container");
+                this.load_url  = "http://img.lanrentuku.com/img/allimg/1212/5-121204193R0-50.gif";
+                this.res = await new GetData().init();
+                this.CHeight = document.documentElement.clientHeight;
+                this.timer = null;
+                on(window , "scroll" , ()=>{
+                    clearTimeout(this.timer);
+                    this.timer = setTimeout(()=>{
+                        this.ImgShow();
+                    },200);
+                })
+                this.render();
+                this.getAllImg();
+            }
+            render(){
+                let html = "" ;
+                //刚开始的图片均为加载图 loading
+                for(var i = 0 , item ; item = this.res[i] ; i++){
+                    html += `<div class="box" data-img=${item.photo.path}>
+                                <img src="${this.load_url}" style = "width:50px;height:50px;" 
+                                alt="">
+                            </div>`
+                }
+                this.container.innerHTML = html ;
+            }
+            getAllImg(){
+                this.imgs = Array.from(this.container.children);
+                // console.log(this.imgs);
+                this.imgs.forEach( img =>{
+                    img.setAttribute("data-top" , img.offsetTop);
+                })
+            }
+            ImgShow(){
+                let scrollTop = document.body.scrollTop || document.documentElement.scrollTop ;
+                this.imgs.forEach( (img , index) =>{
+                    let img_top = img.getAttribute("data-top");
+                    if(scrollTop + this.CHeight >= img_top - 100){
+                        let src = img.getAttribute("data-img");
+                        img.children[0].src   = src ;
+                        img.children[0].style.width = 400 + "px" ;
+                        img.children[0].style.height = ( 300 / this.res[index].photo.width * this.res[index].photo.height ) + "px" ;
+                    }
+                })
+                
+            }
+        }
+        class GetData{
+            constructor(){
+                this.init();
+            }
+            async init(){
+                let url = "http://localhost/dt" ;
+                let data = {
+                    include_fields:"top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+                    filter_id: "美食菜谱",
+                    start : 0
+                }
+                let res = await ajax(url , {data : data , dataType : "json"});
+                return res.data.object_list ;
+            }
+        }
+        new Render();
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        div1<div>
+            div2<div>
+                div3<ul id="ul">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3 <span>hello</span></li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <div>
+                div4<ul class="ul">
+                    <li class="li">6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9 <s>world</s></li>
+                    <li id="li">10</li>
+                </ul>
+            </div>
+            <div>
+                div5<ul>
+                    <li>11 <i>hello</i></li>
+                    <li>12</li>
+                    <li>13 <span>hhh</span></li>
+                    <li>14</li>
+                    <li>15</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        // $("li").css({background : "#f99"});  元素
+        // $("#ul").css({background : "#f00"}); id
+        // $(".ul").css({background : "#f00"}); class
+        // $("*").css({background : "#f00"});   全部所有的标签都选择了
+        // $("ul s").css({background : "#f00"})  后代选择  是可以穿透的
+        // $("ul>li").css({background : "#f00"}) //子元素选择 不可穿透
+        // $(".li ~ li").css({background : "#f00"})
+        // $(".ul li:first").css({background : "#f00"})
+        // $("ul:not(.ul)").css({background : "#f00"})  除了.ul 所有的ul
+        // $("li:even").css({background : "#f00"})      偶数个 下标是0开始的;
+        // $("li:odd").css({background : "#f00"})          奇数个  
+        // $("div:eq(1)").css({background : "#f00"})    //匹配第几个
+        // $("li:gt(4)").css({background : "#f00"})    //查找比后面下标大的同类型元素 默认是0；
+        // $("li:lt(3)").css({background : "#f00"})  //查找比下标小的
+        //    $("ul:lang(ul)").css({background : "#f00"}) 
+        // $("div:last").css({background : "#f00"})   最后一个
+        // $("：header").css({background : "#f00"})  选中的是所有的标题（h1-h6）
+
+     
+    
+    
+    </script>
+
+</body>
+</html>
