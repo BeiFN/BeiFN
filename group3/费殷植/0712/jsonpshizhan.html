@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    //封装 url  函数  名字4
+        function jsonp(url,field,callback){            
+            window.foo = function(res){
+                //调用回调函数
+                callback(res)
+            }
+            //创建script
+            let script = document.createElement("script")
+            url  += /\?/.test(url)?"&":"?";
+            //将foo传递进去
+            script.src = url+field+"=foo";
+            script.onload = function(){
+                //当script加载完 也就是用完src之后就删除
+                script.remove();
+            }
+            document.body.appendChild(script);
+        }
+        
+        jsonp("http://localhost/day23/jsonp.php","ab",cb)
+
+        function cb(res){
+            console.log(res)
+        }
+
+    </script>
+</body>
+</html>

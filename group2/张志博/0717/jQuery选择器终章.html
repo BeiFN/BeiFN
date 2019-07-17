@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div class="box">hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <div>hello world</div>
+    <script src="../libs(jQuery/jquery.js"></script>
+    <script>
+        $(function(){
+            $(".box").css({
+                color : "red"
+            })
+            .next()
+            .css({
+                color : "yellow"
+            })
+            .end() //加上后有box的字体颜色不变
+            .prevAll()
+            .css({
+                color : "pink"
+            })
+        })
+
+
+    </script>
+</body>
+</html>
