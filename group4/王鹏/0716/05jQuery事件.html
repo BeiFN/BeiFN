@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+      </style>
+</head>
+<body>
+      <h1>hello world</h1>
+      <button>点我</button>
+      <script src="../libs/jquery.js"></script>
+      <script>
+            // DOM0 事件都干掉了;
+
+            // DOM0 和 addEventListener;
+            // 绑定在DOM对象上的; DOM.xxx = function(){};
+            // addEventListener() => EventLoop;
+            // 宏任务 : callback1, callback2;
+
+            // 1. 业务 ;
+            // 2. EventLoop;
+            // 3. 面向对象;
+            // 4. 实例，原型，构造函数;
+            // 5. 闭包,原型链;
+            // 6. 继承 ;
+            // 7. ES6 => Promise; 
+            // function *(){}  
+            // function *foo(){
+            //       yield 1;
+            //       yield 2;
+            //       yield 3;
+            //       yield 4;
+            // }       
+            // let gen = foo()
+            // console.log(gen.next()); 
+            // 8. 性能;     1. 不嵌套，不递归，不闭包(记得清除变量);
+            // 少操作DOM; => 重复操作DOM时提前获取DOM的值; 
+            // offset 少用getComputedStyel;
+            // 9. 线程 ; =>  浏览器   渲染进程,加载进程,JS进程。
+            //           =>  JS       单线程 
+            //               => 异步 ;  
+            // ES7  ES8  ES9  
+            // 10. 设计模式 ;
+            // 11. nodejs;
+            // 12. 框架底层;
+            // 13. webpack性能优化;
+            // 14. 工程化思想;
+            // 15. 框架API,框架性能优化,框架的使用技巧。
+            
+            // DOM0 DOM2;
+            // jQuery 直接选用了DOM2,完全放弃DOM0;
+            
+            // $(document).click(function(){
+            //       alert(1);
+            // })
+            // $(document).click(function(){
+            //       alert(2);
+            // })
+
+            // $(document).hover(
+            //       function(){
+            //             console.log("鼠标移入")
+            //       },
+            //       function(){
+            //             console.log("鼠标移出");
+            //       }
+            // )
+
+            // 事件高级;
+
+            // $(document).on("click" , "h1" ,function(){
+            //       alert(1);
+            // })
+
+            // $(document).on({
+            //       click : function(){
+            //             alert(1);
+            //       },
+            //       mouseover : function(){
+            //             alert(2);
+            //       }
+            // })
+
+            // 自定义事件;
+
+            // $(document).on("yanghuaizhi",function(){
+            //       alert(1);
+            // })
+            // var count = 0;
+            // $(document).on("click",function(){
+            //       count ++;
+            //       if(count === 3){
+            //             // $(document).trigger("yanghuaizhi");
+            //             // trigger => 不会触发事件冒泡;
+            //             // 
+            //             count = 0;
+            //       }
+            // })
+
+            // $("button").on("click", function(){
+            //       console.log(1);
+            // })
+            // $(document).on("click", function(){
+            //       console.log(2);
+            // })
+            // // $("button").trigger("click");
+            // $("button").triggerHandler("click");
+
+            // 自定义事小名;
+            // $("button").on("click.a",function(){
+            //       console.log(1);
+            // })
+            // $("button").on("click.b",function(){
+            //       console.log(2);
+            // })
+            // $("button").off("click.b");
+      </script>
+</body>
+</html>

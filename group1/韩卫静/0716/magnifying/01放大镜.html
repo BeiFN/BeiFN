@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				top: 0;
+			}
+			.contsiner{
+				height: 350px;
+			}
+			.smallImg{
+				width: 300px;
+				height: 300px;
+				position: relative;
+				left: 20px;
+				top: 20px;
+				box-shadow: 0 0 5px #007AFF;
+			}
+			.smallImg img{
+				width: 100%;
+				height: 100%;
+			}
+			.bigImg{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				top: 20px;
+				left: 350px;
+				box-shadow: 0 0 2px #ddd;
+				overflow: hidden;
+				display: none;
+			}
+			.bigImg img{
+				width: 800px;
+				height: 800px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.cube{
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-image : url(https://img12.360buyimg.com/n1/s450x450_jfs/t1/45235/27/3557/83738/5d15b1b4E0377911e/9f9a9267bfaa7ffe.jpg) ;
+				background-repeat: no-repeat;
+				background-size: 300px 300px;
+				overflow: hidden;
+				box-shadow: 0 0 2px #0055ff;
+				display: none;
+			}
+			.cover{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				background-color: rgba(0,0,0,0);
+			}
+			.img_btn{
+				width: 50px;
+				height: 50px;
+				float: left;
+				margin: 8px;
+				border: 2px solid #DDDDDD;
+			}
+			.img_active{
+				border: 2px solid #007AFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="contsiner">
+			<div class="smallImg">
+				<img src="https://img12.360buyimg.com/n1/s450x450_jfs/t1/45235/27/3557/83738/5d15b1b4E0377911e/9f9a9267bfaa7ffe.jpg" alt="">
+				<div class="cube"></div>
+				<div class="cover">
+					
+				</div>
+			</div>
+			<div class="bigImg">
+				<img src="https://img14.360buyimg.com/n0/jfs/t1/45235/27/3557/83738/5d15b1b4E0377911e/9f9a9267bfaa7ffe.jpg" alt="">
+			</div>
+		</div>
+		<div class="seletion">
+				<img class="img_btn img_active" src="https://img12.360buyimg.com/n5/s54x54_jfs/t1/45235/27/3557/83738/5d15b1b4E0377911e/9f9a9267bfaa7ffe.jpg" >
+			
+				<img class="img_btn" src="https://img12.360buyimg.com/n5/s54x54_jfs/t1/40995/19/6625/84409/5d036a7dE9b77e1c4/bc027100a8f140a6.jpg" alt="">
+			
+				<img class="img_btn" src="https://img12.360buyimg.com/n5/s54x54_jfs/t1/46147/33/2426/40604/5d036a7cE87c31658/0f2fc1351eda2add.jpg" alt="">
+			
+		</div>
+		
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script type="text/javascript" src="magnifying.js">
+		</script>
+	</body>
+</html>
