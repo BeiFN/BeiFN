@@ -19,7 +19,7 @@
 // ejs.render( template , data);
 // 页码         ; 
 
-let {  ejs} = Utils;
+
 
 
 class Pagination{
@@ -38,7 +38,7 @@ class Pagination{
             showNo = 5
       } = {}){
             this.list_wrapper = $(list);
-            console.log(this.list_wrapper)
+           
             this.page_wrapper = $(page);
             this.pageNo       = pageNo;
             this.showNo       = showNo;
@@ -47,41 +47,31 @@ class Pagination{
             this.template     = template;
             // 1. 以数据加载开始;
             // 2. 事件委托;
-            $("this.page_wrapper").on("click" ,"span",function (evt){
+            this.page_wrapper.on("click" ,"span",$.proxy(function (evt){
                   this.toIndex(evt.target.index());
                   this.render();
                   this.renderBtn();
-            })
-            this.res = $.ajax( {url :this.url ,  data : this.data , dataType : "json",async : true} );
-            // console.log(res);
-            console.log(this.res)
-            console.log(this.res.responseJSON)
+            },this))
             $.ajax( {url :this.url ,  data : this.data , dataType : "json",async : true} )
-                        .then(function(){
-                              this.total = this.res.responseJSON.data.contents.length;
-                              this.render();
-                              this.renderBtn();
-                        })
+            .then($.proxy(function(res){
+                  console.log(res);
+                  this.total = res.data.contents.length;
+                  
+                  this.render(res);
+                  this.renderBtn();
+                 
+      },this))       
             
       }     
-      // 加载数据;
-      // async loadData(){
-      //       // let url  = "http://localhost/zc";
-      //       // let data = {
-      //       //       pageSize : 100,
-      //       //       contentId: (""+Date.now()).slice(6) + "_3",
-      //       //       day : new Date().toISOString().slice(0,10)                  
-      //       // }     
-      //       // await 
-      //     // var res =await   $.ajax({url : this.url ,data : this.data,dataType :"json",async : true})
-      //      let res = await ajax( this.url , { data : this.data , dataType : "json" });
-      //       return res;
-      // }
+    
       // 渲染页面;
-      render(){
-            let data = this.res.data.contents;
+      render(res){
+            console.log(res);
+            let data = res.data.contents;
             // 处理data;
             data = this.interceptData(data);
+           
+      
             // let template = `
             //             <%  for(var i = 0 , item ; item = data[i]; i++) {%>
             //                   <div class="box">
@@ -97,32 +87,38 @@ class Pagination{
             //                   </div>
             //             <% } %>
             //             `;
+            
             var html = ejs.render(this.template , {data : data})
-            this.list_wrapper.innerHTML = html;
-      }
+            console.log(html)
+            this.list_wrapper.html( html);
+      }     
       //裁剪数据的;
       interceptData(data){
             // 裁剪;
-            let min = this.showNo * ( this.pageNo - 1);
-            let max = this.showNo *  this.pageNo - 1
+            var min = this.showNo * ( this.pageNo - 1);
+            var max = this.showNo *  this.pageNo - 1
             data = data.filter( (item , index) => {
                   return  index >= min && index <= max;
             })
+            
             return data;
       }
       // 渲染按钮;
       renderBtn(){
-            let total = Math.ceil(this.total / this.showNo); 
-            let btns = this.page_wrapper.children;
+            var total = Math.ceil(this.total / this.showNo); 
+            //console.log(this.page_wrapper.children())
+            var btns =Array.from( this.page_wrapper.children());
+            //console.log(btns)
             // 不用重新渲染按钮，只需要切换active就可以了;
             if(btns.length === total){
-                  Array.from(btns).forEach( ( btn , index) => {
+                  $.each(btns, $.proxy(function( btn ,index) {
+                        console.log(btn)
                         if(index + 1 === this.pageNo){
                               btn.className = "active"
                         }else{
                               btn.className = "";
                         }
-                  })
+                  },this))
                   return false;
             }
             // 渲染按钮;
@@ -134,6 +130,7 @@ class Pagination{
                         html += `<span>${i+1}</span>`;
                   }
             }
+            console.log(html)
             this.page_wrapper.innerHTML = html;
       }
       // 切换页码;
