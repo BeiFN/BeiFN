@@ -7,7 +7,12 @@ class Utils {
                   callback = "callback"
             }
                   =
-                  {}) {
+                  {
+                        type,
+                        data,
+                        dataType,
+                        callback
+                  }) {
 
             if (dataType === "jsonp") {
                   return Utils.jsonp(url, data, callback)
@@ -24,7 +29,8 @@ class Utils {
                   var dataStr = "";
                   for (var attr in data) {
                         dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
-                  } 
+                  }
+
                   type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + dataStr : "";
                   xhr.open(type ? type : "GET", url);
                   type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded") : "";
@@ -153,16 +159,6 @@ class Utils {
                   }
             }
       }
-      static throttle( cb , delay = 200 ){
-            let timer = null;
-            return function(){
-                  if( timer !== null ) return false;
-                  timer = setTimeout( () => {
-                        cb();
-                        timer = null;
-                  },delay)
-            }
-      }    
 
 
 }
