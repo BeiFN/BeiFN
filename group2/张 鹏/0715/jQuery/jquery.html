@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        // 生态繁荣
+
+        // 学习方法，
+        // 复制api概念及用法
+        // 探究源码实现原理
+        // 实践
+
+        // jQuery write less do more；
+        // 1版本  兼容无敌
+        // 2IE8+支持 
+        // vue react  angula  框架
+        // 3版本 性能更新
+        // jQuery跨度不大，语法基本一致，增删一些api，功能还是原来版本，语法也还是原来的语法
+
+        // 引入类库
+        // 官网下载，下载到本地，本地使用
+        // CDN加速  浏览器会缓存，利用别人缓存高速加载，关乎服务器性能
+
+        console.log(jQuery);//唯一入口，一个api
+        // jQuery构造函数
+        // 原型方法，给实例访问
+        // 静态资源方法； jQuery构造函数上的方法 =>jQuery.each 是作为纯工具使用
+
+        window.onload = function(){
+            alert("全部加载完成");
+        }
+        // 写法1 替代window.onload
+        jQuery(document).ready(function(){
+            alert("结构加载结束，不包含图片");
+        });
+        // 简写 $
+        // var $$ = jQuery; 
+        // 所有jQuery事件都是事件监听，可以帮到n个事件处理函数
+        $(document).ready(function(){
+            alert("结构加载结束，不包含图片");
+        });
+        $(function(){
+            alert("结构加载结束，不包含图片");
+        })
+
+
+    </script>
+</body>
+</html>
