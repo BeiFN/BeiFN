@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>target实现轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container{
+            width: 500px;
+            height: 300px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .wrapper{
+            width: 1500px;
+            display: flex;
+        }
+        #box1,#box2,#box3{
+            width: 500px;
+            height: 300px;
+        }
+        #box1{
+            background: #ff0;
+        }
+        #box2{
+            background: rgb(124, 124, 116);
+        }
+        #box3{
+            background: #0f0;
+        }
+        #box1:target{
+            margin-left:0px;
+        }
+        #box2:target{
+            margin-left: -500px;
+        }
+        #box3:target{
+            margin-left: -1000px;
+        }
+        ul {
+            position: absolute;
+            bottom: 10%;
+            left: 200px;                    
+        }
+        ul li{
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="box1"></div>
+            <div id="box2"></div>
+            <div id="box3"></div>
+        </div>
+        <ul>
+            <li><a href="#box1">1</a></li>
+            <li><a href="#box2">2</a></li>
+            <li><a href="#box3">3</a></li>
+        </ul>
+    </div>
+</body>
+</html>

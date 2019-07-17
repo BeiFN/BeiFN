@@ -103,7 +103,7 @@
                               let GLOBAL_CB = "_" + Date.now();
                               window[GLOBAL_CB] = function(res){
                                     resolve(res);
-                                    delete window[GLOBAL_CB]；
+                                    delete window[GLOBAL_CB];
                                     GLOBAL_CB = false;
                               }
                               url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + GLOBAL_CB;
@@ -122,7 +122,7 @@
                   }
                   static $(selector){
                         let ele = null;
-                        return (ele = querySelectorAll(selector)).length === 1 ? ele[0] : ele
+                        return (ele = document.querySelectorAll(selector)).length === 1 ? ele[0] : ele ;
                   }
             }
             let { cookie,ajax,$ } = Utils;
@@ -140,7 +140,38 @@
                         username :userValue,
                         password :pwdValue
                   }
+                  ajax(url,{
+                        data,
+                        dataType : "json",
+                        type : "POST",
+                  }).then( res => {
+                        switch(res.stateCode){
+                              case 0 : alert("请填写完整的登录信息");
+                              break;
+                              case 1 : alert("登陆成功");
+                              location.reload();
+                              break;
+                              case 2 : alert("用户名不存在");
+                              break;
+                              case 3 : alert("密码错误");
+                              break;
+                        }
+                        btn.removeAttribute("disabled");
+                        btn.innerHTML = "登录";
+                        console.log(res);
+                  })
             })
+
+            function validToken(){
+                  let url = "http://localhost.test.php"
+                  ajax(url).then(res=>{
+                        res = JSON.parse(res);
+                        if (res.state){
+                              return false;
+                        }
+                        from.innerHTML = "用户名为 : " + res.username + "</br> 密码为 : " + res.password + "</br><button id = 'exit'>退出登录</button>";
+                  })
+            }
       // console.log(cookie("lice","1"));
       </script>
 </body>
