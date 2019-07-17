@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的百度</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        html,body{
+            background: #ddd;
+        }
+        .box{
+            width: 300px;
+            height: 500px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        input{
+            width: 300px;
+            height: 50px;
+            background: #000;
+            color: #fff;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" name="" id="ipt">
+        <div id="tip"></div>
+    </div>
+    <script src="../../ku/hanshuku.js"></script>
+    <script>
+        let url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+            data={
+                json:1,
+                p:3,
+                _:Date.now()
+            }
+        ipt.oninput=e=>{
+            data.wd=ipt.value;
+            jsonp(url,"cb",data).then(res=>{
+                let html="";
+                res.s.forEach(item=> {
+                    html+=`<p>${item}</p>`
+                });
+                tip.innerHTML=html;
+            })
+        }
+    
+    </script>
+</body>
+
+</html>
