@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>兄弟选择器</title>
+</head>
+<body>
+
+    <form>
+        <label>Name:</label>
+        <input name="name" />
+        <fieldset>
+            <label>Newsletter:</label>
+            <input name="newsletter" />
+        </fieldset>
+    </form>
+    <input name="none" />
+    <ul>
+        <li id="firstli">Hello</li>
+        <li class="world">World</li>
+        <li class="hello">HELLO</li>
+    </ul>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+    <dl>
+        <dt>term 1</dt>
+        <dd>definition 1-a</dd>
+        <dd>definition 1-b</dd>
+        <dd>definition 1-c</dd>
+        <dd>definition 1-d</dd>
+
+        <dt id="term-2">term 2</dt>
+        <dd>definition 2-a</dd>
+        <dd>definition 2-b</dd>
+        <dd>definition 2-c</dd>
+
+        <dt>term 3</dt>
+        <dd>definition 3-a</dd>
+        <dd>definition 3-b</dd>
+    </dl>
+
+    <script src="../libs/jquery.js"></script>
+    <script>
+         // next => prev; 作业;
+
+            // 兄弟选择器分成了非常多的类型;
+
+            // 兄 
+            // 弟
+            // 兄s
+            // 第s
+            // 兄弟s
+            // 兄 ~ 第 之间选择器;
+
+        // prev([expr])
+        // 概述 :取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合。
+        //可以用一个可选的表达式进行筛选。只有紧邻的同辈元素会被匹配到，而不是前面所有的同辈元素。
+        console.log($("li").prev(".hello"));
+        console.log($("li").prev(".world"));
+        console.log($(".hello").prev());
+        console.log($("li").prev());
+
+        console.log($("li").next(".world"));
+        console.log($(".world").next());
+
+        // prevAll([expr])
+        //  概述 查找当前元素之前所有的同辈元素  可以用表达式过滤。
+        console.log($("li").prevAll());
+        $("div:last").prevAll().addClass("before");
+
+        console.log($("#term-2").nextAll());
+
+        // prev ~ siblings
+        // 概述: 匹配 prev 元素之后的所有 siblings 元素
+        console.log($("form ~ input"));     //  <input name="none" />
+
+
+        //prevUntil([exp|ele][,fil])
+        // 概述 查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+    //如果提供的jQuery代表了一组DOM元素，.prevUntil()方法也能让我们找遍所有元素所在的DOM树，直到遇到了一个跟提供的参数匹配的元素的时候才会停下来。这个新jQuery对象里包含了前面所有找到的同辈元素，但不包括那个选择器匹配到的元素。
+    //如果没有选择器匹配到，或者没有提供参数，那么排在前面的所有同辈元素都会被选中。这就跟用没有提供参数的 .prevAll()效果一样。
+
+     // 给#term-2前面直到dt前的元素加上红色背景
+        $("#term-2").prevUntil("dt").css( "background","red");
+           
+    // siblings([expr])
+    // 概述  取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选。 找到每个div的所有同辈元素。
+    console.log($("dt").siblings());
+    console.log($("dl").siblings());
+
+    //prev + next
+    // 概述 匹配所有紧接在 prev 元素后的 next 元素
+    console.log($("dt + dd"));
+    
+    console.log($("label + input"));
+    
+    
+    </script>
+</body>
+</html>
