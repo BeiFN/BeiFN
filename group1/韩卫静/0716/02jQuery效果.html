@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box1,.box2{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+			}
+			.box1{
+				top: 50px;
+				left: 50px;
+				background-color: crimson;
+			}
+			.box2{
+				left: 50px;
+				top:300px;
+				/* display: none; */
+				background-color: darkcyan;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<button type="button" id="stopBtn">stop</button>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<p>11111111111</p>
+		
+		<!-- <script src="../libs/jquery.js"></script> -->
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script>
+			// $(".box2").show(500,"linear",()=>{
+			// 	console.log("显示完成");
+			// })
+			// 
+			// $(".box1").hide(500,()=>{
+			// 	console.log("隐藏完成")
+			// })
+			// 
+			
+			
+			// $(document).click(function(){
+			// 	$(".box2").toggle(500,"linear",()=>{
+			// 		console.log("完成");
+			// 	})
+			// 	$(".box1").toggle(500,"linear",()=>{
+			// 		console.log("完成");
+			// 	})
+			// })
+			
+			// $(document).click(function(){
+			// 	$(".box2").slideDown("slow");
+			// });
+			// $(document).click(function(){
+			// 	$(".box2").slideUp("slow");
+			// });
+			// $(document).click(function(){
+			// 	$(".box2").slideToggle("slow");
+			// });
+			
+			
+			// $(document).click(function(){
+			// 	$(".box2").fadeIn("slow");
+			// });
+			// $(document).click(function(){
+			// 	$(".box2").fadeTo("slow",0.5);
+			// });
+			// $(document).click(function(){
+			// 	$(".box2").fadeToggle("slow");
+			// });
+			
+			// $(document).click(function(){
+			// 	$(".box2").animate({
+			// 		width : "100px",
+			// 		height : "100px"
+			// 	},500,function(){
+			// 		console.log(1);
+			// 		$(".box2").animate({
+			// 			left : "200px"
+			// 		},500,function(){
+			// 			console.log(2);
+			// 			$(".box2").animate({
+			// 				top : "400px"
+			// 			},500,function(){
+			// 				console.log(3)
+			// 				$(".box2").animate({
+			// 					left : "50px"
+			// 				},500,function(){
+			// 					console.log(4);
+			// 					$(".box2").animate({
+			// 						top : "300px"
+			// 					},500,function(){
+			// 						console.log(5 + "完成")
+			// 					})
+			// 				})
+			// 			})
+			// 		})
+			// 	});
+			// });
+			// $("#stopBtn").click(function(evt){
+			// 	var e = evt || window.event;
+			// 	e.stopPropagation();
+			// 	$(".box2").stop(false,true);
+			// });
+			
+			// $(document).click(function(){
+			// 	$(".box2").animate({
+			// 		width : "100px",
+			// 		height : "100px"
+			// 	},500,function(){
+			// 		console.log(1);
+			// 		$(".box2").animate({
+			// 			left : "200px"
+			// 		},500,function(){
+			// 			console.log(2);
+			// 		})
+			// 	}).delay(800);
+			// });
+			
+		</script>
+	</body>
+</html>
