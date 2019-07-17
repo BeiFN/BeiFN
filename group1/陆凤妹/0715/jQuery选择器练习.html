@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>jQuery选择器</title>
+          <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+          <style>
+                    * {
+                              margin: 0;
+                              padding: 0;
+                    }
+                    body,html{
+                              color: #ffffff;
+                    }
+                   li, p,div {
+                              width: 100%;
+                              height: 30px;
+                              text-align: center;
+                              margin-bottom: 10px;
+                              line-height: 30px;
+
+                    }
+                    li{
+                              color: palevioletred;
+                    }
+                
+          </style>
+</head>
+
+<body>
+
+          <!-- id选择器 -->
+          <div id="myDiv">id选择器</div>
+          <p><i>我是元素选择器</i></p>
+          <div class="myDiv">我是类选择器</div>
+          <p><i>我是通配符选择器，我将改变所有p标签的字体颜色和字号大小</i></p>
+
+          
+          <ul>
+                    <li>我是li</li>
+                    <li>我是prev</li>
+                    <li class="li">我是li</li>
+                    <li>我是next</li>
+                    <li>我是li</li>
+          </ul>
+        
+
+
+
+          <script>
+                    $("#myDiv").css({
+                              "background": "red"
+                    })
+                   $("p").css({
+                             "background":"yellowgreen"
+                   })
+
+                    $(".myDiv").css({
+                              "background":"pink"
+                    })
+                    $("p *").css({
+                            "fontSize":"20px",
+                            "color":"#000"
+                    })
+                    $(".li").next().css({
+                         
+                            
+                              "background":"red"
+                    })
+                    $(".li").prev().css({
+                              
+                            "background":"pink"
+                            
+                    
+                    })
+          </script>
+</body>
+
+</html>
