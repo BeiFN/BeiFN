@@ -102,6 +102,10 @@ class Utils {
                   }
                   for (var i = 0, ele; ele = eleList[i++];) {
                         if (targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1) {
+                              e.target.index = function () {
+                                    // console.log(e.target);
+                                    return Array.from(e.target.parentNode.children).indexOf(e.target);
+                              }
                               handlerClick.call(ele, e);
                               break;
                         }
@@ -243,7 +247,7 @@ class Utils {
                   document.body.appendChild(script);
                   setTimeout(function () {//超时失败
                         reject("failed to get resources");
-                  }, 3000);
+                  }, 5000);
             });
       }
       //整合了xhr请求方式和jsonp请求方式的ajax
@@ -262,7 +266,6 @@ class Utils {
                   let data_str = "";
                   if (url === "") {
                         throw "url is null";
-                        return false;
                   }
                   if (typeof data === "object") {
                         for (let attr in data) {
@@ -315,7 +318,7 @@ class Utils {
                   }
                   setTimeout(function () {//超时失败
                         reject("failed to get resources");
-                  }, 3000);
+                  }, 5000);
             });
       }
       //封装cookie,实现了获取和设置cookie的功能
@@ -349,5 +352,27 @@ class Utils {
                   path,
                   expires: -1
             });
+      }
+      //去抖:不管事件触发多少次只执行最后一次
+      static debounce(callback, delay) {
+            let timer = null;
+            return function () {
+                  clearTimeout(timer);//每次调用前清空延时器,这样延时器中的代码就不会执行直到最后一次调用才执行
+                  timer = setTimeout(() => {
+                        callback();
+                        timer = null;//执行完清空timer防止内存泄漏
+                  }, delay);
+            }
+      }
+      //节流:控制执行的频率,一定时间内只执行一次
+      static throttle(callback, delay) {
+            let timer = null;
+            return function () {
+                  if (timer !== null) return false;//如果已经开启了一个延时器,那在接下来的一段时间内就不会再执行了
+                  timer = setTimeout(() => {
+                        callback();
+                        timer = null;//当前代码执行玩将timer清空以便下次执行
+                  }, delay);
+            }
       }
 }
