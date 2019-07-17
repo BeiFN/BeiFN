@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            #box {
+                  /* 怪异盒,宽高设置多少就是多少 */
+                  /* 标准盒,宽高加上border和padding */
+                  width: 200px;
+                  height: 80px;
+                  border: 10px solid #ddd;
+                  /* 怪异盒子 */
+                  box-sizing: border-box;
+                  padding: 20px;
+            }
+
+            .container {
+                  position: fixed;
+                  left: 200px;
+            }
+
+            #jingubang {
+                  width: 8000px;
+                  ;
+                  height: 10px;
+            }
+      </style>
+</head>
+
+<body>
+      <div class="container">
+            <div id="box">
+                  hello world
+            </div>
+      </div>
+      <div id="jingubang"></div>
+      <script src="../libs/jquery.js"></script>
+      <!-- <script src="../libs/utils.js"></script> -->
+      <script>
+            // let { $ : $$ } = Utils;
+            // 1. 属性;
+            // attr;  => setAttribute getAttribute ;
+            // console.log($("#box").attr("id"))   ;
+            // console.log($("#box").attr("data-id","hello world"));
+            console.log($("#box").attr({
+                  "data-id" : "hello",
+                  "class"   : "hello"
+            }));
+            // $("#box").removeAttr("data-id");
+
+            // 定制一些功能;
+            // addClass();
+            // removeClass();
+            // toggleClass();
+                  
+            $("#box").addClass("add");
+
+            //removeClass()仅是清空class的属性值,并不删除属性;
+            $("#box").removeClass(" add");
+
+            //toggleClass()=>如果存在就替换,不存在就添加;
+            // $("#box").toggleClass("new");
+
+            // 属性专属配合选择器的的判断功能  is();
+            console.log($("#box").parent().is("div"));
+
+
+            // 2. 样式;
+
+            // css;
+
+            // console.log($("#box").width());
+            // 获取第一个匹配元素外部宽度（默认包括补白和边框）。
+            // console.log($("#box").outerWidth());
+            //获取第一个匹配元素内部区域宽度（包括补白、不包括边框）。
+            // console.log($("#box").innerWidth());
+
+            // offset();
+            // position();
+
+
+            // 相对文档的绝对距离;
+            // console.log($("#box").offset());
+            // // 相对于定位元素的距离;
+            // console.log($("#box").position());
+
+            //设置卷动的距离;
+            // console.log($("html,body").scrollLeft(1000));
+
+            // document.onclick = function(){
+            //       $("html,body").scrollLeft(1000)
+            // }
+
+      </script>
+</body>
+
+</html>
