@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .box,.box2{
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+  }
+  .box2{
+    left: 150px;
+    background: yellowgreen;
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <button class="btn">点我一下试试</button>
+  <div class="box"></div>
+  <div class="box2"></div>
+
+  <script src="../libs/jquery.js"></script>
+  <script>
+    // show hide
+    // $(".btn").click(function(){
+    //   // $(".box").hide(2000);
+    //   // $(".box2").show(2000);
+    //   // $("div:visible").hide(2000);
+    //   // $("div:hidden").show(2000);
+    //   $("div").toggle(2000);
+    // })
+
+    // fade
+    // $(".btn").click(function(){
+    //   // $(".box").fadeOut("slow");
+    //   // $(".box2").fadeIn("slow");
+    //   // $(".box").fadeOut(3000);
+    //   // $(".box2").fadeIn(3000);
+    //   // $("div").fadeToggle(2000);
+    //   $("div").fadeTo(3000,0.3);
+    // })
+
+    // slide
+    // $(".btn").click(function(){
+    //   // $(".box2").slideDown("slow"); // 从0-100
+    //   // $(".box").slideUp("slow"); // 从100-0
+    //   // $(".box2").slideDown(3000);
+    //   // $(".box").slideUp(3000);
+    //   $("div").slideToggle(2000);
+    // })
+
+    // 自定义动画
+    // $(".box").animate({
+    //   width : 300,
+    //   height : 200,
+    //   // transform : "scale(2)" //不支持css3动画
+    // },2000)
+
+    // 列队机制
+    $(".btn").click(function(){
+      $(".box")
+      .animate({
+        width : 300,
+        height : 200
+      })
+      .animate({
+        left : 200
+      })
+      .animate({
+        width : 100,
+        height : 100
+      })
+      .animate({
+        left : 0
+      })
+      // .css({
+      //   background : "blue"
+      // }) // 同步
+      .queue(function(next){ // 加入队列
+        $(this).css({
+          background: "blue"
+        })
+        next(); //让接下来的动画可以重新加入队列
+      })
+      .animate({
+        top : 200
+      })
+      return false; // 阻止事件冒泡，不加的话第一个运动就没有了
+      // 阻止默认事件？？？
+    })
+    // stop终止动画及队列
+    $(document).click(function(){
+      $(".box").stop(true, true);
+      // 两个值意义不同
+    })
+  </script>
+</body>
+</html>

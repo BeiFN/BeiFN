@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>attr</title>
+    <style>
+        #box{
+            border: 10px solid #ddd;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        .container{
+            position: fixed;
+            left: 200px;
+        }
+        #jingubang{
+            width: 3000px;
+            height: 1px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box">
+            hello world
+        </div>
+    </div>
+    <div id="jingubang"></div>
+    <script src="../libs(jQuery/jquery.js"></script>
+    <script>
+        // console.log($("#box").attr("id"));
+        // console.log($("#box").attr({
+        //     "data-id" : "hello",
+        //     "class"   : "aaa"
+        // }))
+        // console.log($("#box").removeAttr("class"))
+
+        console.log($("#box").width());
+        console.log($("#box").outerWidth());
+        console.log($("#box").innerWidth());
+
+        console.log($("#box").offset());
+        console.log($("#box").position());
+
+        // console.log($("html,body").scrollLeft(1000));
+        // document.onclick = function(){
+        //     $("html,body").scrollLeft(1000);
+        // }
+
+    </script>
+</body>
+</html>

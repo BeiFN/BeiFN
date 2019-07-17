@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <script src="../libs/jquery.js"></script>
+      <script>
+            // $.ajax(url , options);
+
+            // $.ajax("./data/json.json")
+            // .then(function(res){
+            //       console.log(res);
+            // })
+
+            // ajax 全局事件;
+
+            $(document).ajaxError( function(){
+                  console.log("报错了");
+            })
+
+            // ajax 全局配置;
+            $.ajaxSetup({
+                  statusCode: {
+                        404 : function(){
+                              // console.log("找不到页面")
+                        },
+                        500 : function(){
+                              alert("数据没有更改,你请求干啥")
+                        }
+                  }
+            })
+
+            // jsonp 跨域 要把dataType 改成 jsonp;
+            $.ajax({
+                  url      : "./data/json.jsons",
+                  data     : { a : 10 , b : 20},
+                  dataType : "html",
+                  timeout  :  6000,
+                  async    :  true,
+                  
+                  beforeSend : function(){
+                        // console.log("我还没发送请求");
+                  },
+                  success : function(){
+                        // console.log("成功时会调用")
+                  },
+                  error : function(){
+                        // console.log("失败时会调用");
+                  },
+                  complete : function(){
+                        // console.log("只要完成了无论成功失败");
+                  }
+
+            })
+            .done(function(res){
+                  // console.log(res);
+            })
+            .catch(function(xhr , errorType ){
+                  // console.log(xhr , errorType);
+            })
+
+            $.ajax({
+                  url : "dadjkasljfdskal.ocm",
+                  global : false
+            })
+
+            // 基本配置 ;
+            // 全局配置 ;
+            // 全局事件 ;
+            
+      </script>
+</body>
+</html>
