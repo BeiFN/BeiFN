@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(#fff,#000);
+            position: absolute;
+                  
+            }
+    </style>
+</head>
+<body>
+    <script>
+        class Practice{
+            constructor({ele = document}= { }){
+                this.main_ele = ele.nodeType ===  9 ? ele : document.querySelector(ele);
+                this.timer = null;//定时器
+                this.CWidth = document.documentElement.clientWidth;
+                this.CHeight = document.documentElement.clientHeight;
+                this.init();
+            }
+            init(){
+                this.main_ele.addEventListener("mousedown" , this.handerClick.bind(this));
+                this.main_ele.addEventListener("mouseup"   , this.stopCreateBall.bind(this));
+                this.main_ele.addEventListener("mousemove" , this.ballFollow.bind(this))
+            }
+            ballFollow(evt){
+                var e = evt || window.event;
+                this.offsetX = e.clientX;
+                this.offsetY = e.clientY;
+            }
+            handerClick(evt){
+                var e = evt || window.event ;
+                this.offsetX = e.offsetX;
+                this.offsetY = e.offsetY;
+                this.timer = setInterval(function(){
+                    var ball = this.createBall();
+                    setTimeout(function(){//下一帧渲染，先创建小球，然后在进行移动。
+                        this.move(ball,this.offsetY);
+                    }.bind(this),100)
+                }.bind(this),50);//创建小球的时间间隔
+            }
+            createBall(){
+                var ball = document.createElement("div");
+                ball.className = "ball";
+                //小球在鼠标按下的位置出现
+                ball.style.left = this.offsetX-10 + "px"; 
+                ball.style.top = this.offsetY-10 + "px";
+                // ball.style.background ="radial-gradient("+ "#" + Math.round(Math.round() * parseInt("ffffff",16)).toString(16).padStart(6,"0") +","+
+                // "#" + Math.round(Math.round() * parseInt("ffffff",16)).toString(16).padStart(6,"0")+")"; 
+                // ball.style.transition = "all 2s";//c3属性，运动过程为3秒
+                document.body.appendChild(ball);
+                return ball;
+            }
+            move(ball,mintop){
+                var Random_left = Math.round(Math.random() * this.CWidth);
+                //小球的位置始终往下发散
+                var Random_top  = mintop + Math.round(Math.random() * (this.CHeight - mintop)); 
+                ball.style.left = Random_left + "px";
+                ball.style.top  = Random_top  + "px";
+                ball.style.opacity = "0.2";
+                ball.style.transition = "all 2s";//transition属性写在Move或creatball中均可，效果一样
+                //设置延时器，一定时间后让小球消失
+                setTimeout(function(){
+                    ball.remove();
+                },1000)
+            }
+            stopCreateBall(){
+                clearInterval(this.timer);
+            }
+        }
+        new Practice();
+    </script>
+</body>
+</html>

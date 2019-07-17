@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //************* 递归 (1.结束条件；2.计算规则)**************************************
+        // 报数
+        // function countNum(k){
+        //     for(var i = k ;i<1001 ; i++){
+        //     console.log(i); 
+        //     }
+        // }
+        // countNum(5);
+
+        // function countNum(n){
+        //     n ++ ;
+        //     console.log(n);
+        //     if(n === 1000){
+        //         return 1000;
+        //     }
+        //     countNum(n);
+        // }
+        // countNum(1);
+
+
+        // 斐波那契数列;1 1 2 3 5 8 ……
+        // function fib(n){
+        //     if(n === 1 || n === 2){
+        //         return 1;
+        //     }else{
+        //         return fib(n - 2) + fib(n -1 );
+        //     }
+        // }
+        // console.log(fib(5));
+
+        // 阶乘
+        // function factorial(n){
+        //     if(n === 1){
+        //         return 1 ;
+        //     }else{
+        //         return n * factorial(n -1 );
+        //     }
+        // }
+        // console.log(factorial(5));
+
+
+        //************ 闭包 *********************************
+        // 1.外部函数声明的变量,在内部函数被访问;
+        // 2.内部函数返回懂啊全局
+
+
+        // ************** 数组 ***********************************
+        foo(1)(2)(3)(4);
+        function foo(a){
+            return function(b){
+                return function(c){
+                    return function(d){
+                        console.log(a + b + c + d);
+                        
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

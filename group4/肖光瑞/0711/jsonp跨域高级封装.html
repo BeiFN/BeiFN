@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //常规版
+        // function jsonp(url, cb_fild, callback, data) {
+        //     var global = "foo";
+        //     window[global] = function (res) {
+        //         callback(res)
+        //     }
+        //     url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + global;
+        //     if (typeof data === "object") {
+        //         var dataStr = "";
+        //         for (var attr in data) {
+        //             dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+        //         }
+        //         url += (/\?/.test(url) ? "&" : "?") + dataStr;
+        //     }
+        //     var script = document.createElement("script");
+        //     script.src = url;
+        //     script.onload = function () {
+        //         this.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }
+        // var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=cai%27xu&json=1&p=3&sid=1449_21093_29523_29521_29238_28518_29098_28837_29220_26350&req=2&sc=eb&csor=0"
+        // jsonp(url, "callback", function (res) {
+        //     console.log(res)
+        // })
+
+
+
+        //promies 版本
+        function jsonp(url, cb_fild, data) {
+            return new Promise(function (resolve, reject) {
+                var global = "foo";
+                window[global] = function (res) {
+                    resolve(res)
+                }
+                url += (/\?/.test(url) ? "&" : "?") + cb_fild + "=" + global;
+                if (typeof data === "object") {
+                    for (var attr in data) {
+                        url += "&" + attr + "=" + data[attr];
+                    }
+
+                }
+
+                var script = document.createElement("script");
+                script.src = url;
+                script.onload = function () {
+                    this.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+
+        // var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=cai%27xu&json=1&p=3&sid=1449_21093_29523_29521_29238_28518_29098_28837_29220_26350&req=2&sc=eb&csor=0"
+        // jsonp(url, "cb")
+        //     .then(function (res) {
+        //         console.log(res)
+        //     })
+
+        var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+        var data = {
+            json: 1,
+            p: 3,
+            sid: 1423_21080_29238_28518_29099_28830_29221_22158,
+            req: 2,
+            sc: "eb",
+            csor: 0,
+            _: Date.now(),
+            wd: "蔡徐坤"
+        }
+        jsonp(url, "cb", data)
+            .then(function (res) {
+                console.log(res);
+            })
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

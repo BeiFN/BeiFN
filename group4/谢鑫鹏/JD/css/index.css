@@ -1,0 +1,719 @@
+.JD-box{
+    background-color: #f0f3ef;
+}
+.w1190{
+    width: 1190px;
+    margin: auto;
+}
+/* JD-top */
+.JD-top{
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+}
+.JD-top a{
+    color: #999;
+}
+.JD-top a:hover{
+    color: #e33333;
+}
+.JD-top .hide{
+    position: absolute;
+    top: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    display: none;
+    line-height: 24px;
+}
+.JD-top .w1190{
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+}
+.JD-top .position{
+    margin-left: 200px;
+    position: relative;
+    z-index: 20;
+}
+.JD-top .position .icon{
+    font-size: 14px;
+    color: #f10215;
+    margin-right: 4px;
+}
+.JD-top .position .show{
+    height: 28px;
+    line-height: 28px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border: 1px solid #e3e4e5;
+    position: relative;
+    z-index: 1;
+}
+.JD-top .position:hover .show{
+    border-color: #ccc;
+    background-color: #fff;
+    padding-bottom: 2px;
+    border-bottom: none;
+}
+.JD-top .position:hover .hide{
+    display: block;
+}
+.JD-top .position .hide{
+    width: 300px;
+    padding: 10px;
+}
+.JD-top .position .hide{
+    line-height: 24px;
+}
+.JD-top .position .hide .top{
+    overflow: hidden;
+}
+.JD-top .position .hide .top a{
+    float: left;
+    padding: 0 8px;
+}
+.JD-top .position .hide .top a:hover{
+    background-color: #f4f4f4;
+}
+.JD-top .position .hide .top a.selected{
+    background-color: #f10215;
+    color: #fff;
+}
+.JD-top .position .top li{
+    float: left;
+    width: 60px;
+    padding: 2px 0;
+}
+.JD-top .position .middle{
+    margin: 10px 0 10px 10px;
+}
+.JD-top .position .line{
+    width: 262px;
+    height: 0;
+    border-bottom: dotted 1px #eee;
+}
+.JD-top .position .middle  p{
+    margin: 9px 0;
+}
+.JD-top .position .bottom .title{
+    margin: 9px 0;
+    color: #8f8f8f;
+}
+.JD-top .position .bottom li{
+    float: left;
+    width: 145px;
+    height: 26px;
+    line-height: 26px;
+}
+.JD-top .position .bottom .img{
+    float: left;
+    position: relative;
+    top: 7px;
+    margin-right: 8px;
+    width: 15px;
+    height: 10px;
+    border: solid 1px transparent;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAbCAYAAADYtRcLAAAAAklEQVR4AewaftIAAALFSURBVO3BTYhVVQAA4O9cn454xr+F0dA1FbOwQDBOgkFQizYtslzUokhCyBZCUWRBm9JVWSujRSW1iRDBCMKiaNMiqQ5URIU/pOgNRaJMHME3+m7PrpHKTMHj8Rim+b5Q17W/VSkNYzMewM04hD04jp1lzm2XCSG4Wt2lR6HLVb4Yvr7Wo5ZLqpRuxF4s949RvICleLVKaXuZ81EDNHpmlssFjdp/a+mqUhrGXix3pTfLnDv4uUrpKWyvUnq2zPmcAblp068EdAhFbe41HQGnTxbqTqBAbVwtjc1Y7kp7MaNKaWmZ85Ey57Eqpc/xGHaYQLj9Pf20+MVT/hIQOfTlDGd/v2DVXagxhmBcLY37cARLEDTuwUK8oatKaQ7ewgHsMCgHNeYFh3+Mdm9dZOTO+81fsMeSeIQLqI2r0PiozHkZTmhsw+P4tMy51ngfC7DSoBXoDPltf3L83Byj7aX++OkO9YUZFCbU0ggaBzGC3WXO31cpjeiqUgpYg4CZ/sUPp5/Tq1uMYwUKdM6J60+497pTOoe3mHnrYmFlzRhq42pptDTW4SV8XKX0LR7VVeZcVyk9iA/xlQE6tnW+i2rMLo5aNW+YMOzsrsrRsblCMKGWxi9VSivKnA9iU5XSK3ga31UpPVzm/FmZ8ydVShsx0wDtf32RRq2lRkdjnvMCgokUGjvxZJXSLI1dGMW1eERXldIcrME7BijGthjbYhwzFM8bih1DsWMonhfjmBjbYmyLsS3GthjbYmyLsS3Ude2iKqUSW/BamfOBKqUNeBvLsBAbsa3M+aRLQggms8IlZc4VnsHdVUovYwPO4HmsxhNlzidNmzZt2v9RqKn1KBBc5d2R1bUePXT8m6CPWvps3aF9ehZn66fCFNbSZ2tvW2+yKExhLXWtZyGYzFr6bN/Xe/RqOM7WT4UprKXPPrhhrcmiMIX9CRYv4u0MBGIsAAAAAElFTkSuQmCC);
+    background-position: 0 0;
+}
+.JD-top .position .bottom .img1{
+    height: 12px;
+    margin-top: -1px;
+}
+.JD-top .position .bottom .img2{
+    background-position: -20px 0;
+    border: solid 1px #ebebeb;
+}
+.JD-top .position .bottom .img3{
+    background-position: 0 -17px;
+    border: solid 1px #ebebeb;
+}
+.JD-top .position .bottom .img4{
+    background-position: -40px 0;
+    border: solid 1px #ebebeb;
+}
+.JD-top .position .bottom .img5{
+    background-position: -20px -17px;
+    border: solid 1px #ebebeb;
+}
+.JD-top .nav li{
+    float: left;
+    position: relative;
+    z-index: 20;
+}
+.JD-top .nav li .red{
+    color: #f10215;
+}
+.JD-top .nav li .show{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.JD-top .nav li.line{
+    margin: 11px 5px 0;
+    width: 1px;
+    height: 10px;
+    background-color: #ccc;
+}
+.JD-top .nav li .icon{
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    right:5px;
+    line-height: 12px;
+}
+.JD-top .nav li .has-arrow{
+    padding-right: 20px;
+    border: 1px solid #e3e4e5;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    z-index: 1;
+}
+.JD-top .nav .hide li{
+    line-height: 24px;
+}
+.JD-top .nav>li:hover .hide{
+    display: block;
+}
+.JD-top .nav>li:hover .has-arrow{
+    border-color: #ccc;
+    background-color: #fff;
+    padding-bottom: 2px;
+    border-bottom: none;
+}
+.JD-top .myJD .hide{
+    width: 280px;
+}
+.JD-top .myJD li{
+    width: 126px;
+    float: left;
+}
+.JD-top .myJD .hide .top,.bottom{
+    padding: 10px 0 10px 15px;
+    overflow: hidden;
+}
+.JD-top .myJD .bottom{
+    border-top: solid 1px #f1f1f1;
+}
+.JD-top .purchase .hide{
+    width: 140px;
+    padding: 10px 0 10px 15px;
+}
+.JD-top .purchase .hide li{
+    display: inline-block;
+    width: 56px;
+    white-space: nowrap;
+}
+.JD-top .service .hide{
+    right: 0;
+    width: 170px;
+    padding: 10px 0;
+}
+.JD-top .service .hide ul{
+    overflow: hidden;
+}
+.JD-top .service h5{
+    padding-left: 15px;
+    font-weight: 700;
+    color: #666;
+}
+.JD-top .service .line{
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px dotted #eee;
+}
+.JD-top .service .hide li{
+    display: inline-block;
+    width: 70px;
+    padding-left: 15px;
+}
+.JD-top .web-nav .hide{
+    right: -84px;
+    width: 1188px;
+    padding: 15px 0;
+}
+.JD-top .web-nav .hide>div{
+    border-left: 1px solid #eee;
+    padding-left: 20px;
+    float: left;
+}
+.JD-top .web-nav .hide .area1{
+    border-left: none;
+    width: 340px;
+}
+.JD-top .web-nav .hide h5{
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #666;
+}
+.JD-top .web-nav .hide li{
+    overflow: hidden;
+    float: left;
+    width: 85px;
+    white-space: nowrap;
+    line-height: 24px;
+}
+.JD-top .web-nav .hide .area2,.area3,.area4{
+    width: 255px;
+}
+.JD-top .mobile .mobile-txt{
+    width: 60px;
+    text-align: center;
+}
+.JD-top .mobile .static{
+    position: absolute;
+    left: -1px;
+    width: 66px;
+    height: 66px;
+    border: 1px solid #cfcfcf;
+}
+.JD-top .mobile .static-img{
+    margin: 4px auto;
+    width: 60px;
+    height: 60px;
+    background: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/mobile_qrcode.png) no-repeat ;
+}
+.JD-top .mobile .static::before,.JD-top .mobile .hide::before{
+    content: "";
+    position: absolute;
+    left:  50%;
+    top: -9px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #e4e4e4 #e4e4e4 #f6f6f6;
+}
+.JD-top .mobile{
+    z-index: 19!important;
+}
+.JD-top .mobile .hide{
+    position: absolute;
+    left: auto;
+    right: 7px;
+    top: 30px;
+    width: 190px;
+    border: 1px solid #cfcfcf;
+    background-color: #fff;
+    border-bottom: 3px solid #60575a;
+    line-height: 17px;
+}
+.JD-top .mobile .hide::before{
+    left:157px;
+    border-color: #e4e4e4 #e4e4e4 #fff;
+}
+.JD-top .mobile .hide>div{
+    padding: 15px 0;
+    border-bottom: 1px solid #E7E7E7;
+    height: 70px;
+}
+.JD-top .mobile .hide>div>div{
+    float: left;
+}
+.JD-top .mobile .hide .img{
+    width: 74px;
+    height: 74px;
+    border: 1px solid #CCC;
+    background-color: #F7F7F7;
+    margin: 0 5px 0;
+}
+.JD-top .mobile .hide img{
+    width: 70px;
+    height: 70px;
+    margin: 2px 0 0 2px;
+    float: left;
+}
+.JD-top .mobile .hide .txt>a{
+    line-height: 17px;
+    font-weight: 700;
+    color: #666!important;
+}
+.JD-top .mobile .hide .txt p{
+    margin: 3px 0;
+    line-height: 14px;
+    color: #F10214;
+}
+.JD-top .mobile .hide .small-img a{
+    background: url(https://misc.360buyimg.com/mtd/pc/index/home/images/sprite_mobile@1x.png) no-repeat;
+    display: inline-block;
+    margin-right: 2px;
+    width: 25px;
+    height: 25px;
+    background-position: 0 0;
+}
+.JD-top .mobile .hide a.small-img2{
+    background-position: 0 -26px;
+}
+.JD-top .mobile .hide a.small-img3{
+    background-position: 0 -52px;
+}
+/* JD-header */
+.JD-header .w1190{
+    position: relative;
+    height: 140px;
+}
+.JD-header .logo-img{
+    position: absolute;
+    left: 0;
+    top: -31px;
+    width: 190px;
+    height: 170px;
+    box-shadow: 0 -12px 10px rgba(0,0,0,.2);
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+}
+.JD-header .logo-img a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(https://misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/sprite.head.png);
+}
+.JD-header .search{
+    height: 60px;
+}
+.JD-header .form{
+    position: absolute;
+    left: 320px;
+    top: 25px;
+    width: 550px;
+    height: 35px;
+}
+.JD-header .search form{
+    position: absolute;
+    width: 550px;
+    height: 35px;
+}
+.JD-header .search form .input-txt,.JD-header .search form input{
+    position: absolute;
+    left: 0;
+    padding: 4px 44px 4px 4px;
+    width: 450px;
+    height: 25px;
+    border: 1px solid transparent;
+    line-height: 25px;
+    font-size: 14px;
+}
+.JD-header .search form .input-txt{   
+    color: #989898;
+    background-color: #fff;
+}
+.JD-header .search form input{
+    background: transparent;
+}
+.JD-header .search .form>span{
+    position: absolute;
+    display: block;
+    width: 19px;
+    height: 15px;
+    right: 65px;
+    top: 10px;
+    background: url(https://misc.360buyimg.com/product/search/1.0.4/css/i/sprite-photo-search.png) no-repeat;
+    cursor: pointer;
+}
+.JD-header .search .form>span:hover{
+    background-position: -30px 0;
+}
+.JD-header .search button{
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 35px;
+    line-height: 35px;
+    border: none;
+    background-color: #f10215;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+.JD-header .search button span{
+    font-size: 22px;
+}
+.JD-header .cart{
+    position: absolute;
+    right: 99px;
+    top: 25px;
+}
+.JD-header .cart .show{
+    width: 188px;
+    height: 33px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 33px;
+    border: 1px solid #e3e4e5;
+    z-index: 3;
+    position: relative;
+}
+.JD-header .cart .show>a{
+    color: #f10214;
+}
+.JD-header .cart .icon{
+    color: #F10214;
+    margin-right: 3px;
+}
+.JD-header .cart .count{
+    position: absolute;
+    top: 5px;
+    left: 140px;
+    display: inline-block;
+    padding: 1px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #f10215;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center
+}
+.JD-header .cart .hide{
+    top: 35px;
+    right: 0;
+    width: 308px;
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    z-index: 2;
+    display: none;
+}
+.JD-header .cart .hide .empty{
+    height: 49px;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 49px;
+    color: #999;
+}
+.JD-header .cart .hide .empty i{
+    background-image: url(https://img11.360buyimg.com/uba/jfs/t3571/299/131233948/1117/a1196554/58004d6dN2927f0f7.png);
+    display: inline-block;
+    width: 56px;
+    height: 49px;
+    vertical-align: middle;
+}
+.JD-header .cart:hover .hide{
+    display: block;
+}
+.JD-header .cart:hover .show{
+    padding-bottom: 2px;
+    border-color: #ccc;
+    border-bottom: none;
+}
+.JD-header .hotwords{
+    overflow: hidden;
+    position: absolute;
+    left: 320px;
+    top: 65px;
+    width: 550px;
+    height: 20px;
+    line-height: 20px;
+}
+.JD-header .hotwords a{
+    float: left;
+    margin-right: 10px;
+    white-space: nowrap;
+    color: #999;
+}
+.JD-header .hotwords a:hover{
+    color: #c81623;
+}
+.JD-header .hotwords .hot{
+    color: #f10215;
+    width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.JD-header .nav{
+    overflow: hidden;
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+    width: 790px;
+    height: 40px;
+}
+.JD-header .nav li{
+    margin-left: 25px;
+    float: left;
+}
+.JD-header .nav li a{
+    font-size: 14px;
+    color: #333;
+    line-height: 40px;
+}
+.JD-header .nav li a:hover{
+    color: #c81623;
+}
+.JD-header .nav .spacer{
+    width: 1px;
+    height: 10px;
+    margin-top: 15px;
+    margin-left: 17px;
+    margin-right: -7px;
+    background-color: #ccc;
+    float: left;
+}
+/* classify */
+.JD-classify .w1190{
+    margin-bottom: 30px;
+    height: 480px;
+}
+.JD-classify .w1190>div{
+    float: left;
+}
+.JD-classify .nav-list{
+    width: 190px;
+    margin-right: 10px;
+}
+.JD-classify .nav-list .box{
+    position: relative;
+}
+.JD-classify .nav-list .box .show{
+    padding: 6px 0;
+    height: 468px;
+    background-color: #fefefe;
+    color: #636363;
+}
+.JD-classify .nav-list .box .show li{  
+    height: 26px;
+    line-height: 26px;
+    padding-left: 18px;
+    transition: background-color .2s ease;
+}
+.JD-classify .nav-list .box .show li:hover{
+    background-color: #d9d9d9;
+}
+.JD-classify .nav-list .box .show a{
+    font-size: 14px;
+    color: #626262;
+    transition: color .2s ease;
+}
+.JD-classify .nav-list .box .show a:hover{
+    color: #e33333;
+}
+.JD-classify .nav-list .hide{
+    position: absolute;
+    left: 191px;
+    top: 0;
+    width: 998px;
+    min-height: 478px;
+    border: 1px solid #f7f7f7;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,.3);
+    transition: top .25s ease;
+    display: none;
+}
+.JD-classify .nav-list .hide>div{
+    padding: 20px 0 10px;
+    width: 998px;
+    height: 454px;
+    display: none;
+}
+.JD-classify .nav-list .hide .col1{
+    width: 800px;
+}
+.JD-classify .nav-list .hide .channel{
+    overflow: hidden;
+    padding-left: 20px;
+    height: 24px;
+}
+.JD-classify .nav-list .hide .channel>a{
+    background-color: #5c5251;
+    float: left;
+    margin-right: 10px;
+    padding: 0 10px;
+    height: 24px;
+    background-color: #333;
+    line-height: 24px;
+    color: #fff;
+}
+.JD-classify .nav-list .hide .channel>a:hover{
+    background-color: #5c5251;
+}
+.JD-classify .nav-list .hide span{
+    margin-left: 5px;
+    font-size: 12px;
+}
+.JD-classify .nav-list .hide .detail{
+    padding: 10px 0 0 20px;
+}
+.JD-classify .nav-list .hide .detail a{
+    color: #666;
+}
+.JD-classify .nav-list .hide .detail a:hover{
+    color: #e33333;
+}
+.JD-classify .nav-list dl{
+    position: relative;
+    padding-left: 80px;
+}
+.JD-classify .nav-list dt{
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 70px;
+    text-align: right;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.JD-classify .nav-list dd{
+    overflow: hidden;
+    padding: 5px 0;
+}
+.JD-classify .nav-list dd a{
+    float: left;
+    margin: 3px 0;
+    padding: 0 10px;
+    height: 16px;
+    border-left: 1px solid #e0e0e0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+.JD-classify .nav-list .hide .col2{
+    width:198px;
+}
+.JD-classify .nav-list .hide .col2 .top{
+    width: 168px;
+    margin: auto;
+}
+.JD-classify .nav-list .hide .col2 .top a{
+    overflow: hidden;
+    width: 83px;
+    height: 35px;
+    margin: 0 0 1px 1px;
+    background-color: #e7e7e7;
+    float: left;
+}
+.JD-classify .nav-list .hide .col2 .bottom{
+    margin: 10px auto 0;
+    width: 168px;
+}
+.JD-classify .nav-list .hide .col2 .bottom a{
+    display: block;
+    margin-bottom: 1px;
+    height: 134px;
+    background-color: #e7e7e7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.JD-classify .banner{
+    width: 590px;
+    margin-right: 10px;
+}
+.JD-classify .recommend{
+    width: 190px;
+}
+.JD-classify .w1190 .side{
+    width: 190px;
+    float: right;
+}

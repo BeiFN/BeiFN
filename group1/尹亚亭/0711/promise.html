@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise小测试题 && Promise的连缀</title>
+</head>
+<body>
+    <script>
+        // // Promise小测试题
+        // console.log(1);
+        // var promise = new Promise(function (resolve,reject) {   // !! 同步程序
+        //     console.log(2);
+        //     resolve();
+        // })
+        // console.log(3);
+        // setTimeout(function () {    // 宏任务
+        //     console.log(4);
+        // },0)
+        // console.log(5);
+        // promise.then(function () {  //微任务
+        //     console.log(6);
+        // })
+        // console.log(7);
+        // // 根据先执行同步代码，再执行异步代码，注意：构造函数不是异步，是同步，(再者也可以去看function匿名函数是要立即执行的)。得：
+        // //  1   2   3 5 7
+        // // 再根据异步程序 主线程>微任务>宏任务，得：
+        // // 6 4
+        // // 故打印顺序为 1 2 3 5 7 6 4
+
+        // // Promise的连缀
+        // var promise = new Promise(function (resolve,reject) {
+        //     setTimeout(function() {
+        //         console.log("Function 1 ");
+        //         resolve();
+        //     }, 100);
+        // });
+
+        // let result = new Promise(function (resolve,reject) {
+        //     setTimeout(function() {
+        //         console.log("Function 2 ");
+        //         resolve();
+        //     }, 100);
+        // })
+
+        // .then( res => {
+        //     setTimeout(function() {
+        //         console.log("Function 3 ");
+        //     }, 100);
+        // } )
+        // // Function 1  Function 2  Function 3 
+
+        // Promise的连缀
+        var promise = new Promise(function (resolve,reject) {
+            setTimeout(function() {
+                console.log("Function 1 ");
+                resolve();
+            }, 100);
+        })
+        .then( res => {
+            return new Promise( (resolve , reject) =>{
+                setTimeout(function() {
+                    console.log("Function 2 ");
+                    resolve();
+                }, 100);
+            })
+        } );
+
+        let result = new Promise(function (resolve,reject) {
+            setTimeout(function() {
+                console.log("Function 3 ");
+                resolve();
+            }, 100);
+        })
+          // then 可以返回一个新的值;
+        .then( res => {
+            return new Promise( (resolve , reject) =>{
+                setTimeout(function() {
+                    console.log("Function 4 ");
+                    resolve();
+                }, 100);
+            })
+        })
+
+        console.log(promise,result);
+        console.log(promise == result);     // false
+       
+        // Function 1  Function 3  Function 2   Function 4 
+
+    </script>
+</body>
+</html>
