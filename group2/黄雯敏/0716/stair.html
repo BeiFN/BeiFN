@@ -90,11 +90,11 @@
             <span>楼梯连接</span>
             <span>楼梯连接</span>
       </div>
-      <script src="../libs/jquery-3.4.1.js"></script>
+
+      <script src="../libs/jquery.js"></script>
       <script src="../libs/utils.js"></script>
       <script>
             let {throttle} = Utils;
-            // 1. 给box加上随机颜色 ?
             $(".content div").css({
                   background : function(){
                         var r = Math.round(Math.random() * 255 );
@@ -112,47 +112,18 @@
             function Stairs(){
                   this.init();
             }
-            // jQuery 底层的原型绑定方式;
-            // Stairs.prototype = {
-            //       constructor : Stairs,
-            //       init : function(){
-
-            //       }
-            // }
-            // ES6 的原型添加方法的方式：
-            // Object.assign(Stairs.prototype , {
-            //       init : function(){
-            //       }
-            // })
-            // jQuery提供的原型方法添加方式;
-            // $.extend(Stairs.prototype , {
-            //       init : function(){
-
-            //       },
-            //       toggleStairs : function( toggle ){
-
-            //       },
-            //       changeFloor : function( index ){
-            //             // 根据索引
-            //       },
-            //       changeStairs : function( scrollTop ){
-
-            //       }
-            // })
 
             $.extend(Stairs.prototype , {
-                  // 把方法合并到原型对象上，方法名作为属性key值
                   init : function(){
                         this.header = $("header");
                         this.headerSize = {
                               height : this.header.height()
                         }
                         this.stairs = $(".stairs");
-                        this.boxs   = $("div[class*=box]");//包含box子串的class
+                        this.boxs   = $("div[class*=box]");
                         this.stairsList = this.stairs.children();
                         // 承载的就是最大值和最小值;
                         this.boxsList = [];
-                        // 变量楼层，proxy固定指向实例
                         $.each( this.boxs , $.proxy(function ( index , item ){
                               // console.log(index,item);
                               var min = $(item).offset().top;
@@ -163,17 +134,14 @@
                         },this))
                         // 考虑兼容;
                         var self = this;
-                        // 滚动节流
                         $(window).scroll(throttle($.proxy(function(){
                               var st = $("body,html").scrollTop();
-                              this.toggleStairs(st);//改变楼梯显示状态
-                              this.changeStairs(st);//改变楼梯显示层
+                              this.toggleStairs(st);
+                              this.changeStairs(st);
                         },this),300));
 
-                        // 楼梯添加绑定事件
                         this.stairs.on("click","span",$.proxy(function(evt){
                               var target = evt.target;
-                              // 获取事件源下标
                               this.changeFloor.call(this,$(target).index());
 
                               this.changeStairs($("body,html").scrollTop());
@@ -192,8 +160,7 @@
                         // 根据索引
                         $("html,body").scrollTop(this.boxs.eq(index).offset().top);
                   },
-                  
-                  changeStairs : function( scrollTop ){//改变楼梯显示层
+                  changeStairs : function( scrollTop ){
                         $.each( this.boxsList , $.proxy(function(index , item){
                               if(scrollTop >= item.min && scrollTop < item.max){
                                     this.stairsList.eq(index).addClass("active")
@@ -204,8 +171,6 @@
                   }
             })
             new Stairs();
-
-            // jQuery 轮播图 , 放大镜。
             
       </script>
 </body>

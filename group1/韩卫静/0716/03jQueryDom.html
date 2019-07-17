@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box">
+			hello world
+			<span>span span</span>
+		</div>
+		
+		<div></div>
+		<h3>h3 h3 h3</h3>
+		<!-- <h3>h3 h3 h3 hahaha</h3> -->
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		
+		<script>
+			// $(".box").append("<p>pppp</p>")	
+				  
+			// $("h3").appendTo(".box")
+			
+			// $(".box").prepend("<p>pppp</p>")	
+				  
+			// $("h3").prependTo(".box")
+			
+			//在每个匹配的元素[之后]插入内容。
+			// $("div").after("<p>pppp</p>")
+			//在每个匹配的元素[之前]插入内容。
+			// $("div").before("<p>pppp</p>");
+			
+			// 把所有匹配的元素插入到另一个、指定的元素元素集合的后面。
+			// $("h3").insertAfter(".box");
+			// 把所有匹配的元素插入到另一个、指定的元素元素集合的前面。
+			// $("h3").insertBefore(".box");
+			
+			//加包裹和去掉包裹
+			// $("h3").wrap("<div> </div>")
+			// $("h3").unwrap();
+			
+			//将所有匹配的元素用单个元素包裹起来
+			// $("h3").wrapAll("<div> </div>");
+			
+			// $("h3").replaceWith("<p>pppp</p>");
+			
+			// $(".box").empty();
+			// $("div").remove(".box");
+			
+			$("h3").clone().prependTo(".box")
+		</script>
+	</body>
+</html>
