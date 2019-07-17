@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .wrapper{
+                  display: flex;
+            }
+      </style>
+</head>
+<body>
+
+      <div class="container">
+            <div class="wrapper">
+            </div>
+            <div class="page-wrapper">
+            </div>
+      </div>
+
+      <script type="text/html" id="template">
+            <% for(var i = 0 ; i < data.length; i ++){%>
+                  <div class="box">
+                        <img src="<%= data[i].hd_thumb_url %>" alt="">
+                  </div>
+            <%}%>
+
+      </script>
+      <script src="../../libs/utils.js"></script>
+      <script src="./javascripts/index-pxx.js"></script>
+      <script>
+            //在html里,改数据地址url,从zc->pxx
+            //在html里,改数据形式,你抓到的数据,前一部分放到代理服务器里,后一部分以数据拼接的形式写出来
+            //在js里,数组的名称要改,从this.res.contents.length -> this.res.goods_list.length
+            
+            new Pagination().init({
+                  list : ".wrapper",
+                  page : ".page-wrapper",
+                  getData : {
+                        url  : "http://localhost/pxx",
+                        data : {
+                              // tab_id=1&image_mode=2&page=1&size=50&is_main=1&pdduid=0
+                              tab_id : 1,
+                              image_mode : 2,
+                              page : 1,
+                              size:50,
+                              is_main:1,
+                              pdduid:0,
+                        }
+                  },
+                  pageNo : 1,
+                  showNo : 10,
+                  template : $("#template").innerHTML
+            });
+      </script>
+</body>
+</html>
