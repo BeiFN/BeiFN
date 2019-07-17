@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../libs/jquery-3.4.1.js"></script>
+    <script>
+        // deferred
+        console.log( $.get("./data/json.json"));
+        // promise 是状态机
+        // deferred 也是状态机
+
+
+        // jquery ajax  成功返回结果 状态  回调
+        $.get("./data/json.json")
+        .then(function(){
+
+        },function(xhr, errorType,errorMsg){
+            console.log(errorMsg);
+        })
+
+        $.get("./data/json.json")
+        .done()
+        .catch()
+        .always()
+
+        // deferred对象
+        // 无new构造对象  
+        // 创建deferred对象
+        $.Deferred();
+        
+    </script>
+</body>
+</html>
