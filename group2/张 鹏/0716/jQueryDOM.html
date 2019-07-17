@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hhhhhh</h1>
+    <script src="../libs/jquery-3.4.1.js"></script>
+    <script>
+        var $div = $("<div>");
+        console.log($div);
+        $div.html("向世界问好");
+        $div.text("<strong>向世界问好</strong>");
+
+        // 插入方式  appendTo
+        $("body").append($div);
+        $div.appendTo($("body"));
+        // jquery提供是是连缀式编程，一行式编码，提供两个api会更灵活，方便开发的特殊场景
+
+        // prepend  添加到最前
+        $("body").prepend($div);
+
+        // insertAfter//位置插入
+        $div.insertAfter($("h1"));
+        $div.insertBefore($("h1"));
+
+        // 同级插入
+        // ofter  before
+
+        // 删除 remove();
+
+        // 改 包围改元素
+        $div.wrap("<div>");//添加包围（父）元素
+
+        $div.unwrap();
+
+        $div.wrapAll("<strong>")
+
+
+        // clone （true克隆事件）
+
+
+    </script>
+</body>
+</html>
