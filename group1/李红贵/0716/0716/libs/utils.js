@@ -1,4 +1,18 @@
 class Utils {
+
+      static throttle(fn,delay){
+            var timer = null;
+            if(!timer === null ) return false;
+            return function(){
+                  timer = setTimeout(function(){
+                        fn();
+                        timer = null;
+                  },delay)
+            }
+            
+      }
+
+
       static ajax(url,
             {
                   data = {},
