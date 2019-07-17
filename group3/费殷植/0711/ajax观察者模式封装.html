@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+
+<body>
+      <script>
+            //观察者模式封装的ajax
+            function ajax(url) {
+                  //订阅者名单
+                  let list = []
+                  let xhr = new XMLHttpRequest();
+                  xhr.open("GET", url)
+                  xhr.send(null);
+                  xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 400) {
+                              for (var i = 0; i < list.length; i++) {
+                                    //给每一个参数函数都传递一个值 
+                                    list[i](xhr.responseText);
+                              }
+                        }
+                  }
+                  //add方法添加监听者
+                  return {
+                        add: function () {
+                              list = list.concat(Array.from(arguments))
+                              return list;
+                        }
+                  }
+            }
+            let url = "http://localhost/day22/02json.json"
+            console.log(ajax(url).add(function(res){
+                  console.log("我是add的参数1")
+            },function(){
+                  console.log("我是add的参数2")
+            }))
+
+
+      </script>
+</body>
+
+</html>

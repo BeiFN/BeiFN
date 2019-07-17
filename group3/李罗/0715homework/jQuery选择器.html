@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择器</title>
+    <style>
+        
+        div{
+            /* width:100px;height: 100px; */
+            padding:40px;border:10px solid #DDD;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="notMe"><p>hello !</p></div>
+    <div id="myDiv">id="myDiv"</div>
+    <div>hello world!</div>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div> -->
+
+    <div>
+            <div>
+                  <div>
+                        <div>
+                              <div class="box"></div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+    <script src="./libs/jquery.js"></script>
+    <script>
+        // $("#myDiv");
+
+        
+        // $("div").css({
+        //     background:"yellow"
+        // })
+        // $(".box").css({
+        //     background:"#f99"
+        // })
+        // $(".div").css({
+        //     background:"#f0f"
+        // })
+        // .next()
+        // .css({
+        //     background:"red"
+        // })
+
+
+        $(".box").css({
+                  background : "yellowgreen"
+            })
+            .next()
+            .css({
+                  background : "#f99"
+            })
+            .next()
+            .css({
+                  background : "red"
+            })
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .nextAll("div")
+            // .css({
+            //       background : "#f99"
+            // })
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .nextUntil("span")
+            // .css({
+            //       background : "#f99"
+            // })
+    
+    </script>
+
+
+</body>
+</html>
