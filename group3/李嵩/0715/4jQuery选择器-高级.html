@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <!-- <style>
+            div{
+                  padding: 100px;
+                  border: 10px solid #ddd;
+            }
+      </style> -->
+</head>
+<body>
+      <!-- <ul class="list">
+            <li>
+                  hello world
+            </li>
+            <li>
+                  <span>hello i'm span</span>
+                  <ul>
+                        <li>
+                              <span> hello i'm inner SPAN</span>
+                        </li>
+                  </ul>
+            </li>
+      </ul> -->
+
+
+      <div>hello world</div>
+      <div>hello world</div>
+      <div>hello world</div>
+      <div>hello world</div>
+      <div class="box">hello world</div>
+      <div>hello world</div>
+      <div>hello world</div>
+      <span>hhhhhh</span>
+      <div>hello world</div>
+      <strong>sssss</strong>
+      <div>hello world</div>
+      <div>hello world</div>
+
+      <!-- <div>
+            <div>
+                  <div>
+                        <div>
+                              <div class="box"></div>
+                        </div>
+                  </div>
+            </div>
+      </div> -->
+
+      <script src="../../libs/jquery.js"></script>
+      <script>
+
+            // $("ul li span") => $("ul").find("li").find("span");
+            // console.log($("ul li").find("span"));
+
+            // 除了find之外的所有方法; 不传参数默认参数为* ;
+            // console.log($(".list").children().children("span"));
+            // 直接子选择器;
+            // $(".list").children().children("span").css({
+            //       background : "yellowgreen"
+            // }) 
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // 连缀式的编程模式;
+            
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .next()
+            // .css({
+            //       background : "#f99"
+            // })
+            // .next()
+            // .css({
+            //       background : "red"
+            // })
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .nextAll("div")
+            // .css({
+            //       background : "#f99"
+            // })
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .nextUntil("span")
+            // .css({
+            //       background : "#f99"
+            // })
+
+            // next => prev; 作业;
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .prev()
+            // .css({
+            //       background : "#f99"
+            // })
+            // .prev()
+            // .css({
+            //       background : "red"
+            // })
+
+            // $(".box").css({
+            //       background : "yellowgreen"
+            // })
+            // .prevAll("div")
+            // .css({
+            //       background : "#f99"
+            // })
+
+            $(".box").css({
+                  background : "yellowgreen"
+            })
+            .prevUntil("span")
+            .css({
+                  background : "#f99"
+            })
+
+            // 兄弟选择器分成了非常多的类型;
+
+            // 兄 
+            // 弟
+            // 兄s
+            // 第s
+            // 兄弟s
+            // 兄 ~ 第 之间选择器;
+
+
+            // 父亲
+            // 父亲们
+            // 父亲们直到 ;
+
+            // $(".box").parent().css({
+            //       borderColor : "#f99"
+            // })
+            // $(".box").parents().css({
+            //       borderColor : "#f99"
+            // })
+            // $(".box").parentsUntil("body").css({
+            //       borderColor : "#f99"
+            // })
+      </script>
+</body>
+</html>
