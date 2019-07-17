@@ -149,11 +149,12 @@
             if (loading) return false;
             loading = true;
             ajax(url, {
-                data: {
+                "data": {
                     q: ipt.value,
                     url: "http://v.juhe.cn/dream/query"
                 }
             }).then(res => {
+                console.log(res);
                 res = JSON.parse(res);
                 let html = "";
                 if (res.error_code == "10012") {
@@ -174,7 +175,7 @@
         // 加载详细信息
         function loadDrmTip() {
             ajax(url, {
-                data: {
+                "data": {
                     id: id,
                     url: "http://v.juhe.cn/dream/queryid",
                 }
