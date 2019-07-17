@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      #box{
+            border: 10px solid #ddd;
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 30px;
+      }
+      .container{
+            position: fixed;
+            left: 200px;
+      }
+      #jingubang{
+            width: 8000px;;
+            height: 10px;
+      }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div id="box">
+              hello world
+        </div>
+  </div>
+  <div id="jingubang"></div>
+  <script src="../libs/jquery.js"></script>
+  <script>
+    // console.log($("#box").attr("id"));
+    // console.log($("#box").attr("data-id","hello world"));
+    // console.log($("#box").attr({
+    //   "data-id" : "hello",
+    //   "class"   : "hello"
+    // }));
+    // $("#box").removeAttr("data-id");
+    // console.log($("#box").width()); // content
+    // console.log($("#box").innerWidth()); // content + padding
+    // console.log($("#box").outerWidth()); // content + padding + border
+    // console.log($("#box").offset()); // 相对文档的绝对距离;
+    // console.log($("#box").position()); // 相对于定位元素的距离;
+    document.onclick = function(){
+      $("html,body").scrollLeft(1000);
+      // 设置滚动距离
+    }
+
+    
+  </script>
+</body>
+</html>

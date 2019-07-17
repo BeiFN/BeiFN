@@ -353,4 +353,26 @@ class Utils {
                   expires: -1
             });
       }
+      //去抖:不管事件触发多少次只执行最后一次
+      static debounce(callback, delay) {
+            let timer = null;
+            return function () {
+                  clearTimeout(timer);//每次调用前清空延时器,这样延时器中的代码就不会执行直到最后一次调用才执行
+                  timer = setTimeout(() => {
+                        callback();
+                        timer = null;//执行完清空timer防止内存泄漏
+                  }, delay);
+            }
+      }
+      //节流:控制执行的频率,一定时间内只执行一次
+      static throttle(callback, delay) {
+            let timer = null;
+            return function () {
+                  if (timer !== null) return false;//如果已经开启了一个延时器,那在接下来的一段时间内就不会再执行了
+                  timer = setTimeout(() => {
+                        callback();
+                        timer = null;//当前代码执行玩将timer清空以便下次执行
+                  }, delay);
+            }
+      }
 }
