@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>站酷分页</title>
+    <link rel="stylesheet" href="./styles/fenye.css">
+</head>
+<body>
+    <div class="container">
+        <p class="title"></p>
+        <div class="wrapper">
+            <div class="img-list">
+                <!-- <div class="box">
+                    <div class="box-img">
+                        <img src="https://img.zcool.cn/community/01a3d75d06058da801213ec266b1e5.jpg" alt="">
+                    </div>
+                    <div class="box-title">
+                        <a href="">hhfdgdfgdgdgdgdgfdgddfgdgdfgh</a>
+                        <span class="fire"></span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="pagination">
+            <!-- <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span> -->
+        </div>
+    </div>
+    <!-- <script src="../libs/jquery.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="../libs/utils.js"></script>
+    <!-- <script src="./javascripts/fenye.js"></script> -->
+
+    <!-- <script>
+        let url = "http://localhost/zc";
+        let data = {
+            pageSize : 20,
+            contentId : (""+new Date().getTime()).slice(6) ,
+            day : new Date().toISOString().slice(0,10)
+        }
+        $.ajax({
+            async : true,
+            url : url,
+            data : data,
+            dataType : "json",
+            success : function(res){
+                console.log(res);
+            },
+            error : function(){
+                console.log(1);
+            }
+            
+        })
+    </script> -->
+    <script>
+    let {$ , ajax , on , ejs} = Utils;
+
+    class Pagination{
+    constructor(){
+
+        this.init();
+    }
+    async init(){
+        this.page_wrapper = $(".pagination");
+        this.list_wrapper = $(".img-list");
+        this.page_No = 1;
+        this.show_No = 5;
+        this.res = "";
+
+        on(this.page_wrapper,"click",evt => {
+            this.toIndex(evt.target.index());
+            this.renderBtn();
+            this.renderPage();
+        },"span")
+
+        // this.res = await this.loadData();
+        console.log(this.res);
+        
+        this.total = this.res.data.contents.length;
+        this.renderPage();
+        this.renderBtn();
+        // console.log(this.res);
+    }
+    //加载数据
+    loadData(){
+        let url = "http://localhost/zc";
+        let data = {
+            pageSize : 20,
+            contentId : (""+new Date().getTime()).slice(6) ,
+            day : new Date().toISOString().slice(0,10)
+        }
+        // let res = await ajax(url,{
+        //     data : data,
+        //     dataType : "json"
+        // })
+        $.ajax({
+            async : true,
+            url : url,
+            data : data,
+            dataType : "json",
+            success : function(res){
+                console.log(res);
+                // return res;
+                this.res = res;
+            },
+            error : function(){
+                console.log(1);
+            }    
+        })
+        // return res;
+    }    
+    //渲染页面
+    renderPage(){
+        let data = this.res.data.contents;
+        data = this.cutPage(data);
+         
+        let template = `<%for(let i = 0 ,item ; item = data[i] ; i ++){%>
+                            <div class="box">
+                                <div class="box-img">
+                                    <img src="<%=item.cover%>" alt="">
+                                </div>
+                                <div class="box-title">
+                                    <a href=""><%=item.title%></a>
+                                    <span class="fire"></span>
+                                </div>
+                            </div>
+                        <%}%>`
+        var html = ejs.render(template,{data : data});
+        this.list_wrapper.innerHTML = html;
+    }
+    //剪裁数据
+    cutPage(cut_data){
+        // 0~4
+        // 5~9
+        // 10~14
+        // 15~19
+        // 5(n-1)~5n-1
+        // let n = this.total / this.show_No;
+        let min = this.show_No * (this.page_No - 1);
+        let max = this.show_No * this.page_No - 1;
+        //两个参数，当前正在处理的元素，当前正在处理元素的下标
+        cut_data = cut_data.filter((item,index) => {
+            if(index >= min && index <= max){
+                return item;
+            }
+        })
+        return cut_data;
+    }
+    //渲染按钮
+    renderBtn(){
+        let count = Math.ceil(this.total / this.show_No);
+        //改变按钮类名，换颜色
+        let btns = this.page_wrapper.children;
+        // console.log(btns); 
+        if(btns.length === count){
+            // console.log(typeof btns);
+            Array.from(btns).forEach((item , index) => {
+                if(index + 1 === this.page_No){
+                    item.className = "active";
+                }else{
+                    item.className = "";
+                }
+            });
+            return false;
+        }
+
+        let html = "";
+        for(let i = 0 ; i < count ; i ++){
+            if( i + 1 === this.page_No){
+                html += `<span class=active>${i+1}</span>`;
+            }else{
+                html += `<span>${i+1}</span>`;
+            }
+            this.page_wrapper.innerHTML = html;
+        }    
+    }
+    //分页
+    toIndex(index){
+        this.page_No = index + 1;
+    }  
+}
+
+new Pagination();
+    </script>
+</body>
+</html>
