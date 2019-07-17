@@ -103,7 +103,10 @@ class Utils {
                   }
                   for (var i = 0, ele; ele = eleList[i++];) {
                         if (targetFamily.length === 1 ? ele === targetFamily[0] : targetFamily.indexOf(ele) !== -1) {
-                              handlerClick.call(ele, e, ele);
+                              e.target.index = function(){
+                                    return Array.from(e.target.parentNode.children).indexOf(e.target);
+                              }
+                              handlerClick.call(ele, e);
                               break;
                         }
                   }
@@ -148,15 +151,15 @@ class Utils {
 
       // AJAX封装
       static ajax(url, {
+            data = {},
+            type = "GET",
+            dataType = "text",
+            callback = "callback"
+      } = {
             data,
             type,
             dataType,
             callback
-      } = {
-            type: "GET",
-            data: {},
-            dataType: "text",
-            callback: "callback"
       }) {
 
             if (dataType === "jsonp") {
@@ -257,5 +260,28 @@ class Utils {
                   path,
                   expires: -1
             })
+      }
+
+      // 函数节流
+      static throttle( cb , delay = 200){
+            let timer = null;
+            return function(){
+                  if(timer !== null) return false;
+                  timer = setTimeout(()=>{
+                        cb();
+                        timer = null;
+                  }, delay)
+            }
+      }
+
+      // 函数去抖
+      static debounce( cb , delay = 200){
+            let timer = null;
+            return function(){
+                  clearInterval(timer);
+                  timer = setInterval(()=>{
+                        cb();
+                  }, delay)
+            }
       }
 }
