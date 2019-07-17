@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery的状态机</title>
+</head>
+<body>
+    <script src="../../libs/jquery.js"></script>
+    <script>
+        //首先明确一点 ajax的回调函数只要成功，就返回是三个参数
+        //也就是 执行结果  执行状态  xhr
+        //xhr => xhr + deferred
+        //函数执行失败依次返回的是 xhr 错误类型 错误信息 
+        // $.get("./data/json.json")
+        // .then(function(res , state , xhr){
+        //       console.log(res);
+        // },
+        // function( xhr , errorType , errorMsg ){
+        //       // 错误回调
+        //       console.log(errorMsg);
+        // })
+
+        var p = new Promise(function(resolve){
+            resolve();
+        })
+        console.log(p)
+        // p.then(function(res){
+        //     console.log(res)
+        // })
+        //然后
+        // $.get(url,data,callback)
+        // 又因为callback牵涉到了回调地狱，所以小胖墩就设计了done
+        // .done(function(res){console.log(res)})
+        //done 效果跟then差不多
+
+        //.catch .always 先放着吧 现在真的莫得时间去看 先记在小本上
+
+        //deferred 是无new构造对象
+
+        // console.log($.Deferred())
+        //真是啥都有啊 resolve reject promise then等等
+
+    
+        function ajax(){
+            var $def = $.Deferred();//因为可以随便改变状态 所以不合格
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET","");
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                //为什么http状态码是200？不用其他信息
+                //首先这是国际通用，国际公用的状态 第二 传输的字节少
+                if(xhr.readyState ===4 && xhr.status === 200){
+                    $def.resolve(xhr.responseText);
+                }
+            }
+            //这个方法相对deferred少了resolve reject 这样就可以不能改变状态了
+            return $def.promise();
+        }
+        console.log(ajax());
+
+    //当几个一块执行完在返回   跟promise对象里的 all方法类似
+    $.when($.get(),$.get())
+    .then(function(res){
+        //返回三个参数 分别是第一个promise对象 第二个promise对象  
+    })   
+    
+    //最后总结一句就是 jquery的ajax返回的是 deferred里独有的promise对象
+    </script>
+</body>
+</html>
