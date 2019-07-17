@@ -1,0 +1,22 @@
+{
+    "code" : 0,
+    "apiname":"apiname",
+    "msg"  : "msg",
+    "data" :[
+                {
+                    "title" : "",
+                    "proimg" : "",
+                    "proname" : "",
+                    "proinfo" : "",
+                    "other" : "",
+                    "type" :"",
+                    "number":"",
+                    "price":"",
+                    "salesvolume":"",
+                    "surplus":""
+                },
+                {}
+                
+            ],
+    "other":""
+}
