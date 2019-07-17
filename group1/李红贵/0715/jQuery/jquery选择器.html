@@ -6,16 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        div{
+        /* div{
             width: 100px;
             height: 100px;
             background:  #ddd;
             margin: 20px;
         }
+        .borther{
+            background: #fff;
+            border: 1px solid #000;
+            width: auto;
+            height: auto;
+
+
+        }
+        .borther div{
+            height: 30px;
+        } */
+        .parend{
+            background: #fff;
+            width: 300px;
+            height: auto;
+            border: 5px solid red;
+        }
+        .parend div{
+            padding: 20px;
+            border: 5px solid  #eee;
+            
+        }
+        .boxf{
+            width: 100px;
+            height: 50px;
+            background: #ddd;
+        }
     </style>
 </head>
 <body>
-    <div id="box1"></div>
+    <!-- <div id="box1"></div>
     <div id="box1"></div>
     <div id="box3"></div>
     <div class="box"></div>
@@ -32,46 +59,77 @@
                   <strong>!!</strong>
             </li>
             <li>
+                <span>jiust a test</span>
                   <i>!!</i>
                   <ul>
                         <li>内部的li</li>
                   </ul>
             </li>
-      </ul>
+    </ul>
+
+    <div class="borther">
+        <div class="firstBor">hello world</div>
+        <div>hello world</div>
+        <div>hello world</div>
+        <div>hello world</div>
+        <div class="boxb">hello world</div>
+        <div>hello world</div>
+        <div>hello world</div>
+        <span>hhhhhh</span>
+        <div>hello world</div>
+        <strong>sssss</strong>
+        <div>hello world</div>
+        <div>hello world</div>
+    </div> -->
+
+
+    <div class="parend">
+        <div>
+            <div>
+                <div>
+                    <div class="boxf"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./jquery-3.4.1.js"></script>
 
     <script>
-        // 简单选择器 id class tag
-        // jQuery之中所有对元素的操作都是批量返回伪数组
-        $("#box1").css({
-            width : "+=200px",
-            background : "#000",
-        })
-        $(".box").css({
-            width : "200px",
-            background : "#000",
-        })
-        $("div").css({
-                background : "yellowgreen",
-        })
+        
+// jQuery之中所有对元素的操作都是批量返回伪数组,// 连缀式的编程模式;
 
-        $("#box3").css({
-            width : "+=200px",
-            background : "#000",
-        })
+
+// 简单选择器 id class tag
+        // $("#box1").css({
+        //     width : "+=200px",
+        //     background : "#000",
+        // })
+        // $(".box").css({
+        //     width : "200px",
+        //     background : "#000",
+        // })
+        // $("div").css({
+        //         // background : "yellowgreen",
+        // })
+
+        // $("#box3").css({
+        //     width : "+=200px",
+        //     background : "#000",
+        // })
 
         // jQuery选择器选择出来的实例; 不是DOM对象, 所以说和原生的DOMAPI不通用;
         // 实例对象之中获取 原生DOM对象获取原生dom后才能使用原生dom方法
-        console.log($(".box")[0]);
-        $(".box")[0].setAttribute("key","value");
+        // console.log($(".box")[0]);
+        // $(".box")[0].setAttribute("key","value");
         //jQuery 提供了所有DOM操作方案,不用原生DOM对象了;
         // document.querySelector(".box") === document.querySelector(".box") // true;
         // $(".box") === $(".box") //false  是两个不同实例对象
 
 // 1. 进阶选择器 : li a ; li a, li span,li strong ; * ;
 
-        // console.log($("ul li")); 后代选择器;
+        // 后代选择器;
+        // console.log($("ul li"));
         // console.log($(".list>li")); 
 
         // 群组选择器;
@@ -79,7 +137,7 @@
         //       color : "yellowgreen"
         // })
 
-        // 统配选择器;
+        // 通配选择器;
 
         // $("li *").css({
         //       color : "yellowgreen"
@@ -88,6 +146,95 @@
         // console.log(document.querySelectorAll("*"));
         // 慎用统配选择器;
         // 统配选择器一定限制范围;
+
+
+// 高级选择器;
+        //后代 , 兄弟选择器, 子元素选择器;
+
+        // 后代选择器;
+
+        // $("ul li span") == $("ul").find("li").find("span");
+        // console.log($("ul li").find("span"));
+
+        // //不传参数默认参数为* 所有子选择器，传参指查找某个子元素，返回实例;
+        // console.log($(".list").children().children("span"));
+        // //直接子选择器;
+        // $(".list").children().children("span").css({
+        //       background : "yellowgreen",
+        // });
+
+        // 兄弟选择器
+
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .next()//下一个弟弟
+        // .css({
+        //       background : "#f99"
+        // })
+        // .next()
+        // .css({
+        //       background : "red"
+        // })
+
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .nextAll("div")//所有弟弟div
+        // .css({
+        //       background : "#f99"
+        // })
+
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .nextUntil("span")//直到span，和span之间的弟弟
+        // .css({
+        //       background : "#f99"
+        // })
+
+        // 兄选择器
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .prev()//上一个哥
+        // .css({
+        //       background : "#f99"
+        // })
+        // .prev()
+        // .css({
+        //       background : "red"
+        // })
+
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .prevAll("div")//所有哥div
+        // .css({
+        //       background : "#f99"
+        // })
+
+        // $(".boxb").css({
+        //       background : "yellowgreen"
+        // })
+        // .prevUntil(".firstBor")//直到firstBor，和firstBor之间的哥
+        // .css({
+        //       background : "#f99"
+        // })
+
+// 父亲选择器
+        // 父亲们
+        // 父亲们直到 ;
+
+        // $(".boxf").parent().css({
+        //       borderColor : "#f99"
+        // })
+        // $(".boxf").parents().css({
+        //       borderColor : "#f99"
+        // })
+        $(".boxf").parentsUntil(".parend").css({
+              borderColor : "#f99"
+        })        
 
     </script>
 </body>
