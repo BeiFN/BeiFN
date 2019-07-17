@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+
+
+      /*   let fn = (a,b) => a+b;
+        console.log(fn(1,2)); */
+        // 箭头函数，声明是都是匿名函数
+        //格式：  （参数）=> {代码}；
+        //简写：一个参数=>一行代码
+
+        //示例
+        /* let foo = () => {
+            console.log("aaa");
+        }
+        foo(); */
+
+        /* let foo = (a,b) => {
+            console.log("aaa");
+            return a+b;
+        }
+        console.log(foo(1,2));//return 关键字可行 */
+
+       /*  let foo = (a,b) => {
+            console.log(arguments);
+            
+        }
+        console.log(foo(1,2));//箭头函数不支持arguments
+         */
+
+        //this:指向规则发生了改变：
+        //简便用法
+        //箭头函数在函数创建时就已经确定了函数的this的指向，不会随着调用函数而发生改变
+        //箭头函数不能作为构造函数;让函数更加纯粹，不用函数再去构造示例
+        /* let foo = () => {
+
+        }
+        new foo();//xxxx */
+ 
+        //箭头函数就是函数的部分替代品， 函数在es6以前太过强大了
+        //箭头函数只能作为函数的封装和复用的代码块去使用
+
+        //this  难！！！太多种调用情况
+        //以前：函数的this依旧调用者去决定
+        //现在：函数声明时，this指向函数的this就指向哪里，而且不发生改变
+
+         /* let foo = ()=>{
+            console.log(this);
+       }
+      //call和apply从此失效了;
+      // foo.call({name : "new constructor"});
+      // bind 
+      // var newFoo = foo.bind({name : "new constructor"});
+      // newFoo();
+
+      // 不给编辑this指向的权限了 , 按照既定规则走
+
+      let foo = ()=>{
+            console.log(this);
+      }
+      // this  => window;
+      foo(); // window;
+
+
+      var obj = {a:10};
+      //先创建对象，后进行赋值
+     
+
+      var obj = {
+            foo : ()=>{
+                  console.log(this); // window;
+            }
+      }
+      
+      obj.foo();
+
+      document.onclick = () => {
+           console.log(this);
+     }
+      // 事件处理函数用 this获取dom的方式会被逐渐淘汰(以上)，this指向逐渐统一指向实例对象
+      //在es6中，严格模式不可用
+      
+      document.onclick = () => {
+             console.log(this);
+       }//箭头函数不适合原型方法的设置
+
+     function Foo(){
+             this.a = "hello world";
+     }
+       Foo.prototype.sayA = ()=>{
+             console.log(this); // window;  this全局赋值 了
+       }//箭头函数不太适合原型方法的设置;
+
+       function Foo(){
+             // this = > Foo{}
+            this.a = 10;
+            document.onclick = () => {
+                console.log(this);//指foo
+              }
+     }
+      new Foo(); */
+
+     // 1. 作为事件处理函数 this 指向不指向事件触发的元素了; 
+       //2. 不能作为原型中的方法 : 因为this指向也是固定的无法访问实例之中的属性;
+
+      // 纯粹的功能封装。 随机数; 随机颜色; 
+
+
+     var arr = [1,1,1,1];
+     var newArray = arr.map(item=>item*1.3);
+     console.log(newArray)
+
+    </script>
+</body>
+</html>
