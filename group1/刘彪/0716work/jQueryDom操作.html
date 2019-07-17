@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">这是一个div</div>
+    <h1>这是h1</h1>
+    <ul>
+        <li>这是li</li>
+        <li>这是li</li>
+        <div>这是混在li里的div</div>
+        <li>这是li</li>
+        <li>这是li</li>
+        <li>这是li</li>
+    </ul>
+
+
+    <script src="../libs/jquery.js"></script>
+    <script>
+        // DOM的增删改查;
+        // 1.插入方式;
+        var $div = $("<div>被创建的div  </div>");
+        console.log($div);
+        // $div.appendTo(".box");
+        // $div.text("<strong>向世界问好</strong>");
+        // $("body").append($div);
+
+        //jquery提供的是连缀=>一行式编码,不好判定谁在前还是在后;
+        // $("body").prepend($div);
+        // $("body").append($div);
+
+        //同级关系;
+        // $div.insertAfter("h1");
+        // $div.insertBefore("h1");
+        //同级关系;
+        // $("h1").after($div);
+        // $("h1").before($div);
+        
+        // 2.删除;
+        // $("h1").remove();
+
+        // 3.包围该元素;
+        $("body").append($div);
+        // 每个被选择的元素被对应的每个span标签包裹;
+        // $div.wrap("<span>"); 
+        //移除div的包裹 
+        // $div.unwrap();
+        //创建一个class名为box的div,包裹被选择的元素;
+        // $div.wrapAll($(".box"));
+        //div里创建一个strong标签;
+        // $div.wrapInner("<strong>")
+
+
+        // $("li").wrap("<span>")
+        // $("li").wrapAll("<span>"); //其余元素排除在外;
+
+        //用class为box的元素覆盖被选择的元素(们)
+        //  $div.replaceWith($(".box"));
+        //  $("li").replaceWith($(".box"));
+
+        //用所有被选择的元素与覆盖class为box的元素.
+        // $("li").replaceAll($(".box"));
+
+        //清空被选择元素的内容;
+        // $("ul").empty();
+
+
+        //clone克隆元素,true表示可以克隆事件.
+        $div.click(function(){
+            alert();
+        })
+        $("body").append($div.clone(true));
+
+
+
+     
+
+        
+    </script>
+</body>
+</html>

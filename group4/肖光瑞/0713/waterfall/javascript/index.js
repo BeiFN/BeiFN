@@ -12,6 +12,10 @@ class WaterFall {
             this.template = $("#template");
             this.wrapper = $(".wrapper");
             this.container = $(".container");
+
+            this.cHeight = document.documentElement.clientHeight;
+            //标志变量判断是否在加载
+            this.loading = false;
             //第一排放入图片数
             this.count = 0;
             this.heightArray = [];
@@ -21,20 +25,33 @@ class WaterFall {
             on(window, "resize", () => {
                   clearTimeout(timer);
                   timer = setTimeout(() => {
-                        this.count = 0;
-                        this.heightArray.length = 0;
                         this.changeContainerWidth();
                         this.sort();
                         timer = null;
+                        this.cHeight = document.documentElement.clientHeight;
                   }, 500)
+
+            })
+
+            on(window, "scroll", async () => {
+                  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                  if (!this.loading && scrollTop + this.cHeight >= this.minHeight - 300) {
+                        this.loading = true;
+                        let res = await new Load().init(this.next_start);
+                        this.next_start = Load.nextStart;
+                        this.render(res);
+                        this.sort();
+                        // 加载结束要归零;
+                        this.loading = false;
+                  }
 
             })
 
             let res = await new Load().init(0);
             // console.log(res)
+            this.next_start = Load.nextStart;
             this.render(res);
             this.sort();
-
 
       }
 
@@ -63,7 +80,7 @@ class WaterFall {
                                     </div>
                               </div>`
             }
-            this.wrapper.innerHTML = html;
+            this.wrapper.innerHTML += html;
       }
 
       sort() {
@@ -84,7 +101,9 @@ class WaterFall {
             })
             let maxHeight = Math.max.apply(false, this.heightArray);
             this.container.style.height = maxHeight + "px";
-            console.log(this.heightArray);
+            this.minHeight = Math.min.apply(false, this.heightArray);
+            // console.log(this.heightArray);
+            this.heightArray.length = 0;
       }
 
 }
@@ -102,9 +121,11 @@ class Load {
 
             };
             let res = await ajax(url, { data: data, dataType: "json" });
+            Load.nextStart = res.data.next_start;
+            // console.log(Load.nextStart)
             return res.data.object_list;
       }
-
+      static nextStart = 0;
 }
 
 new WaterFall();
