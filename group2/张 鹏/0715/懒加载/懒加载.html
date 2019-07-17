@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../"></script>
+    <script>
+        class Render{
+            constructor(){
+                this.init();
+            }
+            async init(){
+                let res = await loadData();
+                let url = "http://localhost/dt";
+            }
+            loadData(){
+                let data = {//接口参数
+                include_fields:"top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+                  // filter_id: "美食菜谱",
+                  filter_id: "手工DIY",
+                  start : start
+                };
+                let res = await ajax(url,{data : data,dataType : "json"});
+            // 返回图片数据数组
+            return res.data.object_list;
+            }
+            
+        }  
+        new Render();  
+    </script>
+</body>
+</html>

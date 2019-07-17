@@ -1,4 +1,4 @@
-let { ajax, $, on } = Utils;
+let { ajax: myAJAX, $: $$, on } = Utils;
 class Pagination {
       constructor() {
       }
@@ -13,8 +13,8 @@ class Pagination {
             pageNo = 1,
             showNo = 5
       } = {}) {
-            this.list_wrapper = $(list);
-            this.page_wrapper = $(page);
+            this.list_wrapper = $$(list);
+            this.page_wrapper = $$(page);
             this.pageNo = pageNo;
             this.showNo = showNo;
             this.url = getData.url;
@@ -35,7 +35,9 @@ class Pagination {
       }
       // 加载数据;
       async loadData() {
-            let res = await ajax({ url: this.url, data: this.data, data_type: "json" });
+            // let res = await myAJAX({ url: this.url, data: this.data, data_type: "json" });
+            let res = await $.ajax({ url: this.url, data: this.data, dataType: "json" });
+            // console.log(res);
             return res;
       }
       // 渲染页面;
@@ -43,7 +45,10 @@ class Pagination {
             let data = this.res.data.contents;
             // 处理data;
             data = this.interceptData(data);
+            // console.log(data);
+            console.log(this.template);
             var html = ejs.render(this.template, { data: data });
+            console.log(html);
             this.list_wrapper.innerHTML = html;
       }
       //裁剪数据;
