@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>楼梯</title>
+    <style>
+            *{
+                  margin: 0;
+                  padding: 0;
+            }
+            header{
+                  height: 600px;
+                  background: #ddd;
+                  font-size: 100px;
+                  color: #fff;
+                  line-height: 600px;
+                  text-align: center;
+            }
+            div[class*=box]{
+                  height: 1000px;
+                  box-sizing: border-box;
+                  border: 5px solid #ddd;
+                  color: #fff;
+                  font-size: 100px;
+                  line-height: 1000px;
+                  text-align: center;
+            }
+            footer{
+                  height: 800px;
+                  background: yellowgreen;
+            }
+            .stairs{
+                  position: fixed;
+                  top: 50%;
+                  right: 50%;
+                  margin-right: 590px;
+                  -webkit-transform: translateY(-50%);
+                  -ms-transform: translateY(-50%);
+                  transform: translateY(-50%);
+                  padding: 0;
+                  background: #fff;
+                  -webkit-box-shadow: 0 0 3px 0 #ddd;
+                  box-shadow: 0 0 3px 0 #ddd;
+                  z-index: 110;
+                  -webkit-transform: scale(0);
+                  -ms-transform: scale(0);
+                  transform: scale(0);
+                  visibility: hidden;
+                  -webkit-transition: all .2s linear;
+                  transition: all .2s linear;
+            }
+            .stairs span{
+                  display: block;
+                  padding: 5px 10px;
+                  color: #666;
+                  -webkit-transition: all .2s linear;
+                  transition: all .2s linear;
+                  background: #f6f6f6;
+                  cursor: pointer;
+            }
+            .stairs span.active{
+                  color: #f10;
+                  font-weight: 700;
+            }
+            .show{
+                  -webkit-transform: scale(1);
+                  -ms-transform: scale(1);
+                  transform: scale(1);
+                  visibility: visible
+            }
+      </style>
+</head>
+<body>
+    <header>我是头部</header>
+    <div class="content">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+        <div class="box5">5</div>
+    </div>
+    <footer></footer>
+    <div class="stairs">
+        <span>楼梯链接</span>
+        <span>楼梯链接</span>
+        <span>楼梯链接</span>
+        <span>楼梯链接</span>
+        <span>楼梯链接</span>
+    </div>
+    <script src="../libs/jquery.js"></script>
+    <script src="../libs/utils.js"></script>
+    <script>
+        let {throttle} = Utils;
+        $(".content div").css({
+            background : function(){
+                var r = Math.round(Math.random() * 255 );
+                var g = Math.round(Math.random() * 255 );
+                var b = Math.round(Math.random() * 255 );
+                return "rgb("+r+","+g+","+b+")";
+            }
+        })
+
+        function Stairs(){
+            this.init();
+        }
+        $.extend(Stairs.prototype,{
+            init :function(){
+                this.header = $("header");
+                this.headerSize = {
+                    height : this.header.height()
+                }
+                this.stairs = $(".stairs");
+                this.boxs   = $("div[class*=box]");
+                this.stairsList = this.stairs.children();
+                this.boxsList = [];
+                $.each(this.boxs , $.proxy(function(index , item){
+                    var min = $(item).offset().top;
+                    this.boxsList.push({
+                        min : min,
+                        max : min + $(item).outerHeight()
+                    })
+                },this))
+                var self = this;
+                $(window).scroll(throttle($.proxy(function(){
+                    var st = $("body,html").scrollTop();
+                    this.toggleStairs(st);
+                    this.changeStairs(st);
+                },this),300));
+
+                this.stairs.on("click","span",$.proxy(function(evt){
+                    var target = evt.target;
+                    this.changeFloor.call(this,$(target).index());
+                    this.changeStairs($("body,html").scrollTop());
+                },this))
+
+            },
+            toggleStairs : function(st){
+                var has = this.stairs.hasClass("show");
+                if(!has && st > this.headerSize.height){
+                    this.stairs.addClass("show");
+                }
+                if(has && st < this.headerSize.height){
+                    this.stairs.removeClass("show");
+                }
+            },
+            changeFloor : function(index){
+                $("html,body").scrollTop(this.boxs.eq(index).offset().top);
+
+            },
+            changeStairs : function(scrollTop){
+                $.each(this.boxsList,$.proxy(function(index , item){
+                    if(scrollTop >= item.min && scrollTop < item.max){
+                        this.stairsList.eq(index).addClass("active")
+                        .siblings()
+                        .removeClass("active");
+                        
+                    }
+
+                },this))
+            }
+        })
+        new Stairs();
+    </script>
+</body>
+</html>
