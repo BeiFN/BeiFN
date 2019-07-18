@@ -37,5 +37,5 @@ define(["jquery", "./render", "./loaddata", "./carts"], function($, render, load
         title.html("购物车");
         $goods_ele.html(html);
     }
-    
+    carts.add(renderCartList,"changeNum");
 });
