@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../shopCart/styles/index.css">
+    <link rel="stylesheet" href="./shopCart/styles/index.css">
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -41,16 +41,15 @@
 
     </div>
     <script src="../libs/require.js"></script>
-    <script src="../libs/jquery.js"></script>
     <script>
         window.onload = function(){
             requirejs.config({
                 paths : {
                     "jquery" : "https://cdn.bootcss.com/jquery/3.4.1/jquery",
-                    "config" : "../shopCart/config/config"
+                    "config" : "./shopCart/config/config"
                 }
             })
-            require(["../shopCart/model/index"]);
+            require(["./shopCart/model/index"]);
         }
     </script>
 </body>
