@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        /* width: 200px; */
+        /* height: 100px; */
+    }
+        </style>
+    <script src="libs/jquery.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script> -->
+</head>
+<body>
+    <div class="box2">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box1">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box">hello world</div>
+    <div class="box3">hello world</div>
+
+    <script>
+    // $(".box1").css({background:"#f00"});
+    // $(".box1").css({background:"#f0f"}).prev().css({background:"#0ff"});
+    $(".box1").css({background:"#f0f"}).prevUntil(".box2").css({background:"#0ff"});
+    $(".box1").css({background:"#f0f"}).nextUntil(".box3").css({background:"yellowgreen"});
+    // $(".box1").css({background : "yellowgreen"})
+    </script>
+</body>
+</html>
