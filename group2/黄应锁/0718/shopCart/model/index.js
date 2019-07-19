@@ -1,9 +1,10 @@
-// 依赖前置，用参数返回代表 每个前置模块对应的实例对象
+// 处理耦合的模块;  => 业务逻辑模块;
+// 引入渲染功能模块; => render依赖jQuery ; 
+// 1. 在业务逻辑模块之中引入jQuery => 这样的引入不可靠;  可能导致依赖没有加载成功直接就执行了render代码，会导致报错;
+// 2. 依赖前置; 在每个模块定义前务必引入需要的依赖; 
 define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , loaddata ,carts) {
       'use strict';
       // 业务实现;
-
-      // 获取元素
       var $goods_ele    = $(".goods-list .row");
       var btn_carts     = $(".btn-carts");
       var title         = $(".content-title")
@@ -11,37 +12,28 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
       var cache = null;
       var def = loaddata.init();
       def.then(function(res){
-            console.log(res);
-            console.log(typeof res);
-            res = JSON.parse(res);
             cache = res.goods_list;
-            console.log(cache,res.goods_list);
-
-            // 请求到的数据传入渲染方法
             var html = render.init(res.goods_list,"goods_list");
             $goods_ele.html(html);
-            // 页面渲染结束后,调用购物车;
+            // 页面渲染结束后,调用carts;
             carts.init();
       })
-      
-      // 点击选择购物车，切换商品列表显示
+      // 选择元素;
+
+
       btn_carts.on("click" , function(){
-            console.log(1);
             $(this).addClass("active")
-            .siblings()//所有兄弟移出active属性
+            .siblings()
             .removeClass("active");
-            renderCartList();//渲染购物传
+            renderCartList()
       })
 
       function renderCartList(){
-            // 渲染购物车
             var html = render.init(cache,"carts_list");
             $goods_ele.html(html);
-            
             title.html("购物车");
       }
 
-      // 点击返回商品列表
       btn_goodslist.on("click" , function(){
             $(this).addClass("active")
             .siblings()
@@ -52,7 +44,6 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
       })
       console.log(carts);
 
-      // 添加监听，传入需要添加给实例对象的回调方法
       carts.add(renderCartList,"changeNum");
 
 });

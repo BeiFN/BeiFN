@@ -1,26 +1,19 @@
-// 渲染页面;
-
-// 获取数据后渲染界面
-define(['jquery',"./loaddata"], function() {
+// 渲染页面的模块 根据init中传入的类型判断商品或购物车 1.获取数据 2.获取模版 3.返回可以直接插入页面上的html  
+define(["jquery"], function($) {
       'use strict';
-      function Render(){}
-      $.extend( Render.prototype , {
-            init : function( list , type ){
-                  if(type === "goods_list"){
-                        // 渲染商品列表
-                        return this.renderGoodsList(list);
+      return {
+            init:function(res, type){ //res为函数调用时传入的数据，type为调用时传入的类型，包括商品和购物车
+                  if(type == "goods"){
+                        return this.renderGoodsList(res);
                   }
-                  if(type === "carts_list"){
-                        // 渲染购物车
-                        return this.renderCartsList(list);
+                  if(type == "cart"){
+                        return this.renderCartList(res);
                   }
             },
-            // 商品列表渲染
-            renderGoodsList : function(list){
-                  console.log(list);
-                  var html = "";
-                  $.each(list,function(index,item){
-                        // console.log(item);
+            renderGoodsList:function(res){
+                  var html = ""
+                  $.each(res.goods_list, function(index, item){
+                        // console.log(index, item)
                         html += `  <div class="col-md-3 goods-box">
                                           <div class="goods-img">
                                                 <img src="${item.thumb_url}" alt="">
@@ -42,23 +35,25 @@ define(['jquery',"./loaddata"], function() {
                   })
                   return html;
             },
-            renderCartsList : function(list){
-                  var ls = localStorage.getItem("carts");
-                  var la = JSON.parse(ls === null ? "[]" : ls);
-
-                  list = list.filter(function(goods_item){
-                        // 遍历返回符合条件的数
-
-                        return la.some(function(carts_item){
-                              // 有一个符合就返回
-                              if(carts_item.id == goods_item.goods_id){
-                                    goods_item.count = carts_item.count;
-                                    return true;
-                              };
-                        }) 
+            renderCartList:function(res){
+                  // 将res中的数据和本地的localStrorage做对比，获取到完整的数据
+                  var la = JSON.parse(localStorage.getItem("carts"));
+                  // console.log(la)
+                  var cartList = [];
+                  $.each(res.goods_list, function(index1, item1){
+                        // console.log(item)
+                        $.each(la,function(index2, item2){
+                              if(item1.goods_id == item2.id){
+                                    cartList.push(item1);
+                                    // console.log(cartList)
+                              }
+                        })
                   })
+                  //合并la和cartList中的内容,对象的合并
+                  // 获取到购物车里的数据后渲染到界面
                   var html = "";
-                  list.forEach( function(item){
+                  // console.log(cartList)
+                  cartList.forEach( function(item){
                         html += `  <div class="col-md-12 carts-item">
                                     <div class="carts-img">
                                           <img src="${item.thumb_url}" alt="">
@@ -74,10 +69,7 @@ define(['jquery',"./loaddata"], function() {
                                     <div class="carts-total-price">￥${ parseInt(item.count * item.group_price / 100)}</div>
                               </div>`
                   })
-
                   return html;
             }
-      })
-
-      return new Render();
+      }
 });

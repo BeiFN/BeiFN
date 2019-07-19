@@ -2,7 +2,6 @@
 define(function(require, factory) {
       'use strict';
       return {
-            // 全局参数
             ajaxUrl : {
                 goods : "./data/data.json"
             }
