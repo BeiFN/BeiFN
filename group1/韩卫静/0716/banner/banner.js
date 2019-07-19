@@ -89,8 +89,10 @@ $.extend(Banner.prototype , {
 	clickPagition : function(evt){
 		var e = evt || window.event;
 		var target = e.target || e.srcElement ;
-		this.toIndex($(target).index());	
-		this[this.option.effect]();
+		if($(target).parent()[0] == this.paginations[0]){
+			this.toIndex($(target).index());	
+			this[this.option.effect]();
+		}
 	},
 	goNext : function(){
 		if(this.nowIndex === this.sliders.length - 1){

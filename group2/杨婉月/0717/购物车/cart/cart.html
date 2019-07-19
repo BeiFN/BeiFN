@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart</title>
+    <link rel="stylesheet" href="./styles/cart.css">
+</head>
+
+<body>
+    <div class="cart-layout">
+        <div class="cart">
+            <div class="cart-title">购物车</div>
+            <ul class="column-list column-list-header">
+                <li class="column">
+                    <label class="el-checkbox is-checked" >
+                        <span  class="el-checkbox__input is-checked">
+                            <span class="el-checkbox__inner"></span>
+                            <input type="checkbox" class="el-checkbox__original" value="">
+                        </span>
+                        <span class="el-checkbox__label">全选</span>
+                    </label>
+                </li>
+                <li class="column">商品</li>
+                <li class="column">单价</li>
+                <li class="column">数量</li>
+                <li class="column">小计</li>
+                <li class="column">操作</li>
+            </ul>
+            <div class="cart-list">
+                <ul class="column-list column-list-body">
+                    <li class="column" style="padding: 12px;">
+                        <div class="select-wrap">
+                            <label class="el-checkbox is-checked">
+                                <span class="el-checkbox__input is-checked">
+                                    <span class="el-checkbox__inner"></span>
+                                    <input type="checkbox" class="el-checkbox__original" value="">
+                                </span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="column">
+                        <div class="product-wrap">
+                            <div class="p_img">
+                                <img class="logo" src="https://sku-images.obs.cn-south-1.myhuaweicloud.com/upload/goods20150828/10379660/103796600001/ori1.jpg" alt="">
+                            </div>
+                            <div class="product-info">
+                                <div class="name">男士字符羊毛衫</div>
+                                <ul class="sku-list">
+                                    <li class="sku">黑色,IT50</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="column">
+                        <span class="price-unit">¥</span>2824
+                    </li>
+                    <li class="column">
+                        <div class="el-input-number">
+                            <span role="button" class="el-input-number__decrease">
+                                <i class="el-icon-minus">-</i>
+                            </span>
+                            <input type="text" class="el-input">
+                            <span role="button" class="el-input-number__increase">
+                                <i class="el-icon-plus">+</i>
+                            </span>
+                            
+                        </div>
+                    </li>
+                    <li class="column">
+                        <span class="active">
+                            <span class="price-unit">¥</span>8472.00
+                        </span>
+                    </li>
+                    <li class="column">
+                        <button class="btn-link">删除</button>
+                        <button class="btn-store">加入收藏</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="cart-footer">
+                <label class="el-checkbox checkbox is-checked">
+                    <span class="el-checkbox__input is-checked">
+                        <span class="el-checkbox__inner"></span>
+                        <input type="checkbox" class="el-checkbox__original" value="">
+                    </span>
+                    <span class="el-checkbox__label">全选</span>
+                </label>
+                <button type="button" class="el-button el-button--text">
+                    <!---->
+                    <!----><span>删除</span></button> <button type="button" class="el-button el-button--text">
+                    <!---->
+                    <!----><span>加入收藏</span></button> <button type="button" class="el-button el-button--text">
+                    <!---->
+                    <!----><span>清除失效商品</span></button>
+                <div class="account-info">
+                    已选商品:&nbsp;&nbsp;<span>3</span>件,&nbsp;&nbsp;合计:&nbsp;&nbsp;<span><span
+                            class="price-unit">¥</span>8472.00</span></div> <button type="button"
+                    class="btn-account">去结算</button>
+            </div>
+            <div class="el-loading-mask" style="display: none;">
+                <div class="el-loading-spinner">
+                    <svg viewBox="25 25 50 50" class="circular">
+                        <circle  class="path"></circle>
+                    </svg>
+                    <!---->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="../../../../libs/require.js"></script>
+<script>
+    window.onload = function () {
+        //配置默认路径
+        requirejs.config({
+            paths: {
+                jquery: "../lib/jquery",
+                config: "../config/config"
+            }
+        })
+        //业务逻辑模块
+        require(["./model/index"])
+    }
+</script>
+
+</html>
