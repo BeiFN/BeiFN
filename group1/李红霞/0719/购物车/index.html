@@ -39,24 +39,26 @@
                   </div>
             </div>
       </div>
-      <div class="container-fluid footer">
+      <div class="container-fluid footer"></div>
 
-      </div>
-
-      <script src="../../libs/require.js"></script>
+      <script src="https://cdn.bootcss.com/require.js/2.3.6/require.js"></script>
       <script>
-            window.onload = function () {
-                  // 配置默认路径;
+            // 购物车的实现  利用require进行查找
+            // 只加载耦合处理的模块，通过index.js处理各个模块之间的耦合关系
+            window.onload = function(){
+                  // requirejs加载前置，包含要最先加载的模块的路径  ,模块的路径不用加后缀名，在require中已经进行了内置
+                  // require.config中的path声明的可以在全局进行访问
                   requirejs.config({
-                        paths : {
-                              "jquery" : "https://cdn.bootcss.com/jquery/3.4.1/jquery",
-                              "config" :  "./config/config"
+                        paths:{
+                              "jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery",
+                              "config":"./config/config",
                         }
                   })
-                  // 业务逻辑模块;
-                  require(["./model/index"])
+                  // require加载处理业务逻辑的模块，接受的第一个参数为一个要加载的路径的数组
+                  require(["./model/index"]);
             }
+            // require接接收一个对象作为参数
+      
       </script>
 </body>
-
 </html>     
