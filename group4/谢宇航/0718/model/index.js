@@ -26,7 +26,7 @@ define(["jquery", "./render", "./loaddata", "./carts"], function($, render, load
         $goods_ele.html(html);
     })
 
-    btn_carts.click(function () {
+    btn_carts.on("click", function () {
         $(this).addClass("active").siblings().removeClass("active");
         renderCartList();
     })
