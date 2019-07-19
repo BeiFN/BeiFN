@@ -5,9 +5,11 @@ define([
     './carts'
 ], function($, loaddata,render,carts) {
     'use strict';
-    console.log(loaddata)
-    var der=loaddata.init();
+    var $goods_ele = $(".goods-list .row");
+    var der=loaddata.init();      
     der.then(function(res){
-        console.log(res);
+        var cache=res.goods_list;
+        var html=render.init(cache,"goods_list");
+        $goods_ele.html(html);
     })
 });
