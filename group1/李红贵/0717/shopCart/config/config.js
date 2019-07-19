@@ -3,7 +3,7 @@ define(function(require, factory) {
       'use strict';
       return {
             ajaxUrl : {
-                goods : "../shopCart/data/data.json"
+                goods : "./data/data.json"
             }
       }
 });
