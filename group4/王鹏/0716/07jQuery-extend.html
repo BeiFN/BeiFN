@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script src="../libs/jquery.js"></script>
+      <script>
+
+            // $.extend();
+            // $.fn.extend(); 
+            // 非常多功能的方法;
+            // 对象的深浅克隆;
+
+            // 1. 接受两个及以上参数,向前合并对象把所有的对象都合并到第一个对象上。
+            
+            var obj = {
+                  a : 1,
+            }
+            // var obj2 = {
+            //       b : 2,
+            //       d : {}
+            // }
+            // var obj3 = {
+            //       c : 3
+            // }
+            // var res = $.extend(obj , obj2 , obj3);
+            // 深克隆 ; 
+            // var res = $.extend(true , obj , obj2 , obj3);
+            // console.log(obj);
+
+            // 向jQuery对象添加方法;
+
+            var res = $.extend(obj)
+            // obj 合并到 $ 上;
+            // console.dir($);
+            // console.log($.a);
+            // jQuery 插件; 
+            // 全局方法 => 写在jQuery构造函数上的方法;
+            // $.extend( {
+            //       a : function(){
+            //             alert("hahahah ， 我把方法写在jQuery 上了");
+            //       }
+            // })
+            // $.a();
+            // 原型上写;
+
+            // $.fn.extend({
+            //       a : function(){
+            //             console.log("hello i'm a");
+            //       }
+            // })
+            // // console.log($(document));
+            // $(document).a();
+
+            // jQuery.a = function(){
+            // }
+            // jQuery.fn.a = function(){
+            // }
+      </script>
+</body>
+</html>

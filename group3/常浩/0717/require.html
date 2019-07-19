@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./libs/require.js"></script>
+    <script>
+        window.onload=function(){
+            (["require2.js","require1.js"],function(foo2,foo1){
+                foo1();
+                foo2();
+            })
+        };
+
+        // 模块化写法 ：引用require文件  当页面加载完成的时候  我们利用模块化  将需要的文件发出请求加载
+        //在define 参数函数 (局部作用域)之中定义你想要执行的代码，但是不执行 , 把你封装的代码进行返回 ，返回给require加载器的回调函数,让加载器加载好全部内容后再进行顺序调用。
+    </script>
+</body>
+</html>
