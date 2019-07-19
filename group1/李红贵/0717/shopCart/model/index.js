@@ -12,7 +12,11 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
       var cache = null;
       var def = loaddata.init();
       def.then(function(res){
+            console.log(res);
+            console.log(typeof res);
+            res = JSON.parse(res);
             cache = res.goods_list;
+            console.log(cache,res.goods_list);
             var html = render.init(res.goods_list,"goods_list");
             $goods_ele.html(html);
             // 页面渲染结束后,调用carts;
@@ -22,15 +26,17 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
 
 
       btn_carts.on("click" , function(){
+            console.log(1);
             $(this).addClass("active")
             .siblings()
             .removeClass("active");
-            renderCartsList()
+            renderCartList()
       })
 
-      function renderCartsList(){
+      function renderCartList(){
             var html = render.init(cache,"carts_list");
             $goods_ele.html(html);
+            
             title.html("购物车");
       }
 
@@ -44,6 +50,6 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
       })
       console.log(carts);
 
-      carts.add(renderCartsList,"changeNum");
+      carts.add(renderCartList,"changeNum");
 
 });

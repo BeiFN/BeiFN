@@ -48,13 +48,13 @@
             window.onload = function () {
                   // 配置默认路径;
                   requirejs.config({
-                        paths : {
+                        paths: {
                               "jquery" : "https://cdn.bootcss.com/jquery/3.4.1/jquery",
                               "config" :  "./config/config"
                         }
                   })
-                  // 业务逻辑模块;
-                  require(["./model/index"])
+                  // 业务逻辑模块
+                  require(["./model/index.js"]);
             }
       </script>
 </body>

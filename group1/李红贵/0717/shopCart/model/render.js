@@ -14,6 +14,7 @@ define(['jquery',"./loaddata"], function() {
                   }
             },
             renderGoodsList : function(list){
+                  console.log(list);
                   var html = "";
                   $.each(list,function(index,item){
                         // console.log(item);
