@@ -1,6 +1,8 @@
 define(["jquery"], function ($) {
     "use strict";
-    function Carts() { }
+    function Carts() {
+        this.cbList = {};
+    }
     // 购物车功能无非就是添加各种乱七八糟的事件，然后写各种乱七八糟的处理函数
     $.extend(Carts.prototype, {
         init: function () {
@@ -19,6 +21,9 @@ define(["jquery"], function ($) {
                 }
             }, this));
             this.sumCartNum();
+            // 购物车加减;
+            this.main.on("click", ".btn-reduce", $.proxy(this.reduceGoodsNum, this));
+            this.main.on("click", ".btn-add", $.proxy(this.addGoodsNum, this));
         },
         addCart: function (evt) {
             var id = $(evt.target).attr("data-id");
@@ -106,6 +111,7 @@ define(["jquery"], function ($) {
             this.sumCartNum();
         },
         add: function (cb, type) {
+            console.log(this.cbList)
             if (!(this.cbList[type] instanceof Array)) {
                 this.cbList[type] = []
             }
