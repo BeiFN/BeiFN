@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 600px;
+            border: 5px solid #ccc;
+            text-align: center;
+            line-height: 600px;
+            font-size: 100px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .stairs-box {
+            height: auto;
+        }
+
+
+        .head {
+            height: 900px;
+            line-height: 900px;
+        }
+
+        .foot {
+            height: 800px;
+            line-height: 800px;
+        }
+
+        .strange {
+            height: 100px;
+            line-height: 100px;
+            font-size: 60px;
+        }
+
+        .stairs-list {
+            width: 100px;
+            height: 300px;
+            position: fixed;
+            left: 50px;
+            top: 100px;
+            z-index: 999;
+            background: #ffa;
+            visibility: hidden;
+        }
+
+        .stairs-list.show {
+            visibility: visible;
+        }
+
+        .stairs-list div {
+            height: 46px;
+            border: 2px solid #fcc;
+            line-height: 46px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .stairs-list div:hover {
+            background: #aaf;
+        }
+
+        .stairs-list div.active {
+            background: #faf;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">这是头部</div>
+    <div class="stairs-box">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <!-- <div class="strange">这是一个奇怪的东西</div> -->
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+        <div class="box5">5</div>
+        <div class="box6">6</div>
+    </div>
+    <div class="foot">这是底部</div>
+    <div class="stairs-list">
+        <div class="ladder1">1楼</div>
+        <div class="ladder2">2楼</div>
+        <div class="ladder3">3楼</div>
+        <div class="ladder4">4楼</div>
+        <div class="ladder5">5楼</div>
+        <div class="ladder6">6楼</div>
+    </div>
+
+    <script src="../../libs/hanshuku.js"></script>
+    <script src="../../libs/jquery.js"></script>
+    <script src="./Stairs.js"></script>
+
+</body>
+
+</html>
