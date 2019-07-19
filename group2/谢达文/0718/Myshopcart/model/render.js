@@ -1,5 +1,7 @@
-
-
+define([
+    'jquery'
+], function() {
+    'use strict';
     // console.log($);
     function Render(){}
     $.extend(Render.prototype,{
@@ -53,7 +55,7 @@
                     }
                 })
             })
-            // console.log(list);
+            console.log(list);
             list.forEach(function(item){
                 html += `<div class="col-md-12 carts-item">
                 <div class="carts-img">
@@ -75,4 +77,5 @@
             return html;
         }
     })
-export default new Render();
+    return new Render();
+});

@@ -1,9 +1,11 @@
 // 业务逻辑控制模块
 
-import loaddata from "./loaddata.js";
-import render from "./render.js";
-import cars from "./cars.js";
-export default  function() {
+define([
+    'jquery',
+    './loaddata',
+    './render',
+    './cars'
+], function($,loaddata,render,cars) {
     'use strict';
     // console.log(render);
     // console.log($);
@@ -24,14 +26,12 @@ export default  function() {
        $(this).addClass("active")
        .siblings()
        .removeClass("active");
-        renderCartsList();
-   })
-   function renderCartsList(){
-    var html = render.init(cache,"carts_list");
+       var html = render.init(cache,"carts_list");
     //    console.log(html);
        goods_ele.html(html);
        title.html("购物车");
-   }
+   })
+   
    btns_goodslist.on("click",function(){
        $(this).addClass("active")
        .siblings()
@@ -40,5 +40,4 @@ export default  function() {
        var html = render.init(cache,"goods_list");
        goods_ele.html(html);
    })
-   cars.add(renderCartsList,"changeNum");
-};
+});
