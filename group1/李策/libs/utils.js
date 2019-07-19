@@ -153,6 +153,16 @@ class Utils {
                   }
             }
       }
+      static throttle( cb , delay = 200 ){
+            let timer = null;
+            return function(){
+                  if( timer !== null ) return false;
+                  timer = setTimeout( () => {
+                        cb();
+                        timer = null;
+                  },delay)
+            }
+      }    
 
 
 }
@@ -171,7 +181,7 @@ class Utils {
                         // r => [1];
                         // fn3;
                         function s(o, u) {
-                              console.log(o);
+                              // console.log(o);
                               if (!n[o]) {
                                     if (!t[o]) {
                                           var a = typeof require == "function" && require; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = "MODULE_NOT_FOUND", f
