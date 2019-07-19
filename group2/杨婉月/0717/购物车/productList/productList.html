@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product List</title>
+    <link rel="stylesheet" href="./styles/productList.css">
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="btn-wrap">
+            <!---->
+            <div class="user-name">
+                您好,178*****057<span >[&nbsp;退出&nbsp;]</span></div> 
+                <button  type="button" class="btn-cart active">
+                    <i  class="iconfont icon-weibiaoti--">&#xe501;</i>
+                    <span >0</span>
+                </button>
+            <div class="el-dropdown"><span>
+                    我的走秀<i  class="el-icon-arrow-down el-icon--right"></i></span>
+            </div>
+        </div>
+
+
+        <div class="sort-wrapper">
+            <ul class="sort-list">
+                <li class="sort active">默认</li>
+                <li class="sort">
+                    按时间
+                </li>
+                <li class="sort">
+                    按销量
+                </li>
+                <li class="sort">
+                    按价格
+                </li>
+            </ul>
+        </div>
+        <div class="product-list-wrap">
+            <ul class="item-list">
+                <!-- <li class="item">
+                    <div data-loading="https://xiu-obs.obs.cn-south-1.myhuaweicloud.com/1555719775998.jpg" class="item-logo"
+                        data-src="http://img.sku.xiu.com/upload/goods20160617/11632652/116326520001/ori1.jpg?x-image-process=image/resize,w_600/format,webp/interlace,1"
+                        lazy="loaded"
+                        style="background-image: url(&quot;http://img.sku.xiu.com/upload/goods20160617/11632652/116326520001/ori1.jpg?x-image-process=image/resize,w_600/format,webp/interlace,1&quot;);">
+                    </div>
+                    <div class="item-point">Armani Jeans</div>
+                    <div class="item-name">女士植物拼接外套夹克</div>
+                    <div class="item-price">
+                        <span class="price-unit">¥</span>
+                        1935.0
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../../../../libs/require.js"></script>
+<script>
+    window.onload = function () {
+        //配置默认路径
+        requirejs.config({
+            paths: {
+                jquery: "../lib/jquery",
+                config: "../config/config"
+            }
+        })
+        //业务逻辑模块
+        require(["./model/index"])
+    }
+
+</script>
+
+</html>
