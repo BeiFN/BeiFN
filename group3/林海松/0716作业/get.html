@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="no-referrer"/><!--解决图片403-->
+    <title>Document</title>
+</head>
+<body>
+    <script src="./libs/jquery.js"></script>
+    <!-- <script src=""></script> -->
+    <script>
+        var url = "http://localhost/dt";
+        var data = {
+            include_fields : "top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+            filter_id      : "美食菜谱" ,
+            start          : 0 ,
+            _              :  Date.now() 
+        }
+        $.ajax( url ,{data : data , dataType:"json"}) //返回的是derffred对象，状态机。
+        .then(function(res){ //resoleve
+            console.log(res)
+        })
+        
+    </script>
+</body>
+</html>
