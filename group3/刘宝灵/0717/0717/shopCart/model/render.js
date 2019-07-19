@@ -16,7 +16,7 @@ define(['jquery',"./loaddata"], function() {
             renderGoodsList : function(list){
                   var html = "";
                   $.each(list,function(index,item){
-                        // console.log(item);
+                        console.log(item);
                         html += `  <div class="col-md-3 goods-box">
                                           <div class="goods-img">
                                                 <img src="${item.thumb_url}" alt="">
@@ -67,10 +67,9 @@ define(['jquery',"./loaddata"], function() {
                                     <div class="carts-total-price">￥${ parseInt(item.count * item.group_price / 100)}</div>
                               </div>`
                   })
-
+                  console.log(1);
                   return html;
             }
       })
-
       return new Render();
 });

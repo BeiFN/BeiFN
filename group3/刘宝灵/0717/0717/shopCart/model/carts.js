@@ -25,25 +25,12 @@ define([
                   this.main.on("click" , ".btn-add"    , $.proxy(this.addGoodsNum , this));
             },
             addCart:function(evt){
-                  // console.log(1);
                   var e = evt || window.event;
                   var target = e.target || e.srcElement;
                   var id = $(target).attr("data-id");
-                  // console.log(id);
-                  //把数据放入localStroage 里面;  
                   this.saveCart(id);
             },
             saveCart : function(id){
-                  // var arr = [{
-                  //       id    : id,
-                  //       count : 1
-                  // }]
-                  // localStorage.setItem("carts",JSON.stringify(arr));
-                  // console.log(localStorage.getItem("carts"));
-                  // 1. carts不存在; => 创建结构放入数据;
-                  // 2. carts存在  : 
-                  //              有相同id => count ++;
-                  //             没有相同id => 新建对象插入;
                   var s = localStorage.getItem("carts");
                   if(s === null){
                         var a = [{
