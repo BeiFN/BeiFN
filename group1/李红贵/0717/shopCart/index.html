@@ -15,7 +15,7 @@
 
 <body>
 
-    <!-- Static navbar -->
+    <!-- Static navbar 使用bootstrap自动css样式 -->
   
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -43,7 +43,7 @@
         <h3 class="content-title">商品列表</h3>
         <div class="goods-list">
             <div class="row">
-
+                <!-- 动态添加显示商品 -->
             </div>
         </div>
     </div>
@@ -51,9 +51,10 @@
     <!-- <div class="container-fluid footer"></div> -->
 
 
-
+    <!-- jQuery导入方式1 -->
     <!-- <script src="../../libs/jquery-3.4.1.js"></script> -->
    
+    <!-- 模块化开发 -->
     <script src="../../libs/require.js"></script>  
     <script>
         // window.onload = function () {
@@ -63,6 +64,7 @@
                   // 配置默认路径;
                   requirejs.config({
                         paths : {
+                            // jQuery导入方式2
                               "jquery" : "https://cdn.bootcss.com/jquery/3.4.1/jquery",
                               "config" :  "./config/config"
                         }
