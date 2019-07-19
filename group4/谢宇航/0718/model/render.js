@@ -40,7 +40,7 @@ define(["jquery"], function ($) {
             // 渲染购物车列表，首先考虑从哪获取数据=>本地local storage(以对象型数组保存，获取到的是JSON字符串)
             var ls = localStorage.getItem("carts");
             // 需要json.parse转换成数组, 还需要判断缓存是否为空
-            var la = JSON.parse(ls === "null" ? "[]" : ls);
+            var la = JSON.parse(ls === null ? "[]" : ls);
             // 然后根据数据的id和缓存的id进行匹配，获取到缓存中每个商品的信息，保存到数组里等待渲染
             list = list.filter(function (goods_item) {
                 return la.some(function (carts_item) {
