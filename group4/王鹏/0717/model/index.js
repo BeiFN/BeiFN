@@ -25,10 +25,10 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
             $(this).addClass("active")
             .siblings()
             .removeClass("active");
-            renderCartsList()
+            renderCartList()
       })
 
-      function renderCartsList(){
+      function renderCartList(){
             var html = render.init(cache,"carts_list");
             $goods_ele.html(html);
             title.html("购物车");
@@ -44,6 +44,6 @@ define(["jquery" , "./render","./loaddata","./carts"], function( $ , render , lo
       })
       console.log(carts);
 
-      carts.add(renderCartsList,"changeNum");
+      carts.add(renderCartList,"changeNum");
 
 });
