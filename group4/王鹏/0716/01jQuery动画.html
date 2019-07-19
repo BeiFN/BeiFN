@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box,.box2{
+                width: 200px;
+                height: 200px;
+                background: #ff0;
+                position: absolute;
+                top: 30px;
+                left: 20px;
+            }
+            .box2{
+                background: rgb(88, 88, 37);
+                left: 250px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn">点我点我点我</button>
+        <div class="box"></div>
+        <div class="box2"></div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+        <script>
+           
+            // $("#btn").click(function(){
+            //     // 简单动画
+
+            //     // show  hide 显示隐藏（宽高逐渐改变，缩放既视感）  默认无动画
+            //     // show( 运动时长或slow|normal|fast, 回调函数  )
+            //     // show( 运动时长或slow|normal|fast, 切换效果swing|linear, 回调函数  )
+            //     // $(".box").hide();
+            //     // $(".box2").show();
+            //     // 动画
+            //     // $(".box:visible").hide(1000);
+            //     // $(".box2:hidden").show(1000);
+            //     // 自动
+            //     // $("div").toggle(3000,"linear",function(){
+            //     //     console.log(1);
+            //     // });
+
+            //     // fade 淡入淡出
+            //     // $(".box").fadeOut("slow");
+            //     // $(".box2").fadeIn("slow");
+            //     // $(".box").fadeOut(1000);
+            //     // $(".box2").fadeIn(1000);
+            //     // 自动
+            //     // $("div").fadeToggle(1000);
+            //     // $("div").fadeTo(1000,0.3); // 透明度
+
+            //     // slide  上下拉
+            //     // $(".box").slideUp(1000);
+            //     // $(".box2").slideDown(1000);
+            //     // 自动
+            //     // $("div").slideToggle(1000);
+            // });
+
+
+
+                // 自定义动画
+            // $("#btn").click(function(){
+            //     // 自定义动画animate( 运动的参数和目标 json , 动画时长 , 运动速度 , 回调函数)
+            //     $(".box").animate({
+            //         width : 400,
+            //         height : 400
+            //     },2000)
+            // });
+
+
+            // animate列队机制
+            // $("#btn").click(function(){
+            //     $(".box").animate({
+            //         width:300,
+            //         height:300
+            //     },function(){
+            //         $(this).animate({
+            //             width:200,
+            //             height:200
+            //         },function(){
+            //             $(this).animate({
+            //                 left:300
+            //             },function(){
+            //                 $(this).animate({
+            //                     top:300
+            //                 },function(){
+            //                     $(this).animate({
+            //                         left:20
+            //                     },function(){
+            //                         $(this).animate({
+            //                             top:30
+            //                         })
+            //                     })
+            //                 })
+            //             })
+            //         })
+            //     })
+            // });
+
+                //优化
+            $("#btn").click(function(){
+                $(".box")
+                .animate({
+                    width:300,
+                    height:300
+                })
+                .animate({
+                    width:200,
+                    height:200
+                })
+                .animate({
+                    left:300
+                })
+                .animate({
+                    top:300
+                })
+                .animate({
+                    left:20
+                })
+                .queue(function(next){
+                    $(this).css({
+                        background:"red"
+                    })
+                    next();
+                })
+                .animate({
+                    top:30
+                })
+                return false;
+            });
+
+            // stop终止动画及队列
+            $(document).click(function(){
+                // 参数1：是否继续执行动画且不清空队列；
+                // 参数2：是否立即终止且不完成动画；
+                $(".box").stop(true);
+            });
+        
+        </script>
+    </body>
+</html>

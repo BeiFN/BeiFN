@@ -35,8 +35,12 @@
             left : 10%;
             width: 80px;
             cursor: pointer;
+            display: none;
         }
-        .stairs span{
+        .show{
+            display: block;
+            }
+         span{
             float: left;
             width: 78px;
             height: 40px;
@@ -81,7 +85,7 @@
     }
     $.extend(Stairs.prototype , {
         init : function(){
-            this.header = $("header");
+            this.header = $(".header");
             this.stairs = $(".stairs");
             this.headerSize = {
                 height : this.header.height()
@@ -90,12 +94,16 @@
                     var scrollTop = $("body,html").scrollTop();
                     this.toggleStairs(scrollTop);
                     this.changeStairs(scrollTop);
-                    console.log(1);      
+                    // console.log(1);      
             },this),100));
         },
-        toggleStairs : function(toggle){//显示隐藏按钮功能
-            if(scrollTop > this.headerSize.height){
-                
+        toggleStairs : function(scrollTop){//显示隐藏按钮功能
+            var has = this.stairs.hasClass("show");
+            if(!has && scrollTop > this.headerSize.height){
+                    this.stairs.addClass("show");
+            }
+            if(has && scrollTop < this.headerSize.height){
+                    this.stairs.removeClass("show");
             }
         } ,
         changeLayer : function(index){//改变楼层
@@ -106,7 +114,7 @@
 
         }
 
-    });
+    })
     new Stairs();
 
 
