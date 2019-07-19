@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery-extend</title>
+</head>
+
+<body>
+    <script src="../js/jquery.js"></script>
+    <script>
+        var obj = {
+            a: 1,
+            b: {
+                e:3
+            }
+        }
+        // var obj2 = {
+        //     c: 2,
+        //     d: [4]
+        // }
+        var res = $.extend(obj);
+        // console.log($.res); // undefined  没有上面的赋值语句也是undefined
+        // console.dir(res); // 等同于$和jQuery
+        // console.log($.fn.res); // undefined
+        // console.dir($);
+        console.log($.a); // 1
+        console.log($.fn.a); // undefined
+
+        // var res = $.extend(obj, obj2);
+        // console.log(res == obj); // true
+        // console.log(res.b == obj.b); // true
+        // console.log(res.d == obj.d); // true
+        // console.log(res.d == obj2.d); // true
+        // var res2 = $.extend(true, obj, obj2);
+        // console.log(res2 == obj); // true
+        // console.log(res2.b == obj.b); // true
+        // console.log(res2.d == obj.d); // true
+        // console.log(res2.d == obj2.d); // true
+
+
+
+        // var obj = {
+        //     a: {
+        //         b: 1,
+        //         c: 2
+        //     }
+        // };
+        // var obj2 = {
+        //     a: {
+        //         b: 2,
+        //         d: 3
+        //     }
+        // };
+        // var res = $.extend(obj, obj2);
+        // console.log(res); // {a: {b: 2, d: 3}}  为啥会是4呢？？？
+        // obj2.a.d = 4;
+        // console.log(res); // {a: {b: 2, d: 4}}
+        // console.log(obj); // {a: {b: 2, d: 4}}
+        // var res2 = $.extend(true, obj, obj2);
+        // console.log(res2); // {a: {b: 2, c: 2, d: 3}}
+        // obj2.a.d = 4;
+        // console.log(res2); // {a: {b: 2, c: 2, d: 3}}
+        // console.log(obj); // {a: {b: 2, c: 2, d: 3}}
+
+
+        // var obj = {
+        //     a: {
+        //         b: 1,
+        //         c: 2
+        //     }
+        // };
+        // obj.a.c = 4;
+        // console.log(obj);
+        // obj.a.c = 3;
+
+        // var obj2 = {
+        //     a: 1
+        // };
+        // console.log(obj2);
+        // obj2.a = 2;
+    </script>
+</body>
+
+</html>
