@@ -5,8 +5,10 @@ define(["jquery" , "./render" , "./loadData"], function($ , render , loadData) {
     
     // console.log(loadData);  //{init: ƒ}
     
-    loadData.init();
-    console.log()
+    var data = loadData.init();
+    // data.then(function(res){
+    //     console.log(res);
+    // })
     
 
 });
