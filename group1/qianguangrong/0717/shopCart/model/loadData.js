@@ -15,7 +15,7 @@ define(["jquery" , "config"], function($ ,config) {
             // var url = "./data.json";//因为请求数据向index.html请求，所以当前路径在index.html
             // return $.ajax(url);
 
-            return $.ajax(config.ajaxUrl.goods)
+            return $.ajax("./Data.json");
         }
     }
 });
