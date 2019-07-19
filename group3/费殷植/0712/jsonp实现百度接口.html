@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <div id="content">
+
+    </div>
+    <script>
+        // //常规的
+        // function jsonp(url, field, callback, data) {
+        //     // GB_name = foo
+        //     window.foo = function (res) {
+        //         callback(res)
+        //     }
+
+        //     if (typeof data === "object") {
+        //         let data_str = ""
+        //         for (var attr in data) {
+        //             data_str += (data_str.length > 0 ? "&" : "") + attr + "=" + data[attr]
+        //         }
+        //     }
+
+        //     url += /\?/.test(url) ? "&" : "?"
+        //     let script = document.createElement("script");
+        //     script.src = url + field + "=foo&" + data_str;
+        //     script.onload = function () {
+        //         script.remove();
+        //     }
+        //     document.body.appendChild(script);
+        // }
+
+        //promise的
+        function jsonp(url, field, data) {
+            return new Promise(function (resolve, reject) {
+                // GB_name = foo
+                window.foo = function (res) {
+                    resolve(res)
+                }
+
+                if (typeof data === "object") {
+                    var data_str = ""
+                    for (var attr in data) {
+                        data_str += (data_str.length > 0 ? "&" : "") + attr + "=" + data[attr]
+                    }
+                }
+
+                url += /\?/.test(url) ? "&" : "?"
+                let script = document.createElement("script");
+                script.src = url + field + "=foo&" + data_str;
+                script.onload = function () {
+                    script.remove();
+                }
+                document.body.appendChild(script);
+            })
+        }
+
+        let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+
+        let data = {
+            json: 1,
+            p: 3,
+            sid: 1423_21080_29238_28518_29099_28830_29221_22158,
+            req: 2,
+            sc: "eb",
+            csor: 0,
+            _: Date.now(),
+            wd: ""
+        }
+        var ipt = document.getElementById("ipt")
+        var content = document.getElementById("content")
+        ipt.oninput = function () {
+            data.wd = ipt.value;
+            //返回的是Promise
+            jsonp(url, "cb", data)
+                .then(function (res) {
+                    var html = ""
+                    res.s.forEach(txt => {
+                        html += "<p>" + txt + "</p>"
+                    })
+                    content.innerHTML = html;
+                })
+
+
+        }
+    </script>
+</body>
+
+</html>

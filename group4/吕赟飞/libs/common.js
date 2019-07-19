@@ -261,4 +261,27 @@ class Utils {
                   expires: -1
             })
       }
+
+      // 函数节流
+      static throttle( cb , delay = 200){
+            let timer = null;
+            return function(){
+                  if(timer !== null) return false;
+                  timer = setTimeout(()=>{
+                        cb();
+                        timer = null;
+                  }, delay)
+            }
+      }
+
+      // 函数去抖
+      static debounce( cb , delay = 200){
+            let timer = null;
+            return function(){
+                  clearInterval(timer);
+                  timer = setInterval(()=>{
+                        cb();
+                  }, delay)
+            }
+      }
 }
