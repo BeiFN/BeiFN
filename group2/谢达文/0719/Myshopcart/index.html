@@ -43,17 +43,10 @@
 
       </div>
 
-      <script src="../../libs/require.js"></script>
-      <script>
-           window.onload = function(){
-                requirejs.config({
-                    paths:{
-                        "jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery",
-                        "config":"./config/config"
-                    }
-                })
-                require(["./model/index"]);
-           }
+      <script src="../../libs/jquery.js"></script>
+      <script type="module">
+           import shopCart from "./model/index.js";
+           shopCart();
       </script>
 </body>
 
