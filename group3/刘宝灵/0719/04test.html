@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型继承</title>
+</head>
+<body>
+    <script>
+        function Father(){}
+        Father.prototype.show = function(){
+            console.log("hello i'm class Father");
+        } 
+        Father.prototype.hello = function(){
+            console.log("i'm Father's hello");
+        } 
+        function Son(){}
+        // Son.prototype.show = Father.prototype.show;
+        // Son.prototype = Father.prototype;
+        // Son.prototype.hello = function(){
+        //     console.log("hello");
+        // }
+        // console.log(new Son());
+
+        // for(var attr in Father.prototype){
+        //     Son.prototype[attr] = Father.prototype[attr];
+        // }
+        // console.log(new Son());
+
+        // Son.prototype.__proto__ =  Father.prototype;
+        // console.log(new Son());
+
+        // Son.prototype = new Father();
+        // Son.prototype.constructor = Son;
+        // console.log(new Son());
+
+        // Son.prototype = Object.create(Father.prototype);
+        // Son.prototype.constructor = Son;
+        // console.log(new Son());
+
+        
+    </script>
+</body>
+</html>

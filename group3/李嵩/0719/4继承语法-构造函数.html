@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Parent(){
+        //     this.name = "hello world i'm parent";
+        // }
+        // function Son(){
+        //     Parent.call(this);
+        // }    
+        // var son = new Son();
+        // console.log(son);
+
+        // function Parent(name , age){
+        //     this.name = name;
+        //     this.age  = age;
+        // }
+
+        // function Son( name , age , lines){
+        //     Parent.call(this , name , age);
+        //     this.lines = lines;
+        // }
+
+        // var p = new Parent("吴彦祖" , "47");
+        // console.log(p);
+        // var s = new Son("吴孟达" , "52" , "不错");
+        // console.log(p,s);
+        
+
+        function Son(){
+            Parent.apply(this , arguments);
+            this.lines = lines;
+        }
+        //apply 是一步式继承;
+        //call 是语义化良好的，可以扩展的继承。
+        
+    </script>
+</body>
+</html>

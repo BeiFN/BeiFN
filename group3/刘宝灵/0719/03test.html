@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>构造函数继承</title>
+</head>
+<body>
+    <script>
+        // function Parent(){
+        //     this.name = "hello world i'm parent";
+        // }
+        // function Son(){
+        //     Parent.call(this);
+        // }
+        // console.log(new Son());
+
+
+        // function factory(){
+        //     var obj = new Object();
+        //     obj.a = 10;
+        //     return obj;
+        // }
+
+        // function Parent(){
+        //     this.name = "hello world i'm parent";
+        // }
+        // function Son(){
+        //     Parent.call(this);
+        // }
+        // console.log(new Son());
+
+        function Parent(name , age){
+            this.name = name;
+            this.age = age;
+        }
+        // function Son(name , age ,lines){
+        //     Parent.call(this , name , age);
+        //     this.lines = lines;
+        // }
+        function Son(name , age ,lines){
+                  Parent.apply(this ,  arguments);
+                  this.lines = lines;
+        }
+        // var p = new Parent("刘德华" , "56");
+        var s = new Son("吴孟达" , "65" , "阿星,快跑");
+        console.log(s);
+
+    </script>
+</body>
+</html>
