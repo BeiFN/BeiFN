@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Father(){};
+        // Father.prototype.hello = function(){
+        //     console.log("hello world");
+
+        // }  
+        // function Son(){};
+        // Son. prototype .__proto__ = Father.prototype;
+        // new Son().hello();
+   // ES5 方法实现原型链继承;
+            function Father(){}
+            Father.prototype.show = function(){
+                  console.log("hello i'm class Father");
+            }
+            Father.prototype.hello = function(){
+                  console.log("i'm Father's hello");
+            }
+
+            function Son(){}
+            Son.prototype = Object.create(Father.prototype);
+            Son.prototype.constructor = Son;
+            console.log(new Son());
+            console.log(new Son().show(),new Son().hello());
+
+    </script>
+</body>
+</html>
