@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            // IE8 + ;
+
+            // type => GET | POST 
+            // payload ; => form data ; key:value
+            // url  => 
+            // callback  干掉;
+            // function ajax(  url , callback , data, type  ){
+            //       // 如果type 为 get 那么data拼接在url上 
+            //       // 如果type 为 post 1. 设置请求头  2. 把data放在send里; 
+            //       var xhr = null;
+            //       if(XMLHttpRequest){
+            //             xhr = new XMLHttpRequest();
+            //       }else{
+            //             xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+            //       }
+            //       if(xhr === null) throw "浏览器不支持ajax";
+
+            //       xhr.open( type ? type : "GET" , url );
+            //       type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+            //       xhr.send( null );
+            //       xhr.onreadystatechange = function(){
+            //             if(xhr.readyState === 4 && xhr.status === 200){
+            //                   callback(xhr.responseText);
+            //             }
+            //       }
+            // }
+            // ajax();
+
+            // data版本剖析
+
+            // function ajax(  url , callback , data, type  ){
+            //       // data  key=value&key2=value2;
+            //       //     => {key:value,key2:value2};
+            //       var dataStr = "";
+            //       for(var attr in data){
+            //             dataStr += `${dataStr.length > 0 ? "&" : ""}${attr}=${data[attr]}`;
+            //       }
+            //       // GET 
+            //       url += (/\?/.test(url) ? '&' : "?") + dataStr;
+            //             // console.log(url);
+            //       // POST 
+            //       xhr.send(dataStr);
+            // }
+            // ajax("http://www.baidu.com",2, {key:"value",key2:"value2"});
+
+            // 合并版;
+            function ajax(  url , callback , data, type  ){
+                  // 如果type 为 get 那么data拼接在url上 
+                  // 如果type 为 post 1. 设置请求头  2. 把data放在send里; 
+                  var xhr = null;
+                  if(XMLHttpRequest){
+                        xhr = new XMLHttpRequest();
+                  }else{
+                        xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+                  }
+                  if(xhr === null) throw "浏览器不支持ajax";
+
+                  var dataStr = "";
+                  for(var attr in data){
+                        dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                  }
+
+                  type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + dataStr : "";
+
+                  xhr.open( type ? type : "GET" , url );
+                  type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+                  xhr.send( type === "POST" ? dataStr : null );
+                  xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4 && xhr.status === 200){
+                              callback(xhr.responseText);
+                        }
+                  }
+            }
+
+
+            // promise 封装之前要做的事;
+
+            function ajax(url  , data, type){
+                  //Promise参数就是函数 
+                  return new Promise( function(resolve , reject){
+
+                        //兼容性写法
+                        var xhr = null;
+                        if(XMLHttpRequest){
+                              xhr = new XMLHttpRequest();
+                        }else{
+                              xhr = new ActiveXObject("Mricosoft.XMLHTTP");
+                        }
+                        if(xhr === null) throw "浏览器不支持ajax";
+
+                        var dataStr = "";
+                        for(var attr in data){
+                              dataStr += (dataStr.length > 0 ? "&" : "") + attr + "=" + data[attr];
+                        }
+
+                        type === "GET" ? url += (/\?/.test(url) ? "&" : "?") + dataStr : "";
+
+                        xhr.open( type ? type : "GET" , url );
+                        type === "POST" ? xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"): "";
+                        xhr.send( type === "POST" ? dataStr : null );
+                        xhr.onreadystatechange = function(){
+                              if(xhr.readyState === 4 && xhr.status === 200){
+                                    //promise封装的方法
+                                    resolve(xhr.responseText);
+                              }
+                        }
+
+                        // 设置超时;
+                        setTimeout(function(){
+                              //超时就执行reject
+                              reject(xhr,"timeout");
+                        },8000)
+                  })
+            }
+
+            ajax()
+            .then()
+
+
+      
+      </script>
+</body>
+</html>

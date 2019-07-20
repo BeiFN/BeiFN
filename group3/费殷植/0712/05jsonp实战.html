@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+</head>
+<body>
+
+      <script>
+            // function ssss(res){
+            //       console.log(res);
+            // }      
+            // // 问题1 : 我不想在页面加载的时候就发起请求;
+
+            // // 让发起请求script标签受js控制。 
+            // // 自己创建script标签;
+            // document.onclick = function(){
+            //       var script = document.createElement("script");
+            //       script.src = "http://localhost/gp12coding/0711/05jsonp.php?callback=ssss"
+            //       script.onload = function(){
+            //             this.remove();
+            //       }
+            //       document.body.appendChild(script);
+            // }
+            // 问题2 : 我不想把全局函数名再叫做jsonpcallback了;
+
+            // 问题3 : 想要封装  ;
+
+            // 1. 在函数内怎么声明全局函数; 
+
+            // function jsonp(){
+            //       window.sss = function(){
+
+            //       }
+            // }
+            // jsonp();
+            // console.log(sss);
+
+            function jsonp(url,cb_fild,callback){
+                  var GLOBAL_CB = "foo"
+                  // 1.全局函数;
+                  window[GLOBAL_CB] = function (res){
+                        callback(res)
+                  }
+                  // 2. 发送请求; 
+                  var script = document.createElement("script");
+                  url += /\?/.test(url) ? "&" : "?";
+                  script.src = url + cb_fild + "=" + GLOBAL_CB;
+                  script.onload = function(){
+                        this.remove();
+                  }
+                  document.body.appendChild(script);
+            }
+
+            jsonp("http://localhost/day23/05jsonp.php","callback",function(res){
+                  alert(res);
+            })
+      </script>
+
+      <!-- <script src="http://localhost/gp12coding/0711/05jsonp.php"></script> -->
+</body>     
+</html>

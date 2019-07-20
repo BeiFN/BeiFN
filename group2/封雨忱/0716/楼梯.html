@@ -112,13 +112,29 @@
             init:function(){
                 this.stairs=$(".stairs");
                 this.header=$("header");
+                this.boxs   = $("div[class*=box]");
+                this.boxsList=[];
+                this.stairsList=this.stairs.children();
                 this.headerSize={
                     height:this.header.height()
                 }
+                $.each(this.boxs ,$.proxy(function(index,item){
+                    var min =$(item).offset().top;
+                    this.boxsList.push({
+                        min:min,
+                        max:min+$(item).outerHeight()
+                    })
+                },this))
                 $(window).scroll(throttle($.proxy(function(){
                     let st =$("html,body").scrollTop();
                     this.toggleStairs(st);
+                    this.changeStairs(st);
                 },this),300));
+                this.stairs.on("click","span",$.proxy(function(evt){
+                    var target=evt.target;
+                    this.changeFloor.call(this,$(target).index());
+                    this.changeStairs($("html,body").scrollTop());
+                },this))
             },
             toggleStairs:function(st){
                 let has = this.stairs.hasClass("show");
@@ -129,11 +145,17 @@
                     this.stairs.removeClass("show");
                 }
             },
-            changeFloor:function(){
-
+            changeFloor:function(index){
+                $("html,body").scrollTop(this.boxs.eq(index).offset().top)
             },
-            changeStairs:function(){
-
+            changeStairs:function(scrollTop){
+                $.each( this.boxsList , $.proxy(function(index , item){
+                    if(scrollTop >= item.min && scrollTop < item.max){
+                        this.stairsList.eq(index).addClass("active")
+                        .siblings()
+                        .removeClass("active");
+                    }
+                },this))
             }
         })
         new Stairs();
