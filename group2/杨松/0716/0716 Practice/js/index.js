@@ -1,103 +1,120 @@
+﻿
 
-// 1. 渲染页面;
-// - 获取数据
-// - 拼接页面;
+let { $, on, ajax } = Utils;
+class Waterfall {
+    constructor() {
+        this.init()
+    }
+    //初始化
+    async init() {
+        this.imgWrapper = $(".wrapper")
+        this.container = $(".container")
+        this.heightArr = []
 
-let { ajax  ,$, on } = Utils;
+        let data = await new Load().init(0)
+        let timer = null;
 
-class WaterFall{
-      constructor(){
-            this.init();
-      }
-      async init(){
-          this.template    = $("#template");
-          this.wrapper     = $(".wrapper");
-          this.container   = $(".container");
-          // 第一排能放下多少个元素;
-          this.count       = 0;
-          this.heightArray = [];
-          this.changeContainerWidth();
-          let timer = null;
-          on(window , "resize" , ()=>{
-                  clearTimeout(timer);
-                  timer = setTimeout( ()=>{
-                        this.changeContainerWidth();
-                        timer = null;
-                  },500)
-          })
-          let res =  await new Load().init(0);
-          this.render(res);
+        //页面尺寸改变触发函数  触发函数
+        on(window, "resize", () => {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                this.coculateWidth();
+                this.sort()
+                // this.render(data);
+                timer = null;
+            }, 500)
+        })
+        this.cHeigth = document.documentElement.clientHeight;
+        //节流的方式
+        this.loading = false;
+        //滑轮滚动 
+        on(window, "scroll", async() => {
+            let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if (scrollTop + this.cHeigth > (this.minHeight - 500) && !this.loading) {
+                this.loading = true;
 
-          this.sort();
-      }
-      changeContainerWidth(){
-          let cWidth = document.documentElement.clientWidth;
-          this.count = parseInt(cWidth / 250);
-          this.container.style.width = this.count * 250 + "px";  
-      }
+                let res = await new Load().init(Load.nextStart);
+                this.render(res);
+                this.sort();
+                this.loading=false;
+            }
+        })
+        this.coculateWidth();
+        this.render(data)
+        this.sort();
+    }
+    //渲染图片高度
+    render(data) {
+        let html = ""
+        for (var i = 0, item; item = data[i]; i++) {
+            let scaleHeight = (235 / item.photo.width) * item.photo.height;
+            html += `  
+            <div class="box">
+                <div class="box-img"  style="height:${scaleHeight}px" >
+                    <img src="${item.photo.path}" alt="">
+                    <u style="height:${scaleHeight}px"></u>
+                </div>
+                <div class="box-detail">
+                    <div class="title">
+                        ${item.msg}
+                    </div>
+                </div>
+            </div>`
+        }
+        this.imgWrapper.innerHTML += html;
+    }
+    sort() {
+        //首先获取所有生成的元素
+        let boxList = this.imgWrapper.children;
 
-      render(list){    
-            let html = "";
-            for(var i = 0 ; i < list.length ; i ++){
-                  let scaleHeight = parseInt(235 / list[i].photo.width * list[i].photo.height);
-                  html += `<div class="box">
-                              <div class="box-img" style="height:${scaleHeight}px">
-                                    <img src="${list[i].photo.path}" alt="">
-                                    <u style="height:${scaleHeight}px"></u>
-                              </div>
-                              <div class="box-detail">
-                                    <div class="title">
-                                          ${list[i].msg}
-                                    </div>
-                              </div>
-                        </div>`
-            }      
-            
-            this.wrapper.innerHTML = html;
-      }
-      sort(){
-            // 区分 ;
-            // 1. 第一排的;
-            // 2. 其余的;
-            let children = this.wrapper.children;
-            // console.log(children);
-            Array.from(children).forEach( (box , index) => {
-                  if(index < this.count){
-                        // console.log("第一排" , box);
-                        this.heightArray.push(box.offsetHeight);
-                  }else{
-                        // 找到数组之中最小的那一个;
-                        let min = Math.min.apply(false, this.heightArray);
-                        let minIndex = this.heightArray.indexOf(min);
-                        // console.log(min , minIndex)
-                        box.style.position = "absolute";
-                        box.style.left     = minIndex * 250 + "px";
-                        box.style.top      = min + 20 + "px";
+        //获取里面的每一个box
+        this.minIndex = 0;
+        for (var i = 0, box; box = boxList[i]; i++) {
+            if (i < this.total) {
+                this.heightArr.push(box.offsetHeight)
+                box.style.position = "static"
+            } else {
+                this.min = Math.min.apply(false, this.heightArr)
+                this.minIndex = this.heightArr.indexOf(this.min)
+                // console.log(box)
+                box.style.position = "absolute"
+                box.style.left = this.minIndex * 250 + "px"
+                box.style.top = this.min + 20 + "px"
+                // console.log(box.offsetHeight)
+                this.heightArr[this.minIndex] += box.offsetHeight + 20;
+            }
+        }
+        this.minHeight = Math.min.apply(false, this.heightArr)
+        this.container.style.height = Math.max.apply(false, this.heightArr) + "px"
+        this.heightArr = []
+    }
+    coculateWidth() {
+        this.cWidth = document.documentElement.clientWidth;
+        this.total = parseInt(this.cWidth / 250)
+        //容器
+        this.container.style.width = this.total * 250 + "px"
+    }
 
-                        this.heightArray[minIndex] += box.offsetHeight + 20;
-                  }
-            })
+}
+class Load {
+    constructor() {
+    }
+    async init(start) {
+        let url = "http://localhost/dt";
+        let data = {
+            include_fields: "top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+            filter_id: "手工DIY",
+            //start是开始的下标
+            start: start
+        };
 
-            let maxHeight = Math.max.apply(false , this.heightArray);
+        let res = await ajax(url, { data: data, dataType: "json" });
+        Load.nextStart = res.data.next_start;
+        //返回的就是图片的数据了
+        return res.data.object_list;
 
-            this.container.style.height = maxHeight + "px";
-            console.log(this.heightArray);
-      }
+    }
+    static nextStart;
 }
 
-class Load{
-      constructor(){
-      }
-      async init(start){
-            let url = "http://localhost/dt";
-            let data = {
-                  include_fields:"top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
-                  filter_id: "美食菜谱",
-                  start : start
-            };
-            let res = await ajax(url,{data : data,dataType : "json"});
-            return res.data.object_list;
-      }
-}
-
-new WaterFall();
+new Waterfall();
