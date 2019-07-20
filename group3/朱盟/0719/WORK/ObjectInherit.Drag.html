@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #box,
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box2 {
+            left: 200px;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        class Drag {
+            constructor(selector) {
+                let e = null;
+                this.e = ((e = document.querySelectorAll(selector)).length === 1 ? e[0] : e);
+                this.eOffset = {
+                    width: this.e.offsetWidth,
+                    height: this.e.offsetHeight
+                }
+                if (!this.e) throw Error("未选中要移动的元素");
+                this.e.addEventListener("mousedown", this.start.bind(this));
+                document.addEventListener("mouseup", this.end.bind(this));
+            }
+            start() {
+                document.removeEventListener("mousemove", this.handlerId);
+                document.addEventListener("mousemove", this.handlerId = this.moveHandler.bind(this));
+            }
+            moveHandler(ev) {
+                let e = ev || window.event;
+                let x = e.clientX - this.eOffset.width / 2;
+                let y = e.clientY - this.eOffset.height / 2;
+                this.position = {
+                    x,
+                    y
+                }
+                this.move(x, y, this.e);
+            }
+            move(x, y, e) {
+                e.style.left = x + "px";
+                e.style.top = y + "px";
+            }
+            end() {
+                document.removeEventListener("mousemove", this.handlerId);
+            }
+
+            throttle(cb, dealy = 120) {
+                var timer = null;
+                // console.log(dealy);
+                return function (cb) {
+
+                    if (timer !== null) {
+                        return false;
+                    }
+                    timer = setTimeout(function () {
+                        cb();
+                        console.log(dealy);
+                        timer = null;
+                    }, dealy);
+                }
+            }
+        }
+
+
+        class DragPlus extends Drag {
+            move(x, y, e) {
+                let positon = this.boundray(x, y);
+                super.move(positon.x, positon.y, e);
+            }
+            boundray(x, y) {
+                x = x < 0 ? 0 : x;
+                y = y < 0 ? 0 : y;
+                return {
+                    x,
+                    y
+                }
+            }
+        }
+
+
+        function darg(name) {
+            this.name = name;
+        }
+        darg.prototype = {
+            ha: "1234",
+            say: function () {
+                console.log("i 'm " + this.name);
+            }
+        }
+
+        function dragPlus() {
+            inherit(this, darg);
+        }
+
+        function inherit(o, a) {
+            o.prototype = Object.create(a.prototype);
+            // o.constructor = o;
+            a.apply(o, o.constructor.arguments);
+        }
+
+
+
+
+
+        new Drag("#box");
+        console.log(new DragPlus("#box2"));
+        console.log(new dragPlus("baobao"));
+    </script>
+</body>
+
+</html>
