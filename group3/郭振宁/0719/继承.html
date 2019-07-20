@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box1 , #box2 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+        #box2 {
+            background: red;
+            left : 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        class Drag {
+            constructor(selector) {
+                this.init(selector);
+            }
+            init(selector) {
+                this.box = document.querySelector(selector);
+                console.log(this.box);
+                this.box.addEventListener("mousedown" , this.handlerdown.bind(this));
+                document.addEventListener("mouseup" , this.end.bind(this));
+            }
+            handlerdown(evt) {
+                console.log(1);
+                var e = evt || window.event;
+               
+                var x = e.offsetX,
+                    y = e.offsetY;
+                
+                document.addEventListener("mousemove" , this.movecb = this.move.bind(this , x , y));
+            }
+            move(x , y , evt) {
+                var e = evt || window.event;
+                var clientx = e.clientX,
+                    clienty = e.clientY;
+
+                this.box.style.left = clientx - x + "px";
+                this.box.style.top = clienty - y + "px";
+            }
+            end() {
+                document.removeEventListener("mousemove" , this.movecb);
+            }
+        }
+        new Drag("#box1");
+    </script>
+</body>
+</html>
