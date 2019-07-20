@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Foo(){
+        // }
+        // Foo.prototype.name = function(){
+        //     console.log("hha")
+        // } ;
+        // Foo.prototype.age  = function(){
+        //     console.log("12")
+        // };    
+        // function Foo_s(){}
+        //     Foo_s.prototype = Object.create(Foo.prototype);
+        //     Foo_s.prototype.constructor = Foo_s;
+        // console.log(new Foo_s());
+
+        // 构造函数继承
+        // 用到的是call、apply
+        // function Parent(){
+        //     this.name = "hello world i'parent";
+        // }
+        // function Son(){
+        //     Parent.call(this); // call做了些啥 ？ 在调用的时候改变其this指向，this是啥 实例 
+        // }
+        // var son = new Son();
+        // console.log(son);
+
+        // 继承含有参数的
+        // function Parent(name,age){
+        //     this.name = name ;
+        //     this.age = age ;
+        // }
+        // function Son(name,age){
+        //     Parent.call(this,name,age); //继承构造函数的同时，固定了参数；
+        // }
+
+        // 继承的基础上再增加一个参数
+        // function Son(name , age , lines){
+        //     Parent.call(this,name,age);
+        //     this.lines = lines;
+        // }
+        // var s = new Son("哈哈" ,"18","啦啦啦");
+        // console.log(s);
+
+        // call 可以用来处理固定参数，  apply 可以用来处理不定参的情况 但是在增加参数的时候不好处理
+
+
+
+
+        //  原型继承
+        function Father(){
+            this.name = "Father";
+        }
+        Father.prototype.show = function(){
+            console.log("hello i'm class Father");
+        }
+        Father.prototype.hello = function(){
+            console.log("i'm Father's hello");
+        }
+        function Son(){
+            this.name = "hahh";
+            // this.sss = function(){
+            //     console.log("ssss")
+            // };
+        }
+        // Son.prototype.bbb = function(){
+        //     console.log("45");
+        // }
+        //克隆式的继承 比较麻烦
+        // Son.prototype.show = Father.prototype.show;
+
+        // 共用父类是继承
+        // Son.prototype = Father.prototype;
+          // 其构造函数指针指向的是Father 所以当Son添加原型方法的时候 Father也是会添加的
+        // Son.prototype.sayhello = function(){};
+        // console.log(new Son(),new Father())
+
+        // for in 原型继承 拷贝式的继承
+        // for (var attr in Father.prototype){
+        //     Son.prototype[attr] = Father.prototype[attr];
+        // }
+        // console.log(new Son());
+
+        // 寄生式继承
+        // Son.prototype.__proto__ = Father.prototype; //原型指针指向Father；
+        // Son.prototype.__proto__.sayhello = function(){};   //兼容性不好 这样也是可以给Father设置上sayhello方法的
+        // new Son().show();
+        // console.log(new Son(),new Father()); 
+
+        // Son.prototype = new Father();
+        // Son.prototype.constructor = Son;
+        // console.log(new Son());
+        // console.log(new Son().name);
+
+        // Son.prototype = Object.create(Father.prototype);
+        // Son.prototype.constructor = Son;
+        // console.log(new Son());
+
+        // var a = function(){}
+        // var b = function(){}
+        // // var c = a ;
+        // // b = c;
+        // console.log(a==b );
+      
+        
+    </script>
+</body>
+</html>
