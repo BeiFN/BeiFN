@@ -29,7 +29,7 @@ class WaterFall {
             clearTimeout(timer);
             timer = setTimeout(() => {
                 this.changeContainerWidth();
-                this.containerHeight = new Render().sort(this.container, this.count);
+                this.containerHeight = new Sort().sort(this.container, this.count);
                 timer = null;
             }, 500);
         })
@@ -42,7 +42,7 @@ class WaterFall {
                 this.next_start = Load.next_start;
                 // console.log(res);
                 this.container.innerHTML += new Render().render(res);
-                this.containerHeight = new Render().sort(this.container, this.count);
+                this.containerHeight = new Sort().sort(this.container, this.count);
                 console.log(this.containerHeight)
                 this.loading = false;
             }
