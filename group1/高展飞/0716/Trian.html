@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div class="box"></div>
+        <h1>xxxxx</h1>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        var $div = $("<div>hello world</div>");
+        $("body").append($div);
+        //向dom内部添加内容;html ，text
+        // $div.html("<i>向世界问好</i>");
+        // $div.text("<strong>略略略</strong>")
+        //插入方式  ；appendTo
+        //jQuery提供的是一行式代码，很难界定谁在前边，提供两个API方便在
+        //开发时遇到的特殊场景。
+        $("body").append($div);//插入页面最后方
+        $div.appendTo($("body"));
+        $("body").preppend($div);//插入页面最前方
+//insert...表示具体位置插入
+        $div.insertAfter($("h1"));//插入到h1之前
+        $div.insertBefore($("h1"));//插入到h1的后边
+//after。before表示同级之间的插入
+        $("body").after($div);
+        $("body").before($div);
+        
+
+    </script>
+    
+</body>
+</html>

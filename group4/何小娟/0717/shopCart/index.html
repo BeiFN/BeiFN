@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                      <div class="navbar-header">
+                            <a class="navbar-brand" href="#">SHOPCART</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                            <li class="active btn-goodslist" ><a href="#">商品列表 <span class="sr-only">(current)</span></a></li>
+                            <li class="btn-carts"><a href="#">购物车</a></li>
+                      </ul>
+    
+                      <ul class="nav navbar-nav navbar-right">
+                            <li class="cart-wrap">
+                                  <a href="#" class="glyphicon glyphicon-shopping-cart cart">
+                                        <span class="cart-num">0</span>
+                                  </a>
+                            </li>
+                           
+                      </ul>
+                </div>
+          </nav>
+
+          <div class="container">
+                <h3 class="content-title">商品列表</h3>
+                <div class="goods-list">
+                      <div class="row">
+                        
+                      </div>
+                </div>
+          </div>
+          <div class="container-fluid footer">
+    
+          </div>
+
+          <script src="../libs/require.js"></script>
+          <script>
+              window.onload = function(){
+                //   引入配置文件config(专门负责容易变更的东西，比如开发时候的路径;)
+                  requirejs.config({
+                      paths : {
+                          "jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min",
+                          "config":"./config/config"
+                      }
+
+                  })
+                //   引入JS根文件(处理耦合的加载部分依赖)
+                  require(["./model/index"])
+              }
+          </script>
+
+</body>
+</html>
