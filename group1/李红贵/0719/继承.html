@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Parent(){
+        //     this.name = "partent";
+        // }
+        // function Son(){
+        //     Parent.call(this);
+        // }
+        // var son = new Son();
+        // console.log(son);
+
+        // function factory(){
+        //     var obj = new Object();
+        //     obj.a = 10;
+        //     return obj;
+        // }
+
+        // function Factory(){
+        //     // 创建实例对象Factory{}
+
+        //     this.a = 15;
+        //     // 返回实例
+        // }
+        // new Factory();
+
+
+        // 构造函数基本继承模型
+        // 1.创造一个子集实例对象，
+        // 2.把自己的对象放入父级构造函数之中进行加工，添加属性和方法
+        // 3.把继承好的实例对象进行返回
+        // function Parent(){
+        //     this.name = "partent";
+        // }
+        // function Son(){
+        //     Parent.call(this);
+        // }
+        // var son = new Son();
+        // console.log(son);
+
+        // 继承时参数处理 call apply
+
+        // call处理固定方法有参数，语义好 
+        // 继承的模板，当成黑盒处理
+        function Parent (name,age){
+            this.name = "name";
+            this.age = 47;
+        }
+        var p = new Parent("wuyanzhu","47");
+        console.log(p);
+
+        function son(name,age, word){
+            Parent.call(this,name,age);
+            this.word = word;
+        }
+        console.log(son());
+ 
+        // apply 不定参
+        function Son(){
+            Parent.apply(this,arguments);
+            this.lines = lines;
+        }
+        // apply 是一步式继承
+        // call 语义话继承
+        
+
+    </script>
+</body>
+</html>
