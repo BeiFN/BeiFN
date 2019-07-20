@@ -1,11 +1,11 @@
-define([
-    'jquery',
-    'config'
-], function($,config) {
-    'use strict';
-    return{
+
+
+import config from "../config/config.js";
+
+export default 
+    
+       {
         init:function(){
-            return $.ajax(config.ajaxUrl.goods);
+            return $.ajax(config.ajaxUrl.goods,{dataType:"json"});
         }
     }
-});
