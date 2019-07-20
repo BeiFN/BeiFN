@@ -7,13 +7,17 @@
       <title>Document</title>
 </head>
 <body>
-      <!-- 拆分器 -->
-      <script type="module">
-            import * as i from "./modules/index.js";
-            // console.log($);
-            // 本地加载; => 本地无所不加载;
-            
-            console.log(i);
+
+
+
+
+      <script src="../libs/jquery.js"></script>
+      <script src="./scripts/jquery.cookie.js"></script>
+
+      <script>
+            // console.log($.cookie);
+            $.cookie("key","value");
+
       </script>
 </body>
 </html>
