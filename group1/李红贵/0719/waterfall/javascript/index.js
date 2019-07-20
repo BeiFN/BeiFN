@@ -4,8 +4,15 @@
 // - 拼接页面;
 
 let { ajax   , $ , on } = Utils;
-// 滚轮向下滚动到一定程度时加载数据，得自己定义逻辑
+
+// import { url , data } from "./config.js";
+// console.log(url,data);
+// import {res} from "./loaddata.js";
+// console.log(res);
+
 class WaterFall{
+      
+
       constructor(){
             this.init();
       }
@@ -14,50 +21,67 @@ class WaterFall{
           this.wrapper     = $(".wrapper");
           this.container   = $(".container");
 
-          this.cHeight = document.documentElement.clientHeight;
-          this.loading = false;
+            // 无限加载
+            this.cHeight = document.documentElement.clientHeight;
+            this.loading = false;
+            this.next_start = 0;
+
+
           // 第一排能放下多少个元素;
           this.count       = 0;
-          this.heightArray = [];//高度数组
+            this.heightArray = [];
           this.changeContainerWidth();
           let timer = null;
+
+
           on(window , "resize" , ()=>{
                   clearTimeout(timer);
                   timer = setTimeout( ()=>{
                         this.changeContainerWidth();
+                        this.sort();
                         timer = null;
-                  this.cHeight = document.documentElement.clientHeight;
+                        this.cHeight = document.documentElement.clientHeight;
+                  },500)
+          });
 
-                  },300)
-          })
-          on(window,"scroll",()=>{
-                let scrollTop = document.documentElement.scrollTop ||document.body.documentElement.scrollTop;
-                if(!this.loading && scrollTop+this.cHeight >= this.containerHeight-300){
-                      this.loading = true;
-                      console.log("加载");
-                      
-                }
-          })
+        
+    
+          on(window, "scroll" ,async ()=>{
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if(!this.loading && scrollTop + this.cHeight >= this.containerHeight - 300){
+               this.loading = true;
+               // 加载;
+               
+               console.log(this.next_start);
+               let res =  await new Load().init(this.next_start);
+               this.next_start = Load.nextStart;
+            //    if(!(res.length>0))return false;
+               this.render(res);
+               this.sort();
+               // 加载结束要归零;
+               this.loading = false;
+            }
+      })
+
       //     防抖：改变结束后再调用
       //     节流：增加调用间隔时间，
       //     获取数据源
           let res =  await new Load().init(0);
+          this.next_start = Load.nextStart;
           this.render(res);
-
           this.sort();
           
       }
+
+
       //宽度改变
       changeContainerWidth(){
-
-            let cWidth = document.documentElement.clientWidth;
-            this.count = parseInt(cWidth / 250);//每行显示图片数
-            console.log(this.count);
-            //     图片父视图宽度改变
-            this.container.style.width = this.count * 250 + "px";  
-      
-            // //重新排序
-             this.sort();
+          let cWidth = document.documentElement.clientWidth;
+          this.count = parseInt(cWidth / 250);//每行显示图片数
+          console.log(this.count);
+      //     图片父视图宽度改变
+          this.container.style.width = this.count * 250 + "px";  
+    
       }
 
       render(list){    
@@ -78,8 +102,9 @@ class WaterFall{
                         </div>`
             }      
             
-            this.wrapper.innerHTML = html;
+            this.wrapper.innerHTML += html;
       }
+
       sort(){
             let children = this.wrapper.children;
             console.log(children,this.count);
@@ -87,12 +112,12 @@ class WaterFall{
             Array.from(children).forEach( (box , index) => {
                   
                   if(index < this.count){
-                        console.log(box,index);
+                        // console.log(box,index);
                         // console.log("第一排" , box);
                         box.style.position = "static";
-                        box.style.top      = 0;
+                        // box.style.top      = 0;
                         this.heightArray.push(box.offsetHeight);
-                        console.log(this.heightArray);
+                        // console.log(this.heightArray);
                   }else{
                         // 找到数组之中最小的那一个;
                         let min = Math.min.apply(false, this.heightArray);
@@ -107,29 +132,46 @@ class WaterFall{
             })
 
             let maxHeight = Math.max.apply(false , this.heightArray);
-            this.containerHeight = maxHeight;
+            let minHeight = Math.min.apply(false,this.heightArray);
+
             this.container.style.height = maxHeight + "px";
-            console.log(this.heightArray);
+            // console.log(this.heightArray);
+
+            this.containerHeight = minHeight;
+
+            this.heightArray.length = 0;//高度数组
       }
+
+    
+
 }
+
 
 //数据请求
 class Load{
       constructor(){
       }
-      async init(start){
-            let url = "http://localhost/dt";
-            let data = {//接口参数
-                  include_fields:"top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
-                  // filter_id: "美食菜谱",
-                  filter_id: "手工DIY",
-                  start : start
-            };
-            let res = await ajax(url,{data : data,dataType : "json"});
+      init(start){
+
+      // async init(start){
+      //       let url = "http://localhost/dt";
+      //       let data = {//接口参数
+      //             include_fields:"top_comments,is_root,source_link,item,buyable,root_id,status,like_count,sender,album,reply_count",
+      //             filter_id: "美食菜谱",
+      //             // filter_id: "手工DIY",
+      //             start : start
+      //       };
+      //       let res = await ajax(url,{data : data,dataType : "json"});
+
+            
+            Load.nextStart = res.data.next_start;
             // 返回图片数据数组
             return res.data.object_list;
       }
-      static next_start = res.data.next_start;
+      static nextStart = 0;
 }
 
 new WaterFall();
+
+
+
