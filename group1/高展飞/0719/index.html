@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // import dd from "./modules/index.js";
+        // console.log(dd.y)
+        // import * as i from "./modules/index.js";
+        // console.log(i) 
+        
+        //解构 重命名
+        //使用export，取值必须使用解构
+        //****注：不会改变变量的原有属性
+        // import  {a as d,b as r,c as f} from "./modules/index.js";
+        // console.log(d,r ,f);
+
+
+        //默认导出不用解构
+        // import ddd from "./modules/index.js";
+        // console.log(ddd )
+        //加载别人的模块进行导出
+        import { oo } from "./modules/index.js";
+        console.log(oo )
+        
+    </script>
+</body>
+</html>
