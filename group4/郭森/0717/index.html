@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <style>
+        /* .navbar-container{
+            position: fixed;
+            top: 0;
+        } */
+        .navbar .navbar-brand {
+            color: #fff;
+            margin: 0 100px;
+        }
+
+        .navbar .nav .glyphicon {
+            font-size: 30px;
+            margin-right: 100px;
+            color: #fff;
+        }
+
+        .navbar .nav .glyphicon:hover {
+            color: #faa;
+        }
+
+        .container-fluid {
+            background: #ccc;
+            /* position: relative; */
+        }
+
+        .footer {
+            padding: 40px 0;
+            background: #ddd;
+            margin-top: 50px;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        .cart {
+            font-size: 40px;
+            margin-right: 200px;
+        }
+
+        .carts-logo{
+            position: relative;
+        }
+
+        .carts-goods-num {
+            position: absolute;
+            font-size: 20px;
+            top: 20%;
+            color: #000;
+            left: 50%;
+            margin-left: -5px;
+        }
+
+        .goods-list {
+            padding-top: 40px;
+        }
+
+        .goods-box {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .goods-box p {
+            padding: 10px 25px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .goods-img img {
+            width: 220px;
+            height: 220px;
+        }
+
+        .goods-detail {
+            text-align: left;
+            padding-left: 25px;
+            vertical-align: middle;
+            height: 40px;
+            line-height: 40px;
+            display: flex;
+        }
+
+        .goods-detail em {
+            float: right;
+            margin-right: 25px;
+            color: #aaa;
+        }
+
+        .goods-detail span {
+            font-size: 16px;
+            color: #f19;
+        }
+
+        .goods-detail del {
+            font-size: 18px;
+            color: #b6b6b6;
+        }
+
+        .goods-btn {
+            text-align: right;
+            padding-right: 25px;
+        }
+
+        .carts-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .carts-title {
+            width: 20%;
+            overflow: hidden;
+        }
+
+        .carts-total-price {
+            width: 10%;
+            text-align: left;
+        }
+
+
+        .carts-img img {
+            width: 110px;
+            height: 110px;
+        }
+
+        .carts-total-price {
+            padding-right: 20px;
+            font-size: 20px;
+            color: #f19;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-inverse navbar-container">
+        <!-- logo -->
+        <div class="navbar-header ">
+            <a class="navbar-brand" href="#">购物车</a>
+        </div>
+        <!-- 标题 -->
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">商品列表 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">购物车</a></li>
+        </ul>
+        <!-- 图标 -->
+        <ul class="nav navbar-nav navbar-right ">
+            <li>
+                <a class="glyphicon glyphicon-shopping-cart carts-logo" href="#">
+                    <span class="carts-goods-num">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- 内容 -->
+    <div class="container-fluid">
+        <div class="row goods-box">
+            <!-- 列表 -->
+            <!-- <div class="col-md-3 goods">
+                <div class="goods-img">
+                    <img src="${item.thumb_url}" alt="">
+                </div>
+                <p>
+                    ${item.goods_name}
+                </p>
+                <div class="goods-detail">
+                    <span>￥${ (item.group_price/100).toFixed(2)}</span>
+                    <del>${ (item.market_price/100).toFixed(2)}￥</del>
+                    <em>${item.sales_tip}</em>
+                </div>
+                <div class="goods-btn">
+                    <button class="add-cart btn btn-danger" data-id=${item.goods_id}>加入购物车</button>
+                </div>
+            </div> -->
+            <!-- 商品列表end -->
+        </div>
+    </div>
+    </div>
+    <!-- <script src="../../ku/RequireJS_2.3.6/RequireJS_2.3.6.js"></script> -->
+    <script src="../../ku/jQuery/jQuery_3.4.0.js"></script>
+    <script>
+        // window.onload = function () {
+        //     requirejs.config({
+        //         paths: {
+        //             "jquery": "https://cdn.bootcss.com/jquery/3.4.1/jquery",
+        //             "config": "./config/config"
+        //         }
+        //     })
+        //     require(["./modle/index"]);
+        // }
+
+
+        // 加载数据
+        var loaddata = {};
+        loaddata.init = function () {
+            var url = "http://localhost/pxx",
+                data = {
+                    subject_id: 5581,
+                    page: 1,
+                    size: 60
+                }
+            return $.ajax(url, { data: data });
+        }
+
+        // 渲染数据
+        function render() {
+            return new Render();
+        }
+        function Render() { }
+        $.extend(Render.prototype, {
+            init: function (arr, type) {
+                this.goodsBox = $(".goods-box");
+                if (type === "goods_list") {
+                    this.renderGoods(arr);
+                }
+                if (type === "carts_goods_list") {
+                    this.renderCartsGoods(arr);
+                }
+            },
+            // 渲染商品列表
+            renderGoods: function (arr) {
+                var html = "";
+                $.each(arr, function (i, item) {
+                    html += `<div class="col-md-3 goods">
+                                <div class="goods-img">
+                                    <img src="${item.thumb_url}" alt="">
+                                </div>
+                                <p>
+                                    ${item.goods_name}
+                                </p>
+                                <div class="goods-detail">
+                                    <span>￥${ (item.group_price / 100).toFixed(2)}</span>
+                                    <del>${ (item.market_price / 100).toFixed(2)}￥</del>
+                                    <em>${item.sales_tip}</em>
+                                </div>
+                                <div class="goods-btn">
+                                    <button class="add-cart btn btn-danger" data-id=${item.goods_id}>加入购物车</button>
+                                </div>
+                            </div>`
+                })
+                this.goodsBox.html(html);
+            },
+            // 渲染购物车商品列表
+            renderCartsGoods: function () {
+
+            }
+        })
+
+
+
+        // index
+        var $goodsBox = $(".goods-box"),
+            $cartsLogo = $(".carts-logo"),
+            dre = loaddata.init();
+        dre.then(function (res) {
+            var arr = res.goods_list;
+            // console.log(arr);
+            render().init(arr, "goods_list");
+        })
+        // 点击商品添加购物车
+        $goodsBox.on("click", ".btn-danger", addCarts)
+        // 添加到购物车
+        function addCarts() {
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery-ui.min.css">
+</head>
+
+<body>
+    <div id="slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 17%;"></span>
+        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 67%;"></span>
+    </div>
+    <script src="../../libs/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script>
+        $("#slider").slider({
+            range: true,
+            values: [17, 67]
+        });
+    </script>
+</body>
+
+</html>
