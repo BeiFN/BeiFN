@@ -1,10 +1,7 @@
-define([
-    'require'
-], function() {
-    'use strict';
-    return {
+ 
+ 
+   export default {
         ajaxUrl:{
             goods:"./data/data.json"
         }
     }
-});
