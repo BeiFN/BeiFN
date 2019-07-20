@@ -1,18 +1,21 @@
 // 渲染页面;
-// 1. 商品列表渲染;
-// 2. 购物车小列表渲染;
+
+// 获取数据后渲染界面
 define(['jquery',"./loaddata"], function() {
       'use strict';
       function Render(){}
       $.extend( Render.prototype , {
             init : function( list , type ){
                   if(type === "goods_list"){
+                        // 渲染商品列表
                         return this.renderGoodsList(list);
                   }
                   if(type === "carts_list"){
+                        // 渲染购物车
                         return this.renderCartsList(list);
                   }
             },
+            // 商品列表渲染
             renderGoodsList : function(list){
                   console.log(list);
                   var html = "";
@@ -44,7 +47,10 @@ define(['jquery',"./loaddata"], function() {
                   var la = JSON.parse(ls === null ? "[]" : ls);
 
                   list = list.filter(function(goods_item){
+                        // 遍历返回符合条件的数
+
                         return la.some(function(carts_item){
+                              // 有一个符合就返回
                               if(carts_item.id == goods_item.goods_id){
                                     goods_item.count = carts_item.count;
                                     return true;
