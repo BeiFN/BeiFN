@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Father(){}
+        //     Father.prototype.show = function(){
+        //         console.log("hello i'm class Father");
+        //     } 
+
+        //     Father.prototype.hello = function(){
+        //         console.log("i m Father's hello");
+        //     }
+        //     function Son(){}
+        //     //克隆式继承; 别人有啥我就直接拿过来啥;
+        //     Son.prototype.show = Father.prototype.show;
+        //     Son.prototype = Father.prototype;
+        //     Son.prototype.hello = function(){
+        //         console.log("hello");
+        //     }
+        //     console.log(new Son());
+
+        //     for(var attr in Father.prototype){
+        //         console.log(attr);
+        //         console.log(Father.prototype[attr]);
+        //         Son.prototype[attr] = Father.prototype[attr];
+        //     }
+        //     console.log(new Son());
+
+            //克隆  拷贝式继承  ; => for in 原型继承;
+
+            //寄生式继承;
+
+            // function Father(){}
+            //     Father.prototype.show = function(){
+            //         console.log("hello i'm class Father");
+            //     }
+            //     Father.prototype.hello = function(){
+            //         console.log("i'm Father's hello")
+            //     }
+            //     function Son(){}
+            //     Son.prototype.__proto__ = Father.prototype;
+            // Son.prototype = new Father();
+            // Son.prototype.constructor = Son;
+
+            // console.log(new Son());
+
+            // var obj = Object.create({name : "hello"});
+            // console.log(obj.name);
+            
+
+            //ES5方法实现原型链继承;
+            function Father(){}
+            Father.prototype.show = function(){
+                console.log("hello i'm class Father");
+
+            }
+            Father.prototype.hello = function(){
+                console.log("i'm Father's hello");
+            }
+
+            function Son(){
+                Son.prototype = Object.create(Father.prototype);
+                Son.prototype.constructor = Son;
+                console.log(new Son());
+            }//可以通过Son实例访问到Father原型上的方法;
+
+
+            
+             
+        
+    </script>
+</body>
+</html>
