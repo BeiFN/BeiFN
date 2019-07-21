@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax最底层的封装</title>
+</head>
+<body>
+    <script src="../../libs/jquery.js"></script>
+    <script>
+    //上一节刚提到 deferred 也就是ajax返回的是它独有的promise对象
+        //ajax(url,{})ajax只接受两个参数
+        //ajax的url也可以内置
+
+        //也可以进行jsonp的跨域
+        $.ajax({
+            url :"",
+            data :{},
+            datatype :"html", //jsonp
+            async : true,
+            timeout : 6000,
+            statusCode : {
+                404 : function(){
+
+                },
+                505 : function(){
+
+                }
+            },
+            beforeSend: function(){
+                console.log("我还没发送请求")
+            },
+            success : function(){
+                console.log("成功时调用");
+            },
+            error : function(){
+                console.log("失败时调用");
+            },
+            complete : function(){
+                console.log("只要完成了就调用");
+            },
+            
+
+            
+        })
+        .done(function(res){
+            console.log(res);
+        })
+        //超时timeout其他都有catch来进行捕获
+        .catch(function(xhr,state,msg){
+            console.log(xhr)
+        })
+
+        //ajax的全局配置
+        $.ajaxSetup({
+            //ajax 所有功能都可以放在这里
+            //它影响了全局所有的ajax
+        })
+
+        //ajax全局事件
+        $(document).ajaxError({
+            statusCode : {
+                404 : function(){
+
+                },
+                505 : function(){
+
+                }
+            }
+        })
+        //单个ajax内可以通过加入global : false 来取消全局事件
+        //但是 取消不了全局配置这个东西
+        //总结一下就是
+        //这里讲了关于ajax的基本配置
+        //全局配置global不可取消 和 全局事件global可取消
+    </script>
+</body>
+</html>
