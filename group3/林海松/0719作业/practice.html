@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // 1、导出的文件中，变量为对象。引入的文件中 improt xxx(变量名) from "./路径"
+        // import name from "./modules/index.js"   // 引入  逻辑处理
+        // console.log(name);
+
+        //2、导出文件export + 返回的内容 。 引入文件 import { xxx } form "./路径" 解构形式
+        // import { a } from "./modules/index.js"
+        // console.log(a);  10
+        
+        //3、import过来的变量可以通过 as 进行更名
+        // import { a as b } from "./modules/index.js"
+        // console.log(b); 10
+
+        //4、导出文件使用const声明变量是，引入文件输出，不能够对其进行重新赋值
+        // import过来的变量依旧保留有原来声明是的特征，比如常量声明
+        // import { a as b } from "./modules/index.js"
+        // b=20;
+        // console.log(b); //报错
+
+        //5、解构形式获取导出的数据
+        // import {a as aaa , b as bbb , c as ccc} from "./modules/index.js"
+        // console.log(aaa,bbb,ccc);
+
+        //6、 export default{ }  导出 
+        // import module from "./modules/index.js"
+        // console.log(module);//一整个对象
+
+        //7、 * 是输出所有  返回的是整个module对象
+        // import * as module from "./modules/index.js"
+        // console.log(module);//返回的是module对象
+
+        //8、export default function(){}   默认导出  ， 引入import + 模块名  返回的是函数
+        // import module from "./modules/index.js"
+        // console.log(module);
+
+        //9、引入02module.js , 02导出index.js , 爱index.js中导出name 
+        // 能够加载别人的模块进行导出
+        import { name } from "./modules/02module.js"
+        console.log(name);
+    </script>
+</body>
+</html>

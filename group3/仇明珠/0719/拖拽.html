@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:100px;
+            height:100px;
+            background: pink;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .box2{
+            width:100px;
+            height:100px;
+            background: blueviolet;
+            position: absolute;
+            top:0;
+            left:130px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        class Drag {
+            constructor(selector){
+                this.init(selector)
+            }
+            init(selector){
+                this.main=document.querySelector(selector);
+                this.main.addEventListener("mousedown",this.start.bind(this));
+                this.main.addEventListener("mouseup",this.end.bind(this));
+            }
+            start(){
+                this.main.addEventListener("mousemove",this.move.bind(this));
+            }
+            move(){
+                console.log(1);
+            }
+            end(){
+                
+            }
+        }
+    </script>
+</body>
+</html>
