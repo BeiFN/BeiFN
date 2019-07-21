@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="b"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <li class="a"></li>
+  <script>
+    // var instance = null;
+    // function singleton() {
+    //   if (instance === null) {
+    //     instance = this;
+    //   } else {
+    //     return instance;
+    //   }
+    // }
+    // console.log(new singleton() === new singleton());
+
+    // function singleton(){
+    //   if(singleton.instance === undefined){
+    //     singleton.instance = this;
+    //   }else{
+    //     return singleton.instance;
+    //   }
+    // }
+    // console.log(new singleton() === new singleton());
+
+    // 优化选择器
+    function $(selector) {
+      if ($.selectCache === undefined) {
+        $.selectCache = {};
+      }
+      if ($.selectCache[selector]) {
+        return $.selectCache[selector];
+      }
+      return $.selectCache[selector] = document.querySelectorAll(selector);
+    }
+
+    console.time("$1");
+    $(".b")
+    console.timeEnd("$1");
+
+    console.time("$2");
+    $(".b")
+    console.timeEnd("$2");
+  </script>
+</body>
+
+</html>

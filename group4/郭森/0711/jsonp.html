@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../../ku/hanshuku.js"></script>
+    <script>
+        let url = "http://localhost/1000/daily/0711/jsonp.php";
+
+
+        // 创建一个script标签
+        // 创建一个id
+        // 在全局创建一个key值为id，属性为匿名函数的方法
+        // 匿名函数接收一个结果
+        // 
+        function jsonp(url, cb_key = "callback", data = {}) {
+            return new Promise((resove, reject) => {
+                let script = document.createElement("script"),
+                    cb_name = "gs" + Date.now();
+                window[cb_name] = function (res) {
+                    resove(res);
+                }
+                url += /\?/.test(url) ? "&" : "?";
+                url += cb_key + "=" + cb_name;
+                for (let key in data) {
+                    url += `&${key}=${data[key]}`;
+                }
+                script.src = url;
+                document.body.appendChild(script);
+                script.onload = function () {
+                    this.remove();
+                }
+            })
+        }
+
+        function jsonp(url, data, cb_key) {
+            return new Promise((resove, reject) => {
+                if (new RegExp(location.origin).test(url)) {
+                    let xhr = new XMLHttpRequest(),
+                        lastArg = arguments[arguments.length - 1],
+                        str = "";
+                    // 是否传入数据,拼接数据
+                    if (data && typeof data === "object") {
+                        for (let key in data) {
+                            str += `&${key}=${data[key]}`;
+                        }
+                        str = str.slice(1); // 删去字符串开头
+                    }
+                    // 是否为POST
+                    if (typeof lastArg === "string" && lastArg.toLowerCase() === "post") {
+                        xhr.open("POST", url);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.send(str);
+                    } else {
+                        // 地址中是否有数据,拼接入地址
+                        xhr.open("GET", url + (/\?/.test(url) ? "&" : "?") + str);
+                        xhr.send(null);
+                    }
+                    xhr.onreadystatechange = () => {
+                        if (xhr.readyState === 4) {
+                            xhr.status === 200 ? resolve(xhr.responseText) : reject(xhr.status);
+                        }
+                    }
+                } else {
+                    let script = document.createElement("script"),
+                        cb_value = "gs" + Date.now();
+                    window[cb_value] = function (res) {
+                        resove(res);
+                    }
+                    url += (/\?/.test(url) ? "&" : "?") + cb_key + "=" + cb_value;
+                    for (let i in data) {
+                        url += `&${i}=${data[i]}`;
+                    }
+                    script.src = url;
+                    script.onload = function () {
+                        this.remove();
+                    }
+                    document.body.appendChild(script);
+                    setTimeout(a => {
+                        reject("timeout");
+                    }, 5000)
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>
