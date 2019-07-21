@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link rel="stylesheet" href="./css/zcool.css">
+</head>
+
+<body>
+      <div class="container">
+            <p class="title"></p>
+            <div class="wrapper">
+                  <div class="image-list">
+                        <!-- <div class="box">
+                                  <div class="box-img">
+                                        <img src="https://img.zcool.cn/community/00ff03598803240000002129833089.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt="">
+                                  </div>
+                                  <div class="box-title">
+                                        <a href="">
+                                                    绘本
+                                        </a>
+                                        <span class="fire"></span>
+                                  </div>
+                            </div> -->
+                  </div>
+            </div>
+
+            <div class="pagination">
+
+            </div>
+      </div>
+</body>
+<script type="text/html" id="template">
+    <%  for(var i = 0 , item ; item = data[i]; i++) {%>
+          <div class="box">
+                <div class="box-img">
+                      <img src="<%= item.cover %>" alt="">
+                </div>
+                <div class="box-title">
+                      <a href="">
+                            <%= item.title %>
+                      </a>
+                      <span class="fire"></span>
+                </div>
+          </div>
+    <% } %>
+</script>
+<!-- <script src="../../libs/utils.js"></script>
+<script src="./js/zcool.js"></script> -->
+<script src="../../libs/jquery.js"></script>
+<script src="../../libs/ejs.js"></script>
+<script type="module">
+      import init from "./js/init.js"
+      init()
+     
+</script>
+
+<!-- <script type="text/javascript">
+
+      function Pagination() {
+            this.constructor();
+      }
+      $.extend(Pagination.prototype, {
+            constructor: function ({
+                  //图片列表
+                  imgList = ".image-list",
+                  //分页栏
+                  page_wrapper = ".pagination",
+                  //通过ajax访问获取数据 有路径和data需要拼接的参数
+                  bigData = {
+                        url: "http://localhost/zc",
+                        data: {
+                              pageSize: 100,
+                              contentId: ("" + Date.now()).slice(6) + "_3",
+                              day: new Date().toISOString().slice(0, 10)
+                        }
+                  },
+                  //模板引擎 通过ejs.render(tamplate,data)
+                  template = $("#template")[0].innerHTML,
+                  //设置当前页
+                  pageNow = 1,
+                  //设置一页显示几个
+                  pageSize = 5
+            } = {}) {
+                  this.imgList = $(imgList);
+                  this.page_wrapper = $(page_wrapper);
+                  this.url = bigData.url
+                  this.data = bigData.data;
+                  this.template = template;
+                  this.pageNow = pageNow
+                  this.pageSize = pageSize;
+                  this.init();
+            },
+            init: function () {
+                  // console.log(this.imgList)
+                  //  事件委托;给页码的盒子添加事件委托 改变索引 渲染图片 渲染按钮
+                  //绑定on事件只能是实例么
+                  this.page_wrapper.on("click", "span", $.proxy(function(evt){
+                        var e = evt || event
+                        var target = e.target || e.srcElement
+                        //改变下标
+                        this.toIndex($(target).index())
+                        // console.log(this)指向的是pagination实例
+                        this.render(this.r)
+                        this.renderBtn();
+                  },this)) 
+                       
+                  //加载图片数据比较慢 我们放到异步的程序中执行 他之后的程序都成为异步 但是仅限于当前的{}中
+                  this.loadData().done($.proxy(function(res){
+                        // console.log(res)
+                        // console.log(this)
+                        this.r = res
+                        //获取数据中所有数组的长度
+                        this.total = Array.from(res.data.contents).length
+                        //渲染页面
+                        this.render(res);
+                        //渲染按钮
+                        this.renderBtn();
+                  },this))
+            },
+            loadData: function () {
+                  //通过jQuery的ajax方式请求数据
+                  return $.ajax({
+                        url: this.url,
+                        data: this.data
+                  })
+            },
+            // 渲染页面
+            render: function (res) {
+                  //
+                  var data = res.data.contents;
+                  this.data = this.interceptData(data);
+                  var html = ejs.render(this.template, { data: this.data })
+                  this.imgList.html(html)  
+            },
+            renderBtn: function () {
+                  var num = Math.ceil(this.total / this.pageSize)
+                  var html = ""
+                  for (var i = 0; i < num; i++) {
+
+                        if (i == (this.pageNow - 1)) {
+                              html += `<span class=active>${i + 1}</span>`
+                        } else {
+                              html += `<span>${i + 1}</span>`
+                        }
+                  }
+                  this.page_wrapper.html(html)
+            },
+            //截取
+            interceptData: function (data) {
+                  //计算最小值和最大索引  1   0  4      2   5  9    3 10
+                  var min = (this.pageNow - 1) * this.pageSize
+                  var max = this.pageNow * this.pageSize - 1
+                  //卡住 如何返回完整的data
+                  var arr = []
+                  $.each(data, function (index, item) {
+                        if (index >= min && index <= max) {
+                              arr.push(item)
+                        }
+                  })
+                  return arr;
+            },
+            toIndex: function (index) {
+                  //页数是索引加1
+                  this.pageNow = index + 1
+            }
+      })
+      //调用函数
+      new Pagination();
+</script> -->
+
+</html>

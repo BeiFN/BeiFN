@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import * as moudle from "./index.js";
+        //exprot default{}传值那么index是一个对象;如果啥也不传，那么接受一个空对象
+        //exprot default 加匿名函数 index直接就是一个函数直接运行就好
+
+        //exprot 导出 import必须使用对象解构进行引用,不管是函数,还是类,导出的值保留原来的特性 
+        // export {name as default} 吧name default导出 跟 export default name 一样 优雅
+    //    new foo().init();
+        // c();
+        //index是一个对象
+        // console.log(foo);
+        // a = 15; 
+        // index();
+        // index();
+        // console.log(module)* as module
+
+        console.log(moudle)
+    </script>
+</body>
+</html>
