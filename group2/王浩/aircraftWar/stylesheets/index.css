@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+h1{
+    margin: 0 auto;
+    display: block;
+}
+.main{
+    height: 90%;
+    width: 460px;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+.options{
+    width: 460px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -230px;
+    top: 0;
+    padding-top: 10%;
+}
+.options p{
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.options p:hover{
+    background: black;
+    color: white;
+}
+
+.logo{
+    width: 428px;
+    height: 114px;
+    position: absolute;
+    top: 15%;
+    margin-left: -214px;
+    left: 50%;
+    background-image: url("../images/logo.png");
+}
+.plane-loading{
+    width: 192px;
+    height: 41px;
+    position: absolute;
+    top: 50%;
+    margin-left: -96px;
+    left: 50%;
+    background-image: url(../images/loading1.png);
+}
+
+.plane{
+    width: 98px;
+    height: 122px;
+    background-image: url(../images/me.png);
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.bullet{
+    width: 7px;
+    height: 18px;
+    background-image: url("../images/bullet.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+}
+.bullet.die{
+    width: 41px;
+    height: 43px;
+    background-repeat: no-repeat;
+    animation: bullet-die .5s linear infinite;
+    margin-left: -17px;
+}
+
+@keyframes bullet-die{
+    0%{
+         
+          background-image: url("../images/die1.png");
+    }
+    100%{
+         
+          background-image: url("../images/die2.png");
+    }
+}
+
+.enemy-small{
+    width: 59px;
+    height: 36px;
+    background-image: url("../images/plane1.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-small.die{
+    animation: small-die 1s linear infinite;
+}
+@keyframes small-die{
+    0%{
+          background-image: url("../images/plane1_die1.png");
+    }
+    50%{
+          background-image: url("../images/plane1_die2.png");
+    }
+    100%{
+          background-image: url("../images/plane1_die3.png");
+    }
+}
+.enemy-middle{
+    width: 70px;
+    height: 92px;
+    background-image: url("../images/plane2.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+}
+.enemy-middle.die{
+    animation: middle-die 1s linear infinite;
+}
+@keyframes middle-die{
+    0%{
+          background-image: url("../images/plane2_die1.png");
+    }
+    33%{
+          background-image: url("../images/plane2_die2.png");
+    }
+    66%{
+          background-image: url("../images/plane2_die3.png");
+    }
+    100%{
+          background-image: url("../images/plane2_die4.png");
+    }
+}
+.enemy-large{
+    width: 165px;
+    height: 256px;
+    background-image: url("../images/plane3.png");
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+
+}
+.enemy-large.die{
+    animation: large-die 1s linear infinite;
+}
+@keyframes large-die{
+    0%{
+          background-image: url("../images/plane3_die1.png");
+    }
+    20%{
+          background-image: url("../images/plane3_die2.png");
+    }
+    40%{
+          background-image: url("../images/plane3_die3.png");
+    }
+    60%{
+          background-image: url("../images/plane3_die4.png");
+    }
+    80%{
+          background-image: url("../images/plane3_die5.png");
+    }
+    100%{
+          background-image: url("../images/plane3_die6.png");
+    }
+}

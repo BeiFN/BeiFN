@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="../normal.css">
+      <link rel="stylesheet" href="./style.css">
+      <script src="../normal.1.js"></script>
+      <!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script> -->
+      <title> EMB| 分页插件的开发 </title>
+</head>
+
+<body>
+
+      <div class="container">
+            <p class="title"></p>
+            <div class="wrapper">
+                  <div class="image-list">
+
+                        <!-- 
+                        <div class="box">
+                              <div class="box-img">
+                                    <img src="https://img.zcool.cn/community/00ff03598803240000002129833089.jpg@260w_195h_1c_1e_1o_100sh.jpg"
+                                          alt="">
+                              </div>
+                              <div class="box-title">
+                                    <a href="">
+                                          绘本
+                                    </a>
+                                    <span class="fire"></span>
+                              </div>
+                        </div> -->
+
+                  </div>
+            </div>
+
+            <div class="pagination">
+
+            </div>
+      </div>
+
+      <script type="text/html" id="buttontemplate">
+            <%   data.forEach((e,index) => { %>
+            <span class="<%=e.class %>" data-pg="<%=e.pg %>">${index+1}</span>
+            <% });%>
+      </script>
+
+      <script type="text/html" id="template">
+            <%   data.forEach(e => { %>
+            <div class="box">
+                  <div class="box-img">
+                        <img src=' <%=e.cover %> ' alt="" />
+                  </div>
+                  <div class="box-title">
+                        <a href="">
+                              <%=e.title%>
+                        </a>
+                        <span class="fire"></span>
+                  </div>
+            </div>
+            <% });%>
+      </script>
+
+
+      <script type="module">
+            import setup from "./main.js";
+            setup();
+      </script>
+
+</body>
+
+</html>

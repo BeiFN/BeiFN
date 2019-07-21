@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6模块化</title>
+</head>
+<body>
+    <script type="module">
+        // 正常的  一个对象
+        import {titlename} from "./modules/index.js";
+        console.log(titlename);
+
+        // 正常 默认  
+        import i from "./modules/index.js";
+        console.log(i);
+
+        // 导出解构 --- 可以导出多个对象
+        import {a,b,y} from "./modules/test.js";
+        console.log(a,b,y);
+        // 导出解构 --- 重命名用as
+        import {aa,bb,yy} from "./modules/test.js";
+        console.log(aa,bb,yy);
+
+        // 默认导出
+        import foo from "./modules/test.js";
+        console.log(foo);   // 输出函数
+        console.log(foo()); //输出函数的执行结果
+
+        // 加载别人的模块进行导出
+        import {publicname} from "./modules/test.js";
+        console.log(publicname);
+
+    </script>
+
+</body>
+</html>
