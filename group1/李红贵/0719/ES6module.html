@@ -7,8 +7,7 @@
     <title>ES6模块化规范</title>
 </head>
 <body>
-    <script type="module"></script>
-    <script>
+    <script type="module">
         // 特征:原生支持  原生内容可以配套使用  const let class ...,兼容性不好
         // 应用: 不好应用在实际项目中,而是把它构建项目的过程
         // 不把ES6模块化当成加载工具,当成程序分割程序
@@ -20,6 +19,39 @@
         // 定义加载
         // import 引入
         // export 导出
+
+
+
+        // 01 export default 引入;
+        // import module from "./modules/02module.js";
+        // console.log(module.a);
+        // console.log(module.b);
+
+        // 02 如果使用到了 export 那么这个时候我们取值必须使用 解构 ;
+        // import { a , b } from "./modules/02module.js";
+        // console.log(a , b);
+
+        // * 
+        // import * as module from "./modules/02module.js";
+        // console.log(module);
+
+        // 03 引入特殊声明的模块;
+        // import 过来的变量依旧保留有原来声明时的特征，比如常量无法更改;
+        // 如果想要更改变量名 那么必须使用 as 语法;
+        // import { c as d } from "./modules/02module.js";
+
+        // d = 20;
+        // console.log(d);
+
+        // 04 导出结构;
+        // import { aaa , bbb , ccc  } from  "./modules/02module.js";
+        // // c = 20;
+        // console.log(aaa , bbb , ccc );
+
+        // 05 默认导出不用结构;
+
+        import {name} from "./modules/02module.js"
+        console.log(name);
     </script>
 </body>
 </html>
