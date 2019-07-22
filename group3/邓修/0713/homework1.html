@@ -46,10 +46,26 @@
       <!-- 业务文件 -->
       <script src="js/homework1.js"></script>
       <script>
-            new Pagination().init({
-                  list: ".image-list",
-                  page: ".pagination",
-                  getData: {
+            // new Pagination().init({
+            //       list:".image-list",
+            //       page:".pagination",
+            //       getData:{
+            //             url: "http://localhost/zc",
+            //             data: {
+            //                   pageSize: 100,
+            //                   contentId: ("" + Date.now()).slice(6) + "_3",
+            //                   day: new Date().toISOString().slice(0, 10)
+            //             }
+            //       },
+            //       template:$("#template").html(),
+            //       pageNo:1,
+            //       showNo:5
+            // });
+
+            new Pagination().init(
+                  ".image-list",
+                  ".pagination",
+                  {
                         url: "http://localhost/zc",
                         data: {
                               pageSize: 100,
@@ -57,10 +73,10 @@
                               day: new Date().toISOString().slice(0, 10)
                         }
                   },
-                  pageNo: 1,
-                  showNo: 5,
-                  template: $$("#template").innerHTML
-            });
+                  $("#template").html(),
+                  1,
+                  5
+            );
       </script>
 </body>
 
