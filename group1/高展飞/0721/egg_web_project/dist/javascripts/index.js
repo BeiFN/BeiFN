@@ -1,0 +1,1 @@
+"use strict";function _classCallCheck(n,s){if(!(n instanceof s))throw new TypeError("Cannot call a class as a function")}var A=function n(){_classCallCheck(this,n),this.hh="乌鸦坐飞机，震雷削"};new A,console.log("pipipip");
