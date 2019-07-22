@@ -30,8 +30,8 @@ class Banner{
     
         // 策略模式，选择动画效果和下标
         this.options = Object.assign({
-            effect: "slide",
-            // effect: "fade",
+            // effect: "slide",
+            effect: "fade",
     
             pagination :".pagination"
         },options);
