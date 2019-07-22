@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+.header {
+    background: #f4f4f4;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 30px;
+}
+.w1280 {
+    width: 1280px;
+    margin: 0 auto;  
+}
+
+.hline {
+    float: left;
+    color: #999999;
+}
+.options {
+    float: right;
+}
+.options li {
+    float: left;
+    margin-left: 24px;
+}
+.options li a {
+    color: #999;
+}
+.options .find {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPlJREFUeNpi/P//PwOxgImBBMACY8yaNUsLSKUBsTYQ/wDiHUC8KC0t7TOKyUCFgUBqOxBLAvFOID4LxPFAvAEoJwM3GcjRBdL9QNwHNGUikk0g9jIg7gLiKJjJKUB8DFkhCAD574FUDhCbADVawxSDTD6Dw0/3gfgFEJvCFH8DYm48AQCS+wJTvA2IvYFWCWBR7AbE/6CeZmCcOXMmD5BeD8Sg2MkH4rtAzAzEnkA8ExSEQPfHghWDYhBoqgQ0RIyB+DUQc0BNvA6yFYi7gRo6GJGjG6jJEqoBFBF7gAqeAsVKgOxmIK5jJCZtADXUAykFRlISEkCAAQBV61N399iergAAAABJRU5ErkJggg==) no-repeat left center;
+    padding-left: 14px;
+}
+.options .carts {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAOCAYAAADwikbvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAVNJREFUeNqU0s8rRFEUwPFzeWQkGrPAjoWS2GHDVlPyD1hj7S+YBZLslcRGNtakrKwmma1ISjJ+NBakaSIZOr73vlvveakxrz7vnPfj3HvefVdUJIdDZFVV6hEmIjNYrrc4kPA4waQYM01MSe2DueQ+LFYtUthMNo6nfxR/Yz6I3ThHnoHyNUvDibrixQ9Y5MEpsR+3+EKf7+bd58/otG03xIpfYAtXUMGRz9+w4wYW+cAqju2A8eIz9y2qdoYCWsht4Q0uyT9dN6olYgbFqG3VR1oOMMBVN0bJ74hjGCG3LQ8Sh921yJ5xPztaiBznIVygHa/oQBlt/i3bWYnJtoPEOl65/6y6xEApX1Dxscr9MvebiFX7cpBY/h5MkO/72c2vjRG23ki8Jq5H240ibCKNA7TCJGxhCgtYi77ZmDTnOfS6X6a6+8fmsIs367fnxo8AAwCADMOXxIgcZwAAAABJRU5ErkJggg==) no-repeat left center;
+    padding-left: 18px;
+}
+.options .myorder {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAIAAAB2A3HCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHxJREFUeNpiPH/+/PHjx3/8+MGAAbi5uS0tLVlOnjzp5eUlIiKCqeL169fbt29n+vbtG1ZpIBAVFQWazQLhzJo1C1kuLS0NzmbBFEIDtDMDWRthM5gYCAGqqODg4Hj58iVWOWCoA6OG8fLly8Co+fTpE6YKoGZra2uAAAMA/A0x/U8D7QAAAAAASUVORK5CYII=) no-repeat left center;
+    padding-left: 14px;
+}
+.options .servers {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAIAAACQKrqGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARtJREFUeNpi/PLlCwNxgAXO+v711e3Tpy88fPWfiZ2D6c+XP4zSykZG+kpivJwQBYwQU59f3bvvzBtpPSNzDRlOTqjcvavHL198wK5p6WGoAFX6/vbuzecYPXysxbg50Sz9/v3dyW07/up5OqsKMjEwvN5/7J2BqzGmOiDg5BQy93L6ee7QEwYGpuenj/6Q0NYTEsTlG05OCUt1lnOnnzO9fvWdjf3rg0fPcSl9/ujB1U9/fj9/yvTm03fGP99vHDt2/OV7LOru7D905MqfX38+ff/O9OU3s5aLg7E0y9vnHzGV/vzylYFf1sFFiwvoVgaiAQlKWeTFWU8sWsj0n1/Pgx9Tml9Smv3ihYWL/rGKGzESnwZIcABAgAEAUbt1GObUIBgAAAAASUVORK5CYII=) no-repeat left center;
+    padding-left: 16px;
+}
+.nav {
+    overflow: hidden;
+    font-size: 18px;
+    line-height: 60px;
+}
+.nav a {
+    color: black;
+}
+.nav .navs li {
+    float: left;
+    padding: 0 16px 0px;
+}
