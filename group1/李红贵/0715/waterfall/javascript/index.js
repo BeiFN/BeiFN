@@ -26,7 +26,7 @@ class WaterFall{
                   timer = setTimeout( ()=>{
                         this.changeContainerWidth();
                         timer = null;
-          this.cHeight = document.documentElement.clientHeight;
+                  this.cHeight = document.documentElement.clientHeight;
 
                   },300)
           })

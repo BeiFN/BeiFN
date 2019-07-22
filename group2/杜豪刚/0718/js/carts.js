@@ -1,7 +1,10 @@
 // carts 购物车
 define(["jquery"],function(){
     // console.log(1);
-    function Carts(){};
+    function Carts(){
+        // 创建一个空数组cbList
+        this.cbList = {};
+    };
     $.extend(Carts.prototype,{
         init : function(){
             this.main = $(".goods-list");
@@ -20,13 +23,16 @@ define(["jquery"],function(){
                     // location.reload();
                     // 在页面实现不刷新的情况下，改变购物车的数量
                     this.sumCartNum();
+                    this.fire("temp");
                 }
             },this));
             // 在页面一加载就渲染购物车数量的初始值
             this.sumCartNum();
             // 购物车的加减
-            this.main.on("click","btn-reduce",$.proxy(this.reduceNum,this));
-            this.main.on("click","btn-add",$.proxy(this.addNum,this));
+            this.main.on("click",".btn-reduce",$.proxy(this.reduceNum,this));
+            this.main.on("click",".btn-add",$.proxy(this.addNum,this));
+            // console.log(1);
+            this.add();
         },
         addCart : function(evt){
             var e = evt || window.event;
@@ -91,11 +97,61 @@ define(["jquery"],function(){
             return sum;
         },
         // 购物车的加减
-        reduceNum : function(){
-            console.log("+");
+        reduceNum : function(evt){
+            // console.log("-");
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            // 获取父元素内商品的ID
+            var id = $(target).parent().attr("data-id");
+            var l  = JSON.parse(localStorage.getItem("carts"));
+            // console.log(id,l[0].id);
+            l.forEach(function(item,index){
+                if(item.id === id){
+                    // console.log("相同");
+                    item.count--;
+                    // console.log(item.count);
+                    if(item.count === 0){
+                        l.splice(index,1);
+                    }
+                }
+            })
+            // 重新设置本地存储数据，并重新渲染购物车数量
+            localStorage.setItem("carts",JSON.stringify(l));
+            this.fire("temp");
+            this.sumCartNum();
         },
-        addNum : function(){
-            console.log("-");
+        addNum : function(evt){
+            // console.log("+");
+            var e = evt || window.event;
+            var target = e.target || e.srcElement;
+            // 获取父元素内商品的ID
+            var id = $(target).parent().attr("data-id");
+            var l  = JSON.parse(localStorage.getItem("carts"));
+            // console.log(id,l[0].id);
+            l.forEach(function(item,index){
+                if(item.id === id){
+                    // console.log("相同");
+                    item.count++;
+                    // console.log(item.count);
+                }
+            })
+            // 重新设置本地存储数据，并重新渲染购物车数量
+            localStorage.setItem("carts",JSON.stringify(l));
+            this.fire("temp");
+            this.sumCartNum();
+        },
+        // add接口
+        add : function(cb,type){
+            // console.log(this.cbList);
+            if(!(this.cbList[type] instanceof Array)){
+                this.cbList[type] = [];
+            }
+            this.cbList[type].push(cb);
+        },
+        fire : function(type){
+            this.cbList[type].forEach(function(item){
+                typeof item ==="function"? item() : "";
+            })
         }
     })
     return new Carts();
