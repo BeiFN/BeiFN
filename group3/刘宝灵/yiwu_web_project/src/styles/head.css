@@ -1,0 +1,256 @@
+*{
+    word-wrap: break-word;
+}
+body,p,td,th,fieldset,legend,option,textarea,button,hr,input,h1,h3,h4,h5,h6,h2,ol,ul,dd,dl{ margin:0; padding:0;}
+a{text-decoration:none; color:#666;}
+i,em{font-style:normal;}
+a img{border: none;}
+textarea {
+    resize: none;
+}
+body, input, button, select, textarea {
+    font: 12px/1.5 Tahoma,'Microsoft Yahei','Simsun';
+    color: #666;
+}
+li{
+    list-style: none;
+    list-style-type: none;
+    text-align: -webkit-match-parent;
+}
+.header{
+    position: relative;
+}
+.cl{
+    zoom : 1;
+}
+.cl::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.wp{
+    width: 1190px;
+    margin: 0 auto;
+}
+.industry_wrap{
+    position: relative;
+    z-index: 999;
+}
+.industry {
+    width: 158px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid transparent;
+    text-indent: 20px;
+    font-size: 16px;
+    color: #000;
+    position: relative;
+    float: left;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.industry img{
+    margin-right: 20px;
+}
+.industry_wap {
+    position: absolute;
+    top: 41px;
+    z-index: 999;
+    width: 661px;
+}
+.white {
+    width: 160px;
+    height: 8px;
+    background: #fff;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    z-index: 6;
+}
+.industry_li {
+    display: none;
+    width: 160px;
+    height: 448px;
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-top: 4px;
+    box-shadow: 0px 0px 4px #999;
+    z-index: 4;
+}
+.industry_li li{
+    padding: 0 !important;
+}
+.industry_li a {
+    color: #666;
+    display: block;
+    float: left;
+    width: 160px;
+    line-height: 32px;
+    text-indent: 30px;
+    position: relative;
+    height: 32px;
+    font-size: 14px;
+}
+a::-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.industry_li a b {
+    background: url(http://www.i1515.com/image/newIndex/li_bg.png) no-repeat;
+    width: 4px;
+    height: 7px;
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}
+.indus_rita {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    width: 432px;
+    height: 427px;
+    background: #f7f7f7;
+    padding: 25px 39px 0 28px;
+    display: none;
+    box-shadow: 1px 0px 4px #999;
+}
+.list_type {
+    height: 90px;
+    width: 439px;
+    padding: 10px 30px;
+}
+.list_tit {
+    height: 24px;
+    width: auto;
+    border-bottom: 1px solid #ccc;
+    line-height: 24px;
+    text-indent: 5px;
+    margin-bottom: 10px;
+    color: #666;
+    font-weight: 900;
+}
+.list_type .list_tit a{
+    font-size: 14px;
+    color: #666;
+}
+.list_type a{
+    color: #999;
+    margin: 0 6px;
+    white-space: nowrap;
+    float: left;
+}
+.logo_wrap{
+    width: 550px;
+    margin-left: 10%; 
+}
+.fl{
+    float: left;
+}
+.logo_wrap_box{
+    text-align: center;
+    padding-top: 7px;
+}
+.type_boxs a{
+    color: #000;
+}
+.so_box {
+    width: 494px;
+    height: 40px;
+    padding-top: 14px;
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+.product{
+    width: 530px;
+}
+.product_box{
+    border: 1px solid #ccc;
+    width: 220px;
+    height: 34px;
+}
+.product_box input{
+    width: 195px;
+}
+.product input{
+    background: none;
+    height: 14px;
+    border: none;
+    padding: 10px 0 ;
+    padding-left: 25px;
+    color: #ccc;
+    font-size: 12px;
+}
+.change_img img{
+    padding: 0 10px;
+}
+.so_btn {
+    position: absolute;
+    top: 19px;
+    right: 0px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
+.type_li{
+    padding-left: 128px;
+}
+.type_li li {
+    float: left;
+    color: #fff;
+    font-size: 16px;
+    height: 44px;
+    padding: 0 5px;
+    position: relative;
+}
+.type_li a {
+    color: #000;
+    display: inline-block;
+    padding: 10px 20px;
+}
+.type_li li b {
+    border-right: 1px solid #ccc;
+    height: 19px;
+    position: absolute;
+    right: 0px;
+    top: 13px;
+}
+.login_box{
+    float: right;
+    font-size: 16px;
+}
+.fr{
+    float: right;
+}
+.login_box li {
+    float: left;
+    color: #fff;
+    margin-right: 10px;
+    position: relative;
+}
+.login_box img{
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+}
+.login_box .shop_num {
+    height: 14px;
+    padding: 0 5px;
+    line-height: 14px;
+    font-size: 12px;
+    width: auto;
+    position: absolute;
+    top: 0px;
+    right: -8px;
+}
+
+
+
