@@ -5,6 +5,7 @@ define(["jquery","./load","./render","./carts"],function($,load,render,carts){
     var btn_carts     = $(".btn-carts");
     var title         = $(".content-title")
     var btn_goodslist = $(".btn-goodslist");
+    var sum           = $(".sum");
     // console.log($);
     // console.log(load.init().then(function(res){console.log(res)}));
     var res = load.init();
@@ -23,12 +24,17 @@ define(["jquery","./load","./render","./carts"],function($,load,render,carts){
         $(this).addClass("active")
             .siblings()
             .removeClass("active");
-            var html = render.init(temp,"carts_list");
-            // console.log(html);
-            goods_list.html(html);
-            title.html("购物车列表");
-            
+            renderPage();
+       
     });
+
+    // 渲染购物车列表
+    function renderPage(){
+        var html = render.init(temp,"carts_list");
+        // console.log(html);
+        goods_list.html(html);
+        title.html("购物车列表");
+    }
     
     // 选择改变到商品列表
     btn_goodslist.on("click",function(){
@@ -40,4 +46,8 @@ define(["jquery","./load","./render","./carts"],function($,load,render,carts){
             title.html("商品列表")
             // console.log(html);
     });
+
+    // 观察者模式，调用carts的add接口，渲染页面
+    carts.add(renderPage,"temp");
+
 })

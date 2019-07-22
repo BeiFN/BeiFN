@@ -57,6 +57,7 @@ define(["jquery","./load"],function(){
                 })
             });
             var html = "";
+            var temp = "";
             res.forEach(function(item){
                 html += `
                         <div class="col-md-12 carts-item">
@@ -73,15 +74,28 @@ define(["jquery","./load"],function(){
                             </div>
                             <div class="carts-total-price">￥${ parseInt(item.count * item.group_price / 100)}</div>
                         </div>
-                    `
+                  `
+                  
+                // var newArr = [];
+                // var jg = parseInt(item.count * item.group_price / 100);
+                // console.log(jg);
+                // if(jg !== jg){
+                //     newArr.push(jg)
+                // }
+                // console.log(newArr)
+                // var newArr = [];
+                // newArr.push();
+                // var sumArr = newArr.reduce(function(item,index){return item+index})
+                // console.log(sumArr)
+                temp = `
+                        <span class="sum">总价： ￥ ${parseInt(item.count * item.group_price / 100)}</span>
+                  `;
             })
             // console.log(html);
-            return html;
+            return temp + html;
         }
     });
 
-
-
     return new Render();
-
+    
 });

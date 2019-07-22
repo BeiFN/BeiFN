@@ -53,10 +53,9 @@
 <script src="../../libs/jquery.js"></script>
 <script src="../../libs/ejs.js"></script>
 <script type="module">
-      import {pagination} from "./js/index.js"
-      //未实现
-      console.log(pagination)
-      // new Pagination()
+      import init from "./js/init.js"
+      init()
+     
 </script>
 
 <!-- <script type="text/javascript">
@@ -135,7 +134,7 @@
                   var data = res.data.contents;
                   this.data = this.interceptData(data);
                   var html = ejs.render(this.template, { data: this.data })
-                  this.imgList.html(html) 
+                  this.imgList.html(html)  
             },
             renderBtn: function () {
                   var num = Math.ceil(this.total / this.pageSize)
