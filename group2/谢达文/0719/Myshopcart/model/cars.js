@@ -1,14 +1,26 @@
-define([
-   'jquery'
-], function() {
-    'use strict';
-    function Carts(){}
+
+    function Carts(){
+        this.cbList = {}
+    }
     $.extend(Carts.prototype,{
         init:function(){
+            
             this.main = $(".goods-list");
             this.cartsNum = $(".cart-num");
+            this.btn_cart = $(".cart-wrap");
             this.main.on("click",".add-cart",$.proxy(this.addCart,this));
             this.main.on("click",".add-cart",$.proxy(this.sumCartNum,this));
+            this.main.on("click",".btn-reduce",$.proxy(this.reduceGoodsNum,this));
+            this.main.on("click",".btn-add",$.proxy(this.addGoodsNum,this));
+            this.btn_cart.on("click",$.proxy(function(){
+                var clear = confirm("是否清空购物车");
+                if(clear){
+                    localStorage.clear();
+                    // this.sumCartNum();
+                    location.reload();
+                    
+                }
+            },this))
             this.sumCartNum();
         },
         addCart:function(evt){
@@ -56,8 +68,52 @@ define([
             this.cartsNum.html(sum);
             // console.log(sum);
             return sum;
+        },
+        reduceGoodsNum:function(evt){
+            var e = evt || event;
+            var target = e.target || e.srcElement;
+            var id = $(target).parent().attr("data-id");
+            var la = JSON.parse(localStorage.getItem("carts"));
+            la.forEach(function(item,index){
+                if(item.id == id){
+                    item.count --
+                    if(item.count == 0){
+                        la.splice(index,1);
+                    }
+                }
+            })
+            localStorage.setItem("carts",JSON.stringify(la));
+            this.fire("changeNum");
+            this.sumCartNum();
+        },
+        addGoodsNum : function(evt){
+            var e = evt || event;
+            var target = e.target || e.srcElement;
+            var id = $(target).parent().attr("data-id");
+            var la = JSON.parse(localStorage.getItem("carts"));
+            la.forEach(function(item,index){
+                if(item.id == id){
+                    item.count ++
+                }
+            })
+            localStorage.setItem("carts",JSON.stringify(la));
+            this.fire("changeNum");
+            this.sumCartNum();
+        },
+        add:function(cb,type){
+            console.log(type);
+            
+            if(!(this.cbList[type] instanceof Array)){
+                this.cbList[type] = [];
+            }
+            this.cbList[type].push(cb);
+            console.log(this.cbList);
+        },
+        fire:function(type){
+            console.log(111)
+            this.cbList[type].forEach(function(item){
+                typeof item === "function" ? item() : "";
+            })
         }
-
     })
-    return new Carts();
-});
+ export default new Carts();

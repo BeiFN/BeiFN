@@ -1,0 +1,373 @@
+.sheader {
+    width: 100%;
+    background-color: #fff;
+}
+
+.top-bar {
+    height: 130px;
+    font-size: 14px;
+    color: #000;
+}
+
+.ncontainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.head-lang {
+    float: left;
+    margin-top: 62px;
+    vertical-align: middle;
+}
+
+.region-selection,
+.currency-selection {
+    position: relative;
+    float: left;
+    height: 28px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    line-height: 28px;
+}
+
+.region-selection {
+    width: 40px;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.region-selection:hover {
+    color: #ffb81c
+}
+
+.head-lang h4 {
+    font-family: 'INTERVOGUE-REG', 'Microsoft YaHei';
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 28px;
+    margin: 0;
+    padding-right: 4px;
+    text-align: center;
+}
+
+.head-lang .icon-sanjiaoxing {
+    position: absolute;
+    top: 0;
+    right: 9px
+}
+
+.n-hide {
+    display: none;
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+.region-options,
+.currency-options {
+    position: absolute;
+    top: 31px;
+    left: 0;
+    width: 84px;
+    border: 1px solid #000;
+    display: none;
+    background-color: #fff;
+    color: #000;
+    z-index: 10;
+}
+
+.region-option {
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    font-family: 'INTERVOGUE-REG', 'PingFangSC-Regular';
+}
+
+.separate-line {
+    float: left;
+    width: 1px;
+    height: 28px;
+    background-color: #ccc;
+}
+
+.currency-selection {
+    width: 49px;
+    padding-left: 17px;
+}
+
+.currency-options {
+    left: -1px;
+}
+
+
+.head-site {
+    float: right;
+    margin-top: 62px;
+}
+
+.zh .head-site .register {
+    margin-right: 17px;
+}
+
+.head-site .register {
+    margin-right: 11px;
+}
+
+.head-site span {
+    float: left;
+    height: 28px;
+    font-size: 0;
+    line-height: 28px;
+}
+
+body.zh .en {
+    display: none !important;
+}
+
+.sheader .en,
+.nfooter .en {
+    font-family: 'INTERVOGUE-REG';
+}
+
+.head-site a {
+    color: #000;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.head-site .username {
+    margin-right: 15px;
+}
+
+.head-site .sign-in a,
+.head-site .log-out a {
+    width: 63px;
+    text-align: center;
+}
+
+.head-site .username,
+.head-site .log-out {
+    display: none;
+}
+
+.shopping-bag,
+.shopping-bag-line,
+.sopdetailsCon #addBindCar,
+.sopdetailsCon #addCarInfo,
+.sopdetailsCon #addfq,
+.sopdetailsCon #secondCart,
+.sopdetailsCon .topanic_end,
+.sopdetailsCon .to_cart_end,
+#authorityLooks3 .product-status,
+#favoriteTable .marBottom_5,
+.ms_brank_list [name="batchAddToCart"],
+#order_info .btn_gray,
+#order_info .btn_red,
+.commodity-list .add_cart a,
+.commodity-list .tipState {
+    display: none !important;
+}
+
+.head-site .icon-collection {
+    font-size: 22px;
+    margin: 0 11px 0 13px;
+}
+
+.icon-shoucang:before {
+    content: "\e686";
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.head-logo {
+    width: 189px;
+    height: 75px;
+    margin: 0 auto;
+    padding-top: 29px;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
+.collection a:hover {
+    color: #ffb81c;
+}
+
+.head-site .zh:hover {
+    color: #ffb81c;
+}
+
+/* 分类栏 */
+.nav-bar {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+}
+
+.nav-menu {
+    float: left;
+}
+
+.zh .nav-bar .nav-item:first-child {
+    margin-left: -25px;
+}
+
+.nav-bar .nav-item {
+    float: left;
+}
+
+.nav-bar .nav-item>a {
+    position: relative;
+    display: block;
+    height: 50px;
+    padding: 0 15px;
+    line-height: 50px;
+    color: #ffb81c;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-bar .nav-item>a.zh {
+    padding: 0 25px;
+    font-size: 16px;
+}
+
+/* 搜索键 */
+.nav-bar .s-search {
+    float: right;
+    height: 50px;
+    line-height: 50px;
+    color: #ffb81c;
+    cursor: pointer;
+}
+
+.nav-bar .s-search .search-inner {
+    /* display: none; */
+    position: relative;
+    width: 55px;
+    height: 20px;
+    padding-bottom: 7px;
+    margin-top: 15px;
+    -webkit-transition: width linear 0.3s, border-color linear 0.3s;
+    -o-transition: width linear 0.3s, border-color linear 0.3s;
+    transition: width linear 0.3s, border-color linear 0.3s;
+    border-bottom: 1px solid transparent;
+    padding-right: 30px;
+}
+
+.nav-bar .s-search .search-inner input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: #ffb81c;
+    caret-color: #ffb81c;
+    border: 0 none;
+    cursor: pointer;
+}
+
+.txr {
+    text-align: right;
+}
+
+textarea,
+input[type="text"],
+input[type="password"] {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+select {
+    display: inline-block;
+    color: #333;
+    vertical-align: middle;
+}
+
+.nav-bar .s-search .search-inner .icon-search {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 20px;
+    height: 19px;
+    line-height: 19px;
+    -webkit-transition: color linear 0.3s;
+    -o-transition: color linear 0.3s;
+    transition: color linear 0.3s;
+    color: #ffb81c;
+}
+
+.nav-bar .s-search .search-inner .icon-search {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 20px;
+    height: 19px;
+    line-height: 19px;
+    -webkit-transition: color linear 0.3s;
+    -o-transition: color linear 0.3s;
+    transition: color linear 0.3s;
+    color: #ffb81c;
+}
+
+.tx1 {
+    text-align: left;
+}
+
+.nav-bar .s-search.active .search-inner {
+    width: 193px;
+    border-color: #fff;
+}
+
+.nav-bar .s-search.active .search-inner input {
+    color: #FFF;
+    cursor: text;
+}
+
+input:focus {
+    outline-offset: -2px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #9d003f;
+    outline: 0;
+    outline: thin dotted 9
+}
+
+textarea,
+input[type="text"],
+input[type="password"] {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+select {
+    display: inline-block;
+    color: #333;
+    vertical-align: middle;
+}

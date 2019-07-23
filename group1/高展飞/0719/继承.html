@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES5 继承  1.对象克隆   2.原型链继承
+        // ES6  继承    1. extends    2.super()
+        
+//构造函数继承：：：：
+        //1.继承构造函数里的内容  
+        //call   处理固定参数通常用call，有参数语义化较好
+        //apply   属于一步式继承。
+
+        // function  Parent(){
+        //     this.name = "乌鸦坐飞机，震雷削"
+        // }
+        // function Son (){
+        //     Parent.call(this)
+        // }
+        // var son = new Son ();
+        // console.log(son);
+
+// 原型继承：：：：：
+        //1 克隆式继承，拿别人的直接用就完了
+        // function Father(){}
+        // Father.prototype.show = function(){
+        //     console.log("雷霆半月斩")
+        // }
+        // Father.prototype.hello= function(){
+        //     console.log("狂瀑扎")
+        // }
+        // function Son(){}
+//直接拿来用
+        // Son.prototype.show = Father.prototype.show;
+        // console.log(Son.prototype.show);
+//当父类方法属性有多个时 （拷贝式继承=>for  in 继承）
+//将别人的方法名，方法的引用拿到自己的原型上进行使用
+        // for(var attr in Father.prototype){
+        //     Son.prototype[attr ]= Father.prototype[attr];
+        // }
+//这种方法会改变父类
+        // Son.prototype = Father.prototype;//该方法会覆盖子类原型，同时在修改子类时也会修改父类；
+        
+        // console.log(Son.prototype)
+        // Son.prototype.show = function(){
+        //     console.log("天羽屠龙舞");
+        // }
+        // console.log(Father.prototype.show)
+
+
+        //2  寄生式继承   不是自己的，但获取了使用权  通过原型链机制
+        // function Father(){}
+        // Father.prototype.show = function(){
+        //     console.log("雷霆半月斩")
+        // }
+        // Father.prototype.hello= function(){
+        //     console.log("狂瀑扎")
+        // }
+        // function Son(){}
+        // //__proto__   不兼容
+        // Son.prototype.__proto__ = Father.prototype;
+
+//保留Son的原型对象，给Son的原型一个对象重置一个原型指针
+        // Son.prototype = new Father();//需要实例化父类
+        // Son.prototype.constructor = Son;
+        //console.log(new Son());
+        //3   创建一个新对象，，把参数放入新对象的原型指针中，此时原型指针指向参数对象
+//         function Father(){}
+//         Father.prototype.show = function(){
+//             console.log("雷霆半月斩")
+//         }
+//         Father.prototype.hello= function(){
+//             console.log("狂瀑扎")
+//         }
+//         function Son(){}
+//         // var obj = Object.create({name : "闪电旋风劈"})
+//         // console.log(obj.name);
+// //ES5方法实现原型链继承
+// Son.prototype = Object.create(Father.prototype);
+// Son.prototype.constructor = Son;
+// console.log(new Son());
+//ES6继承  
+       class Father{
+           constructor(){
+                this.name = "雷霆半月斩,,狂瀑扎"
+           }
+            biubiu (){
+                console.log(this.name)
+            } 
+        }
+        class Son extends Father{ }
+        console.log(new Son());
+//当需求更改时：
+        class Son extends Father{
+            constructor(){
+        //添加新属性时，要先写super();
+                super(); 
+                this.age = 20;
+            }
+    //可以新增方法，用来改变方法父类和子类执行顺序
+        //访问方法正常顺序从子类到父类
+            sonBye(){
+                super.biubiu();
+                console.log("散魂铁爪哟")
+            }
+        }
+    </script>
+</body>
+</html>
