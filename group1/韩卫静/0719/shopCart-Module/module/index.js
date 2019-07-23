@@ -1,25 +1,8 @@
-//用于处理各个模块之间的耦合关系
-/**
- * 加载数据
- * 渲染商品列表界面
- * 绑定购物车事件，点击按钮将
- * 	1.该商品的信息加入localstorage中
- * 	2.改变右上角购物车中数量的显示
- * localstorage保存数据时，判断该商品是否存在，若存在则数量加1
- * 
- * 点击购物车界面，将:
- *	1.根据localstorage中的数据截取初始商品列表
- * 	2.渲染购物车界面
- */
+import loaddata from "./loadData.js";
+import render from "./render.js";
+import carts from "./Carts.js";
 
-/**
- * @param {Object} $
- * @param {Object} loaddata
- * @param {Object} render
- * @param {Object} carts
- */
-
-define(["jquery","./loadData" , "./render.js", "./Carts.js"],function($ , loaddata,render,carts){
+export default function(){
 	var goods_content = $(".goods-list .row");
 	var btn_goods = $(".btn-goodslist");
 	var btn_carts = $(".btn-carts");
@@ -47,10 +30,7 @@ define(["jquery","./loadData" , "./render.js", "./Carts.js"],function($ , loadda
 		goods_content.html(cartsHtml);
 	})
 	function renderCartList(){
-		console.log("调用render")
 		var cartsHtml = render.init(resList.goods_list , "carts");
 		goods_content.html(cartsHtml);
 	}
-	
-	
-});
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="module">
+			//1.export default
+			// import a from "./module.js";
+			
+			// import AA from "./module.js";
+			// console.log(AA)
+			// AA();
+			
+			//2.直接export,引入的时候必须使用解构赋值
+			// import {a,b,c} from "./module.js"
+			// console.log(a,b,c);
+			
+			//改名使用as
+			// import {a as aa,b as bb,c as cc} from "./module.js";
+			// console.log(aa,bb,cc)
+			
+			//在export的时候也可以改名
+			//import {aa , bb} from "./module.js";
+			// console.log(aa,bb)
+			
+			//用*接收所有的导入,此时不用解构,返回module类型的结果
+			//  import * as all from "./module.js";
+			// console.log(all)
+			
+			//3.使用别的模块的导入
+			import a from "./module.js";
+			console.log(a);
+			
+		</script>
+	</body>
+</html>
