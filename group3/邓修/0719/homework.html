@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box,
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box2 {
+            left: 200px;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        function Drag(selector){
+            this.init(selector);
+        }
+        Drag.prototype={
+            constructor:Drag,
+            init:function(selector){
+                this.moveCB=null;
+                this.ele=document.querySelector(selector);
+                this.ele.addEventListener("mousedown",this.start.bind(this));
+                this.ele.addEventListener("mouseup",this.end.bind(this));
+            },
+            start:function(evt){
+                var e=evt||window.event;
+                this.offset_x=e.offsetX;
+                this.offset_y=e.offsetY;
+                document.removeEventListener("mousemove",this.moveCB);
+                document.addEventListener("mousemove",this.moveCB=this.handlerMove.bind(this));
+            },
+            handlerMove:function(evt){
+                var e=evt||window.event;
+                var x=e.clientX,y=e.clientY;
+                x=x-this.offset_x;
+                y=y-this.offset_y;
+                this.move(x,y);
+            },
+            move:function(x,y){
+                this.ele.style.left=x+"px";
+                this.ele.style.top=y+"px";
+            },
+            end:function(){
+                document.removeEventListener("mousemove",this.moveCB);
+            }
+        }
+        function ExtendDrag(selector){
+            Drag.call(this,selector);//构造函数继承:constructor中的属性和方法继承
+        }
+        ExtendDrag.prototype=Object.create(Drag.prototype);//原型继承
+        ExtendDrag.prototype.constructor=ExtendDrag;
+        ExtendDrag.prototype.move=function(x,y){
+            var res=this.boundary(x,y);
+            this.ele.style.left=res.x+"px";
+            this.ele.style.top=res.y+"px";
+        }
+        ExtendDrag.prototype.boundary=function(x,y){
+            x=x<0?0:x;
+            y=y<0?0:y;
+            return {x,y};
+        }
+        new Drag("#box");
+        new ExtendDrag("#box2");
+    </script>
+</body>
+
+</html>

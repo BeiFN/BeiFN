@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //子类的方法不能优先于父类方法出现，
+        //通过new调用时，不能直接调用父类的构造函数而是要调用子类。
+        // function Parent(name){
+        //     this.name = name;
+
+        // }
+        // Parent.prototype.age = function(){
+        //     console.log('父类：' + this.name);
+        // }
+        // function Child(name){
+        //     this.name = name;
+
+        // }
+        // Child.prototype = new Child();
+        // Child.prototype.age = function(){
+        //     console.log('子类：' + this.name);
+        // }
+        // var a = new Child("wangwu");
+        // a.age();
+        
+
+        function Foo(name) {
+            this.name = name;
+        }
+        Foo.prototype.age = function() {
+            console.log('父类：' + this.name);
+        };
+        Foo.prototype.obj = function() {
+            console.log('hello world');
+        };
+        function fn (name) {
+            Foo.call(this,name);  
+        }
+        fn.prototype = Object.create(Foo.prototype);
+        fn.prototype.constructor = fn;
+        fn.prototype.age = function() {
+            console.log('子类：' + this.name);
+        };
+        fn.prototype.set = function() {
+            console.log('set si es5');
+        };
+        var a = new fn('lisi');
+        a.age();
+        a.obj();
+        a.set();
+    </script>
+</body>
+</html>
