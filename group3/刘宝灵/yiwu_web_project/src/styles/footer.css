@@ -1,0 +1,108 @@
+.footer{
+    padding-top: 60px;
+}
+.ywall-desc{
+    height: 140px;
+    width: 854px;
+    float: left;
+}
+.ywall-desc dl {
+    float: left;
+    width: 100px;
+    padding-right: 40px;
+    position: relative;
+    display: block;
+}
+.ywall-desc dt {
+    width: 140px;
+    color: #333;
+    font-size: 18px;
+    height: 40px;
+    line-height: 42px;
+    font-weight: 600;
+}
+.ywall-desc dd {
+    display: block;
+    width: 60px;
+    overflow: hidden;
+    text-align: left;
+    line-height: 30px;
+    color: #fff;
+    font-size: 12px;
+}
+.ywall-desc dd a {
+    color: #888;
+}
+.footer_rit{
+    float: right;
+    padding-top: 10px;
+}
+.footer_rit p {
+    color: #333;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    width: 213px;
+    padding-left: 122px;
+}
+.footer_rit_box {
+    height: 90px;
+    border-left: 1px solid #ccc;
+    padding-left: 112px;
+}
+.footer_rit_box dl {
+    width: 96px;
+    height: 116px;
+    float: left;
+    margin-left: 10px;
+}
+.footer_rit_box dd {
+    text-align: center;
+    color: #999;
+}
+.footer_link {
+    border-top: 4px solid #c80000;
+    margin-top: 20px;
+}
+.link_ul {
+    padding: 26px 56px;
+    margin: 0 auto;
+    width: 640px;
+}
+.link_ul li {
+    float: left;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.link_ul li a {
+    width: 80%;
+    height: 100%;
+    display: inline-block;
+}
+.link_com {
+    background: url(http://www.i1515.com/image/newIndex/dddd_03.png) no-repeat;
+    width: 108px;
+    height: 40px;
+}
+.footer_box{
+    padding: 16px 25px;
+    margin-top: 16px;
+    text-align: center;
+}
+.footer_bom{
+    padding: 0 50px;
+}
+.footer_bom a{
+    color: #333;
+}
+.company_infor{
+    padding: 20px 50px;
+}
+.company_infor p{
+    padding-bottom: 10px;
+    color: #999;
+}
+.company_infor span{
+    margin-left: 20px;
+}
