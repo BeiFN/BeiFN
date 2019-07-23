@@ -1,0 +1,120 @@
+@import "./color.scss";
+@import "./mixin.scss";
+
+body{
+    background: $bg-color;
+}
+
+// 兼容前缀 ; 批量重复操作
+
+// @mixin   片段     => 创造一个变量储存大量css代码; 
+// @include 引入片段  => 引入相应的片段;
+// @extend  继承      => 哪来别人的样式自己用。
+
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    @include transform;
+}
+
+.pox{
+    @extend .box;
+    background: yellowgreen;
+    @include transform;
+}
+
+// 高级 @mixin  - 带参数的;
+
+
+
+// .box-mixin{
+//       width: 100px;
+//       height: 100px;
+//       background: #f99;
+//       @include changeTrans(scale(1.2)  rotate(30deg))
+// }
+
+// 高级 @mixin  - 带默认参数的;
+
+.box-mixin{
+    width: 100px;
+    height: 100px;
+    background: #f99;
+    @include changeTrans; 
+    @include center-position;
+}
+
+.btn{
+    @include btn;
+    padding:20px;
+}
+
+// sass拥有优秀的计算能力,和结构;
+// 1. 计算能力 : 颜色可以计算了 , 16进制随便计算;
+// 2. 结构 : 存在嵌套结构,代码清晰;
+//    & : 在哪里被包裹,就代表哪个选择器;
+//自定义函数;
+@function pxToRem($arg){
+    $res : $arg / 10 * 1rem;
+    @return $res;
+}
+.container{
+    background: antiquewhite;
+    .wrapper{
+
+          padding: 20px;
+
+          li{
+                color: yellowgreen ; 
+                font-size: pxToRem(20);
+                &:hover {
+                      color: yellowgreen - 100;
+                } 
+          }
+    }
+}
+// 系统函数API
+
+//sass循环操作; 数组;
+
+$color-list : #fff , #000;
+
+// body{
+//    background: nth($color-list,2); 
+// }
+
+// sass循环操作; 对象;
+
+$class-list : (btn-small , 30px ) , (btn-large , 50px) ,(btn-middle , 40px);
+
+.box{
+    background: nth( nth($class-list,1) , 1)
+}
+// 通过变量穿件一个类;
+.#{nth( nth($class-list,1) , 1)}{
+    color:#fff;
+}
+
+// 遍历 @for  @each 
+
+// $count : 0;
+// @for $count from 0 to length($color-list) {
+//       .box-#{$count}{
+//             color: nth($color-list, $count + 1 )
+//       }
+// }
+
+@each $className,$fontSize in $class-list  {
+
+    @if( $className == btn-large){
+          .#{$className}{
+                font-size: $fontSize * 1000;
+          }
+    }@else{
+          .#{$className}{
+                font-size: $fontSize ;
+          }
+    }
+}
