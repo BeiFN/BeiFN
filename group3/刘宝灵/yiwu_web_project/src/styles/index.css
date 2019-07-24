@@ -1,0 +1,272 @@
+.header_down {
+    width: 100%;
+    height: 47px;
+    border-bottom: 5px solid #de1313;
+    padding-top: 12px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+.header_down .industry{
+    margin-right: 0;
+}
+.header_down .logo_wrap{
+    width: auto;
+    margin-left: 0;
+}
+.header_down .so_box{
+    padding: 0;
+    width: auto;
+}
+.header_down .type_li{
+    padding-left: 0;
+}
+.header_down .product{
+    width: 428px;
+}
+.header_down .product_box{
+    width: 182px;
+}
+.header_down .product_box input{
+    width: 176px;
+}
+.header_down .so_btn{
+    right: 2px;
+    top: 6px;
+}
+.header_down .login_box{
+    padding-top: 8px;
+}
+.type_boxs li{
+    padding-bottom: 5px;
+}
+
+.one_tit {
+    background: url(http://www.i1515.com/image/newIndex/change-bgs.png) no-repeat 0 25px;
+    height: 62px;
+    width: 100%;
+    color: #000;
+    font-size: 24px;
+    text-align: center;
+    width: 1190px;
+    margin: 0 auto;
+    line-height: 62px;
+    background-size: 100%;
+}
+.change_how{
+    height: 200px;
+}
+.change_how_title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+.change_how_title1 {
+    color: #565655;
+    font-size: 14px;
+    text-align: center;
+}
+.flow_img{
+    margin-top: 40px;
+    padding-left: 80px;
+}
+.flow_img li{
+    float: left;
+}
+.flow_one{
+    margin-left: 0;
+    background-position: 0 0;
+}
+.flow_img li img{
+    margin-right: 10px;
+    float: left;
+}
+.flow_img li div{
+    float: left;
+}
+.flow_img li div p{
+    font-size: 18px;
+    color: #333;
+}
+.flow_img li div span{
+    font-size: 14px;
+    color: #333;
+}
+.flow_arrow{
+    width: 66px;
+    height: 34px;
+    padding: 0 10px;
+}
+.pos_re{
+    position: relative;
+    z-index: 2;
+}
+.product_brand{
+    overflow: hidden;
+    background: #fff;
+    height: 165px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+.product_brand ul{
+    width: 1220px;
+}
+.product_brand li{
+    float: left;
+    cursor: pointer;
+    padding: 5px 0;
+}
+.brand_li1{
+    background-position: -16px 10px;
+}
+.brand_icon {
+    background: url(http://www.i1515.com/image/newIndex/bb_03.png) no-repeat;
+    width: 88px;
+    text-align: center;
+    margin: 10px;
+    float: left;
+}
+.brand_icon img{
+    max-width: 88px;
+    max-height: 50px;
+    text-align: center;
+}
+.brand_li2 {
+    background-position: -93px 10px;
+}
+.brand_li3 {
+    background-position: -178px 10px;
+}
+.brand_li4 {
+    background-position: -267px 10px;
+}
+.brand_li5 {
+    background-position: -358px 10px;
+}
+.brand_li6 {
+    background-position: -452px 10px;
+}
+.brand_li7 {
+    background-position: -540px 10px;
+}
+.brand_li8 {
+    background-position: -634px 10px;
+}
+.brand_li9 {
+    background-position: -720px 10px;
+    margin-right: 9px;
+}
+.brand_li10 {
+    background-position: -810px 10px;
+}
+.brand_li11 {
+    background-position: -905px 10px;
+}
+.brand_li12 {
+    background-position: -990px 10px;
+}
+.brand_li13 {
+    background-position: -1078px 10px;
+}
+.brand_li14 {
+    background-position: 2px -40px;
+}
+.brand_li15 {
+    background-position: -92px -40px;
+}
+.brand_li16 {
+    background-position: -183px -40px;
+}
+.brand_li17 {
+    background-position: -264px -40px;
+}
+.brand_li18 {
+    background-position: -357px -40px;
+}
+.brand_li19 {
+    background-position: -446px -40px;
+}
+.brand_li20 {
+    background-position: -543px -40px;
+}
+.brand_li21 {
+    background-position: -630px -40px;
+}
+.brand_li22 {
+    background-position: -717px -40px;
+}
+.change_clothing{
+    border: 1px solid #ddd;
+    height: 481px;
+    border-right: 0;
+    border-bottom: 0;
+    margin-bottom: 40px !important;
+}
+.change_clothing ul{
+    width: 1200px;
+}
+.change_clothing li{
+    float: left;
+    width: 221px;
+    height: 240px;
+    max-width: 221px;
+    max-height: 240px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    position: relative;
+}
+li.clothing_big{
+    width: 300px;
+    height: 481px;
+    max-width: 300px;
+    max-height: 481px;
+}
+.change_clothing li img {
+    width: 160px;
+    height: 160px;
+    margin-left: 35px;
+}
+li.clothing_big img{
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 481px;
+}
+.clothing_tit{
+    color: #8e8e8e;
+    height: 36px;
+    padding: 0 16px;
+    overflow: hidden;
+    font-size: 13px;
+}
+.clothing_tit a {
+    color: #8e8e8e;
+}
+.clothing_money{
+    color: #f21414;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 5px 16px;
+    font-weight: 500;
+}
+.clothing_money b {
+    background: #ed1313;
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 1px;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 5px;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: normal;
+}

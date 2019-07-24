@@ -16,29 +16,27 @@
 
 // 路径抽离33333333333333
 let gulp = require("gulp");//一个实例对象
+let paths = {
+    styles : {
+        src : "./src/styles/index/*.css",
+        dist : "./dist/styles/"
+    },
+    scripts :{
+        src : "./src/javascripts/index/*.js",
+        dist : "./dist/javascripts/"
+    },
+    html :{
+        src : "./src/*.html",
+        dist : "./dist/"
+    }
+}
 
-// let paths = {
-//     styles : {
-//         src : "./src/styles/index/*.css",
-//         dist : "./dist/styles/"
-//     },
-//     scripts :{
-//         src : "./src/javascripts/index/*.js",
-//         dist : "./dist/javascripts/"
-//     },
-//     html :{
-//         src : "./src/*.html",
-//         dist : "./dist/"
-//     }
-// }
-
-//拆分999999999999
-// 外置路径，方便配置
-let { paths } = require("./glup5config.js");
-
+var sass = require("gulp-sass");
+sass.compile = require("node-sass");
 
 function styles(){
     return gulp.src(paths.styles.src)//原始相对路径
+    .pipe(sass.on("error",sass.logError))//scss预编译器
     .pipe(concat("index.css"))//合并成一个index.css文件
     .pipe(cleanCss())//压缩代码样式，清空格注释
     // .pipe(rename({

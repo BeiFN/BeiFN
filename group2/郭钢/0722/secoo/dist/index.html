@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/banner.css">
+    <link rel="stylesheet" href="./styles/editorPick.css">
+    <link rel="stylesheet" href="./styles/fashionWardrobe.css">
+    <link rel="stylesheet" href="./styles/secooApp.css">
+    <link rel="stylesheet" href="./styles/plateEntry.css">
+    <link rel="stylesheet" href="./styles/wordOfSecoo.css">
+    <link rel="stylesheet" href="./styles/font/iconfont.css">
+    <link rel="stylesheet" href="./styles/common.css">
+</head>
+
+<body class="zh">
+    <div class="sheader">
+        <div class="top-bar ncontainer">
+            <div class="head-lang">
+                <div class="region-selection">
+                    <h4 class="selected-region">中文</h4>
+                    <i class="iconfont icon-zhankai icon-sanjiaoxing"></i>
+                    <ul class="region-options">
+                        <li class="region-option">中文</li>
+                        <li class="region-option">英文</li>
+                    </ul>
+                </div>
+                <div class="separate-line"></div>
+                <div class="currency-selection">
+                    <h4 class="selected-currency">RMB ￥</h4>
+                    <i class="iconfont icon-zhankai icon-sanjiaoxing n-hide"></i>
+                    <ul class="currency-options n-hide">
+                        <li class="currency-option">RMB ￥</li>
+                        <li class="currency-option">USD $</li>
+                        <li class="currency-option">EUR €</li>
+                        <li class="currency-option">GBP £</li>
+                        <li class="currency-option">HKD $</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="head-site clearfix">
+                <span class="register">
+                    <a class="en" href="https://passport.secoo.com/">Log In</a>
+                    <a class="zh" href="https://passport.secoo.com/">登 录</a>
+                </span>
+                <span class="username">
+                    <a href="http://my.secoo.com/order/myorder.jsp#afterLogin"></a>
+                </span>
+                <div class="separate-line"></div>
+                <span class="sign-in">
+                    <a class="en" href="https://passport.secoo.com/_register.jsp">Register</a>
+                    <a class="zh" href="https://passport.secoo.com/_register.jsp">注 册</a>
+                </span>
+                <span class="log-out">
+                    <a class="en" href="https://passport.secoo.com/login/logout.jsp">Log out</a>
+                    <a class="zh" href="https://passport.secoo.com/login/logout.jsp">退出</a>
+                </span>
+                <div class="separate-line shopping-bag-line"></div>
+                <span class="shopping-bag">
+                    <a href="http://shopping.secoo.com/cart/cart.jsp">
+                        <i class="iconfont icon-gouwudai icon-shopping-bag"></i>
+                    </a>
+                </span>
+                <div class="separate-line"></div>
+                <span class="collection">
+                    <a href="http://my.secoo.com/favorite/myfavorites.jsp">
+                        <i class="iconfont icon-shoucang icon-collection"></i>
+                    </a>
+                </span>
+            </div>
+            <div class="head-logo">
+                <a href="https://www.secoo.com">
+                    <img src="//pic11.secooimg.com/push/18/11/013e7d9eb7674c799c3c21e84dd1c88a.jpg" alt="寺库">
+                </a>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="ncontainer clearfix">
+                <ul class="nav-menu clearfix">
+                    <li class="nav-item">
+                        <a class="en" href="#">HOME</a>
+                        <a class="zh" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">BAGS</a>
+                        <a class="zh" href="#">包袋</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">WATCHES</a>
+                        <a class="zh" href="#">腕表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">JEWELRY</a>
+                        <a class="zh" href="#">珠宝首饰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">CLOTHING</a>
+                        <a class="zh" href="#">服饰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">SHOES</a>
+                        <a class="zh" href="#">鞋履</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">ACCESSORIES</a>
+                        <a class="zh" href="#">配饰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">SPORTS</a>
+                        <a class="zh" href="#">运动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">HOME&TECH</a>
+                        <a class="zh" href="#">家居</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">BEAUTY</a>
+                        <a class="zh" href="#">美妆</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="en" href="#">LIFESTYLE</a>
+                        <a class="zh" href="#">生活方式</a>
+                    </li>
+                </ul>
+                <div class="s-search">
+                    <!-- <span class="en">SEARCH</span>
+                        <span class="zh">搜索</span> -->
+                    <div class="search-inner">
+                        <input class="zh txr" data-value="搜索" data-focus="搜索商品、品牌" value="搜索" placeholder="搜索商品、品牌"
+                            type="text">
+                        <input class="en txr" data-value="SEARCH" data-focus="SEARCH" value="SEARCH"
+                            placeholder="SEARCH" type="text">
+                        <span class="icon-search">
+                            <i class="iconfont icon-sousuo"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- banner -->
+    <div class="banner ncontainer clearfix">
+        <!-- 左边 -->
+        <div class="secoo-trend zh">
+            <a href="#">
+                <div class="top-img">
+                    <img src="https://pic14.secooimg.com/push/2019/0617/b2ad8797be5f4a76a8e7bc0e7327530b.jpg" alt="">
+                    <div class="bg-mask"></div>
+                </div>
+                <div class="bottom-img">
+                    <img src="https://pic11.secooimg.com/push/18/11/34f9f24874af4ae6a6a5d8f0aa253ddf.png" alt="">
+                </div>
+            </a>
+        </div>
+        <!-- 右边 -->
+        <div class="international-brands zh">
+            <a href="#">
+                <div class="left-img">
+                    <img src="https://pic13.secooimg.com/push/18/11/5e08f1525e484e95824002ae33cb6322.png" alt="">
+                </div>
+                <div class="right-img">
+                    <div class="bg-mask"></div>
+                    <img src="https://pic12.secooimg.com/push/18/11/ad48819e0e524d72a31dfb902561f744.jpg" alt="">
+                </div>
+            </a>
+        </div>
+        <!-- 下边 -->
+        <div class="banner-video">
+            <div class="bg-poster">
+                <div class="bg-mask"></div>
+                <div class="video-play"></div>
+                <img src="https://pic13.secooimg.com/push/18/11/ab8194828ffc4a5a91202b5ac17c241d.jpg" alt="">
+            </div>
+            <video controls preload="none" src="https://pic13.secooimg.com/video/productvideo/secoo1111.mp4"></video>
+        </div>
+    </div>
+
+    <!-- 轮播图 -->
+    <div class="editor-pick ncontainer">
+        <!-- 上边 -->
+        <h3 class="title"></h3>
+        <!-- 中间 -->
+        <div class="editor-pick-list">
+            <ul class="product-list">
+                <li>
+                    <a href="#">
+                        <div class="product-img">
+                            <img src="https://pic11.secooimg.com/product/300/300/2019/0701/4d0671081c7441d281090306d21f4ab6.jpg"
+                                alt=""
+                                data-original="//pic11.secooimg.com/product/300/300/2019/0701/4d0671081c7441d281090306d21f4ab6.jpg"
+                                class="lazyPic">
+                            <div class="mask"></div>
+                        </div>
+                        <div class="product-details">
+                            <p class="product-name">THOM BROWNE/THOM BROWNE</p>
+                            <p class="product-desc">【LVR】 19秋冬 THOM BROWNE/THOM BROWNE 男士 直筒版型纯棉牛津纺衬衫 70I-LA9051_MTAw0
+                            </p>
+                            <div class="line"></div>
+                            <p class="product-price">￥4,700</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 下边 -->
+        <div class="bottom-dir">
+            <a href="#" class="prev">
+                <i class="iconfont icon-arrow icon-prev"></i>
+            </a>
+            <a href="#" class="next">
+                <i class="iconfont icon-angle-up icon-next"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- fashion -->
+    <div class="fashion-wardrobe ncontainer">
+        <a href="#" class="zh">
+            <div class="left-img">
+                <div class="bg-mask"></div>
+                <img data-original="//pic12.secooimg.com/push/18/11/e3e8ba6182a54c92b56c53899b751116.jpg"
+                    src="https://pic12.secooimg.com/push/18/11/e3e8ba6182a54c92b56c53899b751116.jpg" alt=""
+                    class="lazyPic">
+            </div>
+            <div class="right-img">
+                <img data-original="//pic11.secooimg.com/push/18/11/8ee9d414c7674563b892271e2eb81951.png"
+                    src="https://pic11.secooimg.com/push/18/11/8ee9d414c7674563b892271e2eb81951.png" alt=""
+                    class="lazyPic">
+            </div>
+        </a>
+    </div>
+
+    <!-- secooApp -->
+    <div class="secoo-app ncontainer">
+        <img data-original="//pic14.secooimg.com/push/2019/0722/cd2f846655a04cd1ad1341254a916431.jpg"
+            src="https://pic14.secooimg.com/push/2019/0722/cd2f846655a04cd1ad1341254a916431.jpg" alt=""
+            class="zh lazyPic">
+    </div>
+
+    <!-- plateEntry -->
+    <ul class="plate-entry ncontainer clearfix">
+        <li class="zh"><a href="http://www.secoo.com/listTop/kukeKOL.shtml">
+                <div class="bg-mask"></div>
+                <img class="lazyPic"
+                    data-original="//pic11.secooimg.com/push/18/11/f77de773a9a646a4a9e18ab28d6c710d.jpg"
+                    src="//pic11.secooimg.com/push/18/11/f77de773a9a646a4a9e18ab28d6c710d.jpg">
+            </a>
+        </li>
+        <li class="zh">
+            <a href="http://search.secoo.com/search?keyword=%25E5%25BD%25A9%25E5%25A6%2586&amp;level=0&amp;qfs=1">
+                <div class="bg-mask"></div>
+                <img class="lazyPic"
+                    data-original="//pic13.secooimg.com/push/18/11/31870faf4d624ab7873c02f59da6004b.jpg"
+                    src="//pic13.secooimg.com/push/18/11/31870faf4d624ab7873c02f59da6004b.jpg">
+            </a>
+        </li>
+        <li class="zh" style="margin-right: 0;">
+            <ahref="http://search.secoo.com/search?keyword=%25E9%259D%25B4%25E5%25AD%2590&amp;firstcategoryid=0&amp;secondcategoryid=0&amp;thirdcategoryid=0&amp;brandId=0&amp;level=0&amp;orderType=7&amp;filterType=0&amp;source=&amp;pageNo=1&amp;st=10&amp;price=0&amp;prop=0&amp;warehouse=100&amp;actscr=0&amp;expKey=#J_FilterPos">
+                <div class="bg-mask">
+                </div>
+                <img class="lazyPic"
+                    data-original="//pic12.secooimg.com/push/18/11/5a68b33440ec4599aa553c5ce06e8e5e.jpg"
+                    src="//pic12.secooimg.com/push/18/11/5a68b33440ec4599aa553c5ce06e8e5e.jpg">
+                </a>
+        </li>
+    </ul>
+
+    <!-- wordOfSecoo -->
+    <div class="world-of-secoo">
+        <div class="ncontainer">
+            <h3 class="title">
+                <img src="//mpic.secooimg.com/images/2018/11/07/the-world-of-secoo-title.png">
+            </h3>
+            <ul class="clearfix">
+                <li class="zh">
+                    <a href="http://www.secoo.com/listTop/msd.shtml">
+                        <div class="bg-mask"></div>
+                        <img class="lazyPic"
+                            data-original="//pic11.secooimg.com/push/18/11/b80a21c2b985477885c4536cfecbb38b.jpg"
+                            src="//pic11.secooimg.com/push/18/11/b80a21c2b985477885c4536cfecbb38b.jpg">
+                    </a>
+                </li>
+                <li class="zh">
+                    <a href="http://www.secoo.com/newSecooClub.shtml#4thpage">
+                        <div class="bg-mask"></div>
+                        <img class="lazyPic"
+                            data-original="//pic13.secooimg.com/push/18/11/63229c04ab284807b634cd0b36178444.jpg"
+                            src="//pic13.secooimg.com/push/18/11/63229c04ab284807b634cd0b36178444.jpg">
+                    </a>
+                </li>
+                <li class="zh" style="margin-right: 0">
+                    <a href="http://www.secoo.com/static/help/10_1.shtml">
+                        <div class="bg-mask"></div>
+                        <img class="lazyPic"
+                            data-original="//pic13.secooimg.com/push/18/11/c154878a6dbb4380a52209cb64462cb0.jpg"
+                            src="//pic13.secooimg.com/push/18/11/c154878a6dbb4380a52209cb64462cb0.jpg">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="./scripts/libs/jquery.js"></script>
+<script src="./scripts/libs/utils.js"></script>
+<script>
+    let { $: $$, on } = Utils;
+</script>
+<script src="./scripts/header.js"></script>
+<script src="./scripts/banner.js"></script>
+<script src="./scripts/editorPick.js"></script>
+<script src="./scripts/fashionWardrobe.js"></script>
+<script src="./scripts/secooApp.js"></script>
+<script src="./scripts/plateEntry.js"></script>
+<script src="./scripts/worldOfSecoo.js"></script>
+
+</html>
