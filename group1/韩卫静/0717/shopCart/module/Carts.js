@@ -10,6 +10,7 @@ define(["jquery","./render"],function($,render){
 			var cart_warp = $(".cart-wrap");
 			var con_title = $(".content-title");
 			var goods_content = $(".goods-list .row");
+			this.cbList = {};
 			
 			cart_warp.on("click" , $.proxy( function(){
 				if(confirm("是否清空购物车")){
@@ -23,7 +24,9 @@ define(["jquery","./render"],function($,render){
 			},this));
 			this.main.on("click" , ".add-cart" , $.proxy(this.addGoodsInCart , this) );
 			this.main.on("click" , ".add-cart" , $.proxy(this.changeCartNum , this) );
-			
+			this.main.on("click" , ".btn-add" , $.proxy(this.addCartNum , this) );
+			this.main.on("click" , ".btn-reduce" , $.proxy(this.reduceCartNum , this) );
+		
 			this.changeCartNum();
 
 		},
@@ -69,6 +72,52 @@ define(["jquery","./render"],function($,render){
 				}
 				localStorage.setItem("carts", JSON.stringify(list))
 			}
+		},
+		addCartNum : function(evt){
+			var e = evt || window.event;
+			var target = e.target || e.srcElement;
+			var id = $(target).parent().attr("data-id");
+			var s = JSON.parse(localStorage.getItem("carts"));
+			$.each(s, function(index , item){
+				if(item.id == id){
+					item.count++;
+				}
+			})
+			localStorage.setItem("carts",JSON.stringify(s));
+			this.changeCartNum();
+			this.publish("changeNum");
+		},
+		reduceCartNum : function(evt){
+			var e = evt || window.event;
+			var target = e.target || e.srcElement;
+			var id = $(target).parent().attr("data-id");
+			var s = JSON.parse(localStorage.getItem("carts"));
+			console.log(id)
+			$.each(s, function(index , item){
+				console.log(item.id)
+				if(item.id == id){
+					item.count--;
+					if(item.count == 0){
+						s.splice(index,1);
+					}
+				}			
+			})
+			localStorage.setItem("carts",JSON.stringify(s));
+			this.changeCartNum();
+			this.publish("changeNum");
+
+		},
+		add : function(cb , type){
+			if(!(this.cbList[type] instanceof Array)){
+                        this.cbList[type] = []  
+                  } 
+			// this.cbList[type] ? "" : this.cbList[type] = [];
+                  this.cbList[type].push(cb);
+		},
+		publish : function(type){
+			this.cbList[type].forEach(function(item , index){
+				typeof item === "function" ? item() : "";
+			})
 		}
 	})
 	

@@ -1,0 +1,23 @@
+.world-of-secoo{
+    padding-top:60px;
+    background-color: #ffb81c; 
+}
+.world-of-secoo .title{
+    height: 109px;
+    margin-bottom: 51px;
+    text-align: center;
+}
+.world-of-secoo li{
+    position: relative;
+    float: left;
+    width: 380px;
+    height: 504px;
+    margin-right: 30px;
+}
+.world-of-secoo li img{
+    height: 100%;
+    width: 100%;
+}
+.world-of-secoo li:hover .bg-mask{
+    opacity: 1;
+}

@@ -1,0 +1,105 @@
+
+/* 左边 */
+.banner.ncontainer{
+    margin-top: 20px;
+}
+.banner .secoo-trend{
+    position: relative;
+    float: left;
+    width: 530px;
+    height: 900px;
+}
+.banner .secoo-trend .top-img{
+    height: 790px;
+}
+.top-img{
+    top:0
+}
+.top-img,.bottom-img{
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+.bg-mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity linear 0.2s;
+}
+.bottom-img{
+    bottom: 0;
+    z-index: 2;
+}
+.secoo-trend:hover .bg-mask{
+    opacity: 1;
+}
+
+/* 右边 */
+.banner .international-brands{
+    position: relative;
+    float: right;
+    width: 650px;
+    height: 410px;
+}
+.left-img{
+    left: 0;
+    z-index: 2;
+}
+.left-img,.right-img{
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+.banner .international-brands .right-img{
+    z-index: 1
+}
+.right-img{
+    right: 0;
+}
+.international-brands:hover .bg-mask{
+    opacity: 1;
+}
+/* 下边 */
+.banner .banner-video{
+    position: relative;
+    float: right;
+    width: 650px;
+    height: 550px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #000;
+}
+.banner .banner-video .bg-poster{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #000;
+}
+.banner .banner-video  .video-play{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -55px 0 0 -55px;
+    width: 110px;
+    height: 110px;
+    background: url(https://mpic.secooimg.com/images/2018/11/08/video-play.png) no-repeat center;
+}
+.banner .banner-video video{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+video{
+    object-fit: contain;
+}
+.banner-video:hover .bg-mask{
+    opacity: 1;
+}

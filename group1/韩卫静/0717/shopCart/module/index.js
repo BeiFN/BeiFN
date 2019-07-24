@@ -31,6 +31,7 @@ define(["jquery","./loadData" , "./render.js", "./Carts.js"],function($ , loadda
 		var goodsHtml = render.init(res.goods_list, "goods");
 		goods_content.html(goodsHtml);
 		carts.init();
+		carts.add(renderCartList , "changeNum")
 	},this))
 	
 	btn_goods.on("click" , function(){
@@ -45,5 +46,11 @@ define(["jquery","./loadData" , "./render.js", "./Carts.js"],function($ , loadda
 		var cartsHtml = render.init(resList.goods_list , "carts");
 		goods_content.html(cartsHtml);
 	})
+	function renderCartList(){
+		console.log("调用render")
+		var cartsHtml = render.init(resList.goods_list , "carts");
+		goods_content.html(cartsHtml);
+	}
+	
 	
 });

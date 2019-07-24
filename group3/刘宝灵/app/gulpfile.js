@@ -1,0 +1,44 @@
+let gulp = require("gulp");
+let cleanCss = require("gulp-clean-css");
+let rename = require("gulp-rename");
+let concat = require("gulp-concat");
+let babel  = require("gulp-babel");
+let uglify = require("gulp-uglify");
+let dev    = require("./gulp.dev");
+let sass   = require("gulp-sass");
+sass.compiler = require("node-sass");
+let {paths} = require("./gulp.config");
+
+let type = process.argv[3] ? process.argv[3] : "dev";
+  function styles(){
+    return gulp.src(paths.styles.src)
+    // .pipe(concat("index.css"))
+    .pipe(sass.on('error',sass.logError))
+    .pipe(cleanCss())
+    // .pipe(rename({
+    //   suffix : ".min"
+    // }))
+    .pipe(gulp.dest(paths.styles.dist))
+  }
+  
+  function scripts(){
+    return gulp.src(paths.scripts.src)
+    .pipe(concat("index.js"))
+    .pipe(babel({
+        presets : ['@babel/env']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.scripts.dist))
+  }
+  function html(){
+    return gulp.src(paths.html.src)
+    .pipe(gulp.dest(paths.html.dist))
+  }
+
+
+  let build = gulp.series( html , styles , scripts);
+
+
+exports.build = build;
+exports.dev   = dev;
+

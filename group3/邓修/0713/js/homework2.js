@@ -193,8 +193,10 @@ $.extend(WaterFall.prototype, {
             var scrollTop = $("html,body").scrollTop();
             if (!this.loading && scrollTop + this.cHeight >= this.minContainerHeight - 500) {
                 this.loading = true;
+                // console.log(3);
                 //加载
                 new Load().init(this.next_start).then($.proxy(function (res) {
+                    // console.log(2,res);
                     this.render(res.data.object_list);
                     this.sort();
                     this.getAllImgTop();
@@ -212,7 +214,6 @@ $.extend(WaterFall.prototype, {
             }, this), 100);
         }, this));
         new Load().init(0).then($.proxy(function (res) {
-
             this.render(res.data.object_list);
             this.sort();
             this.getAllImgTop();
@@ -250,11 +251,11 @@ $.extend(WaterFall.prototype, {
     //对图片进行排序
     sort: function () {
         var children = this.wrapper.children();
-        // console.log(Array.from(children));
-        Array.from(children).forEach(function (box, index) {
+        // console.log(Array.from(children),this.count);
+        Array.from(children).forEach($.proxy(function (box, index) {
             if (index < this.count) {
                 $(box).css("position", "static");
-                console.log($(box).outerHeight());
+                // console.log(4,$(box).outerHeight());
                 this.heightArray.push($(box).outerHeight());
             }
             else {
@@ -268,7 +269,7 @@ $.extend(WaterFall.prototype, {
                 });
                 this.heightArray[minIndex] += $(box).outerHeight() + 20;
             }
-        });
+        },this));
         var maxHeight = Math.max.apply(false, this.heightArray);
         var minHeight = Math.min.apply(false, this.heightArray);
         this.container.css("height", maxHeight + "px");
@@ -278,7 +279,7 @@ $.extend(WaterFall.prototype, {
     //获取所有图片相对于文档顶部的Top值
     getAllImgTop: function () {
         this.boxs = Array.from(this.wrapper.children());
-        // console.log(boxs);
+        // console.log(boxs,1);
         this.boxs.forEach(box => {
             $(box).attr("data-top", $(box).offset().top);
         });
@@ -286,14 +287,14 @@ $.extend(WaterFall.prototype, {
     //根据滚动条件显示图片
     imgShow: function () {
         var scrollTop = $("html,body").scrollTop();
-        this.boxs.forEach(function (box) {
+        this.boxs.forEach($.proxy(function (box) {
             var box_top = $(box).attr("data-top");
             if (scrollTop + this.cHeight >= box_top - 500) {
                 // console.log(img);
                 var src = $(box).attr("data-img");
                 box.children[0].children[0].src = src;
             }
-        });
+        },this));
     }
 });
 function Load() {
