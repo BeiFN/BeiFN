@@ -1,9 +1,0 @@
-body{background:url(https://static.zcool.cn/v1.1.68/passport4.0/images/login-ground.jpg) no-repeat;background-size: cover}
-.pass-wrap{max-width: 1200px;margin:0 auto;height: 54px;}
-.pass-wrap .pass-nav{padding-top: 15px;color: #ffffff;display: flex; align-items: center}
-.pass-wrap .pass-nav .pass-logo{width: 137px;
-height: 24px; float: left; margin-right: 10px; padding-right: 10px; background-image: url(https://static.zcool.cn/passport4.0/images/svg/zcool_logo.svg);background-repeat: no-repeat;background-size: auto 24px;display: inline-block;vertical-align: middle;zoom: 1;*display: inline;position: relative;}
-.pass-wrap .pass-nav span{font-size: 24px;color: white;font-weight: bold;font-family: "微软雅黑";border-left: 2px solid #ffffff;padding-left: 20px}
-.login-logo{  margin: 0 auto; color: #fff;font-size: 18px;text-align: center;padding: 20px 0 30px;height: 72px}
-.login-logo img{margin-bottom:10px;}
-.login{width: 400px;height: 500px;text-align: center;margin: 0 auto;border-radius: 4px;background:rgba(255,255,255,0.7)}

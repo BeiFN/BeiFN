@@ -1,3 +1,0 @@
-HELLO HELLO
-你好！
-我是来自 http://localhost/yyt/0710/ajaxEncapsulation03.txt 的一个数据

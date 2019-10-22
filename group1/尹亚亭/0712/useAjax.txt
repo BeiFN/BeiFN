@@ -1,5 +1,0 @@
-HELLO WORLD !
-Hello EveryOne !
-I'm a text.
-I'm a local file.
-I'm used to test the using of ajaxEncapsulation.

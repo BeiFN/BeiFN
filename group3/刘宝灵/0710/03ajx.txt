@@ -1,5 +1,0 @@
-<h1>hello world i'm from server;</h1>
-<h1>hello world i'm from server;</h1>
-<h1>hello world i'm from server;</h1>
-<h1>hello world i'm from server;</h1>
-<h1>hello world i'm from server;</h1>

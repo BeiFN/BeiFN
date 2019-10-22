@@ -1,1 +1,0 @@
-"use strict";console.log("hello gulp-hxj"),console.log("hello gulp-lsh");

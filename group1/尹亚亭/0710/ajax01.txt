@@ -1,2 +1,0 @@
-<h1>HELLO WORLD! </h1>
-<h3> I'm coming from server </h3>
